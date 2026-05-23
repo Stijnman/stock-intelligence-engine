@@ -1,110 +1,82 @@
 # Stock Intelligence Engine
 
-**Narrative-aware stock intelligence for the modern investor.**
+**Professional Narrative-Aware Stock Intelligence**
 
-Real-time analysis of viral signals, news impact, historical patterns, and risk-adjusted buy signals.
+![Banner](assets/banner.jpg)
 
-![Stock Intelligence Engine Banner](assets/banner.jpg)
+**See the narrative before it moves the market.**
 
-## What is Stock Intelligence Engine?
+Real-time viral signals • News impact analysis • Historical context • Risk-adjusted buy signals
 
-Stock Intelligence Engine is a professional-grade CLI tool that helps you understand **which stocks are positioned to profit or suffer** from the current market narrative.
+---
 
-It combines:
-- Real-time viral discussion analysis (X/Twitter + financial news)
-- Historical pattern recognition from past narrative shifts (DeepSeek, Mamba, post-IPO behavior, etc.)
-- Multi-condition technical filters + risk-adjusted position sizing
-- Clear buy/hold/lower priority signals with color coding
+## What This Tool Actually Does
 
-Perfect for investors who want to stay ahead of narrative-driven market moves instead of reacting after the fact.
+Stock Intelligence Engine helps you understand **which companies are positioned to win or lose** from the stories currently driving the market.
 
-## Key Features
+It doesn't just show prices. It connects:
+- What people are talking about right now (viral X posts + financial news)
+- How similar narratives played out historically
+- Technical health of the stocks
+- Clear, actionable signals with proper risk management
 
-### Core Intelligence
-- **Thematic Color Coding** (🟢 Green = Strong thematic fit, 🟡 Yellow = Monitor, 🔴 Red = Higher risk)
-- **Multi-condition Buy Signals** with MA50/MA200 + RSI filters
-- **Risk-Adjusted Position Sizing** (smaller size for high-drawdown names like new IPOs)
-- **52-week Drawdown tracking**
-- **Narrative Phase Detection**
+## Full Feature List
 
-### Viral & News Intelligence
-- Optional deep news impact analysis (`--news`)
-- Maps current viral narratives to profit/suffer per ticker
-- Automatically discovers relevant tickers from ongoing discussions
+### 1. Narrative Intelligence
+- Thematic color coding (🟢 Strong fit / 🟡 Monitor / 🔴 Higher caution)
+- Per-ticker profit vs suffer analysis from current narrative
+- Automatic discovery of relevant tickers from viral discussions
+- Narrative phase detection (Hype → Dip → Recovery)
 
-### Automation & Alerts
-- Email alerts support
-- Automatic refresh / daemon mode (`--refresh 300`)
-- CSV export for tracking over time
+### 2. Technical + Risk Filters
+- Multi-condition buy signals (price > MA50 + MA200 + RSI filter)
+- 52-week drawdown tracking (critical for new IPOs like CBRS)
+- Risk-adjusted position sizing suggestions
+- RSI (14) to avoid buying euphoria
 
-### Usability
-- Bilingual support (English + Dutch)
-- Clean professional CLI output
-- Full Docker support for easy deployment
-- Strong legal disclaimers included
+### 3. Automation & Alerts
+- `--email` alerts with narrative context
+- `--refresh N` automatic daemon mode
+- CSV export for historical tracking
 
-## Installation
+### 4. Usability
+- `--lang nl` bilingual support
+- Clean, professional CLI output
+- Full Docker support (one command to run)
+- Strong legal disclaimers built-in
 
-### Quick Start with Docker (Recommended)
+## Installation & Usage
 
-```bash
-docker compose up
-```
-
-Or build and run manually:
-
-```bash
-docker build -t stock-intelligence-engine .
-docker run -it stock-intelligence-engine
-```
-
-### Local Installation
+### Recommended: Docker (Easiest)
 
 ```bash
 git clone https://github.com/Stijnman/stock-intelligence-engine.git
 cd stock-intelligence-engine
-pip install -r requirements.txt
+cp .env.example .env   # Edit with your email credentials if using alerts
+docker compose up
 ```
 
-## Usage Examples
+### Local Python
 
 ```bash
-# Basic run
-python stock_intelligence_engine.py
-
-# Dutch language
-python stock_intelligence_engine.py --lang nl
-
-# With news impact analysis
-python stock_intelligence_engine.py --news
-
-# Full power + export + email
-python stock_intelligence_engine.py --export --news --email
-
-# Auto-refresh every 5 minutes
-python stock_intelligence_engine.py --refresh 300
+pip install -r requirements.txt
+python stock_intelligence_engine.py --news --export
 ```
 
-## Current Watchlist (Example)
+## Important Disclaimer
 
-The tool currently tracks a dynamic list focused on the efficient AI architecture + inference boom narrative, including NVDA, TSM, CBRS, CRDO, MU, and others.
+**This is NOT financial advice.**
 
-## Important Legal Disclaimer
+This tool is for educational and research purposes only. All investment decisions are your own responsibility. Past narrative patterns do not guarantee future results. Always conduct your own due diligence.
 
-**This tool is for educational and informational purposes only.**
+## Visuals
 
-It is NOT financial advice. Past performance is not indicative of future results. Always do your own research and consult a licensed financial advisor before making any investment decisions.
+Logo and banner generated for professional presentation. Add `assets/logo.jpg` and `assets/banner.jpg` to the repository for full visual appeal.
 
-The developers are not responsible for any financial losses incurred from the use of this tool.
+## Roadmap
 
-## Contributing
-
-Contributions are welcome! Please open an issue or pull request.
-
-## License
-
-MIT License
+Future versions will include more themes, web dashboard option, and deeper backtesting.
 
 ---
 
-*Stock Intelligence Engine — See the narrative before it moves the market.*
+*Stock Intelligence Engine v1.0.0 — Narrative intelligence for serious investors.*
