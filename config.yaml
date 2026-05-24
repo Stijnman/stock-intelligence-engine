@@ -1,0 +1,9 @@
+dashboard:
+  enabled: true
+  port: 8501
+
+alerts:
+  email: true
+
+narrative:
+  theme: "AI Inference Boom"
