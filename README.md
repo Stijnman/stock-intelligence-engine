@@ -63,15 +63,16 @@ pip install -r requirements.txt
 python stock_intelligence_engine.py --news --export
 ```
 
+## Recent Edits & Version History
+
+- **v1.0.1 (2026-05-30)**: Code audit completed, 2026 research integrated, new high-value improvements added to FUTURE-IMPROVEMENTS.md, version bump.
+- **v1.0.0 (2026-05-23)**: Initial professional public release and rebrand.
+
 ## Important Disclaimer
 
 **This is NOT financial advice.**
 
 This tool is for educational and research purposes only. All investment decisions are your own responsibility. Past narrative patterns do not guarantee future results. Always conduct your own due diligence.
-
-## Visuals
-
-Logo and banner generated for professional presentation. Add `assets/logo.jpg` and `assets/banner.jpg` to the repository for full visual appeal.
 
 ## Roadmap
 
@@ -79,4 +80,4 @@ Future versions will include more themes, web dashboard option, and deeper backt
 
 ---
 
-*Stock Intelligence Engine v1.0.0 — Narrative intelligence for serious investors.*
+*Stock Intelligence Engine v1.0.1 — Narrative intelligence for serious investors.*
