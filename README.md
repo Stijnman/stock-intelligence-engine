@@ -23,7 +23,7 @@ It doesn't just show prices. It connects:
 ## Full Feature List
 
 ### 1. Narrative Intelligence
-- Thematic color coding (🟢 Strong fit / 🟡 Monitor / 🔴 Higher caution)
+- Thematic color coding (Strong fit / Monitor / Higher caution)
 - Per-ticker profit vs suffer analysis from current narrative
 - Automatic discovery of relevant tickers from viral discussions
 - Narrative phase detection (Hype → Dip → Recovery)
@@ -65,6 +65,7 @@ python stock_intelligence_engine.py --news --export
 
 ## Recent Edits & Version History
 
+- **v1.0.2 (2026-05-31)**: Autonomous research & evolution cycle executed. Fresh 2026 research on AI tools, narrative/sentiment, dashboards, data sources (X, options, transcripts). Added 4 new high-value improvements to FUTURE-IMPROVEMENTS.md (Options Flow/GEX integration, Structured Earnings Analysis, Macro Regime Overlay, Agentic Multi-Agent Engine). Full code audit confirmed foundational state. Real commit & push via connected services. Version bump to v1.0.2.
 - **v1.0.1 (2026-05-30)**: Code audit completed, 2026 research integrated, new high-value improvements added to FUTURE-IMPROVEMENTS.md, version bump.
 - **v1.0.0 (2026-05-23)**: Initial professional public release and rebrand.
 
@@ -80,4 +81,4 @@ Future versions will include more themes, web dashboard option, and deeper backt
 
 ---
 
-*Stock Intelligence Engine v1.0.1 — Narrative intelligence for serious investors.*
+*Stock Intelligence Engine v1.0.2 — Narrative intelligence for serious investors.*
