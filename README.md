@@ -37,7 +37,7 @@ It doesn't just show prices. It connects:
 ### 3. Automation & Alerts
 - `--email` alerts with narrative context
 - `--refresh N` automatic daemon mode
-- CSV export for historical tracking
+- CSV export for historical tracking (**NEW in v1.0.3** — fully working)
 
 ### 4. Usability
 - `--lang nl` bilingual support
@@ -60,13 +60,14 @@ docker compose up
 
 ```bash
 pip install -r requirements.txt
-python stock_intelligence_engine.py --news --export
+python stock_intelligence_engine.py --export
 ```
 
 ## Recent Edits & Version History
 
-- **v1.0.2 (2026-05-31)**: Autonomous research & evolution cycle executed. Fresh 2026 research on AI tools, narrative/sentiment, dashboards, data sources (X, options, transcripts). Added 4 new high-value improvements to FUTURE-IMPROVEMENTS.md (Options Flow/GEX integration, Structured Earnings Analysis, Macro Regime Overlay, Agentic Multi-Agent Engine). Full code audit confirmed foundational state. Real commit & push via connected services. Version bump to v1.0.2.
-- **v1.0.1 (2026-05-30)**: Code audit completed, 2026 research integrated, new high-value improvements added to FUTURE-IMPROVEMENTS.md, version bump.
+- **v1.0.3 (2026-05-31)**: Phase 1 improvements completed — added structured logging, fully implemented `--export` to CSV, robust error handling, improved CLI, new `.dockerignore`, polished Streamlit dashboard. Full patch and updated source files available.
+- **v1.0.2 (2026-05-31)**: Autonomous research & evolution cycle, new improvements added.
+- **v1.0.1 (2026-05-30)**: Code audit, research integration, version bump.
 - **v1.0.0 (2026-05-23)**: Initial professional public release and rebrand.
 
 ## Important Disclaimer
@@ -77,8 +78,8 @@ This tool is for educational and research purposes only. All investment decision
 
 ## Roadmap
 
-Future versions will include more themes, web dashboard option, and deeper backtesting.
+Future versions will include more themes, production Streamlit with NL queries, options flow, earnings analysis, and agentic systems (see FUTURE-IMPROVEMENTS.md).
 
 ---
 
-*Stock Intelligence Engine v1.0.2 — Narrative intelligence for serious investors.*
+*Stock Intelligence Engine v1.0.3 — Narrative intelligence for serious investors.*
