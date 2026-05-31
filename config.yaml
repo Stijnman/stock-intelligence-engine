@@ -1,9 +1,21 @@
-dashboard:
-  enabled: true
-  port: 8501
-
-alerts:
-  email: true
+tickers:
+  - NVDA
+  - TSM
+  - CBRS
+  - CRDO
+  - MU
 
 narrative:
   theme: "AI Inference Boom"
+
+dashboard:
+  enabled: true
+  port: 8501
+  show_news: true
+
+caching:
+  enabled: true
+  ttl_minutes: 5
+
+daemon:
+  default_refresh_minutes: 10
