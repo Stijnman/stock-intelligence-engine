@@ -1,4 +1,4 @@
-# Stock Intelligence Engine v1.0.5
+# Stock Intelligence Engine v1.0.6
 
 import argparse
 import yfinance as yf
@@ -10,7 +10,7 @@ import schedule
 import time
 from functools import lru_cache
 
-__version__ = "1.0.5"
+__version__ = "1.0.6"
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 logger = logging.getLogger(__name__)
