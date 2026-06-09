@@ -1,4 +1,4 @@
-# Stock Intelligence Engine v1.0.6
+# Stock Intelligence Engine v1.0.7
 
 import argparse
 import yfinance as yf
@@ -10,7 +10,7 @@ import schedule
 import time
 from functools import lru_cache
 
-__version__ = "1.0.6"
+__version__ = "1.0.7"
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 logger = logging.getLogger(__name__)
@@ -27,7 +27,7 @@ THEME = CONFIG.get("narrative", {}).get("theme", "AI Inference Boom")
 @lru_cache(maxsize=32)
 def get_cached_price(ticker):
     try:
-        return yf.Ticker(ticker).info.get('regularMarketPrice', 'N/A')
+        return yf.Ticker(ticker).info.get('regularMarketPrice', yf.Ticker(ticker).info.get('currentPrice', 'N/A'))
     except Exception as e:
         logger.warning(f"Failed to fetch price for {ticker}: {e}")
         return "Error"

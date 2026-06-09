@@ -12,6 +12,8 @@ dashboard:
   enabled: true
   port: 8501
   show_news: true
+  auto_refresh: true
+  refresh_seconds: 60
 
 caching:
   enabled: true
