@@ -1,23 +1,46 @@
-tickers:
-  - NVDA
-  - TSM
-  - CBRS
-  - CRDO
-  - MU
-
 narrative:
   theme: "AI Inference Boom"
+
+technical:
+  rsi_period: 14
+  rsi_overbought: 70
+  rsi_oversold: 30
+  ma_fast: 50
+  ma_slow: 200
+
+tickers:
+  NVDA:
+    name: NVIDIA
+    color: "🟢"
+    note: "Strongest winner - inference boom"
+    narrative_fit: strong
+  TSM:
+    name: TSMC
+    color: "🟢"
+    note: "Quiet chip enabler"
+    narrative_fit: strong
+  CBRS:
+    name: Cerebras
+    color: "🟢"
+    note: "Pure specialized inference play (volatile)"
+    narrative_fit: strong
+  CRDO:
+    name: Credo
+    color: "🟡"
+    note: "Viral AI connectivity play"
+    narrative_fit: monitor
+  MU:
+    name: Micron
+    color: "🟡"
+    note: "HBM memory - inference critical"
+    narrative_fit: monitor
+
+export:
+  directory: exports
+
+alerts:
+  email: false
 
 dashboard:
   enabled: true
   port: 8501
-  show_news: true
-  auto_refresh: true
-  refresh_seconds: 60
-
-caching:
-  enabled: true
-  ttl_minutes: 5
-
-daemon:
-  default_refresh_minutes: 10

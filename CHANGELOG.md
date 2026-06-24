@@ -1,15 +1,22 @@
 # Changelog
 
-## [Unreleased]
+## [2.0.0] - 2026-06-24
 
-## [1.0.7] - 2026-06-09
 ### Added
-- Production-Grade Real-Time Streamlit Enhancements with Plotly interactive charts, dynamic ticker selection, auto-refresh controls, and NL query placeholder.
-- Updated CLI and config for consistency.
+- `sie/` package: technical analysis, news, export, alerts, config, i18n
+- RSI(14), MA50, MA200, 52-week drawdown calculations
+- Rule-based signals with explicit reason strings
+- Working `--news`, `--export`, `--email`, `--refresh` CLI flags
+- `config.yaml` driven watchlist and technical thresholds
+- Streamlit dashboard with signal table and headlines
+- `COMPETITION.md` competitive analysis and feature brainstorm
+- `pyyaml` dependency
 
-### Changed
-- Version to 1.0.7
+### Fixed
+- README aligned with actual implementation (was marketing-only in v1.0)
 
-## [1.0.6] - Research Sync & Roadmap Expansion (2026-06-05)
+## [1.0.0] - 2026-05-23
 
-... (previous)
+### Added
+- Initial public release (price-only prototype)
+- Docker scaffold, disclaimers, branding

@@ -1,7 +1,11 @@
 __pycache__/
 *.py[cod]
+.pytest_cache/
+tests/__pycache__/
+sie/__pycache__/
 *$py.class
 .env
 .env.local
 *.log
+exports/
 .DS_Store

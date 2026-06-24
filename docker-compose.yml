@@ -1,9 +1,17 @@
-version: '3.8'
 services:
   stock-intel:
     build: .
     container_name: stock-intelligence-engine
-    stdin_open: true
-    tty: true
-    env_file:
-      - .env
+    command: ["--news", "--export"]
+    volumes:
+      - ./exports:/app/exports
+    # Optional: cp .env.example .env for --email alerts
+
+  dashboard:
+    build: .
+    container_name: stock-intelligence-dashboard
+    entrypoint: ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./exports:/app/exports
