@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stock Intelligence Engine v2.0.0
+Stock Intelligence Engine v2.0.1
 Narrative-aware stock intelligence with technical confirmation.
 """
 
@@ -11,7 +11,7 @@ import time
 
 from sie.analyzer import run_report
 
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 
 def main() -> None:

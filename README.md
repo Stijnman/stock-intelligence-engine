@@ -10,7 +10,7 @@ Connect **market narratives** to **watchlist tickers**, then confirm with RSI, m
 
 ---
 
-## What it does (v2.0.0)
+## What it does (v2.0.1)
 
 | Layer | Feature |
 |-------|---------|
@@ -22,6 +22,12 @@ Connect **market narratives** to **watchlist tickers**, then confirm with RSI, m
 | **UI** | Streamlit dashboard |
 
 See [COMPETITION.md](COMPETITION.md) for roadmap vs Quiver, Unusual Whales, Koyfin, etc.
+
+---
+
+## Recent Edits & Version History
+
+- **2026-07-05 (v2.0.1)**: Autonomous research & evolution cycle. Full code audit confirmed **GitHub Actions CI** (`.github/workflows/ci.yml`) is fully implemented and working (multi-Python matrix, flake8, smoke tests + artifacts). Removed it from FUTURE-IMPROVEMENTS.md v2.1. Added detailed entry to CHANGELOG.md. Bumped version to **v2.0.1** in all files (stock_intelligence_engine.py, app.py, docs). Added 5 new high-value improvements from fresh July 2026 research (FinBERT sentiment scoring, X/Twitter v2 viral scanner, options flow detector, Streamlit 2026 UX overhaul with data_editor + themes, vectorbt/Monte Carlo narrative backtester). Categorized into existing priority sections. Roadmap now current and forward-looking.
 
 ---
 
@@ -126,4 +132,4 @@ This tool is for **education and research**. Past patterns do not guarantee futu
 
 ---
 
-*Stock Intelligence Engine v2.0.0*
+*Stock Intelligence Engine v2.0.1*
