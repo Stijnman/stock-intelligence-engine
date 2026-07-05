@@ -10,6 +10,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] pytest for RSI/MA math
 - [ ] **FinBERT / transformer-based sentiment scoring** for news headlines and narrative fit analysis. Config-driven model selection (VADER fallback or Hugging Face FinBERT). Adds numeric sentiment delta (-1.0 to +1.0) to boost or dampen signal confidence. GPU/CPU aware with graceful fallback.
 - [ ] **X/Twitter API v2 real-time viral & sentiment scanner** for existing watchlist tickers and themes. Tracks mention volume, sentiment spikes, and computes "buzz_score". New column in signal table and dashboard. Uses official API or fallback scrapers with rate limiting.
+- [ ] **Narrative contradiction detection engine**. Automatically flags when news or social sentiment diverges sharply from technical signals or price action. Computes a "contradiction_score" and surfaces explainable alerts in CLI and dashboard. Lightweight statistical rules with optional lightweight LLM review fallback.
+- [ ] **Retail social sentiment overlay (Reddit + Stocktwits)**. Pulls recent post volume and sentiment for watchlist tickers as low-cost confirmation layer. Adds "retail_buzz" metric and integrates with X viral scanner for multi-source social intelligence.
 
 ## v2.2 - Medium Priority
 
@@ -19,6 +21,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Smart yfinance cache
 - [ ] **Unusual options activity detector & overlay**. Pulls options chain data (yfinance or free endpoints), flags unusual volume, IV spikes, sweeps, or large trades. Highlights in dashboard table with severity badges and links to details. Configurable thresholds.
 - [ ] **Streamlit 2026 best practices upgrade**. Full use of session_state for persistent filters and user prefs, st.data_editor for live inline editing of config.yaml watchlist, enhanced Plotly interactive charts (subplots for price + signals + sentiment), auto-refresh toggle, theme switcher (dark/light), and better mobile/responsive layout.
+- [ ] **Earnings transcript narrative fit scoring**. Fetches latest earnings transcripts and guidance via free APIs. Scores alignment between narrative thesis and actual financials/guidance. Adds "thesis_alignment" flag and key excerpts to signal reasons.
+- [ ] **Automated news impact classification feed**. Classifies headlines by affected watchlist tickers with directional bias and confidence scores. Powers a live "Impact Feed" panel in the Streamlit dashboard.
 
 ## v3.0+ - Long-Term / Nice-to-Have
 
@@ -29,5 +33,6 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Plugin architecture
 - [ ] **Enhanced narrative-aware backtester** with vectorbt (or pandas-ta fallback), Monte Carlo simulations, walk-forward optimization, and full performance attribution broken down by narrative phase/theme. Outputs Sharpe, Sortino, Calmar, win rate, max drawdown, and edge metrics per strategy variant. Historical replay of signals vs actual price action.
 - [ ] **One-click cloud deployment automation** for Streamlit Cloud, Render.com, Railway, or Hugging Face Spaces. Includes Dockerfile tweaks, secrets handling, and health checks. Scripts to deploy from CLI with minimal config.
+- [ ] **Multi-source narrative conviction fusion**. Combines news sentiment, X/Reddit buzz, options flow anomalies, insider activity, and technicals into a single explainable "narrative_conviction_score" (0-100) with full attribution breakdown per ticker. Includes dashboard heatmaps and signal boosting logic.
 
 Last updated: July 5, 2026

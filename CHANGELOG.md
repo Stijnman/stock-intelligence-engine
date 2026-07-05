@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.2] - 2026-07-05
+
+### Added
+- 5 new high-value roadmap items from fresh July 2026 research into narrative intelligence tools, social sentiment overlays, earnings transcript analysis, news impact classification, and multi-source data fusion:
+  - High Priority (v2.1): Narrative contradiction detection engine + Retail social sentiment overlay (Reddit + Stocktwits).
+  - Medium Priority (v2.2): Earnings transcript narrative fit scoring + Automated news impact classification feed.
+  - Long-Term (v3.0+): Multi-source narrative conviction fusion engine.
+- Full execution of the reusable AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md protocol with research-first verification and safety gates.
+
+### Changed
+- Documentation and roadmap refreshed to stay synchronized with 2026 AI finance trends. No features qualified for cleanup (none of the v2.1+ items are implemented in current code).
+- Version bumped to **v2.0.2** for the significant roadmap value added.
+
 ## [2.0.1] - 2026-07-05
 
 ### Changed
