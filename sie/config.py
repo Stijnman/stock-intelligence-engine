@@ -1,5 +1,4 @@
 """Load configuration from config.yaml with defaults."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -52,8 +51,13 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "tickers": DEFAULT_TICKERS,
     "export": {"directory": "exports"},
     "alerts": {"email": False},
+    "twitter": {
+        "enabled": True,
+        "bearer_token": "",
+        "search_limit": 50,
+        "lookback_hours": 24,
+    },
 }
-
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
     cfg = {**DEFAULT_CONFIG, "tickers": dict(DEFAULT_TICKERS)}
@@ -75,6 +79,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
             cfg["tickers"] = {t: DEFAULT_TICKERS.get(t, {"name": t, "color": "🟡", "note": "", "narrative_fit": "monitor"}) for t in tickers}
     if alerts := raw.get("alerts"):
         cfg["alerts"].update(alerts)
+    if twitter := raw.get("twitter"):
+        cfg.setdefault("twitter", {}).update(twitter)
     if export := raw.get("export"):
         cfg["export"].update(export)
     return cfg
