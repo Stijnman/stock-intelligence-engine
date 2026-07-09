@@ -1,5 +1,4 @@
-"""Orchestrate narrative + technical analysis."""
-
+"""Orchestrate narrative + technical analysis with social viral scanner."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -9,11 +8,12 @@ from sie.config import load_config
 from sie.i18n import t, translate_reason
 from sie.news import fetch_headlines
 from sie.technical import analyze_ticker
-
+from sie.social import integrate_social_to_row
 
 def analyze_watchlist(
     cfg: dict[str, Any] | None = None,
     include_news: bool = False,
+    include_social: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -42,6 +42,8 @@ def analyze_watchlist(
         }
         if include_news:
             row["headlines"] = [h.title for h in fetch_headlines(ticker, limit=2)]
+        if include_social:
+            row = integrate_social_to_row(row, cfg)
         rows.append(row)
 
     return {
@@ -53,12 +55,11 @@ def analyze_watchlist(
         "disclaimer": t(lang, "disclaimer"),
     }
 
-
 def format_report(report: dict[str, Any]) -> str:
     lang = report.get("lang", "en")
     lines = [
         "",
-        f"=== {report['title']} v2.0.0 ===",
+        f"=== {report['title']} v2.1.0 ===",
         f"{t(lang, 'theme')}: {report['theme']}",
         f"{t(lang, 'updated')}: {report['timestamp']}",
         "",
@@ -72,6 +73,8 @@ def format_report(report: dict[str, Any]) -> str:
         reason = translate_reason(row.get("signal_reason", ""), lang)
         lines.append(f"  {t(lang, 'signal')}: {signal_label} — {reason}")
         lines.append(f"  {t(lang, 'rsi')}: {rsi} | {t(lang, 'drawdown')}: {dd}%")
+        if "buzz_score" in row:
+            lines.append(f"  📈 Buzz: {row['buzz_score']} (mentions: {row.get('mention_count', 0)}, sent: {row.get('twitter_sentiment', 0)})")
         lines.append(f"  {row.get('note', '')}")
         if row.get("headlines"):
             lines.append(f"  {t(lang, 'news')}:")
@@ -84,16 +87,16 @@ def format_report(report: dict[str, Any]) -> str:
     lines.append(f"⚠️  {report['disclaimer']}")
     return "\n".join(lines)
 
-
 def run_report(
     lang: str = "en",
     include_news: bool = False,
+    include_social: bool = True,
     export: bool = False,
     email: bool = False,
     export_dir: str = "exports",
 ) -> dict[str, Any]:
     cfg = load_config()
-    report = analyze_watchlist(cfg, include_news=include_news, lang=lang)
+    report = analyze_watchlist(cfg, include_news=include_news, include_social=include_social, lang=lang)
     text = format_report(report)
     print(text)
 
@@ -101,10 +104,9 @@ def run_report(
 
     if export:
         from sie.export import export_csv
-
         flat_rows = []
         for row in report["rows"]:
-            flat = {k: v for k, v in row.items() if k != "headlines"}
+            flat = {k: v for k, v in row.items() if k not in ["headlines"]}
             if "headlines" in row:
                 flat["headlines"] = " | ".join(row["headlines"])
             flat_rows.append(flat)
@@ -114,7 +116,6 @@ def run_report(
 
     if email:
         from sie.alerts import format_email_body, send_email_report
-
         ok, msg = send_email_report(
             subject=f"Stock Intel — {report['theme']} ({report['timestamp']})",
             body=format_email_body(report, lang),

@@ -44,3 +44,9 @@ alerts:
 dashboard:
   enabled: true
   port: 8501
+
+twitter:
+  enabled: true
+  bearer_token: ""  # Set your X API v2 bearer token here or in .env
+  search_limit: 50
+  lookback_hours: 24
