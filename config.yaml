@@ -50,3 +50,8 @@ twitter:
   bearer_token: ""  # Set your X API v2 bearer token here or in .env
   search_limit: 50
   lookback_hours: 24
+
+sentiment:
+  model: "ProsusAI/finbert"
+  enabled: true
+  fallback_to_vader: true
