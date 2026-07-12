@@ -1,4 +1,4 @@
-"""Orchestrate narrative + technical analysis with social viral scanner."""
+"""Orchestrate narrative + technical analysis with social viral scanner and FinBERT news sentiment."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -12,7 +12,7 @@ from sie.social import integrate_social_to_row
 
 def analyze_watchlist(
     cfg: dict[str, Any] | None = None,
-    include_news: bool = False,
+    include_news: bool = True,
     include_social: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
@@ -41,9 +41,21 @@ def analyze_watchlist(
             "error": snap.error,
         }
         if include_news:
-            row["headlines"] = [h.title for h in fetch_headlines(ticker, limit=2)]
+            headlines = fetch_headlines(ticker, limit=2)
+            row["headlines"] = [{
+                "title": h.title,
+                "sentiment_score": h.sentiment_score,
+                "sentiment_label": h.sentiment_label
+            } for h in headlines]
         if include_social:
             row = integrate_social_to_row(row, cfg)
+        # Boost signal reason with news sentiment if available
+        if include_news and row.get("headlines"):
+            avg_news_sent = sum(h.get("sentiment_score", 0) for h in row["headlines"]) / len(row["headlines"]) if row["headlines"] else 0
+            if avg_news_sent > 0.3:
+                row["signal_reason"] += f" | Strong positive news sentiment (+{avg_news_sent:.2f})"
+            elif avg_news_sent < -0.3:
+                row["signal_reason"] += f" | Negative news sentiment ({avg_news_sent:.2f})"
         rows.append(row)
 
     return {
@@ -59,7 +71,7 @@ def format_report(report: dict[str, Any]) -> str:
     lang = report.get("lang", "en")
     lines = [
         "",
-        f"=== {report['title']} v2.1.0 ===",
+        f"=== {report['title']} v2.2.0 - FinBERT News Sentiment ===",
         f"{t(lang, 'theme')}: {report['theme']}",
         f"{t(lang, 'updated')}: {report['timestamp']}",
         "",
@@ -79,7 +91,8 @@ def format_report(report: dict[str, Any]) -> str:
         if row.get("headlines"):
             lines.append(f"  {t(lang, 'news')}:")
             for h in row["headlines"]:
-                lines.append(f"    • {h}")
+                sent_str = f" [sent: {h.get('sentiment_score',0):+.2f} {h.get('sentiment_label','')}]" if h.get('sentiment_score') != 0 else ""
+                lines.append(f"    • {h['title']}{sent_str}")
         if row.get("error"):
             lines.append(f"  ⚠ {row['error']}")
         lines.append("")
@@ -89,7 +102,7 @@ def format_report(report: dict[str, Any]) -> str:
 
 def run_report(
     lang: str = "en",
-    include_news: bool = False,
+    include_news: bool = True,
     include_social: bool = True,
     export: bool = False,
     email: bool = False,
@@ -108,7 +121,7 @@ def run_report(
         for row in report["rows"]:
             flat = {k: v for k, v in row.items() if k not in ["headlines"]}
             if "headlines" in row:
-                flat["headlines"] = " | ".join(row["headlines"])
+                flat["headlines"] = " | ".join([h.get("title", "") for h in row["headlines"]])
             flat_rows.append(flat)
         path = export_csv(flat_rows, directory=export_dir or cfg.get("export", {}).get("directory", "exports"))
         print(f"\n📁 Exported: {path}")
