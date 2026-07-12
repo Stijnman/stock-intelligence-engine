@@ -1,11 +1,12 @@
-__version__ = "2.1.0"
+__version__ = "2.2.0"
 
 """
-Stock Intelligence Engine v2.1.0
+Stock Intelligence Engine v2.2.0
 
 Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.
 
-New in v2.1.0: X/Twitter viral & sentiment scanner integrated. Adds buzz_score, mention volume, and sentiment to signals.
+New in v2.2.0: FinBERT / transformer-based sentiment scoring for news headlines.
+Adds numeric sentiment delta to boost signals. Config-driven, VADER fallback.
 """
 
 from sie.analyzer import run_report
@@ -14,7 +15,7 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser(description="Stock Intelligence Engine")
-    parser.add_argument("--news", action="store_true", help="Include news")
+    parser.add_argument("--news", action="store_true", default=True, help="Include news with FinBERT sentiment")
     parser.add_argument("--social", action="store_true", default=True, help="Include X/Twitter social scan")
     parser.add_argument("--export", action="store_true")
     parser.add_argument("--email", action="store_true")
