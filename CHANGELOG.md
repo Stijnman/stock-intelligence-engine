@@ -1,18 +1,18 @@
 # Changelog
 
-## [2.1.0] - 2026-07-09
+## [2.2.0] - 2026-07-12
 
 ### Added
-- **X/Twitter viral & sentiment scanner**: Real-time buzz_score, sentiment, mention tracking for watchlist using tweepy (official API) with graceful mock fallback and VADER integration.
-- New columns in reports/dashboards: buzz_score, twitter_sentiment, mention_count.
-- Config options under twitter: bearer_token, enabled, etc.
-- Full integration in CLI (--social flag), analyzer, Streamlit app.py.
-- Updated requirements.txt with tweepy and vaderSentiment.
+- **FinBERT / transformer-based sentiment scoring**: For news headlines per ticker. Adds sentiment_score (-1 to +1) and label to headlines. Config under `sentiment:`. Integrates into signals, boosts reasoning in CLI/Streamlit.
+- New fields in reports: news sentiment per headline.
+- Graceful fallback to VADER, lazy loading for transformers.
+- Updated requirements.txt with `transformers`.
+- Full integration in analyzer, news, dashboard, CLI.
 
 ### Changed
-- Version bumped to v2.1.0 everywhere.
-- Analyzer and report formatting enhanced for social metrics.
-- Marked feature complete in FUTURE-IMPROVEMENTS.md.
+- Version bumped to v2.2.0 everywhere.
+- Default include_news=True, enhanced report formatting.
+- Marked FinBERT feature complete in FUTURE-IMPROVEMENTS.md.
 
-## [2.0.2] - 2026-07-05
+## [2.1.0] - 2026-07-09
 ... (previous)
