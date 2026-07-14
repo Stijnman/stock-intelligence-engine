@@ -4,7 +4,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 ## v2.1 (next sprint) - High Priority
 
-- [ ] VADER news sentiment score per ticker
+- [ ] VADER news sentiment score per ticker (redundant with FinBERT + fallback)
 - [ ] Narrative phase labels (Hype / Dip / Recovery)
 - [ ] Telegram alert channel
 - [ ] pytest for RSI/MA math
@@ -15,6 +15,13 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 ## v2.2 - Medium Priority
 
-... (rest unchanged)
+- [ ] **Options flow integration**: Real-time unusual options activity for conviction signals.
+- [ ] **Insider trading monitoring**: Parse SEC Form 4 filings for buy/sell signals.
+- [ ] **Reddit sentiment layer**: Aggregate WallStreetBets and stock sub sentiment.
 
-Last updated: July 12, 2026
+## Long-Term / Nice-to-Have
+
+- [ ] Multi-agent LLM reasoning for narrative contradictions.
+- [ ] Advanced Streamlit dashboard with Plotly interactive charts and backtesting.
+
+Last updated: July 14, 2026

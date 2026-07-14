@@ -1,18 +1,15 @@
 # Changelog
 
-## [2.2.0] - 2026-07-12
-
-### Added
-- **FinBERT / transformer-based sentiment scoring**: For news headlines per ticker. Adds sentiment_score (-1 to +1) and label to headlines. Config under `sentiment:`. Integrates into signals, boosts reasoning in CLI/Streamlit.
-- New fields in reports: news sentiment per headline.
-- Graceful fallback to VADER, lazy loading for transformers.
-- Updated requirements.txt with `transformers`.
-- Full integration in analyzer, news, dashboard, CLI.
+## [2.2.1] - 2026-07-14
 
 ### Changed
-- Version bumped to v2.2.0 everywhere.
-- Default include_news=True, enhanced report formatting.
-- Marked FinBERT feature complete in FUTURE-IMPROVEMENTS.md.
+- Cleaned FUTURE-IMPROVEMENTS.md: Marked redundant VADER as noted, added new high-value features based on 2026 research.
+- Updated README with new version entry.
+- Version bumped to v2.2.1 across files.
 
-## [2.1.0] - 2026-07-09
+### Added to Roadmap
+- Options flow, insider trading, Reddit sentiment (Medium).
+- Multi-agent narrative, advanced dashboard (Long-Term).
+
+## [2.2.0] - 2026-07-12
 ... (previous)
