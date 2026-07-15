@@ -40,6 +40,12 @@ export:
 
 alerts:
   email: false
+  telegram: false
+
+telegram:
+  enabled: false
+  bot_token: ""  # Create bot via BotFather, get token
+  chat_id: ""   # Your chat ID or channel @username
 
 dashboard:
   enabled: true
