@@ -1,19 +1,21 @@
 import streamlit as st
 import pandas as pd
-from sie.analyzer import analyze_watchlist
+from sie.analyzer import analyze_watchlist, run_report
 from sie.config import load_config
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.2.0 - FinBERT Sentiment")
+st.title("Stock Intelligence Engine v2.3.0 - with Telegram Alerts")
 
 cfg = load_config()
 report = analyze_watchlist(cfg, include_news=True, include_social=True)
 
 df = pd.DataFrame(report["rows"])
-# Flatten headlines for display
-if not df.empty and "headlines" in df.columns:
-    df["news_sentiment"] = df["headlines"].apply(lambda hs: [h.get("sentiment_label", "") for h in hs] if isinstance(hs, list) else [])
 st.dataframe(df.drop(columns=["headlines"], errors="ignore"), use_container_width=True)
+
+if st.button("Send Telegram Alert"):
+    from sie.alerts import format_telegram_body, send_telegram_message
+    tg_ok, msg = send_telegram_message(format_telegram_body(report), cfg)
+    st.success(msg) if tg_ok else st.error(msg)
 
 st.subheader("Signals, Buzz & News Sentiment")
 for row in report["rows"]:
