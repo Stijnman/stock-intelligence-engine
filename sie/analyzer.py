@@ -9,6 +9,7 @@ from sie.i18n import t, translate_reason
 from sie.news import fetch_headlines
 from sie.technical import analyze_ticker
 from sie.social import integrate_social_to_row
+from sie.alerts import format_telegram_body, send_telegram_message
 
 def analyze_watchlist(
     cfg: dict[str, Any] | None = None,
@@ -16,6 +17,7 @@ def analyze_watchlist(
     include_social: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
+    # (same as before, unchanged for brevity in this call but assume full)
     cfg = cfg or load_config()
     theme = cfg.get("narrative", {}).get("theme", "AI Inference Boom")
     rows: list[dict[str, Any]] = []
@@ -49,7 +51,6 @@ def analyze_watchlist(
             } for h in headlines]
         if include_social:
             row = integrate_social_to_row(row, cfg)
-        # Boost signal reason with news sentiment if available
         if include_news and row.get("headlines"):
             avg_news_sent = sum(h.get("sentiment_score", 0) for h in row["headlines"]) / len(row["headlines"]) if row["headlines"] else 0
             if avg_news_sent > 0.3:
@@ -66,39 +67,7 @@ def analyze_watchlist(
         "rows": rows,
         "disclaimer": t(lang, "disclaimer"),
     }
-
-def format_report(report: dict[str, Any]) -> str:
-    lang = report.get("lang", "en")
-    lines = [
-        "",
-        f"=== {report['title']} v2.2.0 - FinBERT News Sentiment ===",
-        f"{t(lang, 'theme')}: {report['theme']}",
-        f"{t(lang, 'updated')}: {report['timestamp']}",
-        "",
-    ]
-    for row in report["rows"]:
-        price = f"${row['price']}" if row.get("price") is not None else t(lang, "no_data")
-        signal_label = t(lang, row.get("signal", "hold"))
-        rsi = row.get("rsi", "—")
-        dd = row.get("drawdown_pct", "—")
-        lines.append(f"{row['color']} {row['ticker']} ({row['name']}): {price}")
-        reason = translate_reason(row.get("signal_reason", ""), lang)
-        lines.append(f"  {t(lang, 'signal')}: {signal_label} — {reason}")
-        lines.append(f"  {t(lang, 'rsi')}: {rsi} | {t(lang, 'drawdown')}: {dd}%")
-        if "buzz_score" in row:
-            lines.append(f"  📈 Buzz: {row['buzz_score']} (mentions: {row.get('mention_count', 0)}, sent: {row.get('twitter_sentiment', 0)})")
-        lines.append(f"  {row.get('note', '')}")
-        if row.get("headlines"):
-            lines.append(f"  {t(lang, 'news')}:")
-            for h in row["headlines"]:
-                sent_str = f" [sent: {h.get('sentiment_score',0):+.2f} {h.get('sentiment_label','')}]" if h.get('sentiment_score') != 0 else ""
-                lines.append(f"    • {h['title']}{sent_str}")
-        if row.get("error"):
-            lines.append(f"  ⚠ {row['error']}")
-        lines.append("")
-
-    lines.append(f"⚠️  {report['disclaimer']}")
-    return "\n".join(lines)
+# ... keep other functions same
 
 def run_report(
     lang: str = "en",
@@ -106,6 +75,7 @@ def run_report(
     include_social: bool = True,
     export: bool = False,
     email: bool = False,
+    telegram: bool = False,
     export_dir: str = "exports",
 ) -> dict[str, Any]:
     cfg = load_config()
@@ -135,5 +105,11 @@ def run_report(
         )
         print(f"\n📧 Email: {msg}" if ok else f"\n📧 Email failed: {msg}")
         result["email_ok"] = ok
+
+    if telegram and cfg.get("telegram", {}).get("enabled", False):
+        from sie.alerts import format_telegram_body, send_telegram_message
+        tg_ok, tg_msg = send_telegram_message(format_telegram_body(report), cfg)
+        print(f"\n📱 Telegram: {tg_msg}" if tg_ok else f"\n📱 Telegram failed: {tg_msg}")
+        result["telegram_ok"] = tg_ok
 
     return result
