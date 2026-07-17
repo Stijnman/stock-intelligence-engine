@@ -1,7 +1,7 @@
-__version__ = "2.3.0"
+__version__ = "2.3.1"
 
 """
-Stock Intelligence Engine v2.3.0
+Stock Intelligence Engine v2.3.1
 
 CLI entrypoint with Telegram alerts.
 """

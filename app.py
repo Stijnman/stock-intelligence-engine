@@ -4,7 +4,7 @@ from sie.analyzer import analyze_watchlist, run_report
 from sie.config import load_config
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.3.0 - with Telegram Alerts")
+st.title("Stock Intelligence Engine v2.3.1 - with Telegram Alerts")
 
 cfg = load_config()
 report = analyze_watchlist(cfg, include_news=True, include_social=True)
