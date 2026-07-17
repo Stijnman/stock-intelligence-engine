@@ -10,11 +10,11 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 ## High Priority
 
-- [ ] **X/Twitter Narrative Intelligence Integration**: Real-time sentiment velocity, dominant narratives, key voices, and crisis flags using specialized APIs. Enhances social.py and alerts.
+- [x] **X/Twitter Narrative Intelligence Integration** (v2.4.0): Real-time sentiment velocity, dominant narratives, key voices, and crisis flags using specialized logic in social.py. Enhances social.py, alerts, CLI, Streamlit dashboard. 2026-07-17
 
 ## Medium Priority
 
-- [ ] **Real-time Streamlit Dashboard**: WebSocket or st.rerun for live price and signal updates. Best practices from 2026 Streamlit guides.
+- [ ] **Real-time Streamlit Dashboard**: WebSocket or st.rerun for live price and signal updates.
 
 ## Long-Term / Nice-to-Have
 

@@ -1,13 +1,10 @@
-__version__ = "2.3.1"
+__version__ = "2.4.0"
 
 """
-Stock Intelligence Engine v2.3.1
-
-CLI entrypoint with Telegram alerts.
+Stock Intelligence Engine v2.4.0 - X Narrative Intelligence
 """
 import argparse
 from sie.analyzer import run_report
-from sie.config import load_config
 
 def main():
     parser = argparse.ArgumentParser(description="Stock Intelligence Engine")
@@ -15,7 +12,7 @@ def main():
     parser.add_argument("--no-social", action="store_true")
     parser.add_argument("--export", action="store_true")
     parser.add_argument("--email", action="store_true")
-    parser.add_argument("--telegram", action="store_true", help="Send Telegram alert")
+    parser.add_argument("--telegram", action="store_true")
     parser.add_argument("--lang", default="en")
     args = parser.parse_args()
 

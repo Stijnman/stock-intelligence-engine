@@ -1,16 +1,16 @@
 # Changelog
 
-## [2.3.1] - 2026-07-17
-
-### Changed
-- Cleaned up FUTURE-IMPROVEMENTS.md by removing completed Telegram and FinBERT entries.
-- Added new high-value improvements based on 2026 research into AI stock tools, narrative intelligence, and real-time dashboards.
-- Version bumped to v2.3.1 in all relevant files.
-
-## [2.3.0] - 2026-07-15
+## [2.4.0] - 2026-07-17
 
 ### Added
-- **Telegram alert channel**: Configurable bot_token and chat_id. Integrated into CLI, Streamlit dashboard, and alerts module.
+- **X/Twitter Narrative Intelligence Integration**: Real-time sentiment velocity, dominant narratives (hype/dip/recovery/crisis), key voices detection. Full integration CLI/Streamlit.
+- Updated social.py with advanced extraction and flags.
 
-## Previous
-...
+### Changed
+- Version bumped everywhere to v2.4.0
+
+## [2.3.1] - 2026-07-17
+- Previous autonomous cycle updates.
+
+## [2.3.0] - 2026-07-15
+- Telegram alerts.
