@@ -14,11 +14,11 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 ## Medium Priority
 
-- [ ] **Real-time Streamlit Dashboard**: WebSocket or st.rerun for live price and signal updates.
+- [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
 
 ## Long-Term / Nice-to-Have
 
 - [ ] **Agentic Multi-Agent Research**: LLM-orchestrated deep dives into earnings transcripts and options flow.
 - [ ] **Options Flow and Insider Data**: New data sources for enhanced signals.
 
-Last updated: July 17, 2026
+Last updated: July 20, 2026
