@@ -50,6 +50,7 @@ telegram:
 dashboard:
   enabled: true
   port: 8501
+  refresh_interval: 60  # seconds for auto-refresh (0 to disable)
 
 twitter:
   enabled: true
