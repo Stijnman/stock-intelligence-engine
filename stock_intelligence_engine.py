@@ -1,7 +1,7 @@
-__version__ = "2.4.0"
+__version__ = "2.5.0"
 
 """
-Stock Intelligence Engine v2.4.0 - X Narrative Intelligence
+Stock Intelligence Engine v2.5.0 - Real-time Dashboard
 """
 import argparse
 from sie.analyzer import run_report
