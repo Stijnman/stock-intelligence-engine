@@ -57,6 +57,11 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "search_limit": 50,
         "lookback_hours": 24,
     },
+    "dashboard": {
+        "enabled": True,
+        "port": 8501,
+        "refresh_interval": 60,
+    },
 }
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
@@ -83,4 +88,6 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("twitter", {}).update(twitter)
     if export := raw.get("export"):
         cfg["export"].update(export)
+    if dashboard := raw.get("dashboard"):
+        cfg.setdefault("dashboard", {}).update(dashboard)
     return cfg
