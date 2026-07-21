@@ -1,3 +1,5 @@
+## [2.5.1] - 2026-07-21\n\n### Changed\n- Expanded README with full install, layout, and disclaimer\n- Repository hygiene pass
+
 # Changelog
 
 ## [2.5.0] - 2026-07-20
