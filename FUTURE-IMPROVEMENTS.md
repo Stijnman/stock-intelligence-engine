@@ -20,5 +20,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Agentic Multi-Agent Research**: LLM-orchestrated deep dives into earnings transcripts and options flow.
 - [ ] **Options Flow and Insider Data**: New data sources for enhanced signals.
+- [ ] **Reddit Sentiment Aggregation**: Integrate WallStreetBets and r/stocks sentiment via Pushshift or official API for crowd narrative validation.
+- [ ] **Earnings Transcript LLM Analysis**: Parse recent calls for management tone, guidance sentiment using local LLMs or APIs.
+- [ ] **Backtesting Framework**: Historical signal performance evaluation and Sharpe ratio metrics.
+- [ ] **Cloud Deployment Enhancements**: Optimized Docker for Streamlit Cloud / AWS / GCP with secrets management.
 
-Last updated: July 20, 2026
+Last updated: July 23, 2026
