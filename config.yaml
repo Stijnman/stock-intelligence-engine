@@ -8,6 +8,10 @@ technical:
   ma_fast: 50
   ma_slow: 200
 
+backtest:
+  default_start: "2023-01-01"
+  default_period_years: 2
+
 tickers:
   NVDA:
     name: NVIDIA
