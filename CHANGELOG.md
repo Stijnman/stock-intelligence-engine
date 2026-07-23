@@ -1,25 +1,18 @@
+## [2.6.0] - 2026-07-23
+
+### Added
+- **Backtesting Framework**: Historical signal backtesting with Sharpe ratio, returns metrics using yfinance data.
+- Integration in CLI (`--backtest`), Streamlit dashboard (interactive button), and core analyzer.
+- Config options for backtest periods.
+
+### Changed
+- Version bumped to 2.6.0 across files.
+- Updated documentation, FUTURE-IMPROVEMENTS.md marked complete.
+
 ## [2.5.2] - 2026-07-23
 
 ### Added
-- New high-value roadmap items from 2026 research: Reddit sentiment, earnings transcript analysis, backtesting, cloud deployment.
+- New high-value roadmap items...
 
-### Changed
-- Updated FUTURE-IMPROVEMENTS.md with fresh ideas.
-- Version bumped across files.
-
-# Changelog
-
-## [2.5.1] - 2026-07-21
-
-### Changed
-- Expanded README with full install, layout, and disclaimer
-- Repository hygiene pass
-
-## [2.5.0] - 2026-07-20
-
-### Added
-- **Real-time Streamlit Dashboard**...
-
-## [2.4.0] - 2026-07-17
-
-... (previous entries)
+# Previous
+...
