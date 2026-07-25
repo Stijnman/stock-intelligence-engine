@@ -12,6 +12,11 @@ backtest:
   default_start: "2023-01-01"
   default_period_years: 2
 
+forecast:
+  enabled: true
+  smoothing_alpha: 0.35   # Exponential smoothing factor (0-1)
+  horizon_days: 2         # Forecast horizon for phase prediction
+
 tickers:
   NVDA:
     name: NVIDIA
