@@ -1,3 +1,14 @@
+## [2.7.0] - 2026-07-25
+
+### Added
+- **Multi-source Narrative Velocity Forecasting**: Lightweight exponential smoothing forecast combining X/Twitter sentiment_velocity + news FinBERT/VADER scores. Predicts short-term narrative phase (hype / dip / recovery / neutral) 1–3 days ahead. Applies forward-looking signal boost or penalty inside analyzer. Exposed in Streamlit dashboard with confidence and reason strings. Configurable via `forecast:` section in config.yaml (smoothing_alpha, horizon_days).
+- New functions: `simple_exponential_smoothing`, `forecast_narrative_phase` in sie/social.py.
+
+### Changed
+- Version bumped to 2.7.0 across headers, app.py, stock_intelligence_engine.py, README, docs.
+- Analyzer now always runs forecast after social + news integration and mutates signal accordingly.
+- Dashboard displays predicted phase + confidence next to each ticker.
+
 ## [2.6.1] - 2026-07-25
 
 ### Changed
