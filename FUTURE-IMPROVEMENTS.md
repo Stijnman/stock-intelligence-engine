@@ -6,7 +6,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **X/Twitter Narrative Intelligence Integration** (v2.4.0): Real-time sentiment velocity, dominant narratives, key voices, and crisis flags using specialized logic in social.py. Enhances social.py, alerts, CLI, Streamlit dashboard. 2026-07-17
 
-- [ ] **Multi-source Narrative Velocity Forecasting**: Time-series forecasting (e.g. simple exponential smoothing or lightweight Prophet/ARIMA on rolling windows) of combined X sentiment velocity + news FinBERT scores to predict short-term narrative phase shifts (hype → dip) 1–3 days ahead. Integrate as forward-looking signal boost/penalty in analyzer.
+- [x] **Multi-source Narrative Velocity Forecasting** (v2.7.0): Time-series forecasting (simple exponential smoothing on rolling windows) of combined X sentiment velocity + news FinBERT/VADER scores to predict short-term narrative phase shifts (hype → dip) 1–3 days ahead. Integrated as forward-looking signal boost/penalty in analyzer, CLI, and Streamlit dashboard. 2026-07-25 https://github.com/Stijnman/stock-intelligence-engine/commit/3f0697667e4cac32032b207bad324a51414e231b
 
 ## Medium Priority
 
