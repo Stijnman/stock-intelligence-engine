@@ -1,9 +1,8 @@
-__version__ = "2.6.1"
+__version__ = "2.7.0"
 
 """
-Stock Intelligence Engine v2.6.1
-With Backtesting Framework for validating signals historically.
-Roadmap synchronized July 2026.
+Stock Intelligence Engine v2.7.0
+Multi-source Narrative Velocity Forecasting + Backtesting Framework + Real-time Dashboard.
 """
 import argparse
 from sie.analyzer import run_report
