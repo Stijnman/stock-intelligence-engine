@@ -62,6 +62,11 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "port": 8501,
         "refresh_interval": 60,
     },
+    "forecast": {
+        "enabled": True,
+        "smoothing_alpha": 0.35,
+        "horizon_days": 2,
+    },
 }
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
@@ -90,4 +95,6 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg["export"].update(export)
     if dashboard := raw.get("dashboard"):
         cfg.setdefault("dashboard", {}).update(dashboard)
+    if forecast := raw.get("forecast"):
+        cfg.setdefault("forecast", {}).update(forecast)
     return cfg
