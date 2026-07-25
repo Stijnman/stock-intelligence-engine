@@ -1,4 +1,4 @@
-"""Orchestrate narrative + technical analysis with social viral scanner and FinBERT news sentiment. Backtesting integrated."""
+"""Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment, and Multi-source Narrative Velocity Forecasting. Backtesting integrated."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -8,7 +8,7 @@ from sie.config import load_config
 from sie.i18n import t, translate_reason
 from sie.news import fetch_headlines
 from sie.technical import analyze_ticker
-from sie.social import integrate_social_to_row
+from sie.social import integrate_social_to_row, forecast_narrative_phase
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -51,12 +51,46 @@ def analyze_watchlist(
             } for h in headlines]
         if include_social:
             row = integrate_social_to_row(row, cfg)
+
+        # Multi-source Narrative Velocity Forecasting (v2.7.0)
+        avg_news_sent = 0.0
         if include_news and row.get("headlines"):
-            avg_news_sent = sum(h.get("sentiment_score", 0) for h in row["headlines"]) / len(row["headlines"]) if row["headlines"] else 0
+            avg_news_sent = sum(h.get("sentiment_score", 0) for h in row["headlines"]) / max(1, len(row["headlines"]))
             if avg_news_sent > 0.3:
                 row["signal_reason"] += f" | Strong positive news sentiment (+{avg_news_sent:.2f})"
             elif avg_news_sent < -0.3:
                 row["signal_reason"] += f" | Negative news sentiment ({avg_news_sent:.2f})"
+
+        vel = float(row.get("sentiment_velocity", 0) or 0)
+        dominant = row.get("dominant_narrative", "neutral")
+        forecast = forecast_narrative_phase(
+            current_velocity=vel,
+            current_news_sentiment=avg_news_sent,
+            current_dominant=dominant,
+            cfg=cfg,
+        )
+        row.update({
+            "predicted_phase": forecast["predicted_phase"],
+            "predicted_velocity": forecast["predicted_velocity"],
+            "forecast_confidence": forecast["confidence"],
+            "forecast_boost": forecast["signal_boost"],
+            "forecast_reason": forecast["forecast_reason"],
+        })
+
+        # Apply forward-looking boost / penalty to signal
+        boost = forecast["signal_boost"]
+        if boost >= 1 and row["signal"] in ("buy", "hold"):
+            row["signal"] = "strong_buy" if boost >= 1 else row["signal"]
+            row["signal_reason"] += f" | 📈 Forecast boost ({forecast['predicted_phase']})"
+        elif boost <= -1:
+            if row["signal"] in ("strong_buy", "buy"):
+                row["signal"] = "hold"
+            else:
+                row["signal"] = "caution"
+            row["signal_reason"] += f" | 📉 Forecast penalty ({forecast['predicted_phase']})"
+        else:
+            row["signal_reason"] += f" | Forecast: {forecast['predicted_phase']}"
+
         rows.append(row)
 
     return {
