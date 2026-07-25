@@ -1,8 +1,9 @@
-__version__ = "2.6.0"
+__version__ = "2.6.1"
 
 """
-Stock Intelligence Engine v2.6.0
+Stock Intelligence Engine v2.6.1
 With Backtesting Framework for validating signals historically.
+Roadmap synchronized July 2026.
 """
 import argparse
 from sie.analyzer import run_report
