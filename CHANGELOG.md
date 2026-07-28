@@ -1,3 +1,15 @@
+## [2.7.1] - 2026-07-28
+
+### Changed
+- Autonomous research & evolution cycle (July 28, 2026). Full code audit confirmed no additional open FUTURE-IMPROVEMENTS items were implemented since v2.7.0. Roadmap remains accurate.
+- Version bumped to 2.7.1 across documentation and entry-point headers for the roadmap refresh.
+
+### Added
+- Five new high-value improvements from fresh July 2026 research on AI stock tools, narrative intelligence, alternative data, prediction markets, insider activity, and agentic workflows:
+  - **High Priority**: Insider Form 4 Clustering & Confirmation Signals
+  - **Medium Priority**: Cross-Platform Narrative Convergence Score; Analyst Estimate Revision Momentum Tracker
+  - **Long-Term**: Grok / xAI Agent Deep-Research Hook; Alternative Data Proxies (Hiring & Web Traffic)
+
 ## [2.7.0] - 2026-07-25
 
 ### Added
