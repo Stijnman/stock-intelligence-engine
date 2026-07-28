@@ -1,7 +1,7 @@
-__version__ = "2.7.0"
+__version__ = "2.7.1"
 
 """
-Stock Intelligence Engine v2.7.0
+Stock Intelligence Engine v2.7.1
 Multi-source Narrative Velocity Forecasting + Backtesting Framework + Real-time Dashboard.
 """
 import argparse
