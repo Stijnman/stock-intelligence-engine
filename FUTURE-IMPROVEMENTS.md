@@ -8,6 +8,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Multi-source Narrative Velocity Forecasting** (v2.7.0): Time-series forecasting (simple exponential smoothing on rolling windows) of combined X sentiment velocity + news FinBERT/VADER scores to predict short-term narrative phase shifts (hype → dip) 1–3 days ahead. Integrated as forward-looking signal boost/penalty in analyzer, CLI, and Streamlit dashboard. 2026-07-25 https://github.com/Stijnman/stock-intelligence-engine/commit/3f0697667e4cac32032b207bad324a51414e231b
 
+- [ ] **Insider Form 4 Clustering & Confirmation Signals**: Ingest recent Form 4 filings (via free EDGAR, OpenInsider, or yfinance proxies) for watchlist tickers; detect clustered insider buying/selling within 7–14 days and apply confirmation boost/penalty to narrative + technical signals. Surface cluster size, net shares, and impact in dashboard + Telegram alerts.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -15,6 +17,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Portfolio Correlation Heatmap & Risk Overlay**: Compute pairwise returns correlations and portfolio-level metrics (max drawdown, volatility, Sharpe of equal-weight basket) inside backtest + dashboard. Display interactive Plotly heatmap and risk summary for the full watchlist.
 
 - [ ] **Streamlit Partial Reruns + Advanced Caching (2026 patterns)**: Refactor dashboard to use `@st.fragment` for independent live-price and narrative sections, `st.cache_data` with TTL for yfinance/X calls, and avoid full-page `st.rerun()` loops where possible. Improves responsiveness and reduces API rate-limit pressure.
+
+- [ ] **Cross-Platform Narrative Convergence Score**: Fuse X velocity, Reddit mention/sentiment (once available), news FinBERT, and prediction-market odds (Polymarket or equivalent free API) into a single 0–100 convergence score that quantifies how aligned alternative data sources are on the current narrative. High convergence increases signal confidence.
+
+- [ ] **Analyst Estimate Revision Momentum Tracker**: Monitor daily/weekly changes in consensus EPS and revenue estimates (Yahoo Finance, Finnhub free tier, or similar) and flag accelerating upward/downward revisions as leading indicators ahead of earnings. Integrate as a soft boost/penalty layer.
 
 ## Completed
 
@@ -35,5 +41,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Cloud Deployment Enhancements**: Optimized Docker for Streamlit Cloud / AWS / GCP with secrets management.
 - [ ] **SEC EDGAR 8-K / Material Filing NLP Alerts**: Poll or webhook SEC filings for watchlist tickers; run FinBERT (or stronger) tone analysis on 8-K items and surface material events + sentiment delta in dashboard and Telegram.
 - [ ] **Unusual Options Activity + Dark Pool Print Signals**: Ingest high-conviction flow (large premium, sweeps, dark-pool prints) from free tiers (Finnhub, Polygon, or public scrapers) and flag when unusual activity aligns with narrative/technical signals.
+- [ ] **Grok / xAI Agent Deep-Research Hook**: Optional integration that calls Grok (or compatible LLM via API) for on-demand multi-document research briefs (transcripts + filings + social) triggered from the Streamlit dashboard or CLI, with response caching to control cost and rate limits.
+- [ ] **Alternative Data Proxies (Hiring & Web Traffic)**: Lightweight free-tier or public signals for open job postings growth and company website traffic trends as forward-looking demand proxies, inspired by AltIndex-style alternative data layers.
 
-Last updated: July 25, 2026
+Last updated: July 28, 2026
