@@ -17,6 +17,13 @@ forecast:
   smoothing_alpha: 0.35   # Exponential smoothing factor (0-1)
   horizon_days: 2         # Forecast horizon for phase prediction
 
+insider:
+  enabled: true
+  lookback_days: 14        # Window for Form 4 / insider clustering
+  min_cluster_size: 2      # Minimum filings to consider a cluster
+  buy_boost_min: 2         # Buy filings required for +1 signal boost
+  sell_penalty_min: 2      # Sell filings required for -1 signal penalty
+
 tickers:
   NVDA:
     name: NVIDIA

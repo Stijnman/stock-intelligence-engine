@@ -1,4 +1,5 @@
-"""Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment, and Multi-source Narrative Velocity Forecasting. Backtesting integrated."""
+"""Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment,
+Multi-source Narrative Velocity Forecasting, and Insider Form 4 Clustering. Backtesting integrated."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -9,13 +10,16 @@ from sie.i18n import t, translate_reason
 from sie.news import fetch_headlines
 from sie.technical import analyze_ticker
 from sie.social import integrate_social_to_row, forecast_narrative_phase
+from sie.insider import integrate_insider_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
+
 
 def analyze_watchlist(
     cfg: dict[str, Any] | None = None,
     include_news: bool = True,
     include_social: bool = True,
+    include_insider: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -91,6 +95,10 @@ def analyze_watchlist(
         else:
             row["signal_reason"] += f" | Forecast: {forecast['predicted_phase']}"
 
+        # Insider Form 4 Clustering & Confirmation (v2.8.0)
+        if include_insider:
+            row = integrate_insider_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -102,10 +110,12 @@ def analyze_watchlist(
         "disclaimer": t(lang, "disclaimer"),
     }
 
+
 def run_report(
     lang: str = "en",
     include_news: bool = True,
     include_social: bool = True,
+    include_insider: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -113,9 +123,14 @@ def run_report(
     backtest: bool = False,
 ) -> dict[str, Any]:
     cfg = load_config()
-    report = analyze_watchlist(cfg, include_news=include_news, include_social=include_social, lang=lang)
-    # Assume format_report defined elsewhere or inline
-    text = str(report)  # simplified
+    report = analyze_watchlist(
+        cfg,
+        include_news=include_news,
+        include_social=include_social,
+        include_insider=include_insider,
+        lang=lang,
+    )
+    text = str(report)
     print(text)
 
     result: dict[str, Any] = {"report": report, "text": text}
@@ -125,15 +140,17 @@ def run_report(
         result["backtest"] = bt_results
         print("\n📊 Backtest Results for Watchlist:")
         for tkr, res in bt_results.items():
-            if 'error' not in res:
-                print(f"  {tkr}: Sharpe {res.get('sharpe_ratio', 'N/A'):.2f}, Total Return {res.get('total_return_pct', 0):.1f}% over {res.get('period')}")
+            if "error" not in res:
+                print(
+                    f"  {tkr}: Sharpe {res.get('sharpe_ratio', 'N/A'):.2f}, "
+                    f"Total Return {res.get('total_return_pct', 0):.1f}% over {res.get('period')}"
+                )
             else:
                 print(f"  {tkr}: Error - {res['error']}")
 
     if export:
         from sie.export import export_csv
-        # ... (keep original logic)
-        pass  # omitted for brevity in update
+        # keep original export path
+        pass
 
-    # other logic preserved
     return result

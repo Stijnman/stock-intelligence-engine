@@ -67,7 +67,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "smoothing_alpha": 0.35,
         "horizon_days": 2,
     },
+    "insider": {
+        "enabled": True,
+        "lookback_days": 14,
+        "min_cluster_size": 2,
+        "buy_boost_min": 2,
+        "sell_penalty_min": 2,
+    },
 }
+
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
     cfg = {**DEFAULT_CONFIG, "tickers": dict(DEFAULT_TICKERS)}
@@ -86,7 +94,12 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         if isinstance(tickers, dict):
             cfg["tickers"] = tickers
         elif isinstance(tickers, list):
-            cfg["tickers"] = {t: DEFAULT_TICKERS.get(t, {"name": t, "color": "🟡", "note": "", "narrative_fit": "monitor"}) for t in tickers}
+            cfg["tickers"] = {
+                t: DEFAULT_TICKERS.get(
+                    t, {"name": t, "color": "🟡", "note": "", "narrative_fit": "monitor"}
+                )
+                for t in tickers
+            }
     if alerts := raw.get("alerts"):
         cfg["alerts"].update(alerts)
     if twitter := raw.get("twitter"):
@@ -97,4 +110,12 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("dashboard", {}).update(dashboard)
     if forecast := raw.get("forecast"):
         cfg.setdefault("forecast", {}).update(forecast)
+    if insider := raw.get("insider"):
+        cfg.setdefault("insider", {}).update(insider)
+    if backtest := raw.get("backtest"):
+        cfg.setdefault("backtest", {}).update(backtest)
+    if telegram := raw.get("telegram"):
+        cfg.setdefault("telegram", {}).update(telegram)
+    if sentiment := raw.get("sentiment"):
+        cfg.setdefault("sentiment", {}).update(sentiment)
     return cfg

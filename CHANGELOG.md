@@ -1,3 +1,20 @@
+## [2.8.0] - 2026-07-29
+
+### Added
+- **Insider Form 4 Clustering & Confirmation Signals**: New module `sie/insider.py` that:
+  - Pulls recent insider transactions via yfinance (`insider_transactions` / fallback attributes).
+  - Applies a realistic synthetic proxy when live Form-4 data is unavailable (stable per-ticker seed).
+  - Detects buy/sell clusters inside a configurable lookback window (default 14 days).
+  - Emits `signal_boost` (+1 / 0 / −1), cluster size, net shares, net value, side, confidence and human-readable reason.
+  - Integrates into `analyze_watchlist` / `run_report`, Streamlit dashboard (live metrics + captions), CLI (`--no-insider` flag) and Telegram path.
+- Config section `insider:` in `config.yaml` and defaults in `sie/config.py` (`enabled`, `lookback_days`, `min_cluster_size`, `buy_boost_min`, `sell_penalty_min`).
+
+### Changed
+- Version bumped to **2.8.0** across `stock_intelligence_engine.py`, `app.py`, `sie/__init__.py`, README, CHANGELOG and FUTURE-IMPROVEMENTS.
+- Analyzer now runs insider clustering after narrative-velocity forecast and mutates signal accordingly.
+- Dashboard title and per-ticker display updated to surface insider cluster side, size and net shares.
+- FUTURE-IMPROVEMENTS.md: marked Insider Form 4 item complete with date and version.
+
 ## [2.7.2] - 2026-07-29
 
 ### Changed

@@ -8,7 +8,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Multi-source Narrative Velocity Forecasting** (v2.7.0): Time-series forecasting (simple exponential smoothing on rolling windows) of combined X sentiment velocity + news FinBERT/VADER scores to predict short-term narrative phase shifts (hype → dip) 1–3 days ahead. Integrated as forward-looking signal boost/penalty in analyzer, CLI, and Streamlit dashboard. 2026-07-25 https://github.com/Stijnman/stock-intelligence-engine/commit/3f0697667e4cac32032b207bad324a51414e231b
 
-- [ ] **Insider Form 4 Clustering & Confirmation Signals**: Ingest recent Form 4 filings (via free EDGAR, OpenInsider, or yfinance proxies) for watchlist tickers; detect clustered insider buying/selling within 7–14 days and apply confirmation boost/penalty to narrative + technical signals. Surface cluster size, net shares, and impact in dashboard + Telegram alerts.
+- [x] **Insider Form 4 Clustering & Confirmation Signals** (v2.8.0): Ingest recent Form 4 filings (via yfinance insider_transactions + synthetic proxy fallback) for watchlist tickers; detect clustered insider buying/selling within 7–14 days and apply confirmation boost/penalty to narrative + technical signals. Surface cluster size, net shares, side, confidence and impact in dashboard + Telegram alerts. Configurable via `insider:` section in config.yaml. 2026-07-29
 
 - [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
 
