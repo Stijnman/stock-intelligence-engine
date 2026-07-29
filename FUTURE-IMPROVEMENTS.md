@@ -10,6 +10,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Insider Form 4 Clustering & Confirmation Signals**: Ingest recent Form 4 filings (via free EDGAR, OpenInsider, or yfinance proxies) for watchlist tickers; detect clustered insider buying/selling within 7–14 days and apply confirmation boost/penalty to narrative + technical signals. Surface cluster size, net shares, and impact in dashboard + Telegram alerts.
 
+- [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -21,6 +23,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Cross-Platform Narrative Convergence Score**: Fuse X velocity, Reddit mention/sentiment (once available), news FinBERT, and prediction-market odds (Polymarket or equivalent free API) into a single 0–100 convergence score that quantifies how aligned alternative data sources are on the current narrative. High convergence increases signal confidence.
 
 - [ ] **Analyst Estimate Revision Momentum Tracker**: Monitor daily/weekly changes in consensus EPS and revenue estimates (Yahoo Finance, Finnhub free tier, or similar) and flag accelerating upward/downward revisions as leading indicators ahead of earnings. Integrate as a soft boost/penalty layer.
+
+- [ ] **Podcast & Alternative Media Sentiment Layer**: Ingest and score sentiment from financial podcasts and alternative media transcripts/summaries (Context Analytics-style Podcast Sentiment feeds or free public sources) using lightweight keyword + FinBERT/LLM pipelines. Surface as additional narrative confirmation signal in analyzer and dashboard.
+
+- [ ] **Employee Outlook & Glassdoor Sentiment Signals**: Track aggregated employee business outlook scores and Glassdoor rating trends as forward-looking management confidence proxies (inspired by AltIndex alternative-data layers). Apply soft confirmation/penalty to narrative + technical signals for watchlist names when outlook diverges from market narrative.
 
 ## Completed
 
@@ -43,5 +49,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Unusual Options Activity + Dark Pool Print Signals**: Ingest high-conviction flow (large premium, sweeps, dark-pool prints) from free tiers (Finnhub, Polygon, or public scrapers) and flag when unusual activity aligns with narrative/technical signals.
 - [ ] **Grok / xAI Agent Deep-Research Hook**: Optional integration that calls Grok (or compatible LLM via API) for on-demand multi-document research briefs (transcripts + filings + social) triggered from the Streamlit dashboard or CLI, with response caching to control cost and rate limits.
 - [ ] **Alternative Data Proxies (Hiring & Web Traffic)**: Lightweight free-tier or public signals for open job postings growth and company website traffic trends as forward-looking demand proxies, inspired by AltIndex-style alternative data layers.
+- [ ] **HMM / Regime Detection Filter**: Implement a lightweight Hidden Markov Model (or simpler volatility/returns regime classifier) on recent price series to detect bull / bear / sideways regimes and gate or re-weight narrative and technical signals accordingly, reducing false positives in hostile regimes.
+- [ ] **MCP-Native Agent Data Hooks**: Expose SIE signals via Model Context Protocol (MCP) and/or consume MCP servers (Alpha Vantage MCP, StockContext, etc.) so external AI agents can query live narrative/technical scores and SIE can pull verified fundamentals, insiders, and filings more reliably in agentic workflows.
 
-Last updated: July 28, 2026
+Last updated: July 29, 2026

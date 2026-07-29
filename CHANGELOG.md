@@ -1,3 +1,15 @@
+## [2.7.2] - 2026-07-29
+
+### Changed
+- Autonomous research & evolution cycle (July 29, 2026). Full code audit of analyzer.py, social.py, app.py, config.yaml, and supporting modules confirmed no additional open FUTURE-IMPROVEMENTS items were implemented since v2.7.1. Roadmap remains accurate.
+- Version bumped to 2.7.2 across documentation and entry-point headers for the roadmap refresh.
+
+### Added
+- Five new high-value improvements from fresh July 29 2026 research on AI stock tools, real-time feeds, alternative media, employee sentiment, regime detection, and MCP agent tooling:
+  - **High Priority**: Real-time WebSocket Price & Quote Feeds
+  - **Medium Priority**: Podcast & Alternative Media Sentiment Layer; Employee Outlook & Glassdoor Sentiment Signals
+  - **Long-Term**: HMM / Regime Detection Filter; MCP-Native Agent Data Hooks
+
 ## [2.7.1] - 2026-07-28
 
 ### Changed
