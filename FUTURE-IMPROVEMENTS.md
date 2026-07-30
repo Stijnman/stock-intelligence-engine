@@ -10,9 +10,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Insider Form 4 Clustering & Confirmation Signals** (v2.8.0): Ingest recent Form 4 filings (via yfinance insider_transactions + synthetic proxy fallback) for watchlist tickers; detect clustered insider buying/selling within 7–14 days and apply confirmation boost/penalty to narrative + technical signals. Surface cluster size, net shares, side, confidence and impact in dashboard + Telegram alerts. Configurable via `insider:` section in config.yaml. 2026-07-29
 
-- [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
+- [x] **Prediction Market Odds Overlay (Polymarket)** (v2.9.0): Ingest real-money prediction-market probabilities for company- or sector-specific events via free/public Polymarket Gamma API (+ realistic synthetic fallback). Map event odds to watchlist tickers and apply soft confirmation or penalty on divergence from narrative + technical signal. Fully integrated into analyzer, CLI (`--no-pm`), Streamlit dashboard, config.yaml (`prediction_markets:`). 2026-07-30 https://github.com/Stijnman/stock-intelligence-engine/commit/0ea2039b07fc8d67c01f3e4ac8b89a3c62a1a74f
 
-- [ ] **Prediction Market Odds Overlay (Polymarket)**: Ingest real-money prediction-market probabilities for company- or sector-specific events (earnings outcomes, product launches, regulatory decisions) via free/public Polymarket Gamma or PredScope-style APIs. Map event odds to watchlist tickers and apply soft confirmation or penalty when market-implied probability diverges from current narrative + technical signal.
+- [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
 
 ## Medium Priority
 
