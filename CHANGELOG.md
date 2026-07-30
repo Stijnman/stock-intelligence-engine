@@ -1,3 +1,22 @@
+## [2.9.0] - 2026-07-30
+
+### Added
+- **Prediction Market Odds Overlay (Polymarket)**: New module `sie/prediction_markets.py` that:
+  - Queries free Polymarket Gamma public-search and markets endpoints (no API key required).
+  - Maps event probabilities to watchlist tickers via keyword matching.
+  - Applies realistic synthetic proxy when live data is unavailable (stable per-ticker + day seed).
+  - Detects divergence between market-implied probability and current narrative+technical signal.
+  - Emits soft `signal_boost` (+1 / 0 / −1), best probability, question, confidence, reason and source.
+  - Integrates into `analyze_watchlist` / `run_report`, Streamlit dashboard (live odds + captions), CLI (`--no-pm` flag).
+- Config section `prediction_markets:` in `config.yaml` and defaults in `sie/config.py` (`enabled`, `min_volume`, `boost_prob_threshold`, `penalty_prob_threshold`, `divergence_boost`).
+- `requests` dependency added to `requirements.txt`.
+
+### Changed
+- Version bumped to **2.9.0** across `stock_intelligence_engine.py`, `app.py`, `sie/__init__.py`, README, CHANGELOG and FUTURE-IMPROVEMENTS.
+- Analyzer now runs prediction-market overlay after insider clustering and mutates signal accordingly.
+- Dashboard title and per-ticker display updated to surface PM probability, boost and source.
+- FUTURE-IMPROVEMENTS.md: marked Prediction Market Odds Overlay item complete with date, version and commit link.
+
 ## [2.8.1] - 2026-07-30
 
 ### Changed
