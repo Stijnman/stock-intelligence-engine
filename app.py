@@ -6,7 +6,7 @@ from sie.config import load_config
 from sie.backtest import backtest_watchlist
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.8.0 — Insider Form 4 Clustering + Narrative Velocity Forecasting")
+st.title("Stock Intelligence Engine v2.8.1 — Insider Form 4 Clustering + Narrative Velocity Forecasting")
 
 cfg = load_config()
 dashboard_cfg = cfg.get("dashboard", {})

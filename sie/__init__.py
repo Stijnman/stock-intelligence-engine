@@ -13,4 +13,4 @@ __all__ = [
     "integrate_insider_to_row",
 ]
 
-__version__ = "2.8.0"
+__version__ = "2.8.1"

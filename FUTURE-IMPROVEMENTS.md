@@ -12,6 +12,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
 
+- [ ] **Prediction Market Odds Overlay (Polymarket)**: Ingest real-money prediction-market probabilities for company- or sector-specific events (earnings outcomes, product launches, regulatory decisions) via free/public Polymarket Gamma or PredScope-style APIs. Map event odds to watchlist tickers and apply soft confirmation or penalty when market-implied probability diverges from current narrative + technical signal.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -27,6 +29,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Podcast & Alternative Media Sentiment Layer**: Ingest and score sentiment from financial podcasts and alternative media transcripts/summaries (Context Analytics-style Podcast Sentiment feeds or free public sources) using lightweight keyword + FinBERT/LLM pipelines. Surface as additional narrative confirmation signal in analyzer and dashboard.
 
 - [ ] **Employee Outlook & Glassdoor Sentiment Signals**: Track aggregated employee business outlook scores and Glassdoor rating trends as forward-looking management confidence proxies (inspired by AltIndex alternative-data layers). Apply soft confirmation/penalty to narrative + technical signals for watchlist names when outlook diverges from market narrative.
+
+- [ ] **Short Interest & Squeeze Risk Monitor**: Pull short-interest ratios, days-to-cover, and recent changes (via free Yahoo Finance / FINRA-style endpoints or public scrapers) and surface elevated short interest as a volatility/squeeze risk flag that can modulate position sizing advice or signal confidence in the dashboard and CLI.
+
+- [ ] **Congressional Trading Overlay**: Ingest recent congressional stock transactions (Quiver-style free data, official disclosures, or public APIs) for watchlist tickers; flag clustered or large buys/sells by members of Congress as an additional smart-money confirmation layer alongside insider Form 4 clusters.
 
 ## Completed
 
@@ -51,5 +57,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Alternative Data Proxies (Hiring & Web Traffic)**: Lightweight free-tier or public signals for open job postings growth and company website traffic trends as forward-looking demand proxies, inspired by AltIndex-style alternative data layers.
 - [ ] **HMM / Regime Detection Filter**: Implement a lightweight Hidden Markov Model (or simpler volatility/returns regime classifier) on recent price series to detect bull / bear / sideways regimes and gate or re-weight narrative and technical signals accordingly, reducing false positives in hostile regimes.
 - [ ] **MCP-Native Agent Data Hooks**: Expose SIE signals via Model Context Protocol (MCP) and/or consume MCP servers (Alpha Vantage MCP, StockContext, etc.) so external AI agents can query live narrative/technical scores and SIE can pull verified fundamentals, insiders, and filings more reliably in agentic workflows.
+- [ ] **Earnings Whisper vs Actual Surprise Integration**: Track pre-earnings “whisper” numbers (where freely available) against consensus and actual reported EPS/revenue; compute surprise magnitude and post-earnings drift context to refine signal timing around earnings windows.
+- [ ] **Multi-LLM Ensemble Narrative Extractor**: Optional ensemble that runs the same social/news/transcript snippets through two or more lightweight local or API LLMs (e.g. Grok + DeepSeek-style or Ollama models) and averages or majority-votes the extracted narrative labels and sentiment to reduce single-model bias.
 
-Last updated: July 29, 2026
+Last updated: July 30, 2026

@@ -2,7 +2,7 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.8.0** — July 2026 · Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.8.1** — July 2026 · Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
@@ -15,6 +15,7 @@
 - Telegram alerts
 
 ## Recent Edits & Version History
+- **v2.8.1 (2026-07-30)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 30 2026 research (Prediction Market Odds Overlay (Polymarket), Short Interest & Squeeze Risk Monitor, Congressional Trading Overlay, Earnings Whisper vs Actual Surprise Integration, Multi-LLM Ensemble Narrative Extractor). Roadmap and docs synchronized. Version bump only — no core logic changes.
 - **v2.8.0 (2026-07-29)**: Implemented **Insider Form 4 Clustering & Confirmation Signals**. New module `sie/insider.py` fetches recent insider transactions via yfinance (with realistic synthetic proxy fallback), detects buy/sell clusters within configurable lookback, and applies signal boost/penalty. Fully integrated into analyzer, CLI (`--no-insider` flag), Streamlit dashboard (live cluster metrics + captions), config.yaml (`insider:` section), and Telegram body path. Version bumped across all entry points and docs.
 - **v2.7.2 (2026-07-29)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 29 2026 research (Real-time WebSocket Price & Quote Feeds, Podcast & Alternative Media Sentiment Layer, Employee Outlook & Glassdoor Sentiment Signals, HMM / Regime Detection Filter, MCP-Native Agent Data Hooks). Roadmap and docs synchronized. Version bump only — no core logic changes.
 - **v2.7.1 (2026-07-28)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 2026 research (Insider Form 4 clustering, Cross-Platform Narrative Convergence Score, Analyst Estimate Revision Momentum, Grok/xAI Agent Deep-Research Hook, Alternative Data Proxies). Roadmap and docs synchronized. Version bump only — no core logic changes.
@@ -26,6 +27,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.8.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.8.0 | Insider Form 4 Clustering & Confirmation Signals |
 | 2.7.2 | Roadmap refresh + 5 new 2026 research items |
 | 2.7.1 | Roadmap refresh + 5 new 2026 research items |

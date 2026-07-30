@@ -1,3 +1,15 @@
+## [2.8.1] - 2026-07-30
+
+### Changed
+- Autonomous research & evolution cycle (July 30, 2026). Full code audit of analyzer.py, social.py, insider.py, app.py, config.yaml, stock_intelligence_engine.py and supporting modules confirmed no additional open FUTURE-IMPROVEMENTS items were implemented since v2.8.0. Roadmap remains accurate.
+- Version bumped to **2.8.1** across documentation and entry-point headers for the roadmap refresh.
+
+### Added
+- Five new high-value improvements from fresh July 30 2026 research on AI stock tools, prediction markets, short interest, congressional trading, earnings whispers, and multi-LLM ensembles:
+  - **High Priority**: Prediction Market Odds Overlay (Polymarket)
+  - **Medium Priority**: Short Interest & Squeeze Risk Monitor; Congressional Trading Overlay
+  - **Long-Term**: Earnings Whisper vs Actual Surprise Integration; Multi-LLM Ensemble Narrative Extractor
+
 ## [2.8.0] - 2026-07-29
 
 ### Added
