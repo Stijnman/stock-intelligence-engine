@@ -74,6 +74,13 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "buy_boost_min": 2,
         "sell_penalty_min": 2,
     },
+    "prediction_markets": {
+        "enabled": True,
+        "min_volume": 1000,
+        "boost_prob_threshold": 0.65,
+        "penalty_prob_threshold": 0.35,
+        "divergence_boost": 1,
+    },
 }
 
 
@@ -112,6 +119,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("forecast", {}).update(forecast)
     if insider := raw.get("insider"):
         cfg.setdefault("insider", {}).update(insider)
+    if prediction_markets := raw.get("prediction_markets"):
+        cfg.setdefault("prediction_markets", {}).update(prediction_markets)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
