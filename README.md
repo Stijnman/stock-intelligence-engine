@@ -2,10 +2,11 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.8.1** — July 2026 · Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.9.0** — July 2026 · Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
+- **Prediction Market Odds Overlay (Polymarket)** — Ingests free Gamma API odds for company/sector events, detects divergence from narrative+technical signal, and applies soft boost/penalty; surfaces probability, best question, confidence and source in dashboard & alerts
 - **Insider Form 4 Clustering & Confirmation Signals** — Detects clustered insider buying/selling (yfinance + proxy) within a 14-day window and applies confirmation boost/penalty to signals; surfaces cluster size, net shares, side and confidence in dashboard & alerts
 - **Multi-source Narrative Velocity Forecasting** - Predicts 1-3 day narrative phase shifts (hype/dip/recovery) from X velocity + news sentiment using exponential smoothing; applies boost/penalty to signals
 - **Backtesting Framework** - Validate historical performance with Sharpe ratios
@@ -15,6 +16,7 @@
 - Telegram alerts
 
 ## Recent Edits & Version History
+- **v2.9.0 (2026-07-30)**: Implemented **Prediction Market Odds Overlay (Polymarket)**. New module `sie/prediction_markets.py` queries free Polymarket Gamma public-search / markets endpoints (with realistic synthetic proxy fallback), maps event probabilities to watchlist tickers, and applies soft boost/penalty on divergence. Fully integrated into analyzer, CLI (`--no-pm` flag), Streamlit dashboard (live odds + captions), config.yaml (`prediction_markets:` section). Version bumped across all entry points and docs.
 - **v2.8.1 (2026-07-30)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 30 2026 research (Prediction Market Odds Overlay (Polymarket), Short Interest & Squeeze Risk Monitor, Congressional Trading Overlay, Earnings Whisper vs Actual Surprise Integration, Multi-LLM Ensemble Narrative Extractor). Roadmap and docs synchronized. Version bump only — no core logic changes.
 - **v2.8.0 (2026-07-29)**: Implemented **Insider Form 4 Clustering & Confirmation Signals**. New module `sie/insider.py` fetches recent insider transactions via yfinance (with realistic synthetic proxy fallback), detects buy/sell clusters within configurable lookback, and applies signal boost/penalty. Fully integrated into analyzer, CLI (`--no-insider` flag), Streamlit dashboard (live cluster metrics + captions), config.yaml (`insider:` section), and Telegram body path. Version bumped across all entry points and docs.
 - **v2.7.2 (2026-07-29)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 29 2026 research (Real-time WebSocket Price & Quote Feeds, Podcast & Alternative Media Sentiment Layer, Employee Outlook & Glassdoor Sentiment Signals, HMM / Regime Detection Filter, MCP-Native Agent Data Hooks). Roadmap and docs synchronized. Version bump only — no core logic changes.
@@ -27,6 +29,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.9.0 | Prediction Market Odds Overlay (Polymarket) |
 | 2.8.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.8.0 | Insider Form 4 Clustering & Confirmation Signals |
 | 2.7.2 | Roadmap refresh + 5 new 2026 research items |
@@ -40,6 +43,19 @@
 
 **Usage:** `python stock_intelligence_engine.py --backtest`  
 **Dashboard:** `streamlit run app.py`
+
+## Prediction Markets (v2.9.0)
+
+```yaml
+prediction_markets:
+  enabled: true
+  min_volume: 1000
+  boost_prob_threshold: 0.65
+  penalty_prob_threshold: 0.35
+  divergence_boost: 1
+```
+
+When Polymarket (or synthetic proxy) odds for a related event diverge from the current signal, the engine applies a soft boost or penalty and appends a clear reason string visible in both the CLI report and the live dashboard.
 
 ## Insider Clustering (v2.8.0)
 
