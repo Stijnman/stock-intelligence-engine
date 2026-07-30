@@ -24,6 +24,13 @@ insider:
   buy_boost_min: 2         # Buy filings required for +1 signal boost
   sell_penalty_min: 2      # Sell filings required for -1 signal penalty
 
+prediction_markets:
+  enabled: true
+  min_volume: 1000         # Minimum market volume to consider
+  boost_prob_threshold: 0.65   # Probability above which weak signals get boosted
+  penalty_prob_threshold: 0.35 # Probability below which strong signals get penalized
+  divergence_boost: 1      # Magnitude of soft boost/penalty on divergence
+
 tickers:
   NVDA:
     name: NVIDIA
