@@ -1,3 +1,15 @@
+## [2.9.1] - 2026-07-31
+
+### Changed
+- Autonomous research & evolution cycle (July 31, 2026). Full code audit of analyzer.py, social.py, insider.py, prediction_markets.py, app.py, config.yaml, stock_intelligence_engine.py and supporting modules confirmed Prediction Market Odds Overlay fully live and no additional open FUTURE-IMPROVEMENTS items were newly implemented since v2.9.0. Roadmap remains accurate.
+- Version bumped to **2.9.1** across documentation and entry-point headers for the roadmap refresh.
+
+### Added
+- Five new high-value improvements from fresh July 31 2026 research on AI stock tools, alternative data (AltIndex-style), institutional filings, news impact engines, multi-platform prediction markets, and social growth metrics:
+  - **High Priority**: Institutional 13F Ownership Change Detector
+  - **Medium Priority**: News Materiality & Volatility Impact Scoring; Consumer App Download & Engagement Momentum Signals
+  - **Long-Term**: Kalshi Prediction Market Cross-Check Overlay; Social Media Follower Growth Velocity Tracker
+
 ## [2.9.0] - 2026-07-30
 
 ### Added

@@ -16,4 +16,4 @@ __all__ = [
     "integrate_prediction_markets_to_row",
 ]
 
-__version__ = "2.9.0"
+__version__ = "2.9.1"

@@ -14,6 +14,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
 
+- [ ] **Institutional 13F Ownership Change Detector**: Ingest recent 13F institutional holdings filings (via free EDGAR / yfinance institutional holders or public APIs) for watchlist tickers; detect significant QoQ ownership increases or decreases by large funds and apply soft confirmation/penalty as smart-money flow overlay alongside insider Form 4 clusters. Surface top holders delta, net shares change and confidence in dashboard and alerts.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -33,6 +35,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Short Interest & Squeeze Risk Monitor**: Pull short-interest ratios, days-to-cover, and recent changes (via free Yahoo Finance / FINRA-style endpoints or public scrapers) and surface elevated short interest as a volatility/squeeze risk flag that can modulate position sizing advice or signal confidence in the dashboard and CLI.
 
 - [ ] **Congressional Trading Overlay**: Ingest recent congressional stock transactions (Quiver-style free data, official disclosures, or public APIs) for watchlist tickers; flag clustered or large buys/sells by members of Congress as an additional smart-money confirmation layer alongside insider Form 4 clusters.
+
+- [ ] **News Materiality & Volatility Impact Scoring**: Beyond pure sentiment polarity, score each news item / filing for expected short-term price impact and materiality (inspired by StockTitan Rhea-AI impact engine). Flag high-impact headlines that historically precede outsized moves and weight them more heavily in the narrative + signal pipeline.
+
+- [ ] **Consumer App Download & Engagement Momentum Signals**: For consumer-facing tickers, track daily/weekly app download ranks, active-user trends or engagement proxies (free public rank trackers or lightweight scrapers) as leading demand indicators. Apply soft boost when download momentum accelerates ahead of narrative confirmation.
 
 ## Completed
 
@@ -59,5 +65,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **MCP-Native Agent Data Hooks**: Expose SIE signals via Model Context Protocol (MCP) and/or consume MCP servers (Alpha Vantage MCP, StockContext, etc.) so external AI agents can query live narrative/technical scores and SIE can pull verified fundamentals, insiders, and filings more reliably in agentic workflows.
 - [ ] **Earnings Whisper vs Actual Surprise Integration**: Track pre-earnings “whisper” numbers (where freely available) against consensus and actual reported EPS/revenue; compute surprise magnitude and post-earnings drift context to refine signal timing around earnings windows.
 - [ ] **Multi-LLM Ensemble Narrative Extractor**: Optional ensemble that runs the same social/news/transcript snippets through two or more lightweight local or API LLMs (e.g. Grok + DeepSeek-style or Ollama models) and averages or majority-votes the extracted narrative labels and sentiment to reduce single-model bias.
+- [ ] **Kalshi Prediction Market Cross-Check Overlay**: In parallel with Polymarket, pull CFTC-regulated Kalshi event odds (where public endpoints or free tiers allow) for the same company/sector events; surface cross-platform probability divergence as an additional confidence or caution flag.
+- [ ] **Social Media Follower Growth Velocity Tracker**: Monitor week-over-week follower growth rates on X, Instagram, TikTok (or free rank proxies) for consumer and brand-sensitive tickers as a leading attention/demand signal, inspired by AltIndex social-follower layers.
 
-Last updated: July 30, 2026
+Last updated: July 31, 2026

@@ -2,7 +2,7 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.9.0** — July 2026 · Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.9.1** — July 2026 · Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
@@ -16,6 +16,7 @@
 - Telegram alerts
 
 ## Recent Edits & Version History
+- **v2.9.1 (2026-07-31)**: Autonomous research & evolution cycle. Full code audit confirmed Prediction Market Odds Overlay (Polymarket) fully implemented and live; no additional open FUTURE-IMPROVEMENTS items newly completed. Added 5 high-value improvements from fresh July 31 2026 research (Institutional 13F Ownership Change Detector, News Materiality & Volatility Impact Scoring, Consumer App Download & Engagement Momentum, Kalshi Prediction Market Cross-Check Overlay, Social Media Follower Growth Velocity). Roadmap and docs synchronized. Version bump only — no core logic changes.
 - **v2.9.0 (2026-07-30)**: Implemented **Prediction Market Odds Overlay (Polymarket)**. New module `sie/prediction_markets.py` queries free Polymarket Gamma public-search / markets endpoints (with realistic synthetic proxy fallback), maps event probabilities to watchlist tickers, and applies soft boost/penalty on divergence. Fully integrated into analyzer, CLI (`--no-pm` flag), Streamlit dashboard (live odds + captions), config.yaml (`prediction_markets:` section). Version bumped across all entry points and docs.
 - **v2.8.1 (2026-07-30)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 30 2026 research (Prediction Market Odds Overlay (Polymarket), Short Interest & Squeeze Risk Monitor, Congressional Trading Overlay, Earnings Whisper vs Actual Surprise Integration, Multi-LLM Ensemble Narrative Extractor). Roadmap and docs synchronized. Version bump only — no core logic changes.
 - **v2.8.0 (2026-07-29)**: Implemented **Insider Form 4 Clustering & Confirmation Signals**. New module `sie/insider.py` fetches recent insider transactions via yfinance (with realistic synthetic proxy fallback), detects buy/sell clusters within configurable lookback, and applies signal boost/penalty. Fully integrated into analyzer, CLI (`--no-insider` flag), Streamlit dashboard (live cluster metrics + captions), config.yaml (`insider:` section), and Telegram body path. Version bumped across all entry points and docs.
@@ -29,6 +30,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.9.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.9.0 | Prediction Market Odds Overlay (Polymarket) |
 | 2.8.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.8.0 | Insider Form 4 Clustering & Confirmation Signals |

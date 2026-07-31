@@ -1,7 +1,7 @@
-__version__ = "2.9.0"
+__version__ = "2.9.1"
 
 """
-Stock Intelligence Engine v2.9.0
+Stock Intelligence Engine v2.9.1
 Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering &
 Confirmation Signals + Multi-source Narrative Velocity Forecasting +
 Backtesting Framework + Real-time Dashboard.
@@ -12,7 +12,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.9.0")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.9.1")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--no-insider", action="store_true", help="Disable insider Form 4 clustering")
     parser.add_argument("--no-pm", action="store_true", help="Disable Prediction Market Odds Overlay")
