@@ -81,6 +81,13 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "penalty_prob_threshold": 0.35,
         "divergence_boost": 1,
     },
+    "institutional": {
+        "enabled": True,
+        "min_holders": 3,
+        "significant_pct_change": 0.5,
+        "boost_pct_threshold": 1.0,
+        "penalty_pct_threshold": -1.0,
+    },
 }
 
 
@@ -121,6 +128,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("insider", {}).update(insider)
     if prediction_markets := raw.get("prediction_markets"):
         cfg.setdefault("prediction_markets", {}).update(prediction_markets)
+    if institutional := raw.get("institutional"):
+        cfg.setdefault("institutional", {}).update(institutional)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):

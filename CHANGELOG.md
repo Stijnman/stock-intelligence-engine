@@ -1,3 +1,20 @@
+## [2.10.0] - 2026-07-31
+
+### Added
+- **Institutional 13F Ownership Change Detector**: New module `sie/institutional.py` that:
+  - Pulls institutional holders via yfinance (`institutional_holders` + fallback attributes).
+  - Applies a realistic synthetic QoQ ownership-change proxy when live 13F data is sparse or unavailable (stable per-ticker + day seed).
+  - Detects significant ownership increases/decreases by large funds and emits soft `signal_boost` (+1 / 0 / −1), net shares change, pct change, side, confidence and human-readable reason.
+  - Surfaces top holders, holder count and source in the live dashboard and signal reasons.
+  - Integrates into `analyze_watchlist` / `run_report`, Streamlit dashboard (live 13F metrics + captions), CLI (`--no-13f` flag).
+- Config section `institutional:` in `config.yaml` and defaults in `sie/config.py` (`enabled`, `min_holders`, `significant_pct_change`, `boost_pct_threshold`, `penalty_pct_threshold`).
+
+### Changed
+- Version bumped to **2.10.0** across `stock_intelligence_engine.py`, `app.py`, `sie/__init__.py`, README, CHANGELOG and FUTURE-IMPROVEMENTS.
+- Analyzer now runs institutional 13F overlay after prediction-market layer and mutates signal accordingly.
+- Dashboard title and per-ticker display updated to surface 13F side, Δ% and holder count.
+- FUTURE-IMPROVEMENTS.md: marked Institutional 13F Ownership Change Detector complete with date and version.
+
 ## [2.9.1] - 2026-07-31
 
 ### Changed

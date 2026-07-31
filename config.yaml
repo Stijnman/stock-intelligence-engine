@@ -31,6 +31,13 @@ prediction_markets:
   penalty_prob_threshold: 0.35 # Probability below which strong signals get penalized
   divergence_boost: 1      # Magnitude of soft boost/penalty on divergence
 
+institutional:
+  enabled: true
+  min_holders: 3                 # Minimum reported institutional holders to consider
+  significant_pct_change: 0.5    # Minimum % change treated as material
+  boost_pct_threshold: 1.0       # % increase required for +1 signal boost
+  penalty_pct_threshold: -1.0    # % decrease required for -1 signal penalty
+
 tickers:
   NVDA:
     name: NVIDIA

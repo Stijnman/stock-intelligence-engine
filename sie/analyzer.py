@@ -1,5 +1,6 @@
 """Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment,
-Multi-source Narrative Velocity Forecasting, Insider Form 4 Clustering, and Prediction Market Odds Overlay.
+Multi-source Narrative Velocity Forecasting, Insider Form 4 Clustering, Prediction Market Odds Overlay,
+and Institutional 13F Ownership Change Detector.
 Backtesting integrated."""
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from sie.technical import analyze_ticker
 from sie.social import integrate_social_to_row, forecast_narrative_phase
 from sie.insider import integrate_insider_to_row
 from sie.prediction_markets import integrate_prediction_markets_to_row
+from sie.institutional import integrate_institutional_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -23,6 +25,7 @@ def analyze_watchlist(
     include_social: bool = True,
     include_insider: bool = True,
     include_pm: bool = True,
+    include_institutional: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -106,6 +109,10 @@ def analyze_watchlist(
         if include_pm:
             row = integrate_prediction_markets_to_row(row, cfg)
 
+        # Institutional 13F Ownership Change Detector (v2.10.0)
+        if include_institutional:
+            row = integrate_institutional_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -124,6 +131,7 @@ def run_report(
     include_social: bool = True,
     include_insider: bool = True,
     include_pm: bool = True,
+    include_institutional: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -137,6 +145,7 @@ def run_report(
         include_social=include_social,
         include_insider=include_insider,
         include_pm=include_pm,
+        include_institutional=include_institutional,
         lang=lang,
     )
     text = str(report)

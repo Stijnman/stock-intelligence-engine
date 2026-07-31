@@ -2,10 +2,11 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.9.1** — July 2026 · Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.10.0** — July 2026 · Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
+- **Institutional 13F Ownership Change Detector** — Detects significant institutional ownership increases/decreases (yfinance + synthetic QoQ proxy) and applies soft confirmation/penalty as smart-money flow overlay; surfaces top holders delta, net shares change and confidence in dashboard & alerts
 - **Prediction Market Odds Overlay (Polymarket)** — Ingests free Gamma API odds for company/sector events, detects divergence from narrative+technical signal, and applies soft boost/penalty; surfaces probability, best question, confidence and source in dashboard & alerts
 - **Insider Form 4 Clustering & Confirmation Signals** — Detects clustered insider buying/selling (yfinance + proxy) within a 14-day window and applies confirmation boost/penalty to signals; surfaces cluster size, net shares, side and confidence in dashboard & alerts
 - **Multi-source Narrative Velocity Forecasting** - Predicts 1-3 day narrative phase shifts (hype/dip/recovery) from X velocity + news sentiment using exponential smoothing; applies boost/penalty to signals
@@ -16,6 +17,7 @@
 - Telegram alerts
 
 ## Recent Edits & Version History
+- **v2.10.0 (2026-07-31)**: Implemented **Institutional 13F Ownership Change Detector**. New module `sie/institutional.py` fetches institutional holders via yfinance (with realistic synthetic QoQ proxy fallback), detects significant ownership increases/decreases by large funds, and applies soft signal boost/penalty. Fully integrated into analyzer, CLI (`--no-13f` flag), Streamlit dashboard (live 13F metrics + captions), config.yaml (`institutional:` section). Version bumped across all entry points and docs.
 - **v2.9.1 (2026-07-31)**: Autonomous research & evolution cycle. Full code audit confirmed Prediction Market Odds Overlay (Polymarket) fully implemented and live; no additional open FUTURE-IMPROVEMENTS items newly completed. Added 5 high-value improvements from fresh July 31 2026 research (Institutional 13F Ownership Change Detector, News Materiality & Volatility Impact Scoring, Consumer App Download & Engagement Momentum, Kalshi Prediction Market Cross-Check Overlay, Social Media Follower Growth Velocity). Roadmap and docs synchronized. Version bump only — no core logic changes.
 - **v2.9.0 (2026-07-30)**: Implemented **Prediction Market Odds Overlay (Polymarket)**. New module `sie/prediction_markets.py` queries free Polymarket Gamma public-search / markets endpoints (with realistic synthetic proxy fallback), maps event probabilities to watchlist tickers, and applies soft boost/penalty on divergence. Fully integrated into analyzer, CLI (`--no-pm` flag), Streamlit dashboard (live odds + captions), config.yaml (`prediction_markets:` section). Version bumped across all entry points and docs.
 - **v2.8.1 (2026-07-30)**: Autonomous research & evolution cycle. Full code audit confirmed no open FUTURE-IMPROVEMENTS items were newly implemented. Added 5 high-value improvements from fresh July 30 2026 research (Prediction Market Odds Overlay (Polymarket), Short Interest & Squeeze Risk Monitor, Congressional Trading Overlay, Earnings Whisper vs Actual Surprise Integration, Multi-LLM Ensemble Narrative Extractor). Roadmap and docs synchronized. Version bump only — no core logic changes.
@@ -30,6 +32,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.10.0 | Institutional 13F Ownership Change Detector |
 | 2.9.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.9.0 | Prediction Market Odds Overlay (Polymarket) |
 | 2.8.1 | Roadmap refresh + 5 new 2026 research items |
@@ -45,6 +48,19 @@
 
 **Usage:** `python stock_intelligence_engine.py --backtest`  
 **Dashboard:** `streamlit run app.py`
+
+## Institutional 13F (v2.10.0)
+
+```yaml
+institutional:
+  enabled: true
+  min_holders: 3
+  significant_pct_change: 0.5
+  boost_pct_threshold: 1.0
+  penalty_pct_threshold: -1.0
+```
+
+When institutional ownership shows a material increase (or decrease) the engine raises (or lowers) the signal and appends a clear reason string visible in both the CLI report and the live dashboard. Uses yfinance institutional_holders with a stable synthetic QoQ proxy fallback.
 
 ## Prediction Markets (v2.9.0)
 

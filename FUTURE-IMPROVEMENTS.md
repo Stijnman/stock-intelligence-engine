@@ -12,9 +12,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Prediction Market Odds Overlay (Polymarket)** (v2.9.0): Ingest real-money prediction-market probabilities for company- or sector-specific events via free/public Polymarket Gamma API (+ realistic synthetic fallback). Map event odds to watchlist tickers and apply soft confirmation or penalty on divergence from narrative + technical signal. Fully integrated into analyzer, CLI (`--no-pm`), Streamlit dashboard, config.yaml (`prediction_markets:`). 2026-07-30 https://github.com/Stijnman/stock-intelligence-engine/commit/0ea2039b07fc8d67c01f3e4ac8b89a3c62a1a74f
 
-- [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
+- [x] **Institutional 13F Ownership Change Detector** (v2.10.0): Ingest recent institutional holdings (yfinance institutional_holders + realistic synthetic QoQ proxy fallback) for watchlist tickers; detect significant ownership increases or decreases by large funds and apply soft confirmation/penalty as smart-money flow overlay alongside insider Form 4 clusters. Surface top holders delta, net shares change and confidence in dashboard and alerts. Configurable via `institutional:` section. 2026-07-31
 
-- [ ] **Institutional 13F Ownership Change Detector**: Ingest recent 13F institutional holdings filings (via free EDGAR / yfinance institutional holders or public APIs) for watchlist tickers; detect significant QoQ ownership increases or decreases by large funds and apply soft confirmation/penalty as smart-money flow overlay alongside insider Form 4 clusters. Surface top holders delta, net shares change and confidence in dashboard and alerts.
+- [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
 
 ## Medium Priority
 
