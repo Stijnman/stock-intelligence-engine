@@ -1,3 +1,18 @@
+## [2.11.0] - 2026-08-01
+
+### Added
+- **Portfolio Correlation Heatmap & Risk Overlay**: New module `sie/portfolio.py` that:
+  - Downloads multi-ticker adjusted close prices via yfinance for the configured lookback.
+  - Computes pairwise Pearson correlations of daily returns and equal-weight portfolio metrics (annualized volatility, Sharpe ratio using configurable risk-free rate, maximum drawdown, mean pairwise correlation).
+  - Exposes `compute_portfolio_overlay`, `correlation_matrix`, `portfolio_risk_metrics` and a ready-to-use Plotly heatmap builder.
+  - Fully integrated into Streamlit dashboard (metric cards + interactive heatmap), CLI (`--portfolio` flag; also appended to `--backtest` output), and config.yaml (`portfolio:` section).
+- Config keys: `portfolio.enabled`, `lookback_period`, `min_periods`, `risk_free_rate`.
+
+### Changed
+- Version bumped to **2.11.0** across `stock_intelligence_engine.py`, `app.py`, `sie/__init__.py`, README, CHANGELOG and FUTURE-IMPROVEMENTS.
+- Dashboard title and sidebar updated to surface the new overlay.
+- FUTURE-IMPROVEMENTS.md: marked Portfolio Correlation Heatmap & Risk Overlay complete with date and version.
+
 ## [2.10.1] - 2026-08-01
 
 ### Changed

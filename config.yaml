@@ -38,6 +38,12 @@ institutional:
   boost_pct_threshold: 1.0       # % increase required for +1 signal boost
   penalty_pct_threshold: -1.0    # % decrease required for -1 signal penalty
 
+portfolio:
+  enabled: true
+  lookback_period: "1y"          # yfinance period for correlation / risk calc
+  min_periods: 30                # Minimum overlapping return observations
+  risk_free_rate: 0.04           # Annual risk-free rate for Sharpe
+
 tickers:
   NVDA:
     name: NVIDIA

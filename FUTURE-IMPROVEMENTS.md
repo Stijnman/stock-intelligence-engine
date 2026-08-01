@@ -20,7 +20,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
 
-- [ ] **Portfolio Correlation Heatmap & Risk Overlay**: Compute pairwise returns correlations and portfolio-level metrics (max drawdown, volatility, Sharpe of equal-weight basket) inside backtest + dashboard. Display interactive Plotly heatmap and risk summary for the full watchlist.
+- [x] **Portfolio Correlation Heatmap & Risk Overlay** (v2.11.0): Compute pairwise returns correlations and portfolio-level metrics (max drawdown, volatility, Sharpe of equal-weight basket) inside backtest + dashboard. Display interactive Plotly heatmap and risk summary for the full watchlist. New module `sie/portfolio.py`, CLI `--portfolio`, config `portfolio:` section. 2026-08-01
 
 - [ ] **Streamlit Partial Reruns + Advanced Caching (2026 patterns)**: Refactor dashboard to use `@st.fragment` for independent live-price and narrative sections, `st.cache_data` with TTL for yfinance/X calls, and avoid full-page `st.rerun()` loops where possible. Improves responsiveness and reduces API rate-limit pressure.
 
@@ -68,4 +68,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Kalshi Prediction Market Cross-Check Overlay**: In parallel with Polymarket, pull CFTC-regulated Kalshi event odds (where public endpoints or free tiers allow) for the same company/sector events; surface cross-platform probability divergence as an additional confidence or caution flag.
 - [ ] **Social Media Follower Growth Velocity Tracker**: Monitor week-over-week follower growth rates on X, Instagram, TikTok (or free rank proxies) for consumer and brand-sensitive tickers as a leading attention/demand signal, inspired by AltIndex social-follower layers.
 
-Last updated: July 31, 2026
+Last updated: August 1, 2026
