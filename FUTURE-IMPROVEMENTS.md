@@ -22,6 +22,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Portfolio Correlation Heatmap & Risk Overlay** (v2.11.0): Compute pairwise returns correlations and portfolio-level metrics (max drawdown, volatility, Sharpe of equal-weight basket) inside backtest + dashboard. Display interactive Plotly heatmap and risk summary for the full watchlist. New module `sie/portfolio.py`, CLI `--portfolio`, config `portfolio:` section. 2026-08-01
 
+- [x] **Congressional Trading Overlay** (v2.12.0): Ingest recent congressional stock transactions (synthetic proxy + future live disclosure hooks) for watchlist tickers; flag clustered or large buys/sells by members of Congress as an additional smart-money confirmation layer alongside insider Form 4 clusters. Fully integrated into analyzer, CLI (`--no-congress`), Streamlit dashboard, config.yaml (`congressional:`). 2026-08-02
+
 - [ ] **Streamlit Partial Reruns + Advanced Caching (2026 patterns)**: Refactor dashboard to use `@st.fragment` for independent live-price and narrative sections, `st.cache_data` with TTL for yfinance/X calls, and avoid full-page `st.rerun()` loops where possible. Improves responsiveness and reduces API rate-limit pressure.
 
 - [ ] **Cross-Platform Narrative Convergence Score**: Fuse X velocity, Reddit mention/sentiment (once available), news FinBERT, and prediction-market odds (Polymarket or equivalent free API) into a single 0–100 convergence score that quantifies how aligned alternative data sources are on the current narrative. High convergence increases signal confidence.
@@ -33,8 +35,6 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Employee Outlook & Glassdoor Sentiment Signals**: Track aggregated employee business outlook scores and Glassdoor rating trends as forward-looking management confidence proxies (inspired by AltIndex alternative-data layers). Apply soft confirmation/penalty to narrative + technical signals for watchlist names when outlook diverges from market narrative.
 
 - [ ] **Short Interest & Squeeze Risk Monitor**: Pull short-interest ratios, days-to-cover, and recent changes (via free Yahoo Finance / FINRA-style endpoints or public scrapers) and surface elevated short interest as a volatility/squeeze risk flag that can modulate position sizing advice or signal confidence in the dashboard and CLI.
-
-- [ ] **Congressional Trading Overlay**: Ingest recent congressional stock transactions (Quiver-style free data, official disclosures, or public APIs) for watchlist tickers; flag clustered or large buys/sells by members of Congress as an additional smart-money confirmation layer alongside insider Form 4 clusters.
 
 - [ ] **News Materiality & Volatility Impact Scoring**: Beyond pure sentiment polarity, score each news item / filing for expected short-term price impact and materiality (inspired by StockTitan Rhea-AI impact engine). Flag high-impact headlines that historically precede outsized moves and weight them more heavily in the narrative + signal pipeline.
 
@@ -68,4 +68,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Kalshi Prediction Market Cross-Check Overlay**: In parallel with Polymarket, pull CFTC-regulated Kalshi event odds (where public endpoints or free tiers allow) for the same company/sector events; surface cross-platform probability divergence as an additional confidence or caution flag.
 - [ ] **Social Media Follower Growth Velocity Tracker**: Monitor week-over-week follower growth rates on X, Instagram, TikTok (or free rank proxies) for consumer and brand-sensitive tickers as a leading attention/demand signal, inspired by AltIndex social-follower layers.
 
-Last updated: August 1, 2026
+Last updated: August 2, 2026

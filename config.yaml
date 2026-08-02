@@ -38,6 +38,14 @@ institutional:
   boost_pct_threshold: 1.0       # % increase required for +1 signal boost
   penalty_pct_threshold: -1.0    # % decrease required for -1 signal penalty
 
+congressional:
+  enabled: true
+  lookback_days: 90              # Window for congressional trade clustering
+  min_trades: 2                  # Minimum trades to consider a cluster
+  buy_boost_min: 2               # Buy trades required for +1 signal boost
+  sell_penalty_min: 2            # Sell trades required for -1 signal penalty
+  min_trade_value: 15000         # Minimum approximate trade value to count
+
 portfolio:
   enabled: true
   lookback_period: "1y"          # yfinance period for correlation / risk calc

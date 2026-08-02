@@ -1,3 +1,19 @@
+## [2.12.0] - 2026-08-02
+
+### Added
+- **Congressional Trading Overlay**: New module `sie/congressional.py` that:
+  - Detects clustered or material congressional stock buys/sells for watchlist tickers using a stable synthetic proxy (no paid API required).
+  - Applies soft confirmation boost/penalty (+1 / 0 / −1) as an additional smart-money layer alongside insider Form 4 and institutional 13F.
+  - Surfaces trade count, net value, side, confidence, member names and human-readable reason.
+  - Fully integrated into analyzer, CLI (`--no-congress` flag), Streamlit dashboard (live Congress metrics + captions), config.yaml (`congressional:` section).
+- Config keys: `congressional.enabled`, `lookback_days`, `min_trades`, `buy_boost_min`, `sell_penalty_min`, `min_trade_value`.
+
+### Changed
+- Version bumped to **2.12.0** across `stock_intelligence_engine.py`, `app.py`, `sie/__init__.py`, README, CHANGELOG and FUTURE-IMPROVEMENTS.
+- Analyzer now runs congressional overlay after the institutional 13F layer and mutates signal accordingly.
+- Dashboard title, display columns and per-ticker captions updated to surface congressional side and net value.
+- FUTURE-IMPROVEMENTS.md: marked Congressional Trading Overlay complete with date and version.
+
 ## [2.11.0] - 2026-08-01
 
 ### Added

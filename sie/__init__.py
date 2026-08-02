@@ -4,6 +4,7 @@ from sie.social import scan_narrative_intelligence, integrate_social_to_row, for
 from sie.insider import detect_insider_cluster, integrate_insider_to_row
 from sie.prediction_markets import detect_prediction_market_signal, integrate_prediction_markets_to_row
 from sie.institutional import detect_institutional_change, integrate_institutional_to_row
+from sie.congressional import detect_congressional_trades, integrate_congressional_to_row
 from sie.portfolio import compute_portfolio_overlay, correlation_matrix, portfolio_risk_metrics
 
 __all__ = [
@@ -18,9 +19,11 @@ __all__ = [
     "integrate_prediction_markets_to_row",
     "detect_institutional_change",
     "integrate_institutional_to_row",
+    "detect_congressional_trades",
+    "integrate_congressional_to_row",
     "compute_portfolio_overlay",
     "correlation_matrix",
     "portfolio_risk_metrics",
 ]
 
-__version__ = "2.11.0"
+__version__ = "2.12.0"

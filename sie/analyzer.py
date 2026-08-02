@@ -1,7 +1,8 @@
 """Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment,
 Multi-source Narrative Velocity Forecasting, Insider Form 4 Clustering, Prediction Market Odds Overlay,
-and Institutional 13F Ownership Change Detector.
-Backtesting integrated."""
+Institutional 13F Ownership Change Detector, and Congressional Trading Overlay.
+Backtesting integrated.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -15,6 +16,7 @@ from sie.social import integrate_social_to_row, forecast_narrative_phase
 from sie.insider import integrate_insider_to_row
 from sie.prediction_markets import integrate_prediction_markets_to_row
 from sie.institutional import integrate_institutional_to_row
+from sie.congressional import integrate_congressional_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -26,6 +28,7 @@ def analyze_watchlist(
     include_insider: bool = True,
     include_pm: bool = True,
     include_institutional: bool = True,
+    include_congressional: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -113,6 +116,10 @@ def analyze_watchlist(
         if include_institutional:
             row = integrate_institutional_to_row(row, cfg)
 
+        # Congressional Trading Overlay (v2.12.0)
+        if include_congressional:
+            row = integrate_congressional_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -132,6 +139,7 @@ def run_report(
     include_insider: bool = True,
     include_pm: bool = True,
     include_institutional: bool = True,
+    include_congressional: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -146,6 +154,7 @@ def run_report(
         include_insider=include_insider,
         include_pm=include_pm,
         include_institutional=include_institutional,
+        include_congressional=include_congressional,
         lang=lang,
     )
     text = str(report)

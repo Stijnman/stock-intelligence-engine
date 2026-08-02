@@ -88,6 +88,14 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "boost_pct_threshold": 1.0,
         "penalty_pct_threshold": -1.0,
     },
+    "congressional": {
+        "enabled": True,
+        "lookback_days": 90,
+        "min_trades": 2,
+        "buy_boost_min": 2,
+        "sell_penalty_min": 2,
+        "min_trade_value": 15000,
+    },
     "portfolio": {
         "enabled": True,
         "lookback_period": "1y",
@@ -136,6 +144,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("prediction_markets", {}).update(prediction_markets)
     if institutional := raw.get("institutional"):
         cfg.setdefault("institutional", {}).update(institutional)
+    if congressional := raw.get("congressional"):
+        cfg.setdefault("congressional", {}).update(congressional)
     if portfolio := raw.get("portfolio"):
         cfg.setdefault("portfolio", {}).update(portfolio)
     if backtest := raw.get("backtest"):

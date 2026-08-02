@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.11.0"""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.12.0"""
 import streamlit as st
 import pandas as pd
 import time
@@ -8,7 +8,7 @@ from sie.backtest import backtest_watchlist
 from sie.portfolio import compute_portfolio_overlay, correlation_heatmap_figure
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.11.0 — Portfolio Correlation Heatmap + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
+st.title("Stock Intelligence Engine v2.12.0 — Congressional Trading Overlay + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
 
 config = load_config()
 watchlist = list(config.get("tickers", {}).keys()) or ["AAPL", "MSFT", "NVDA", "TSLA", "GOOGL"]
@@ -20,6 +20,7 @@ show_portfolio = st.sidebar.checkbox("Show Portfolio Risk Overlay", True)
 no_13f = st.sidebar.checkbox("Disable 13F overlay", False)
 no_pm = st.sidebar.checkbox("Disable Prediction Markets", False)
 no_insider = st.sidebar.checkbox("Disable Insider clusters", False)
+no_congress = st.sidebar.checkbox("Disable Congressional overlay", False)
 
 placeholder = st.empty()
 
@@ -31,6 +32,7 @@ def render():
             include_insider=not no_insider,
             include_pm=not no_pm,
             include_institutional=not no_13f,
+            include_congressional=not no_congress,
         )
         results = report.get("rows", [])
         if results:
@@ -39,6 +41,7 @@ def render():
             display_cols = [c for c in [
                 "ticker", "signal", "price", "rsi", "drawdown_pct",
                 "predicted_phase", "inst_side", "inst_pct_change",
+                "cong_side", "cong_net_value",
                 "pm_prob", "signal_reason"
             ] if c in df.columns]
             st.dataframe(df[display_cols] if display_cols else df, use_container_width=True)
@@ -46,6 +49,7 @@ def render():
                 st.caption(
                     f"{r.get('ticker')}: {r.get('signal')} | "
                     f"13F: {r.get('inst_side', 'n/a')} Δ{r.get('inst_pct_change', 0):.1f}% | "
+                    f"Congress: {r.get('cong_side', 'n/a')} ${r.get('cong_net_value', 0):,} | "
                     f"PM: {r.get('pm_prob', 'n/a')} | "
                     f"Forecast: {r.get('predicted_phase', 'n/a')}"
                 )
