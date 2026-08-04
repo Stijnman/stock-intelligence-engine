@@ -2,7 +2,7 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.12.0** — August 2026 · Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.12.1** — August 2026 · Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
@@ -19,6 +19,7 @@
 - Telegram alerts
 
 ## Recent Edits & Version History
+- **v2.12.1 (2026-08-04)**: Autonomous research & evolution cycle. Full code audit confirmed no additional open FUTURE-IMPROVEMENTS items newly completed since v2.12.0. Added 5 new high-value 2026 improvements (Dark Pool / ATS Off-Exchange Flow Overlay, AI Technical Pattern Confirmation Layer, Cross-Asset Correlation Shock Detector, Market-Outcome-Aligned Sentiment Refiner, Free-Tier Unusual Options Activity Proxy). Docs & version sync.
 - **v2.12.0 (2026-08-02)**: Implemented **Congressional Trading Overlay**. New module `sie/congressional.py` detects clustered congressional buys/sells via stable synthetic proxy (no paid API), applies soft signal boost/penalty, surfaces trade count / net value / side / confidence. Fully integrated into Streamlit dashboard (live Congress metrics + captions), CLI (`--no-congress`), config.yaml (`congressional:` section). Version bumped across all entry points and docs.
 - **v2.11.0 (2026-08-01)**: Implemented **Portfolio Correlation Heatmap & Risk Overlay**. New module `sie/portfolio.py` downloads multi-ticker adjusted closes via yfinance, computes Pearson correlation of daily returns, equal-weight portfolio volatility / Sharpe / max drawdown / mean pairwise correlation. Fully integrated into Streamlit dashboard (interactive Plotly heatmap + metric cards), CLI (`--portfolio` flag and appended to `--backtest`), config.yaml (`portfolio:` section with lookback, min_periods, risk_free_rate). Version bumped across all entry points and docs.
 - **v2.10.1 (2026-08-01)**: Autonomous research & evolution cycle. Full code audit confirmed Institutional 13F Ownership Change Detector fully implemented and live; no additional open FUTURE-IMPROVEMENTS items newly completed. Added 5 new high-value 2026 improvements (Congressional Stock Trade Monitor, Activist Ownership Change Detector, Multi-source Sentiment Momentum Oscillator, High-Impact Political / Truth Social Narrative Injector, Lightweight Channel-Check / Expert Sentiment Proxy). Docs & version sync.
@@ -33,6 +34,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.12.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.12.0 | Congressional Trading Overlay |
 | 2.11.0 | Portfolio Correlation Heatmap & Risk Overlay |
 | 2.10.1 | Roadmap refresh + 5 new 2026 research items |
