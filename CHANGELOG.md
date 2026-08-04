@@ -1,3 +1,15 @@
+## [2.12.1] - 2026-08-04
+
+### Changed
+- Autonomous research & evolution cycle (August 4, 2026). Full code audit of analyzer.py, social.py, insider.py, institutional.py, prediction_markets.py, congressional.py, portfolio.py, app.py, config.yaml, stock_intelligence_engine.py and supporting modules confirmed no additional open FUTURE-IMPROVEMENTS items were newly implemented since v2.12.0. Roadmap remains accurate.
+- Version bumped to **2.12.1** across documentation and entry-point headers for the roadmap refresh.
+
+### Added
+- Five new high-value improvements from fresh August 4 2026 research on AI stock tools, dark-pool/ATS flow, technical pattern AI, correlation shocks, market-aligned sentiment (FinSMART-style), and free-tier options proxies:
+  - **High Priority**: Dark Pool / ATS Off-Exchange Flow Overlay
+  - **Medium Priority**: AI Technical Pattern Confirmation Layer; Cross-Asset Correlation Shock Detector
+  - **Long-Term**: Market-Outcome-Aligned Sentiment Refiner; Free-Tier Unusual Options Activity Proxy
+
 ## [2.12.0] - 2026-08-02
 
 ### Added
