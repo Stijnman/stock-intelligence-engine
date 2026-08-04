@@ -16,6 +16,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
 
+- [ ] **Dark Pool / ATS Off-Exchange Flow Overlay**: Ingest free FINRA ATS transparency data (weekly) or stable synthetic daily proxies for watchlist tickers; detect elevated off-exchange volume relative to average daily volume as institutional accumulation or distribution signal; apply soft boost/penalty as additional smart-money layer alongside 13F, insider and congressional overlays. Surface relative volume ratio, inferred side, confidence and source in dashboard & alerts. Configurable via `dark_pool:` section.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -39,6 +41,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **News Materiality & Volatility Impact Scoring**: Beyond pure sentiment polarity, score each news item / filing for expected short-term price impact and materiality (inspired by StockTitan Rhea-AI impact engine). Flag high-impact headlines that historically precede outsized moves and weight them more heavily in the narrative + signal pipeline.
 
 - [ ] **Consumer App Download & Engagement Momentum Signals**: For consumer-facing tickers, track daily/weekly app download ranks, active-user trends or engagement proxies (free public rank trackers or lightweight scrapers) as leading demand indicators. Apply soft boost when download momentum accelerates ahead of narrative confirmation.
+
+- [ ] **AI Technical Pattern Confirmation Layer**: Lightweight rule-based + pattern detection (breakouts above resistance, support tests, flag/pennant formations) on recent price series; apply soft boost when detected technical pattern confirms the current or predicted narrative phase (hype/recovery), or penalty on conflict. Surfaces pattern type, confidence and alignment score in dashboard.
+
+- [ ] **Cross-Asset Correlation Shock Detector**: Compute rolling correlations of each watchlist ticker vs SPY, QQQ and relevant sector ETF; flag sudden correlation spikes (contagion / risk-off) and apply caution penalty to pure narrative-driven signals during elevated co-movement regimes. Configurable lookback and threshold.
 
 ## Completed
 
@@ -67,5 +73,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Multi-LLM Ensemble Narrative Extractor**: Optional ensemble that runs the same social/news/transcript snippets through two or more lightweight local or API LLMs (e.g. Grok + DeepSeek-style or Ollama models) and averages or majority-votes the extracted narrative labels and sentiment to reduce single-model bias.
 - [ ] **Kalshi Prediction Market Cross-Check Overlay**: In parallel with Polymarket, pull CFTC-regulated Kalshi event odds (where public endpoints or free tiers allow) for the same company/sector events; surface cross-platform probability divergence as an additional confidence or caution flag.
 - [ ] **Social Media Follower Growth Velocity Tracker**: Monitor week-over-week follower growth rates on X, Instagram, TikTok (or free rank proxies) for consumer and brand-sensitive tickers as a leading attention/demand signal, inspired by AltIndex social-follower layers.
+- [ ] **Market-Outcome-Aligned Sentiment Refiner**: Lightweight adaptive weighting inspired by 2026 FinSMART research that adjusts the contribution of FinBERT / X sentiment scores based on subsequent short-horizon realized returns; improves signal quality over rolling windows without requiring a full reinforcement-learning pipeline.
+- [ ] **Free-Tier Unusual Options Activity Proxy**: Derive unusual options activity flags from publicly available yfinance options chains (volume-to-open-interest spikes, skew changes, large near-term premium) as a zero-cost alternative to paid flow providers; integrate as soft confirmation layer when UOA aligns with narrative + technical signals.
 
-Last updated: August 2, 2026
+Last updated: August 4, 2026
