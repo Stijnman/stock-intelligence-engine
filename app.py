@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.12.1"""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.13.0"""
 import streamlit as st
 import pandas as pd
 import time
@@ -8,7 +8,7 @@ from sie.backtest import backtest_watchlist
 from sie.portfolio import compute_portfolio_overlay, correlation_heatmap_figure
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.12.1 — Congressional Trading Overlay + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
+st.title("Stock Intelligence Engine v2.13.0 — Real-time WebSocket Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
 
 config = load_config()
 watchlist = list(config.get("tickers", {}).keys()) or ["AAPL", "MSFT", "NVDA", "TSLA", "GOOGL"]
@@ -21,6 +21,7 @@ no_13f = st.sidebar.checkbox("Disable 13F overlay", False)
 no_pm = st.sidebar.checkbox("Disable Prediction Markets", False)
 no_insider = st.sidebar.checkbox("Disable Insider clusters", False)
 no_congress = st.sidebar.checkbox("Disable Congressional overlay", False)
+no_realtime = st.sidebar.checkbox("Disable Real-time Quotes", False)
 
 placeholder = st.empty()
 
@@ -33,25 +34,32 @@ def render():
             include_pm=not no_pm,
             include_institutional=not no_13f,
             include_congressional=not no_congress,
+            include_realtime=not no_realtime,
         )
         results = report.get("rows", [])
         if results:
             df = pd.DataFrame(results)
             # Select key columns for cleaner display
             display_cols = [c for c in [
-                "ticker", "signal", "price", "rsi", "drawdown_pct",
+                "ticker", "signal", "price", "realtime_change_pct", "rsi", "drawdown_pct",
                 "predicted_phase", "inst_side", "inst_pct_change",
                 "cong_side", "cong_net_value",
-                "pm_prob", "signal_reason"
+                "pm_prob", "realtime_source", "signal_reason"
             ] if c in df.columns]
             st.dataframe(df[display_cols] if display_cols else df, use_container_width=True)
             for r in results:
+                rt_note = ""
+                if r.get("realtime_source") and r.get("realtime_source") != "disabled":
+                    chg = r.get("realtime_change_pct")
+                    lat = r.get("realtime_latency_ms")
+                    rt_note = f" | RT {chg:+.2f}% ({r.get('realtime_source')}, {lat}ms)" if chg is not None else f" | RT src={r.get('realtime_source')}"
                 st.caption(
                     f"{r.get('ticker')}: {r.get('signal')} | "
                     f"13F: {r.get('inst_side', 'n/a')} Δ{r.get('inst_pct_change', 0):.1f}% | "
                     f"Congress: {r.get('cong_side', 'n/a')} ${r.get('cong_net_value', 0):,} | "
                     f"PM: {r.get('pm_prob', 'n/a')} | "
                     f"Forecast: {r.get('predicted_phase', 'n/a')}"
+                    f"{rt_note}"
                 )
         else:
             st.warning("No results")
