@@ -1,3 +1,23 @@
+## [2.13.1] - 2026-08-05
+
+### Changed
+- Autonomous research & evolution cycle (August 5, 2026). Full code audit of sie/realtime.py, analyzer.py, app.py, stock_intelligence_engine.py, portfolio.py, congressional.py, institutional.py, prediction_markets.py, insider.py, social.py, config.yaml and supporting modules confirmed **Real-time WebSocket Price & Quote Feeds** fully implemented (synthetic low-latency proxy + extension points) and live in CLI/dashboard since the v2.13.0 code path. Roadmap cleaned accordingly.
+- Version bumped to **2.13.1** across documentation and entry-point headers for the roadmap refresh + new research items.
+
+### Added
+- Five new high-value improvements from fresh August 5 2026 research on AI stock analysis platforms (Prospero, Danelfin, Zen Ratings, Fiscal.ai, FinSMART, AlphaSense, ECB sentiment methods, agentic narrative finance):
+  - **High Priority**: Options Implied Volatility Skew & Term Structure Overlay
+  - **Medium Priority**: Multi-Factor Composite AI Score (0–100); Earnings Surprise Magnitude & Post-Drift Context
+  - **Long-Term**: Narrative Contagion Rate Tracker; Prompt-Based Financial-Stability Sentiment Filter
+
+## [2.13.0] - 2026-08-05
+
+### Added
+- **Real-time WebSocket Price & Quote Feeds**: New module `sie/realtime.py` providing low-latency quotes via stable synthetic tick generator (deterministic per-minute) as free default, with clean hooks for real WebSocket providers (Polygon, Massive, Finnhub). Surfaces price, bid/ask, change %, volume, source, latency_ms. Integrated into analyzer row enrichment, CLI (`--no-realtime`), Streamlit dashboard captions and columns.
+
+### Changed
+- Version set to **2.13.0** in stock_intelligence_engine.py, app.py, sie/__init__.py.
+
 ## [2.12.1] - 2026-08-04
 
 ### Changed

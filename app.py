@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.13.0"""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.13.1"""
 import streamlit as st
 import pandas as pd
 import time
@@ -8,7 +8,7 @@ from sie.backtest import backtest_watchlist
 from sie.portfolio import compute_portfolio_overlay, correlation_heatmap_figure
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.13.0 — Real-time WebSocket Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
+st.title("Stock Intelligence Engine v2.13.1 — Real-time WebSocket Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
 
 config = load_config()
 watchlist = list(config.get("tickers", {}).keys()) or ["AAPL", "MSFT", "NVDA", "TSLA", "GOOGL"]

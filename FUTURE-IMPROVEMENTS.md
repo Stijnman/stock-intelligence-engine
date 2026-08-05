@@ -14,9 +14,11 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Institutional 13F Ownership Change Detector** (v2.10.0): Ingest recent institutional holdings (yfinance institutional_holders + realistic synthetic QoQ proxy fallback) for watchlist tickers; detect significant ownership increases or decreases by large funds and apply soft confirmation/penalty as smart-money flow overlay alongside insider Form 4 clusters. Surface top holders delta, net shares change and confidence in dashboard and alerts. Configurable via `institutional:` section. 2026-07-31
 
-- [ ] **Real-time WebSocket Price & Quote Feeds**: Replace or augment yfinance polling with low-latency WebSocket sources (Polygon, Massive, or free-tier alternatives) for true real-time price/quote updates in the dashboard and signal engine. Reduces lag between narrative shifts and technical confirmation; supports sub-second dashboard refresh without aggressive polling.
+- [x] **Real-time WebSocket Price & Quote Feeds** (v2.13.0): Low-latency price/quote updates via sie/realtime.py with stable synthetic tick generator (deterministic per-minute drift) as free default + clean extension points for Polygon/Massive/Finnhub WebSockets when keys present. Surfaces last price, bid/ask, change %, volume proxy, source and latency_ms. Integrated into CLI (`--no-realtime`), Streamlit dashboard, analyzer row enrichment. Reduces lag between narrative shifts and technical confirmation. 2026-08-05
 
 - [ ] **Dark Pool / ATS Off-Exchange Flow Overlay**: Ingest free FINRA ATS transparency data (weekly) or stable synthetic daily proxies for watchlist tickers; detect elevated off-exchange volume relative to average daily volume as institutional accumulation or distribution signal; apply soft boost/penalty as additional smart-money layer alongside 13F, insider and congressional overlays. Surface relative volume ratio, inferred side, confidence and source in dashboard & alerts. Configurable via `dark_pool:` section.
+
+- [ ] **Options Implied Volatility Skew & Term Structure Overlay**: Pull free yfinance options chains for near-term expirations; compute put/call IV skew and term-structure slope as fear/greed and event-risk proxies; apply soft boost/penalty when elevated skew diverges from narrative + technical signal. Surface skew ratio, term slope, confidence and source in dashboard & alerts. Configurable via `options_iv:` section.
 
 ## Medium Priority
 
@@ -45,6 +47,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **AI Technical Pattern Confirmation Layer**: Lightweight rule-based + pattern detection (breakouts above resistance, support tests, flag/pennant formations) on recent price series; apply soft boost when detected technical pattern confirms the current or predicted narrative phase (hype/recovery), or penalty on conflict. Surfaces pattern type, confidence and alignment score in dashboard.
 
 - [ ] **Cross-Asset Correlation Shock Detector**: Compute rolling correlations of each watchlist ticker vs SPY, QQQ and relevant sector ETF; flag sudden correlation spikes (contagion / risk-off) and apply caution penalty to pure narrative-driven signals during elevated co-movement regimes. Configurable lookback and threshold.
+
+- [ ] **Multi-Factor Composite AI Score (0–100)**: Aggregate existing narrative velocity, technical, insider, 13F, congressional, prediction-market and realtime layers into a single transparent 0–100 composite score with component breakdown (inspired by 2026 Danelfin / Zen Ratings / Prospero multi-factor systems). Surface score + top contributing factors in dashboard and alerts for faster triage.
+
+- [ ] **Earnings Surprise Magnitude & Post-Drift Context**: Track reported EPS/revenue vs consensus (yfinance or free endpoints) and quantify surprise size; attach short-horizon post-earnings drift context to refine signal timing and confidence in the days surrounding earnings.
 
 ## Completed
 
@@ -75,5 +81,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Social Media Follower Growth Velocity Tracker**: Monitor week-over-week follower growth rates on X, Instagram, TikTok (or free rank proxies) for consumer and brand-sensitive tickers as a leading attention/demand signal, inspired by AltIndex social-follower layers.
 - [ ] **Market-Outcome-Aligned Sentiment Refiner**: Lightweight adaptive weighting inspired by 2026 FinSMART research that adjusts the contribution of FinBERT / X sentiment scores based on subsequent short-horizon realized returns; improves signal quality over rolling windows without requiring a full reinforcement-learning pipeline.
 - [ ] **Free-Tier Unusual Options Activity Proxy**: Derive unusual options activity flags from publicly available yfinance options chains (volume-to-open-interest spikes, skew changes, large near-term premium) as a zero-cost alternative to paid flow providers; integrate as soft confirmation layer when UOA aligns with narrative + technical signals.
+- [ ] **Narrative Contagion Rate Tracker**: Quantify how quickly a dominant narrative (from X + news) spreads across related tickers / sector peers using simple co-mention and sentiment-correlation metrics; flag high-contagion regimes that historically amplify moves.
+- [ ] **Prompt-Based Financial-Stability Sentiment Filter**: Lightweight prompt-engineered LLM classifier (inspired by 2026 ECB FinBERT/GPT comparisons) that isolates sentences containing explicit risk or stability assessments from news/filings and surfaces directional tone shifts that dictionary or pure FinBERT methods miss.
 
-Last updated: August 4, 2026
+Last updated: August 5, 2026
