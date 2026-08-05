@@ -2,10 +2,11 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.13.1** — August 2026 · Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.14.0** — August 2026 · Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
+- **Dark Pool / ATS Off-Exchange Flow Overlay** — Detects elevated off-exchange volume relative to ADV via stable synthetic FINRA-style proxy (free default) + live extension points; applies soft accumulation/distribution boost/penalty as smart-money layer; surfaces relative ratio, side, confidence and venues in dashboard & alerts
 - **Real-time WebSocket Price & Quote Feeds** — Low-latency quotes via synthetic tick generator (free default) + extension points for live WebSocket providers; surfaces change %, bid/ask, source and latency in dashboard & alerts
 - **Congressional Trading Overlay** — Detects clustered or material congressional stock buys/sells (stable synthetic proxy) and applies soft confirmation/penalty as smart-money layer; surfaces trade count, net value, side and confidence in dashboard & alerts
 - **Portfolio Correlation Heatmap & Risk Overlay** — Computes pairwise daily-return correlations and equal-weight portfolio metrics (annualized volatility, Sharpe, max drawdown, mean correlation); interactive Plotly heatmap in dashboard + CLI `--portfolio`
@@ -20,6 +21,7 @@
 - Telegram alerts
 
 ## Recent Edits & Version History
+- **v2.14.0 (2026-08-05)**: Implemented **Dark Pool / ATS Off-Exchange Flow Overlay**. New module `sie/dark_pool.py` detects elevated ATS volume vs ADV via stable synthetic daily proxy (FINRA transparency style), infers accumulation/distribution, applies soft signal boost/penalty. Fully integrated into Streamlit dashboard (live ATS columns + captions), CLI (`--no-dark-pool`), config.yaml (`dark_pool:` section). Also wired missing realtime integration path through analyzer for full flag consistency. Version bumped across all entry points and docs.
 - **v2.13.1 (2026-08-05)**: Autonomous research & evolution cycle. Full code audit confirmed Real-time WebSocket Price & Quote Feeds fully implemented and live; marked complete in roadmap. Added 5 new high-value 2026 improvements (Options IV Skew & Term Structure Overlay, Multi-Factor Composite AI Score, Earnings Surprise Magnitude & Post-Drift Context, Narrative Contagion Rate Tracker, Prompt-Based Financial-Stability Sentiment Filter). Docs & version sync.
 - **v2.13.0 (2026-08-05)**: Implemented **Real-time WebSocket Price & Quote Feeds**. New module `sie/realtime.py` with synthetic low-latency proxy + live extension points. Integrated into CLI, dashboard and analyzer rows.
 - **v2.12.1 (2026-08-04)**: Autonomous research & evolution cycle. Full code audit confirmed no additional open FUTURE-IMPROVEMENTS items newly completed since v2.12.0. Added 5 new high-value 2026 improvements (Dark Pool / ATS Off-Exchange Flow Overlay, AI Technical Pattern Confirmation Layer, Cross-Asset Correlation Shock Detector, Market-Outcome-Aligned Sentiment Refiner, Free-Tier Unusual Options Activity Proxy). Docs & version sync.
@@ -37,6 +39,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.14.0 | Dark Pool / ATS Off-Exchange Flow Overlay |
 | 2.13.1 | Roadmap refresh + 5 new 2026 research items; Real-time WebSocket marked complete |
 | 2.13.0 | Real-time WebSocket Price & Quote Feeds |
 | 2.12.1 | Roadmap refresh + 5 new 2026 research items |
@@ -54,6 +57,17 @@
 
 **Usage:** `python stock_intelligence_engine.py --portfolio` or `--backtest`  
 **Dashboard:** `streamlit run app.py`
+
+## Dark Pool Overlay (v2.14.0)
+
+```yaml
+dark_pool:
+  enabled: true
+  elevated_ratio: 1.8
+  boost_ratio: 2.2
+  penalty_ratio: 2.0
+  min_confidence: 0.45
+```
 
 ## Congressional Overlay (v2.12.0)
 

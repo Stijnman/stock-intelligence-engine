@@ -1,3 +1,20 @@
+## [2.14.0] - 2026-08-05
+
+### Added
+- **Dark Pool / ATS Off-Exchange Flow Overlay**: New module `sie/dark_pool.py` that:
+  - Detects elevated off-exchange / ATS volume relative to average daily volume using a stable synthetic daily proxy (FINRA ATS transparency style) as the free default, with clean extension points for live FINRA weekly data.
+  - Infers institutional accumulation or distribution and applies soft confirmation boost/penalty (+1 / 0 / −1) as an additional smart-money layer alongside 13F, insider Form 4 and congressional overlays.
+  - Surfaces relative volume ratio, ATS volume, ADV, side, confidence, top venues and human-readable reason.
+  - Fully integrated into analyzer, CLI (`--no-dark-pool` flag), Streamlit dashboard (live ATS columns + captions), config.yaml (`dark_pool:` section).
+- Config keys: `dark_pool.enabled`, `elevated_ratio`, `boost_ratio`, `penalty_ratio`, `min_confidence`.
+- Also wired the previously missing `include_realtime` path through `analyze_watchlist` / `run_report` for full consistency with CLI and dashboard flags.
+
+### Changed
+- Version set to **2.14.0** across `stock_intelligence_engine.py`, `app.py`, `sie/__init__.py`, README, CHANGELOG and FUTURE-IMPROVEMENTS.
+- Analyzer now runs dark-pool overlay after the realtime layer and mutates signal accordingly.
+- Dashboard title, display columns and per-ticker captions updated to surface dark-pool side and relative ratio.
+- FUTURE-IMPROVEMENTS.md: marked Dark Pool / ATS Off-Exchange Flow Overlay complete with date and version.
+
 ## [2.13.1] - 2026-08-05
 
 ### Changed

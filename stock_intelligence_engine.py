@@ -1,11 +1,11 @@
-__version__ = "2.13.1"
+__version__ = "2.14.0"
 
 """
-Stock Intelligence Engine v2.13.1
-Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay +
-Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership
-Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4
-Clustering & Confirmation Signals + Multi-source Narrative Velocity Forecasting
+Stock Intelligence Engine v2.14.0
+Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds +
+Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay +
+Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) +
+Insider Form 4 Clustering & Confirmation Signals + Multi-source Narrative Velocity Forecasting
 + Backtesting Framework + Real-time Dashboard.
 """
 import argparse
@@ -14,7 +14,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.13.1")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.14.0")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--no-insider", action="store_true", help="Disable insider Form 4 clustering")
@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--no-13f", action="store_true", help="Disable Institutional 13F Ownership Change Detector")
     parser.add_argument("--no-congress", action="store_true", help="Disable Congressional Trading Overlay")
     parser.add_argument("--no-realtime", action="store_true", help="Disable Real-time WebSocket Price & Quote Feeds")
+    parser.add_argument("--no-dark-pool", action="store_true", help="Disable Dark Pool / ATS Off-Exchange Flow Overlay")
     parser.add_argument("--no-social", action="store_true", help="Disable X/Twitter narrative scan")
     parser.add_argument("--no-news", action="store_true", help="Disable news headlines")
     args = parser.parse_args()
@@ -59,6 +60,7 @@ def main():
             include_institutional=not args.no_13f,
             include_congressional=not args.no_congress,
             include_realtime=not args.no_realtime,
+            include_dark_pool=not args.no_dark_pool,
             include_social=not args.no_social,
             include_news=not args.no_news,
         )

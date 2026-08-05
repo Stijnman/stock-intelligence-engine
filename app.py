@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.13.1"""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.14.0"""
 import streamlit as st
 import pandas as pd
 import time
@@ -8,7 +8,7 @@ from sie.backtest import backtest_watchlist
 from sie.portfolio import compute_portfolio_overlay, correlation_heatmap_figure
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.13.1 — Real-time WebSocket Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
+st.title("Stock Intelligence Engine v2.14.0 — Dark Pool / ATS Flow + Real-time Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
 
 config = load_config()
 watchlist = list(config.get("tickers", {}).keys()) or ["AAPL", "MSFT", "NVDA", "TSLA", "GOOGL"]
@@ -22,6 +22,7 @@ no_pm = st.sidebar.checkbox("Disable Prediction Markets", False)
 no_insider = st.sidebar.checkbox("Disable Insider clusters", False)
 no_congress = st.sidebar.checkbox("Disable Congressional overlay", False)
 no_realtime = st.sidebar.checkbox("Disable Real-time Quotes", False)
+no_dark_pool = st.sidebar.checkbox("Disable Dark Pool / ATS overlay", False)
 
 placeholder = st.empty()
 
@@ -35,6 +36,7 @@ def render():
             include_institutional=not no_13f,
             include_congressional=not no_congress,
             include_realtime=not no_realtime,
+            include_dark_pool=not no_dark_pool,
         )
         results = report.get("rows", [])
         if results:
@@ -44,6 +46,7 @@ def render():
                 "ticker", "signal", "price", "realtime_change_pct", "rsi", "drawdown_pct",
                 "predicted_phase", "inst_side", "inst_pct_change",
                 "cong_side", "cong_net_value",
+                "dp_side", "dp_relative_ratio",
                 "pm_prob", "realtime_source", "signal_reason"
             ] if c in df.columns]
             st.dataframe(df[display_cols] if display_cols else df, use_container_width=True)
@@ -53,12 +56,16 @@ def render():
                     chg = r.get("realtime_change_pct")
                     lat = r.get("realtime_latency_ms")
                     rt_note = f" | RT {chg:+.2f}% ({r.get('realtime_source')}, {lat}ms)" if chg is not None else f" | RT src={r.get('realtime_source')}"
+                dp_note = ""
+                if r.get("dp_side") and r.get("dp_side") != "none":
+                    dp_note = f" | 🌑 ATS {r.get('dp_side')} {r.get('dp_relative_ratio', 0):.1f}x"
                 st.caption(
                     f"{r.get('ticker')}: {r.get('signal')} | "
                     f"13F: {r.get('inst_side', 'n/a')} Δ{r.get('inst_pct_change', 0):.1f}% | "
                     f"Congress: {r.get('cong_side', 'n/a')} ${r.get('cong_net_value', 0):,} | "
                     f"PM: {r.get('pm_prob', 'n/a')} | "
                     f"Forecast: {r.get('predicted_phase', 'n/a')}"
+                    f"{dp_note}"
                     f"{rt_note}"
                 )
         else:

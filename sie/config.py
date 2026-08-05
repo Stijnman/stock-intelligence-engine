@@ -102,6 +102,16 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "min_periods": 30,
         "risk_free_rate": 0.04,
     },
+    "dark_pool": {
+        "enabled": True,
+        "elevated_ratio": 1.8,
+        "boost_ratio": 2.2,
+        "penalty_ratio": 2.0,
+        "min_confidence": 0.45,
+    },
+    "realtime": {
+        "enabled": True,
+    },
 }
 
 
@@ -148,6 +158,10 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("congressional", {}).update(congressional)
     if portfolio := raw.get("portfolio"):
         cfg.setdefault("portfolio", {}).update(portfolio)
+    if dark_pool := raw.get("dark_pool"):
+        cfg.setdefault("dark_pool", {}).update(dark_pool)
+    if realtime := raw.get("realtime"):
+        cfg.setdefault("realtime", {}).update(realtime)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):

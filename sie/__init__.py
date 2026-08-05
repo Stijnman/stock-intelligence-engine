@@ -6,6 +6,7 @@ from sie.prediction_markets import detect_prediction_market_signal, integrate_pr
 from sie.institutional import detect_institutional_change, integrate_institutional_to_row
 from sie.congressional import detect_congressional_trades, integrate_congressional_to_row
 from sie.realtime import get_realtime_quote, integrate_realtime_to_row
+from sie.dark_pool import detect_dark_pool_flow, integrate_dark_pool_to_row
 from sie.portfolio import compute_portfolio_overlay, correlation_matrix, portfolio_risk_metrics
 
 __all__ = [
@@ -24,9 +25,11 @@ __all__ = [
     "integrate_congressional_to_row",
     "get_realtime_quote",
     "integrate_realtime_to_row",
+    "detect_dark_pool_flow",
+    "integrate_dark_pool_to_row",
     "compute_portfolio_overlay",
     "correlation_matrix",
     "portfolio_risk_metrics",
 ]
 
-__version__ = "2.13.1"
+__version__ = "2.14.0"

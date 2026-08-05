@@ -52,6 +52,16 @@ portfolio:
   min_periods: 30                # Minimum overlapping return observations
   risk_free_rate: 0.04           # Annual risk-free rate for Sharpe
 
+dark_pool:
+  enabled: true
+  elevated_ratio: 1.8            # ATS/ADV ratio treated as elevated (observation)
+  boost_ratio: 2.2               # Ratio required for +1 accumulation boost
+  penalty_ratio: 2.0             # Ratio required for -1 distribution penalty (when side inferred)
+  min_confidence: 0.45           # Gate weak signals below this confidence
+
+realtime:
+  enabled: true
+
 tickers:
   NVDA:
     name: NVIDIA
