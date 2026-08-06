@@ -2,7 +2,7 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.14.0** — August 2026 · Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.14.1** — August 2026 · Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
@@ -13,14 +13,23 @@
 - **Institutional 13F Ownership Change Detector** — Detects significant institutional ownership increases/decreases (yfinance + synthetic QoQ proxy) and applies soft confirmation/penalty as smart-money flow overlay; surfaces top holders delta, net shares change and confidence in dashboard & alerts
 - **Prediction Market Odds Overlay (Polymarket)** — Ingests free Gamma API odds for company/sector events, detects divergence from narrative+technical signal, and applies soft boost/penalty; surfaces probability, best question, confidence and source in dashboard & alerts
 - **Insider Form 4 Clustering & Confirmation Signals** — Detects clustered insider buying/selling (yfinance + proxy) within a 14-day window and applies confirmation boost/penalty to signals; surfaces cluster size, net shares, side and confidence in dashboard & alerts
-- **Multi-source Narrative Velocity Forecasting** - Predicts 1-3 day narrative phase shifts (hype/dip/recovery) from X velocity + news sentiment using exponential smoothing; applies boost/penalty to signals
-- **Backtesting Framework** - Validate historical performance with Sharpe ratios
-- Streamlit dashboard with live updates & auto-refresh
-- X/Twitter dominant narrative, velocity & crisis flags
-- FinBERT + VADER news sentiment
-- Telegram alerts
+- Multi-source narrative velocity forecasting
+- Backtesting framework
+- Real-time Streamlit dashboard
+- X/Twitter narrative intelligence
+
+## Quick Start
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+# or
+python stock_intelligence_engine.py
+```
+
+See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
+- **v2.14.1 (2026-08-06)**: Autonomous research & evolution cycle. Full code audit confirmed no additional open FUTURE-IMPROVEMENTS items newly completed since v2.14.0. Added 4 new high-value 2026 improvements (Truth Social / Official Political Narrative Overlay, Retail Whisper Number vs Consensus Divergence Tracker, As-Reported Fundamentals Preference & Restatement Alert Layer, AI News Summary Engagement Multiplier). Docs & version sync.
 - **v2.14.0 (2026-08-05)**: Implemented **Dark Pool / ATS Off-Exchange Flow Overlay**. New module `sie/dark_pool.py` detects elevated ATS volume vs ADV via stable synthetic daily proxy (FINRA transparency style), infers accumulation/distribution, applies soft signal boost/penalty. Fully integrated into Streamlit dashboard (live ATS columns + captions), CLI (`--no-dark-pool`), config.yaml (`dark_pool:` section). Also wired missing realtime integration path through analyzer for full flag consistency. Version bumped across all entry points and docs.
 - **v2.13.1 (2026-08-05)**: Autonomous research & evolution cycle. Full code audit confirmed Real-time WebSocket Price & Quote Feeds fully implemented and live; marked complete in roadmap. Added 5 new high-value 2026 improvements (Options IV Skew & Term Structure Overlay, Multi-Factor Composite AI Score, Earnings Surprise Magnitude & Post-Drift Context, Narrative Contagion Rate Tracker, Prompt-Based Financial-Stability Sentiment Filter). Docs & version sync.
 - **v2.13.0 (2026-08-05)**: Implemented **Real-time WebSocket Price & Quote Feeds**. New module `sie/realtime.py` with synthetic low-latency proxy + live extension points. Integrated into CLI, dashboard and analyzer rows.
@@ -39,6 +48,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.14.1 | Roadmap refresh + 4 new 2026 research items |
 | 2.14.0 | Dark Pool / ATS Off-Exchange Flow Overlay |
 | 2.13.1 | Roadmap refresh + 5 new 2026 research items; Real-time WebSocket marked complete |
 | 2.13.0 | Real-time WebSocket Price & Quote Feeds |
@@ -50,43 +60,9 @@
 | 2.9.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.9.0 | Prediction Market Odds Overlay (Polymarket) |
 | 2.8.0 | Insider Form 4 Clustering & Confirmation Signals |
-| 2.7.0 | Multi-source Narrative Velocity Forecasting |
-| 2.6.0 | Backtesting Framework added |
-| 2.5.0 | Real-time Streamlit auto-refresh |
-| 2.4.0 | X narrative intelligence |
-
-**Usage:** `python stock_intelligence_engine.py --portfolio` or `--backtest`  
-**Dashboard:** `streamlit run app.py`
 
 ## Dark Pool Overlay (v2.14.0)
+See CHANGELOG and FUTURE-IMPROVEMENTS for full details.
 
-```yaml
-dark_pool:
-  enabled: true
-  elevated_ratio: 1.8
-  boost_ratio: 2.2
-  penalty_ratio: 2.0
-  min_confidence: 0.45
-```
-
-## Congressional Overlay (v2.12.0)
-
-```yaml
-congressional:
-  enabled: true
-  lookback_days: 90
-  min_trades: 2
-  buy_boost_min: 2
-  sell_penalty_min: 2
-  min_trade_value: 15000
-```
-
-## Portfolio Overlay (v2.11.0)
-
-```yaml
-portfolio:
-  enabled: true
-  lookback_period: "1y"
-  min_periods: 30
-  risk_free_rate: 0.04
-```
+## License
+MIT

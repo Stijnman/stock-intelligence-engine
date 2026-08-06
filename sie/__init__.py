@@ -1,35 +1,45 @@
-"""Stock Intelligence Engine core package."""
-from sie.analyzer import analyze_watchlist, run_report
-from sie.social import scan_narrative_intelligence, integrate_social_to_row, forecast_narrative_phase
-from sie.insider import detect_insider_cluster, integrate_insider_to_row
-from sie.prediction_markets import detect_prediction_market_signal, integrate_prediction_markets_to_row
-from sie.institutional import detect_institutional_change, integrate_institutional_to_row
-from sie.congressional import detect_congressional_trades, integrate_congressional_to_row
-from sie.realtime import get_realtime_quote, integrate_realtime_to_row
-from sie.dark_pool import detect_dark_pool_flow, integrate_dark_pool_to_row
-from sie.portfolio import compute_portfolio_overlay, correlation_matrix, portfolio_risk_metrics
+"""Stock Intelligence Engine package."""
+
+from .analyzer import analyze_watchlist, run_report
+from .config import load_config
+from .technical import compute_rsi, compute_ma
+from .social import scan_narratives
+from .news import fetch_headlines
+from .insider import compute_insider_overlay
+from .institutional import compute_institutional_overlay
+from .prediction_markets import compute_pm_overlay
+from .congressional import compute_congressional_overlay
+from .portfolio import compute_portfolio_overlay
+from .realtime import get_realtime_quotes
+from .dark_pool import compute_dark_pool_overlay
+from .backtest import run_backtest
+from .alerts import send_alerts
+from .export import export_report
+from .charts import plot_correlation_heatmap
+from .i18n import t
 
 __all__ = [
     "analyze_watchlist",
     "run_report",
-    "scan_narrative_intelligence",
-    "integrate_social_to_row",
-    "forecast_narrative_phase",
-    "detect_insider_cluster",
-    "integrate_insider_to_row",
-    "detect_prediction_market_signal",
-    "integrate_prediction_markets_to_row",
-    "detect_institutional_change",
-    "integrate_institutional_to_row",
-    "detect_congressional_trades",
-    "integrate_congressional_to_row",
-    "get_realtime_quote",
-    "integrate_realtime_to_row",
-    "detect_dark_pool_flow",
-    "integrate_dark_pool_to_row",
+    "load_config",
+    "compute_rsi",
+    "compute_ma",
+    "scan_narratives",
+    "fetch_headlines",
+    "compute_insider_overlay",
+    "compute_institutional_overlay",
+    "compute_pm_overlay",
+    "compute_congressional_overlay",
     "compute_portfolio_overlay",
+    "get_realtime_quotes",
+    "compute_dark_pool_overlay",
+    "run_backtest",
+    "send_alerts",
+    "export_report",
+    "plot_correlation_heatmap",
+    "t",
     "correlation_matrix",
     "portfolio_risk_metrics",
 ]
 
-__version__ = "2.14.0"
+__version__ = "2.14.1"

@@ -20,6 +20,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Options Implied Volatility Skew & Term Structure Overlay**: Pull free yfinance options chains for near-term expirations; compute put/call IV skew and term-structure slope as fear/greed and event-risk proxies; apply soft boost/penalty when elevated skew diverges from narrative + technical signal. Surface skew ratio, term slope, confidence and source in dashboard & alerts. Configurable via `options_iv:` section.
 
+- [ ] **Truth Social / Official Political Narrative Overlay**: Ingest real-time posts from key official and political accounts (Truth Social public proxies or licensed API) for policy-sensitive tickers (energy, defense, media, DJT-related); detect narrative shifts from official statements and apply soft boost/penalty when they diverge from broader market or X narrative. Surface key posts, tone delta, confidence and source in dashboard & alerts. Configurable via `political_narrative:` section.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -51,6 +53,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Multi-Factor Composite AI Score (0–100)**: Aggregate existing narrative velocity, technical, insider, 13F, congressional, prediction-market and realtime layers into a single transparent 0–100 composite score with component breakdown (inspired by 2026 Danelfin / Zen Ratings / Prospero multi-factor systems). Surface score + top contributing factors in dashboard and alerts for faster triage.
 
 - [ ] **Earnings Surprise Magnitude & Post-Drift Context**: Track reported EPS/revenue vs consensus (yfinance or free endpoints) and quantify surprise size; attach short-horizon post-earnings drift context to refine signal timing and confidence in the days surrounding earnings.
+
+- [ ] **Retail Whisper Number vs Consensus Divergence Tracker**: Aggregate informal EPS/revenue “whisper” estimates from Reddit (r/stocks, r/investing) and X FinTwit communities around earnings windows; flag material divergence from official analyst consensus as a leading retail-sentiment indicator. Surface whisper range, consensus delta, confidence and source in dashboard & alerts.
+
+- [ ] **As-Reported Fundamentals Preference & Restatement Alert Layer**: Prefer as-reported financial line items over vendor-normalized numbers for agentic deep research; detect material presentation differences, restatements or caliber shifts (consolidated vs parent) that could alter narrative interpretation of growth, margins or leverage. Surfaces divergence flags and confidence for research briefs.
 
 ## Completed
 
@@ -84,4 +90,6 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Narrative Contagion Rate Tracker**: Quantify how quickly a dominant narrative (from X + news) spreads across related tickers / sector peers using simple co-mention and sentiment-correlation metrics; flag high-contagion regimes that historically amplify moves.
 - [ ] **Prompt-Based Financial-Stability Sentiment Filter**: Lightweight prompt-engineered LLM classifier (inspired by 2026 ECB FinBERT/GPT comparisons) that isolates sentences containing explicit risk or stability assessments from news/filings and surfaces directional tone shifts that dictionary or pure FinBERT methods miss.
 
-Last updated: August 5, 2026
+- [ ] **AI News Summary Engagement Multiplier**: Weight news items higher in the narrative + signal pipeline when they carry AI-generated summaries (inspired by 2026 HBS research showing stronger/faster market reactions and deeper comprehension). Improves timing and confidence on high-attention stories without requiring paid news APIs.
+
+Last updated: August 6, 2026
