@@ -1,7 +1,8 @@
 """Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment,
 Multi-source Narrative Velocity Forecasting, Insider Form 4 Clustering, Prediction Market Odds Overlay,
 Institutional 13F Ownership Change Detector, Congressional Trading Overlay,
-Real-time WebSocket Quotes, and Dark Pool / ATS Off-Exchange Flow Overlay.
+Real-time WebSocket Quotes, Dark Pool / ATS Off-Exchange Flow Overlay,
+and Options Implied Volatility Skew & Term Structure Overlay.
 Backtesting integrated.
 """
 from __future__ import annotations
@@ -20,6 +21,7 @@ from sie.institutional import integrate_institutional_to_row
 from sie.congressional import integrate_congressional_to_row
 from sie.realtime import integrate_realtime_to_row
 from sie.dark_pool import integrate_dark_pool_to_row
+from sie.options_iv import integrate_options_iv_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -34,6 +36,7 @@ def analyze_watchlist(
     include_congressional: bool = True,
     include_realtime: bool = True,
     include_dark_pool: bool = True,
+    include_options_iv: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -133,6 +136,10 @@ def analyze_watchlist(
         if include_dark_pool:
             row = integrate_dark_pool_to_row(row, cfg)
 
+        # Options Implied Volatility Skew & Term Structure Overlay (v2.15.0)
+        if include_options_iv:
+            row = integrate_options_iv_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -155,6 +162,7 @@ def run_report(
     include_congressional: bool = True,
     include_realtime: bool = True,
     include_dark_pool: bool = True,
+    include_options_iv: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -172,6 +180,7 @@ def run_report(
         include_congressional=include_congressional,
         include_realtime=include_realtime,
         include_dark_pool=include_dark_pool,
+        include_options_iv=include_options_iv,
         lang=lang,
     )
     text = str(report)
