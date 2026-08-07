@@ -1,12 +1,12 @@
-__version__ = "2.14.1"
+__version__ = "2.15.0"
 
 """
-Stock Intelligence Engine v2.14.1
-Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds +
-Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay +
-Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) +
-Insider Form 4 Clustering & Confirmation Signals + Multi-source Narrative Velocity Forecasting
-+ Backtesting Framework + Real-time Dashboard.
+Stock Intelligence Engine v2.15.0
+Options Implied Volatility Skew & Term Structure Overlay + Dark Pool / ATS Off-Exchange Flow Overlay +
+Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay +
+Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector +
+Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering & Confirmation Signals +
+Multi-source Narrative Velocity Forecasting + Backtesting Framework + Real-time Dashboard.
 """
 import argparse
 from sie.analyzer import run_report
@@ -14,7 +14,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.14.1")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.15.0")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--no-insider", action="store_true", help="Disable insider Form 4 clustering")
@@ -23,6 +23,7 @@ def main():
     parser.add_argument("--no-congress", action="store_true", help="Disable Congressional Trading Overlay")
     parser.add_argument("--no-realtime", action="store_true", help="Disable Real-time WebSocket Price & Quote Feeds")
     parser.add_argument("--no-dark-pool", action="store_true", help="Disable Dark Pool / ATS Off-Exchange Flow Overlay")
+    parser.add_argument("--no-options-iv", action="store_true", help="Disable Options IV Skew & Term Structure Overlay")
     parser.add_argument("--no-social", action="store_true", help="Disable X/Twitter narrative scan")
     parser.add_argument("--no-news", action="store_true", help="Disable news headlines")
     args = parser.parse_args()
@@ -36,7 +37,18 @@ def main():
         print(f"Ann. Vol: {metrics.get('vol_ann')} | Sharpe: {metrics.get('sharpe')}")
         print(f"Max DD: {metrics.get('max_drawdown')}% | Mean Corr: {metrics.get('mean_corr')}")
         return
-    run_report(cfg, args)
+    run_report(
+        include_news=not args.no_news,
+        include_social=not args.no_social,
+        include_insider=not args.no_insider,
+        include_pm=not args.no_pm,
+        include_institutional=not args.no_13f,
+        include_congressional=not args.no_congress,
+        include_realtime=not args.no_realtime,
+        include_dark_pool=not args.no_dark_pool,
+        include_options_iv=not args.no_options_iv,
+        backtest=args.backtest,
+    )
 
 if __name__ == "__main__":
     main()

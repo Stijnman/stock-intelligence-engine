@@ -62,6 +62,14 @@ dark_pool:
 realtime:
   enabled: true
 
+options_iv:
+  enabled: true
+  elevated_skew: 0.12            # Mild put skew observation threshold
+  boost_skew: 0.22               # Moderate elevated skew
+  penalty_skew: 0.28             # High fear/hedging skew → caution/penalty
+  min_confidence: 0.40           # Gate weak signals below this confidence
+  term_slope_threshold: 0.05     # Absolute slope treated as meaningful contango/inversion
+
 tickers:
   NVDA:
     name: NVIDIA

@@ -18,9 +18,13 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Dark Pool / ATS Off-Exchange Flow Overlay** (v2.14.0): Ingest free FINRA ATS transparency data (weekly) or stable synthetic daily proxies for watchlist tickers; detect elevated off-exchange volume relative to average daily volume as institutional accumulation or distribution signal; apply soft boost/penalty as additional smart-money layer alongside 13F, insider and congressional overlays. Surface relative volume ratio, inferred side, confidence and source in dashboard & alerts. Configurable via `dark_pool:` section. 2026-08-05
 
-- [ ] **Options Implied Volatility Skew & Term Structure Overlay**: Pull free yfinance options chains for near-term expirations; compute put/call IV skew and term-structure slope as fear/greed and event-risk proxies; apply soft boost/penalty when elevated skew diverges from narrative + technical signal. Surface skew ratio, term slope, confidence and source in dashboard & alerts. Configurable via `options_iv:` section.
+- [x] **Options Implied Volatility Skew & Term Structure Overlay** (v2.15.0): Pull free yfinance options chains for near-term expirations (or stable synthetic proxy); compute put/call IV skew and term-structure slope as fear/greed and event-risk proxies; apply soft boost/penalty when elevated skew diverges from narrative + technical signal. Surfaces skew ratio, term slope, ATM IV, confidence and source in dashboard & alerts. Configurable via `options_iv:` section. Fully integrated into analyzer, CLI, Streamlit. 2026-08-07
 
 - [ ] **Truth Social / Official Political Narrative Overlay**: Ingest real-time posts from key official and political accounts (Truth Social public proxies or licensed API) for policy-sensitive tickers (energy, defense, media, DJT-related); detect narrative shifts from official statements and apply soft boost/penalty when they diverge from broader market or X narrative. Surface key posts, tone delta, confidence and source in dashboard & alerts. Configurable via `political_narrative:` section.
+
+- [ ] **0DTE Options Flow & Unusual Activity Proxy**: Derive near-zero-days-to-expiration volume/OI spikes and simple unusual-activity flags from free yfinance (or CBOE public) options chains; flag elevated 0DTE premium and directional flow as short-horizon event-risk / dealer-hedging signals. Apply soft boost/penalty and surface 0DTE ratio, side bias, confidence in dashboard & alerts. Configurable via `options_0dte:` section.
+
+- [ ] **Same-Day SEC EDGAR Material Filing Detector**: Lightweight poll of EDGAR daily index / full-text search for watchlist tickers; detect fresh 8-K, Form 4 clusters or material item filings the same trading day and run quick FinBERT tone on key excerpts. Surface filing type, materiality flag, tone delta and link in dashboard + alerts. Configurable via `edgar:` section.
 
 ## Medium Priority
 
@@ -58,6 +62,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **As-Reported Fundamentals Preference & Restatement Alert Layer**: Prefer as-reported financial line items over vendor-normalized numbers for agentic deep research; detect material presentation differences, restatements or caliber shifts (consolidated vs parent) that could alter narrative interpretation of growth, margins or leverage. Surfaces divergence flags and confidence for research briefs.
 
+- [ ] **FINRA Short Volume Ratio & Squeeze Risk Overlay**: Ingest free FINRA daily short-volume series (or yfinance/short proxy) for watchlist tickers; compute short-volume % of total volume and flag elevated ratios as potential squeeze or distribution risk. Apply soft confidence modulation and surface ratio, days-to-cover proxy, side bias in dashboard & alerts. Configurable via `short_volume:` section.
+
+- [ ] **Unified Multi-Platform Attention / Buzz Score**: Fuse Reddit mention velocity, X cashtag volume, news headline count and Polymarket volume into a single 0–100 attention/buzz score (Adanos-style multi-source). High buzz that aligns with narrative phase increases signal confidence; divergence flags caution. Surface component breakdown in dashboard.
+
 ## Completed
 
 - [x] **Backtesting Framework** (v2.6.0): Historical signal performance evaluation with Sharpe ratio and returns metrics. Integrated into CLI (`--backtest`), Streamlit dashboard (button), and analyzer. 2026-07-23 https://github.com/Stijnman/stock-intelligence-engine/commit/ead6af1db28485a90c302f5169dfbaf118101320
@@ -92,4 +100,6 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **AI News Summary Engagement Multiplier**: Weight news items higher in the narrative + signal pipeline when they carry AI-generated summaries (inspired by 2026 HBS research showing stronger/faster market reactions and deeper comprehension). Improves timing and confidence on high-attention stories without requiring paid news APIs.
 
-Last updated: August 6, 2026
+- [ ] **Gamma Exposure (GEX) Surface Proxy**: Approximate dealer gamma exposure from free near-term options chains (yfinance or CBOE public) using simplified open-interest × delta scaling; flag large positive/negative GEX regimes that historically dampen or amplify moves. Surface net GEX proxy, flip level estimate and confidence as an advanced volatility-regime overlay.
+
+Last updated: August 7, 2026

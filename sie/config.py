@@ -112,6 +112,14 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "realtime": {
         "enabled": True,
     },
+    "options_iv": {
+        "enabled": True,
+        "elevated_skew": 0.12,
+        "boost_skew": 0.22,
+        "penalty_skew": 0.28,
+        "min_confidence": 0.40,
+        "term_slope_threshold": 0.05,
+    },
 }
 
 
@@ -162,6 +170,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("dark_pool", {}).update(dark_pool)
     if realtime := raw.get("realtime"):
         cfg.setdefault("realtime", {}).update(realtime)
+    if options_iv := raw.get("options_iv"):
+        cfg.setdefault("options_iv", {}).update(options_iv)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):

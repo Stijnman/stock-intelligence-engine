@@ -2,10 +2,11 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.14.1** — August 2026 · Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
+**v2.15.0** — August 2026 · Options IV Skew & Term Structure Overlay + Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity Forecasting + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
+- **Options Implied Volatility Skew & Term Structure Overlay** — Free yfinance options chains (or synthetic proxy); computes put/call IV skew and term-structure slope as fear/greed + event-risk proxies; soft boost/penalty on divergence; surfaces skew ratio, term slope, ATM IV, confidence in dashboard & alerts
 - **Dark Pool / ATS Off-Exchange Flow Overlay** — Detects elevated off-exchange volume relative to ADV via stable synthetic FINRA-style proxy (free default) + live extension points; applies soft accumulation/distribution boost/penalty as smart-money layer; surfaces relative ratio, side, confidence and venues in dashboard & alerts
 - **Real-time WebSocket Price & Quote Feeds** — Low-latency quotes via synthetic tick generator (free default) + extension points for live WebSocket providers; surfaces change %, bid/ask, source and latency in dashboard & alerts
 - **Congressional Trading Overlay** — Detects clustered or material congressional stock buys/sells (stable synthetic proxy) and applies soft confirmation/penalty as smart-money layer; surfaces trade count, net value, side and confidence in dashboard & alerts
@@ -29,6 +30,7 @@ python stock_intelligence_engine.py
 See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
+- **v2.15.0 (2026-08-07)**: Implemented / promoted **Options Implied Volatility Skew & Term Structure Overlay** to production. Full code audit confirmed the module (`sie/options_iv.py`) + analyzer integration were already present and functional; marked complete, added config block, CLI flag, version sync across all entry points. Added 5 new high-value 2026 improvements (0DTE Options Flow & Unusual Activity Proxy, Same-Day SEC EDGAR Material Filing Detector, FINRA Short Volume Ratio & Squeeze Risk Overlay, Unified Multi-Platform Attention / Buzz Score, Gamma Exposure (GEX) Surface Proxy). Docs & version sync.
 - **v2.14.1 (2026-08-06)**: Autonomous research & evolution cycle. Full code audit confirmed no additional open FUTURE-IMPROVEMENTS items newly completed since v2.14.0. Added 4 new high-value 2026 improvements (Truth Social / Official Political Narrative Overlay, Retail Whisper Number vs Consensus Divergence Tracker, As-Reported Fundamentals Preference & Restatement Alert Layer, AI News Summary Engagement Multiplier). Docs & version sync.
 - **v2.14.0 (2026-08-05)**: Implemented **Dark Pool / ATS Off-Exchange Flow Overlay**. New module `sie/dark_pool.py` detects elevated ATS volume vs ADV via stable synthetic daily proxy (FINRA transparency style), infers accumulation/distribution, applies soft signal boost/penalty. Fully integrated into Streamlit dashboard (live ATS columns + captions), CLI (`--no-dark-pool`), config.yaml (`dark_pool:` section). Also wired missing realtime integration path through analyzer for full flag consistency. Version bumped across all entry points and docs.
 - **v2.13.1 (2026-08-05)**: Autonomous research & evolution cycle. Full code audit confirmed Real-time WebSocket Price & Quote Feeds fully implemented and live; marked complete in roadmap. Added 5 new high-value 2026 improvements (Options IV Skew & Term Structure Overlay, Multi-Factor Composite AI Score, Earnings Surprise Magnitude & Post-Drift Context, Narrative Contagion Rate Tracker, Prompt-Based Financial-Stability Sentiment Filter). Docs & version sync.
@@ -48,6 +50,7 @@ See config.yaml for watchlist and overlay toggles.
 
 | Version | Notes |
 |---------|--------|
+| 2.15.0 | Options IV Skew & Term Structure Overlay + 5 new 2026 research items |
 | 2.14.1 | Roadmap refresh + 4 new 2026 research items |
 | 2.14.0 | Dark Pool / ATS Off-Exchange Flow Overlay |
 | 2.13.1 | Roadmap refresh + 5 new 2026 research items; Real-time WebSocket marked complete |
