@@ -1,3 +1,15 @@
+## [2.15.2] - 2026-08-09
+
+### Changed
+- Autonomous research & evolution cycle (August 9, 2026). Full code audit of sie/ modules (options_iv, dark_pool, realtime, analyzer, congressional, institutional, prediction_markets, insider, social, portfolio, etc.), app.py, stock_intelligence_engine.py, config.yaml confirmed **no additional open FUTURE-IMPROVEMENTS items** were newly implemented since v2.15.1. Roadmap remains accurate; restored complete FUTURE-IMPROVEMENTS.md and README.md that had been reduced to placeholders in prior cycle.
+- Version bumped to **2.15.2** across stock_intelligence_engine.py, app.py, sie/__init__.py, README, CHANGELOG, FUTURE-IMPROVEMENTS and entry-point headers.
+
+### Added
+- Five new high-value improvements from fresh August 9 2026 research (Rolli authenticity scoring, ESG LLM-summary predictability papers, CBOE public delayed chains, event-surprise composites, dealer vanna exposure):
+  - **High Priority**: Authenticity-Filtered Narrative Velocity; LLM ESG Summary Sentiment Overlay
+  - **Medium Priority**: Event-Driven Surprise Composite; Free CBOE Delayed Options UOA Enhancer
+  - **Long-Term**: Vanna Exposure (VEX) Proxy
+
 ## [2.15.1] - 2026-08-08
 
 ### Changed
