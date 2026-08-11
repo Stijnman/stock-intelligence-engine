@@ -1,3 +1,15 @@
+## [2.15.3] - 2026-08-11
+
+### Changed
+- Autonomous research & evolution cycle (August 11, 2026). Full code audit of all sie/ modules (options_iv, dark_pool, realtime, analyzer, congressional, institutional, prediction_markets, insider, social, portfolio, etc.), app.py, stock_intelligence_engine.py, config.yaml and supporting files confirmed **no additional open FUTURE-IMPROVEMENTS items** were newly implemented since v2.15.2. Roadmap remains accurate.
+- Version bumped to **2.15.3** across stock_intelligence_engine.py, app.py, sie/__init__.py, README, CHANGELOG, FUTURE-IMPROVEMENTS and entry-point headers.
+
+### Added
+- Five new high-value improvements from fresh August 11 2026 research (AltIndex multi-signal, STAX/TradeAlgo flow+sentiment fusion, ECB/QLoRA financial NLP advances, free CBOE/yfinance sweep detection patterns, Streamlit production hardening):
+  - **High Priority**: Retail-Institutional Sentiment Divergence Overlay; Zero-Shot LLM Headline Materiality & Direction Classifier
+  - **Medium Priority**: Options Sweep & Block Unusual Activity Proxy; Streamlit Fragment + Persistent Session Watchlist Hardening
+  - **Long-Term**: Agentic Multi-Document Research Brief Generator
+
 ## [2.15.2] - 2026-08-09
 
 ### Changed

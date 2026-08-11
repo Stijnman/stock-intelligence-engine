@@ -1,7 +1,7 @@
-__version__ = "2.15.2"
+__version__ = "2.15.3"
 
 """
-Stock Intelligence Engine v2.15.2
+Stock Intelligence Engine v2.15.3
 Options Implied Volatility Skew & Term Structure Overlay + Dark Pool / ATS Off-Exchange Flow Overlay +
 Real-time WebSocket Price & Quote Feeds + Congressional Trading Overlay +
 Portfolio Correlation Heatmap & Risk Overlay + Institutional 13F Ownership Change Detector +
@@ -14,7 +14,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.15.2")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.15.3")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--no-insider", action="store_true", help="Disable insider Form 4 clustering")

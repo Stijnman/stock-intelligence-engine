@@ -34,6 +34,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **LLM ESG Summary Sentiment Overlay**: Generate or ingest LLM summaries of recent ESG / sustainability reports and extract FinBERT or prompt-based sentiment; research (2026) shows LLM-summary sentiment is more predictive of performance and valuation than full-text ESG sentiment. Soft confirmation layer for governance and social signals.
 
+- [ ] **Retail-Institutional Sentiment Divergence Overlay**: Detect and score meaningful divergence between retail narrative velocity (X velocity + Reddit proxies) and smart-money overlays (13F changes, dark-pool ratios, congressional clusters, insider Form 4). Research and 2026 multi-source platforms show such divergences frequently precede mean-reversion or accelerated moves. Apply soft boost/penalty and surface divergence score, direction, and confidence in dashboard & alerts. Configurable via `divergence:` section.
+
+- [ ] **Zero-Shot LLM Headline Materiality & Direction Classifier**: Beyond FinBERT polarity, apply lightweight zero-shot or prompt-based LLM classification (inspired by 2026 ECB / QLoRA financial NLP advances) to score each headline for expected short-horizon price impact magnitude and directional bias. Weight high-materiality items more heavily inside narrative velocity and event composites. Surface materiality score and reason.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -71,6 +75,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Event-Driven Surprise Composite**: Combine earnings surprise magnitude, same-day EDGAR materiality flags, and post-event social velocity into a single event-impact score that modulates short-horizon signal confidence and position-size hints.
 
 - [ ] **Free CBOE Delayed Options UOA Enhancer**: Extend current options_iv and 0DTE proxies with official CBOE delayed chain files (public, no key) for higher-fidelity volume/OI spike detection and premium thresholds; improves unusual activity confidence without paid flow providers.
+
+- [ ] **Options Sweep & Block Unusual Activity Proxy**: From free/delayed options chains (yfinance or CBOE public files), detect volume/OI and premium patterns consistent with sweeps or large block trades. Flag directional flow with size and confidence thresholds; soft confirmation layer that complements existing options_iv and 0DTE proxies. Surface sweep_score, side bias, and reason.
+
+- [ ] **Streamlit Fragment + Persistent Session Watchlist Hardening**: Full production hardening of the dashboard using `@st.fragment`, robust `st.session_state` for watchlist persistence, alert history, and user preferences, plus TTL-aware caching. Eliminates residual full-page rerun pressure and improves multi-session / cloud deployment stability.
 
 ## Long-Term / Nice-to-Have
 
@@ -118,6 +126,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Vanna Exposure (VEX) Proxy**: Approximate dealer vanna exposure from free options data (alongside GEX) to capture sensitivity of delta to volatility changes; flag regimes where volatility shocks are likely to amplify or dampen directional moves.
 
+- [ ] **Agentic Multi-Document Research Brief Generator**: On-demand, cacheable LLM synthesis that pulls recent filings, news headlines, options/flow context and narrative velocity into a short structured research note per ticker. Extends existing Grok/xAI hook ideas with deterministic prompt templates and local/offline fallback.
+
 ## Completed
 
 - [x] **Backtesting Framework** (v2.6.0): Historical signal performance evaluation with Sharpe ratio and returns metrics. Integrated into CLI (`--backtest`), Streamlit dashboard (button), and analyzer. 2026-07-23
@@ -128,4 +138,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 9, 2026 (v2.15.2 autonomous research cycle)
+Last updated: August 11, 2026 (v2.15.3 autonomous research cycle)

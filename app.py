@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.15.2"""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.15.3"""
 import streamlit as st
 import pandas as pd
 import time
@@ -9,7 +9,7 @@ from sie.charts import plot_correlation_heatmap
 from sie.i18n import t
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
-st.title("Stock Intelligence Engine v2.15.2 — Options IV Skew + Dark Pool / ATS Flow + Real-time Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
+st.title("Stock Intelligence Engine v2.15.3 — Options IV Skew + Dark Pool / ATS Flow + Real-time Quotes + Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity")
 
 cfg = load_config()
 
@@ -24,4 +24,4 @@ if df is not None and not df.empty:
 else:
     st.warning("No data returned. Check config and data sources.")
 
-st.caption("v2.15.2 — Options IV Skew & Term Structure Overlay live · Autonomous evolution cycle active")
+st.caption("v2.15.3 — Options IV Skew & Term Structure Overlay live · Autonomous evolution cycle active")

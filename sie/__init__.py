@@ -45,4 +45,4 @@ __all__ = [
     "portfolio_risk_metrics",
 ]
 
-__version__ = "2.15.2"
+__version__ = "2.15.3"

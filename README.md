@@ -2,7 +2,7 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.15.2** — August 2026 · Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.15.3** — August 2026 · Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
@@ -22,9 +22,10 @@
 - Telegram alerts (optional)
 
 ## Recent Edits & Version History
+- **v2.15.3 (2026-08-11)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.2. Added 5 new high-value 2026 research items (Retail-Institutional Sentiment Divergence Overlay, Zero-Shot LLM Headline Materiality & Direction Classifier, Options Sweep & Block Unusual Activity Proxy, Streamlit Fragment + Persistent Session Watchlist Hardening, Agentic Multi-Document Research Brief Generator). Version bump and docs sync.
 - **v2.15.2 (2026-08-09)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.1. Restored complete FUTURE-IMPROVEMENTS.md and README from prior cycle state. Added 5 new high-value 2026 research items (Authenticity-Filtered Narrative Velocity, LLM ESG Summary Sentiment Overlay, Event-Driven Surprise Composite, Free CBOE Delayed Options UOA Enhancer, Vanna Exposure (VEX) Proxy). Version bump and docs sync.
 - **v2.15.1 (2026-08-08)**: Autonomous research & evolution cycle. Full code audit confirmed no new implementations. Added 5 high-value improvements (Corporate Hiring & Headcount Momentum Tracker, Narrative-Data Honesty / Contradiction Detector, Earnings Call Prepared Remarks vs Live Q&A Sentiment Delta, Company Website Traffic & Engagement Momentum Proxy, Max Pain & Simplified Dealer Positioning Overlay).
-- **v2.15.0 (2026-08-07)**: Implemented **Options Implied Volatility Skew & Term Structure Overlay**. Module `sie/options_iv.py` polished and fully wired. Added 5 new research items (0DTE Options Flow, Same-Day SEC EDGAR, FINRA Short Volume, Unified Multi-Platform Attention / Buzz Score, Gamma Exposure GEX).
+- **v2.15.0 (2026-08-07)**: Implemented **Options Implied Volatility Skew & Term Structure Overlay**. Module sie/options_iv.py polished and fully wired. Added 5 new research items (0DTE Options Flow, Same-Day SEC EDGAR, FINRA Short Volume, Unified Multi-Platform Attention / Buzz Score, Gamma Exposure GEX).
 - **v2.14.0**: Dark Pool / ATS Off-Exchange Flow Overlay.
 - **v2.13.0**: Real-time WebSocket Price & Quote Feeds.
 - **v2.12.0**: Congressional Trading Overlay.
@@ -39,6 +40,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.15.3 | Roadmap refresh + 5 new 2026 research items (Retail-Institutional Divergence, Zero-Shot LLM Materiality, Options Sweep/Block, Streamlit Fragment Hardening, Agentic Briefs) |
 | 2.15.2 | Roadmap restore + 5 new 2026 research items (Authenticity filter, LLM ESG, Event Surprise, CBOE UOA, VEX) |
 | 2.15.1 | Roadmap refresh + 5 new 2026 research items |
 | 2.15.0 | Options IV Skew & Term Structure Overlay |
