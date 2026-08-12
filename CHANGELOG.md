@@ -1,3 +1,15 @@
+## [2.15.4] - 2026-08-12
+
+### Changed
+- Autonomous research & evolution cycle (August 12, 2026). Full code audit of all sie/ modules (options_iv, dark_pool, realtime, analyzer, congressional, institutional, prediction_markets, insider, social, portfolio, etc.), app.py, stock_intelligence_engine.py, config.yaml and supporting files confirmed **no additional open FUTURE-IMPROVEMENTS items** were newly implemented since v2.15.3. Roadmap remains accurate.
+- Version bumped to **2.15.4** across stock_intelligence_engine.py, app.py, sie/__init__.py, README, CHANGELOG, FUTURE-IMPROVEMENTS and entry-point headers.
+
+### Added
+- Five new high-value improvements from fresh August 12 2026 research (NEXUS multi-modal news-price assimilation, MarketPsych trust indices, 2026 wash-trading risk dashboards, Streamlit + WebSocket production patterns, ICAART competing-narratives agent models):
+  - **High Priority**: Delayed News-Price Assimilation Lag Detector; Social Trust / Narrative Credibility Index
+  - **Medium Priority**: Suspicious Volume & Wash-Trading Risk Proxy; True Push-Style WebSocket Dashboard Updates
+  - **Long-Term**: Competing-Narratives Agent-Based Stress Tester
+
 ## [2.15.3] - 2026-08-11
 
 ### Changed
