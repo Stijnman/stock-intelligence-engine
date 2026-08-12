@@ -38,6 +38,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Zero-Shot LLM Headline Materiality & Direction Classifier**: Beyond FinBERT polarity, apply lightweight zero-shot or prompt-based LLM classification (inspired by 2026 ECB / QLoRA financial NLP advances) to score each headline for expected short-horizon price impact magnitude and directional bias. Weight high-materiality items more heavily inside narrative velocity and event composites. Surface materiality score and reason.
 
+- [ ] **Delayed News-Price Assimilation Lag Detector**: Detect and score the temporal lag between high-materiality news/narrative spikes and subsequent price response (inspired by NEXUS multi-modal news-exchange framework, 2026). Flag regimes of delayed assimilation or prolonged informational persistence for opportunistic signal timing and confidence adjustment. Surface lag_days, persistence score, and reason. Configurable via `assimilation:` section.
+
+- [ ] **Social Trust / Narrative Credibility Index**: Composite credibility score combining source authenticity filters, cross-platform consistency, and MarketPsych-style trust signals. Re-weights narrative velocity and phase forecasts to down-rank low-trust or coordinated campaigns while amplifying high-credibility retail/institutional voices.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -79,6 +83,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Options Sweep & Block Unusual Activity Proxy**: From free/delayed options chains (yfinance or CBOE public files), detect volume/OI and premium patterns consistent with sweeps or large block trades. Flag directional flow with size and confidence thresholds; soft confirmation layer that complements existing options_iv and 0DTE proxies. Surface sweep_score, side bias, and reason.
 
 - [ ] **Streamlit Fragment + Persistent Session Watchlist Hardening**: Full production hardening of the dashboard using `@st.fragment`, robust `st.session_state` for watchlist persistence, alert history, and user preferences, plus TTL-aware caching. Eliminates residual full-page rerun pressure and improves multi-session / cloud deployment stability.
+
+- [ ] **Suspicious Volume & Wash-Trading Risk Proxy**: Lightweight statistical detection of anomalous volume concentration, round-trip patterns or synthetic activity using free volume/tick proxies (inspired by 2026 wash-trading risk dashboards). Apply soft penalty and surface risk score when elevated synthetic volume risk is flagged. Configurable via `volume_integrity:` section.
+
+- [ ] **True Push-Style WebSocket Dashboard Updates**: Evolve the Streamlit dashboard beyond fragments and polling loops to persistent WebSocket-driven partial updates for live quotes, narrative velocity and signal deltas (2026 production Streamlit + WS patterns). Reduces latency and server load for multi-user / cloud deployments.
 
 ## Long-Term / Nice-to-Have
 
@@ -128,6 +136,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Agentic Multi-Document Research Brief Generator**: On-demand, cacheable LLM synthesis that pulls recent filings, news headlines, options/flow context and narrative velocity into a short structured research note per ticker. Extends existing Grok/xAI hook ideas with deterministic prompt templates and local/offline fallback.
 
+- [ ] **Competing-Narratives Agent-Based Stress Tester**: Lightweight agent-based simulation of competing narratives, herding and self-reinforcement dynamics (inspired by 2026 ICAART opinionated trader / narrative agent papers) to stress-test signal robustness and surface fragility scores under different narrative regimes.
+
 ## Completed
 
 - [x] **Backtesting Framework** (v2.6.0): Historical signal performance evaluation with Sharpe ratio and returns metrics. Integrated into CLI (`--backtest`), Streamlit dashboard (button), and analyzer. 2026-07-23
@@ -138,4 +148,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 11, 2026 (v2.15.3 autonomous research cycle)
+Last updated: August 12, 2026 (v2.15.4 autonomous research cycle)
