@@ -42,6 +42,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Social Trust / Narrative Credibility Index**: Composite credibility score combining source authenticity filters, cross-platform consistency, and MarketPsych-style trust signals. Re-weights narrative velocity and phase forecasts to down-rank low-trust or coordinated campaigns while amplifying high-credibility retail/institutional voices.
 
+- [ ] **Narrative Momentum Acceleration Detector**: Compute the second derivative (acceleration) of multi-source narrative velocity to detect accelerating hype or panic phases earlier than velocity alone. Apply soft boost/penalty on strong positive/negative acceleration and surface acceleration score, direction, and confidence. Configurable via `momentum_accel:` section.
+
+- [ ] **Unified Smart-Money Consensus Score**: Fuse insider Form 4 clusters, 13F ownership changes, congressional trades, dark-pool ratios, and options-flow proxies into a single 0–100 consensus score with agreement threshold. Raise overall signal confidence when multiple independent smart-money sources align; surface consensus level, contributing sources, and disagreement flags.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -87,6 +91,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Suspicious Volume & Wash-Trading Risk Proxy**: Lightweight statistical detection of anomalous volume concentration, round-trip patterns or synthetic activity using free volume/tick proxies (inspired by 2026 wash-trading risk dashboards). Apply soft penalty and surface risk score when elevated synthetic volume risk is flagged. Configurable via `volume_integrity:` section.
 
 - [ ] **True Push-Style WebSocket Dashboard Updates**: Evolve the Streamlit dashboard beyond fragments and polling loops to persistent WebSocket-driven partial updates for live quotes, narrative velocity and signal deltas (2026 production Streamlit + WS patterns). Reduces latency and server load for multi-user / cloud deployments.
+
+- [ ] **Sector vs Idiosyncratic Narrative Attribution**: Attribute the current narrative velocity and price action to sector-wide factors versus ticker-specific drivers using peer relative strength and co-mention metrics. Softly down-weight signals that are purely sector-driven when the ticker itself is lagging, and surface attribution percentages.
+
+- [ ] **Intraday Volume Profile Anomaly Detector**: Derive simple volume-profile and volume-delta proxies from free daily/intraday bars (yfinance or public sources) to flag unusual concentration of volume at extreme prices or persistent order-flow imbalance. Apply soft confirmation/penalty and surface anomaly score.
 
 ## Long-Term / Nice-to-Have
 
@@ -138,6 +146,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Competing-Narratives Agent-Based Stress Tester**: Lightweight agent-based simulation of competing narratives, herding and self-reinforcement dynamics (inspired by 2026 ICAART opinionated trader / narrative agent papers) to stress-test signal robustness and surface fragility scores under different narrative regimes.
 
+- [ ] **Automated Natural-Language Signal Explanation Generator**: Produce concise, human-readable explanations of why a given signal fired (or was withheld), citing the contributing narrative, technical, smart-money and overlay factors. Useful for auditability, Telegram alerts, and user trust. Rule-based first, optional LLM polish.
+
 ## Completed
 
 - [x] **Backtesting Framework** (v2.6.0): Historical signal performance evaluation with Sharpe ratio and returns metrics. Integrated into CLI (`--backtest`), Streamlit dashboard (button), and analyzer. 2026-07-23
@@ -148,4 +158,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 12, 2026 (v2.15.4 autonomous research cycle)
+Last updated: August 13, 2026 (v2.15.5 autonomous research cycle)
