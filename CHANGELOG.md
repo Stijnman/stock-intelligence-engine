@@ -1,3 +1,15 @@
+## [2.15.5] - 2026-08-13
+
+### Changed
+- Autonomous research & evolution cycle (August 13, 2026). Full code audit of all sie/ modules (options_iv, dark_pool, realtime, analyzer, congressional, institutional, prediction_markets, insider, social, portfolio, etc.), app.py, stock_intelligence_engine.py, config.yaml and supporting files confirmed **no additional open FUTURE-IMPROVEMENTS items** were newly implemented since v2.15.4. Roadmap remains accurate.
+- Version bumped to **2.15.5** across stock_intelligence_engine.py, app.py, sie/__init__.py, README, CHANGELOG, FUTURE-IMPROVEMENTS and entry-point headers.
+
+### Added
+- Five new high-value improvements from fresh August 13 2026 research (narrative velocity second-derivative signals, multi-source smart-money fusion, sector vs idiosyncratic attribution, free volume-profile proxies, automated NL explainability):
+  - **High Priority**: Narrative Momentum Acceleration Detector; Unified Smart-Money Consensus Score
+  - **Medium Priority**: Sector vs Idiosyncratic Narrative Attribution; Intraday Volume Profile Anomaly Detector
+  - **Long-Term**: Automated Natural-Language Signal Explanation Generator
+
 ## [2.15.4] - 2026-08-12
 
 ### Changed

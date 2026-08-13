@@ -2,7 +2,7 @@
 
 **Connect market narratives to your watchlist. Confirm with technicals. Explain every signal.**
 
-**v2.15.4** — August 2026 · Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.15.5** — August 2026 · Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 - Real-time signals with narrative intelligence
@@ -22,6 +22,7 @@
 - Telegram alerts (optional)
 
 ## Recent Edits & Version History
+- **v2.15.5 (2026-08-13)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.4. Added 5 new high-value 2026 research items (Narrative Momentum Acceleration Detector, Unified Smart-Money Consensus Score, Sector vs Idiosyncratic Narrative Attribution, Intraday Volume Profile Anomaly Detector, Automated Natural-Language Signal Explanation Generator). Version bump and docs sync.
 - **v2.15.4 (2026-08-12)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.3. Added 5 new high-value 2026 research items (Delayed News-Price Assimilation Lag Detector, Social Trust / Narrative Credibility Index, Suspicious Volume & Wash-Trading Risk Proxy, True Push-Style WebSocket Dashboard Updates, Competing-Narratives Agent-Based Stress Tester). Version bump and docs sync.
 - **v2.15.3 (2026-08-11)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.2. Added 5 new high-value 2026 research items (Retail-Institutional Sentiment Divergence Overlay, Zero-Shot LLM Headline Materiality & Direction Classifier, Options Sweep & Block Unusual Activity Proxy, Streamlit Fragment + Persistent Session Watchlist Hardening, Agentic Multi-Document Research Brief Generator). Version bump and docs sync.
 - **v2.15.2 (2026-08-09)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.1. Restored complete FUTURE-IMPROVEMENTS.md and README from prior cycle state. Added 5 new high-value 2026 research items (Authenticity-Filtered Narrative Velocity, LLM ESG Summary Sentiment Overlay, Event-Driven Surprise Composite, Free CBOE Delayed Options UOA Enhancer, Vanna Exposure (VEX) Proxy). Version bump and docs sync.
@@ -41,6 +42,7 @@
 
 | Version | Notes |
 |---------|--------|
+| 2.15.5 | Roadmap refresh + 5 new 2026 research items (Narrative Momentum Acceleration, Smart-Money Consensus, Sector Attribution, Volume Profile Anomaly, NL Signal Explainer) |
 | 2.15.4 | Roadmap refresh + 5 new 2026 research items (Assimilation Lag Detector, Social Trust Index, Wash-Trading Proxy, WebSocket Push Updates, Competing-Narratives Stress Tester) |
 | 2.15.3 | Roadmap refresh + 5 new 2026 research items (Retail-Institutional Divergence, Zero-Shot LLM Materiality, Options Sweep/Block, Streamlit Fragment Hardening, Agentic Briefs) |
 | 2.15.2 | Roadmap restore + 5 new 2026 research items (Authenticity filter, LLM ESG, Event Surprise, CBOE UOA, VEX) |
