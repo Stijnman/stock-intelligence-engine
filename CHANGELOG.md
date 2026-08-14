@@ -1,3 +1,21 @@
+## [2.16.2] - 2026-08-14
+
+### Changed
+- Replaced permissive CI smoke checks with blocking lint, test-suite, repository-hygiene, and CLI validation across Python 3.10–3.12.
+- Added `pytest.ini` to make the test layout and standard test invocation explicit.
+- Documented setup, execution, quality checks, and the repository structure in the README.
+- Aligned package, CLI, dashboard, README, and changelog release references to **2.16.2**.
+
+## [2.16.1] - 2026-08-14
+
+### Fixed
+- Repaired the package public API by replacing stale imports and exports with maintained symbols, restoring `import sie` and test discovery.
+- Wired the implemented 0DTE options-flow overlay through `analyze_watchlist`, `run_report`, and the CLI feature toggle.
+- Repaired the Streamlit dashboard's stale chart import and adapted it to render the report dictionary returned by `analyze_watchlist`.
+- Restored the advertised `--export` CLI path and report CSV generation that the CI smoke test invokes.
+- Added regression coverage for public exports and 0DTE option propagation.
+- Aligned package, CLI, and dashboard release references to **2.16.1**.
+
 ## [2.15.5] - 2026-08-13
 
 ### Changed

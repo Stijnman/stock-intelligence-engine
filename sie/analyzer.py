@@ -22,6 +22,7 @@ from sie.congressional import integrate_congressional_to_row
 from sie.realtime import integrate_realtime_to_row
 from sie.dark_pool import integrate_dark_pool_to_row
 from sie.options_iv import integrate_options_iv_to_row
+from sie.options_0dte import integrate_options_0dte_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -37,6 +38,7 @@ def analyze_watchlist(
     include_realtime: bool = True,
     include_dark_pool: bool = True,
     include_options_iv: bool = True,
+    include_options_0dte: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -140,6 +142,10 @@ def analyze_watchlist(
         if include_options_iv:
             row = integrate_options_iv_to_row(row, cfg)
 
+        # Same-day options flow overlay (v2.16.0)
+        if include_options_0dte:
+            row = integrate_options_0dte_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -163,6 +169,7 @@ def run_report(
     include_realtime: bool = True,
     include_dark_pool: bool = True,
     include_options_iv: bool = True,
+    include_options_0dte: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -181,6 +188,7 @@ def run_report(
         include_realtime=include_realtime,
         include_dark_pool=include_dark_pool,
         include_options_iv=include_options_iv,
+        include_options_0dte=include_options_0dte,
         lang=lang,
     )
     text = str(report)
@@ -203,7 +211,9 @@ def run_report(
 
     if export:
         from sie.export import export_csv
-        # keep original export path
-        pass
+
+        export_path = export_csv(report.get("rows", []), directory=export_dir)
+        result["export_path"] = str(export_path)
+        print(f"Exported report to {export_path}")
 
     return result

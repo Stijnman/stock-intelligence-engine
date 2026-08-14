@@ -1,7 +1,7 @@
-__version__ = "2.16.0"
+__version__ = "2.16.2"
 
 """
-Stock Intelligence Engine v2.16.0
+Stock Intelligence Engine v2.16.2
 0DTE Options Flow & Unusual Activity Proxy + Options Implied Volatility Skew & Term Structure Overlay +
 Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds +
 Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay +
@@ -15,9 +15,10 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.16.0")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.16.2")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
+    parser.add_argument("--export", action="store_true", help="Export the report to CSV")
     parser.add_argument("--no-insider", action="store_true", help="Disable insider Form 4 clustering")
     parser.add_argument("--no-pm", action="store_true", help="Disable prediction markets overlay")
     parser.add_argument("--no-13f", action="store_true", help="Disable institutional 13F overlay")
@@ -41,6 +42,7 @@ def main():
         include_options_iv=not args.no_options_iv,
         include_options_0dte=not args.no_options_0dte,
         backtest=args.backtest,
+        export=args.export,
     )
     print(report)
 

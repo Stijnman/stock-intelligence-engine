@@ -1,48 +1,67 @@
-"""Stock Intelligence Engine package."""
+"""Stock Intelligence Engine package public API."""
 
+from .alerts import send_email_report, send_telegram_message
 from .analyzer import analyze_watchlist, run_report
+from .backtest import backtest_watchlist, run_backtest
 from .config import load_config
-from .technical import compute_rsi, compute_ma
-from .social import scan_narratives
-from .news import fetch_headlines
-from .insider import compute_insider_overlay
-from .institutional import compute_institutional_overlay
-from .prediction_markets import compute_pm_overlay
-from .congressional import compute_congressional_overlay
-from .portfolio import compute_portfolio_overlay
-from .realtime import get_realtime_quotes
-from .dark_pool import compute_dark_pool_overlay
-from .options_iv import detect_options_iv, integrate_options_iv_to_row
-from .backtest import run_backtest
-from .alerts import send_alerts
-from .export import export_report
-from .charts import plot_correlation_heatmap
+from .congressional import detect_congressional_trades, integrate_congressional_to_row
+from .dark_pool import detect_dark_pool_flow, integrate_dark_pool_to_row
+from .export import export_csv
 from .i18n import t
+from .insider import detect_insider_cluster, integrate_insider_to_row
+from .institutional import detect_institutional_change, integrate_institutional_to_row
+from .news import fetch_headlines
+from .options_0dte import detect_options_0dte, integrate_options_0dte_to_row
+from .options_iv import detect_options_iv, integrate_options_iv_to_row
+from .portfolio import (
+    compute_portfolio_overlay,
+    correlation_heatmap_figure,
+    correlation_matrix,
+    portfolio_risk_metrics,
+)
+from .prediction_markets import (
+    detect_prediction_market_signal,
+    integrate_prediction_markets_to_row,
+)
+from .realtime import get_realtime_quote, integrate_realtime_to_row
+from .social import scan_narrative_intelligence
+from .technical import TechnicalSnapshot, analyze_ticker, compute_signal
 
 __all__ = [
+    "TechnicalSnapshot",
+    "analyze_ticker",
     "analyze_watchlist",
-    "run_report",
-    "load_config",
-    "compute_rsi",
-    "compute_ma",
-    "scan_narratives",
-    "fetch_headlines",
-    "compute_insider_overlay",
-    "compute_institutional_overlay",
-    "compute_pm_overlay",
-    "compute_congressional_overlay",
+    "backtest_watchlist",
     "compute_portfolio_overlay",
-    "get_realtime_quotes",
-    "compute_dark_pool_overlay",
-    "detect_options_iv",
-    "integrate_options_iv_to_row",
-    "run_backtest",
-    "send_alerts",
-    "export_report",
-    "plot_correlation_heatmap",
-    "t",
+    "compute_signal",
+    "correlation_heatmap_figure",
     "correlation_matrix",
+    "detect_congressional_trades",
+    "detect_dark_pool_flow",
+    "detect_insider_cluster",
+    "detect_institutional_change",
+    "detect_options_0dte",
+    "detect_options_iv",
+    "detect_prediction_market_signal",
+    "export_csv",
+    "fetch_headlines",
+    "get_realtime_quote",
+    "integrate_congressional_to_row",
+    "integrate_dark_pool_to_row",
+    "integrate_insider_to_row",
+    "integrate_institutional_to_row",
+    "integrate_options_0dte_to_row",
+    "integrate_options_iv_to_row",
+    "integrate_prediction_markets_to_row",
+    "integrate_realtime_to_row",
+    "load_config",
     "portfolio_risk_metrics",
+    "run_backtest",
+    "run_report",
+    "scan_narrative_intelligence",
+    "send_email_report",
+    "send_telegram_message",
+    "t",
 ]
 
-__version__ = "2.15.5"
+__version__ = "2.16.2"
