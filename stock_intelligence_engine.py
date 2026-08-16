@@ -1,13 +1,13 @@
-__version__ = "2.16.2"
+__version__ = "2.17.0"
 
 """
-Stock Intelligence Engine v2.16.2
+Stock Intelligence Engine v2.17.0
 0DTE Options Flow & Unusual Activity Proxy + Options Implied Volatility Skew & Term Structure Overlay +
 Dark Pool / ATS Off-Exchange Flow Overlay + Real-time WebSocket Price & Quote Feeds +
 Congressional Trading Overlay + Portfolio Correlation Heatmap & Risk Overlay +
 Institutional 13F Ownership Change Detector + Prediction Market Odds Overlay (Polymarket) +
 Insider Form 4 Clustering & Confirmation Signals + Multi-source Narrative Velocity Forecasting +
-Backtesting Framework + Real-time Dashboard.
+Backtesting Framework + Real-time Dashboard + Same-Day SEC EDGAR Material Filing Detector.
 """
 import argparse
 from sie.analyzer import run_report
@@ -15,7 +15,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.16.2")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.17.0")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--export", action="store_true", help="Export the report to CSV")
@@ -27,6 +27,7 @@ def main():
     parser.add_argument("--no-dark-pool", action="store_true", help="Disable dark pool overlay")
     parser.add_argument("--no-options-iv", action="store_true", help="Disable options IV skew overlay")
     parser.add_argument("--no-options-0dte", action="store_true", help="Disable 0DTE options flow overlay")
+    parser.add_argument("--no-edgar", action="store_true", help="Disable Same-Day SEC EDGAR filing detector")
     parser.add_argument("--lang", default="en", help="Language code")
     args = parser.parse_args()
 
@@ -41,6 +42,7 @@ def main():
         include_dark_pool=not args.no_dark_pool,
         include_options_iv=not args.no_options_iv,
         include_options_0dte=not args.no_options_0dte,
+        include_edgar=not args.no_edgar,
         backtest=args.backtest,
         export=args.export,
     )
