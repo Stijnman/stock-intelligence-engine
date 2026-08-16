@@ -2,7 +2,8 @@
 Multi-source Narrative Velocity Forecasting, Insider Form 4 Clustering, Prediction Market Odds Overlay,
 Institutional 13F Ownership Change Detector, Congressional Trading Overlay,
 Real-time WebSocket Quotes, Dark Pool / ATS Off-Exchange Flow Overlay,
-and Options Implied Volatility Skew & Term Structure Overlay.
+Options Implied Volatility Skew & Term Structure Overlay,
+0DTE Options Flow & Unusual Activity Proxy, and Same-Day SEC EDGAR Material Filing Detector.
 Backtesting integrated.
 """
 from __future__ import annotations
@@ -23,6 +24,7 @@ from sie.realtime import integrate_realtime_to_row
 from sie.dark_pool import integrate_dark_pool_to_row
 from sie.options_iv import integrate_options_iv_to_row
 from sie.options_0dte import integrate_options_0dte_to_row
+from sie.edgar import integrate_edgar_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -39,6 +41,7 @@ def analyze_watchlist(
     include_dark_pool: bool = True,
     include_options_iv: bool = True,
     include_options_0dte: bool = True,
+    include_edgar: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -146,6 +149,10 @@ def analyze_watchlist(
         if include_options_0dte:
             row = integrate_options_0dte_to_row(row, cfg)
 
+        # Same-Day SEC EDGAR Material Filing Detector (v2.18.0)
+        if include_edgar:
+            row = integrate_edgar_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -170,6 +177,7 @@ def run_report(
     include_dark_pool: bool = True,
     include_options_iv: bool = True,
     include_options_0dte: bool = True,
+    include_edgar: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -189,6 +197,7 @@ def run_report(
         include_dark_pool=include_dark_pool,
         include_options_iv=include_options_iv,
         include_options_0dte=include_options_0dte,
+        include_edgar=include_edgar,
         lang=lang,
     )
     text = str(report)
