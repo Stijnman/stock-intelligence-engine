@@ -2,6 +2,16 @@
 
 All notable changes to the Stock Intelligence Engine are documented in this file.
 
+## [2.18.1] - 2026-08-17
+
+### Changed
+* Autonomous research & evolution cycle (August 17, 2026). Full audit of core modules, analyzer, CLI, dashboard, config and docs confirmed all previously marked FUTURE-IMPROVEMENTS items remain accurately completed; no additional open items were found already implemented.
+* Version consistency fix: aligned package `__init__.py` version reference with 2.18.x line.
+* Five genuinely new high-value improvements from fresh 2026 research (earnings transcript guidance shifts, YouTube/influencer narrative velocity, web traffic & app download momentum, employee/Glassdoor outlook proxy, unusual options percentile/sweep ranking) added to FUTURE-IMPROVEMENTS.md under High and Medium Priority.
+
+### Added
+* Roadmap entries for Earnings Call Transcript Sentiment & Guidance Shift Detector, Finance YouTube / Influencer Narrative Velocity Overlay, Web Traffic & App Download Momentum Tracker (High Priority); Employee Outlook / Glassdoor Sentiment Proxy and Unusual Options Flow Percentile Ranking & Sweep Detector (Medium Priority).
+
 ## [2.18.0] - 2026-08-16
 
 ### Added
