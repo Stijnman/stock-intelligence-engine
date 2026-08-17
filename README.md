@@ -4,11 +4,12 @@
 Confirm with technicals.  
 Explain every signal.**
 
-**v2.18.1** — August 2026 · Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.19.0** — August 2026 · Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Corporate Hiring & Headcount Momentum Tracker** — Forward-looking demand proxy via open-role / headcount growth (soft boost on acceleration)
 * **Same-Day SEC EDGAR Material Filing Detector** — Fresh 8-K / material filings with tone & materiality soft boost/penalty
 * **0DTE Options Flow & Unusual Activity Proxy** — Near-expiry volume/OI spikes as short-horizon event / dealer-hedging signals
 * **Options Implied Volatility Skew & Term Structure Overlay** — Free yfinance (or synthetic) options chains → put/call IV skew + term-structure slope
@@ -45,6 +46,7 @@ streamlit run app.py
 --backtest          Run simple backtest
 --portfolio         Portfolio correlation & risk metrics
 --export            Export rows to CSV
+--no-hiring         Disable Corporate Hiring & Headcount Momentum Tracker
 --no-edgar          Disable Same-Day SEC EDGAR detector
 --no-options-0dte   Disable 0DTE options flow
 --no-options-iv     Disable IV skew overlay
@@ -61,6 +63,12 @@ streamlit run app.py
 Edit `config.yaml` (or rely on defaults in `sie/config.py`). New sections:
 
 ```yaml
+hiring:
+  enabled: true
+  boost_growth_pct: 8.0          # % open-role / headcount growth required for +1 boost
+  penalty_growth_pct: -5.0       # % contraction required for -1 penalty
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 edgar:
   enabled: true
   lookback_hours: 36
@@ -80,6 +88,7 @@ options_0dte:
 
 ## Recent Edits & Version History
 
+* **v2.19.0 (2026-08-17)**: Autonomous maintainer cycle. Fully implemented **Corporate Hiring & Headcount Momentum Tracker** (new `sie/hiring.py`, soft boost/penalty on hiring acceleration as demand proxy, dedicated dashboard table, CLI `--no-hiring`, config `hiring:` section). Version bump across all entry points. Marked complete in FUTURE-IMPROVEMENTS.md.
 * **v2.18.1 (2026-08-17)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy. Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (earnings transcript guidance shifts, YouTube/influencer velocity, web traffic/app download momentum, employee/Glassdoor outlook, unusual options percentile & sweeps). Version consistency fix across package. Version bump to 2.18.1.
 * **v2.18.0 (2026-08-16)**: Autonomous maintainer cycle. Fully integrated **Same-Day SEC EDGAR Material Filing Detector** into analyzer, CLI, dashboard and config. Confirmed 0DTE wiring and defaults. Restored README + CHANGELOG from placeholders. Marked both features complete in FUTURE-IMPROVEMENTS.md. Version bump across all entry points.
 * **v2.17.0**: Intermediate preparation of EDGAR + 0DTE surfaces.

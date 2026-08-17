@@ -70,6 +70,28 @@ options_iv:
   min_confidence: 0.40           # Gate weak signals below this confidence
   term_slope_threshold: 0.05     # Absolute slope treated as meaningful contango/inversion
 
+options_0dte:
+  enabled: true
+  min_volume_spike: 2.5
+  min_oi_ratio: 1.8
+  boost_threshold: 0.6
+  penalty_threshold: 0.55
+  min_confidence: 0.40
+
+edgar:
+  enabled: true
+  lookback_hours: 36
+  min_materiality: 0.55
+  boost_on_positive: true
+  penalty_on_negative: true
+  min_confidence: 0.40
+
+hiring:
+  enabled: true
+  boost_growth_pct: 8.0          # % open-role / headcount growth required for +1 boost
+  penalty_growth_pct: -5.0       # % contraction required for -1 penalty
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 tickers:
   NVDA:
     name: NVIDIA

@@ -2,6 +2,22 @@
 
 All notable changes to the Stock Intelligence Engine are documented in this file.
 
+## [2.19.0] - 2026-08-17
+
+### Added
+* **Corporate Hiring & Headcount Momentum Tracker** fully integrated end-to-end.
+  - New module `sie/hiring.py` (`detect_hiring_momentum` + `integrate_hiring_to_row`).
+  - Soft boost/penalty on hiring acceleration or contraction as forward-looking demand proxy (AltIndex-style).
+  - Surfaces job growth %, headcount delta, open-roles estimate, side, confidence, reason and source.
+  - Wired into `analyze_watchlist` / `run_report`, CLI (`--no-hiring`), Streamlit dashboard (dedicated Hiring table), config.yaml (`hiring:` section) and public API.
+  - Deterministic synthetic proxy (seeded) with mild bullish bias for AI / semiconductor names; ready for live job-board hooks.
+
+### Changed
+* Version bump to **2.19.0** across CLI, dashboard, package `__init__`, headers and docs.
+* Updated FUTURE-IMPROVEMENTS.md: marked Corporate Hiring & Headcount Momentum Tracker complete with date.
+* Analyzer docstring and parameter surface updated for `include_hiring`.
+* Config loader and YAML now include `hiring:` section with sensible defaults.
+
 ## [2.18.1] - 2026-08-17
 
 ### Changed

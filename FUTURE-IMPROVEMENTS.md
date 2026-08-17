@@ -26,7 +26,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Same-Day SEC EDGAR Material Filing Detector** (v2.18.0): Lightweight poll of EDGAR daily index / full-text search for watchlist tickers; detect fresh 8-K, Form 4 clusters or material item filings the same trading day and run quick FinBERT tone on key excerpts. Surface filing type, materiality flag, tone delta and link in dashboard + alerts. Configurable via `edgar:` section. Fully wired into analyzer, CLI, dashboard and config. 2026-08-16.
 
-- [ ] **Corporate Hiring & Headcount Momentum Tracker**: Lightweight free-tier or public signals for open job postings growth / headcount momentum as forward-looking demand proxy (AltIndex-style). Apply soft confirmation when hiring accelerates ahead of narrative.
+- [x] **Corporate Hiring & Headcount Momentum Tracker** (v2.19.0): Lightweight free-tier or public signals for open job postings growth / headcount momentum as forward-looking demand proxy (AltIndex-style). Apply soft confirmation when hiring accelerates ahead of narrative. Fully integrated into analyzer, CLI (`--no-hiring`), Streamlit dashboard (dedicated table), config.yaml (`hiring:` section) and public API. 2026-08-17.
 
 - [ ] **Narrative-Data Honesty / Contradiction Detector**: Cross-check dominant X/news narrative against recent filings, earnings language and price action for internal contradictions or “honesty signals” (inspired by 2026 NowNews / MarketPsych research). Flag high-contradiction regimes that historically precede reversals.
 
@@ -76,4 +76,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 17, 2026 (v2.18.1 — Autonomous research cycle: 5 new 2026-sourced improvements added; version consistency fix)
+Last updated: August 17, 2026 (v2.19.0 — Corporate Hiring & Headcount Momentum Tracker fully implemented)

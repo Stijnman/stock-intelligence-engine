@@ -7,6 +7,7 @@ from .config import load_config
 from .congressional import detect_congressional_trades, integrate_congressional_to_row
 from .dark_pool import detect_dark_pool_flow, integrate_dark_pool_to_row
 from .export import export_csv
+from .hiring import detect_hiring_momentum, integrate_hiring_to_row
 from .i18n import t
 from .insider import detect_insider_cluster, integrate_insider_to_row
 from .institutional import detect_institutional_change, integrate_institutional_to_row
@@ -38,6 +39,7 @@ __all__ = [
     "correlation_matrix",
     "detect_congressional_trades",
     "detect_dark_pool_flow",
+    "detect_hiring_momentum",
     "detect_insider_cluster",
     "detect_institutional_change",
     "detect_options_0dte",
@@ -48,6 +50,7 @@ __all__ = [
     "get_realtime_quote",
     "integrate_congressional_to_row",
     "integrate_dark_pool_to_row",
+    "integrate_hiring_to_row",
     "integrate_insider_to_row",
     "integrate_institutional_to_row",
     "integrate_options_0dte_to_row",
@@ -64,4 +67,4 @@ __all__ = [
     "t",
 ]
 
-__version__ = "2.18.1"
+__version__ = "2.19.0"
