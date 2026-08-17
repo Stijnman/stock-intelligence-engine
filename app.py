@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.18.0."""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.18.1."""
 
 import pandas as pd
 import streamlit as st
@@ -9,7 +9,7 @@ from sie.config import load_config
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(
-    "Stock Intelligence Engine v2.18.0 — Same-Day SEC EDGAR + 0DTE Options Flow + "
+    "Stock Intelligence Engine v2.18.1 — Same-Day SEC EDGAR + 0DTE Options Flow + "
     "Options IV Skew + Dark Pool / ATS Flow + Real-time Quotes + Congressional + "
     "Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + "
     "Narrative Velocity"
@@ -35,6 +35,6 @@ else:
     st.warning("No data returned. Check config and data sources.")
 
 st.caption(
-    "v2.18.0 — Same-Day SEC EDGAR Material Filing Detector fully integrated · 0DTE · Options IV · "
-    "Autonomous maintainer cycle"
+    "v2.18.1 — Same-Day SEC EDGAR Material Filing Detector fully integrated · 0DTE · Options IV · "
+    "Autonomous research cycle"
 )
