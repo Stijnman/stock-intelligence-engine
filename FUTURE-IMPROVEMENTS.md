@@ -46,6 +46,12 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Unified Smart-Money Consensus Score**: Fuse insider Form 4 clusters, 13F ownership changes, congressional trades, dark-pool ratios, and options-flow proxies into a single 0–100 consensus score with agreement threshold. Raise overall signal confidence when multiple independent smart-money sources align; surface consensus level, contributing sources, and disagreement flags.
 
+- [ ] **Earnings Call Transcript Sentiment & Guidance Shift Detector**: Ingest recent earnings call transcripts (public sources or free proxies) and apply FinBERT / lightweight LLM scoring to management tone, guidance language changes vs prior quarter, and Q&A sentiment. Flag positive/negative guidance shifts as high-materiality event overlays. Surface transcript tone delta, guidance direction, and confidence. Configurable via `earnings_transcript:` section. Inspired by 2026 SentiSense Earnings Analysis API and AlphaSense transcript sentiment indices.
+
+- [ ] **Finance YouTube / Influencer Narrative Velocity Overlay**: Track mention volume, sentiment, and velocity from curated finance YouTube channels and influencers (inspired by 2026 SentiSense YouTube-as-first-class source). Apply soft confirmation when influencer consensus aligns with X/news narrative or diverges as leading indicator. Surface channel-weighted velocity and key thesis summaries.
+
+- [ ] **Web Traffic & App Download Momentum Tracker**: Lightweight public or free-tier signals for company website traffic growth and consumer app download trends as forward-looking demand / engagement proxies (AltIndex-style). Soft boost when traffic/downloads accelerate ahead of price or narrative. Configurable via `web_traffic:` section.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -53,6 +59,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [x] **Portfolio Correlation Heatmap & Risk Overlay** (v2.11.0): Compute pairwise returns correlations and portfolio-level metrics (max drawdown, volatility, Sharpe of equal-weight basket) inside backtest + dashboard. Display interactive Plotly heatmap and risk summary for the full watchlist. New module `sie/portfolio.py`, CLI `--portfolio`, config `portfolio:` section. 2026-08-01
 
 - [ ] **Streamlit Partial Reruns + Advanced Caching (2026 patterns)**: Refactor dashboard to use `@st.fragment` for independent live-price and narrative sections, `st.cache_data` with TTL for yfinance/X calls, and avoid full-page `st.rerun()` loops where possible. Improves responsiveness and reduces API rate-limit pressure.
+
+- [ ] **Employee Outlook / Glassdoor Sentiment Proxy**: Aggregate public employee review trends, business outlook scores, and CEO approval as soft cultural / operational health signals. Research shows employee sentiment often leads retail narrative. Soft confirmation or early warning layer.
+
+- [ ] **Unusual Options Flow Percentile Ranking & Sweep Detector**: Extend 0DTE / options modules with market-wide percentile ranking of unusual activity, golden sweeps, and block trades (inspired by 2026 Unusual Whales / FlashAlpha / TickerDesk patterns). Surface relative unusualness score and directional bias for higher-conviction short-horizon signals.
 
 (Remaining medium and long-term items unchanged — see full file history.)
 
@@ -66,4 +76,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 16, 2026 (v2.18.0 — Same-Day SEC EDGAR Material Filing Detector fully integrated + docs restored)
+Last updated: August 17, 2026 (v2.18.1 — Autonomous research cycle: 5 new 2026-sourced improvements added; version consistency fix)
