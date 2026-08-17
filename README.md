@@ -4,7 +4,7 @@
 Confirm with technicals.  
 Explain every signal.**
 
-**v2.18.0** — August 2026 · Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.18.1** — August 2026 · Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 
@@ -80,6 +80,7 @@ options_0dte:
 
 ## Recent Edits & Version History
 
+* **v2.18.1 (2026-08-17)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy. Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (earnings transcript guidance shifts, YouTube/influencer velocity, web traffic/app download momentum, employee/Glassdoor outlook, unusual options percentile & sweeps). Version consistency fix across package. Version bump to 2.18.1.
 * **v2.18.0 (2026-08-16)**: Autonomous maintainer cycle. Fully integrated **Same-Day SEC EDGAR Material Filing Detector** into analyzer, CLI, dashboard and config. Confirmed 0DTE wiring and defaults. Restored README + CHANGELOG from placeholders. Marked both features complete in FUTURE-IMPROVEMENTS.md. Version bump across all entry points.
 * **v2.17.0**: Intermediate preparation of EDGAR + 0DTE surfaces.
 * **v2.16.x**: CI hardening, public API repair, docs.
