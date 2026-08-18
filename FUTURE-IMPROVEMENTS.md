@@ -52,6 +52,12 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Web Traffic & App Download Momentum Tracker**: Lightweight public or free-tier signals for company website traffic growth and consumer app download trends as forward-looking demand / engagement proxies (AltIndex-style). Soft boost when traffic/downloads accelerate ahead of price or narrative. Configurable via `web_traffic:` section.
 
+- [ ] **Short Interest & Securities Lending Squeeze Risk Overlay**: Track short interest percentage, days-to-cover, and borrow-fee trends (free/public proxies + synthetic fallback) as squeeze potential or elevated risk signals. Soft boost when rising short pressure coincides with positive narrative/technicals; caution flag on high short interest + negative catalysts. Surface SI%, DTC, fee trend, and confidence. Configurable via `short_interest:` section. Inspired by 2026 Unusual Whales / FlashAlpha / retail squeeze desks.
+
+- [ ] **Analyst Rating & Price Target Revision Velocity**: Monitor recent analyst upgrades/downgrades and consensus price-target revisions (yfinance / free rating proxies). Compute revision velocity and net rating change as confirmation layer for narrative + technical signals. Soft boost on clustered upgrades or upward PT revisions; penalty on downgrades. Surface net rating delta, PT change %, velocity score. Configurable via `analyst:` section. Aligns with 2026 Benzinga / Massive analyst-intelligence patterns.
+
+- [ ] **AI News Story Clustering & Multi-Perspective Impact Scoring**: Cluster related headlines into coherent market-moving stories using lightweight embeddings or keyword+entity grouping; assign multi-source impact scores (1–10) and perspective diversity metrics beyond single-headline FinBERT polarity. Weight high-impact, high-consensus stories more heavily in narrative velocity. Surface story cluster title, impact, source count, and reason. Configurable via `story_cluster:` section. Inspired by 2026 SentiSense / Nebula AI-clustered narratives.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -63,6 +69,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Employee Outlook / Glassdoor Sentiment Proxy**: Aggregate public employee review trends, business outlook scores, and CEO approval as soft cultural / operational health signals. Research shows employee sentiment often leads retail narrative. Soft confirmation or early warning layer.
 
 - [ ] **Unusual Options Flow Percentile Ranking & Sweep Detector**: Extend 0DTE / options modules with market-wide percentile ranking of unusual activity, golden sweeps, and block trades (inspired by 2026 Unusual Whales / FlashAlpha / TickerDesk patterns). Surface relative unusualness score and directional bias for higher-conviction short-horizon signals.
+
+- [ ] **MCP / Agent Tool Surface for Stock Intelligence Engine**: Expose core analysis functions (analyze_watchlist, signal overlays, narrative scan) as MCP-compatible tools so Claude, Grok, and other agents can call the engine natively. Aligns with the 2026 agent-first finance data trend (Alpha Vantage MCP, Lambda Finance MCP, SentiSense agent APIs). Includes tool schemas, authentication hooks, and rate-limit aware wrappers.
+
+- [ ] **Reddit Subreddit-Specific Momentum & WSB Cluster Detector**: Dedicated ingestion and scoring of r/wallstreetbets, r/stocks, r/investing mention volume, sentiment clusters, and coordinated retail flows as early attention / narrative leading indicators. Complements general X narrative with platform-specific retail heat maps. Soft confirmation when WSB clusters align with or lead broader narrative velocity. Configurable via `reddit:` section.
 
 (Remaining medium and long-term items unchanged — see full file history.)
 
@@ -76,4 +86,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 17, 2026 (v2.19.0 — Corporate Hiring & Headcount Momentum Tracker fully implemented)
+Last updated: August 18, 2026 (v2.19.1 — Autonomous research cycle; five new high-value 2026 items added)
