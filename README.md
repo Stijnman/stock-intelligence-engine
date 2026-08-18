@@ -4,7 +4,7 @@
 Confirm with technicals.  
 Explain every signal.**
 
-**v2.19.0** — August 2026 · Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.19.1** — August 2026 · Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 
@@ -42,20 +42,21 @@ streamlit run app.py
 
 ## CLI Flags
 
-```
---backtest          Run simple backtest
---portfolio         Portfolio correlation & risk metrics
---export            Export rows to CSV
---no-hiring         Disable Corporate Hiring & Headcount Momentum Tracker
---no-edgar          Disable Same-Day SEC EDGAR detector
---no-options-0dte   Disable 0DTE options flow
---no-options-iv     Disable IV skew overlay
---no-dark-pool      Disable dark-pool overlay
---no-realtime       Disable realtime quotes
---no-congress       Disable congressional overlay
---no-13f            Disable institutional 13F
---no-pm             Disable prediction markets
+```bash
+--backtest          Run backtest
+--portfolio         Show portfolio correlation & risk
+--export            Export report to CSV
 --no-insider        Disable insider Form 4
+--no-pm             Disable prediction markets
+--no-13f            Disable institutional 13F
+--no-congress       Disable congressional trading
+--no-realtime       Disable realtime quotes
+--no-dark-pool      Disable dark pool overlay
+--no-options-iv     Disable options IV skew
+--no-options-0dte   Disable 0DTE options flow
+--no-edgar          Disable Same-Day SEC EDGAR
+--no-hiring         Disable Corporate Hiring tracker
+--lang LANG         Language code (default en)
 ```
 
 ## Configuration
@@ -88,6 +89,7 @@ options_0dte:
 
 ## Recent Edits & Version History
 
+* **v2.19.1 (2026-08-18)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy (no completed-but-unmarked features). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (short-interest squeeze risk, analyst rating/PT revision velocity, AI news story clustering, MCP/agent tool surface, Reddit/WSB cluster detector). Version consistency bump across package.
 * **v2.19.0 (2026-08-17)**: Autonomous maintainer cycle. Fully implemented **Corporate Hiring & Headcount Momentum Tracker** (new `sie/hiring.py`, soft boost/penalty on hiring acceleration as demand proxy, dedicated dashboard table, CLI `--no-hiring`, config `hiring:` section). Version bump across all entry points. Marked complete in FUTURE-IMPROVEMENTS.md.
 * **v2.18.1 (2026-08-17)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy. Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (earnings transcript guidance shifts, YouTube/influencer velocity, web traffic/app download momentum, employee/Glassdoor outlook, unusual options percentile & sweeps). Version consistency fix across package. Version bump to 2.18.1.
 * **v2.18.0 (2026-08-16)**: Autonomous maintainer cycle. Fully integrated **Same-Day SEC EDGAR Material Filing Detector** into analyzer, CLI, dashboard and config. Confirmed 0DTE wiring and defaults. Restored README + CHANGELOG from placeholders. Marked both features complete in FUTURE-IMPROVEMENTS.md. Version bump across all entry points.
