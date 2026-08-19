@@ -1,7 +1,8 @@
-__version__ = "2.19.2"
+__version__ = "2.20.0"
 
 """
-Stock Intelligence Engine v2.19.2
+Stock Intelligence Engine v2.20.0
+LLM-Generated Bull/Bear Thesis Pair Generator +
 Corporate Hiring & Headcount Momentum Tracker +
 Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy +
 Options Implied Volatility Skew & Term Structure Overlay +
@@ -17,7 +18,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.19.2")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.20.0")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--export", action="store_true", help="Export the report to CSV")
@@ -31,6 +32,7 @@ def main():
     parser.add_argument("--no-options-0dte", action="store_true", help="Disable 0DTE options flow overlay")
     parser.add_argument("--no-edgar", action="store_true", help="Disable Same-Day SEC EDGAR filing detector")
     parser.add_argument("--no-hiring", action="store_true", help="Disable Corporate Hiring & Headcount Momentum Tracker")
+    parser.add_argument("--no-thesis", action="store_true", help="Disable LLM-Generated Bull/Bear Thesis Pair Generator")
     parser.add_argument("--lang", default="en", help="Language code")
     args = parser.parse_args()
 
@@ -47,6 +49,7 @@ def main():
         include_options_0dte=not args.no_options_0dte,
         include_edgar=not args.no_edgar,
         include_hiring=not args.no_hiring,
+        include_thesis=not args.no_thesis,
         backtest=args.backtest,
         export=args.export,
     )

@@ -27,6 +27,7 @@ from .prediction_markets import (
 from .realtime import get_realtime_quote, integrate_realtime_to_row
 from .social import scan_narrative_intelligence
 from .technical import TechnicalSnapshot, analyze_ticker, compute_signal
+from .thesis import generate_thesis_pair, integrate_thesis_to_row
 
 __all__ = [
     "TechnicalSnapshot",
@@ -47,6 +48,7 @@ __all__ = [
     "detect_prediction_market_signal",
     "export_csv",
     "fetch_headlines",
+    "generate_thesis_pair",
     "get_realtime_quote",
     "integrate_congressional_to_row",
     "integrate_dark_pool_to_row",
@@ -57,6 +59,7 @@ __all__ = [
     "integrate_options_iv_to_row",
     "integrate_prediction_markets_to_row",
     "integrate_realtime_to_row",
+    "integrate_thesis_to_row",
     "load_config",
     "portfolio_risk_metrics",
     "run_backtest",
@@ -67,4 +70,4 @@ __all__ = [
     "t",
 ]
 
-__version__ = "2.19.2"
+__version__ = "2.20.0"
