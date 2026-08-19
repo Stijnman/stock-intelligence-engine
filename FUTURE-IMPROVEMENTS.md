@@ -58,6 +58,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **AI News Story Clustering & Multi-Perspective Impact Scoring**: Cluster related headlines into coherent market-moving stories using lightweight embeddings or keyword+entity grouping; assign multi-source impact scores (1–10) and perspective diversity metrics beyond single-headline FinBERT polarity. Weight high-impact, high-consensus stories more heavily in narrative velocity. Surface story cluster title, impact, source count, and reason. Configurable via `story_cluster:` section. Inspired by 2026 SentiSense / Nebula AI-clustered narratives.
 
+- [ ] **Credit Card / Consumer Transaction Momentum Tracker**: Aggregate anonymized credit-card or consumer-transaction spend trends (free/public proxies + synthetic fallback) as high-frequency demand leading indicators for consumer-facing and retail-sensitive names. Soft boost when transaction volume / average ticket accelerates ahead of reported revenue or narrative; penalty on sustained contraction. Surface spend growth %, category mix shift, confidence. Configurable via `transaction:` section. Inspired by 2026 AltIndex / institutional alt-data handbooks and credit-card vendor signals.
+
+- [ ] **Options Gamma Exposure (GEX) / Dealer Positioning Overlay**: Compute approximate gamma exposure and dealer hedging pressure from free options chains (yfinance / public CBOE-style data) to flag regimes where dealers are long/short gamma and likely to amplify or dampen moves. Soft confirmation when positive GEX coincides with bullish narrative/technicals; caution on negative-gamma environments near key strikes. Surface net GEX, key gamma walls, and confidence. Configurable via `gex:` section. Aligns with 2026 FlashAlpha / Unusual Whales / dealer-positioning research.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -74,6 +78,12 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Reddit Subreddit-Specific Momentum & WSB Cluster Detector**: Dedicated ingestion and scoring of r/wallstreetbets, r/stocks, r/investing mention volume, sentiment clusters, and coordinated retail flows as early attention / narrative leading indicators. Complements general X narrative with platform-specific retail heat maps. Soft confirmation when WSB clusters align with or lead broader narrative velocity. Configurable via `reddit:` section.
 
+- [ ] **Satellite / Foot-Traffic / Geolocation Demand Proxy**: Lightweight public or free-tier signals for retail foot traffic, parking-lot occupancy, or geolocation heat (inspired by 2026 satellite alt-data research and SAIFIN-style multimodal frameworks). Soft boost when physical demand accelerates for brick-and-mortar or location-sensitive names. Configurable via `foot_traffic:` section.
+
+- [ ] **Social Follower Growth & Brand Momentum Tracker**: Track Instagram / X / TikTok / YouTube follower or engagement growth for public companies as brand-strength and retail-interest leading indicators (AltIndex-style social-follower signal). Soft confirmation when follower velocity rises ahead of price or narrative. Configurable via `social_followers:` section.
+
+- [ ] **LLM-Generated Bull/Bear Thesis Pair Generator**: On-demand or scheduled generation of balanced bullish and bearish thesis paragraphs for each watchlist ticker using lightweight LLM prompts grounded in current narrative, technicals, and overlay signals. Surfaces both sides with evidence citations for research transparency and bias checking. Configurable via `thesis:` section. Inspired by 2026 SentiSense AI Reports and NowNews dual-perspective patterns.
+
 (Remaining medium and long-term items unchanged — see full file history.)
 
 ## Completed
@@ -86,4 +96,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 18, 2026 (v2.19.1 — Autonomous research cycle; five new high-value 2026 items added)
+Last updated: August 19, 2026 (v2.19.2 — Autonomous research cycle; five new high-value 2026 items added)

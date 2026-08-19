@@ -4,7 +4,7 @@
 Confirm with technicals.  
 Explain every signal.**
 
-**v2.19.1** — August 2026 · Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.19.2** — August 2026 · Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 
@@ -89,9 +89,10 @@ options_0dte:
 
 ## Recent Edits & Version History
 
+* **v2.19.2 (2026-08-19)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy (no completed-but-unmarked features). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (Credit Card / Consumer Transaction Momentum Tracker, Options Gamma Exposure / Dealer Positioning Overlay, Satellite / Foot-Traffic / Geolocation Demand Proxy, Social Follower Growth & Brand Momentum Tracker, LLM-Generated Bull/Bear Thesis Pair Generator). Version consistency bump across package.
 * **v2.19.1 (2026-08-18)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy (no completed-but-unmarked features). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (short-interest squeeze risk, analyst rating/PT revision velocity, AI news story clustering, MCP/agent tool surface, Reddit/WSB cluster detector). Version consistency bump across package.
 * **v2.19.0 (2026-08-17)**: Autonomous maintainer cycle. Fully implemented **Corporate Hiring & Headcount Momentum Tracker** (new `sie/hiring.py`, soft boost/penalty on hiring acceleration as demand proxy, dedicated dashboard table, CLI `--no-hiring`, config `hiring:` section). Version bump across all entry points. Marked complete in FUTURE-IMPROVEMENTS.md.
-* **v2.18.1 (2026-08-17)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy. Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (earnings transcript guidance shifts, YouTube/influencer velocity, web traffic/app download momentum, employee/Glassdoor outlook, unusual options percentile & sweeps). Version consistency fix across package. Version bump to 2.18.1.
+* **v2.18.1 (2026-08-17)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.4. Added 5 new high-value 2026 research items (Narrative Momentum Acceleration Detector, Unified Smart-Money Consensus Score, Sector vs Idiosyncratic Narrative Attribution, Intraday Volume Profile Anomaly Detector, Automated Natural-Language Signal Explanation Generator). Version bump and docs sync.
 * **v2.18.0 (2026-08-16)**: Autonomous maintainer cycle. Fully integrated **Same-Day SEC EDGAR Material Filing Detector** into analyzer, CLI, dashboard and config. Confirmed 0DTE wiring and defaults. Restored README + CHANGELOG from placeholders. Marked both features complete in FUTURE-IMPROVEMENTS.md. Version bump across all entry points.
 * **v2.17.0**: Intermediate preparation of EDGAR + 0DTE surfaces.
 * **v2.16.x**: CI hardening, public API repair, docs.

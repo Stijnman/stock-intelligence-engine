@@ -1,3 +1,23 @@
+## [2.19.2] - 2026-08-19
+
+### Changed
+* Autonomous research & evolution cycle (2026-08-19).
+* Code audit of core modules (analyzer, hiring, edgar, options_0dte, options_iv, dark_pool, realtime, congressional, institutional, insider, prediction_markets, social, portfolio, CLI, dashboard, config) confirmed all previously marked-complete features remain fully implemented; no roadmap cleanups required.
+* Fresh 2026 research on AI-powered stock analysis tools, narrative intelligence, alternative data (credit-card / transaction, satellite / foot traffic, social followers), options dealer positioning (GEX), LLM thesis generation, and Streamlit / agent tooling patterns.
+
+### Added
+* Five new high-value roadmap items to FUTURE-IMPROVEMENTS.md:
+  - **Credit Card / Consumer Transaction Momentum Tracker** (High Priority)
+  - **Options Gamma Exposure (GEX) / Dealer Positioning Overlay** (High Priority)
+  - **Satellite / Foot-Traffic / Geolocation Demand Proxy** (Medium Priority)
+  - **Social Follower Growth & Brand Momentum Tracker** (Medium Priority)
+  - **LLM-Generated Bull/Bear Thesis Pair Generator** (Medium Priority)
+* Version bump to **2.19.2** across CLI, dashboard, package `__init__`, headers and docs.
+
+# Changelog
+
+All notable changes to the Stock Intelligence Engine are documented in this file.
+
 ## [2.19.1] - 2026-08-18
 
 ### Changed
@@ -13,10 +33,6 @@
   - **MCP / Agent Tool Surface for Stock Intelligence Engine** (Medium Priority)
   - **Reddit Subreddit-Specific Momentum & WSB Cluster Detector** (Medium Priority)
 * Version bump to **2.19.1** across CLI, dashboard, package `__init__`, headers and docs.
-
-# Changelog
-
-All notable changes to the Stock Intelligence Engine are documented in this file.
 
 ## [2.19.0] - 2026-08-17
 
