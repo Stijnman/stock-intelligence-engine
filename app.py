@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.20.1."""
+"""Stock Intelligence Engine — Streamlit Dashboard v2.20.2."""
 
 import pandas as pd
 import streamlit as st
@@ -9,7 +9,7 @@ from sie.config import load_config
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(
-    "Stock Intelligence Engine v2.20.1 — LLM Bull/Bear Thesis + "
+    "Stock Intelligence Engine v2.20.2 — LLM Bull/Bear Thesis (fully wired) + "
     "Corporate Hiring & Headcount Momentum + Same-Day SEC EDGAR + 0DTE Options Flow + "
     "Options IV Skew + Dark Pool / ATS Flow + Real-time Quotes + Congressional + "
     "Portfolio Correlation + Institutional 13F + Prediction Markets + Insider Clusters + Narrative Velocity"
@@ -43,6 +43,6 @@ else:
     st.warning("No analysis rows returned.")
 
 st.caption(
-    "v2.20.1 — LLM-Generated Bull/Bear Thesis Pair Generator fully integrated · Hiring · EDGAR · 0DTE · Options IV · "
+    "v2.20.2 — LLM-Generated Bull/Bear Thesis Pair Generator fully wired end-to-end · Hiring · EDGAR · 0DTE · Options IV · "
     "Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity"
 )

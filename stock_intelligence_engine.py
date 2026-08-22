@@ -1,8 +1,8 @@
-__version__ = "2.20.0"
+__version__ = "2.20.2"
 
 """
-Stock Intelligence Engine v2.20.0
-LLM-Generated Bull/Bear Thesis Pair Generator +
+Stock Intelligence Engine v2.20.2
+LLM-Generated Bull/Bear Thesis Pair Generator (fully wired) +
 Corporate Hiring & Headcount Momentum Tracker +
 Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy +
 Options Implied Volatility Skew & Term Structure Overlay +
@@ -18,7 +18,7 @@ from sie.config import load_config
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.20.0")
+    parser = argparse.ArgumentParser(description="Stock Intelligence Engine v2.20.2")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--export", action="store_true", help="Export the report to CSV")
