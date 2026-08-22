@@ -28,6 +28,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **Corporate Hiring & Headcount Momentum Tracker** (v2.19.0): Lightweight free-tier or public signals for open job postings growth / headcount momentum as forward-looking demand proxy (AltIndex-style). Apply soft confirmation when hiring accelerates ahead of narrative. Fully integrated into analyzer, CLI (`--no-hiring`), Streamlit dashboard (dedicated table), config.yaml (`hiring:` section) and public API. 2026-08-17.
 
+- [x] **LLM-Generated Bull/Bear Thesis Pair Generator** (v2.20.0 / fully wired v2.20.2): On-demand generation of balanced bullish and bearish thesis paragraphs for each watchlist ticker using a lightweight structured-prompt generator grounded in current narrative, technicals, and all overlay signals. Surfaces both sides with evidence citations for research transparency and bias checking. Fully integrated into analyzer, CLI (`--no-thesis`), Streamlit dashboard (dedicated table), config.yaml (`thesis:` section) and public API. 2026-08-22.
+
 - [ ] **Narrative-Data Honesty / Contradiction Detector**: Cross-check dominant X/news narrative against recent filings, earnings language and price action for internal contradictions or “honesty signals” (inspired by 2026 NowNews / MarketPsych research). Flag high-contradiction regimes that historically precede reversals.
 
 - [ ] **Authenticity-Filtered Narrative Velocity**: Score X and Reddit posts for authenticity / bot likelihood (inspired by 2026 Rolli IQ authenticity scoring) before including them in narrative velocity and phase forecasts; reduces noise from coordinated campaigns and spam while preserving genuine retail/institutional voice signals.
@@ -62,6 +64,10 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Options Gamma Exposure (GEX) / Dealer Positioning Overlay**: Compute approximate gamma exposure and dealer hedging pressure from free options chains (yfinance / public CBOE-style data) to flag regimes where dealers are long/short gamma and likely to amplify or dampen moves. Soft confirmation when positive GEX coincides with bullish narrative/technicals; caution on negative-gamma environments near key strikes. Surface net GEX, key gamma walls, and confidence. Configurable via `gex:` section. Aligns with 2026 FlashAlpha / Unusual Whales / dealer-positioning research.
 
+- [ ] **Narrative Graph / Conversation Network Intelligence**: Build a lightweight subject/entity graph around each watchlist ticker from X + news co-mentions (inspired by 2026 Nebula Nebuliser). Size nodes by conversation volume, position by direction of attention flow, and surface the dominant related themes / competing narratives. Soft confirmation when the graph shows expanding positive mindshare; caution on contracting or hostile neighboring subjects. Configurable via `narrative_graph:` section.
+
+- [ ] **Self-Explaining AI Signal Brief Generator**: For every ticker produce a short (3–6 sentence) natural-language brief that explains *why* the current composite signal exists, citing the strongest supporting and conflicting overlays in plain English. Complements the longer Bull/Bear thesis pair with a decision-ready “what is happening right now and why” summary (inspired by 2026 Nebula asset-page AI overviews and NowNews Pulse). Surface brief text + key evidence tags in dashboard and alerts.
+
 ## Medium Priority
 
 - [x] **Real-time Streamlit Dashboard** (v2.5.0): Auto-refresh with st.rerun, configurable interval, live price/signal/narrative updates. Integrated into app.py with progress indicators. 2026-07-20
@@ -82,7 +88,11 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Social Follower Growth & Brand Momentum Tracker**: Track Instagram / X / TikTok / YouTube follower or engagement growth for public companies as brand-strength and retail-interest leading indicators (AltIndex-style social-follower signal). Soft confirmation when follower velocity rises ahead of price or narrative. Configurable via `social_followers:` section.
 
-- [ ] **LLM-Generated Bull/Bear Thesis Pair Generator**: On-demand or scheduled generation of balanced bullish and bearish thesis paragraphs for each watchlist ticker using lightweight LLM prompts grounded in current narrative, technicals, and overlay signals. Surfaces both sides with evidence citations for research transparency and bias checking. Configurable via `thesis:` section. Inspired by 2026 SentiSense AI Reports and NowNews dual-perspective patterns.
+- [ ] **Options Max Pain & Open-Interest Wall Detector**: From free options chains compute approximate max-pain strike and significant open-interest concentration “walls” for the nearest expirations. Soft confirmation when price approaches a high-OI call wall with supportive narrative; caution near put walls or when max-pain is far from spot. Surface max-pain level, nearest OI walls, and confidence. Configurable via `max_pain:` section. Aligns with 2026 FlashAlpha / dealer-positioning research.
+
+- [ ] **Pre-Market Theme Rotation & Volume Surge Scanner**: Detect unusual pre-market or early-session volume + narrative velocity shifts that signal theme rotation into or out of watchlist names (inspired by 2026 Gate / AI Potential Stocks scanners and retail desk flows). Soft boost on confirmed volume + positive narrative co-occurrence; surface surge magnitude, theme tags, and confidence. Configurable via `premarket:` section.
+
+- [ ] **Cross-Ticker Narrative Contagion Detector**: Measure narrative velocity and sentiment spillover between correlated or thematically linked tickers (e.g., NVDA → TSM / MU / CRDO). Flag when a strong narrative impulse in one name begins appearing in neighbors before price confirmation. Soft confirmation for early contagion; surface source ticker, lag, and strength. Configurable via `contagion:` section.
 
 (Remaining medium and long-term items unchanged — see full file history.)
 
@@ -96,4 +106,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [x] **VADER news sentiment coverage** (v2.6.1): Fully covered as automatic fallback inside news.py.
 
-Last updated: August 19, 2026 (v2.19.2 — Autonomous research cycle; five new high-value 2026 items added)
+Last updated: August 22, 2026 (v2.20.2 — Thesis fully wired; five new high-value 2026 research items added)
