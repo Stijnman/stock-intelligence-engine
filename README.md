@@ -4,11 +4,12 @@
 Confirm with technicals.  
 Explain every signal.**
 
-**v2.19.2** — August 2026 · Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.20.2** — August 2026 · LLM Bull/Bear Thesis (fully wired) + Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **LLM-Generated Bull/Bear Thesis Pair Generator** — Balanced, evidence-grounded bull and bear paragraphs for every ticker (deterministic structured generator, LLM-swappable)
 * **Corporate Hiring & Headcount Momentum Tracker** — Forward-looking demand proxy via open-role / headcount growth (soft boost on acceleration)
 * **Same-Day SEC EDGAR Material Filing Detector** — Fresh 8-K / material filings with tone & materiality soft boost/penalty
 * **0DTE Options Flow & Unusual Activity Proxy** — Near-expiry volume/OI spikes as short-horizon event / dealer-hedging signals
@@ -56,6 +57,7 @@ streamlit run app.py
 --no-options-0dte   Disable 0DTE options flow
 --no-edgar          Disable Same-Day SEC EDGAR
 --no-hiring         Disable Corporate Hiring tracker
+--no-thesis         Disable LLM Bull/Bear Thesis generator
 --lang LANG         Language code (default en)
 ```
 
@@ -64,6 +66,11 @@ streamlit run app.py
 Edit `config.yaml` (or rely on defaults in `sie/config.py`). New sections:
 
 ```yaml
+thesis:
+  enabled: true
+  min_evidence: 3
+  max_points_per_side: 4
+
 hiring:
   enabled: true
   boost_growth_pct: 8.0          # % open-role / headcount growth required for +1 boost
@@ -89,8 +96,9 @@ options_0dte:
 
 ## Recent Edits & Version History
 
+* **v2.20.2 (2026-08-22)**: Autonomous research & evolution cycle. Code audit discovered LLM Thesis was claimed complete but missing from analyzer orchestration; fully wired `include_thesis` + `integrate_thesis_to_row` into analyze_watchlist / run_report, CLI, dashboard data path and config. Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (Narrative Graph / Conversation Network Intelligence, Self-Explaining AI Signal Brief Generator, Options Max Pain & OI Wall Detector, Pre-Market Theme Rotation & Volume Surge Scanner, Cross-Ticker Narrative Contagion Detector). Version consistency bump across package.
+* **v2.20.1 (2026-08-21)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy (no completed-but-unmarked features). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (Credit Card / Consumer Transaction Momentum Tracker, Options Gamma Exposure / Dealer Positioning Overlay, Satellite / Foot-Traffic / Geolocation Demand Proxy, Social Follower Growth & Brand Momentum Tracker, LLM-Generated Bull/Bear Thesis Pair Generator). Version consistency bump across package.
 * **v2.19.2 (2026-08-19)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy (no completed-but-unmarked features). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (Credit Card / Consumer Transaction Momentum Tracker, Options Gamma Exposure / Dealer Positioning Overlay, Satellite / Foot-Traffic / Geolocation Demand Proxy, Social Follower Growth & Brand Momentum Tracker, LLM-Generated Bull/Bear Thesis Pair Generator). Version consistency bump across package.
-* **v2.19.1 (2026-08-18)**: Autonomous research & evolution cycle. Code audit confirmed roadmap accuracy (no completed-but-unmarked features). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (short-interest squeeze risk, analyst rating/PT revision velocity, AI news story clustering, MCP/agent tool surface, Reddit/WSB cluster detector). Version consistency bump across package.
 * **v2.19.0 (2026-08-17)**: Autonomous maintainer cycle. Fully implemented **Corporate Hiring & Headcount Momentum Tracker** (new `sie/hiring.py`, soft boost/penalty on hiring acceleration as demand proxy, dedicated dashboard table, CLI `--no-hiring`, config `hiring:` section). Version bump across all entry points. Marked complete in FUTURE-IMPROVEMENTS.md.
 * **v2.18.1 (2026-08-17)**: Autonomous research & evolution cycle. Full code audit of all sie/ modules, app.py, stock_intelligence_engine.py, config.yaml confirmed no additional open FUTURE-IMPROVEMENTS items newly implemented since v2.15.4. Added 5 new high-value 2026 research items (Narrative Momentum Acceleration Detector, Unified Smart-Money Consensus Score, Sector vs Idiosyncratic Narrative Attribution, Intraday Volume Profile Anomaly Detector, Automated Natural-Language Signal Explanation Generator). Version bump and docs sync.
 * **v2.18.0 (2026-08-16)**: Autonomous maintainer cycle. Fully integrated **Same-Day SEC EDGAR Material Filing Detector** into analyzer, CLI, dashboard and config. Confirmed 0DTE wiring and defaults. Restored README + CHANGELOG from placeholders. Marked both features complete in FUTURE-IMPROVEMENTS.md. Version bump across all entry points.

@@ -92,6 +92,11 @@ hiring:
   penalty_growth_pct: -5.0       # % contraction required for -1 penalty
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+thesis:
+  enabled: true
+  min_evidence: 3                # Minimum evidence items for higher confidence
+  max_points_per_side: 4         # Cap bullet points in each thesis paragraph
+
 tickers:
   NVDA:
     name: NVIDIA
