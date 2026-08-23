@@ -1,3 +1,19 @@
+## [2.20.3] - 2026-08-23
+
+### Changed
+* Autonomous research & evolution cycle (2026-08-23).
+* Code audit of core modules (analyzer, hiring, edgar, options_*, dark_pool, realtime, congressional, institutional, insider, prediction_markets, social, portfolio, thesis, CLI, dashboard, config) confirmed all marked-complete features remain fully implemented; no roadmap cleanups required.
+* Fresh 2026 research on AltIndex / QuiverQuantitative alt-data (Wikipedia/pageview attention, patents, government contracts), FlashAlpha / SpotGamma extended dealer surfaces (vanna/charm/DEX), Nebula narrative graphs, SentiSense story clustering & YouTube, agentic self-critique / confidence calibration patterns, and Streamlit 2026 fragment best practices.
+
+### Added
+* Five new high-value 2026 research-backed roadmap items to FUTURE-IMPROVEMENTS.md:
+  - **Wikipedia / Google Trends Attention Momentum Tracker** (Medium Priority)
+  - **Patent Filing & IP Momentum Overlay** (Medium Priority)
+  - **Government Contract & Lobbying Activity Overlay** (Medium Priority)
+  - **Options Vanna / Charm / DEX Exposure Overlay** (High Priority)
+  - **Signal Confidence Calibration & LLM Self-Critique Layer** (High Priority)
+* Version bump to **2.20.3** across CLI, dashboard, package `__init__`, headers and docs.
+
 ## [2.20.2] - 2026-08-22
 
 ### Fixed / Completed
@@ -40,19 +56,3 @@
 * Autonomous research & evolution cycle (2026-08-21).
 * Code audit confirmed thesis module was present but incompletely wired; completed the integration and marked roadmap item complete.
 * Fresh 2026 research on AI stock tools (AltIndex, Nebula, NowNews, AlphaSense, Gate AI Potential Stocks), alternative data (web traffic, employee outlook, app usage), earnings transcript intelligence, and Streamlit real-time patterns.
-
-## [2.19.2] - 2026-08-19
-
-### Changed
-* Autonomous research & evolution cycle (2026-08-19).
-* Code audit of core modules (analyzer, hiring, edgar, options_0dte, options_iv, dark_pool, realtime, congressional, institutional, insider, prediction_markets, social, portfolio, CLI, dashboard, config) confirmed all previously marked-complete features remain fully implemented; no roadmap cleanups required.
-* Fresh 2026 research on AI-powered stock analysis tools, narrative intelligence, alternative data (credit-card / transaction, satellite / foot traffic, social followers), options dealer positioning (GEX), LLM thesis generation, and Streamlit / agent tooling patterns.
-
-### Added
-* Five new high-value roadmap items to FUTURE-IMPROVEMENTS.md:
-  - **Credit Card / Consumer Transaction Momentum Tracker** (High Priority)
-  - **Options Gamma Exposure (GEX) / Dealer Positioning Overlay** (High Priority)
-  - **Satellite / Foot-Traffic / Geolocation Demand Proxy** (Medium Priority)
-  - **Social Follower Growth & Brand Momentum Tracker** (Medium Priority)
-  - **LLM-Generated Bull/Bear Thesis Pair Generator** (Medium Priority)
-* Version bump to **2.19.2** across CLI, dashboard, package `__init__`, headers and docs.
