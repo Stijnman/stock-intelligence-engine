@@ -1,3 +1,19 @@
+## [2.20.4] - 2026-08-24
+
+### Changed
+* Autonomous research & evolution cycle (2026-08-24).
+* Code audit of core modules (analyzer, hiring, edgar, options_*, dark_pool, realtime, congressional, institutional, insider, prediction_markets, social, portfolio, thesis, CLI, dashboard, config) confirmed all marked-complete features remain fully implemented; no roadmap cleanups required.
+* Fresh 2026 research on SentiSense Earnings Analysis API / transcript diffs, AlphaSense guidance indices, FINRA short volume feeds, YouTube-as-first-class sentiment (SentiSense), Glassdoor/employee outlook (AltIndex), MCP servers for agent-native finance tools, Streamlit 1.61+ lazy dataframes & background cache refresh, Nebula narrative graphs, and Truth Social high-influence feeds.
+
+### Added
+* Five new high-value 2026 research-backed roadmap items to FUTURE-IMPROVEMENTS.md:
+  - **Earnings Call Transcript Diff & Guidance Change Detector** (High Priority)
+  - **Native MCP Server for Agent Integration** (High Priority)
+  - **FINRA Short Volume / Short Interest Momentum Overlay** (Medium Priority)
+  - **YouTube Finance Creator Sentiment Overlay** (Medium Priority)
+  - **Employee Glassdoor / Outlook Sentiment Tracker** (Medium Priority)
+* Version bump to **2.20.4** across CLI, dashboard, package `__init__`, headers and docs.
+
 ## [2.20.3] - 2026-08-23
 
 ### Changed

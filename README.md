@@ -1,1 +1,51 @@
-PLACEHOLDER
+# Stock Intelligence Engine
+
+**Connect market narratives to your watchlist.**  
+**Confirm with technicals.**  
+**Explain every signal.**
+
+**v2.20.4** — August 2026 · LLM Bull/Bear Thesis (fully wired) + Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+
+## Features
+
+* Real-time signals with narrative intelligence
+* **LLM-Generated Bull/Bear Thesis Pair Generator** — Balanced, evidence-grounded bull and bear paragraphs for every ticker (deterministic structured generator, LLM-swappable)
+* **Corporate Hiring & Headcount Momentum Tracker** — Forward-looking demand proxy via open-role / headcount growth (soft boost on acceleration)
+* **Same-Day SEC EDGAR Material Filing Detector** — Fresh 8-K / material filings with tone & materiality soft boost/penalty
+* **0DTE Options Flow & Unusual Activity Proxy** — Near-expiry volume/OI spikes as short-horizon event / dealer-hedging signals
+* Options Implied Volatility Skew & Term Structure Overlay
+* Dark Pool / ATS Off-Exchange Flow Overlay
+* Real-time WebSocket Price & Quote Feeds
+* Congressional Trading Overlay
+* Portfolio Correlation Heatmap & Risk Overlay
+* Institutional 13F Ownership Change Detector
+* Prediction Market Odds Overlay (Polymarket)
+* Insider Form 4 Clustering & Confirmation Signals
+* Multi-source Narrative Velocity Forecasting
+* Backtesting framework
+* Streamlit real-time dashboard
+
+## Quick Start
+
+```bash
+git clone https://github.com/Stijnman/stock-intelligence-engine.git
+cd stock-intelligence-engine
+python -m venv .venv
+source .venv/bin/activate   # or .venv\Scripts\activate on Windows
+pip install -r requirements.txt
+cp .env.example .env        # optional: add X bearer token, Telegram, etc.
+python stock_intelligence_engine.py
+streamlit run app.py
+```
+
+## Recent Edits & Version History
+
+* **v2.20.4 (2026-08-24)** : Autonomous research & evolution cycle. Code audit confirmed all previously marked-complete features remain fully implemented (thesis fully wired, hiring, EDGAR, 0DTE, IV skew, dark pool, realtime, congressional, 13F, Polymarket, insider, narrative velocity). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS: Earnings Call Transcript Diff & Guidance Change Detector, Native MCP Server for Agent Integration, FINRA Short Volume / Short Interest Momentum Overlay, YouTube Finance Creator Sentiment Overlay, Employee Glassdoor / Outlook Sentiment Tracker.
+* **v2.20.3 (2026-08-23)** : Autonomous research & evolution cycle. Added Wikipedia/Google Trends Attention, Patent/IP Momentum, Government Contract/Lobbying, Options Vanna/Charm/DEX, Signal Confidence Calibration & LLM Self-Critique.
+* **v2.20.2 (2026-08-22)** : Autonomous research & evolution cycle. Code audit discovered LLM Thesis was claimed complete but missing from analyzer orchestration; fully wired include_thesis + integrate_thesis_to_row into analyze_watchlist / run_report, CLI, dashboard data path and config. Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS (Narrative Graph / Conversation Network Intelligence, Self-Explaining AI Signal Brief Generator, Options Max Pain & OI Wall Detector, Pre-Market Theme Rotation & Volume Surge Scanner, Cross-Ticker Narrative Contagion Detector).
+
+## Disclaimer
+
+This is an educational research tool. Not financial advice. See DISCLAIMER.md.
+
+v2.20.4
