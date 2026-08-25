@@ -1,3 +1,26 @@
+## [2.21.0] - 2026-08-25
+
+### Fixed / Completed
+* **Self-Explaining AI Signal Brief Generator** — fully wired end-to-end (was present as `sie/brief.py` but missing from analyzer orchestration, CLI and config).
+  - `integrate_brief_to_row` now called inside `analyze_watchlist` / `run_report` after thesis.
+  - `include_brief` parameter added and respected by CLI `--no-brief`.
+  - `config.yaml` gains explicit `brief:` section (enabled by default).
+  - Streamlit dashboard receives brief columns via the shared analysis path.
+  - Version consistency restored across package `__init__`, CLI, dashboard, headers and docs (previously split between 2.20.4 / 2.21.0).
+
+### Changed
+* Autonomous research & evolution cycle (2026-08-25).
+* Code audit of core modules confirmed all other marked-complete features remain fully implemented; only the partial brief implementation required cleanup.
+* Fresh 2026 research on AltIndex digital-footprint signals (web traffic, app downloads), NowNews honesty / narrative-data contradiction detection, SentiSense / Fiscal.ai MCP patterns, agentic multi-perspective debate, Streamlit 1.37+ fragments + 1.61 lazy dataframes / background cache refresh, and continued options/dealer surface work.
+
+### Added
+* Five new high-value 2026 research-backed roadmap items to FUTURE-IMPROVEMENTS.md:
+  - **Narrative vs. Fundamentals Contradiction / Honesty Signal Detector** (High Priority)
+  - **Company Digital Footprint Momentum Overlay (Web Traffic + App Downloads)** (High Priority)
+  - **Agentic Multi-Perspective Signal Debate Layer** (Medium Priority)
+  - **Streamlit Fragment Live Dashboard Refresh** (Medium Priority)
+* Version bump to **2.21.0** across CLI, dashboard, package `__init__`, headers and docs.
+
 ## [2.20.4] - 2026-08-24
 
 ### Changed

@@ -4,7 +4,8 @@ Institutional 13F Ownership Change Detector, Congressional Trading Overlay,
 Real-time WebSocket Quotes, Dark Pool / ATS Off-Exchange Flow Overlay,
 Options Implied Volatility Skew & Term Structure Overlay,
 0DTE Options Flow & Unusual Activity Proxy, Same-Day SEC EDGAR Material Filing Detector,
-Corporate Hiring & Headcount Momentum Tracker, and LLM-Generated Bull/Bear Thesis Pair Generator.
+Corporate Hiring & Headcount Momentum Tracker, LLM-Generated Bull/Bear Thesis Pair Generator,
+and Self-Explaining AI Signal Brief Generator.
 Backtesting integrated.
 """
 from __future__ import annotations
@@ -28,6 +29,7 @@ from sie.options_0dte import integrate_options_0dte_to_row
 from sie.edgar import integrate_edgar_to_row
 from sie.hiring import integrate_hiring_to_row
 from sie.thesis import integrate_thesis_to_row
+from sie.brief import integrate_brief_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -47,6 +49,7 @@ def analyze_watchlist(
     include_edgar: bool = True,
     include_hiring: bool = True,
     include_thesis: bool = True,
+    include_brief: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -166,6 +169,10 @@ def analyze_watchlist(
         if include_thesis:
             row = integrate_thesis_to_row(row, cfg)
 
+        # Self-Explaining AI Signal Brief Generator (v2.21.0 fully wired)
+        if include_brief:
+            row = integrate_brief_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -193,6 +200,7 @@ def run_report(
     include_edgar: bool = True,
     include_hiring: bool = True,
     include_thesis: bool = True,
+    include_brief: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -215,6 +223,7 @@ def run_report(
         include_edgar=include_edgar,
         include_hiring=include_hiring,
         include_thesis=include_thesis,
+        include_brief=include_brief,
         lang=lang,
     )
     text = str(report)

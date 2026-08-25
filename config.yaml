@@ -97,6 +97,9 @@ thesis:
   min_evidence: 3                # Minimum evidence items for higher confidence
   max_points_per_side: 4         # Cap bullet points in each thesis paragraph
 
+brief:
+  enabled: true
+
 tickers:
   NVDA:
     name: NVIDIA
