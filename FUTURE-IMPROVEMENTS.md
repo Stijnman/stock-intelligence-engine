@@ -25,7 +25,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **YouTube Finance Creator Sentiment Overlay**. Treat major finance YouTube channels and ticker-specific video comments as a first-class sentiment source (alongside X and Reddit) with per-video and aggregate scores.
 - [ ] **Employee Glassdoor / Outlook Sentiment Tracker**. Use aggregated employee business-outlook and CEO-approval trends as a soft leading indicator of internal confidence (AltIndex-style).
 - [ ] **Agentic Multi-Perspective Signal Debate Layer**. Lightweight multi-agent loop that generates independent bull, bear, and neutral readings then produces a short consensus or dissent summary before the final signal is emitted.
-- [ ] **Streamlit Fragment Live Dashboard Refresh**. Upgrade the dashboard to use `@st.fragment(run_every=...)` for selective real-time updates of price/quote and key overlay cards without full-script reruns, leveraging Streamlit 1.37+ / 1.61 patterns.
+- [x] **Streamlit Fragment Live Dashboard Refresh** (completed 2026-08-26, v2.23.0). Upgrade the dashboard to use `@st.fragment(run_every=...)` for selective real-time updates of price/quote and key overlay cards without full-script reruns, leveraging Streamlit 1.37+ / 1.61 patterns. Fully wired in `app.py` with config-driven interval, cached analysis, live status metrics and Force Full Refresh.
 - [ ] **Cross-Platform Social Follower Growth Momentum**. Track follower count velocity across X, Instagram, TikTok, Threads and StockTwits as a durable attention / brand-momentum signal (AltIndex-style social signals).
 - [ ] **Dual-Score News Impact vs Tone Detector**. Separate pure linguistic sentiment from estimated short-term price-impact potential (Rhea-AI / StockTitan style) so high-impact neutral headlines and low-impact hype can be treated differently.
 - [ ] **Stratified Multi-Agent Research Report Generator**. Expand beyond thesis + brief into a full stratified report (facts vs inference vs disclaimer) with explicit evidence citations and multi-agent role specialization (news, fundamentals, technical, risk).
@@ -39,4 +39,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-26
+Last updated: 2026-08-26 (v2.23.0 — Streamlit Fragment Live Dashboard Refresh completed)
