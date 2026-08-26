@@ -100,6 +100,12 @@ thesis:
 brief:
   enabled: true
 
+honesty:
+  enabled: true
+  high_risk_threshold: 0.55      # Risk >= this → soft penalty / signal downgrade
+  mid_risk_threshold: 0.35       # Elevated observation threshold
+  min_confidence: 0.40           # Gate weak honesty signals below this confidence
+
 tickers:
   NVDA:
     name: NVIDIA

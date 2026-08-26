@@ -5,7 +5,7 @@ Real-time WebSocket Quotes, Dark Pool / ATS Off-Exchange Flow Overlay,
 Options Implied Volatility Skew & Term Structure Overlay,
 0DTE Options Flow & Unusual Activity Proxy, Same-Day SEC EDGAR Material Filing Detector,
 Corporate Hiring & Headcount Momentum Tracker, LLM-Generated Bull/Bear Thesis Pair Generator,
-and Self-Explaining AI Signal Brief Generator.
+Self-Explaining AI Signal Brief Generator, and Narrative vs. Fundamentals Contradiction / Honesty Signal Detector.
 Backtesting integrated.
 """
 from __future__ import annotations
@@ -30,6 +30,7 @@ from sie.edgar import integrate_edgar_to_row
 from sie.hiring import integrate_hiring_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
+from sie.honesty import integrate_honesty_to_row
 from sie.alerts import format_telegram_body, send_telegram_message
 from sie.backtest import backtest_watchlist
 
@@ -50,6 +51,7 @@ def analyze_watchlist(
     include_hiring: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
+    include_honesty: bool = True,
     lang: str = "en",
 ) -> dict[str, Any]:
     cfg = cfg or load_config()
@@ -173,6 +175,10 @@ def analyze_watchlist(
         if include_brief:
             row = integrate_brief_to_row(row, cfg)
 
+        # Narrative vs. Fundamentals Contradiction / Honesty Signal Detector (v2.22.0 fully wired)
+        if include_honesty:
+            row = integrate_honesty_to_row(row, cfg)
+
         rows.append(row)
 
     return {
@@ -201,6 +207,7 @@ def run_report(
     include_hiring: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
+    include_honesty: bool = True,
     export: bool = False,
     email: bool = False,
     telegram: bool = False,
@@ -224,6 +231,7 @@ def run_report(
         include_hiring=include_hiring,
         include_thesis=include_thesis,
         include_brief=include_brief,
+        include_honesty=include_honesty,
         lang=lang,
     )
     text = str(report)
