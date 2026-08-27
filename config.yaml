@@ -102,9 +102,16 @@ brief:
 
 honesty:
   enabled: true
-  high_risk_threshold: 0.55      # Risk >= this → soft penalty / signal downgrade
-  mid_risk_threshold: 0.35       # Elevated observation threshold
-  min_confidence: 0.40           # Gate weak honesty signals below this confidence
+  high_risk_threshold: 0.55
+  mid_risk_threshold: 0.35
+  min_confidence: 0.40
+
+confidence:
+  enabled: true
+  min_confidence: 0.15
+  max_confidence: 0.95
+  high_threshold: 0.70
+  mid_threshold: 0.45
 
 tickers:
   NVDA:
