@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.23.0"
+__version__ = "2.24.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -15,6 +15,7 @@ def main():
     parser.add_argument("--no-thesis", action="store_true", help="Disable thesis generation")
     parser.add_argument("--no-brief", action="store_true", help="Disable self-explaining signal brief")
     parser.add_argument("--no-honesty", action="store_true", help="Disable honesty / contradiction detector")
+    parser.add_argument("--no-confidence", action="store_true", help="Disable signal confidence calibration & self-critique")
     args = parser.parse_args()
     run_report(
         include_news=args.news or True,
@@ -23,6 +24,7 @@ def main():
         include_thesis=not args.no_thesis,
         include_brief=not args.no_brief,
         include_honesty=not args.no_honesty,
+        include_confidence=not args.no_confidence,
     )
 
 if __name__ == "__main__":
