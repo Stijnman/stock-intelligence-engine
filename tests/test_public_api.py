@@ -5,28 +5,35 @@ import sys
 
 import sie
 import stock_intelligence_engine as cli
+from sie.analyzer import analyze_watchlist, run_report
 
 
 def test_public_exports_resolve_to_real_symbols():
-    """Every documented package export must be importable from the package."""
-    missing = [name for name in sie.__all__ if not hasattr(sie, name)]
+    missing = [name for name in getattr(sie, "__all__", []) if not hasattr(sie, name)]
     assert not missing, f"Unresolved public exports: {missing}"
 
 
 def test_report_accepts_0dte_option_from_cli():
-    """The report interface must accept the CLI's 0DTE feature toggle."""
-    parameters = inspect.signature(sie.run_report).parameters
+    parameters = inspect.signature(run_report).parameters
     assert "include_options_0dte" in parameters
 
 
 def test_watchlist_accepts_0dte_option_from_report_runner():
-    """The watchlist interface must accept the report runner's 0DTE toggle."""
-    parameters = inspect.signature(sie.analyze_watchlist).parameters
+    parameters = inspect.signature(analyze_watchlist).parameters
     assert "include_options_0dte" in parameters
 
 
-def test_report_forwards_0dte_option_to_watchlist(monkeypatch):
-    """The CLI-facing report runner must forward the 0DTE toggle unchanged."""
+def test_new_overlay_flags_on_watchlist_and_report():
+    for fn in (analyze_watchlist, run_report):
+        params = inspect.signature(fn).parameters
+        assert "include_supply_chain" in params
+        assert "include_short_interest" in params
+        assert "include_attention" in params
+        assert "include_confidence" in params
+        assert "include_regime" in params
+
+
+def test_report_forwards_new_overlay_flags(monkeypatch):
     captured = {}
 
     def fake_watchlist(*args, **kwargs):
@@ -34,7 +41,36 @@ def test_report_forwards_0dte_option_to_watchlist(monkeypatch):
         return {"rows": []}
 
     monkeypatch.setattr("sie.analyzer.analyze_watchlist", fake_watchlist)
-    sie.run_report(
+    run_report(
+        include_news=False,
+        include_social=False,
+        include_insider=False,
+        include_pm=False,
+        include_institutional=False,
+        include_congressional=False,
+        include_realtime=False,
+        include_dark_pool=False,
+        include_options_iv=False,
+        include_options_0dte=False,
+        include_supply_chain=False,
+        include_short_interest=False,
+        include_attention=False,
+    )
+
+    assert captured["include_supply_chain"] is False
+    assert captured["include_short_interest"] is False
+    assert captured["include_attention"] is False
+
+
+def test_report_forwards_0dte_option_to_watchlist(monkeypatch):
+    captured = {}
+
+    def fake_watchlist(*args, **kwargs):
+        captured.update(kwargs)
+        return {"rows": []}
+
+    monkeypatch.setattr("sie.analyzer.analyze_watchlist", fake_watchlist)
+    run_report(
         include_news=False,
         include_social=False,
         include_insider=False,
@@ -51,14 +87,13 @@ def test_report_forwards_0dte_option_to_watchlist(monkeypatch):
 
 
 def test_report_exports_rows_when_requested(monkeypatch, tmp_path):
-    """Requesting an export must persist the produced watchlist rows."""
     report = {"rows": [{"ticker": "SIE"}]}
     export_path = tmp_path / "report.csv"
 
     monkeypatch.setattr("sie.analyzer.analyze_watchlist", lambda *args, **kwargs: report)
     monkeypatch.setattr("sie.export.export_csv", lambda rows, directory: export_path)
 
-    result = sie.run_report(
+    result = run_report(
         include_news=False,
         include_social=False,
         include_insider=False,
@@ -77,7 +112,6 @@ def test_report_exports_rows_when_requested(monkeypatch, tmp_path):
 
 
 def test_cli_export_switch_is_forwarded(monkeypatch):
-    """The command-line export switch must reach the report runner."""
     captured = {}
     monkeypatch.setattr(cli, "run_report", lambda **kwargs: captured.update(kwargs) or {})
     monkeypatch.setattr(sys, "argv", ["stock_intelligence_engine.py", "--export"])
@@ -85,3 +119,24 @@ def test_cli_export_switch_is_forwarded(monkeypatch):
     cli.main()
 
     assert captured["export"] is True
+
+
+def test_cli_forwards_new_overlay_disables(monkeypatch):
+    captured = {}
+    monkeypatch.setattr(cli, "run_report", lambda **kwargs: captured.update(kwargs) or {})
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "stock_intelligence_engine.py",
+            "--no-supply-chain",
+            "--no-short-interest",
+            "--no-attention",
+        ],
+    )
+
+    cli.main()
+
+    assert captured["include_supply_chain"] is False
+    assert captured["include_short_interest"] is False
+    assert captured["include_attention"] is False

@@ -1,11 +1,7 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.25.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.26.0.
 
-Streamlit Fragment Live Dashboard Refresh:
-- Uses @st.fragment(run_every=...) for selective auto-refresh of the live signal
-  table and status cards without full-script reruns.
-- Honours config.yaml dashboard.refresh_interval (seconds; 0 disables auto).
-- Manual "Force Full Refresh" still available for complete pipeline re-run.
-- Fully wired Signal Confidence Calibration & Self-Critique + Market Regime Adaptive Overlay Weighting.
+Streamlit Fragment Live Dashboard Refresh + Regime + Confidence +
+Supply-Chain CapEx + Short Interest + Attention Momentum.
 """
 from __future__ import annotations
 
@@ -18,7 +14,7 @@ import streamlit as st
 from sie.analyzer import analyze_watchlist
 from sie.config import load_config
 
-__version__ = "2.25.0"
+__version__ = "2.26.0"
 
 st.set_page_config(
     page_title="Stock Intelligence Engine",
@@ -26,9 +22,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ---------------------------------------------------------------------------
-# Sidebar controls
-# ---------------------------------------------------------------------------
 with st.sidebar:
     st.header("Dashboard Controls")
     cfg = load_config()
@@ -37,49 +30,33 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Fragment Live Refresh + Regime Adaptive Weighting + Confidence Calibration + Honesty Detector + "
-        "Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + "
-        "Congressional + 13F + Polymarket + Insider + Narrative Velocity"
+        f"**v{__version__}** — Supply-Chain CapEx + Short Interest + Attention + "
+        "Fragment Live Refresh + Regime + Confidence + Honesty + Thesis + Brief + "
+        "Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + "
+        "Polymarket + Insider + Narrative Velocity"
     )
 
-# ---------------------------------------------------------------------------
-# Title
-# ---------------------------------------------------------------------------
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
-    "Streamlit Fragment Live Dashboard Refresh + Market Regime Adaptive Overlay Weighting + "
-    "Signal Confidence Calibration + LLM Self-Critique + "
-    "LLM Bull/Bear Thesis + Self-Explaining Signal Brief + "
-    "Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + "
-    "0DTE Options Flow + Options IV Skew + Dark Pool / ATS Flow + Real-time Quotes + "
-    "Congressional + Portfolio Correlation + Institutional 13F + Prediction Markets + "
-    "Insider Clusters + Narrative Velocity"
+    "Supply-Chain CapEx + FINRA Short + Attention Momentum + "
+    "Regime Adaptive Weighting + Confidence Calibration + Thesis + Brief + Honesty"
 )
 
-# ---------------------------------------------------------------------------
-# Cached full analysis (expensive path)
-# ---------------------------------------------------------------------------
 @st.cache_data(ttl=300, show_spinner=False)
 def _run_full_analysis(_cfg_hash: str, cfg: dict[str, Any]) -> dict[str, Any]:
-    """Run the complete analysis pipeline. Cache keyed by a simple config fingerprint."""
     return analyze_watchlist(cfg)
 
 
 def _cfg_fingerprint(cfg: dict[str, Any]) -> str:
-    """Cheap stable fingerprint so cache invalidates when watchlist/theme changes."""
     tickers = sorted((cfg.get("tickers") or {}).keys())
     theme = (cfg.get("narrative") or {}).get("theme", "")
     return f"{theme}|{','.join(tickers)}"
 
 
-# Force full refresh clears cache and re-runs
 if force_full:
     st.cache_data.clear()
     st.rerun()
 
-# ---------------------------------------------------------------------------
-# Live status fragment (lightweight, runs every N seconds)
-# ---------------------------------------------------------------------------
 @st.fragment(run_every=refresh_interval if refresh_interval > 0 else None)
 def live_status_fragment() -> None:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -99,9 +76,6 @@ def live_status_fragment() -> None:
 
 live_status_fragment()
 
-# ---------------------------------------------------------------------------
-# Main signal table fragment (also on the same timer)
-# ---------------------------------------------------------------------------
 @st.fragment(run_every=refresh_interval if refresh_interval > 0 else None)
 def signal_table_fragment() -> None:
     with st.spinner("Loading / refreshing analysis…"):
@@ -112,10 +86,13 @@ def signal_table_fragment() -> None:
         return
 
     df = pd.DataFrame(rows)
-    # Prefer a readable column order if present
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price", "change_pct",
-        "confidence_score", "confidence_label", "market_regime", "regime_confidence", "honesty_risk", "honesty_label",
+        "confidence_score", "confidence_label", "market_regime", "regime_confidence",
+        "sc_capex_score", "sc_side", "sc_boost",
+        "si_ratio", "si_boost",
+        "attn_momentum", "attn_boost",
+        "honesty_risk", "honesty_label",
         "brief", "thesis_bull", "thesis_bear",
         "narrative_phase", "velocity", "reasons",
     ]
@@ -132,7 +109,6 @@ def signal_table_fragment() -> None:
         hide_index=True,
     )
 
-    # Quick summary metrics
     if "signal" in df.columns:
         buys = (df["signal"].astype(str).str.contains("buy", case=False, na=False)).sum()
         holds = (df["signal"].astype(str).str.contains("hold", case=False, na=False)).sum()
@@ -146,13 +122,10 @@ def signal_table_fragment() -> None:
 
 signal_table_fragment()
 
-# ---------------------------------------------------------------------------
-# Footer
-# ---------------------------------------------------------------------------
 st.divider()
 st.caption(
-    f"v{__version__} — Streamlit Fragment Live Dashboard Refresh + Market Regime Adaptive Overlay Weighting fully wired · "
-    "Confidence Calibration · Honesty Signal Detector · Thesis · Brief · Hiring · EDGAR · 0DTE · Options IV · "
+    f"v{__version__} — Supply-Chain CapEx + FINRA Short + Attention Momentum fully wired · "
+    "Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · Options IV · "
     "Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
     "Educational research tool only — not financial advice."
 )
