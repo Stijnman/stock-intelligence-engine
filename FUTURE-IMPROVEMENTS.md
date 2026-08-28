@@ -12,17 +12,17 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Satellite Imagery / Geolocation Foot-Traffic & Parking Activity Overlay**. Earth-observation derived proxies (car counts, store/parking occupancy, night lights) as real-economy activity confirmation for retail, industrial and consumer names; soft boost when activity diverges positively from pure narrative heat.
 - [ ] **AI Token Consumption / AI Premium Factor Overlay**. Track firm-level or sector exposure to realized AI token usage growth (OpenRouter-style intensive margin) and compute an AI-beta style premium signal; useful for identifying names that benefit from or are disrupted by frontier AI adoption.
 - [x] **Market Regime Adaptive Overlay Weighting** (completed 2026-08-28, v2.25.0). Dynamically re-weight technical, narrative, flow and fundamental overlays according to current market regime (VIX terciles, trend strength, realized volatility); reduce narrative weight in high-vol regimes and increase flow/technical weight when trends are strong. Fully wired in `sie/regime.py` + analyzer + CLI + dashboard + config.
-- [ ] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker**. Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM equipment peers) as a leading indicator for inference-related names on the watchlist.
+- [x] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** (completed 2026-08-28, v2.26.0). Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM). Fully wired in `sie/supply_chain.py` + analyzer + CLI (`--no-supply-chain`) + dashboard + config. Uses yfinance peek when available, otherwise labeled synthetic proxy.
 
 ## Medium Priority
 
 - [ ] **Options Max Pain & Open-Interest Wall Detector**. Surface max-pain levels and large OI walls as soft context for short-horizon signals.
 - [ ] **Pre-Market Theme Rotation & Volume Surge Scanner**. Detect unusual pre-market volume + theme keyword spikes to flag potential narrative rotation before the open.
 - [ ] **Cross-Ticker Narrative Contagion Detector**. Measure when attention or sentiment on one ticker rapidly transfers to correlated names inside the same theme.
-- [ ] **Wikipedia / Google Trends Attention Momentum Tracker**. Use pageview / search interest momentum as an early retail-attention proxy.
+- [x] **Wikipedia / Google Trends Attention Momentum Tracker** (completed 2026-08-28, v2.26.0). Use pageview / search interest momentum as an early retail-attention proxy. Fully wired in `sie/attention.py` + analyzer + CLI (`--no-attention`) + dashboard + config. Wikimedia pageviews when reachable, else synthetic proxy.
 - [ ] **Patent Filing & IP Momentum Overlay**. Track recent patent grants and applications as a forward-looking R&D / moat signal for tech names.
 - [ ] **Government Contract & Lobbying Activity Overlay**. Surface material new contracts or lobbying spikes (Quiver-style) as soft fundamental confirmation.
-- [ ] **FINRA Short Volume / Short Interest Momentum Overlay**. Ingest daily FINRA short-volume ratios and short-interest changes; treat elevated short volume against a rising narrative as a caution flag and short covering as a potential boost.
+- [x] **FINRA Short Volume / Short Interest Momentum Overlay** (completed 2026-08-28, v2.26.0). Ingest daily FINRA short-volume ratios and short-interest changes; treat elevated short volume against a rising narrative as a caution flag and short covering as a potential boost. Fully wired in `sie/short_interest.py` + analyzer + CLI (`--no-short-interest`) + dashboard + config. Current source is a labeled synthetic proxy; live FINRA CSV is an explicit future hook.
 - [ ] **YouTube Finance Creator Sentiment Overlay**. Treat major finance YouTube channels and ticker-specific video comments as a first-class sentiment source (alongside X and Reddit) with per-video and aggregate scores.
 - [ ] **Employee Glassdoor / Outlook Sentiment Tracker**. Use aggregated employee business-outlook and CEO-approval trends as a soft leading indicator of internal confidence (AltIndex-style).
 - [ ] **Agentic Multi-Perspective Signal Debate Layer**. Lightweight multi-agent loop that generates independent bull, bear, and neutral readings then produces a short consensus or dissent summary before the final signal is emitted.
@@ -44,4 +44,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-28 (v2.25.0 — Market Regime Adaptive Overlay Weighting completed)
+Last updated: 2026-08-28 (v2.26.0 — Supply-Chain CapEx + FINRA Short + Attention Momentum completed)

@@ -1,3 +1,27 @@
+## [2.26.0] - 2026-08-28
+
+### Added / Completed
+* **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** — `sie/supply_chain.py`.
+  - Seeded proxy plus optional yfinance peek on ASML / AMAT / LRCX / KLAC / TSM.
+  - Surfaces `sc_capex_score`, `sc_side`, `sc_boost`, `sc_confidence`, `sc_reason`, `sc_source`.
+  - Soft boost/penalty; source labeled `public_yfinance` or `synthetic_proxy`.
+  - Wired after hiring / before thesis. CLI `--no-supply-chain`.
+* **FINRA Short Volume / Short Interest Momentum Overlay** — `sie/short_interest.py`.
+  - Deterministic short-volume ratio + change proxy.
+  - Elevated short volume vs rising narrative → caution; covering + hot narrative → boost.
+  - Fields `si_ratio`, `si_change`, `si_boost`, `si_confidence`, `si_reason`, `si_source`.
+  - CLI `--no-short-interest`. Live FINRA CSV left as an explicit future hook (no invented API).
+* **Wikipedia / Google Trends Attention Momentum Tracker** — `sie/attention.py`.
+  - Optional stdlib Wikimedia pageview WoW momentum; fallback synthetic proxy.
+  - Fields `attn_momentum`, `attn_boost`, `attn_confidence`, `attn_reason`, `attn_source`.
+  - CLI `--no-attention`.
+* Tests cover signature + `run_report` forwarding + CLI disable flags for the three overlays.
+* Added missing `DISCLAIMER.md` and `CONTRIBUTING.md` (README already linked them).
+
+### Changed
+* Autonomous implementation cycle (2026-08-28). Honest batch of 3 overlays.
+* Version bumped to **2.26.0** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.25.0] - 2026-08-28
 
 ### Added / Completed
@@ -26,8 +50,6 @@
 
 ### Changed
 * Autonomous research & evolution cycle (2026-08-28).
-* Code audit confirmed all other marked-complete features remain fully implemented; only the partial confidence implementation required cleanup and full wiring.
-* Fresh 2026 research on Fiscal.ai MCP patterns, MoatScan AI-impact scoring, Rhea-AI dual impact+tone, satellite/EO foot-traffic, AI token consumption / AI-premium factors, Streamlit fragment + background patterns, earnings-call narrative morphing (arXiv), and supply-chain CapEx leading indicators.
 
 ### Added
 * Five new high-value 2026 research-backed roadmap items to FUTURE-IMPROVEMENTS.md:
@@ -36,4 +58,3 @@
   - **Earnings Call Audio Tone & Prosody Sentiment Layer** (Medium Priority)
   - **Vision-Model Chart Pattern & Anomaly Detector** (Medium Priority)
   - **Open-Source Factor Risk Decomposition Overlay** (Medium Priority)
-* Version bump to **2.24.0** across CLI, dashboard, package `__init__`, headers and docs.
