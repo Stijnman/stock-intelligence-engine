@@ -4,11 +4,12 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.23.0** — August 2026 · Streamlit Fragment Live Dashboard Refresh (fully wired) + LLM Bull/Bear Thesis (fully wired) + Self-Explaining AI Signal Brief (fully wired) + Narrative vs. Fundamentals Honesty / Contradiction Detector (fully wired) + Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
+**v2.24.0** — August 2026 · Signal Confidence Calibration & LLM Self-Critique (fully wired) + Streamlit Fragment Live Dashboard Refresh (fully wired) + LLM Bull/Bear Thesis (fully wired) + Self-Explaining AI Signal Brief (fully wired) + Narrative vs. Fundamentals Honesty / Contradiction Detector (fully wired) + Corporate Hiring & Headcount Momentum Tracker + Same-Day SEC EDGAR Material Filing Detector + 0DTE Options Flow & Unusual Activity Proxy + Options IV Skew & Term Structure + Dark Pool / ATS Flow + Real-time Quotes + Congressional Trading + Portfolio Risk Overlay + Institutional 13F + Prediction Markets (Polymarket) + Insider Form 4 Clustering + Multi-source Narrative Velocity + Backtesting + Real-time Dashboard + X narratives
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Signal Confidence Calibration & LLM Self-Critique Layer** — Post-signal consistency scoring across all overlays; surfaces calibrated confidence (0-1), conflict list, and plain-English self-critique with "what would change my mind"
 * **LLM-Generated Bull/Bear Thesis Pair Generator** — Balanced, evidence-grounded bull and bear paragraphs for every ticker (deterministic structured generator, LLM-swappable)
 * **Self-Explaining AI Signal Brief Generator** — One-click / auto-generated 4–6 sentence plain-English brief that cites every active overlay with confidence and "what would change my mind"
 * **Narrative vs. Fundamentals Contradiction / Honesty Signal Detector** — Flags pure-narrative risk when social/velocity heat diverges from hard overlays (13F, hiring, EDGAR, technicals); applies soft penalty on high honesty risk
@@ -43,6 +44,7 @@ streamlit run app.py
 
 ## Recent Edits & Version History
 
+* **v2.24.0 (2026-08-28)** : Autonomous research & evolution cycle. Code audit discovered Signal Confidence Calibration & LLM Self-Critique was present (`sie/confidence.py` + config + CLI) but not wired into analyzer orchestration / dashboard; fully integrated `include_confidence` + `integrate_confidence_to_row`. Removed completed item from FUTURE-IMPROVEMENTS. Added five new high-value 2026 research-backed items (Market Regime Adaptive Overlay Weighting, Semiconductor / AI Supply-Chain CapEx Momentum Tracker, Earnings Call Audio Tone & Prosody Sentiment Layer, Vision-Model Chart Pattern & Anomaly Detector, Open-Source Factor Risk Decomposition Overlay). Version alignment to 2.24.0 across all files.
 * **v2.23.0 (2026-08-26)** : Autonomous feature implementation cycle. Fully implemented **Streamlit Fragment Live Dashboard Refresh** in `app.py` using `@st.fragment(run_every=...)` for selective live status + signal table updates (config-driven `dashboard.refresh_interval`, cached analysis with 5 min TTL, Force Full Refresh button). Removed completed item from FUTURE-IMPROVEMENTS. Version alignment to 2.23.0 across all files.
 * **v2.21.0 (2026-08-25)** : Autonomous research & evolution cycle. Code audit discovered Self-Explaining AI Signal Brief Generator was present (`sie/brief.py`) but not wired into analyzer orchestration / CLI / config; fully integrated `include_brief` + `integrate_brief_to_row`. Removed completed item from FUTURE-IMPROVEMENTS. Added four new high-value 2026 research-backed items (Narrative vs. Fundamentals Contradiction / Honesty Signal Detector, Company Digital Footprint Momentum Overlay, Agentic Multi-Perspective Signal Debate Layer, Streamlit Fragment Live Dashboard Refresh). Version alignment to 2.21.0 across all files.
 * **v2.20.4 (2026-08-24)** : Autonomous research & evolution cycle. Code audit confirmed all previously marked-complete features remain fully implemented (thesis fully wired, hiring, EDGAR, 0DTE, IV skew, dark pool, realtime, congressional, 13F, Polymarket, insider, narrative velocity). Added five new high-value 2026 research-backed items to FUTURE-IMPROVEMENTS: Earnings Call Transcript Diff & Guidance Change Detector, Native MCP Server for Agent Integration, FINRA Short Volume / Short Interest Momentum Overlay, YouTube Finance Creator Sentiment Overlay, Employee Glassdoor / Outlook Sentiment Tracker.
@@ -53,4 +55,4 @@ streamlit run app.py
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.23.0
+v2.24.0

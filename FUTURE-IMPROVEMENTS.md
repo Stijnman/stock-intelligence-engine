@@ -6,12 +6,13 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Narrative Graph / Conversation Network Intelligence**. Build a lightweight graph of actors, themes, and contagion edges from X/Reddit/YouTube so the engine can surface "who is talking about what and how narratives spread" instead of isolated velocity scores.
 - [ ] **Options Vanna / Charm / DEX Exposure Overlay**. Extend options surface beyond IV skew and 0DTE volume to dealer vanna/charm/DEX positioning for short-horizon flow prediction.
-- [ ] **Signal Confidence Calibration & LLM Self-Critique Layer**. Post-signal self-critique that scores consistency across overlays and flags over-confident or conflicting signals before they reach the dashboard or alerts.
 - [ ] **Earnings Call Transcript Diff & Guidance Change Detector**. Diff consecutive earnings transcripts (and 10-Q/10-K Risk Factors) for material language changes, guidance shifts, and tone deltas; soft-boost/penalty on watchlist when management language moves against or with the current narrative.
 - [ ] **Native MCP Server for Agent Integration**. Expose the full analysis pipeline (watchlist signals, thesis pairs, overlays, backtest) as an MCP server so Claude / Grok / custom agents can call `analyze_ticker`, `get_thesis`, `run_report` natively without custom glue.
 - [ ] **Company Digital Footprint Momentum Overlay (Web Traffic + App Downloads)**. AltIndex-style forward demand proxy using company website traffic trends and consumer app download/engagement momentum as leading indicators of revenue and narrative durability.
 - [ ] **Satellite Imagery / Geolocation Foot-Traffic & Parking Activity Overlay**. Earth-observation derived proxies (car counts, store/parking occupancy, night lights) as real-economy activity confirmation for retail, industrial and consumer names; soft boost when activity diverges positively from pure narrative heat.
 - [ ] **AI Token Consumption / AI Premium Factor Overlay**. Track firm-level or sector exposure to realized AI token usage growth (OpenRouter-style intensive margin) and compute an AI-beta style premium signal; useful for identifying names that benefit from or are disrupted by frontier AI adoption.
+- [ ] **Market Regime Adaptive Overlay Weighting**. Dynamically re-weight technical, narrative, flow and fundamental overlays according to current market regime (VIX terciles, trend strength, realized volatility); reduce narrative weight in high-vol regimes and increase flow/technical weight when trends are strong.
+- [ ] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker**. Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM equipment peers) as a leading indicator for inference-related names on the watchlist.
 
 ## Medium Priority
 
@@ -26,9 +27,13 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Employee Glassdoor / Outlook Sentiment Tracker**. Use aggregated employee business-outlook and CEO-approval trends as a soft leading indicator of internal confidence (AltIndex-style).
 - [ ] **Agentic Multi-Perspective Signal Debate Layer**. Lightweight multi-agent loop that generates independent bull, bear, and neutral readings then produces a short consensus or dissent summary before the final signal is emitted.
 - [x] **Streamlit Fragment Live Dashboard Refresh** (completed 2026-08-26, v2.23.0). Upgrade the dashboard to use `@st.fragment(run_every=...)` for selective real-time updates of price/quote and key overlay cards without full-script reruns, leveraging Streamlit 1.37+ / 1.61 patterns. Fully wired in `app.py` with config-driven interval, cached analysis, live status metrics and Force Full Refresh.
+- [x] **Signal Confidence Calibration & LLM Self-Critique Layer** (completed 2026-08-28, v2.24.0). Post-signal self-critique that scores consistency across overlays and flags over-confident or conflicting signals before they reach the dashboard or alerts. Fully wired in `sie/confidence.py` + analyzer orchestration + CLI + dashboard columns.
 - [ ] **Cross-Platform Social Follower Growth Momentum**. Track follower count velocity across X, Instagram, TikTok, Threads and StockTwits as a durable attention / brand-momentum signal (AltIndex-style social signals).
 - [ ] **Dual-Score News Impact vs Tone Detector**. Separate pure linguistic sentiment from estimated short-term price-impact potential (Rhea-AI / StockTitan style) so high-impact neutral headlines and low-impact hype can be treated differently.
 - [ ] **Stratified Multi-Agent Research Report Generator**. Expand beyond thesis + brief into a full stratified report (facts vs inference vs disclaimer) with explicit evidence citations and multi-agent role specialization (news, fundamentals, technical, risk).
+- [ ] **Earnings Call Audio Tone & Prosody Sentiment Layer**. Beyond pure transcript text, extract audio-level cues (speaking rate, pitch variance, hesitation markers) from earnings calls via Whisper + prosody models to detect management confidence or stress not fully captured in words.
+- [ ] **Vision-Model Chart Pattern & Anomaly Detector**. Apply a lightweight multimodal / vision model to recent price/volume charts to flag classical patterns, divergences or visual anomalies that pure numeric indicators miss; surface as soft context.
+- [ ] **Open-Source Factor Risk Decomposition Overlay**. Attribute the current signal and returns to public factor exposures (value, momentum, quality, low-vol, AI-beta style) using open factor libraries or data so users can see style bets embedded in the watchlist.
 
 ## Long-Term / Nice-to-Have
 
@@ -39,4 +44,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-26 (v2.23.0 — Streamlit Fragment Live Dashboard Refresh completed)
+Last updated: 2026-08-28 (v2.24.0 — Signal Confidence Calibration & LLM Self-Critique Layer completed)
