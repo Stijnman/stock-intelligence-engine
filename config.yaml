@@ -113,6 +113,11 @@ confidence:
   high_threshold: 0.70
   mid_threshold: 0.45
 
+regime:
+  enabled: true
+  # VIX thresholds are hard-coded in sie/regime.py for stability;
+  # weights are applied as soft multipliers on overlay groups.
+
 tickers:
   NVDA:
     name: NVIDIA
