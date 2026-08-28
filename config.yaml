@@ -92,6 +92,34 @@ hiring:
   penalty_growth_pct: -5.0       # % contraction required for -1 penalty
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+supply_chain:
+  enabled: true
+  try_yfinance: true
+  boost_score: 0.55
+  penalty_score: -0.45
+  min_confidence: 0.40
+  suppliers:
+    - ASML
+    - AMAT
+    - LRCX
+    - KLAC
+    - TSM
+
+short_interest:
+  enabled: true
+  elevated_ratio: 0.48
+  covering_change: -0.08
+  expanding_change: 0.08
+  narrative_hot: 1.5
+  min_confidence: 0.40
+
+attention:
+  enabled: true
+  try_wikimedia: true
+  boost_momentum: 0.25
+  penalty_momentum: -0.20
+  min_confidence: 0.40
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence
