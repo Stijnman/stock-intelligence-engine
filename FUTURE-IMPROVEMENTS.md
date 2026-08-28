@@ -11,7 +11,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Company Digital Footprint Momentum Overlay (Web Traffic + App Downloads)**. AltIndex-style forward demand proxy using company website traffic trends and consumer app download/engagement momentum as leading indicators of revenue and narrative durability.
 - [ ] **Satellite Imagery / Geolocation Foot-Traffic & Parking Activity Overlay**. Earth-observation derived proxies (car counts, store/parking occupancy, night lights) as real-economy activity confirmation for retail, industrial and consumer names; soft boost when activity diverges positively from pure narrative heat.
 - [ ] **AI Token Consumption / AI Premium Factor Overlay**. Track firm-level or sector exposure to realized AI token usage growth (OpenRouter-style intensive margin) and compute an AI-beta style premium signal; useful for identifying names that benefit from or are disrupted by frontier AI adoption.
-- [ ] **Market Regime Adaptive Overlay Weighting**. Dynamically re-weight technical, narrative, flow and fundamental overlays according to current market regime (VIX terciles, trend strength, realized volatility); reduce narrative weight in high-vol regimes and increase flow/technical weight when trends are strong.
+- [x] **Market Regime Adaptive Overlay Weighting** (completed 2026-08-28, v2.25.0). Dynamically re-weight technical, narrative, flow and fundamental overlays according to current market regime (VIX terciles, trend strength, realized volatility); reduce narrative weight in high-vol regimes and increase flow/technical weight when trends are strong. Fully wired in `sie/regime.py` + analyzer + CLI + dashboard + config.
 - [ ] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker**. Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM equipment peers) as a leading indicator for inference-related names on the watchlist.
 
 ## Medium Priority
@@ -44,4 +44,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-28 (v2.24.0 — Signal Confidence Calibration & LLM Self-Critique Layer completed)
+Last updated: 2026-08-28 (v2.25.0 — Market Regime Adaptive Overlay Weighting completed)
