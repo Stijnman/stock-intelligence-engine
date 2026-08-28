@@ -4,7 +4,9 @@ Institutional 13F Ownership Change Detector, Congressional Trading Overlay,
 Real-time WebSocket Quotes, Dark Pool / ATS Off-Exchange Flow Overlay,
 Options Implied Volatility Skew & Term Structure Overlay,
 0DTE Options Flow & Unusual Activity Proxy, Same-Day SEC EDGAR Material Filing Detector,
-Corporate Hiring & Headcount Momentum Tracker, LLM-Generated Bull/Bear Thesis Pair Generator,
+Corporate Hiring & Headcount Momentum Tracker, Semiconductor / AI Supply-Chain CapEx Tracker,
+FINRA Short Volume Overlay, Wikipedia / Search Attention Momentum,
+LLM-Generated Bull/Bear Thesis Pair Generator,
 Self-Explaining AI Signal Brief Generator, Narrative vs. Fundamentals Contradiction / Honesty Signal Detector,
 and Signal Confidence Calibration & LLM Self-Critique Layer,
 Market Regime Adaptive Overlay Weighting.
@@ -30,6 +32,9 @@ from sie.options_iv import integrate_options_iv_to_row
 from sie.options_0dte import integrate_options_0dte_to_row
 from sie.edgar import integrate_edgar_to_row
 from sie.hiring import integrate_hiring_to_row
+from sie.supply_chain import integrate_supply_chain_to_row
+from sie.short_interest import integrate_short_interest_to_row
+from sie.attention import integrate_attention_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -53,6 +58,9 @@ def analyze_watchlist(
     include_options_0dte: bool = True,
     include_edgar: bool = True,
     include_hiring: bool = True,
+    include_supply_chain: bool = True,
+    include_short_interest: bool = True,
+    include_attention: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -94,7 +102,6 @@ def analyze_watchlist(
         if include_social:
             row = integrate_social_to_row(row, cfg)
 
-        # Multi-source Narrative Velocity Forecasting (v2.7.0)
         avg_news_sent = 0.0
         if include_news and row.get("headlines"):
             avg_news_sent = sum(h.get("sentiment_score", 0) for h in row["headlines"]) / max(1, len(row["headlines"]))
@@ -119,7 +126,6 @@ def analyze_watchlist(
             "forecast_reason": forecast["forecast_reason"],
         })
 
-        # Apply forward-looking boost / penalty to signal
         boost = forecast["signal_boost"]
         if boost >= 1 and row["signal"] in ("buy", "hold"):
             row["signal"] = "strong_buy" if boost >= 1 else row["signal"]
@@ -133,63 +139,40 @@ def analyze_watchlist(
         else:
             row["signal_reason"] += f" | Forecast: {forecast['predicted_phase']}"
 
-        # Insider Form 4 Clustering & Confirmation (v2.8.0)
         if include_insider:
             row = integrate_insider_to_row(row, cfg)
-
-        # Prediction Market Odds Overlay (Polymarket) (v2.9.0)
         if include_pm:
             row = integrate_prediction_markets_to_row(row, cfg)
-
-        # Institutional 13F Ownership Change Detector (v2.10.0)
         if include_institutional:
             row = integrate_institutional_to_row(row, cfg)
-
-        # Congressional Trading Overlay (v2.12.0)
         if include_congressional:
             row = integrate_congressional_to_row(row, cfg)
-
-        # Real-time WebSocket Price & Quote Feeds (v2.13.0)
         if include_realtime:
             row = integrate_realtime_to_row(row, cfg)
-
-        # Dark Pool / ATS Off-Exchange Flow Overlay (v2.14.0)
         if include_dark_pool:
             row = integrate_dark_pool_to_row(row, cfg)
-
-        # Options Implied Volatility Skew & Term Structure Overlay (v2.15.0)
         if include_options_iv:
             row = integrate_options_iv_to_row(row, cfg)
-
-        # Same-day options flow overlay (v2.16.0)
         if include_options_0dte:
             row = integrate_options_0dte_to_row(row, cfg)
-
-        # Same-Day SEC EDGAR Material Filing Detector (v2.18.0)
         if include_edgar:
             row = integrate_edgar_to_row(row, cfg)
-
-        # Corporate Hiring & Headcount Momentum Tracker (v2.19.0)
         if include_hiring:
             row = integrate_hiring_to_row(row, cfg)
-
-        # LLM-Generated Bull/Bear Thesis Pair Generator (v2.20.0 / completed v2.20.2)
+        if include_supply_chain:
+            row = integrate_supply_chain_to_row(row, cfg)
+        if include_short_interest:
+            row = integrate_short_interest_to_row(row, cfg)
+        if include_attention:
+            row = integrate_attention_to_row(row, cfg)
         if include_thesis:
             row = integrate_thesis_to_row(row, cfg)
-
-        # Self-Explaining AI Signal Brief Generator (v2.21.0 fully wired)
         if include_brief:
             row = integrate_brief_to_row(row, cfg)
-
-        # Narrative vs. Fundamentals Contradiction / Honesty Signal Detector (v2.22.0 fully wired)
         if include_honesty:
             row = integrate_honesty_to_row(row, cfg)
-
-        # Signal Confidence Calibration & LLM Self-Critique Layer (v2.24.0 fully wired)
         if include_confidence:
             row = integrate_confidence_to_row(row, cfg)
-
-        # Market Regime Adaptive Overlay Weighting (v2.25.0)
         if include_regime:
             row = integrate_regime_to_row(row, cfg)
 
@@ -219,6 +202,9 @@ def run_report(
     include_options_0dte: bool = True,
     include_edgar: bool = True,
     include_hiring: bool = True,
+    include_supply_chain: bool = True,
+    include_short_interest: bool = True,
+    include_attention: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -245,6 +231,9 @@ def run_report(
         include_options_0dte=include_options_0dte,
         include_edgar=include_edgar,
         include_hiring=include_hiring,
+        include_supply_chain=include_supply_chain,
+        include_short_interest=include_short_interest,
+        include_attention=include_attention,
         include_thesis=include_thesis,
         include_brief=include_brief,
         include_honesty=include_honesty,
