@@ -1,10 +1,11 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.23.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.24.0.
 
 Streamlit Fragment Live Dashboard Refresh:
 - Uses @st.fragment(run_every=...) for selective auto-refresh of the live signal
   table and status cards without full-script reruns.
 - Honours config.yaml dashboard.refresh_interval (seconds; 0 disables auto).
 - Manual "Force Full Refresh" still available for complete pipeline re-run.
+- Fully wired Signal Confidence Calibration & Self-Critique.
 """
 from __future__ import annotations
 
@@ -17,7 +18,7 @@ import streamlit as st
 from sie.analyzer import analyze_watchlist
 from sie.config import load_config
 
-__version__ = "2.23.0"
+__version__ = "2.24.0"
 
 st.set_page_config(
     page_title="Stock Intelligence Engine",
@@ -36,7 +37,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Fragment Live Refresh + Honesty Detector + "
+        f"**v{__version__}** — Fragment Live Refresh + Confidence Calibration + Honesty Detector + "
         "Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + "
         "Congressional + 13F + Polymarket + Insider + Narrative Velocity"
     )
@@ -47,6 +48,7 @@ with st.sidebar:
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
     "Streamlit Fragment Live Dashboard Refresh + "
+    "Signal Confidence Calibration + LLM Self-Critique + "
     "LLM Bull/Bear Thesis + Self-Explaining Signal Brief + "
     "Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + "
     "0DTE Options Flow + Options IV Skew + Dark Pool / ATS Flow + Real-time Quotes + "
@@ -113,7 +115,8 @@ def signal_table_fragment() -> None:
     # Prefer a readable column order if present
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price", "change_pct",
-        "honesty_risk", "honesty_label", "brief", "thesis_bull", "thesis_bear",
+        "confidence_score", "confidence_label", "honesty_risk", "honesty_label",
+        "brief", "thesis_bull", "thesis_bear",
         "narrative_phase", "velocity", "reasons",
     ]
     ordered = [c for c in preferred if c in df.columns] + [
@@ -148,7 +151,7 @@ signal_table_fragment()
 # ---------------------------------------------------------------------------
 st.divider()
 st.caption(
-    f"v{__version__} — Streamlit Fragment Live Dashboard Refresh fully wired · "
+    f"v{__version__} — Streamlit Fragment Live Dashboard Refresh + Confidence Calibration fully wired · "
     "Honesty Signal Detector · Thesis · Brief · Hiring · EDGAR · 0DTE · Options IV · "
     "Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
     "Educational research tool only — not financial advice."
