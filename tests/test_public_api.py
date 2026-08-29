@@ -29,6 +29,7 @@ def test_new_overlay_flags_on_watchlist_and_report():
         assert "include_supply_chain" in params
         assert "include_short_interest" in params
         assert "include_attention" in params
+        assert "include_authenticity" in params
         assert "include_confidence" in params
         assert "include_regime" in params
 
@@ -55,11 +56,13 @@ def test_report_forwards_new_overlay_flags(monkeypatch):
         include_supply_chain=False,
         include_short_interest=False,
         include_attention=False,
+        include_authenticity=False,
     )
 
     assert captured["include_supply_chain"] is False
     assert captured["include_short_interest"] is False
     assert captured["include_attention"] is False
+    assert captured["include_authenticity"] is False
 
 
 def test_report_forwards_0dte_option_to_watchlist(monkeypatch):
@@ -132,6 +135,7 @@ def test_cli_forwards_new_overlay_disables(monkeypatch):
             "--no-supply-chain",
             "--no-short-interest",
             "--no-attention",
+            "--no-authenticity",
         ],
     )
 
@@ -140,3 +144,4 @@ def test_cli_forwards_new_overlay_disables(monkeypatch):
     assert captured["include_supply_chain"] is False
     assert captured["include_short_interest"] is False
     assert captured["include_attention"] is False
+    assert captured["include_authenticity"] is False

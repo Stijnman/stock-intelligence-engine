@@ -13,7 +13,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **AI Token Consumption / AI Premium Factor Overlay**. Track firm-level or sector exposure to realized AI token usage growth (OpenRouter-style intensive margin) and compute an AI-beta style premium signal; useful for identifying names that benefit from or are disrupted by frontier AI adoption.
 - [x] **Market Regime Adaptive Overlay Weighting** (completed 2026-08-28, v2.25.0). Dynamically re-weight technical, narrative, flow and fundamental overlays according to current market regime (VIX terciles, trend strength, realized volatility); reduce narrative weight in high-vol regimes and increase flow/technical weight when trends are strong. Fully wired in `sie/regime.py` + analyzer + CLI + dashboard + config.
 - [x] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** (completed 2026-08-28, v2.26.0). Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM). Fully wired in `sie/supply_chain.py` + analyzer + CLI (`--no-supply-chain`) + dashboard + config. Uses yfinance peek when available, otherwise labeled synthetic proxy.
-- [ ] **Authenticity-Filtered Social Narrative Velocity Overlay**. Score individual X/Reddit posts for authenticity / bot-likelihood / spam risk before aggregating velocity and sentiment; surface only high-authenticity narrative heat. Reduces 2026-era coordinated retail manipulation noise that pure volume/mention metrics cannot filter.
+- [x] **Authenticity-Filtered Social Narrative Velocity Overlay** (completed 2026-08-29, v2.27.0). Score individual X/Reddit posts for authenticity / bot-likelihood / spam risk before aggregating velocity and sentiment; surface only high-authenticity narrative heat. Reduces 2026-era coordinated retail manipulation noise that pure volume/mention metrics cannot filter. Fully wired in `sie/authenticity.py` + analyzer + CLI (`--no-authenticity`) + dashboard + config. Uses labeled deterministic synthetic proxy; live bot-classifier hook left explicit.
 - [ ] **Earnings Call Q&A vs Prepared Remarks Sentiment & Guidance Divergence Detector**. Segment transcripts into management prepared remarks vs analyst Q&A; detect tone, hedging, and guidance language shifts specific to pressure questions. Soft boost/penalty when Q&A diverges materially from prepared narrative.
 
 ## Medium Priority
@@ -49,4 +49,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-29 (v2.26.1 — research cycle; 5 new authenticity / earnings-divergence / GEX / Streamlit-production items added)
+Last updated: 2026-08-29 (v2.27.0 — Authenticity-Filtered Social Narrative Velocity Overlay shipped end-to-end)

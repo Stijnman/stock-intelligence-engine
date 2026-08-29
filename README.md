@@ -4,11 +4,12 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.26.1** — August 2026 · Supply-Chain CapEx + FINRA Short + Attention Momentum (fully wired) + Market Regime Adaptive Overlay Weighting + Signal Confidence Calibration & LLM Self-Critique + Streamlit Fragment Live Dashboard Refresh + LLM Bull/Bear Thesis + Self-Explaining AI Signal Brief + Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + 0DTE Options Flow + Options IV Skew + Dark Pool / ATS + Real-time Quotes + Congressional Trading + Portfolio Risk + Institutional 13F + Prediction Markets + Insider Form 4 + Narrative Velocity + Backtesting
+**v2.27.0** — August 2026 · Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum (fully wired) + Market Regime Adaptive Overlay Weighting + Signal Confidence Calibration & LLM Self-Critique + Streamlit Fragment Live Dashboard Refresh + LLM Bull/Bear Thesis + Self-Explaining AI Signal Brief + Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + 0DTE Options Flow + Options IV Skew + Dark Pool / ATS + Real-time Quotes + Congressional Trading + Portfolio Risk + Institutional 13F + Prediction Markets + Insider Form 4 + Narrative Velocity + Backtesting
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Authenticity-Filtered Social Narrative Velocity Overlay** — Scores social heat for authenticity / bot-likelihood before aggregating velocity; soft boost on high-auth rising narratives, caution on low-auth (bot/spam) elevated velocity
 * **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** — Supplier momentum (ASML / AMAT / LRCX / KLAC / TSM) as a leading inference-demand proxy; yfinance peek when available, otherwise labeled synthetic proxy
 * **FINRA Short Volume / Short Interest Momentum Overlay** — Elevated short volume vs rising narrative = caution; covering + hot narrative = soft boost
 * **Wikipedia / Search Attention Momentum Tracker** — Wikimedia pageview WoW when reachable, else seeded proxy
@@ -48,6 +49,7 @@ streamlit run app.py
 
 ## Recent Edits & Version History
 
+* **v2.27.0 (2026-08-29)** : Autonomous feature implementation cycle. Fully implemented **Authenticity-Filtered Social Narrative Velocity Overlay** (`sie/authenticity.py`, `--no-authenticity`). Deterministic authenticity score + filtered velocity proxy; soft boost on high-auth rising narrative, caution on low-auth elevated velocity (bot/spam risk). Wired into analyzer / CLI / config / dashboard preferred columns / tests. Marked completed in FUTURE-IMPROVEMENTS. Version alignment to 2.27.0.
 * **v2.26.1 (2026-08-29)** : Autonomous research & evolution cycle. Code audit confirmed no outstanding completed items needing cleanup. Fresh 2026 research on AI stock tools, narrative authenticity scoring, earnings-call NLP divergence, dealer gamma exposure, and Streamlit production patterns. Added five new high-value roadmap items (Authenticity-Filtered Velocity, Q&A vs Prepared Divergence, GEX Overlay, Multi-User Persistent Watchlists, Cloud Deployment Profiles). Version alignment to 2.26.1.
 * **v2.26.0 (2026-08-28)** : Autonomous implementation cycle. Shipped three overlays end-to-end: **Supply-Chain CapEx** (`sie/supply_chain.py`, `--no-supply-chain`), **FINRA Short Volume** (`sie/short_interest.py`, `--no-short-interest`), **Attention Momentum** (`sie/attention.py`, `--no-attention`). Wired into analyzer / CLI / config / dashboard / tests. Added DISCLAIMER.md and CONTRIBUTING.md. Marked completed items in FUTURE-IMPROVEMENTS. Version alignment to 2.26.0.
 * **v2.25.0 (2026-08-28)** : Autonomous feature implementation cycle. Fully implemented **Market Regime Adaptive Overlay Weighting** (`sie/regime.py`) with live VIX/SPY detection, adaptive overlay group weights, soft signal bias and full wiring into analyzer / CLI (`--no-regime`) / dashboard / config. Removed completed item from FUTURE-IMPROVEMENTS. Version alignment to 2.25.0 across all files.
@@ -58,4 +60,4 @@ streamlit run app.py
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.26.1
+v2.27.0

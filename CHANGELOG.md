@@ -1,3 +1,20 @@
+## [2.27.0] - 2026-08-29
+
+### Added / Completed
+* **Authenticity-Filtered Social Narrative Velocity Overlay** — `sie/authenticity.py`.
+  - Deterministic authenticity score (0–1) + filtered velocity proxy keyed by ticker + day.
+  - High-auth + rising narrative → soft boost; elevated velocity with low-auth (bot/spam risk) → caution.
+  - Surfaces `auth_score`, `auth_filtered_velocity`, `auth_boost`, `auth_confidence`, `auth_reason`, `auth_source`.
+  - Source labeled `synthetic_proxy` / `synthetic_proxy_high_auth` / `synthetic_proxy_low_auth` (live bot-classifier hook left explicit).
+  - Wired after attention / before thesis. CLI `--no-authenticity`.
+  - Config section `authenticity.enabled` + thresholds.
+  - Dashboard preferred columns include auth_score / auth_filtered_velocity / auth_boost.
+  - Tests cover signature + CLI disable flag forwarding.
+
+### Changed
+* Autonomous feature implementation cycle (2026-08-29).
+* Version bumped to **2.27.0** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.26.1] - 2026-08-29
 
 ### Research / Roadmap
@@ -22,7 +39,7 @@
   - Wired after hiring / before thesis. CLI `--no-supply-chain`.
 * **FINRA Short Volume / Short Interest Momentum Overlay** — `sie/short_interest.py`.
   - Deterministic short-volume ratio + change proxy.
-  - Elevated short volume vs rising narrative → caution; covering + hot narrative → boost.
+  - Elevated short volume vs rising narrative → caution; covering + rising narrative → boost.
   - Fields `si_ratio`, `si_change`, `si_boost`, `si_confidence`, `si_reason`, `si_source`.
   - CLI `--no-short-interest`. Live FINRA CSV left as an explicit future hook (no invented API).
 * **Wikipedia / Google Trends Attention Momentum Tracker** — `sie/attention.py`.
