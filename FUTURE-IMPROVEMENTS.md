@@ -13,6 +13,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **AI Token Consumption / AI Premium Factor Overlay**. Track firm-level or sector exposure to realized AI token usage growth (OpenRouter-style intensive margin) and compute an AI-beta style premium signal; useful for identifying names that benefit from or are disrupted by frontier AI adoption.
 - [x] **Market Regime Adaptive Overlay Weighting** (completed 2026-08-28, v2.25.0). Dynamically re-weight technical, narrative, flow and fundamental overlays according to current market regime (VIX terciles, trend strength, realized volatility); reduce narrative weight in high-vol regimes and increase flow/technical weight when trends are strong. Fully wired in `sie/regime.py` + analyzer + CLI + dashboard + config.
 - [x] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** (completed 2026-08-28, v2.26.0). Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM). Fully wired in `sie/supply_chain.py` + analyzer + CLI (`--no-supply-chain`) + dashboard + config. Uses yfinance peek when available, otherwise labeled synthetic proxy.
+- [ ] **Authenticity-Filtered Social Narrative Velocity Overlay**. Score individual X/Reddit posts for authenticity / bot-likelihood / spam risk before aggregating velocity and sentiment; surface only high-authenticity narrative heat. Reduces 2026-era coordinated retail manipulation noise that pure volume/mention metrics cannot filter.
+- [ ] **Earnings Call Q&A vs Prepared Remarks Sentiment & Guidance Divergence Detector**. Segment transcripts into management prepared remarks vs analyst Q&A; detect tone, hedging, and guidance language shifts specific to pressure questions. Soft boost/penalty when Q&A diverges materially from prepared narrative.
 
 ## Medium Priority
 
@@ -34,6 +36,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Earnings Call Audio Tone & Prosody Sentiment Layer**. Beyond pure transcript text, extract audio-level cues (speaking rate, pitch variance, hesitation markers) from earnings calls via Whisper + prosody models to detect management confidence or stress not fully captured in words.
 - [ ] **Vision-Model Chart Pattern & Anomaly Detector**. Apply a lightweight multimodal / vision model to recent price/volume charts to flag classical patterns, divergences or visual anomalies that pure numeric indicators miss; surface as soft context.
 - [ ] **Open-Source Factor Risk Decomposition Overlay**. Attribute the current signal and returns to public factor exposures (value, momentum, quality, low-vol, AI-beta style) using open factor libraries or data so users can see style bets embedded in the watchlist.
+- [ ] **Dealer Gamma Exposure (GEX) Real-Time Overlay**. Estimate net dealer gamma positioning from options chain data; surface short-horizon mean-reversion vs trend-acceleration bias as a soft flow overlay complementary to existing IV skew / 0DTE / Vanna-Charm work.
+- [ ] **Multi-User Persistent Watchlist & Session Sync for Streamlit**. Add lightweight auth-backed (or local encrypted) persistent watchlists, multi-page architecture, and cross-session state so users can save/share configurations and avoid full re-entry on every dashboard load.
+- [ ] **Cloud Deployment Profiles & Production Auth Templates**. Ship ready-to-use Docker / Streamlit Community Cloud / Cloudflare Access / PandaStack-style configs plus secrets management and scale-to-zero guidance so private production dashboards are one-command deployable.
 
 ## Long-Term / Nice-to-Have
 
@@ -44,4 +49,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-28 (v2.26.0 — Supply-Chain CapEx + FINRA Short + Attention Momentum completed)
+Last updated: 2026-08-29 (v2.26.1 — research cycle; 5 new authenticity / earnings-divergence / GEX / Streamlit-production items added)

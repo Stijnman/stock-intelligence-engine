@@ -1,3 +1,17 @@
+## [2.26.1] - 2026-08-29
+
+### Research / Roadmap
+* Autonomous research & evolution cycle (2026-08-29).
+* Code audit confirmed all previously completed High/Medium Priority items remain correctly marked [x] with wiring present; no cleanup required this cycle.
+* Fresh 2026 research across AI stock analysis platforms (AltIndex, Nebula, SentiSense, StockTitan/Rhea-AI, Prospero, AlphaSense), narrative intelligence, authenticity scoring, earnings NLP, options dealer positioning, and Streamlit production/deployment patterns.
+* Added five genuinely new high-value roadmap items not previously present:
+  - **Authenticity-Filtered Social Narrative Velocity Overlay** (High Priority)
+  - **Earnings Call Q&A vs Prepared Remarks Sentiment & Guidance Divergence Detector** (High Priority)
+  - **Dealer Gamma Exposure (GEX) Real-Time Overlay** (Medium Priority)
+  - **Multi-User Persistent Watchlist & Session Sync for Streamlit** (Medium Priority)
+  - **Cloud Deployment Profiles & Production Auth Templates** (Medium Priority)
+* Version bumped to **2.26.1** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.26.0] - 2026-08-28
 
 ### Added / Completed
