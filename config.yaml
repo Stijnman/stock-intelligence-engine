@@ -120,6 +120,13 @@ attention:
   penalty_momentum: -0.20
   min_confidence: 0.40
 
+authenticity:
+  enabled: true
+  high_auth_threshold: 0.62      # Score above which velocity is treated as high-authenticity
+  low_auth_threshold: 0.38       # Score below which elevated velocity is treated as bot/spam risk
+  narrative_hot: 1.5             # Filtered velocity level treated as hot
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence

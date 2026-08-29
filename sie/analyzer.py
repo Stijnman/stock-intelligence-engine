@@ -6,6 +6,7 @@ Options Implied Volatility Skew & Term Structure Overlay,
 0DTE Options Flow & Unusual Activity Proxy, Same-Day SEC EDGAR Material Filing Detector,
 Corporate Hiring & Headcount Momentum Tracker, Semiconductor / AI Supply-Chain CapEx Tracker,
 FINRA Short Volume Overlay, Wikipedia / Search Attention Momentum,
+Authenticity-Filtered Social Narrative Velocity Overlay,
 LLM-Generated Bull/Bear Thesis Pair Generator,
 Self-Explaining AI Signal Brief Generator, Narrative vs. Fundamentals Contradiction / Honesty Signal Detector,
 and Signal Confidence Calibration & LLM Self-Critique Layer,
@@ -35,6 +36,7 @@ from sie.hiring import integrate_hiring_to_row
 from sie.supply_chain import integrate_supply_chain_to_row
 from sie.short_interest import integrate_short_interest_to_row
 from sie.attention import integrate_attention_to_row
+from sie.authenticity import integrate_authenticity_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -61,6 +63,7 @@ def analyze_watchlist(
     include_supply_chain: bool = True,
     include_short_interest: bool = True,
     include_attention: bool = True,
+    include_authenticity: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -165,6 +168,8 @@ def analyze_watchlist(
             row = integrate_short_interest_to_row(row, cfg)
         if include_attention:
             row = integrate_attention_to_row(row, cfg)
+        if include_authenticity:
+            row = integrate_authenticity_to_row(row, cfg)
         if include_thesis:
             row = integrate_thesis_to_row(row, cfg)
         if include_brief:
@@ -205,6 +210,7 @@ def run_report(
     include_supply_chain: bool = True,
     include_short_interest: bool = True,
     include_attention: bool = True,
+    include_authenticity: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -234,6 +240,7 @@ def run_report(
         include_supply_chain=include_supply_chain,
         include_short_interest=include_short_interest,
         include_attention=include_attention,
+        include_authenticity=include_authenticity,
         include_thesis=include_thesis,
         include_brief=include_brief,
         include_honesty=include_honesty,
