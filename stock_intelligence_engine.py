@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.27.1"
+__version__ = "2.28.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--no-short-interest", action="store_true", help="Disable FINRA short volume / short interest overlay")
     parser.add_argument("--no-attention", action="store_true", help="Disable Wikipedia / search attention momentum tracker")
     parser.add_argument("--no-authenticity", action="store_true", help="Disable authenticity-filtered social narrative velocity overlay")
+    parser.add_argument("--no-consumer-spend", action="store_true", help="Disable aggregated consumer transaction / credit-card panel spend nowcasting overlay")
     args = parser.parse_args()
     run_report(
         include_news=args.news or True,
@@ -35,6 +36,7 @@ def main():
         include_short_interest=not args.no_short_interest,
         include_attention=not args.no_attention,
         include_authenticity=not args.no_authenticity,
+        include_consumer_spend=not args.no_consumer_spend,
     )
 
 if __name__ == "__main__":
