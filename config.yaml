@@ -127,6 +127,12 @@ authenticity:
   narrative_hot: 1.5             # Filtered velocity level treated as hot
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+consumer_spend:
+  enabled: true
+  boost_momentum: 0.18          # Panel spend momentum required for +1 soft boost
+  penalty_momentum: -0.15        # Contraction threshold for -1 soft penalty
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence
