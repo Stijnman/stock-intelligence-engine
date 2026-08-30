@@ -1,8 +1,9 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.27.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.28.0.
 
 Streamlit Fragment Live Dashboard Refresh + Regime + Confidence +
 Supply-Chain CapEx + Short Interest + Attention Momentum +
-Authenticity-Filtered Social Narrative Velocity.
+Authenticity-Filtered Social Narrative Velocity +
+Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting.
 """
 from __future__ import annotations
 
@@ -15,7 +16,7 @@ import streamlit as st
 from sie.analyzer import analyze_watchlist
 from sie.config import load_config
 
-__version__ = "2.27.1"
+__version__ = "2.28.0"
 
 st.set_page_config(
     page_title="Stock Intelligence Engine",
@@ -31,16 +32,16 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Authenticity Filter + Supply-Chain CapEx + Short Interest + Attention + "
-        "Fragment Live Refresh + Regime + Confidence + Honesty + Thesis + Brief + "
-        "Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + "
-        "Polymarket + Insider + Narrative Velocity"
+        f"**v{__version__}** — Consumer Spend Nowcast + Authenticity Filter + Supply-Chain CapEx + "
+        "Short Interest + Attention + Fragment Live Refresh + Regime + Confidence + Honesty + "
+        "Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + "
+        "13F + Polymarket + Insider + Narrative Velocity"
     )
 
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
-    "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + "
-    "Attention Momentum + Regime Adaptive Weighting + Confidence Calibration"
+    "Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + "
+    "Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
 )
 
 @st.cache_data(ttl=300, show_spinner=False)
@@ -90,6 +91,7 @@ def signal_table_fragment() -> None:
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price", "change_pct",
         "confidence_score", "confidence_label", "market_regime", "regime_confidence",
+        "cs_momentum", "cs_score", "cs_boost",
         "auth_score", "auth_filtered_velocity", "auth_boost",
         "sc_capex_score", "sc_side", "sc_boost",
         "si_ratio", "si_boost",
@@ -126,8 +128,9 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + "
-    "Attention Momentum fully wired · Regime · Confidence · Honesty · Thesis · Brief · Hiring · "
-    "EDGAR · 0DTE · Options IV · Dark Pool · Realtime · Congressional · 13F · Polymarket · "
-    "Insider · Narrative Velocity. Educational research tool only — not financial advice."
+    f"v{__version__} — Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + "
+    "Supply-Chain CapEx + FINRA Short + Attention Momentum fully wired · Regime · Confidence · "
+    "Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · Options IV · Dark Pool · Realtime · "
+    "Congressional · 13F · Polymarket · Insider · Narrative Velocity. Educational research tool "
+    "only — not financial advice."
 )
