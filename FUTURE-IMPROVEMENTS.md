@@ -15,6 +15,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [x] **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** (completed 2026-08-28, v2.26.0). Monitor order trends, backlog commentary and CapEx guidance from key AI infrastructure suppliers (ASML, AMAT, LRCX, KLAC, TSM). Fully wired in `sie/supply_chain.py` + analyzer + CLI (`--no-supply-chain`) + dashboard + config. Uses yfinance peek when available, otherwise labeled synthetic proxy.
 - [x] **Authenticity-Filtered Social Narrative Velocity Overlay** (completed 2026-08-29, v2.27.0). Score individual X/Reddit posts for authenticity / bot-likelihood / spam risk before aggregating velocity and sentiment; surface only high-authenticity narrative heat. Reduces 2026-era coordinated retail manipulation noise that pure volume/mention metrics cannot filter. Fully wired in `sie/authenticity.py` + analyzer + CLI (`--no-authenticity`) + dashboard + config. Uses labeled deterministic synthetic proxy; live bot-classifier hook left explicit.
 - [ ] **Earnings Call Q&A vs Prepared Remarks Sentiment & Guidance Divergence Detector**. Segment transcripts into management prepared remarks vs analyst Q&A; detect tone, hedging, and guidance language shifts specific to pressure questions. Soft boost/penalty when Q&A diverges materially from prepared narrative.
+- [ ] **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay**. Use anonymized panel or public proxy spend data (category, merchant, geography) as a leading revenue nowcast for retail, restaurant, travel and consumer names; soft boost when spend momentum diverges positively from pure narrative or hiring signals.
+- [ ] **Maritime AIS / Port Congestion & Vessel Activity Overlay**. Track AIS-derived port dwell times, vessel counts and congestion indices for key logistics, energy and industrial names as a real-economy activity confirmation; soft boost/penalty when physical flow diverges from narrative heat.
 
 ## Medium Priority
 
@@ -39,6 +41,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Dealer Gamma Exposure (GEX) Real-Time Overlay**. Estimate net dealer gamma positioning from options chain data; surface short-horizon mean-reversion vs trend-acceleration bias as a soft flow overlay complementary to existing IV skew / 0DTE / Vanna-Charm work.
 - [ ] **Multi-User Persistent Watchlist & Session Sync for Streamlit**. Add lightweight auth-backed (or local encrypted) persistent watchlists, multi-page architecture, and cross-session state so users can save/share configurations and avoid full re-entry on every dashboard load.
 - [ ] **Cloud Deployment Profiles & Production Auth Templates**. Ship ready-to-use Docker / Streamlit Community Cloud / Cloudflare Access / PandaStack-style configs plus secrets management and scale-to-zero guidance so private production dashboards are one-command deployable.
+- [ ] **Substack & Independent Research Newsletter Sentiment Overlay**. Treat high-signal finance Substacks and independent research newsletters as a first-class narrative source; score tone, conviction and revision language per author/publication and aggregate into a soft overlay.
+- [ ] **Analyst Estimate Revision Momentum & Surprise Probability Overlay**. Track the velocity and direction of consensus EPS/revenue revisions (and free public estimate sources) as a leading fundamental confirmation signal; soft boost when revisions accelerate in the direction of the current narrative.
+- [ ] **Order-Flow / Level-2 Imbalance Soft Overlay**. Use public or low-latency proxies for order-book imbalance and aggressive buy/sell pressure as a short-horizon microstructure confirmation layer complementary to dark-pool and 0DTE flow.
 
 ## Long-Term / Nice-to-Have
 
@@ -49,4 +54,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-29 (v2.27.0 — Authenticity-Filtered Social Narrative Velocity Overlay shipped end-to-end)
+Last updated: 2026-08-30 (v2.27.1 — Autonomous research & evolution cycle; five new roadmap items added)

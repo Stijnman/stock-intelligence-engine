@@ -1,3 +1,17 @@
+## [2.27.1] - 2026-08-30
+
+### Research / Roadmap
+* Autonomous research & evolution cycle (2026-08-30).
+* Code audit confirmed all previously completed High/Medium Priority items remain correctly marked [x] with full wiring present in analyzer / CLI / dashboard / config / tests; no cleanup required this cycle.
+* Fresh 2026 research across AI stock analysis platforms (AltIndex, Prospero, StockTitan/Rhea-AI, AlphaSense, SentiSense, Hebbia), narrative authenticity, consumer transaction nowcasting, maritime AIS/port congestion alternative data, Substack/newsletter sentiment, analyst revision velocity, order-flow microstructure, and Streamlit 1.58–1.62 production patterns (parallel fragments, multi-user session isolation).
+* Added five genuinely new high-value roadmap items not previously present:
+  - **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay** (High Priority)
+  - **Maritime AIS / Port Congestion & Vessel Activity Overlay** (High Priority)
+  - **Substack & Independent Research Newsletter Sentiment Overlay** (Medium Priority)
+  - **Analyst Estimate Revision Momentum & Surprise Probability Overlay** (Medium Priority)
+  - **Order-Flow / Level-2 Imbalance Soft Overlay** (Medium Priority)
+* Version bumped to **2.27.1** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.27.0] - 2026-08-29
 
 ### Added / Completed
