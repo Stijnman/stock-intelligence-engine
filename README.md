@@ -4,11 +4,12 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.27.1** — August 2026 · Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum (fully wired) + Market Regime Adaptive Overlay Weighting + Signal Confidence Calibration & LLM Self-Critique + Streamlit Fragment Live Dashboard Refresh + LLM Bull/Bear Thesis + Self-Explaining AI Signal Brief + Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + 0DTE Options Flow + Options IV Skew + Dark Pool / ATS + Real-time Quotes + Congressional Trading + Portfolio Risk + Institutional 13F + Prediction Markets + Insider Form 4 + Narrative Velocity + Backtesting
+**v2.28.0** — August 2026 · Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum (fully wired) + Market Regime Adaptive Overlay Weighting + Signal Confidence Calibration & LLM Self-Critique + Streamlit Fragment Live Dashboard Refresh + LLM Bull/Bear Thesis + Self-Explaining AI Signal Brief + Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + 0DTE Options Flow + Options IV Skew + Dark Pool / ATS + Real-time Quotes + Congressional Trading + Portfolio Risk + Institutional 13F + Prediction Markets + Insider Form 4 + Narrative Velocity + Backtesting
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay** — Deterministic panel-spend momentum proxy as leading revenue nowcast; soft boost on rising spend vs narrative, caution on contraction
 * **Authenticity-Filtered Social Narrative Velocity Overlay** — Scores social heat for authenticity / bot-likelihood before aggregating velocity; soft boost on high-auth rising narratives, caution on low-auth (bot/spam) elevated velocity
 * **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** — Supplier momentum (ASML / AMAT / LRCX / KLAC / TSM) as a leading inference-demand proxy; yfinance peek when available, otherwise labeled synthetic proxy
 * **FINRA Short Volume / Short Interest Momentum Overlay** — Elevated short volume vs rising narrative = caution; covering + hot narrative = soft boost
@@ -49,6 +50,7 @@ streamlit run app.py
 
 ## Recent Edits & Version History
 
+* **v2.28.0 (2026-08-30)** : Autonomous feature implementation cycle. Fully implemented **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay** (`sie/consumer_spend.py`, `--no-consumer-spend`). Deterministic synthetic panel-spend momentum proxy with soft boost/penalty; fields `cs_momentum`, `cs_score`, `cs_boost`, `cs_confidence`, `cs_reason`, `cs_source`. Wired into analyzer / CLI / config / dashboard preferred columns / tests. Marked completed in FUTURE-IMPROVEMENTS. Version alignment to 2.28.0.
 * **v2.27.1 (2026-08-30)** : Autonomous research & evolution cycle. Code audit confirmed no outstanding completed items needing cleanup. Fresh 2026 research on AI stock tools, consumer transaction nowcasting, maritime AIS/port congestion, Substack/newsletter sentiment, analyst revision momentum, order-flow microstructure, and Streamlit production patterns. Added five new high-value roadmap items (Consumer Spend Nowcast, AIS/Port Congestion, Substack Sentiment, Analyst Revision Momentum, Order-Flow Imbalance). Version alignment to 2.27.1.
 * **v2.27.0 (2026-08-29)** : Autonomous feature implementation cycle. Fully implemented **Authenticity-Filtered Social Narrative Velocity Overlay** (`sie/authenticity.py`, `--no-authenticity`). Deterministic authenticity score + filtered velocity proxy; soft boost on high-auth rising narrative, caution on low-auth elevated velocity (bot/spam risk). Wired into analyzer / CLI / config / dashboard preferred columns / tests. Marked completed in FUTURE-IMPROVEMENTS. Version alignment to 2.27.0.
 * **v2.26.1 (2026-08-29)** : Autonomous research & evolution cycle. Code audit confirmed no outstanding completed items needing cleanup. Fresh 2026 research on AI stock tools, narrative authenticity scoring, earnings-call NLP divergence, dealer gamma exposure, and Streamlit production patterns. Added five new high-value roadmap items (Authenticity-Filtered Velocity, Q&A vs Prepared Divergence, GEX Overlay, Multi-User Persistent Watchlists, Cloud Deployment Profiles). Version alignment to 2.26.1.
@@ -61,4 +63,4 @@ streamlit run app.py
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.27.1
+v2.28.0
