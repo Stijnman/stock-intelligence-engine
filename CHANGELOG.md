@@ -1,3 +1,17 @@
+## [2.28.1] - 2026-08-31
+
+### Research / Roadmap
+* Autonomous research & evolution cycle (2026-08-31).
+* Code audit confirmed all previously completed High/Medium Priority items remain correctly marked [x] with full wiring present in analyzer / CLI / dashboard / config / tests; no cleanup required this cycle.
+* Fresh 2026 research across AI stock analysis platforms (AltIndex, Prospero, StockTitan/Rhea-AI, AlphaSense, SentiSense, Hebbia, Stock Companion), alternative data (container/bill-of-lading trade flow, road/truck camera volume, satellite + AIS), AI token consumption / AI premium factor literature, dual institutional-vs-retail sentiment, AI-clustered news story impact scoring, local open-weight LLM ticker mapping, and Streamlit 2026 multi-user / production patterns.
+* Added five genuinely new high-value roadmap items not previously present:
+  - **Container / Bill-of-Lading Trade Flow Momentum Overlay** (High Priority)
+  - **Road / Truck Traffic Camera Volume Overlay** (High Priority)
+  - **Dual Institutional vs Retail Sentiment Divergence Gauge** (Medium Priority)
+  - **AI-Clustered News Story Impact & Multi-Perspective Overlay** (Medium Priority)
+  - **Local Open-Weight LLM Ticker Mapping Layer** (Medium Priority)
+* Version bumped to **2.28.1** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.28.0] - 2026-08-30
 
 ### Added / Completed

@@ -17,6 +17,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Earnings Call Q&A vs Prepared Remarks Sentiment & Guidance Divergence Detector**. Segment transcripts into management prepared remarks vs analyst Q&A; detect tone, hedging, and guidance language shifts specific to pressure questions. Soft boost/penalty when Q&A diverges materially from prepared narrative.
 - [x] **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay** (completed 2026-08-30, v2.28.0). Use anonymized panel or public proxy spend data (category, merchant, geography) as a leading revenue nowcast for retail, restaurant, travel and consumer names; soft boost when spend momentum diverges positively from pure narrative or hiring signals. Fully wired in `sie/consumer_spend.py` + analyzer + CLI (`--no-consumer-spend`) + dashboard + config. Uses labeled deterministic synthetic panel proxy; live panel-provider hook left explicit.
 - [ ] **Maritime AIS / Port Congestion & Vessel Activity Overlay**. Track AIS-derived port dwell times, vessel counts and congestion indices for key logistics, energy and industrial names as a real-economy activity confirmation; soft boost/penalty when physical flow diverges from narrative heat.
+- [ ] **Container / Bill-of-Lading Trade Flow Momentum Overlay**. AI-parsed container-level import/export and bill-of-lading data (ImportGenius / similar public or licensed feeds) as a high-frequency real-economy confirmation layer for industrials, retail, logistics and commodity-linked names; soft boost when physical trade volumes accelerate ahead of narrative or earnings expectations.
+- [ ] **Road / Truck Traffic Camera Volume Overlay**. Aggregated highway and last-mile truck / vehicle traffic counts (Genlogs-style camera networks) as a leading proxy for freight activity and consumer goods movement; soft confirmation or caution when physical throughput diverges from pure narrative heat.
 
 ## Medium Priority
 
@@ -44,6 +46,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Substack & Independent Research Newsletter Sentiment Overlay**. Treat high-signal finance Substacks and independent research newsletters as a first-class narrative source; score tone, conviction and revision language per author/publication and aggregate into a soft overlay.
 - [ ] **Analyst Estimate Revision Momentum & Surprise Probability Overlay**. Track the velocity and direction of consensus EPS/revenue revisions (and free public estimate sources) as a leading fundamental confirmation signal; soft boost when revisions accelerate in the direction of the current narrative.
 - [ ] **Order-Flow / Level-2 Imbalance Soft Overlay**. Use public or low-latency proxies for order-book imbalance and aggressive buy/sell pressure as a short-horizon microstructure confirmation layer complementary to dark-pool and 0DTE flow.
+- [ ] **Dual Institutional vs Retail Sentiment Divergence Gauge**. Explicitly split and surface institutional (13F / dark-pool / options flow derived) versus pure retail (X / Reddit / attention) sentiment; flag divergences as high-value soft context when smart-money and crowd disagree.
+- [ ] **AI-Clustered News Story Impact & Multi-Perspective Overlay**. Cluster related headlines into coherent stories, assign impact scores, and generate short multi-perspective (bull / bear / neutral) summaries so the engine treats narrative events rather than isolated articles.
+- [ ] **Local Open-Weight LLM Ticker Mapping Layer**. Use workstation-class open-weight models (DeepSeek / Qwen class) for robust text-to-ticker resolution on alternative-data feeds, reducing dependence on closed APIs and improving coverage for niche or newly-mentioned names.
 
 ## Long-Term / Nice-to-Have
 
@@ -54,4 +59,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-30 (v2.28.0 — Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay fully implemented)
+Last updated: 2026-08-31 (v2.28.1 — autonomous research cycle; five new high-value items added)

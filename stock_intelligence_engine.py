@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.28.0"
+__version__ = "2.28.1"
 
 from sie.analyzer import run_report
 from sie.config import load_config
