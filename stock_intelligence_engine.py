@@ -22,7 +22,7 @@ def main():
     parser.add_argument("--no-attention", action="store_true", help="Disable Wikipedia / search attention momentum tracker")
     parser.add_argument("--no-authenticity", action="store_true", help="Disable authenticity-filtered social narrative velocity overlay")
     parser.add_argument("--no-consumer-spend", action="store_true", help="Disable aggregated consumer transaction / credit-card panel spend nowcasting overlay")
-    parser.add_argument("--no-securities-lending", action="store_true", help="Disable securities lending / borrow fee & short squeeze risk overlay")
+    parser.add_argument("--no-borrow-fee", action="store_true", help="Disable securities lending / borrow fee & short squeeze risk overlay")
     args = parser.parse_args()
     run_report(
         include_news=args.news or True,
@@ -38,7 +38,7 @@ def main():
         include_attention=not args.no_attention,
         include_authenticity=not args.no_authenticity,
         include_consumer_spend=not args.no_consumer_spend,
-        include_securities_lending=not args.no_securities_lending,
+        include_borrow_fee=not args.no_borrow_fee,
     )
 
 if __name__ == "__main__":
