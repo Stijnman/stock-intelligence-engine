@@ -19,6 +19,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Maritime AIS / Port Congestion & Vessel Activity Overlay**. Track AIS-derived port dwell times, vessel counts and congestion indices for key logistics, energy and industrial names as a real-economy activity confirmation; soft boost/penalty when physical flow diverges from narrative heat.
 - [ ] **Container / Bill-of-Lading Trade Flow Momentum Overlay**. AI-parsed container-level import/export and bill-of-lading data (ImportGenius / similar public or licensed feeds) as a high-frequency real-economy confirmation layer for industrials, retail, logistics and commodity-linked names; soft boost when physical trade volumes accelerate ahead of narrative or earnings expectations.
 - [ ] **Road / Truck Traffic Camera Volume Overlay**. Aggregated highway and last-mile truck / vehicle traffic counts (Genlogs-style camera networks) as a leading proxy for freight activity and consumer goods movement; soft confirmation or caution when physical throughput diverges from pure narrative heat.
+- [ ] **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay**. Track real-time or daily securities lending fees, hard-to-borrow flags and days-to-cover changes as a short-pressure / squeeze-risk confirmation layer; soft boost when elevated borrow costs coincide with rising narrative velocity and short interest covering.
+- [ ] **GPU Cloud Utilization & Inference Capacity Pricing Proxy**. Monitor public GPU cloud spot pricing, utilization indicators and capacity announcements as a leading demand signal for AI infrastructure and semiconductor names, complementary to CapEx and token-consumption overlays.
 
 ## Medium Priority
 
@@ -49,6 +51,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Dual Institutional vs Retail Sentiment Divergence Gauge**. Explicitly split and surface institutional (13F / dark-pool / options flow derived) versus pure retail (X / Reddit / attention) sentiment; flag divergences as high-value soft context when smart-money and crowd disagree.
 - [ ] **AI-Clustered News Story Impact & Multi-Perspective Overlay**. Cluster related headlines into coherent stories, assign impact scores, and generate short multi-perspective (bull / bear / neutral) summaries so the engine treats narrative events rather than isolated articles.
 - [ ] **Local Open-Weight LLM Ticker Mapping Layer**. Use workstation-class open-weight models (DeepSeek / Qwen class) for robust text-to-ticker resolution on alternative-data feeds, reducing dependence on closed APIs and improving coverage for niche or newly-mentioned names.
+- [ ] **ETF & Mutual Fund Flow Theme Rotation Overlay**. Aggregate daily/weekly ETF and mutual-fund flows into thematic baskets (AI, semiconductors, energy, consumer) as a capital-rotation confirmation layer; soft boost when institutional flows accelerate into the same theme driving current narrative heat.
+- [ ] **Earnings Implied-Move Calibration & Post-Event Surprise Tracker**. Capture options-implied event moves ahead of earnings / catalysts and compare against realized post-event returns and guidance surprises; surface calibration bias and soft context for future similar setups.
+- [ ] **On-Chain Wallet & Exchange Flow Overlay for Crypto-Equity Names**. For equities with material crypto exposure (COIN, MSTR, MARA, etc.), track large wallet movements, exchange net flows and on-chain activity velocity as a real-economy confirmation layer for narrative-driven moves.
 
 ## Long-Term / Nice-to-Have
 
@@ -59,4 +64,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-08-31 (v2.28.1 — autonomous research cycle; five new high-value items added)
+Last updated: 2026-09-01 (v2.28.2 — autonomous research cycle; five new high-value items added)

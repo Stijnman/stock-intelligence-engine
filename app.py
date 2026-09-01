@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.28.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.28.2.
 
 Streamlit Fragment Live Dashboard Refresh + Regime + Confidence +
 Supply-Chain CapEx + Short Interest + Attention Momentum +
@@ -16,7 +16,7 @@ import streamlit as st
 from sie.analyzer import analyze_watchlist
 from sie.config import load_config
 
-__version__ = "2.28.1"
+__version__ = "2.28.2"
 
 st.set_page_config(
     page_title="Stock Intelligence Engine",

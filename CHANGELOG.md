@@ -1,3 +1,17 @@
+## [2.28.2] - 2026-09-01
+
+### Research / Roadmap
+* Autonomous research & evolution cycle (2026-09-01).
+* Code audit confirmed all previously completed High/Medium Priority items remain correctly marked [x] with full wiring present in analyzer / CLI / dashboard / config / tests; no cleanup required this cycle.
+* Fresh 2026 research across AI stock analysis platforms (AltIndex, Nebula/Hidden Systems, StockTitan/Rhea-AI, AlphaSense, SentiSense, Adanos, OpenGamma, GammaRips), alternative data (securities lending / borrow fees, GPU cloud utilization, ETF flows, earnings implied-move calibration, on-chain crypto-equity activity), narrative intelligence, GEX/dealer positioning, and Streamlit 2026 multi-user / production patterns.
+* Added five genuinely new high-value roadmap items not previously present:
+  - **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay** (High Priority)
+  - **GPU Cloud Utilization & Inference Capacity Pricing Proxy** (High Priority)
+  - **ETF & Mutual Fund Flow Theme Rotation Overlay** (Medium Priority)
+  - **Earnings Implied-Move Calibration & Post-Event Surprise Tracker** (Medium Priority)
+  - **On-Chain Wallet & Exchange Flow Overlay for Crypto-Equity Names** (Medium Priority)
+* Version bumped to **2.28.2** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.28.1] - 2026-08-31
 
 ### Research / Roadmap
