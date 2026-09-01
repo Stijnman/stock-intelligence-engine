@@ -133,6 +133,14 @@ consumer_spend:
   penalty_momentum: -0.15        # Contraction threshold for -1 soft penalty
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+securities_lending:
+  enabled: true
+  elevated_borrow_fee: 5.0       # Annualized % fee treated as elevated
+  high_borrow_fee: 15.0          # Annualized % fee treated as high / squeeze-risk
+  elevated_days_to_cover: 4.0
+  narrative_hot: 1.5
+  min_confidence: 0.40
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence
