@@ -19,7 +19,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Maritime AIS / Port Congestion & Vessel Activity Overlay**. Track AIS-derived port dwell times, vessel counts and congestion indices for key logistics, energy and industrial names as a real-economy activity confirmation; soft boost/penalty when physical flow diverges from narrative heat.
 - [ ] **Container / Bill-of-Lading Trade Flow Momentum Overlay**. AI-parsed container-level import/export and bill-of-lading data (ImportGenius / similar public or licensed feeds) as a high-frequency real-economy confirmation layer for industrials, retail, logistics and commodity-linked names; soft boost when physical trade volumes accelerate ahead of narrative or earnings expectations.
 - [ ] **Road / Truck Traffic Camera Volume Overlay**. Aggregated highway and last-mile truck / vehicle traffic counts (Genlogs-style camera networks) as a leading proxy for freight activity and consumer goods movement; soft confirmation or caution when physical throughput diverges from pure narrative heat.
-- [ ] **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay**. Track real-time or daily securities lending fees, hard-to-borrow flags and days-to-cover changes as a short-pressure / squeeze-risk confirmation layer; soft boost when elevated borrow costs coincide with rising narrative velocity and short interest covering.
+- [x] **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay** (completed 2026-09-01, v2.29.0). Track real-time or daily securities lending fees, hard-to-borrow flags and days-to-cover changes as a short-pressure / squeeze-risk confirmation layer; soft boost when elevated borrow costs coincide with rising narrative velocity and short interest covering. Fully wired in `sie/borrow_fee.py` + analyzer + CLI (`--no-borrow-fee`) + dashboard + config. Uses labeled deterministic synthetic proxy; live securities-lending feed hook left explicit.
 - [ ] **GPU Cloud Utilization & Inference Capacity Pricing Proxy**. Monitor public GPU cloud spot pricing, utilization indicators and capacity announcements as a leading demand signal for AI infrastructure and semiconductor names, complementary to CapEx and token-consumption overlays.
 
 ## Medium Priority
@@ -64,4 +64,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-09-01 (v2.28.2 — autonomous research cycle; five new high-value items added)
+Last updated: 2026-09-01 (v2.29.0 — Securities Lending / Borrow Fee & Short Squeeze Risk Overlay fully implemented)

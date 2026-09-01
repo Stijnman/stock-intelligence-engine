@@ -31,6 +31,7 @@ def test_new_overlay_flags_on_watchlist_and_report():
         assert "include_attention" in params
         assert "include_authenticity" in params
         assert "include_consumer_spend" in params
+        assert "include_borrow_fee" in params
         assert "include_confidence" in params
         assert "include_regime" in params
 
@@ -59,6 +60,7 @@ def test_report_forwards_new_overlay_flags(monkeypatch):
         include_attention=False,
         include_authenticity=False,
         include_consumer_spend=False,
+        include_borrow_fee=False,
     )
 
     assert captured["include_supply_chain"] is False
@@ -66,6 +68,7 @@ def test_report_forwards_new_overlay_flags(monkeypatch):
     assert captured["include_attention"] is False
     assert captured["include_authenticity"] is False
     assert captured["include_consumer_spend"] is False
+    assert captured["include_borrow_fee"] is False
 
 
 def test_report_forwards_0dte_option_to_watchlist(monkeypatch):
@@ -140,6 +143,7 @@ def test_cli_forwards_new_overlay_disables(monkeypatch):
             "--no-attention",
             "--no-authenticity",
             "--no-consumer-spend",
+            "--no-borrow-fee",
         ],
     )
 
@@ -150,3 +154,4 @@ def test_cli_forwards_new_overlay_disables(monkeypatch):
     assert captured["include_attention"] is False
     assert captured["include_authenticity"] is False
     assert captured["include_consumer_spend"] is False
+    assert captured["include_borrow_fee"] is False
