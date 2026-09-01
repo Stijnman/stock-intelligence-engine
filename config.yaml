@@ -133,13 +133,14 @@ consumer_spend:
   penalty_momentum: -0.15        # Contraction threshold for -1 soft penalty
   min_confidence: 0.40           # Gate weak signals below this confidence
 
-securities_lending:
+borrow_fee:
   enabled: true
-  elevated_borrow_fee: 5.0       # Annualized % fee treated as elevated
-  high_borrow_fee: 15.0          # Annualized % fee treated as high / squeeze-risk
-  elevated_days_to_cover: 4.0
-  narrative_hot: 1.5
-  min_confidence: 0.40
+  elevated_fee_pct: 8.0          # Fee % treated as elevated / hard-to-borrow observation
+  squeeze_fee_pct: 25.0          # Fee % treated as high squeeze-risk territory
+  covering_dtc_change: -1.5      # DTC decline treated as covering pressure
+  expanding_dtc_change: 1.8      # DTC expansion treated as increasing short pressure
+  narrative_hot: 1.5             # Velocity level treated as hot for squeeze confirmation
+  min_confidence: 0.40           # Gate weak signals below this confidence
 
 thesis:
   enabled: true
