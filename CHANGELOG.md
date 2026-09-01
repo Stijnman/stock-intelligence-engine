@@ -1,3 +1,21 @@
+## [2.29.0] - 2026-09-01
+
+### Added / Completed
+* **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay** — `sie/borrow_fee.py`.
+  - Deterministic synthetic borrow-fee / days-to-cover / hard-to-borrow proxy keyed by ticker + day-of-year.
+  - Soft boost when elevated borrow costs coincide with rising narrative velocity and short-interest covering (squeeze-risk confirmation).
+  - Caution when very high fees + expanding DTC meet cold narrative.
+  - Surfaces `bf_fee_pct`, `bf_dtc`, `bf_htb`, `bf_dtc_change`, `bf_boost`, `bf_confidence`, `bf_reason`, `bf_source`.
+  - Source labeled `synthetic_proxy` (live securities-lending feed hook left explicit).
+  - Wired after consumer_spend / before thesis. CLI `--no-borrow-fee`.
+  - Config section `borrow_fee.enabled` + thresholds.
+  - Dashboard preferred columns include bf_fee_pct / bf_dtc / bf_htb / bf_boost.
+  - Tests cover signature + CLI disable flag forwarding.
+
+### Changed
+* Autonomous feature implementation cycle (2026-09-01).
+* Version bumped to **2.29.0** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.28.2] - 2026-09-01
 
 ### Research / Roadmap

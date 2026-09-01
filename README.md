@@ -4,11 +4,12 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.28.2** — September 2026 · Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum (fully wired) + Market Regime Adaptive Overlay Weighting + Signal Confidence Calibration & LLM Self-Critique + Streamlit Fragment Live Dashboard Refresh + LLM Bull/Bear Thesis + Self-Explaining AI Signal Brief + Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + 0DTE Options Flow + Options IV Skew + Dark Pool / ATS + Real-time Quotes + Congressional Trading + Portfolio Risk + Institutional 13F + Prediction Markets + Insider Form 4 + Narrative Velocity + Backtesting
+**v2.29.0** — September 2026 · Securities Lending / Borrow Fee & Short Squeeze Risk Overlay + Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum (fully wired) + Market Regime Adaptive Overlay Weighting + Signal Confidence Calibration & LLM Self-Critique + Streamlit Fragment Live Dashboard Refresh + LLM Bull/Bear Thesis + Self-Explaining AI Signal Brief + Honesty / Contradiction Detector + Corporate Hiring + Same-Day SEC EDGAR + 0DTE Options Flow + Options IV Skew + Dark Pool / ATS + Real-time Quotes + Congressional Trading + Portfolio Risk + Institutional 13F + Prediction Markets + Insider Form 4 + Narrative Velocity + Backtesting
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay** — Deterministic borrow-fee / DTC / hard-to-borrow proxy; soft boost on elevated fees + covering + hot narrative (squeeze risk), caution on high fees vs cold narrative
 * **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay** — Deterministic panel-spend momentum proxy as leading revenue nowcast; soft boost on rising spend vs narrative, caution on contraction
 * **Authenticity-Filtered Social Narrative Velocity Overlay** — Scores social heat for authenticity / bot-likelihood before aggregating velocity; soft boost on high-auth rising narratives, caution on low-auth (bot/spam) elevated velocity
 * **Semiconductor / AI Supply-Chain CapEx Momentum Tracker** — Supplier momentum (ASML / AMAT / LRCX / KLAC / TSM) as a leading inference-demand proxy; yfinance peek when available, otherwise labeled synthetic proxy
@@ -50,6 +51,7 @@ streamlit run app.py
 
 ## Recent Edits & Version History
 
+* **v2.29.0 (2026-09-01)** : Autonomous feature implementation cycle. Fully implemented **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay** (`sie/borrow_fee.py`, `--no-borrow-fee`). Deterministic synthetic borrow-fee / DTC / HTB proxy with soft boost on elevated fees + covering + hot narrative (squeeze risk) and caution on high fees vs cold narrative. Surfaces `bf_fee_pct`, `bf_dtc`, `bf_htb`, `bf_boost`, `bf_confidence`, `bf_reason`, `bf_source`. Wired into analyzer / CLI / config / dashboard preferred columns / tests. Marked completed in FUTURE-IMPROVEMENTS. Version alignment to 2.29.0.
 * **v2.28.2 (2026-09-01)** : Autonomous research & evolution cycle. Code audit confirmed no outstanding completed items needing cleanup. Fresh 2026 research on AI stock tools, securities lending / borrow fees, GPU cloud utilization proxies, ETF flow theme rotation, earnings implied-move calibration, on-chain crypto-equity activity, and Streamlit production patterns. Added five new high-value roadmap items (Borrow Fee / Short Squeeze Risk, GPU Cloud Utilization Proxy, ETF Flow Theme Rotation, Earnings Implied-Move Calibration, On-Chain Crypto-Equity Overlay). Version alignment to 2.28.2.
 * **v2.28.1 (2026-08-31)** : Autonomous research & evolution cycle. Code audit confirmed no outstanding completed items needing cleanup. Fresh 2026 research on AI stock tools, container/bill-of-lading trade flow, road/truck camera volume, dual institutional-vs-retail sentiment, AI-clustered news story impact, local open-weight LLM ticker mapping, and Streamlit production patterns. Added five new high-value roadmap items (Container Trade Flow, Truck Traffic Volume, Dual Sentiment Divergence, AI News Story Clustering, Local LLM Ticker Mapping). Version alignment to 2.28.1.
 * **v2.28.0 (2026-08-30)** : Autonomous feature implementation cycle. Fully implemented **Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay** (`sie/consumer_spend.py`, `--no-consumer-spend`). Deterministic synthetic panel-spend momentum proxy with soft boost/penalty; fields `cs_momentum`, `cs_score`, `cs_boost`, `cs_confidence`, `cs_reason`, `cs_source`. Wired into analyzer / CLI / config / dashboard preferred columns / tests. Marked completed in FUTURE-IMPROVEMENTS. Version alignment to 2.28.0.
@@ -65,4 +67,4 @@ streamlit run app.py
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.28.2
+v2.29.0
