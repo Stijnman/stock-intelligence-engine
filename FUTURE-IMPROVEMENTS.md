@@ -21,6 +21,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Road / Truck Traffic Camera Volume Overlay**. Aggregated highway and last-mile truck / vehicle traffic counts (Genlogs-style camera networks) as a leading proxy for freight activity and consumer goods movement; soft confirmation or caution when physical throughput diverges from pure narrative heat.
 - [x] **Securities Lending / Borrow Fee & Short Squeeze Risk Overlay** (completed 2026-09-01, v2.29.0). Track real-time or daily securities lending fees, hard-to-borrow flags and days-to-cover changes as a short-pressure / squeeze-risk confirmation layer; soft boost when elevated borrow costs coincide with rising narrative velocity and short interest covering. Fully wired in `sie/borrow_fee.py` + analyzer + CLI (`--no-borrow-fee`) + dashboard + config. Uses labeled deterministic synthetic proxy; live securities-lending feed hook left explicit.
 - [ ] **GPU Cloud Utilization & Inference Capacity Pricing Proxy**. Monitor public GPU cloud spot pricing, utilization indicators and capacity announcements as a leading demand signal for AI infrastructure and semiconductor names, complementary to CapEx and token-consumption overlays.
+- [ ] **Freight Rate & Logistics Cost Index Momentum Overlay**. Track Baltic Dry Index, Shanghai Containerized Freight Index (SCFI) and related logistics cost proxies as macro real-economy confirmation for industrials, shipping, commodities and consumer-goods names; soft boost when freight rates accelerate in line with narrative heat, caution on sharp divergences that signal demand or cost pressure.
+- [ ] **Job Posting AI-Skill Intensity & Role-Mix Shift Overlay**. Beyond raw headcount, parse public job postings for AI/ML/cloud skill density and role-mix shifts as a leading indicator of AI adoption intensity or disruption exposure; soft boost when skill intensity rises ahead of narrative or CapEx signals.
 
 ## Medium Priority
 
@@ -54,6 +56,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **ETF & Mutual Fund Flow Theme Rotation Overlay**. Aggregate daily/weekly ETF and mutual-fund flows into thematic baskets (AI, semiconductors, energy, consumer) as a capital-rotation confirmation layer; soft boost when institutional flows accelerate into the same theme driving current narrative heat.
 - [ ] **Earnings Implied-Move Calibration & Post-Event Surprise Tracker**. Capture options-implied event moves ahead of earnings / catalysts and compare against realized post-event returns and guidance surprises; surface calibration bias and soft context for future similar setups.
 - [ ] **On-Chain Wallet & Exchange Flow Overlay for Crypto-Equity Names**. For equities with material crypto exposure (COIN, MSTR, MARA, etc.), track large wallet movements, exchange net flows and on-chain activity velocity as a real-economy confirmation layer for narrative-driven moves.
+- [ ] **Retail vs Institutional Options Flow Divergence Gauge**. Explicitly separate and score retail-driven (small lot, high volume) versus institutional/block options activity; flag divergences as high-conviction soft context when smart-money flow and crowd flow disagree on direction or urgency.
+- [ ] **Pre-Earnings Social Whisper & Options Leak Probability Score**. Combine elevated pre-earnings authenticity-filtered social velocity, unusual near-term options activity, and narrative phase into a soft leak/anticipation probability score; surface as caution or confirmation ahead of catalysts.
+- [ ] **Webhook / Multi-Channel Alert Router with Overlay Threshold Triggers**. Extend the existing alert system to support configurable Discord / Telegram / generic webhook payloads triggered by specific overlay combinations (e.g. high confidence + squeeze risk + rising narrative velocity) with rate-limiting and deduplication.
 
 ## Long-Term / Nice-to-Have
 
@@ -64,4 +69,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-09-01 (v2.29.0 — Securities Lending / Borrow Fee & Short Squeeze Risk Overlay fully implemented)
+Last updated: 2026-09-02 (v2.29.1 — Autonomous research cycle; 5 new items added)
