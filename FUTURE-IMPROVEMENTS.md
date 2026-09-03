@@ -23,6 +23,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **GPU Cloud Utilization & Inference Capacity Pricing Proxy**. Monitor public GPU cloud spot pricing, utilization indicators and capacity announcements as a leading demand signal for AI infrastructure and semiconductor names, complementary to CapEx and token-consumption overlays.
 - [ ] **Freight Rate & Logistics Cost Index Momentum Overlay**. Track Baltic Dry Index, Shanghai Containerized Freight Index (SCFI) and related logistics cost proxies as macro real-economy confirmation for industrials, shipping, commodities and consumer-goods names; soft boost when freight rates accelerate in line with narrative heat, caution on sharp divergences that signal demand or cost pressure.
 - [ ] **Job Posting AI-Skill Intensity & Role-Mix Shift Overlay**. Beyond raw headcount, parse public job postings for AI/ML/cloud skill density and role-mix shifts as a leading indicator of AI adoption intensity or disruption exposure; soft boost when skill intensity rises ahead of narrative or CapEx signals.
+- [ ] **Expert Network / Third Bridge Call Transcript Sentiment & Guidance Delta Overlay**. Parse and score high-signal expert-network and independent research call transcripts (Third Bridge style) for tone, conviction and guidance deltas relative to the prior call and to the current public narrative; soft boost when expert language diverges positively from pure social heat, caution on negative expert shifts.
+- [ ] **BNPL / Alternative Consumer Credit Transaction Momentum Overlay**. Track aggregated Buy-Now-Pay-Later and alternative-credit transaction volumes (Afterpay/Klarna-style public proxies or panel data) as a leading consumer-demand and credit-stress signal for retail, e-commerce and consumer discretionary names; soft boost on accelerating BNPL spend that confirms narrative, caution on sharp contractions signaling demand fatigue.
 
 ## Medium Priority
 
@@ -59,6 +61,9 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Retail vs Institutional Options Flow Divergence Gauge**. Explicitly separate and score retail-driven (small lot, high volume) versus institutional/block options activity; flag divergences as high-conviction soft context when smart-money flow and crowd flow disagree on direction or urgency.
 - [ ] **Pre-Earnings Social Whisper & Options Leak Probability Score**. Combine elevated pre-earnings authenticity-filtered social velocity, unusual near-term options activity, and narrative phase into a soft leak/anticipation probability score; surface as caution or confirmation ahead of catalysts.
 - [ ] **Webhook / Multi-Channel Alert Router with Overlay Threshold Triggers**. Extend the existing alert system to support configurable Discord / Telegram / generic webhook payloads triggered by specific overlay combinations (e.g. high confidence + squeeze risk + rising narrative velocity) with rate-limiting and deduplication.
+- [ ] **Cross-Asset Narrative Contagion Detector (Equity ↔ Crypto ↔ Commodity)**. Measure rapid transfer of narrative velocity and sentiment between equity names, related crypto tokens and commodity futures (e.g. AI chips ↔ related crypto miners ↔ power/commodities) to surface contagion risk or confirmation before pure equity social metrics move.
+- [ ] **Analyst Note Velocity & Impact Scorer (Blue Matrix / Research Aggregator Style)**. Ingest or proxy recent sell-side and independent analyst note publication velocity, rating changes and language impact scores; soft confirmation when note flow accelerates in the direction of the current narrative phase.
+- [ ] **Data-Center Power / Energy Intensity Nowcasting Overlay**. Use public power-consumption, grid-load or data-center energy-intensity proxies as a real-economy confirmation layer for AI infrastructure, semiconductor and hyperscaler names; complementary to GPU cloud and CapEx overlays.
 
 ## Long-Term / Nice-to-Have
 
@@ -69,4 +74,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Truth Social / high-influence political narrative feed for market-moving accounts.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 
-Last updated: 2026-09-02 (v2.29.1 — Autonomous research cycle; 5 new items added)
+Last updated: 2026-09-03 (v2.29.2 — Autonomous research cycle; 5 new items added; version alignment fixed)
