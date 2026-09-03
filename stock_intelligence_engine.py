@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.29.2"
+__version__ = "2.30.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -12,6 +12,8 @@ def main():
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--news", action="store_true", help="Include news headlines")
     parser.add_argument("--export", action="store_true", help="Export CSV")
+    parser.add_argument("--alerts", action="store_true", help="Force multi-channel alert router evaluation & send")
+    parser.add_argument("--telegram", action="store_true", help="Enable Telegram channel for this run")
     parser.add_argument("--no-thesis", action="store_true", help="Disable thesis generation")
     parser.add_argument("--no-brief", action="store_true", help="Disable self-explaining signal brief")
     parser.add_argument("--no-honesty", action="store_true", help="Disable honesty / contradiction detector")
@@ -28,6 +30,7 @@ def main():
         include_news=args.news or True,
         export=args.export,
         backtest=args.backtest,
+        telegram=args.telegram or args.alerts,
         include_thesis=not args.no_thesis,
         include_brief=not args.no_brief,
         include_honesty=not args.no_honesty,
