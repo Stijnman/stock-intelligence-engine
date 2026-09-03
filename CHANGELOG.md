@@ -1,3 +1,18 @@
+## [2.29.2] - 2026-09-03
+
+### Research / Roadmap
+* Autonomous research & evolution cycle (2026-09-03).
+* Code audit confirmed all previously completed High/Medium Priority items remain correctly marked [x] with full wiring present in analyzer / CLI / dashboard / config / tests (including Securities Lending / Borrow Fee overlay); no cleanup required this cycle.
+* Fixed version drift: `sie/__init__.py` had drifted to 2.30.0 while package docs and entrypoints remained at 2.29.1; aligned everything to 2.29.2.
+* Fresh 2026 research across AI stock analysis platforms (AltIndex, Prospero.ai, StockTitan/Rhea-AI, AlphaSense, SentiSense, Bridgewater AIA, Bloomberg ASKB, Marvin Labs, NowNews), alternative data (BNPL/alternative credit panels, expert-network transcripts, data-center power intensity, cross-asset narrative contagion, analyst-note velocity), narrative intelligence, and Streamlit production / multi-user patterns.
+* Added five genuinely new high-value roadmap items not previously present:
+  - **Expert Network / Third Bridge Call Transcript Sentiment & Guidance Delta Overlay** (High Priority)
+  - **BNPL / Alternative Consumer Credit Transaction Momentum Overlay** (High Priority)
+  - **Cross-Asset Narrative Contagion Detector (Equity ↔ Crypto ↔ Commodity)** (Medium Priority)
+  - **Analyst Note Velocity & Impact Scorer (Blue Matrix / Research Aggregator Style)** (Medium Priority)
+  - **Data-Center Power / Energy Intensity Nowcasting Overlay** (Medium Priority)
+* Version bumped to **2.29.2** across package, CLI, dashboard, CHANGELOG, README and FUTURE-IMPROVEMENTS.
+
 ## [2.29.1] - 2026-09-02
 
 ### Research / Roadmap
