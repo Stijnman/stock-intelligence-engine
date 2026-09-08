@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.29.5] — 2026-09-08
+
+### Research & Maintenance
+- Autonomous research & evolution cycle.
+- Code audit: no outstanding completed FUTURE-IMPROVEMENTS items requiring cleanup; all previously shipped overlays (Borrow Fee, Consumer Spend, Authenticity, Supply-Chain CapEx, Short Interest, Attention, Regime, Confidence, Honesty, Thesis, Brief, Hiring, EDGAR, 0DTE, Options IV, Dark Pool, Realtime, Congressional, 13F, Prediction Markets, Insider, Narrative Velocity) remain fully wired in analyzer / CLI / config / dashboard. Contagion module exists as synthetic proxy but is not yet fully integrated into analyzer call path (remains open Medium item).
+- Fresh 2026 research covering AI-powered stock analysis platforms (AltIndex, SentiSense, Fiscal.ai / FinChat, Prospero.ai, Marvin Labs, AlphaSense, NowNews, Adanos, Financial Datasets), narrative intelligence & multi-provider sentiment, alternative data categories (freight/logistics indices, job-posting skill intensity, retail vs institutional options flow, expert-network transcripts, data-center power intensity), near-instant XBRL / structured filings, Streamlit production patterns, and cloud data connectors.
+- Added five genuinely new high-value roadmap items not previously present:
+  - **High**: Freight Rate & Logistics Cost Index Momentum Overlay
+  - **High**: Job Posting AI-Skill Intensity & Role-Mix Shift Overlay
+  - **Medium**: Retail vs Institutional Options Flow Divergence Gauge
+  - **Medium**: Expert Network / Third-Party Transcript Sentiment Overlay
+  - **Long-Term**: Data-Center Power / Energy Intensity Overlay for AI Infrastructure Names
+
+### Notes
+- Research-only cycle; no new overlay implementations this release.
+- Educational research tool only — not financial advice.
+
 ## [2.29.4] — 2026-09-07
 
 ### Research & Maintenance
