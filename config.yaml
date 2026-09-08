@@ -142,6 +142,12 @@ borrow_fee:
   narrative_hot: 1.5             # Velocity level treated as hot for squeeze confirmation
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+contagion:
+  enabled: true
+  boost_transfer: 0.35           # Inbound velocity transfer required for +1 cluster confirmation boost
+  penalty_transfer: -0.25        # Outbound / reverse transfer for -1 cluster caution
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence
