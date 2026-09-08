@@ -20,7 +20,7 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 
 - [ ] **Options Max Pain & Open-Interest Wall Detector**. Surface max-pain levels and large OI walls as soft context for short-horizon signals.
 - [ ] **Pre-Market Theme Rotation & Volume Surge Scanner**. Detect unusual pre-market volume + theme keyword spikes to flag potential narrative rotation before the open.
-- [ ] **Cross-Ticker Narrative Contagion Detector**. Measure when attention or sentiment on one ticker rapidly transfers to correlated names inside the same theme. (Note: synthetic proxy module exists in `sie/contagion.py` but is not yet fully wired into analyzer / CLI / dashboard preferred columns.)
+- [x] **Cross-Ticker Narrative Contagion Detector**. Measure when attention or sentiment on one ticker rapidly transfers to correlated names inside the same theme. Fully wired into analyzer / CLI / dashboard / config (v2.30.0, 2026-09-08). Synthetic cluster proxy with thematic adjacency (AI / consumer / energy / meme); soft boost on inbound contagion, caution on reverse.
 - [ ] **Production Streamlit Parquet State Compression + Offline Demo Mode**. Persist dashboard state and cached overlay results in compressed Parquet for fast reloads; ship a fully offline demo mode with synthetic but realistic watchlist so the UI remains usable without live API keys or market hours.
 - [ ] **Multi-Provider Sentiment Aggregation Layer with MCP Tool Surface**. Aggregate FinBERT / VADER / external providers (SentiSense, Adanos-style) into a calibrated composite score; expose the aggregation and individual sources as MCP tools for agent consumption.
 - [ ] **Retail vs Institutional Options Flow Divergence Gauge**. Separate retail (small-size / high-frequency) vs institutional (block / dark) options activity; flag divergences where retail is chasing a narrative that smart-money flow is fading or confirming.
@@ -37,4 +37,4 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Cloud Data Marketplace Native Connectors (Snowflake / Databricks / similar)**. Optional read-only connectors that pull curated alternative-data tables or feature stores from cloud marketplaces into the overlay pipeline without leaving the sandbox; keep synthetic-proxy fallback when credentials are absent.
 - [ ] **Data-Center Power / Energy Intensity Overlay for AI Infrastructure Names**. Track power-consumption, grid-connection, and energy-intensity proxies for hyperscalers and AI infrastructure names as a physical constraint / CapEx confirmation signal; soft boost when power growth aligns with AI narrative heat.
 
-Last updated: 2026-09-08 (v2.29.5 — Autonomous research & evolution cycle; no completed-item cleanup required; 5 new 2026 high-value items added)
+Last updated: 2026-09-08 (v2.30.0 — Cross-Ticker Narrative Contagion Detector fully integrated into analyzer, CLI, dashboard and config)

@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.30.0] — 2026-09-08
+
+### Added / Completed
+- **Cross-Ticker Narrative Contagion Detector fully wired** (was Medium Priority open item).
+  - `sie/contagion.py` synthetic cluster-contagion proxy (AI / consumer / energy / meme thematic adjacency) now called from `analyze_watchlist` after authenticity / borrow-fee layers.
+  - Config section `contagion:` with `enabled`, `boost_transfer`, `penalty_transfer`, `min_confidence`.
+  - CLI flag `--no-contagion`.
+  - Streamlit dashboard preferred columns now surface `ct_score`, `ct_velocity_transfer`, `ct_boost`, `ct_peers`, `ct_reason`.
+  - Soft signal boost on inbound narrative transfer from peers; caution on reverse / outbound contagion.
+  - Fixed `app.py` to correctly unpack `run_report()` result dict (`result["report"]["rows"]`) so the live table renders.
+
+### Version
+- Bumped package, CLI, dashboard and docs to **2.30.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
 ## [2.29.5] — 2026-09-08
 
 ### Research & Maintenance
@@ -25,24 +42,6 @@
 - Code audit: no additional completed FUTURE-IMPROVEMENTS items required cleanup beyond the 9 previously marked [x] items which were removed from the active roadmap; all shipped overlays remain fully wired in analyzer / CLI / config / dashboard.
 - Fresh 2026 research covering AI-powered stock analysis tools (AltIndex, SentiSense, Fiscal.ai, Prospero.ai, MoatScan, Stock Companion), narrative intelligence & multi-provider sentiment with MCP surfaces, near-instant XBRL structured filing intelligence, options liquidity-ranked pools with historical outcome tracking, Streamlit production patterns (Parquet state compression, offline demo mode), and cloud data marketplace connectors.
 - Added five new high-value roadmap items:
-  - **High**: Near-Instant XBRL Structured Filing Diff & Consensus Surprise Overlay
-  - **High**: Options Liquidity-Ranked Setup Pool & Historical Outcome Tracker
-  - **Medium**: Production Streamlit Parquet State Compression + Offline Demo Mode
-  - **Medium**: Multi-Provider Sentiment Aggregation Layer with MCP Tool Surface
-  - **Long-Term**: Cloud Data Marketplace Native Connectors (Snowflake / similar)
-
-### Notes
-- Research-only cycle; no new overlay implementations this release.
-- Educational research tool only — not financial advice.
-
-## [2.29.3] — 2026-09-05
-
-### Research & Maintenance
-- Autonomous research & evolution cycle.
-- Code audit: no completed FUTURE-IMPROVEMENTS items remaining unchecked; all previously shipped overlays remain fully wired.
-- Fixed version drift: `sie/__init__.py` and CLI entrypoint were at 2.30.0 while README and `app.py` reported 2.29.2. Aligned everything to **2.29.3**.
-- Fresh 2026 research covering AI-powered stock tools, narrative/sentiment providers with MCP surfaces, near-instant XBRL filing intelligence, options liquidity-ranked pools with historical outcomes, Streamlit production patterns (Parquet state compression, offline demo mode), and cloud data marketplace connectors.
-- Added five new roadmap items:
   - **High**: Near-Instant XBRL Structured Filing Diff & Consensus Surprise Overlay
   - **High**: Options Liquidity-Ranked Setup Pool & Historical Outcome Tracker
   - **Medium**: Production Streamlit Parquet State Compression + Offline Demo Mode
