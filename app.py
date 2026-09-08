@@ -1,10 +1,11 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.29.5.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.30.0.
 
 Streamlit Fragment Live Dashboard Refresh + Regime + Confidence +
 Supply-Chain CapEx + Short Interest + Attention Momentum +
 Authenticity-Filtered Social Narrative Velocity +
 Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting +
-Securities Lending / Borrow Fee & Short Squeeze Risk Overlay.
+Securities Lending / Borrow Fee & Short Squeeze Risk Overlay +
+Cross-Ticker Narrative Contagion Detector (fully wired).
 """
 from __future__ import annotations
 
@@ -13,7 +14,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.29.5"
+__version__ = "2.30.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -25,7 +26,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
+        f"**v{__version__}** — Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
         "Supply-Chain CapEx + Short Interest + Attention + Fragment Live Refresh + Regime + Confidence + "
         "Honesty + Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + "
         "13F + Polymarket + Insider + Narrative Velocity"
@@ -33,15 +34,17 @@ with st.sidebar:
 
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
-    "Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + "
-    "Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
+    "Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
+    "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
 )
 
 st.metric("Engine Version", __version__)
 
 @st.fragment(run_every=refresh_interval if refresh_interval > 0 else None)
 def signal_table_fragment():
-    rows = run_report(export=False, backtest=False)
+    result = run_report(export=False, backtest=False)
+    report = result.get("report") if isinstance(result, dict) else result
+    rows = report.get("rows", []) if isinstance(report, dict) else []
     if not rows:
         st.warning("No data returned from analyzer.")
         return
@@ -49,6 +52,7 @@ def signal_table_fragment():
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price", "change_pct",
         "confidence_score", "confidence_label", "market_regime", "regime_confidence",
+        "ct_score", "ct_velocity_transfer", "ct_boost", "ct_peers", "ct_reason",
         "bf_fee_pct", "bf_dtc", "bf_htb", "bf_boost",
         "cs_momentum", "cs_score", "cs_boost",
         "auth_score", "auth_filtered_velocity", "auth_boost",
@@ -65,9 +69,9 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
+    f"v{__version__} — Cross-Ticker Narrative Contagion Detector fully wired + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
     "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum "
-    "fully wired · Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · "
+    "· Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · "
     "Options IV · Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
     "Educational research tool only — not financial advice."
 )
