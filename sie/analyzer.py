@@ -10,6 +10,7 @@ Authenticity-Filtered Social Narrative Velocity Overlay,
 Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay,
 Securities Lending / Borrow Fee & Short Squeeze Risk Overlay,
 Cross-Ticker Narrative Contagion Detector,
+Analyst Estimate Revision Velocity & Breadth Overlay,
 LLM-Generated Bull/Bear Thesis Pair Generator,
 Self-Explaining AI Signal Brief Generator, Narrative vs. Fundamentals Contradiction / Honesty Signal Detector,
 and Signal Confidence Calibration & LLM Self-Critique Layer,
@@ -43,6 +44,7 @@ from sie.authenticity import integrate_authenticity_to_row
 from sie.consumer_spend import integrate_consumer_spend_to_row
 from sie.borrow_fee import integrate_borrow_fee_to_row
 from sie.contagion import integrate_contagion_to_row
+from sie.estimate_revision import integrate_estimate_revision_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -73,6 +75,7 @@ def analyze_watchlist(
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
     include_contagion: bool = True,
+    include_estimate_revision: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -185,6 +188,8 @@ def analyze_watchlist(
             row = integrate_borrow_fee_to_row(row, cfg)
         if include_contagion:
             row = integrate_contagion_to_row(row, cfg)
+        if include_estimate_revision:
+            row = integrate_estimate_revision_to_row(row, cfg)
         if include_thesis:
             row = integrate_thesis_to_row(row, cfg)
         if include_brief:
@@ -229,6 +234,7 @@ def run_report(
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
     include_contagion: bool = True,
+    include_estimate_revision: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -262,6 +268,7 @@ def run_report(
         include_consumer_spend=include_consumer_spend,
         include_borrow_fee=include_borrow_fee,
         include_contagion=include_contagion,
+        include_estimate_revision=include_estimate_revision,
         include_thesis=include_thesis,
         include_brief=include_brief,
         include_honesty=include_honesty,
