@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.30.1"
+__version__ = "2.31.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -26,6 +26,7 @@ def main():
     parser.add_argument("--no-consumer-spend", action="store_true", help="Disable aggregated consumer transaction / credit-card panel spend nowcasting overlay")
     parser.add_argument("--no-borrow-fee", action="store_true", help="Disable securities lending / borrow fee & short squeeze risk overlay")
     parser.add_argument("--no-contagion", action="store_true", help="Disable cross-ticker narrative contagion detector")
+    parser.add_argument("--no-estimate-revision", action="store_true", help="Disable analyst estimate revision velocity & breadth overlay")
     args = parser.parse_args()
     run_report(
         include_news=args.news or True,
@@ -44,6 +45,7 @@ def main():
         include_consumer_spend=not args.no_consumer_spend,
         include_borrow_fee=not args.no_borrow_fee,
         include_contagion=not args.no_contagion,
+        include_estimate_revision=not args.no_estimate_revision,
     )
 
 if __name__ == "__main__":
