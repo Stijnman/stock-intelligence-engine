@@ -148,6 +148,13 @@ contagion:
   penalty_transfer: -0.25        # Outbound / reverse transfer for -1 cluster caution
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+estimate_revision:
+  enabled: true
+  boost_velocity: 0.12           # Upward revision velocity required for +1 soft boost
+  penalty_velocity: -0.10        # Downward revision velocity for -1 caution
+  min_breadth: 0.35              # Minimum coverage breadth to accept signal
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence
