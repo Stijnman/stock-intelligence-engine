@@ -15,6 +15,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Options Liquidity-Ranked Setup Pool & Historical Outcome Tracker**. Rank current unusual options / 0DTE / skew setups by liquidity and historical post-setup return distribution; surface only high-liquidity names with positive expectancy context as soft confirmation for narrative + flow confluence.
 - [ ] **Freight Rate & Logistics Cost Index Momentum Overlay**. Track Baltic Dry, container freight indices, and key logistics cost proxies as leading indicators of industrial / consumer goods demand and margin pressure; soft boost when rates confirm rising narrative velocity for cyclicals, caution on cost spikes that contradict bullish narratives.
 - [ ] **Job Posting AI-Skill Intensity & Role-Mix Shift Overlay**. Measure company-level job-post volume and the share of postings requiring AI/ML, data-engineering, or frontier-model skills; rising AI-skill intensity as a forward signal of strategic commitment and future CapEx/narrative durability.
+- [ ] **Analyst Estimate Revision Velocity & Breadth Overlay**. Track the speed, direction, and coverage-breadth of consensus EPS/revenue estimate revisions across the sell-side; rapid upward revisions with rising breadth as soft confirmation of narrative durability, sharp downward revisions as caution even when social heat remains elevated.
+- [ ] **Patent & Intellectual Property Filing Momentum Overlay**. Monitor USPTO/EPO patent applications, grants, and forward-citation velocity as a forward-looking innovation and economic-moat signal; soft boost for names showing accelerating high-quality patent activity that aligns with or leads the current narrative theme (especially AI / semiconductor / biotech).
 
 ## Medium Priority
 
@@ -25,6 +27,8 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] **Multi-Provider Sentiment Aggregation Layer with MCP Tool Surface**. Aggregate FinBERT / VADER / external providers (SentiSense, Adanos-style) into a calibrated composite score; expose the aggregation and individual sources as MCP tools for agent consumption.
 - [ ] **Retail vs Institutional Options Flow Divergence Gauge**. Separate retail (small-size / high-frequency) vs institutional (block / dark) options activity; flag divergences where retail is chasing a narrative that smart-money flow is fading or confirming.
 - [ ] **Expert Network / Third-Party Transcript Sentiment Overlay**. Ingest and score expert-network call transcripts and third-party research notes for tone, conviction, and incremental insight relative to public earnings calls; soft boost when expert consensus confirms or leads public narrative.
+- [ ] **Maritime AIS / Port Congestion & Vessel Activity Overlay**. Use near-real-time AIS-derived vessel counts, dwell times, and congestion indices at key global ports as physical-economy confirmation for industrial, retail, energy and logistics-sensitive names; soft boost when activity diverges positively from pure narrative heat, caution on rising congestion that signals margin pressure.
+- [ ] **Corporate Credit Spread / CDS Momentum Overlay**. Track single-name CDS spreads and corporate bond credit-spread momentum as an early credit-risk confirmation or contradiction signal; rising spreads against hot equity narrative as caution, tightening spreads as soft support.
 
 ## Long-Term / Nice-to-Have
 
@@ -36,5 +40,6 @@ See [COMPETITION.md](COMPETITION.md) for full competitive analysis.
 - [ ] Economic moat + AI-impact scoring layer (MoatScan-style).
 - [ ] **Cloud Data Marketplace Native Connectors (Snowflake / Databricks / similar)**. Optional read-only connectors that pull curated alternative-data tables or feature stores from cloud marketplaces into the overlay pipeline without leaving the sandbox; keep synthetic-proxy fallback when credentials are absent.
 - [ ] **Data-Center Power / Energy Intensity Overlay for AI Infrastructure Names**. Track power-consumption, grid-connection, and energy-intensity proxies for hyperscalers and AI infrastructure names as a physical constraint / CapEx confirmation signal; soft boost when power growth aligns with AI narrative heat.
+- [ ] **YouTube / Podcast / Long-Form Content Narrative Velocity Overlay**. Extend social narrative velocity beyond short-form X/Reddit to long-form transcript velocity, engagement, and tone on YouTube earnings recaps, podcasts, and influencer deep-dives; capture slower-burn but higher-conviction narrative shifts that short-form heat often misses.
 
-Last updated: 2026-09-08 (v2.30.0 — Cross-Ticker Narrative Contagion Detector fully integrated into analyzer, CLI, dashboard and config)
+Last updated: 2026-09-09 (v2.30.1 — research cycle; five new high-value items added; all prior overlays including Cross-Ticker Contagion confirmed fully wired)

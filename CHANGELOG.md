@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.30.1] — 2026-09-09
+
+### Research & Maintenance
+- Autonomous research & evolution cycle.
+- Code audit: all previously shipped overlays remain fully wired in analyzer / CLI / config / dashboard (Cross-Ticker Narrative Contagion Detector completed and integrated in v2.30.0; Borrow Fee, Consumer Spend, Authenticity, Supply-Chain CapEx, Short Interest, Attention, Regime, Confidence, Honesty, Thesis, Brief, Hiring, EDGAR, 0DTE, Options IV, Dark Pool, Realtime, Congressional, 13F, Prediction Markets, Insider, Narrative Velocity all confirmed present and called). No outstanding completed FUTURE-IMPROVEMENTS items required removal this cycle.
+- Fresh 2026 research covering AI-powered stock analysis platforms (SentiSense, Fiscal.ai / FinChat, Prospero.ai, Marvin Labs, AlphaSense, NowNews, Adanos, Financial Datasets, Danelfin, AltIndex), narrative intelligence & multi-provider sentiment with MCP surfaces, alternative data categories (patent/IP filings, maritime AIS / port congestion, corporate CDS / credit spreads, analyst estimate revision velocity, long-form YouTube/podcast narrative), near-instant structured filings, options liquidity & flow, Streamlit production patterns (Parquet state, caching, offline modes), and cloud data connectors.
+- Added five genuinely new high-value roadmap items not previously present:
+  - **High**: Analyst Estimate Revision Velocity & Breadth Overlay
+  - **High**: Patent & Intellectual Property Filing Momentum Overlay
+  - **Medium**: Maritime AIS / Port Congestion & Vessel Activity Overlay
+  - **Medium**: Corporate Credit Spread / CDS Momentum Overlay
+  - **Long-Term**: YouTube / Podcast / Long-Form Content Narrative Velocity Overlay
+
+### Version
+- Bumped package, CLI, dashboard and docs to **2.30.1**.
+
+### Notes
+- Research-only cycle; no new overlay implementations this release.
+- Educational research tool only — not financial advice.
+
 ## [2.30.0] — 2026-09-08
 
 ### Added / Completed
