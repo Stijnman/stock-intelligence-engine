@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.31.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.32.0.
 
 Streamlit Fragment Live Dashboard Refresh + Regime + Confidence +
 Supply-Chain CapEx + Short Interest + Attention Momentum +
@@ -6,7 +6,8 @@ Authenticity-Filtered Social Narrative Velocity +
 Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting +
 Securities Lending / Borrow Fee & Short Squeeze Risk Overlay +
 Cross-Ticker Narrative Contagion Detector +
-Analyst Estimate Revision Velocity & Breadth Overlay.
+Analyst Estimate Revision Velocity & Breadth Overlay +
+Patent & Intellectual Property Filing Momentum Overlay.
 """
 from __future__ import annotations
 
@@ -15,7 +16,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.31.0"
+__version__ = "2.32.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -27,7 +28,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
+        f"**v{__version__}** — Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
         "Supply-Chain CapEx + Short Interest + Attention + Fragment Live Refresh + Regime + Confidence + "
         "Honesty + Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + "
         "13F + Polymarket + Insider + Narrative Velocity"
@@ -35,7 +36,7 @@ with st.sidebar:
 
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
-    "Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
+    "Patent & IP Filing Momentum + Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
     "Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
 )
 
@@ -54,6 +55,7 @@ def signal_table_fragment():
         "ticker", "name", "signal", "score", "rsi", "price", "change_pct",
         "confidence_score", "confidence_label", "market_regime", "regime_confidence",
         "er_velocity", "er_breadth", "er_direction", "er_boost", "er_reason",
+        "pm_filing_velocity", "pm_citation_velocity", "pm_grant_ratio", "pm_direction", "pm_boost", "pm_reason",
         "ct_score", "ct_velocity_transfer", "ct_boost", "ct_peers", "ct_reason",
         "bf_fee_pct", "bf_dtc", "bf_htb", "bf_boost",
         "cs_momentum", "cs_score", "cs_boost",
@@ -71,7 +73,7 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Analyst Estimate Revision Velocity & Breadth Overlay fully wired + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
+    f"v{__version__} — Patent & Intellectual Property Filing Momentum Overlay fully wired + Analyst Estimate Revision Velocity & Breadth Overlay + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
     "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum "
     "· Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · "
     "Options IV · Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
