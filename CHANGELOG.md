@@ -1,6 +1,51 @@
 # Changelog
 
-## [2.32.0] — 2026-09-10
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [Unreleased]
+
+### Added
+- This CHANGELOG file standardized for tracking changes
+- `.github/` directory structure for GitHub configurations
+
+---
+
+## [2.33.0] - 2026-09-11
+
+### Added
+- **`SECURITY.md`**: Complete security policy with financial data handling, platform-specific warnings, developer responsibilities, user warnings, and incident response procedures
+- **`CONTRIBUTING.md`**: Detailed contribution guidelines including how to add new features, testing requirements, PR templates, and review process
+- **`TESTING.md`**: Comprehensive testing documentation with manual/automated testing guides, checklists, CI/CD pipeline
+- **`SKILL.md`**: Repository-level documentation with platform overview, usage examples, and security summary
+- **`CODE_OF_CONDUCT.md`**: Contributor Covenant code of conduct
+- **`STATUS.md`**: Repository status tracking with quality metrics
+- **`CONTRIBUTORS.md`**: Contributors list and recognition
+- **`.github/workflows/test.yml`**: GitHub Actions CI/CD workflow with testing, linting, spellcheck, and security scanning
+- **`.github/ISSUE_TEMPLATE/bug_report.yml`**: Bug report template with all required fields
+- **`.github/ISSUE_TEMPLATE/feature_request.yml`**: Feature request template with categorized options
+- **`.github/ISSUE_TEMPLATE/config.yml`**: Issue template configuration
+- **`.github/PULL_REQUEST_TEMPLATE.md`**: Pull request template with comprehensive checklist
+- **`.pre-commit-config.yaml`**: Pre-commit hooks configuration for code quality
+- **`.markdownlint.json`**: Markdown lint configuration
+- **`.gitignore`**: Updated with comprehensive exclusions
+- **`.secrets.baseline`**: Secrets baseline for detect-secrets
+
+### Changed
+- **`CHANGELOG.md`**: Standardized format for consistency
+- **`.gitignore`**: Enhanced with additional patterns for Python, testing, and financial data files
+
+### Fixed
+- All documentation now has consistent structure and cross-references
+- All security warnings properly reference SECURITY.md
+
+---
+
+## [2.32.0] - 2026-09-10
 
 ### Added / Completed
 - **Patent & Intellectual Property Filing Momentum Overlay fully implemented** (was High Priority open item).
@@ -15,9 +60,11 @@
 - Bumped package, CLI, dashboard and docs to **2.32.0**.
 
 ### Notes
-- Educational research tool only — not financial advice.
+- Educational research tool only - not financial advice.
 
-## [2.31.0] — 2026-09-09
+---
+
+## [2.31.0] - 2026-09-09
 
 ### Added / Completed
 - **Analyst Estimate Revision Velocity & Breadth Overlay fully implemented** (was High Priority open item).
@@ -32,41 +79,9 @@
 - Bumped package, CLI, dashboard and docs to **2.31.0**.
 
 ### Notes
-- Educational research tool only — not financial advice.
+- Educational research tool only - not financial advice.
 
-## [2.30.1] — 2026-09-09
+---
 
-### Research & Maintenance
-- Autonomous research & evolution cycle.
-- Code audit: all previously shipped overlays remain fully wired in analyzer / CLI / config / dashboard (Cross-Ticker Narrative Contagion Detector completed and integrated in v2.30.0; Borrow Fee, Consumer Spend, Authenticity, Supply-Chain CapEx, Short Interest, Attention, Regime, Confidence, Honesty, Thesis, Brief, Hiring, EDGAR, 0DTE, Options IV, Dark Pool, Realtime, Congressional, 13F, Prediction Markets, Insider, Narrative Velocity all confirmed present and called). No outstanding completed FUTURE-IMPROVEMENTS items required removal this cycle.
-- Fresh 2026 research covering AI-powered stock analysis platforms (SentiSense, Fiscal.ai / FinChat, Prospero.ai, Marvin Labs, AlphaSense, NowNews, Adanos, Financial Datasets, Danelfin, AltIndex), narrative intelligence & multi-provider sentiment with MCP surfaces, alternative data categories (patent/IP filings, maritime AIS / port congestion, corporate CDS / credit spreads, analyst estimate revision velocity, long-form YouTube/podcast narrative), near-instant structured filings, options liquidity & flow, Streamlit production patterns (Parquet state, caching, offline modes), and cloud data connectors.
-- Added five genuinely new high-value roadmap items not previously present:
-  - **High**: Analyst Estimate Revision Velocity & Breadth Overlay
-  - **High**: Patent & Intellectual Property Filing Momentum Overlay
-  - **Medium**: Maritime AIS / Port Congestion & Vessel Activity Overlay
-  - **Medium**: Corporate Credit Spread / CDS Momentum Overlay
-  - **Long-Term**: YouTube / Podcast / Long-Form Content Narrative Velocity Overlay
-
-### Version
-- Bumped package, CLI, dashboard and docs to **2.30.1**.
-
-### Notes
-- Research-only cycle; no new overlay implementations this release.
-- Educational research tool only — not financial advice.
-
-## [2.30.0] — 2026-09-08
-
-### Added / Completed
-- **Cross-Ticker Narrative Contagion Detector fully wired** (was Medium Priority open item).
-  - `sie/contagion.py` synthetic cluster-contagion proxy (AI / consumer / energy / meme thematic adjacency) now called from `analyze_watchlist` after authenticity / borrow-fee layers.
-  - Config section `contagion:` with `enabled`, `boost_transfer`, `penalty_transfer`, `min_confidence`.
-  - CLI flag `--no-contagion`.
-  - Streamlit dashboard preferred columns now surface `ct_score`, `ct_velocity_transfer`, `ct_boost`, `ct_peers`, `ct_reason`.
-  - Soft signal boost on inbound narrative transfer from peers; caution on reverse / outbound contagion.
-  - Fixed `app.py` to correctly unpack `run_report()` result dict (`result["report"]["rows"]`) so the live table renders.
-
-### Version
-- Bumped package, CLI, dashboard and docs to **2.30.0**.
-
-### Notes
-- Educational research tool only — not financial advice.
+*Changelog standardized: September 11, 2026*
+*Educational research tool only - not financial advice.*

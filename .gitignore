@@ -1,11 +1,105 @@
+# Stock Intelligence Engine - .gitignore
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python
 __pycache__/
 *.py[cod]
-.pytest_cache/
-tests/__pycache__/
-sie/__pycache__/
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
 .env
-.env.local
+.venv
+env/
+venv/
+ENV/
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# Logs
 *.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Credentials and secrets (NEVER commit these)
+*.key
+*.pem
+*.crt
+*.cert
+*.json.key
+secrets/
+credentials/
+.api_keys
+
+# Financial data cache
 exports/
-.DS_Store
+.cache/
+data_cache/
+stock_data/
+
+# Markdown temporary
+.markdownlint
+
+# Pre-commit
+.pre-commit-config.yaml.bak
+
+# Node (for markdownlint)
+node_modules/
+
+# CI/CD artifacts
+.coverage.xml
+codecov/
+
+# Local overrides
+*.local
+*.override
+
+# OS specific
+*~
++.swp
++.swo

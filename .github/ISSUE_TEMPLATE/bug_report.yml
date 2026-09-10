@@ -1,0 +1,102 @@
+name: Bug Report
+about: Create a report to help us improve and fix issues
+labels: bug
+assignees: ''
+
+---
+name: Bug Report
+about: Create a report to help us improve and fix issues
+
+---
+
+## 🐛 Bug Report
+
+**Thank you for reporting a bug!** Please fill out the template below to help us understand and reproduce the issue.
+
+---
+
+## 📋 Issue Description
+
+**What happened?**
+A clear and concise description of what the bug is.
+
+**What did you expect to happen?**
+A clear and concise description of what you expected to happen.
+
+---
+
+## 🔍 Steps to Reproduce
+
+Please provide detailed steps to reproduce the behavior:
+
+1. Component involved: [e.g., data fetcher, analysis module, dashboard]
+2. Action taken: [what you did]
+3. Input provided: [list any inputs - stock symbols, parameters, etc.]
+4. Configuration: [relevant config settings]
+5. Error observed: [the actual error]
+
+---
+
+## 📄 Additional Context
+
+### Environment
+- **Engine Version**: [if known]
+- **Python Version**: [if applicable]
+- **OS**: [e.g., Ubuntu 22.04, macOS, Windows]
+- **Data Provider**: [e.g., Alpha Vantage, Finnhub, Polygon]
+
+### Configuration
+- **API Keys**: [masked/yes/no - NEVER share real keys]
+- **Sandbox Mode**: [yes/no]
+- **Network Conditions**: [normal/proxy/firewall]
+
+### Error Details
+\`\`\`
+[Paste any error messages, stack traces, or logs here]
+[REDACT ANY SENSITIVE INFORMATION]
+\`\`\`
+
+---
+
+## 🧪 Testing
+
+**Have you tested this in isolation?**
+- [ ] Yes, I've tested with a minimal reproduction
+- [ ] No, I haven't tested yet
+
+**Does this happen consistently?**
+- [ ] Yes, every time
+- [ ] No, intermittently
+- [ ] Only under specific conditions
+
+---
+
+## 💡 Possible Solution
+
+If you have suggestions for a fix or workaround, please describe:
+
+---
+
+## ⚠️ Security Considerations
+
+**⚠️ IMPORTANT**: Please do NOT include any of the following in this issue:
+- Real API keys or credentials
+- Real email addresses or personal data
+- Production account details
+- Sensitive configuration
+- Financial data or positions
+
+All sensitive information should be **REDACTED** or replaced with placeholders like `[REDACTED]`, `api_key_***`, etc.
+
+---
+
+## 📚 Related Information
+
+- **Related Issues**: [Link to any related issues]
+- **Data Provider Docs**: [Link to relevant API docs]
+- **Screenshots**: [Attach if applicable]
+
+---
+
+**Thank you for your contribution!** 
+The maintainers will review this issue as soon as possible.

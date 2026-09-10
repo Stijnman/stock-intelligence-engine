@@ -1,0 +1,86 @@
+name: Test Stock Intelligence Engine
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install pytest pytest-mock pytest-cov
+        pip install -r requirements.txt
+    
+    - name: Run unit tests
+      run: |
+        pytest tests/ -v --tb=short --cov=stock_intelligence_engine --cov-report=xml --cov-report=html
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      if: always()
+      with:
+        files: ./coverage.xml
+        flags: unit-tests
+        name: unit-test-coverage
+
+  lint:
+    name: Lint Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install markdownlint
+      run: |
+        npm install -g markdownlint-cli2
+    
+    - name: Lint all markdown files
+      run: |
+        find . -name "*.md" -type f ! -path "./.git/*" -exec markdownlint-cli2 {} \;
+
+  spellcheck:
+    name: Spell Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install codespell
+      run: |
+        pip install codespell
+    
+    - name: Check spelling
+      run: |
+        codespell --skip ".git,*.json,*.yml,*.yaml,*.min.js,CHANGELOG.md" --ignore-words-list "stock,finance,alpha,beta,sipe,finnhub,polygon,streamlit"
+
+  security-check:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Check for hardcoded secrets
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: ${{ github.event.repository.default_branch }}
+        head: HEAD
+        extra_args: --debug --only-verified

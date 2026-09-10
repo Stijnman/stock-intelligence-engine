@@ -1,0 +1,129 @@
+name: Feature Request
+about: Suggest an idea for improving or adding to the engine
+labels: enhancement
+assignees: ''
+
+---
+name: Feature Request
+
+---
+
+## 💡 Feature Request
+
+**Thank you for your suggestion!** Please fill out the template below to help us understand your feature request.
+
+---
+
+## 📝 Feature Description
+
+**What would you like to add or improve?**
+A clear and concise description of the feature you're requesting.
+
+**What problem does this solve?**
+Describe the use case or pain point this feature would address.
+
+---
+
+## 🎯 Type of Feature
+
+Please select the type of feature you're requesting:
+
+- [ ] **New Data Provider**: Add support for a new financial data provider (e.g., Bloomberg, Reuters, custom API)
+- [ ] **New Indicator**: Add new technical or fundamental analysis indicator
+- [ ] **New Analysis**: Add new analysis methodology or pattern recognition
+- [ ] **Dashboard Feature**: Add feature to Streamlit dashboard
+- [ ] **CLI Enhancement**: Improve command-line interface
+- [ ] **Performance**: Improve performance or efficiency
+- [ ] **Documentation**: Improve docs, add examples, or clarify usage
+- [ ] **Security**: Add security features or improvements
+- [ ] **Testing**: Add test cases or testing infrastructure
+- [ ] **Other**: [Please describe]
+
+---
+
+## 📋 Details
+
+### For New Data Providers
+If requesting a new data provider, please provide:
+
+- **Provider Name**: [e.g., Bloomberg]
+- **API Documentation URL**: [e.g., https://api.bloomberg.com]
+- **Data Coverage**: [stocks, options, crypto, forex, etc.]
+- **Rate Limits**: [if known]
+- **Authentication Method**: [API Key, OAuth2, etc.]
+- **Cost**: [free, freemium, paid]
+
+### For New Indicators
+If requesting a new indicator, please provide:
+
+- **Indicator Name**: [e.g., MACD, Bollinger Bands]
+- **Type**: [Technical, Fundamental, Sentiment, etc.]
+- **Calculation**: [brief description]
+- **Input Parameters**: [list required parameters]
+- **Output**: [what the indicator produces]
+- **Use Case**: [when to use this indicator]
+
+### For New Analysis Features
+If requesting a new analysis feature, please provide:
+
+- **Feature Name**: [e.g., Sector Rotation Analysis]
+- **Description**: [what it does]
+- **Required Data**: [what data is needed]
+- **Output**: [what results it produces]
+- **Dependencies**: [any required libraries or APIs]
+
+---
+
+## 🧪 Testing
+
+**Are you willing to help test this feature?**
+- [ ] Yes, I can test the implementation
+- [ ] No, but I'll provide feedback
+
+**Do you have access to a sandbox/test environment for this feature?**
+- [ ] Yes
+- [ ] No
+- [ ] I can set one up
+
+---
+
+## ⚠️ Security Considerations
+
+**Does this feature involve any of the following?**
+- [ ] Handling user credentials or API keys
+- [ ] Accessing financial data
+- [ ] Executing trades or orders
+- [ ] Accessing sensitive data
+- [ ] Network operations
+- [ ] File system access
+
+If yes, please describe how security should be handled:
+
+---
+
+## 💡 Possible Implementation
+
+If you have ideas about how this could be implemented, please share:
+
+---
+
+## 📚 Related Information
+
+- **Related Issues**: [Link to any related issues or PRs]
+- **Existing Work**: [Any existing implementations or similar projects]
+- **Documentation**: [Links to relevant documentation]
+
+---
+
+## 📞 Priority
+
+**How important is this feature to you?**
+- [ ] 🚨 Critical - Blocking my workflow
+- [ ] ⚠️ High - Very important
+- [ ] 📌 Medium - Nice to have
+- [ ] 💡 Low - Future enhancement
+
+---
+
+**Thank you for your contribution!** 
+The maintainers will review this feature request and prioritize it accordingly.
