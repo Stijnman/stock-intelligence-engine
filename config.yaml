@@ -155,6 +155,13 @@ estimate_revision:
   min_breadth: 0.35              # Minimum coverage breadth to accept signal
   min_confidence: 0.40           # Gate weak signals below this confidence
 
+patent_momentum:
+  enabled: true
+  boost_velocity: 0.15           # Filing velocity required for +1 soft boost
+  penalty_velocity: -0.12        # Deceleration threshold for -1 caution
+  min_grant_ratio: 0.30          # Minimum grant/application ratio to accept signal
+  min_confidence: 0.40           # Gate weak signals below this confidence
+
 thesis:
   enabled: true
   min_evidence: 3                # Minimum evidence items for higher confidence
