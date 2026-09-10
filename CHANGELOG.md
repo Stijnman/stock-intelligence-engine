@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.32.0] — 2026-09-10
+
+### Added / Completed
+- **Patent & Intellectual Property Filing Momentum Overlay fully implemented** (was High Priority open item).
+  - New `sie/patent_momentum.py` synthetic proxy (ticker + day seeded) with AI/semi/biotech bias; tracks patent filing velocity, forward-citation velocity and grant ratio.
+  - Soft +1 boost on accelerating high-quality patent activity (filing velocity + grant ratio + citation support); -1 caution on decelerating patent momentum.
+  - Config section `patent_momentum:` with `enabled`, `boost_velocity`, `penalty_velocity`, `min_grant_ratio`, `min_confidence`.
+  - CLI flag `--no-patent-momentum`.
+  - Streamlit dashboard preferred columns now surface `pm_filing_velocity`, `pm_citation_velocity`, `pm_grant_ratio`, `pm_direction`, `pm_boost`, `pm_reason`.
+  - Fully integrated into `analyze_watchlist` / `run_report` call path after estimate-revision layer.
+
+### Version
+- Bumped package, CLI, dashboard and docs to **2.32.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
 ## [2.31.0] — 2026-09-09
 
 ### Added / Completed
