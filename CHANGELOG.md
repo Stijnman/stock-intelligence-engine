@@ -15,6 +15,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.32.1] - 2026-09-13
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed.
+- Full code audit of `sie/analyzer.py`, all overlay modules, CLI flags, `config.yaml` and Streamlit dashboard confirmed that all previously completed roadmap items (contagion, estimate revision, patent momentum and earlier layers) remain fully wired; no additional FUTURE-IMPROVEMENTS items required removal this cycle.
+- Fresh 2026 research performed on AI-powered stock analysis platforms (StockTools, AltIndex, Prospero, Fiscal.ai / FinChat, TrendSpider, Trade Ideas, Danelfin, MoatScan, Perplexity Finance, etc.), narrative/sentiment advances (LLM aspect triplets, social trading action detection, ESG summary sentiment), options microstructure (GEX / pin risk, 0DTE analytics), alternative data (Form 4 webhooks, XBRL latency, social authenticity + intent), MCP surfaces, and Streamlit / Cloud Run / Railway production patterns.
+
+### Added (Roadmap)
+- **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay** (High Priority).
+- **Social Trading Action Intent Classifier** (High Priority).
+- **ESG / Sustainability Narrative LLM-Summary Sentiment Overlay** (Medium Priority).
+- **Multi-Agent Thesis Debate & Consensus Layer** (Medium Priority).
+- **Event-Driven Overlay Refresh & Webhook Ingestion** (Long-Term).
+
+### Version
+- Bumped package, CLI, dashboard and docs to **2.32.1**.
+
+### Notes
+- Educational research tool only - not financial advice.
+
+---
+
 ## [2.33.0] - 2026-09-11
 
 ### Added
