@@ -7,11 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [2.33.1] - 2026-09-14
 
-### Added
-- This CHANGELOG file standardized for tracking changes
-- `.github/` directory structure for GitHub configurations
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-14).
+- Restored and fully rewritten `FUTURE-IMPROVEMENTS.md` (was reduced to a stub “see local”).
+- Code audit of `sie/analyzer.py`, all overlay modules, CLI entrypoint, `app.py` and package version confirmed that previously completed items (Patent Momentum, Estimate Revision, Contagion, Borrow Fee, Consumer Spend, Authenticity, Supply-Chain CapEx, Short Interest, Attention, Regime, Confidence, Honesty, Thesis, Brief, etc.) remain fully wired. No completed roadmap items required removal this cycle.
+- Noted version drift: `stock_intelligence_engine.py` and `sie/__init__.py` were at 2.33.0 while `app.py` / README still showed 2.32.1; aligned everything to **2.33.1**.
+- Fresh 2026 research on AI stock platforms (AltIndex, MoatScan AI, StockTitan Rhea-AI, NowNews, Stock Companion, Prospero, Fiscal.ai / FinChat, TrendSpider, Danelfin, Perplexity Finance), narrative/sentiment advances (LLM aspect extraction, social action-intent classification, ESG summary sentiment, long-form content velocity), options microstructure (GEX / pin risk), alternative data (credit spreads / CDS, maritime AIS / freight, data-center power intensity, retail vs institutional options flow), and Streamlit production patterns.
+
+### Added (Roadmap)
+- **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay** (High Priority) — retained / reconfirmed.
+- **Social Trading Action Intent Classifier** (High Priority) — retained / reconfirmed.
+- **Corporate Credit Spread / CDS Momentum Overlay** (High Priority) — new.
+- **ESG / Sustainability Narrative LLM-Summary Sentiment Overlay** (Medium Priority) — retained.
+- **Multi-Agent Thesis Debate & Consensus Layer** (Medium Priority) — retained.
+- **Long-Form Content (YouTube / Podcast / Earnings-Call Transcript) Narrative Velocity** (Medium Priority) — new.
+- **Retail vs Institutional Options Flow Divergence Detector** (Medium Priority) — new.
+- **Event-Driven Overlay Refresh & Webhook Ingestion** (Long-Term) — retained.
+- **Maritime AIS / Port Congestion & Freight Rate Leading Indicator Overlay** (Long-Term) — new.
+- **Data-Center Power / Energy Intensity Momentum for AI Names** (Long-Term) — new.
+
+### Fixed / Cleaned
+- Restored professional structure and content of `FUTURE-IMPROVEMENTS.md`.
+- Version alignment across CLI, package, dashboard and docs to **2.33.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
 
 ---
 
@@ -105,5 +127,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-*Changelog standardized: September 11, 2026*
+*Changelog standardized: September 11, 2026*  
 *Educational research tool only - not financial advice.*
