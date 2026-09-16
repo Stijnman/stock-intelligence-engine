@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.33.2] - 2026-09-16
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-16).
+- Code audit of `sie/analyzer.py`, all overlay modules, CLI entrypoint, `app.py` and package version confirmed prior overlays remain fully wired.
+- **Completed wiring of Company Digital Footprint Momentum Overlay** (`sie/digital_footprint.py`): previously present as module + CLI flag but missing from `analyze_watchlist` / `run_report` signature, import chain, and Streamlit preferred columns. Now fully integrated (analyzer + CLI + dashboard columns `df_web_traffic_velocity`, `df_app_download_velocity`, `df_engagement_score`, `df_direction`, `df_boost`, `df_reason`).
+- Fresh 2026 research on AI stock platforms (NowNews, Fiscal.ai / FinChat, Marvin Labs, AlphaSense, Prospero, Danelfin, Perplexity Finance, MoneySense AI, SentiSense, Adanos, Optionomics), narrative/sentiment advances (earnings-call guidance drift, source-authority weighting, expert-network aspect extraction, long-form YouTube/podcast velocity), options microstructure (GEX / pin risk, institutional vs retail flow), alternative data (CDS/credit, maritime AIS, data-center power, satellite night-lights / activity), MCP agent surfaces, and Streamlit / Cloud Run / production dashboard patterns.
+
+### Added / Completed
+- **Company Digital Footprint Momentum Overlay fully implemented and wired** (web traffic + app download / engagement velocity as forward demand proxy). Soft ±1 boost, synthetic proxy labeled, config-driven, CLI `--no-digital-footprint`, dashboard columns surfaced.
+
+### Added (Roadmap)
+- **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** (High Priority) — new.
+- **News-Source Authority / Reliability Weighted Narrative Score** (High Priority) — new.
+- **Expert Network / Conference Call Aspect Extraction Overlay** (Medium Priority) — new.
+- **MCP / Agent Tool Server Surface** (Medium Priority) — new.
+- **Satellite / Geospatial Night-Lights & Activity Proxy Overlay** (Long-Term) — new.
+- Existing High/Medium/Long-Term items (GEX, Social Action Intent, Corporate CDS, ESG, Multi-Agent Debate, Long-Form Velocity, Retail/Institutional Options Divergence, Event-Driven Webhooks, Maritime AIS, Data-Center Power) retained / reconfirmed.
+
+### Version
+- Bumped package, CLI, dashboard and docs to **2.33.2**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.33.1] - 2026-09-14
 
 ### Research & Evolution
