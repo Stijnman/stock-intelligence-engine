@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-14  
-**Current version baseline:** v2.33.1
+**Last updated:** 2026-09-16  
+**Current version baseline:** v2.33.2
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -16,6 +16,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Corporate Credit Spread / CDS Momentum Overlay**. Track relative credit-spread / CDS widening or tightening as a leading fundamental stress / relief signal. Soft boost on tightening spreads + rising narrative (confirmation); caution on rapid widening even when social heat is elevated. Synthetic or free-data proxy preferred for open-source footprint.
 
+- [ ] **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector**. Ingest same-day or near-real-time earnings-call / conference transcripts (or high-fidelity synthetic proxies), extract guidance language shifts, management tone, and key-metric sentiment. Soft boost when guidance tone + narrative velocity align upward; caution on guidance soft-pedaling or hedging language that diverges from social heat. Preferred columns: `ect_sentiment`, `ect_guidance_drift`, `ect_boost`, `ect_reason`.
+
+- [ ] **News-Source Authority / Reliability Weighted Narrative Score**. Weight news and social velocity by source authority (tier-1 outlets, verified accounts, historical accuracy proxies) instead of treating all mentions equally. Soft boost on high-authority confirmed narrative; caution on low-authority / unverified spikes. Extends authenticity + honesty layers.
+
 ---
 
 ## Medium Priority
@@ -28,6 +32,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Retail vs Institutional Options Flow Divergence Detector**. Compare retail-dominated flow (small size, 0DTE heavy) against larger / institutional-looking flow. Soft boost when institutional flow confirms the narrative direction; caution when retail is chasing while institutional is fading or hedging.
 
+- [ ] **Expert Network / Conference Call Aspect Extraction Overlay**. Lightweight aspect-based sentiment (pricing power, demand, inventory, AI/CapEx intensity) extracted from expert-network style or public conference transcripts. Soft boost on consistent positive aspect clusters; caution on emerging negative aspect clusters that contradict broad narrative. Synthetic proxy acceptable offline.
+
+- [ ] **MCP / Agent Tool Server Surface**. Expose core analyzer, overlay stack and report generation as a standards-compliant MCP (Model Context Protocol) tool server so external AI agents can call the engine as a first-class financial-intelligence tool. Keeps deterministic offline fallbacks.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -37,6 +45,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Maritime AIS / Port Congestion & Freight Rate Leading Indicator Overlay**. Use public AIS / port dwell / freight-rate proxies as leading supply-chain and demand signals for industrials, energy, and consumer names. Soft boost / caution on congestion or rate spikes that corroborate or contradict the current narrative.
 
 - [ ] **Data-Center Power / Energy Intensity Momentum for AI Names**. Track power-purchase, grid-interconnection and energy-intensity signals around major AI data-center operators as a leading CapEx / demand proxy. Complements existing supply-chain CapEx tracker.
+
+- [ ] **Satellite / Geospatial Night-Lights & Activity Proxy Overlay**. Use publicly available night-lights, parking-lot, or mobility-derived activity indices as leading demand / foot-traffic proxies for consumer, retail and industrial names. Soft boost on accelerating activity confirming narrative; caution on deceleration. Synthetic proxy preferred for open-source reproducibility.
 
 ---
 
