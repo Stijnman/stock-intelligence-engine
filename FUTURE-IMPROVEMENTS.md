@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-16  
-**Current version baseline:** v2.33.2
+**Last updated:** 2026-09-17  
+**Current version baseline:** v2.33.3
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -20,6 +20,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **News-Source Authority / Reliability Weighted Narrative Score**. Weight news and social velocity by source authority (tier-1 outlets, verified accounts, historical accuracy proxies) instead of treating all mentions equally. Soft boost on high-authority confirmed narrative; caution on low-authority / unverified spikes. Extends authenticity + honesty layers.
 
+- [ ] **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay**. Fuse existing nowcasting layers (consumer spend, digital footprint, hiring, attention, supply-chain) into a probabilistic “whisper” beat/miss estimate ahead of earnings. Soft boost when multi-signal alt-data cluster implies high beat probability + supportive narrative; caution on deteriorating cluster even when street consensus is stable. Preferred columns: `wn_beat_prob`, `wn_cluster_score`, `wn_boost`, `wn_reason`.
+
+- [ ] **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector**. Identify high-follower / high-engagement authentic accounts driving narrative velocity on X/Reddit/YouTube and score amplification cascades. Soft boost on organic KOL-driven velocity confirmation; caution on coordinated or low-authenticity amplification spikes. Extends authenticity + contagion layers.
+
 ---
 
 ## Medium Priority
@@ -36,6 +40,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **MCP / Agent Tool Server Surface**. Expose core analyzer, overlay stack and report generation as a standards-compliant MCP (Model Context Protocol) tool server so external AI agents can call the engine as a first-class financial-intelligence tool. Keeps deterministic offline fallbacks.
 
+- [ ] **GPU / AI Accelerator Supply-Chain & Lead-Time Momentum Overlay**. Track specialized indicators around GPU / HBM / advanced-packaging supply (lead times, allocation signals, equipment bookings) as a tighter leading proxy for AI-inference demand than general CapEx. Soft boost on tightening supply + rising narrative; caution on sudden lead-time expansion. Complements existing supply-chain CapEx tracker. Synthetic proxy preferred.
+
+- [ ] **10-K / 10-Q Risk Factor Delta & Hidden Liability Detector**. Diff consecutive annual/quarterly filings for material additions, deletions or language softening in Risk Factors, Contingencies and MD&A; flag emerging legal, regulatory or balance-sheet risks that contradict current narrative heat. Soft penalty on material negative delta even when social velocity is elevated. Preferred columns: `rf_delta_score`, `rf_new_risks`, `rf_boost`, `rf_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -47,6 +55,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Data-Center Power / Energy Intensity Momentum for AI Names**. Track power-purchase, grid-interconnection and energy-intensity signals around major AI data-center operators as a leading CapEx / demand proxy. Complements existing supply-chain CapEx tracker.
 
 - [ ] **Satellite / Geospatial Night-Lights & Activity Proxy Overlay**. Use publicly available night-lights, parking-lot, or mobility-derived activity indices as leading demand / foot-traffic proxies for consumer, retail and industrial names. Soft boost on accelerating activity confirming narrative; caution on deceleration. Synthetic proxy preferred for open-source reproducibility.
+
+- [ ] **Synthetic Aperture Radar (SAR) Industrial & Commodity Activity Proxy**. Leverage public or low-cost SAR-derived indicators (oil storage levels, mining stockpiles, manufacturing plant activity, port throughput) as weather-independent leading signals. Soft boost / caution when physical activity diverges from equity narrative. Complements optical satellite and AIS layers. Synthetic proxy acceptable offline.
 
 ---
 

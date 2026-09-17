@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.33.3] - 2026-09-17
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-17).
+- Full code audit of `sie/analyzer.py`, all overlay modules (`digital_footprint`, `patent_momentum`, `estimate_revision`, `contagion`, `borrow_fee`, `consumer_spend`, `authenticity`, etc.), CLI entrypoint, `app.py`, package `__init__` and config confirmed that every previously completed overlay remains fully wired into the analyze/run_report path, CLI flags and Streamlit preferred columns. No FUTURE-IMPROVEMENTS items were ready for removal this cycle.
+- Fresh 2026 research on AI-powered stock platforms (NowNews, Fiscal.ai / FinChat, Marvin Labs, AlphaSense, Prospero, Danelfin, Perplexity Finance, Webull Vega, Barebone AI, TradeAlgo), narrative/sentiment advances (KOL amplification graphs, whisper-number alt-data fusion, risk-factor delta detection, GPU/HBM lead-time signals), alternative data (SAR industrial activity, foot-traffic / parking-lot proxies, credit-curve dynamics), MCP agent surfaces, and production Streamlit + FastMCP patterns.
+
+### Added (Roadmap)
+- **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** (High Priority) — new.
+- **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector** (High Priority) — new.
+- **GPU / AI Accelerator Supply-Chain & Lead-Time Momentum Overlay** (Medium Priority) — new.
+- **10-K / 10-Q Risk Factor Delta & Hidden Liability Detector** (Medium Priority) — new.
+- **Synthetic Aperture Radar (SAR) Industrial & Commodity Activity Proxy** (Long-Term) — new.
+- All prior High / Medium / Long-Term items retained and reconfirmed.
+
+### Version
+- Bumped package, CLI, dashboard and docs to **2.33.3**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.33.2] - 2026-09-16
 
 ### Research & Evolution
