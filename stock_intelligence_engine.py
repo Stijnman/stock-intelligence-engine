@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.33.3"
+__version__ = "2.34.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -29,6 +29,7 @@ def main():
     parser.add_argument("--no-estimate-revision", action="store_true", help="Disable analyst estimate revision velocity & breadth overlay")
     parser.add_argument("--no-patent-momentum", action="store_true", help="Disable patent & intellectual property filing momentum overlay")
     parser.add_argument("--no-digital-footprint", action="store_true", help="Disable company digital footprint momentum overlay (web traffic + app downloads)")
+    parser.add_argument("--no-gex", action="store_true", help="Disable dealer gamma exposure (GEX) & pin-risk overlay")
     args = parser.parse_args()
     run_report(
         include_news=args.news or True,
@@ -50,6 +51,7 @@ def main():
         include_estimate_revision=not args.no_estimate_revision,
         include_patent_momentum=not args.no_patent_momentum,
         include_digital_footprint=not args.no_digital_footprint,
+        include_gex=not args.no_gex,
     )
 
 if __name__ == "__main__":
