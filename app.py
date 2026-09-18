@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.33.3.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.34.0.
 
 Streamlit Fragment Live Dashboard Refresh + Regime + Confidence +
 Supply-Chain CapEx + Short Interest + Attention Momentum +
@@ -9,6 +9,7 @@ Cross-Ticker Narrative Contagion Detector +
 Analyst Estimate Revision Velocity & Breadth Overlay +
 Patent & Intellectual Property Filing Momentum Overlay +
 Company Digital Footprint Momentum (Web Traffic + App Downloads).
+Dealer Gamma Exposure (GEX) & Pin-Risk Overlay.
 """
 from __future__ import annotations
 
@@ -17,7 +18,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.33.3"
+__version__ = "2.34.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -29,7 +30,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Digital Footprint + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
+        f"**v{__version__}** — GEX + Digital Footprint + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
         "Supply-Chain CapEx + Short Interest + Attention + Fragment Live Refresh + Regime + Confidence + "
         "Honesty + Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + "
         "13F + Polymarket + Insider + Narrative Velocity"
@@ -37,7 +38,7 @@ with st.sidebar:
 
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
-    "Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
+    "GEX + Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
     "Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
 )
 
@@ -65,6 +66,7 @@ def signal_table_fragment():
         "si_ratio", "si_boost",
         "attn_momentum", "attn_boost",
         "df_web_traffic_velocity", "df_app_download_velocity", "df_engagement_score", "df_direction", "df_boost", "df_reason",
+        "gex_score", "pin_level", "gex_boost", "gex_reason", "gex_net", "gex_flip",
         "honesty_risk", "honesty_label",
         "brief", "thesis_bull", "thesis_bear",
     ]
@@ -75,7 +77,7 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Company Digital Footprint Momentum Overlay fully wired + Patent & Intellectual Property Filing Momentum Overlay + Analyst Estimate Revision Velocity & Breadth Overlay + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
+    f"v{__version__} — Dealer GEX & Pin-Risk Overlay fully wired + Company Digital Footprint Momentum Overlay fully wired + Patent & Intellectual Property Filing Momentum Overlay + Analyst Estimate Revision Velocity & Breadth Overlay + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
     "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum "
     "· Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · "
     "Options IV · Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
