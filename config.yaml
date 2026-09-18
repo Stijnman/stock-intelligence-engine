@@ -1,1 +1,3 @@
-see local
+# Stock Intelligence Engine configuration
+# All values are optional; defaults live in sie/config.py.
+{}
