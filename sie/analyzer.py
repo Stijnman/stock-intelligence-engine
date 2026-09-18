@@ -1,24 +1,4 @@
-"""Orchestrate narrative + technical analysis with social viral scanner, FinBERT news sentiment,
-Multi-source Narrative Velocity Forecasting, Insider Form 4 Clustering, Prediction Market Odds Overlay,
-Institutional 13F Ownership Change Detector, Congressional Trading Overlay,
-Real-time WebSocket Quotes, Dark Pool / ATS Off-Exchange Flow Overlay,
-Options Implied Volatility Skew & Term Structure Overlay,
-0DTE Options Flow & Unusual Activity Proxy, Same-Day SEC EDGAR Material Filing Detector,
-Corporate Hiring & Headcount Momentum Tracker, Semiconductor / AI Supply-Chain CapEx Tracker,
-FINRA Short Volume Overlay, Wikipedia / Search Attention Momentum,
-Authenticity-Filtered Social Narrative Velocity Overlay,
-Aggregated Consumer Transaction / Credit-Card Panel Spend Nowcasting Overlay,
-Securities Lending / Borrow Fee & Short Squeeze Risk Overlay,
-Cross-Ticker Narrative Contagion Detector,
-Analyst Estimate Revision Velocity & Breadth Overlay,
-Patent & Intellectual Property Filing Momentum Overlay,
-Company Digital Footprint Momentum Overlay (Web Traffic + App Downloads),
-LLM-Generated Bull/Bear Thesis Pair Generator,
-Self-Explaining AI Signal Brief Generator, Narrative vs. Fundamentals Contradiction / Honesty Signal Detector,
-and Signal Confidence Calibration & LLM Self-Critique Layer,
-Market Regime Adaptive Overlay Weighting.
-Backtesting integrated.
-"""
+"""Orchestrate narrative + technical analysis including Dealer Gamma Exposure (GEX) & Pin-Risk Overlay."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -49,6 +29,7 @@ from sie.contagion import integrate_contagion_to_row
 from sie.estimate_revision import integrate_estimate_revision_to_row
 from sie.patent_momentum import integrate_patent_momentum_to_row
 from sie.digital_footprint import integrate_digital_footprint_to_row
+from sie.gex import integrate_gex_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -82,6 +63,7 @@ def analyze_watchlist(
     include_estimate_revision: bool = True,
     include_patent_momentum: bool = True,
     include_digital_footprint: bool = True,
+    include_gex: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -99,7 +81,7 @@ def analyze_watchlist(
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "ticker": ticker,
             "name": meta.get("name", ticker),
-            "color": meta.get("color", "🟡"),
+            "color": meta.get("color", "\ud83d\udfe1"),
             "note": meta.get("note", ""),
             "narrative_fit": meta.get("narrative_fit", "monitor"),
             "theme": theme,
@@ -150,13 +132,13 @@ def analyze_watchlist(
         boost = forecast["signal_boost"]
         if boost >= 1 and row["signal"] in ("buy", "hold"):
             row["signal"] = "strong_buy" if boost >= 1 else row["signal"]
-            row["signal_reason"] += f" | 📈 Forecast boost ({forecast['predicted_phase']})"
+            row["signal_reason"] += f" | Forecast boost ({forecast['predicted_phase']})"
         elif boost <= -1:
             if row["signal"] in ("strong_buy", "buy"):
                 row["signal"] = "hold"
             else:
                 row["signal"] = "caution"
-            row["signal_reason"] += f" | 📉 Forecast penalty ({forecast['predicted_phase']})"
+            row["signal_reason"] += f" | Forecast penalty ({forecast['predicted_phase']})"
         else:
             row["signal_reason"] += f" | Forecast: {forecast['predicted_phase']}"
 
@@ -200,6 +182,8 @@ def analyze_watchlist(
             row = integrate_patent_momentum_to_row(row, cfg)
         if include_digital_footprint:
             row = integrate_digital_footprint_to_row(row, cfg)
+        if include_gex:
+            row = integrate_gex_to_row(row, cfg)
         if include_thesis:
             row = integrate_thesis_to_row(row, cfg)
         if include_brief:
@@ -247,6 +231,7 @@ def run_report(
     include_estimate_revision: bool = True,
     include_patent_momentum: bool = True,
     include_digital_footprint: bool = True,
+    include_gex: bool = True,
     include_thesis: bool = True,
     include_brief: bool = True,
     include_honesty: bool = True,
@@ -283,6 +268,7 @@ def run_report(
         include_estimate_revision=include_estimate_revision,
         include_patent_momentum=include_patent_momentum,
         include_digital_footprint=include_digital_footprint,
+        include_gex=include_gex,
         include_thesis=include_thesis,
         include_brief=include_brief,
         include_honesty=include_honesty,
@@ -298,7 +284,7 @@ def run_report(
     if backtest:
         bt_results = backtest_watchlist(cfg)
         result["backtest"] = bt_results
-        print("\n📊 Backtest Results for Watchlist:")
+        print("\\nBacktest Results for Watchlist:")
         for tkr, res in bt_results.items():
             if "error" not in res:
                 print(
