@@ -9,31 +9,31 @@ import yaml
 DEFAULT_TICKERS: dict[str, dict[str, str]] = {
     "NVDA": {
         "name": "NVIDIA",
-        "color": "🟢",
+        "color": "\ud83d\udfe2",
         "note": "Strongest winner - inference boom",
         "narrative_fit": "strong",
     },
     "TSM": {
         "name": "TSMC",
-        "color": "🟢",
+        "color": "\ud83d\udfe2",
         "note": "Quiet chip enabler",
         "narrative_fit": "strong",
     },
     "CBRS": {
         "name": "Cerebras",
-        "color": "🟢",
+        "color": "\ud83d\udfe2",
         "note": "Pure specialized inference play (volatile)",
         "narrative_fit": "strong",
     },
     "CRDO": {
         "name": "Credo",
-        "color": "🟡",
+        "color": "\ud83d\udfe1",
         "note": "Viral AI connectivity play",
         "narrative_fit": "monitor",
     },
     "MU": {
         "name": "Micron",
-        "color": "🟡",
+        "color": "\ud83d\udfe1",
         "note": "HBM memory - inference critical",
         "narrative_fit": "monitor",
     },
@@ -120,6 +120,14 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "min_confidence": 0.40,
         "term_slope_threshold": 0.05,
     },
+    "gex": {
+        "enabled": True,
+        "boost_abs_threshold": 0.55,
+        "penalty_abs_threshold": 0.60,
+        "pin_proximity_pct": 0.012,
+        "min_confidence": 0.40,
+        "prefer_live": True,
+    },
 }
 
 
@@ -142,7 +150,7 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         elif isinstance(tickers, list):
             cfg["tickers"] = {
                 t: DEFAULT_TICKERS.get(
-                    t, {"name": t, "color": "🟡", "note": "", "narrative_fit": "monitor"}
+                    t, {"name": t, "color": "\ud83d\udfe1", "note": "", "narrative_fit": "monitor"}
                 )
                 for t in tickers
             }
@@ -172,6 +180,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("realtime", {}).update(realtime)
     if options_iv := raw.get("options_iv"):
         cfg.setdefault("options_iv", {}).update(options_iv)
+    if gex := raw.get("gex"):
+        cfg.setdefault("gex", {}).update(gex)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
