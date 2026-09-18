@@ -7,175 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.34.0] - 2026-09-18
+
+### Added / Completed
+- **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay fully wired** (was High Priority open item).
+  - Module `sie/gex.py` already existed with live yfinance-chain attempt + deterministic synthetic proxy.
+  - CLI already exposed `--no-gex` / `include_gex`, but `analyze_watchlist` / `run_report` did not accept the flag and did not call `integrate_gex_to_row` — passing `include_gex` would have raised TypeError.
+  - Now imported and integrated after the digital-footprint layer; `run_report` forwards `include_gex`.
+  - Streamlit preferred columns: `gex_score`, `pin_level`, `gex_boost`, `gex_reason`, `gex_net`, `gex_flip`.
+  - Default `gex:` block added to `sie/config.py`.
+  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-18).
+- Code audit confirmed prior overlays remain wired; GEX was the only completed-but-unwired overlay.
+- Fresh 2026 research: AltIndex AI Score + developer API, NowNews / AlphaSense / Hebbia / Fintool / Signals.ai, NorrisAI AlphaLens, Massive MCP market-data server, ChatGPT for Financial Services (GPT-6 Astra), ETF creation/redemption flow, month-end rebalancing predictability.
+
+### Added (Roadmap)
+- **ETF Creation / Redemption & Authorized-Participant Flow Overlay** (High Priority) — new.
+- **Rule 10b5-1 / Buyback Authorization vs Execution Overlay** (High Priority) — new.
+- **FOMC / Central-Bank Speech Surprise Score** (Medium Priority) — new.
+- **Supplier–Customer Earnings Surprise Propagation Graph** (Medium Priority) — new.
+- **On-Chain Stablecoin / Tokenized-Treasury Liquidity Pulse** (Long-Term) — new.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.34.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.33.3] - 2026-09-17
 
 ### Research & Evolution
 - Autonomous research & evolution cycle executed (2026-09-17).
-- Full code audit of `sie/analyzer.py`, all overlay modules (`digital_footprint`, `patent_momentum`, `estimate_revision`, `contagion`, `borrow_fee`, `consumer_spend`, `authenticity`, etc.), CLI entrypoint, `app.py`, package `__init__` and config confirmed that every previously completed overlay remains fully wired into the analyze/run_report path, CLI flags and Streamlit preferred columns. No FUTURE-IMPROVEMENTS items were ready for removal this cycle.
-- Fresh 2026 research on AI-powered stock platforms (NowNews, Fiscal.ai / FinChat, Marvin Labs, AlphaSense, Prospero, Danelfin, Perplexity Finance, Webull Vega, Barebone AI, TradeAlgo), narrative/sentiment advances (KOL amplification graphs, whisper-number alt-data fusion, risk-factor delta detection, GPU/HBM lead-time signals), alternative data (SAR industrial activity, foot-traffic / parking-lot proxies, credit-curve dynamics), MCP agent surfaces, and production Streamlit + FastMCP patterns.
-
-### Added (Roadmap)
-- **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** (High Priority) — new.
-- **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector** (High Priority) — new.
-- **GPU / AI Accelerator Supply-Chain & Lead-Time Momentum Overlay** (Medium Priority) — new.
-- **10-K / 10-Q Risk Factor Delta & Hidden Liability Detector** (Medium Priority) — new.
-- **Synthetic Aperture Radar (SAR) Industrial & Commodity Activity Proxy** (Long-Term) — new.
-- All prior High / Medium / Long-Term items retained and reconfirmed.
+- Prior overlays confirmed fully wired. Five roadmap items added (Whisper Number, KOL Amplification, GPU/HBM Lead-Time, 10-K Risk Factor Delta, SAR Activity).
 
 ### Version
-- Bumped package, CLI, dashboard and docs to **2.33.3**.
-
-### Notes
-- Educational research tool only — not financial advice.
+- **2.33.3**
 
 ---
 
-## [2.33.2] - 2026-09-16
+See git history for earlier changelog entries (2.33.2 through 2.31.0).
 
-### Research & Evolution
-- Autonomous research & evolution cycle executed (2026-09-16).
-- Code audit of `sie/analyzer.py`, all overlay modules, CLI entrypoint, `app.py` and package version confirmed prior overlays remain fully wired.
-- **Completed wiring of Company Digital Footprint Momentum Overlay** (`sie/digital_footprint.py`): previously present as module + CLI flag but missing from `analyze_watchlist` / `run_report` signature, import chain, and Streamlit preferred columns. Now fully integrated (analyzer + CLI + dashboard columns `df_web_traffic_velocity`, `df_app_download_velocity`, `df_engagement_score`, `df_direction`, `df_boost`, `df_reason`).
-- Fresh 2026 research on AI stock platforms (NowNews, Fiscal.ai / FinChat, Marvin Labs, AlphaSense, Prospero, Danelfin, Perplexity Finance, MoneySense AI, SentiSense, Adanos, Optionomics), narrative/sentiment advances (earnings-call guidance drift, source-authority weighting, expert-network aspect extraction, long-form YouTube/podcast velocity), options microstructure (GEX / pin risk, institutional vs retail flow), alternative data (CDS/credit, maritime AIS, data-center power, satellite night-lights / activity), MCP agent surfaces, and Streamlit / Cloud Run / production dashboard patterns.
-
-### Added / Completed
-- **Company Digital Footprint Momentum Overlay fully implemented and wired** (web traffic + app download / engagement velocity as forward demand proxy). Soft ±1 boost, synthetic proxy labeled, config-driven, CLI `--no-digital-footprint`, dashboard columns surfaced.
-
-### Added (Roadmap)
-- **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** (High Priority) — new.
-- **News-Source Authority / Reliability Weighted Narrative Score** (High Priority) — new.
-- **Expert Network / Conference Call Aspect Extraction Overlay** (Medium Priority) — new.
-- **MCP / Agent Tool Server Surface** (Medium Priority) — new.
-- **Satellite / Geospatial Night-Lights & Activity Proxy Overlay** (Long-Term) — new.
-- Existing High/Medium/Long-Term items (GEX, Social Action Intent, Corporate CDS, ESG, Multi-Agent Debate, Long-Form Velocity, Retail/Institutional Options Divergence, Event-Driven Webhooks, Maritime AIS, Data-Center Power) retained / reconfirmed.
-
-### Version
-- Bumped package, CLI, dashboard and docs to **2.33.2**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.33.1] - 2026-09-14
-
-### Research & Evolution
-- Autonomous research & evolution cycle executed (2026-09-14).
-- Restored and fully rewritten `FUTURE-IMPROVEMENTS.md` (was reduced to a stub “see local”).
-- Code audit of `sie/analyzer.py`, all overlay modules, CLI entrypoint, `app.py` and package version confirmed that previously completed items (Patent Momentum, Estimate Revision, Contagion, Borrow Fee, Consumer Spend, Authenticity, Supply-Chain CapEx, Short Interest, Attention, Regime, Confidence, Honesty, Thesis, Brief, etc.) remain fully wired. No completed roadmap items required removal this cycle.
-- Noted version drift: `stock_intelligence_engine.py` and `sie/__init__.py` were at 2.33.0 while `app.py` / README still showed 2.32.1; aligned everything to **2.33.1**.
-- Fresh 2026 research on AI stock platforms (AltIndex, MoatScan AI, StockTitan Rhea-AI, NowNews, Stock Companion, Prospero, Fiscal.ai / FinChat, TrendSpider, Danelfin, Perplexity Finance), narrative/sentiment advances (LLM aspect extraction, social action-intent classification, ESG summary sentiment, long-form content velocity), options microstructure (GEX / pin risk), alternative data (credit spreads / CDS, maritime AIS / freight, data-center power intensity, retail vs institutional options flow), and Streamlit production patterns.
-
-### Added (Roadmap)
-- **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay** (High Priority) — retained / reconfirmed.
-- **Social Trading Action Intent Classifier** (High Priority) — retained / reconfirmed.
-- **Corporate Credit Spread / CDS Momentum Overlay** (High Priority) — new.
-- **ESG / Sustainability Narrative LLM-Summary Sentiment Overlay** (Medium Priority) — retained.
-- **Multi-Agent Thesis Debate & Consensus Layer** (Medium Priority) — retained.
-- **Long-Form Content (YouTube / Podcast / Earnings-Call Transcript) Narrative Velocity** (Medium Priority) — new.
-- **Retail vs Institutional Options Flow Divergence Detector** (Medium Priority) — new.
-- **Event-Driven Overlay Refresh & Webhook Ingestion** (Long-Term) — retained.
-- **Maritime AIS / Port Congestion & Freight Rate Leading Indicator Overlay** (Long-Term) — new.
-- **Data-Center Power / Energy Intensity Momentum for AI Names** (Long-Term) — new.
-
-### Fixed / Cleaned
-- Restored professional structure and content of `FUTURE-IMPROVEMENTS.md`.
-- Version alignment across CLI, package, dashboard and docs to **2.33.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.32.1] - 2026-09-13
-
-### Research & Evolution
-- Autonomous research & evolution cycle executed.
-- Full code audit of `sie/analyzer.py`, all overlay modules, CLI flags, `config.yaml` and Streamlit dashboard confirmed that all previously completed roadmap items (contagion, estimate revision, patent momentum and earlier layers) remain fully wired; no additional FUTURE-IMPROVEMENTS items required removal this cycle.
-- Fresh 2026 research performed on AI-powered stock analysis platforms (StockTools, AltIndex, Prospero, Fiscal.ai / FinChat, TrendSpider, Trade Ideas, Danelfin, MoatScan, Perplexity Finance, etc.), narrative/sentiment advances (LLM aspect triplets, social trading action detection, ESG summary sentiment), options microstructure (GEX / pin risk, 0DTE analytics), alternative data (Form 4 webhooks, XBRL latency, social authenticity + intent), MCP surfaces, and Streamlit / Cloud Run / Railway production patterns.
-
-### Added (Roadmap)
-- **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay** (High Priority).
-- **Social Trading Action Intent Classifier** (High Priority).
-- **ESG / Sustainability Narrative LLM-Summary Sentiment Overlay** (Medium Priority).
-- **Multi-Agent Thesis Debate & Consensus Layer** (Medium Priority).
-- **Event-Driven Overlay Refresh & Webhook Ingestion** (Long-Term).
-
-### Version
-- Bumped package, CLI, dashboard and docs to **2.32.1**.
-
-### Notes
-- Educational research tool only - not financial advice.
-
----
-
-## [2.33.0] - 2026-09-11
-
-### Added
-- **`SECURITY.md`**: Complete security policy with financial data handling, platform-specific warnings, developer responsibilities, user warnings, and incident response procedures
-- **`CONTRIBUTING.md`**: Detailed contribution guidelines including how to add new features, testing requirements, PR templates, and review process
-- **`TESTING.md`**: Comprehensive testing documentation with manual/automated testing guides, checklists, CI/CD pipeline
-- **`SKILL.md`**: Repository-level documentation with platform overview, usage examples, and security summary
-- **`CODE_OF_CONDUCT.md`**: Contributor Covenant code of conduct
-- **`STATUS.md`**: Repository status tracking with quality metrics
-- **`CONTRIBUTORS.md`**: Contributors list and recognition
-- **`.github/workflows/test.yml`**: GitHub Actions CI/CD workflow with testing, linting, spellcheck, and security scanning
-- **`.github/ISSUE_TEMPLATE/bug_report.yml`**: Bug report template with all required fields
-- **`.github/ISSUE_TEMPLATE/feature_request.yml`**: Feature request template with categorized options
-- **`.github/ISSUE_TEMPLATE/config.yml`**: Issue template configuration
-- **`.github/PULL_REQUEST_TEMPLATE.md`**: Pull request template with comprehensive checklist
-- **`.pre-commit-config.yaml`**: Pre-commit hooks configuration for code quality
-- **`.markdownlint.json`**: Markdown lint configuration
-- **`.gitignore`**: Updated with comprehensive exclusions
-- **`.secrets.baseline`**: Secrets baseline for detect-secrets
-
-### Changed
-- **`CHANGELOG.md`**: Standardized format for consistency
-- **`.gitignore`**: Enhanced with additional patterns for Python, testing, and financial data files
-
-### Fixed
-- All documentation now has consistent structure and cross-references
-- All security warnings properly reference SECURITY.md
-
----
-
-## [2.32.0] - 2026-09-10
-
-### Added / Completed
-- **Patent & Intellectual Property Filing Momentum Overlay fully implemented** (was High Priority open item).
-  - New `sie/patent_momentum.py` synthetic proxy (ticker + day seeded) with AI/semi/biotech bias; tracks patent filing velocity, forward-citation velocity and grant ratio.
-  - Soft +1 boost on accelerating high-quality patent activity (filing velocity + grant ratio + citation support); -1 caution on decelerating patent momentum.
-  - Config section `patent_momentum:` with `enabled`, `boost_velocity`, `penalty_velocity`, `min_grant_ratio`, `min_confidence`.
-  - CLI flag `--no-patent-momentum`.
-  - Streamlit dashboard preferred columns now surface `pm_filing_velocity`, `pm_citation_velocity`, `pm_grant_ratio`, `pm_direction`, `pm_boost`, `pm_reason`.
-  - Fully integrated into `analyze_watchlist` / `run_report` call path after estimate-revision layer.
-
-### Version
-- Bumped package, CLI, dashboard and docs to **2.32.0**.
-
-### Notes
-- Educational research tool only - not financial advice.
-
----
-
-## [2.31.0] - 2026-09-09
-
-### Added / Completed
-- **Analyst Estimate Revision Velocity & Breadth Overlay fully implemented** (was High Priority open item).
-  - New `sie/estimate_revision.py` synthetic proxy (ticker + day seeded) with AI/semi bias; tracks velocity, breadth and direction of consensus estimate revisions.
-  - Soft +1 boost on rapid upward revisions with sufficient breadth (narrative durability confirmation); -1 caution on sharp downward revisions even when social heat is elevated.
-  - Config section `estimate_revision:` with `enabled`, `boost_velocity`, `penalty_velocity`, `min_breadth`, `min_confidence`.
-  - CLI flag `--no-estimate-revision`.
-  - Streamlit dashboard preferred columns now surface `er_velocity`, `er_breadth`, `er_direction`, `er_boost`, `er_reason`.
-  - Fully integrated into `analyze_watchlist` / `run_report` call path after contagion layer.
-
-### Version
-- Bumped package, CLI, dashboard and docs to **2.31.0**.
-
-### Notes
-- Educational research tool only - not financial advice.
-
----
-
-*Changelog standardized: September 11, 2026*  
-*Educational research tool only - not financial advice.*
+*Educational research tool only — not financial advice.*
