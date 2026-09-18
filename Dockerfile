@@ -2,8 +2,15 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Apply available Debian security updates in the image rather than shipping the
+# package snapshot baked into the base tag.
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel \
+    && python -m pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
