@@ -128,6 +128,13 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "min_confidence": 0.40,
         "prefer_live": True,
     },
+    "social_intent": {
+        "enabled": True,
+        "high_intent_share": 0.42,
+        "spam_share_penalty": 0.28,
+        "high_intent_velocity_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -182,6 +189,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("options_iv", {}).update(options_iv)
     if gex := raw.get("gex"):
         cfg.setdefault("gex", {}).update(gex)
+    if social_intent := raw.get("social_intent"):
+        cfg.setdefault("social_intent", {}).update(social_intent)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
