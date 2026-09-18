@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-17  
-**Current version baseline:** v2.33.3
+**Last updated:** 2026-09-18  
+**Current version baseline:** v2.34.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay**. Compute approximate dealer gamma exposure and pin-risk levels from options chain / OI data (or high-fidelity synthetic proxy when live chain unavailable). Soft boost when price approaches high-GEX pin levels under supportive narrative; caution on large negative GEX + elevated 0DTE flow. Config block `gex:`, CLI flag, preferred dashboard columns (`gex_score`, `pin_level`, `gex_boost`, `gex_reason`).
 
 - [ ] **Social Trading Action Intent Classifier**. LLM / rule hybrid that classifies social posts (X / Reddit) into actionable intent categories (buy-the-dip, FOMO chase, bag-holding, short-squeeze call, etc.) rather than pure polarity. Filters velocity for high-intent authentic posts only. Soft boost on rising high-intent authentic velocity; caution on low-intent / spam-driven spikes. Extends authenticity layer.
 
@@ -23,6 +21,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay**. Fuse existing nowcasting layers (consumer spend, digital footprint, hiring, attention, supply-chain) into a probabilistic “whisper” beat/miss estimate ahead of earnings. Soft boost when multi-signal alt-data cluster implies high beat probability + supportive narrative; caution on deteriorating cluster even when street consensus is stable. Preferred columns: `wn_beat_prob`, `wn_cluster_score`, `wn_boost`, `wn_reason`.
 
 - [ ] **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector**. Identify high-follower / high-engagement authentic accounts driving narrative velocity on X/Reddit/YouTube and score amplification cascades. Soft boost on organic KOL-driven velocity confirmation; caution on coordinated or low-authenticity amplification spikes. Extends authenticity + contagion layers.
+
+- [ ] **ETF Creation / Redemption & Authorized-Participant Flow Overlay**. Track net creation/redemption and premium/discount vs NAV for thematically relevant ETFs (SMH, SOXX, QQQ, BOTZ, AI-themed single-stock ETFs) as a mechanical demand pulse into underlying names. Soft boost on multi-session creation streaks confirming narrative; caution on redemption streaks or persistent discount while social heat is elevated. Preferred columns: `etf_flow_score`, `etf_prem_disc`, `etf_boost`, `etf_reason`. Synthetic proxy acceptable offline.
+
+- [ ] **Rule 10b5-1 / Buyback Authorization vs Execution Overlay**. Cluster scheduled 10b5-1 plan adoptions/amendments and compare announced buyback authorizations against actual repurchase cadence (10-Q cash-flow + 8-K). Soft boost when execution is running ahead of authorization with supportive narrative; caution on stalled buybacks or opportunistic plan amendments into strength. Preferred columns: `bb_util`, `bb_plan_delta`, `bb_boost`, `bb_reason`.
 
 ---
 
@@ -44,6 +46,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **10-K / 10-Q Risk Factor Delta & Hidden Liability Detector**. Diff consecutive annual/quarterly filings for material additions, deletions or language softening in Risk Factors, Contingencies and MD&A; flag emerging legal, regulatory or balance-sheet risks that contradict current narrative heat. Soft penalty on material negative delta even when social velocity is elevated. Preferred columns: `rf_delta_score`, `rf_new_risks`, `rf_boost`, `rf_reason`.
 
+- [ ] **FOMC / Central-Bank Speech Surprise Score**. LLM-score FOMC statements, minutes and named-governor speeches against prior consensus for hawkish/dovish surprise; map surprise into overlay weights for duration-sensitive and AI-CapEx names. Soft boost when surprise aligns with the watchlist narrative regime; caution on adverse surprise + crowded positioning. Preferred columns: `cb_surprise`, `cb_stance`, `cb_boost`, `cb_reason`.
+
+- [ ] **Supplier–Customer Earnings Surprise Propagation Graph**. Build a lightweight directed graph of disclosed suppliers/customers and propagate reported earnings/guidance surprises one hop along the chain. Soft boost when upstream surprises confirm demand for a downstream name; caution on negative upstream surprises that social narrative has not priced. Preferred columns: `scg_in_surprise`, `scg_out_surprise`, `scg_boost`, `scg_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -57,6 +63,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Satellite / Geospatial Night-Lights & Activity Proxy Overlay**. Use publicly available night-lights, parking-lot, or mobility-derived activity indices as leading demand / foot-traffic proxies for consumer, retail and industrial names. Soft boost on accelerating activity confirming narrative; caution on deceleration. Synthetic proxy preferred for open-source reproducibility.
 
 - [ ] **Synthetic Aperture Radar (SAR) Industrial & Commodity Activity Proxy**. Leverage public or low-cost SAR-derived indicators (oil storage levels, mining stockpiles, manufacturing plant activity, port throughput) as weather-independent leading signals. Soft boost / caution when physical activity diverges from equity narrative. Complements optical satellite and AIS layers. Synthetic proxy acceptable offline.
+
+- [ ] **On-Chain Stablecoin / Tokenized-Treasury Liquidity Pulse**. Use public on-chain stablecoin mint/redeem and tokenized T-bill AUM velocity as a cross-asset liquidity pulse that can precede risk-on/risk-off rotation into high-beta AI names. Soft boost on expanding on-chain liquidity + rising narrative; caution on sudden redemptions. Synthetic proxy acceptable offline.
 
 ---
 
