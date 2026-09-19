@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.35.1"
+__version__ = "2.36.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -24,6 +24,7 @@ def main():
     parser.add_argument("--no-attention", action="store_true", help="Disable Wikipedia / search attention momentum tracker")
     parser.add_argument("--no-authenticity", action="store_true", help="Disable authenticity-filtered social narrative velocity overlay")
     parser.add_argument("--no-social-intent", action="store_true", help="Disable social trading action intent classifier")
+    parser.add_argument("--no-credit-spread", action="store_true", help="Disable corporate credit spread / CDS momentum overlay")
     parser.add_argument("--no-consumer-spend", action="store_true", help="Disable aggregated consumer transaction / credit-card panel spend nowcasting overlay")
     parser.add_argument("--no-borrow-fee", action="store_true", help="Disable securities lending / borrow fee & short squeeze risk overlay")
     parser.add_argument("--no-contagion", action="store_true", help="Disable cross-ticker narrative contagion detector")
@@ -47,6 +48,7 @@ def main():
         include_attention=not args.no_attention,
         include_authenticity=not args.no_authenticity,
         include_social_intent=not args.no_social_intent,
+        include_credit_spread=not args.no_credit_spread,
         include_consumer_spend=not args.no_consumer_spend,
         include_borrow_fee=not args.no_borrow_fee,
         include_contagion=not args.no_contagion,
