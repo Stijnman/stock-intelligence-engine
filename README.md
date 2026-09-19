@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.35.0** — September 2026 · Social Trading Action Intent Classifier (fully wired) + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.35.1** — September 2026 · Autonomous research & evolution cycle + Social Trading Action Intent Classifier (fully wired) + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -25,6 +25,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.35.1 (2026-09-19)** : Autonomous research & evolution cycle. Code audit confirmed no High Priority FUTURE items were fully implemented and wired; nothing removed from FUTURE-IMPROVEMENTS.md. Fresh 2026 research (AltIndex employee-outlook / AI Score API, SentiSense MCP sentiment, TickerDesk sweep/block options flow, StockTools / Stock Companion news+insider workspaces, Trade Ideas HOLLY). Added four new roadmap items: Unusual Options Sweep-vs-Block Confirmation, Employee Outlook / Glassdoor Business Sentiment, Earnings Calendar Distance-Decay & Event-Risk, SEC Comment-Letter / Regulatory Docket Velocity.
 * **v2.35.0 (2026-09-18)** : Fully implemented **Social Trading Action Intent Classifier** (`sie/social_intent.py`). Wired through analyzer (`include_social_intent`), CLI (`--no-social-intent`), config (`social_intent:`), Streamlit preferred columns (`sti_intent`, `sti_intent_share`, `sti_high_intent_velocity`, `sti_boost`, `sti_reason`). Extends authenticity layer. Removed from FUTURE-IMPROVEMENTS.md High Priority.
 * **v2.34.0 (2026-09-18)** : Dealer GEX & Pin-Risk Overlay fully wired.
 * **v2.33.3 (2026-09-17)** : Autonomous research & evolution cycle.
@@ -33,4 +34,4 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.35.0
+v2.35.1

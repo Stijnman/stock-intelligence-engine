@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.35.1] - 2026-09-19
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-19).
+- Code audit of `sie/` overlays, CLI flags, Streamlit preferred columns, and FUTURE-IMPROVEMENTS.md.
+- **Cleanup:** none. High Priority items (CDS, earnings-call transcripts, news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, Rule 10b5-1 / buyback execution) are still roadmap-only — no matching fully wired modules.
+- Fresh 2026 research: AltIndex AI Score + employee outlook / Glassdoor, SentiSense MCP + publisher reliability, TickerDesk unusual options sweeps/blocks, StockTools.ai / Stock Companion news+insider workspaces, Trade Ideas HOLLY session signals.
+
+### Added (Roadmap)
+- **Unusual Options Sweep vs Block Confirmation Overlay** (High Priority) — new.
+- **Employee Outlook / Glassdoor Business Sentiment Overlay** (High Priority) — new.
+- **Earnings Calendar Distance-Decay & Event-Risk Overlay** (Medium Priority) — new.
+- **SEC Comment Letter / Regulatory Docket Velocity Overlay** (Long-Term / Nice-to-Have) — new.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.35.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.35.0] - 2026-09-18
 
 ### Added / Completed

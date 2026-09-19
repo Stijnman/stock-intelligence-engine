@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-18  
-**Current version baseline:** v2.35.0
+**Last updated:** 2026-09-19  
+**Current version baseline:** v2.35.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -24,17 +24,25 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Rule 10b5-1 / Buyback Authorization vs Execution Overlay**. Cluster scheduled 10b5-1 plan adoptions/amendments and compare announced buyback authorizations against actual repurchase cadence. Soft boost when execution is running ahead of authorization with supportive narrative; caution on stalled buybacks. Preferred columns: `bb_util`, `bb_plan_delta`, `bb_boost`, `bb_reason`.
 
+- [ ] **Unusual Options Sweep vs Block Confirmation Overlay**. Distinguish aggressive sweep prints from passive blocks on the options tape and score confirmation vs fade against existing 0DTE / IV / GEX layers. Soft boost when multi-strike sweeps align with narrative velocity and positive GEX; caution on large blocks into strength that look like distribution. Preferred columns: `uopt_sweep_score`, `uopt_block_ratio`, `uopt_boost`, `uopt_reason`. Synthetic proxy acceptable offline.
+
+- [ ] **Employee Outlook / Glassdoor Business Sentiment Overlay**. Track employee business-outlook and CEO-approval deltas as an inside-the-firm leading indicator distinct from raw hiring-count momentum. Soft boost when outlook rises with hiring and digital-footprint velocity; caution on collapsing outlook while street estimates are still rising. Preferred columns: `eo_outlook`, `eo_ceo`, `eo_boost`, `eo_reason`.
+
 ---
 
 ## Medium Priority
 
 See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form velocity, retail vs institutional options flow, expert-network aspects, MCP tool server, GPU/HBM lead-times, 10-K risk-factor delta, FOMC surprise, supplier-customer surprise graph).
 
+- [ ] **Earnings Calendar Distance-Decay & Event-Risk Overlay**. Score days-to-next-print and historically implied event vol so overlays can auto-dampen or concentrate into the event window. Soft boost when pre-event alt-data cluster is aligned and IV is not already fully priced; caution when event is imminent and honesty / contradiction flags are elevated. Preferred columns: `ecd_days`, `ecd_event_vol`, `ecd_boost`, `ecd_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
 
 See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, satellite night-lights, SAR activity, on-chain liquidity pulse).
+
+- [ ] **SEC Comment Letter / Regulatory Docket Velocity Overlay**. Track incoming SEC comment letters, FDA/DoJ/FTC docket pulses, and reply cadence as a slow-burn legal-risk narrative. Soft caution on accelerating comment velocity or unanswered letters; modest boost when dockets close cleanly alongside supportive narrative. Preferred columns: `reg_docket_velocity`, `reg_unanswered`, `reg_boost`, `reg_reason`.
 
 ---
 
