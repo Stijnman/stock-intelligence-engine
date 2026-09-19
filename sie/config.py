@@ -135,6 +135,14 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "high_intent_velocity_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "credit_spread": {
+        "enabled": True,
+        "tighten_bp": -8.0,
+        "widen_bp": 12.0,
+        "stress_spread_bp": 180.0,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -146,6 +154,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
 
     with config_path.open(encoding="utf-8") as f:
         raw = yaml.safe_load(f) or {}
+    if not isinstance(raw, dict):
+        return cfg
 
     if theme := raw.get("narrative", {}).get("theme"):
         cfg["narrative"]["theme"] = theme
@@ -191,6 +201,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("gex", {}).update(gex)
     if social_intent := raw.get("social_intent"):
         cfg.setdefault("social_intent", {}).update(social_intent)
+    if credit_spread := raw.get("credit_spread"):
+        cfg.setdefault("credit_spread", {}).update(credit_spread)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
