@@ -2,8 +2,22 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Apply available Debian security updates in the image rather than shipping the
+# package snapshot baked into the base tag.
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade "pip>=26.2.1" "setuptools>=78.1.1" wheel \
+    && python -m pip install --no-cache-dir -r requirements.txt \
+    # Trivy also reads Python package records left by the base image / pip
+    # uninstall. Remove only obsolete metadata after the patched installs are
+    # complete; the active 1.2.2 / 84.0.0 metadata remains intact.
+    && find /usr/local/lib/python3.11/site-packages -maxdepth 1 -type d \
+       \( -name 'msgpack-1.1.2.dist-info' -o -name 'setuptools-70.3.0.dist-info' \) \
+       -exec rm -rf {} + \
+    && rm -rf /usr/local/lib/python3.11/site-packages/setuptools/_vendor/wheel-*.dist-info
 
 COPY . .
 

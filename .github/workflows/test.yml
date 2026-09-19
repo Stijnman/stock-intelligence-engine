@@ -67,7 +67,7 @@ jobs:
     
     - name: Check spelling
       run: |
-        codespell --skip ".git,*.json,*.yml,*.yaml,*.min.js,CHANGELOG.md" --ignore-words-list "stock,finance,alpha,beta,sipe,finnhub,polygon,streamlit"
+        codespell --skip ".git,*.json,*.yml,*.yaml,*.min.js,CHANGELOG.md" --ignore-words-list "stock,finance,alpha,beta,sipe,finnhub,polygon,streamlit,sie,SIE,IHS,theses"
 
   security-check:
     name: Security Scan
