@@ -1,5 +1,6 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.35.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.36.0.
 
+Corporate Credit Spread / CDS Momentum Overlay +
 Social Trading Action Intent Classifier +
 Authenticity-Filtered Social Narrative Velocity +
 Dealer Gamma Exposure (GEX) & Pin-Risk Overlay.
@@ -11,7 +12,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.35.1"
+__version__ = "2.36.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -23,7 +24,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Social Intent + GEX + Digital Footprint + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
+        f"**v{__version__}** — Credit Spread / CDS + Social Intent + GEX + Digital Footprint + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
         "Supply-Chain CapEx + Short Interest + Attention + Fragment Live Refresh + Regime + Confidence + "
         "Honesty + Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + "
         "13F + Polymarket + Insider + Narrative Velocity"
@@ -31,7 +32,7 @@ with st.sidebar:
 
 st.title(
     f"Stock Intelligence Engine v{__version__} — "
-    "Social Trading Action Intent + GEX + Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
+    "Corporate Credit Spread / CDS + Social Trading Action Intent + GEX + Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
     "Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
 )
 
@@ -54,6 +55,7 @@ def signal_table_fragment():
         "ct_score", "ct_velocity_transfer", "ct_boost", "ct_peers", "ct_reason",
         "bf_fee_pct", "bf_dtc", "bf_htb", "bf_boost",
         "cs_momentum", "cs_score", "cs_boost",
+        "cds_spread_bp", "cds_delta_bp", "cds_direction", "cds_boost", "cds_reason",
         "sti_intent", "sti_intent_share", "sti_high_intent_velocity", "sti_boost", "sti_reason",
         "auth_score", "auth_filtered_velocity", "auth_boost",
         "sc_capex_score", "sc_side", "sc_boost",
@@ -71,7 +73,7 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Social Trading Action Intent Classifier fully wired + Dealer GEX & Pin-Risk Overlay fully wired + Company Digital Footprint Momentum Overlay fully wired + Patent & Intellectual Property Filing Momentum Overlay + Analyst Estimate Revision Velocity & Breadth Overlay + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
+    f"v{__version__} — Corporate Credit Spread / CDS Momentum Overlay fully wired + Social Trading Action Intent Classifier fully wired + Dealer GEX & Pin-Risk Overlay fully wired + Company Digital Footprint Momentum Overlay fully wired + Patent & Intellectual Property Filing Momentum Overlay + Analyst Estimate Revision Velocity & Breadth Overlay + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
     "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum "
     "· Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · "
     "Options IV · Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
