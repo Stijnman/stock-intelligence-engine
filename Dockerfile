@@ -9,8 +9,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel \
-    && python -m pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade "pip>=26.2.1" "setuptools>=78.1.1" wheel \
+    && python -m pip install --no-cache-dir -r requirements.txt \
+    # Remove stale vendored distribution metadata from the base image. Trivy
+    # otherwise reports the old setuptools 70.3.0 metadata even though the
+    # active setuptools installation is upgraded above.
+    && rm -rf /usr/local/lib/python3.11/site-packages/setuptools/_vendor/wheel-*.dist-info
 
 COPY . .
 
