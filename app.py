@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.36.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.36.1.
 
 Corporate Credit Spread / CDS Momentum Overlay +
 Social Trading Action Intent Classifier +
@@ -12,7 +12,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.36.0"
+__version__ = "2.36.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

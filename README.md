@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.36.0** — September 2026 · Corporate Credit Spread / CDS Momentum Overlay (fully wired) + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.36.1** — September 2026 · Autonomous research & evolution cycle + Corporate Credit Spread / CDS Momentum Overlay (fully wired) + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -26,6 +26,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.36.1 (2026-09-20)** : Autonomous research & evolution cycle. Code audit confirmed no High Priority FUTURE items are fully implemented and wired (earnings-call transcripts, news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, 10b5-1 / buyback execution, unusual options sweep-vs-block, employee outlook). Nothing removed from FUTURE-IMPROVEMENTS.md. Fresh 2026 research (AltIndex alt-data + app-store rankings, Stock Companion FinBERT news sentiment, TradeAlgo / Unusual Whales AI options scanners, Prospero.ai signal stack, SentiSense publisher reliability + MCP, StockTools.ai workspace, Earnings Trader event cards). Added five new roadmap items: App-Store Review Sentiment & Complaint Velocity, Retail Brokerage Order-Flow Imbalance, Macro Surprise vs Ticker-Beta Residual, Investor-Day / Slide-Deck Guidance NLP, Physical Climate / Extreme-Weather Event Exposure.
 * **v2.36.0 (2026-09-19)** : Fully implemented **Corporate Credit Spread / CDS Momentum Overlay** (`sie/credit_spread.py`). Wired through analyzer (`include_credit_spread`), CLI (`--no-credit-spread`), config (`credit_spread:`), Streamlit preferred columns (`cds_spread_bp`, `cds_delta_bp`, `cds_direction`, `cds_boost`, `cds_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
 * **v2.35.1 (2026-09-19)** : Autonomous research & evolution cycle. Code audit confirmed no High Priority FUTURE items were fully implemented and wired; nothing removed from FUTURE-IMPROVEMENTS.md. Fresh 2026 research (AltIndex employee-outlook / AI Score API, SentiSense MCP sentiment, TickerDesk sweep/block options flow, StockTools / Stock Companion news+insider workspaces, Trade Ideas HOLLY). Added four new roadmap items: Unusual Options Sweep-vs-Block Confirmation, Employee Outlook / Glassdoor Business Sentiment, Earnings Calendar Distance-Decay & Event-Risk, SEC Comment-Letter / Regulatory Docket Velocity.
 * **v2.35.0 (2026-09-18)** : Fully implemented **Social Trading Action Intent Classifier** (`sie/social_intent.py`). Wired through analyzer (`include_social_intent`), CLI (`--no-social-intent`), config (`social_intent:`), Streamlit preferred columns (`sti_intent`, `sti_intent_share`, `sti_high_intent_velocity`, `sti_boost`, `sti_reason`). Extends authenticity layer. Removed from FUTURE-IMPROVEMENTS.md High Priority.
@@ -36,4 +37,4 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.36.0
+v2.36.1

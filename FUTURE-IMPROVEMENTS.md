@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-19  
-**Current version baseline:** v2.36.0
+**Last updated:** 2026-09-20  
+**Current version baseline:** v2.36.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -26,6 +26,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Employee Outlook / Glassdoor Business Sentiment Overlay**. Track employee business-outlook and CEO-approval deltas as an inside-the-firm leading indicator distinct from raw hiring-count momentum. Soft boost when outlook rises with hiring and digital-footprint velocity; caution on collapsing outlook while street estimates are still rising. Preferred columns: `eo_outlook`, `eo_ceo`, `eo_boost`, `eo_reason`.
 
+- [ ] **App-Store Review Sentiment & Complaint Velocity Overlay**. Score App Store / Play Store review polarity, 1-star complaint velocity, and crash/outage language as a product-quality nowcast distinct from raw download counts in the digital-footprint layer. Soft boost when review sentiment rises with download velocity; caution on complaint spikes or outage clusters even when traffic is still high. Preferred columns: `asr_sentiment`, `asr_complaint_velocity`, `asr_boost`, `asr_reason`. Synthetic proxy acceptable offline.
+
+- [ ] **Retail Brokerage Order-Flow Imbalance Overlay**. Track public retail-flow proxies (popularity lists, buy/sell imbalance prints, fractional-share heat) as a confirmation or fade against authenticity-filtered social intent. Soft boost when retail buy imbalance aligns with high-intent authentic velocity; caution on one-sided retail chase into weakening technicals. Preferred columns: `rflow_imbalance`, `rflow_heat`, `rflow_boost`, `rflow_reason`. Synthetic proxy acceptable offline.
+
 ---
 
 ## Medium Priority
@@ -34,6 +38,10 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 
 - [ ] **Earnings Calendar Distance-Decay & Event-Risk Overlay**. Score days-to-next-print and historically implied event vol so overlays can auto-dampen or concentrate into the event window. Soft boost when pre-event alt-data cluster is aligned and IV is not already fully priced; caution when event is imminent and honesty / contradiction flags are elevated. Preferred columns: `ecd_days`, `ecd_event_vol`, `ecd_boost`, `ecd_reason`.
 
+- [ ] **Macro Surprise vs Ticker-Beta Residual Overlay**. Compare same-session CPI / NFP / FOMC / PMI surprise prints against each ticker’s realized beta and isolate the residual move. Soft boost when the name outperforms a positive macro surprise on supportive narrative; caution when it underperforms a risk-on print. Preferred columns: `mx_surprise`, `mx_residual`, `mx_boost`, `mx_reason`.
+
+- [ ] **Investor-Day / Conference Slide-Deck Guidance NLP Overlay**. Parse investor-day, analyst-day and conference slide text (or synthetic proxies) for incremental KPI targets vs last printed guidance. Soft boost when slide-deck targets step up with hiring / digital-footprint confirmation; caution on silent target cuts or weasel language. Preferred columns: `ideck_delta`, `ideck_tone`, `ideck_boost`, `ideck_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -41,6 +49,8 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, satellite night-lights, SAR activity, on-chain liquidity pulse).
 
 - [ ] **SEC Comment Letter / Regulatory Docket Velocity Overlay**. Track incoming SEC comment letters, FDA/DoJ/FTC docket pulses, and reply cadence as a slow-burn legal-risk narrative. Soft caution on accelerating comment velocity or unanswered letters; modest boost when dockets close cleanly alongside supportive narrative. Preferred columns: `reg_docket_velocity`, `reg_unanswered`, `reg_boost`, `reg_reason`.
+
+- [ ] **Physical Climate / Extreme-Weather Event Exposure Overlay**. Map watchlist names to facility / crop / coastal / grid exposure and score incoming extreme-weather events as a disruption pulse. Soft caution on high-severity events hitting concentrated assets; modest boost when events clear without operational impact while narrative stays constructive. Preferred columns: `wx_exposure`, `wx_event_score`, `wx_boost`, `wx_reason`.
 
 ---
 

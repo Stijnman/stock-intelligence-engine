@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.36.1] - 2026-09-20
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-20).
+- Code audit of `sie/` overlays, CLI flags, Streamlit preferred columns, and FUTURE-IMPROVEMENTS.md.
+- **Cleanup:** none. High Priority items (earnings-call transcripts, news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, Rule 10b5-1 / buyback execution, unusual options sweep-vs-block, employee outlook) remain roadmap-only — no matching fully wired modules beyond already-shipped CDS / social-intent / GEX layers.
+- Fresh 2026 research: AltIndex alt-data + app-store rankings, Stock Companion FinBERT news sentiment, TradeAlgo / Unusual Whales AI options scanners, Prospero.ai free signal stack, SentiSense publisher reliability + MCP, StockTools.ai research workspace, Earnings Trader event-driven cards.
+
+### Added (Roadmap)
+- **App-Store Review Sentiment & Complaint Velocity Overlay** (High Priority) — new.
+- **Retail Brokerage Order-Flow Imbalance Overlay** (High Priority) — new.
+- **Macro Surprise vs Ticker-Beta Residual Overlay** (Medium Priority) — new.
+- **Investor-Day / Conference Slide-Deck Guidance NLP Overlay** (Medium Priority) — new.
+- **Physical Climate / Extreme-Weather Event Exposure Overlay** (Long-Term / Nice-to-Have) — new.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.36.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.36.0] - 2026-09-19
 
 ### Added / Completed
