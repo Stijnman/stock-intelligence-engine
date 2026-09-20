@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.37.0] - 2026-09-20
+
+### Added / Completed
+- **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** (`sie/earnings_call.py`).
+  - Scores management tone, guidance language drift vs the prior print, and hedging density from same-day / near-real-time transcripts (deterministic synthetic proxy when live feeds are unavailable).
+  - Soft +1 when guidance tone + narrative velocity align upward; -1 on soft-pedaled guidance or hedge language that diverges from social heat.
+  - Wired into `analyze_watchlist` / `run_report` (`include_earnings_call`), CLI `--no-earnings-call`, config `earnings_call:`, Streamlit columns `ect_sentiment`, `ect_guidance_drift`, `ect_hedge_density`, `ect_direction`, `ect_boost`, `ect_reason`.
+  - Deterministic synthetic proxy labeled `synthetic_proxy`.
+  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.37.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.36.1] - 2026-09-20
 
 ### Research & Evolution
