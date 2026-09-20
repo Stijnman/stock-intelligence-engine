@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-09-20  
-**Current version baseline:** v2.36.1
+**Current version baseline:** v2.37.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector**. Ingest same-day or near-real-time earnings-call / conference transcripts (or high-fidelity synthetic proxies), extract guidance language shifts, management tone, and key-metric sentiment. Soft boost when guidance tone + narrative velocity align upward; caution on guidance soft-pedaling or hedging language that diverges from social heat. Preferred columns: `ect_sentiment`, `ect_guidance_drift`, `ect_boost`, `ect_reason`.
 
 - [ ] **News-Source Authority / Reliability Weighted Narrative Score**. Weight news and social velocity by source authority (tier-1 outlets, verified accounts, historical accuracy proxies) instead of treating all mentions equally. Soft boost on high-authority confirmed narrative; caution on low-authority / unverified spikes. Extends authenticity + honesty layers.
 
@@ -56,6 +54,7 @@ See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, 
 
 ## Completed this cycle
 
+- [x] **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** — shipped in v2.37.0 (2026-09-20). Module `sie/earnings_call.py`, CLI `--no-earnings-call`, config `earnings_call:`, dashboard columns `ect_*`.
 - [x] **Corporate Credit Spread / CDS Momentum Overlay** — shipped in v2.36.0 (2026-09-19). Module `sie/credit_spread.py`, CLI `--no-credit-spread`, config `credit_spread:`, dashboard columns `cds_*`.
 
 ## Notes
