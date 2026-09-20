@@ -25,6 +25,7 @@ from sie.attention import integrate_attention_to_row
 from sie.authenticity import integrate_authenticity_to_row
 from sie.social_intent import integrate_social_intent_to_row
 from sie.credit_spread import integrate_credit_spread_to_row
+from sie.earnings_call import integrate_earnings_call_to_row
 from sie.consumer_spend import integrate_consumer_spend_to_row
 from sie.borrow_fee import integrate_borrow_fee_to_row
 from sie.contagion import integrate_contagion_to_row
@@ -61,6 +62,7 @@ def analyze_watchlist(
     include_authenticity: bool = True,
     include_social_intent: bool = True,
     include_credit_spread: bool = True,
+    include_earnings_call: bool = True,
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
     include_contagion: bool = True,
@@ -178,6 +180,8 @@ def analyze_watchlist(
             row = integrate_social_intent_to_row(row, cfg)
         if include_credit_spread:
             row = integrate_credit_spread_to_row(row, cfg)
+        if include_earnings_call:
+            row = integrate_earnings_call_to_row(row, cfg)
         if include_consumer_spend:
             row = integrate_consumer_spend_to_row(row, cfg)
         if include_borrow_fee:
@@ -235,6 +239,7 @@ def run_report(
     include_authenticity: bool = True,
     include_social_intent: bool = True,
     include_credit_spread: bool = True,
+    include_earnings_call: bool = True,
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
     include_contagion: bool = True,
@@ -274,6 +279,7 @@ def run_report(
         include_authenticity=include_authenticity,
         include_social_intent=include_social_intent,
         include_credit_spread=include_credit_spread,
+        include_earnings_call=include_earnings_call,
         include_consumer_spend=include_consumer_spend,
         include_borrow_fee=include_borrow_fee,
         include_contagion=include_contagion,
