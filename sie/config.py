@@ -143,6 +143,16 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "earnings_call": {
+        "enabled": True,
+        "sentiment_hot": 0.28,
+        "sentiment_cold": -0.18,
+        "drift_up": 0.12,
+        "drift_down": -0.12,
+        "hedge_warn": 0.22,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -203,6 +213,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("social_intent", {}).update(social_intent)
     if credit_spread := raw.get("credit_spread"):
         cfg.setdefault("credit_spread", {}).update(credit_spread)
+    if earnings_call := raw.get("earnings_call"):
+        cfg.setdefault("earnings_call", {}).update(earnings_call)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
