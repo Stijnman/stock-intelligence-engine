@@ -4,15 +4,28 @@
 from __future__ import annotations
 
 import re
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BLOCK = [
     (r"/home/[a-zA-Z0-9_-]+/", "hardcoded home path"),
     (r"\b(?:linuxmint|VivoBook)\b", "machine hostname"),
-    (r"(?<!your_)(?<!example@)@[a-zA-Z0-9.-]+\.(com|net|org)", "personal email in tracked file"),
+    # Match a complete email address instead of treating any @domain token as
+    # personal information. Public project/support addresses and API-required
+    # contact addresses are legitimate tracked content.
+    (r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", "email address in tracked file"),
 ]
+
+# These files legitimately contain public/project contact addresses. The
+# hygiene check is intended to catch accidental workstation/user data, not
+# reject documented contact metadata required by the project or external APIs.
+EMAIL_ALLOWED = {
+    Path("SECURITY.md"),
+    Path("CODE_OF_CONDUCT.md"),
+    Path("SKILL.md"),
+    Path("sie/edgar.py"),
+    Path(".github/ISSUE_TEMPLATE/config.yml"),
+}
 
 REQUIRED = [
     ROOT / "README.md",
@@ -37,12 +50,15 @@ def main() -> int:
             continue
         if path.suffix not in {".py", ".md", ".yaml", ".yml", ".txt"}:
             continue
+        relative = path.relative_to(ROOT)
         text = path.read_text(encoding="utf-8", errors="replace")
         for pattern, label in BLOCK:
             if path.name == "check_repo.py":
                 continue
+            if label == "email address in tracked file" and relative in EMAIL_ALLOWED:
+                continue
             if re.search(pattern, text, re.I):
-                print(f"BLOCK {path.relative_to(ROOT)}: {label}")
+                print(f"BLOCK {relative}: {label}")
                 failed += 1
                 break
 

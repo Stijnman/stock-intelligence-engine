@@ -83,21 +83,21 @@ def detect_contagion(
         boost = 1
         confidence = min(0.87, conf_base + 0.35 * min(transfer, 0.7))
         reason = (
-            f"Inbound narrative contagion +{transfer:.0%} from peers {", ".join(peers[:3])} — "
+            f"Inbound narrative contagion +{transfer:.0%} from peers {', '.join(peers[:3])} — "
             "cluster confirmation soft boost"
         )
     elif transfer <= penalty_th and peers:
         boost = -1
         confidence = min(0.83, conf_base + 0.30 * min(abs(transfer), 0.5))
         reason = (
-            f"Outbound / reverse contagion {transfer:.0%} vs peers {", ".join(peers[:3])} — "
+            f"Outbound / reverse contagion {transfer:.0%} vs peers {', '.join(peers[:3])} — "
             "cluster caution"
         )
     else:
         boost = 0
         confidence = conf_base
         if peers:
-            reason = f"Contagion neutral {transfer:+.0%} vs cluster peers {", ".join(peers[:3])}"
+            reason = f"Contagion neutral {transfer:+.0%} vs cluster peers {', '.join(peers[:3])}"
         else:
             reason = f"No strong thematic cluster adjacency (transfer {transfer:+.0%})"
 

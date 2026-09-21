@@ -1,0 +1,5 @@
+# Trivy reports these vendored metadata records even though the final image
+# contains msgpack 1.2.2 and setuptools 84.0.0. Re-evaluate when the base
+# image or Trivy Python inventory behavior changes.
+GHSA-6v7p-g79w-8964
+CVE-2025-47273
