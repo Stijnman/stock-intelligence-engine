@@ -7,136 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.38.0] - 2026-09-21
+
+### Added / Completed
+- **News-Source Authority / Reliability Weighted Narrative Score** (`sie/news_authority.py`).
+  - Weights news and social velocity by source authority (tier-1 share, unverified-source share, historical accuracy proxy) instead of treating all mentions equally.
+  - Soft +1 when high-authority confirmed narrative aligns with velocity; -1 when velocity is driven by low-authority / unverified sources.
+  - Wired into `analyze_watchlist` / `run_report` (`include_news_authority`), CLI `--no-news-authority`, config `news_authority:`, Streamlit columns `nsa_authority`, `nsa_weighted_vel`, `nsa_tier1_share`, `nsa_unverified_share`, `nsa_boost`, `nsa_reason`.
+  - Deterministic synthetic proxy labeled `synthetic_proxy`.
+  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.38.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.37.1] - 2026-09-21
 
-### Research & Evolution
-- Autonomous research & evolution cycle executed (2026-09-21).
-- Code audit of `sie/` overlays, CLI flags, Streamlit preferred columns, and FUTURE-IMPROVEMENTS.md.
-- **Cleanup:** none. Remaining High Priority items (news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, Rule 10b5-1 / buyback execution, unusual options sweep-vs-block, employee outlook, app-store review sentiment, retail brokerage flow) are still roadmap-only — no matching fully wired modules beyond already-shipped earnings-call / CDS / social-intent / GEX layers.
-- Fresh 2026 research: AltIndex 8-signal alt-data stack (web traffic, hiring, employee outlook, app downloads), SentiSense publisher-reliability + MCP agent APIs, Stock Companion FinBERT/VADER news sentiment, TradeAlgo / Unusual Whales AI options-flow classification, StockTools.ai research workspace, Sparkle/Neudata 2026 alt-data catalog (card, geolocation, satellite, web-scraped prices/jobs), tokenized-equity venue news.
-
-### Added (Roadmap)
-- **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay** (High Priority) — new.
-- **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay** (High Priority) — new.
-- **Physical Foot-Traffic vs Digital-Demand Divergence Overlay** (Medium Priority) — new.
-- **SKU Shelf-Price / Promo-Intensity Nowcast Overlay** (Medium Priority) — new.
-- **Auditor-Change / Going-Concern Language Velocity Overlay** (Long-Term / Nice-to-Have) — new.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.37.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.37.0] - 2026-09-20
-
-### Added / Completed
-- **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** (`sie/earnings_call.py`).
-  - Scores management tone, guidance language drift vs the prior print, and hedging density from same-day / near-real-time transcripts (deterministic synthetic proxy when live feeds are unavailable).
-  - Soft +1 when guidance tone + narrative velocity align upward; -1 on soft-pedaled guidance or hedge language that diverges from social heat.
-  - Wired into `analyze_watchlist` / `run_report` (`include_earnings_call`), CLI `--no-earnings-call`, config `earnings_call:`, Streamlit columns `ect_sentiment`, `ect_guidance_drift`, `ect_hedge_density`, `ect_direction`, `ect_boost`, `ect_reason`.
-  - Deterministic synthetic proxy labeled `synthetic_proxy`.
-  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.37.0**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.36.1] - 2026-09-20
-
-### Research & Evolution
-- Autonomous research & evolution cycle executed (2026-09-20).
-- Code audit of `sie/` overlays, CLI flags, Streamlit preferred columns, and FUTURE-IMPROVEMENTS.md.
-- **Cleanup:** none. High Priority items (earnings-call transcripts, news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, Rule 10b5-1 / buyback execution, unusual options sweep-vs-block, employee outlook) remain roadmap-only — no matching fully wired modules beyond already-shipped CDS / social-intent / GEX layers.
-- Fresh 2026 research: AltIndex alt-data + app-store rankings, Stock Companion FinBERT news sentiment, TradeAlgo / Unusual Whales AI options scanners, Prospero.ai free signal stack, SentiSense publisher reliability + MCP, StockTools.ai research workspace, Earnings Trader event-driven cards.
-
-### Added (Roadmap)
-- **App-Store Review Sentiment & Complaint Velocity Overlay** (High Priority) — new.
-- **Retail Brokerage Order-Flow Imbalance Overlay** (High Priority) — new.
-- **Macro Surprise vs Ticker-Beta Residual Overlay** (Medium Priority) — new.
-- **Investor-Day / Conference Slide-Deck Guidance NLP Overlay** (Medium Priority) — new.
-- **Physical Climate / Extreme-Weather Event Exposure Overlay** (Long-Term / Nice-to-Have) — new.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.36.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.36.0] - 2026-09-19
-
-### Added / Completed
-- **Corporate Credit Spread / CDS Momentum Overlay** (`sie/credit_spread.py`).
-  - Tracks synthetic CDS / credit-spread level and session delta as a fundamental stress / relief pulse.
-  - Soft +1 when spreads tighten with rising narrative velocity; -1 on rapid widening even if social heat is elevated.
-  - Wired into `analyze_watchlist` / `run_report` (`include_credit_spread`), CLI `--no-credit-spread`, config `credit_spread:`, Streamlit columns `cds_spread_bp`, `cds_delta_bp`, `cds_direction`, `cds_boost`, `cds_reason`.
-  - Deterministic synthetic proxy labeled `synthetic_proxy`.
-  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.36.0**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.35.1] - 2026-09-19
-
-### Research & Evolution
-- Autonomous research & evolution cycle executed (2026-09-19).
-- Code audit of `sie/` overlays, CLI flags, Streamlit preferred columns, and FUTURE-IMPROVEMENTS.md.
-- **Cleanup:** none. High Priority items (CDS, earnings-call transcripts, news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, Rule 10b5-1 / buyback execution) are still roadmap-only — no matching fully wired modules.
-- Fresh 2026 research: AltIndex AI Score + employee outlook / Glassdoor, SentiSense MCP + publisher reliability, TickerDesk unusual options sweeps/blocks, StockTools.ai / Stock Companion news+insider workspaces, Trade Ideas HOLLY session signals.
-
-### Added (Roadmap)
-- **Unusual Options Sweep vs Block Confirmation Overlay** (High Priority) — new.
-- **Employee Outlook / Glassdoor Business Sentiment Overlay** (High Priority) — new.
-- **Earnings Calendar Distance-Decay & Event-Risk Overlay** (Medium Priority) — new.
-- **SEC Comment Letter / Regulatory Docket Velocity Overlay** (Long-Term / Nice-to-Have) — new.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.35.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.35.0] - 2026-09-18
-
-### Added / Completed
-- **Social Trading Action Intent Classifier** (`sie/social_intent.py`).
-  - Classifies social posts into buy_the_dip / fomo_chase / bag_holding / short_squeeze_call / take_profit / spam.
-  - Soft +1 on rising high-intent authentic velocity; -1 on low-intent / spam-driven spikes.
-  - Wired into `analyze_watchlist` / `run_report` (`include_social_intent`), CLI `--no-social-intent`, config `social_intent:`, Streamlit columns `sti_*`.
-  - Deterministic synthetic proxy labeled `synthetic_proxy`.
-  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.35.0**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.34.0] - 2026-09-18
-
-### Added / Completed
-- **Dealer Gamma Exposure (GEX) & Pin-Risk Overlay fully wired** (was High Priority open item).
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.34.0**.
-
-See git history for earlier changelog entries.
+See git history for the 2.37.1 research-cycle notes and earlier releases.
 
 *Educational research tool only — not financial advice.*
