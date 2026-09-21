@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.37.1] - 2026-09-21
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-21).
+- Code audit of `sie/` overlays, CLI flags, Streamlit preferred columns, and FUTURE-IMPROVEMENTS.md.
+- **Cleanup:** none. Remaining High Priority items (news-source authority, whisper-number cluster, KOL amplification, ETF AP flow, Rule 10b5-1 / buyback execution, unusual options sweep-vs-block, employee outlook, app-store review sentiment, retail brokerage flow) are still roadmap-only — no matching fully wired modules beyond already-shipped earnings-call / CDS / social-intent / GEX layers.
+- Fresh 2026 research: AltIndex 8-signal alt-data stack (web traffic, hiring, employee outlook, app downloads), SentiSense publisher-reliability + MCP agent APIs, Stock Companion FinBERT/VADER news sentiment, TradeAlgo / Unusual Whales AI options-flow classification, StockTools.ai research workspace, Sparkle/Neudata 2026 alt-data catalog (card, geolocation, satellite, web-scraped prices/jobs), tokenized-equity venue news.
+
+### Added (Roadmap)
+- **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay** (High Priority) — new.
+- **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay** (High Priority) — new.
+- **Physical Foot-Traffic vs Digital-Demand Divergence Overlay** (Medium Priority) — new.
+- **SKU Shelf-Price / Promo-Intensity Nowcast Overlay** (Medium Priority) — new.
+- **Auditor-Change / Going-Concern Language Velocity Overlay** (Long-Term / Nice-to-Have) — new.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.37.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.37.0] - 2026-09-20
 
 ### Added / Completed

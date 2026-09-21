@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.37.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.37.1.
 
 Earnings Call Transcript Sentiment & Guidance Drift +
 Corporate Credit Spread / CDS Momentum Overlay +
@@ -13,7 +13,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.37.0"
+__version__ = "2.37.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

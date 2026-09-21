@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-20  
-**Current version baseline:** v2.37.0
+**Last updated:** 2026-09-21  
+**Current version baseline:** v2.37.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -28,6 +28,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Retail Brokerage Order-Flow Imbalance Overlay**. Track public retail-flow proxies (popularity lists, buy/sell imbalance prints, fractional-share heat) as a confirmation or fade against authenticity-filtered social intent. Soft boost when retail buy imbalance aligns with high-intent authentic velocity; caution on one-sided retail chase into weakening technicals. Preferred columns: `rflow_imbalance`, `rflow_heat`, `rflow_boost`, `rflow_reason`. Synthetic proxy acceptable offline.
 
+- [ ] **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay**. Score not just hiring *count* but *what* is being hired (seniority mix, AI/infra skill tags) and posted salary bands vs last quarter. Soft boost when senior/AI-skill mix and posted-comp inflate with digital-footprint and patent velocity; caution on junior-only backfill or posted-comp compression while headline headcount still rises. Preferred columns: `hmix_senior_share`, `hmix_comp_delta`, `hmix_boost`, `hmix_reason`. Distinct from the existing hiring-count layer. Synthetic proxy acceptable offline.
+
+- [ ] **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay**. Track premium/discount and liquidity between traditional listed shares and 2026 tokenized / on-chain equity venues as a new mechanical demand/arbitrage pulse. Soft boost when tokenized venue premium persists with rising authentic narrative; caution on widening discount or venue-outage language even when social heat is elevated. Preferred columns: `tok_basis_bps`, `tok_venue_liq`, `tok_boost`, `tok_reason`. Synthetic proxy acceptable offline.
+
 ---
 
 ## Medium Priority
@@ -40,6 +44,10 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 
 - [ ] **Investor-Day / Conference Slide-Deck Guidance NLP Overlay**. Parse investor-day, analyst-day and conference slide text (or synthetic proxies) for incremental KPI targets vs last printed guidance. Soft boost when slide-deck targets step up with hiring / digital-footprint confirmation; caution on silent target cuts or weasel language. Preferred columns: `ideck_delta`, `ideck_tone`, `ideck_boost`, `ideck_reason`.
 
+- [ ] **Physical Foot-Traffic vs Digital-Demand Divergence Overlay**. Compare geolocation / parking-lot / store-visit pulses against the existing digital-footprint (web + app) layer. Soft boost when physical and digital demand rise together; caution when stores empty while app/web traffic is still hot (or the reverse channel-shift). Preferred columns: `ft_phys_delta`, `ft_digital_gap`, `ft_boost`, `ft_reason`. Synthetic proxy acceptable offline.
+
+- [ ] **SKU Shelf-Price / Promo-Intensity Nowcast Overlay**. Scrape or proxy on-shelf / e-commerce list prices, promo depth, and out-of-stock flags for key SKUs as a near-term margin and demand pulse distinct from card-panel spend. Soft boost when prices hold with low promo intensity and rising spend; caution on deepening discounting or stockouts into a supposedly strong narrative. Preferred columns: `sku_price_delta`, `sku_promo_intensity`, `sku_boost`, `sku_reason`. Synthetic proxy acceptable offline.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -49,6 +57,8 @@ See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, 
 - [ ] **SEC Comment Letter / Regulatory Docket Velocity Overlay**. Track incoming SEC comment letters, FDA/DoJ/FTC docket pulses, and reply cadence as a slow-burn legal-risk narrative. Soft caution on accelerating comment velocity or unanswered letters; modest boost when dockets close cleanly alongside supportive narrative. Preferred columns: `reg_docket_velocity`, `reg_unanswered`, `reg_boost`, `reg_reason`.
 
 - [ ] **Physical Climate / Extreme-Weather Event Exposure Overlay**. Map watchlist names to facility / crop / coastal / grid exposure and score incoming extreme-weather events as a disruption pulse. Soft caution on high-severity events hitting concentrated assets; modest boost when events clear without operational impact while narrative stays constructive. Preferred columns: `wx_exposure`, `wx_event_score`, `wx_boost`, `wx_reason`.
+
+- [ ] **Auditor-Change / Going-Concern Language Velocity Overlay**. Track auditor resignations, going-concern opinion language, and late-filer flags as a slow-burn accounting-quality risk distinct from EDGAR 8-K volume. Soft caution on auditor switches + going-concern language clustering; modest boost when filings stay clean while credit spreads tighten. Preferred columns: `aud_change`, `aud_gc_flag`, `aud_boost`, `aud_reason`.
 
 ---
 
