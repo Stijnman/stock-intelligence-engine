@@ -67,7 +67,7 @@ jobs:
     
     - name: Check spelling
       run: |
-        codespell --skip ".git,*.json,*.yml,*.yaml,*.min.js,CHANGELOG.md" --ignore-words-list "stock,finance,alpha,beta,sipe,finnhub,polygon,streamlit,sie,SIE,IHS,theses"
+        codespell --skip ".git,*.json,*.yml,*.yaml,*.min.js,CHANGELOG.md" --ignore-words-list "stock,finance,alpha,beta,sipe,finnhub,polygon,streamlit,sie,SIE,IHS,theses,ECT"
 
   security-check:
     name: Security Scan
@@ -76,11 +76,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Check for hardcoded secrets
       uses: trufflesecurity/trufflehog@main
       with:
         path: ./
-        base: ${{ github.event.repository.default_branch }}
-        head: HEAD
+        base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        head: ${{ github.sha }}
         extra_args: --debug --only-verified
