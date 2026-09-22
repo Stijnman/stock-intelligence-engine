@@ -1,3 +1,13 @@
 # Stock Intelligence Engine configuration
 # All values are optional; defaults live in sie/config.py.
+#
+# whisper_number:
+#   enabled: true
+#   beat_prob_hot: 0.68
+#   beat_prob_cold: 0.38
+#   cluster_hot: 0.55
+#   cluster_cold: -0.35
+#   narrative_hot: 1.4
+#   event_window_days: 21
+#   min_confidence: 0.40
 {}
