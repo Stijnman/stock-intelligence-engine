@@ -25,6 +25,7 @@ from sie.attention import integrate_attention_to_row
 from sie.authenticity import integrate_authenticity_to_row
 from sie.social_intent import integrate_social_intent_to_row
 from sie.credit_spread import integrate_credit_spread_to_row
+from sie.trace_flow import integrate_trace_flow_to_row
 from sie.earnings_call import integrate_earnings_call_to_row
 from sie.news_authority import integrate_news_authority_to_row
 from sie.whisper_number import integrate_whisper_number_to_row
@@ -64,6 +65,7 @@ def analyze_watchlist(
     include_authenticity: bool = True,
     include_social_intent: bool = True,
     include_credit_spread: bool = True,
+    include_trace_flow: bool = True,
     include_earnings_call: bool = True,
     include_news_authority: bool = True,
     include_whisper_number: bool = True,
@@ -184,6 +186,8 @@ def analyze_watchlist(
             row = integrate_social_intent_to_row(row, cfg)
         if include_credit_spread:
             row = integrate_credit_spread_to_row(row, cfg)
+        if include_trace_flow:
+            row = integrate_trace_flow_to_row(row, cfg)
         if include_earnings_call:
             row = integrate_earnings_call_to_row(row, cfg)
         if include_news_authority:
@@ -247,6 +251,7 @@ def run_report(
     include_authenticity: bool = True,
     include_social_intent: bool = True,
     include_credit_spread: bool = True,
+    include_trace_flow: bool = True,
     include_earnings_call: bool = True,
     include_news_authority: bool = True,
     include_whisper_number: bool = True,
@@ -289,6 +294,7 @@ def run_report(
         include_authenticity=include_authenticity,
         include_social_intent=include_social_intent,
         include_credit_spread=include_credit_spread,
+        include_trace_flow=include_trace_flow,
         include_earnings_call=include_earnings_call,
         include_news_authority=include_news_authority,
         include_whisper_number=include_whisper_number,

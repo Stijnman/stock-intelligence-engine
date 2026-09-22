@@ -1,6 +1,16 @@
 # Stock Intelligence Engine configuration
 # All values are optional; defaults live in sie/config.py.
 #
+# trace_flow:
+#   enabled: true
+#   customer_flow_hot: 0.35
+#   customer_flow_cold: -0.35
+#   liquidity_good: 0.65
+#   liquidity_stress: 0.35
+#   dispersion_warn: 0.60
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # whisper_number:
 #   enabled: true
 #   beat_prob_hot: 0.68

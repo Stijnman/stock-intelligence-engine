@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.39.1"
+__version__ = "2.40.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -25,6 +25,7 @@ def main():
     parser.add_argument("--no-authenticity", action="store_true", help="Disable authenticity-filtered social narrative velocity overlay")
     parser.add_argument("--no-social-intent", action="store_true", help="Disable social trading action intent classifier")
     parser.add_argument("--no-credit-spread", action="store_true", help="Disable corporate credit spread / CDS momentum overlay")
+    parser.add_argument("--no-trace-flow", action="store_true", help="Disable TRACE corporate-bond customer-flow & liquidity overlay")
     parser.add_argument("--no-earnings-call", action="store_true", help="Disable earnings-call transcript sentiment & guidance drift overlay")
     parser.add_argument("--no-news-authority", action="store_true", help="Disable news-source authority / reliability weighted narrative overlay")
     parser.add_argument("--no-whisper-number", action="store_true", help="Disable whisper number / pre-earnings alt-data beat probability overlay")
@@ -52,6 +53,7 @@ def main():
         include_authenticity=not args.no_authenticity,
         include_social_intent=not args.no_social_intent,
         include_credit_spread=not args.no_credit_spread,
+        include_trace_flow=not args.no_trace_flow,
         include_earnings_call=not args.no_earnings_call,
         include_news_authority=not args.no_news_authority,
         include_whisper_number=not args.no_whisper_number,

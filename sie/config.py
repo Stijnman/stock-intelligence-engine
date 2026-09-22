@@ -143,6 +143,16 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "trace_flow": {
+        "enabled": True,
+        "customer_flow_hot": 0.35,
+        "customer_flow_cold": -0.35,
+        "liquidity_good": 0.65,
+        "liquidity_stress": 0.35,
+        "dispersion_warn": 0.60,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
     "earnings_call": {
         "enabled": True,
         "sentiment_hot": 0.28,
@@ -231,6 +241,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("social_intent", {}).update(social_intent)
     if credit_spread := raw.get("credit_spread"):
         cfg.setdefault("credit_spread", {}).update(credit_spread)
+    if trace_flow := raw.get("trace_flow"):
+        cfg.setdefault("trace_flow", {}).update(trace_flow)
     if earnings_call := raw.get("earnings_call"):
         cfg.setdefault("earnings_call", {}).update(earnings_call)
     if news_authority := raw.get("news_authority"):

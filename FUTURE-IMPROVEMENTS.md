@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-09-22  
-**Current version baseline:** v2.39.1
+**Current version baseline:** v2.40.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -33,7 +33,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Secondary Offering / ATM Dilution Velocity Overlay**. Track follow-on offerings, ATM prospectus tap activity, lock-up expiries and announced share-count growth as a supply pulse distinct from buyback execution. Soft caution when ATM / secondary velocity rises into elevated social heat; modest boost when dilution calendar is clean while buybacks are executing. Preferred columns: `dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`. Synthetic proxy acceptable offline.
 
 
-- [ ] **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay**. Use FINRA TRACE executed-trade price/yield/size plus customer-vs-interdealer volume structure to measure issuer-level fixed-income demand and liquidity stress separately from spread direction. Soft boost when customer demand and trade-quality/liquidity improve alongside constructive equity narrative; caution on customer selling pressure, price/yield dispersion or liquidity deterioration while equity sentiment stays hot. Preferred columns: `trace_customer_flow`, `trace_liq_score`, `trace_boost`, `trace_reason`. Deterministic synthetic proxy acceptable offline.
 
 - [ ] **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay**. Track issuer debt calendars, new-issue concession, oversubscription and clustered sector supply as a forward funding-pressure pulse distinct from the existing secondary-market credit-spread/CDS overlay. Soft boost when strong books and tight concessions confirm funding access; caution when repeated issuance needs widening concessions or sector supply overwhelms demand. Preferred columns: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`. Deterministic synthetic proxy acceptable offline.
 
@@ -81,6 +80,7 @@ See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, 
 
 ## Completed this cycle
 
+- [x] **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay** — shipped in v2.40.0 (2026-09-22). Module `sie/trace_flow.py`, analyzer `include_trace_flow`, CLI `--no-trace-flow`, config `trace_flow:`, dashboard columns `trace_*`, deterministic synthetic proxy and unit tests.
 - [x] **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** — shipped in v2.39.0 (2026-09-22). Module `sie/whisper_number.py`, CLI `--no-whisper-number`, config `whisper_number:`, dashboard columns `wn_*`.
 - [x] **News-Source Authority / Reliability Weighted Narrative Score** — shipped in v2.38.0 (2026-09-21). Module `sie/news_authority.py`, CLI `--no-news-authority`, config `news_authority:`, dashboard columns `nsa_*`. Docs synced in v2.38.1.
 - [x] **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** — shipped in v2.37.0 (2026-09-20). Module `sie/earnings_call.py`, CLI `--no-earnings-call`, config `earnings_call:`, dashboard columns `ect_*`.
