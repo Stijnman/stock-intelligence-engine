@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.39.0] - 2026-09-22
+
+### Added / Completed
+- **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** (`sie/whisper_number.py`).
+  - Fuses consumer-spend, digital-footprint, hiring, attention and supply-chain nowcast layers into a probabilistic whisper beat/miss estimate ahead of earnings.
+  - Soft +1 when the multi-signal alt-data cluster implies high beat probability inside the event window; -1 when the cluster deteriorates even if street consensus looks stable.
+  - Wired into `analyze_watchlist` / `run_report` (`include_whisper_number`), CLI `--no-whisper-number`, config `whisper_number:`, Streamlit columns `wn_beat_prob`, `wn_cluster_score`, `wn_days_to_print`, `wn_consensus_gap`, `wn_boost`, `wn_reason`.
+  - Deterministic synthetic proxy labeled `synthetic_proxy`.
+  - Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.39.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.38.1] - 2026-09-22
 
 ### Research & Evolution
