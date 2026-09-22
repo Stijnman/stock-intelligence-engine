@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-09-22  
-**Current version baseline:** v2.39.0
+**Current version baseline:** v2.39.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -31,6 +31,17 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **News Materiality / Predicted Next-Session Impact Score Overlay**. Score each headline/filing for predicted next-session price impact and realized-volatility bucket (StockTitan Rhea-AI / news-analytics style) instead of polarity alone. Soft boost when high-authority + high-materiality prints align with narrative velocity; caution on high-velocity chatter that scores as low-materiality noise. Preferred columns: `nimp_score`, `nimp_vol_bucket`, `nimp_boost`, `nimp_reason`. Extends the shipped news-authority layer. Synthetic proxy acceptable offline.
 
 - [ ] **Secondary Offering / ATM Dilution Velocity Overlay**. Track follow-on offerings, ATM prospectus tap activity, lock-up expiries and announced share-count growth as a supply pulse distinct from buyback execution. Soft caution when ATM / secondary velocity rises into elevated social heat; modest boost when dilution calendar is clean while buybacks are executing. Preferred columns: `dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`. Synthetic proxy acceptable offline.
+
+
+- [ ] **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay**. Use FINRA TRACE executed-trade price/yield/size plus customer-vs-interdealer volume structure to measure issuer-level fixed-income demand and liquidity stress separately from spread direction. Soft boost when customer demand and trade-quality/liquidity improve alongside constructive equity narrative; caution on customer selling pressure, price/yield dispersion or liquidity deterioration while equity sentiment stays hot. Preferred columns: `trace_customer_flow`, `trace_liq_score`, `trace_boost`, `trace_reason`. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay**. Track issuer debt calendars, new-issue concession, oversubscription and clustered sector supply as a forward funding-pressure pulse distinct from the existing secondary-market credit-spread/CDS overlay. Soft boost when strong books and tight concessions confirm funding access; caution when repeated issuance needs widening concessions or sector supply overwhelms demand. Preferred columns: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **Target-Specific Financial Stance & Narrative Specificity Overlay**. Parse 10-K MD&A and earnings-call language by explicit target (debt, EPS, sales/revenue and other configured KPIs), score specificity/novelty, and compare prepared remarks with Q&A stance. Soft boost when target-specific stance improves with high-specificity evidence and low presentation/Q&A divergence; caution when upbeat aggregate tone masks negative stance on a key target or specificity collapses. Preferred columns: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay**. Score each alternative-data input for source provenance, raw-vs-derived lineage, freshness, independent corroboration and disclosed AI transformation so opaque/generated feeds cannot silently dominate the composite signal. Soft boost when independent traceable raw feeds corroborate; caution when apparent edge depends on low-provenance or AI-generated data with weak cross-checks. Preferred columns: `adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **Rule 606 Retail Options Routing & Execution-Quality Overlay**. Use public broker Rule 606 routing disclosures to score venue/consolidator concentration, payment-for-order-flow exposure and execution-quality trends for retail listed-options flow. This qualifies the existing/future retail-intent signal rather than duplicating directional buy/sell imbalance. Soft boost when retail activity broadens across venues with stable/improving execution quality; caution when chase activity concentrates through a narrow routing stack while execution quality deteriorates. Preferred columns: `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`. Deterministic synthetic proxy acceptable offline.
 
 ---
 
