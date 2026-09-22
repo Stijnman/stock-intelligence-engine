@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.39.1] - 2026-09-22
+
+### Research & Evolution
+- Executed the full `AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md` with research-first and safety gates.
+- Exhaustively verified every open `FUTURE-IMPROVEMENTS.md` concept against the current `sie/` module tree, analyzer imports/flags, CLI disable flags, config defaults and Streamlit preferred columns. **No open roadmap item satisfies the complete wiring gate**, so none was removed.
+- Fresh 2026 research covered narrative NLP, alternative-data quality/provenance, options market structure, retail routing/execution quality and corporate-credit flow.
+- Added five non-duplicate roadmap overlays:
+  - **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay**
+  - **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay**
+  - **Target-Specific Financial Stance & Narrative Specificity Overlay**
+  - **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay**
+  - **Rule 606 Retail Options Routing & Execution-Quality Overlay**
+
+### Audit Trail
+- Current `main` primary CI, CodeQL and container scan were green before this cycle.
+- The legacy `Test Stock Intelligence Engine` workflow has two pre-existing workflow-only failures on pushes: codespell flags the legitimate `ECT` acronym, and TruffleHog receives identical base/head refs on a main-branch push. Unit tests and Markdown lint pass.
+- Dependabot PRs #2-#10 were inspected individually. Their diffs are dependency/action-only; primary CI, unit tests, CodeQL and container checks pass. Their red legacy workflow is attributable to the same baseline `ECT` spellcheck issue.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.39.1**.
+- Patch bump only: no runtime signal logic or dependency surface was changed by this research-cycle release.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.39.0] - 2026-09-22
 
 ### Added / Completed
