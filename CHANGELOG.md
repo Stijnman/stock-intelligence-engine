@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.38.1] - 2026-09-22
+
+### Research & Evolution
+- Autonomous research & evolution cycle executed (2026-09-22).
+- Code audit confirmed **News-Source Authority / Reliability Weighted Narrative Score** is fully implemented and wired (`sie/news_authority.py`, analyzer `include_news_authority`, CLI `--no-news-authority`, dashboard `nsa_*` columns). Removed from FUTURE-IMPROVEMENTS.md High Priority (implementation already recorded in [2.38.0]).
+- Remaining High Priority items (whisper-number cluster, KOL amplification, ETF AP flow, 10b5-1 / buyback execution, unusual options sweep-vs-block, employee outlook, app-store reviews, retail flow, job-posting skill-mix, tokenized-share basis) remain roadmap-only.
+- Fresh 2026 research: StockTitan Rhea-AI news impact scoring, OpenAI ChatGPT for Financial Services + Daloopa/LSEG transcripts, SentiSense publisher reliability + MCP, Adanos multi-source sentiment APIs, NorrisAI AlphaLens 15-framework live filings, Marvin Labs guidance-vs-delivered tracking, equity-research platform stack (AlphaSense / Hebbia).
+- Added five new roadmap items: News Materiality / Predicted Next-Session Impact Score; Secondary Offering / ATM Dilution Velocity; Multi-Quarter Guidance-vs-Delivered KPI Tracker; Short-Seller Report / Activist Campaign Velocity; Cross-Language / Offshore Narrative Lag.
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.38.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.38.0] - 2026-09-21
 
 ### Added / Completed

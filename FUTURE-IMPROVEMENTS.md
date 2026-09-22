@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-21  
-**Current version baseline:** v2.37.1
+**Last updated:** 2026-09-22  
+**Current version baseline:** v2.38.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **News-Source Authority / Reliability Weighted Narrative Score**. Weight news and social velocity by source authority (tier-1 outlets, verified accounts, historical accuracy proxies) instead of treating all mentions equally. Soft boost on high-authority confirmed narrative; caution on low-authority / unverified spikes. Extends authenticity + honesty layers.
 
 - [ ] **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay**. Fuse existing nowcasting layers (consumer spend, digital footprint, hiring, attention, supply-chain) into a probabilistic whisper beat/miss estimate ahead of earnings. Soft boost when multi-signal alt-data cluster implies high beat probability + supportive narrative; caution on deteriorating cluster even when street consensus is stable. Preferred columns: `wn_beat_prob`, `wn_cluster_score`, `wn_boost`, `wn_reason`.
 
@@ -32,6 +30,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay**. Track premium/discount and liquidity between traditional listed shares and 2026 tokenized / on-chain equity venues as a new mechanical demand/arbitrage pulse. Soft boost when tokenized venue premium persists with rising authentic narrative; caution on widening discount or venue-outage language even when social heat is elevated. Preferred columns: `tok_basis_bps`, `tok_venue_liq`, `tok_boost`, `tok_reason`. Synthetic proxy acceptable offline.
 
+- [ ] **News Materiality / Predicted Next-Session Impact Score Overlay**. Score each headline/filing for predicted next-session price impact and realized-volatility bucket (StockTitan Rhea-AI / news-analytics style) instead of polarity alone. Soft boost when high-authority + high-materiality prints align with narrative velocity; caution on high-velocity chatter that scores as low-materiality noise. Preferred columns: `nimp_score`, `nimp_vol_bucket`, `nimp_boost`, `nimp_reason`. Extends the shipped news-authority layer. Synthetic proxy acceptable offline.
+
+- [ ] **Secondary Offering / ATM Dilution Velocity Overlay**. Track follow-on offerings, ATM prospectus tap activity, lock-up expiries and announced share-count growth as a supply pulse distinct from buyback execution. Soft caution when ATM / secondary velocity rises into elevated social heat; modest boost when dilution calendar is clean while buybacks are executing. Preferred columns: `dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`. Synthetic proxy acceptable offline.
+
 ---
 
 ## Medium Priority
@@ -48,6 +50,10 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 
 - [ ] **SKU Shelf-Price / Promo-Intensity Nowcast Overlay**. Scrape or proxy on-shelf / e-commerce list prices, promo depth, and out-of-stock flags for key SKUs as a near-term margin and demand pulse distinct from card-panel spend. Soft boost when prices hold with low promo intensity and rising spend; caution on deepening discounting or stockouts into a supposedly strong narrative. Preferred columns: `sku_price_delta`, `sku_promo_intensity`, `sku_boost`, `sku_reason`. Synthetic proxy acceptable offline.
 
+- [ ] **Multi-Quarter Guidance-vs-Delivered KPI Tracker Overlay**. Reconcile what management guided (revenue, margin, capex, unit KPIs) against subsequent printed results across trailing quarters — a delivery-score distinct from same-day transcript tone. Soft boost when delivery beats guidance for 2+ prints with supportive narrative; caution on serial misses or restated targets. Preferred columns: `gvd_hit_rate`, `gvd_slip`, `gvd_boost`, `gvd_reason`. Synthetic proxy acceptable offline.
+
+- [ ] **Short-Seller Report / Activist Campaign Velocity Overlay**. Detect published short-seller reports, activist 13D/13G bursts, and rebuttal cadence as a distinct honesty / narrative-shock layer. Soft caution on fresh high-authority short reports or accelerating activist filings; modest boost when rebuttals land cleanly and credit spreads do not widen. Preferred columns: `act_report_flag`, `act_13d_velocity`, `act_boost`, `act_reason`. Synthetic proxy acceptable offline.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -60,10 +66,13 @@ See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, 
 
 - [ ] **Auditor-Change / Going-Concern Language Velocity Overlay**. Track auditor resignations, going-concern opinion language, and late-filer flags as a slow-burn accounting-quality risk distinct from EDGAR 8-K volume. Soft caution on auditor switches + going-concern language clustering; modest boost when filings stay clean while credit spreads tighten. Preferred columns: `aud_change`, `aud_gc_flag`, `aud_boost`, `aud_reason`.
 
+- [ ] **Cross-Language / Offshore Narrative Lag Overlay**. Compare US X/Reddit narrative velocity against CN / KR / JP / TW board and search heat for dual-listed or supply-chain names. Soft boost when offshore heat leads US confirmation with authentic intent; caution when US social spikes while offshore venues stay cold (or vice versa). Preferred columns: `xl_us_vel`, `xl_offshore_lag`, `xl_boost`, `xl_reason`. Synthetic proxy acceptable offline.
+
 ---
 
 ## Completed this cycle
 
+- [x] **News-Source Authority / Reliability Weighted Narrative Score** — shipped in v2.38.0 (2026-09-21). Module `sie/news_authority.py`, CLI `--no-news-authority`, config `news_authority:`, dashboard columns `nsa_*`. Docs synced in v2.38.1.
 - [x] **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** — shipped in v2.37.0 (2026-09-20). Module `sie/earnings_call.py`, CLI `--no-earnings-call`, config `earnings_call:`, dashboard columns `ect_*`.
 - [x] **Corporate Credit Spread / CDS Momentum Overlay** — shipped in v2.36.0 (2026-09-19). Module `sie/credit_spread.py`, CLI `--no-credit-spread`, config `credit_spread:`, dashboard columns `cds_*`.
 
