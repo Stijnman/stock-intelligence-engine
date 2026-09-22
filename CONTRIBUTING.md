@@ -28,6 +28,10 @@ We are committed to providing a welcoming and inspiring community for all.
 
 ## 🚀 How to Contribute
 
+### Autonomous Research & Evolution Cycles
+
+Roadmap research/evolution passes must follow [AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md](AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md): research first, verify roadmap items against actual wiring, apply the documented safety gates, and use a reviewed feature branch/PR for code-impacting work.
+
 ### Reporting Bugs
 
 If you find a bug, please [open an issue](https://github.com/Stijnman/stock-intelligence-engine/issues/new) with:
