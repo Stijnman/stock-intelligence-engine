@@ -251,6 +251,7 @@ def run_report(
     include_authenticity: bool = True,
     include_social_intent: bool = True,
     include_credit_spread: bool = True,
+    include_trace_flow: bool = True,
     include_earnings_call: bool = True,
     include_news_authority: bool = True,
     include_whisper_number: bool = True,
