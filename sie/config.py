@@ -161,6 +161,16 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.5,
         "min_confidence": 0.40,
     },
+    "whisper_number": {
+        "enabled": True,
+        "beat_prob_hot": 0.68,
+        "beat_prob_cold": 0.38,
+        "cluster_hot": 0.55,
+        "cluster_cold": -0.35,
+        "narrative_hot": 1.4,
+        "event_window_days": 21,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -225,6 +235,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("earnings_call", {}).update(earnings_call)
     if news_authority := raw.get("news_authority"):
         cfg.setdefault("news_authority", {}).update(news_authority)
+    if whisper_number := raw.get("whisper_number"):
+        cfg.setdefault("whisper_number", {}).update(whisper_number)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
