@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.38.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.38.1.
 
 News-Source Authority Weighted Narrative +
 Earnings Call Transcript Sentiment & Guidance Drift +
@@ -14,7 +14,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.38.0"
+__version__ = "2.38.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
