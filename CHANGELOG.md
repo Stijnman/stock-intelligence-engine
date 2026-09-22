@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.40.0] - 2026-09-22
+
+### Added / Completed
+- **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay** (`sie/trace_flow.py`).
+  - Adds issuer-level fixed-income customer-flow and liquidity confirmation distinct from the existing CDS/credit-spread direction layer.
+  - Deterministic synthetic proxy produces customer-flow imbalance, liquidity score and price/yield-dispersion proxy values when live TRACE ingestion is unavailable.
+  - Soft +1 when customer demand + healthy liquidity confirm a hot constructive narrative; soft -1 on customer selling + liquidity/dispersion stress.
+  - Wired into `analyze_watchlist` / `run_report` via `include_trace_flow`.
+  - CLI disable flag: `--no-trace-flow`.
+  - Config block: `trace_flow:` with customer-flow, liquidity, dispersion, narrative and confidence thresholds.
+  - Streamlit preferred columns: `trace_customer_flow`, `trace_liq_score`, `trace_dispersion`, `trace_boost`, `trace_reason`.
+  - Added `tests/test_trace_flow.py` for required keys, disabled behavior, deterministic output and row integration.
+  - Removed the completed TRACE overlay from `FUTURE-IMPROVEMENTS.md`.
+
+### Version
+- Minor bump to **2.40.0** because runtime signal behavior gained a new fully wired overlay.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.39.1] - 2026-09-22
 
 ### Research & Evolution
