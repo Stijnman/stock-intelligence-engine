@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.39.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.39.1.
 
 Whisper Number / Pre-Earnings Alt-Data Beat Probability +
 News-Source Authority Weighted Narrative +
@@ -15,7 +15,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.39.0"
+__version__ = "2.39.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
