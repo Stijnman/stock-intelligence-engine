@@ -1,6 +1,17 @@
 # Stock Intelligence Engine configuration
 # All values are optional; defaults live in sie/config.py.
 #
+# kol_amplification:
+#   enabled: true
+#   score_hot: 0.62
+#   score_cold: 0.28
+#   cascade_hot: 0.55
+#   amp_ratio_hot: 2.2
+#   auth_floor: 0.48
+#   coord_warn: 0.42
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # whisper_number:
 #   enabled: true
 #   beat_prob_hot: 0.68
