@@ -47,3 +47,7 @@ See config.yaml for watchlist and overlay toggles.
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
 v2.39.1
+
+## Flagship integration
+
+This project remains independently usable and is not deprecated. Its capabilities are also consumed by [SignalForge](https://github.com/Stijnman/SignalForge), where they are integrated with complementary repositories behind shared platform contracts. This repository remains the source of truth for its component-specific implementation.
