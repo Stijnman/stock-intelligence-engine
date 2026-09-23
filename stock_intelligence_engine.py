@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.39.2"
+__version__ = "2.40.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--no-earnings-call", action="store_true", help="Disable earnings-call transcript sentiment & guidance drift overlay")
     parser.add_argument("--no-news-authority", action="store_true", help="Disable news-source authority / reliability weighted narrative overlay")
     parser.add_argument("--no-whisper-number", action="store_true", help="Disable whisper number / pre-earnings alt-data beat probability overlay")
+    parser.add_argument("--no-kol-amplification", action="store_true", help="Disable KOL / influencer narrative amplification detector")
     parser.add_argument("--no-consumer-spend", action="store_true", help="Disable aggregated consumer transaction / credit-card panel spend nowcasting overlay")
     parser.add_argument("--no-borrow-fee", action="store_true", help="Disable securities lending / borrow fee & short squeeze risk overlay")
     parser.add_argument("--no-contagion", action="store_true", help="Disable cross-ticker narrative contagion detector")
@@ -55,6 +56,7 @@ def main():
         include_earnings_call=not args.no_earnings_call,
         include_news_authority=not args.no_news_authority,
         include_whisper_number=not args.no_whisper_number,
+        include_kol_amplification=not args.no_kol_amplification,
         include_consumer_spend=not args.no_consumer_spend,
         include_borrow_fee=not args.no_borrow_fee,
         include_contagion=not args.no_contagion,
