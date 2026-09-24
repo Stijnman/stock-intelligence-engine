@@ -171,6 +171,16 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "event_window_days": 21,
         "min_confidence": 0.40,
     },
+    "etf_flow": {
+        "enabled": True,
+        "create_hot": 0.45,
+        "redeem_hot": -0.40,
+        "premium_hot_bps": 18.0,
+        "discount_hot_bps": -22.0,
+        "streak_hot": 3,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -237,6 +247,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("news_authority", {}).update(news_authority)
     if whisper_number := raw.get("whisper_number"):
         cfg.setdefault("whisper_number", {}).update(whisper_number)
+    if etf_flow := raw.get("etf_flow"):
+        cfg.setdefault("etf_flow", {}).update(etf_flow)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
