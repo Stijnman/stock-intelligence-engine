@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-23  
-**Current version baseline:** v2.39.2
+**Last updated:** 2026-09-24  
+**Current version baseline:** v2.40.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector**. Identify high-follower / high-engagement authentic accounts driving narrative velocity on X/Reddit/YouTube and score amplification cascades. Soft boost on organic KOL-driven velocity confirmation; caution on coordinated or low-authenticity amplification spikes. Extends authenticity + contagion layers.
 
 - [ ] **ETF Creation / Redemption & Authorized-Participant Flow Overlay**. Track net creation/redemption and premium/discount vs NAV for thematically relevant ETFs as a mechanical demand pulse into underlying names. Soft boost on multi-session creation streaks confirming narrative; caution on redemption streaks or persistent discount while social heat is elevated. Preferred columns: `etf_flow_score`, `etf_prem_disc`, `etf_boost`, `etf_reason`. Synthetic proxy acceptable offline.
 
@@ -46,6 +44,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay**. Compare Kalshi / Polymarket (and similar) listed beat/miss / EPS event-contract implied probabilities against street consensus and the shipped whisper-number alt-data cluster. Soft boost when event-contract odds and the whisper cluster agree against a stale street print; caution when listed event odds fade while social heat and street estimates stay elevated. Preferred columns: `eec_implied_beat`, `eec_whisper_gap`, `eec_boost`, `eec_reason`. Distinct from the generic prediction-markets overlay. Deterministic synthetic proxy acceptable offline.
 
+- [ ] **FDA / Clinical-Trial Milestone & Protocol-Amendment Velocity Overlay**. Score PDUFA dates, Phase 2/3 readout calendars, protocol amendments, enrollment-pause language and CRL / complete-response density for biotech and device names. Soft boost when milestone cadence is clean and amendments shrink rather than expand; caution on clustered protocol changes, paused enrollment or accelerating CRL language even when social heat is elevated. Preferred columns: `fda_days_to_event`, `fda_amend_velocity`, `fda_boost`, `fda_reason`. Distinct from generic EDGAR 8-K volume. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **CFTC Commitment-of-Traders Speculative Positioning Overlay**. Map watchlist names and sector ETFs to related futures and score non-commercial net positioning, weekly position deltas and crowding vs the prior-year percentile. Soft boost when speculative positioning is rebuilding from a washed-out extreme alongside authentic narrative; caution when non-commercials are already at multi-year crowded longs while social intent is still chasing. Preferred columns: `cot_net_spec`, `cot_crowd_pct`, `cot_boost`, `cot_reason`. Deterministic synthetic proxy acceptable offline.
+
 ---
 
 ## Medium Priority
@@ -70,6 +72,10 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 
 - [ ] **Cloud / SaaS Status-Page Incident Velocity Overlay**. Ingest public vendor status pages, regional SRE incident banners and multi-hour degradation language as an operational nowcast for software / cloud names. Soft caution when incident velocity or duration spikes even while app-download and review layers look stable; modest boost when a high-severity incident clears cleanly with no residual complaint velocity. Preferred columns: `sts_incident_velocity`, `sts_mttr_hours`, `sts_boost`, `sts_reason`. Distinct from app-store complaint velocity. Deterministic synthetic proxy acceptable offline.
 
+- [ ] **Labor-Action / Collective-Bargaining Expiry Overlay**. Score announced strikes, picket language, NLRB filings and major CBA expiry windows as an operational-disruption pulse for industrials, transport, healthcare and media names. Soft caution when strike probability and picket velocity rise into a thin inventory / high-demand narrative; modest boost when a contract clears without work stoppage. Preferred columns: `lab_expiry_days`, `lab_action_velocity`, `lab_boost`, `lab_reason`. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **Dual-Listed ADR / Ordinary-Share Basis Overlay**. Track premium/discount, borrow availability and session-lag between US ADRs and home-market ordinaries. Soft boost when the cheaper line is being accumulated with authentic narrative confirmation; caution when the ADR premium blows out on US social heat while the home print stays cold. Preferred columns: `adr_basis_bps`, `adr_lag`, `adr_boost`, `adr_reason`. Distinct from tokenized-share venue basis. Deterministic synthetic proxy acceptable offline.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -86,10 +92,13 @@ See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, 
 
 - [ ] **CAT-Bond / Reinsurance Rate-on-Line Sector Stress Overlay**. Track catastrophe-bond issuance spreads and reinsurance rate-on-line resets as a slow-burn sector stress pulse for insurers, reinsurers and exposed industrials — distinct from the physical extreme-weather facility map. Soft caution when ROL / CAT spreads gap higher into a busy event season; modest boost when spreads compress after a clean season while credit and narrative stay constructive. Preferred columns: `cat_rol`, `cat_spread_delta`, `cat_boost`, `cat_reason`. Deterministic synthetic proxy acceptable offline.
 
+- [ ] **Corporate-Jet / Executive-Travel Nowcast Overlay**. Use public ADS-B / flight-log proxies for C-suite and IR-roadshow aircraft as a slow-burn activity pulse (deal roadshows, site visits, unexpected multi-city bursts). Soft modest boost when travel clusters ahead of announced IR events with constructive narrative; caution when unexplained flight bursts coincide with honesty flags or widening credit. Preferred columns: `jet_activity`, `jet_burst`, `jet_boost`, `jet_reason`. Deterministic synthetic proxy acceptable offline.
+
 ---
 
 ## Completed this cycle
 
+- [x] **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector** — shipped in v2.40.0 (2026-09-23). Module `sie/kol_amplification.py`, CLI `--no-kol-amplification`, config `kol_amplification:`, dashboard columns `kol_*`. Docs synced in v2.40.1 (item was still listed open after the feature commit).
 - [x] **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** — shipped in v2.39.0 (2026-09-22). Module `sie/whisper_number.py`, CLI `--no-whisper-number`, config `whisper_number:`, dashboard columns `wn_*`.
 - [x] **News-Source Authority / Reliability Weighted Narrative Score** — shipped in v2.38.0 (2026-09-21). Module `sie/news_authority.py`, CLI `--no-news-authority`, config `news_authority:`, dashboard columns `nsa_*`. Docs synced in v2.38.1.
 - [x] **Earnings Call Transcript Real-Time Sentiment & Guidance Drift Detector** — shipped in v2.37.0 (2026-09-20). Module `sie/earnings_call.py`, CLI `--no-earnings-call`, config `earnings_call:`, dashboard columns `ect_*`.
