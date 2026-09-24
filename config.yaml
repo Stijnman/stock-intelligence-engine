@@ -21,4 +21,13 @@
 #   narrative_hot: 1.4
 #   event_window_days: 21
 #   min_confidence: 0.40
-{}
+#
+# etf_flow:
+#   enabled: true
+#   create_hot: 0.45
+#   redeem_hot: -0.40
+#   premium_hot_bps: 18.0
+#   discount_hot_bps: -22.0
+#   streak_hot: 3
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
