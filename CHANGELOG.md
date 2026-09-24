@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.40.1] - 2026-09-24
+
+### Research & Evolution
+- Executed the full autonomous research & evolution cycle against `main` @ 404b8c09 / follow-on version bump commit.
+- Code audit confirmed **KOL / Influencer Narrative Amplification** is fully wired (`sie/kol_amplification.py`, analyzer `include_kol_amplification`, CLI `--no-kol-amplification`, config `kol_amplification:`). Removed from FUTURE-IMPROVEMENTS.md High Priority (implementation shipped in v2.40.0; roadmap was lagging).
+- Dashboard `__version__` and preferred-column list were still on 2.39.2 and omitted `kol_*` — aligned to 2.40.1.
+- Fresh 2026 research: SentiSense / Adanos multi-source sentiment + MCP for agents, StockTitan Rhea-AI materiality/impact scoring, OpenAI ChatGPT for Financial Services (Daloopa / LSEG transcripts), NorrisAI AlphaLens live-filing frameworks, NowNews honesty-signal news intelligence, CFTC COT crowding, FDA/PDUFA calendars, dual-listed ADR basis, labor CBA expiries, ADS-B executive-travel nowcasts.
+- Added five non-duplicate roadmap overlays:
+  - **FDA / Clinical-Trial Milestone & Protocol-Amendment Velocity Overlay** (High Priority)
+  - **CFTC Commitment-of-Traders Speculative Positioning Overlay** (High Priority)
+  - **Labor-Action / Collective-Bargaining Expiry Overlay** (Medium Priority)
+  - **Dual-Listed ADR / Ordinary-Share Basis Overlay** (Medium Priority)
+  - **Corporate-Jet / Executive-Travel Nowcast Overlay** (Long-Term)
+
+### Version
+- Aligned package, CLI, dashboard and docs to **2.40.1**.
+- Patch bump: roadmap/docs/version metadata + dashboard column alignment; no new runtime overlay module in this commit.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.40.0] - 2026-09-23
 
 ### Added
@@ -27,47 +50,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.39.2] - 2026-09-23
 
 ### Research & Evolution
-- Executed the full `AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md` against `main` @ 0a38a715.
-- Verified every open `FUTURE-IMPROVEMENTS.md` concept against the current `sie/` module tree, analyzer imports/flags, CLI disable flags, config defaults and Streamlit preferred columns. **No open roadmap item satisfies the complete wiring gate**, so none was removed.
-- Fresh 2026 research covered prediction-market event contracts (Kalshi / Polymarket / FMI event-risk TAM), passive index reconstitution flow, 10-Q working-capital quality, SaaS public status-page incident velocity, and CAT-bond / reinsurance rate-on-line as a sector stress pulse.
-- Added five non-duplicate roadmap overlays:
-  - **Index Reconstitution & Forced Passive-Flow Overlay** (High Priority)
-  - **Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay** (High Priority)
-  - **Working-Capital / DSO-DIO Drift Overlay** (Medium Priority)
-  - **Cloud / SaaS Status-Page Incident Velocity Overlay** (Medium Priority)
-  - **CAT-Bond / Reinsurance Rate-on-Line Sector Stress Overlay** (Long-Term)
+- Executed the full `AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md` against `main`.
+- Verified every open `FUTURE-IMPROVEMENTS.md` concept against the current `sie/` module tree. **No open roadmap item satisfies the complete wiring gate** at that cut, so none was removed then.
+- Added five non-duplicate roadmap overlays (index reconstitution, listed earnings event-contracts, working-capital DSO/DIO, SaaS status-page incidents, CAT-bond / ROL).
 
 ### Version
 - Aligned package, CLI, dashboard and docs to **2.39.2**.
-- Patch bump only: no runtime signal logic or dependency surface was changed by this research-cycle release.
-
-### Notes
-- Educational research tool only — not financial advice.
 
 ---
 
-## [2.39.1] - 2026-09-22
-
-### Research & Evolution
-- Executed the full `AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md` with research-first and safety gates.
-- Exhaustively verified every open `FUTURE-IMPROVEMENTS.md` concept against the current `sie/` module tree.
-- Added five non-duplicate roadmap overlays (TRACE, primary credit issuance, target-specific stance, alt-data provenance, Rule 606).
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.39.1**.
-
----
-
-## [2.39.0] - 2026-09-22
-
-### Added / Completed
-- **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** (`sie/whisper_number.py`).
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.39.0**.
-
----
-
-See git history for 2.38.x and earlier releases.
+See git history for 2.39.1 and earlier releases.
 
 *Educational research tool only — not financial advice.*
