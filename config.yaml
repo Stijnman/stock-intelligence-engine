@@ -31,3 +31,12 @@
 #   streak_hot: 3
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+
+# buyback_10b51:
+#   enabled: true
+#   util_hot: 0.72
+#   util_stall: 0.28
+#   plan_delta_hot: 0.18
+#   plan_delta_cold: -0.15
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
