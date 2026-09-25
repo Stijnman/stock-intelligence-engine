@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-24  
-**Current version baseline:** v2.40.1
+**Last updated:** 2026-09-25  
+**Current version baseline:** v2.41.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **ETF Creation / Redemption & Authorized-Participant Flow Overlay**. Track net creation/redemption and premium/discount vs NAV for thematically relevant ETFs as a mechanical demand pulse into underlying names. Soft boost on multi-session creation streaks confirming narrative; caution on redemption streaks or persistent discount while social heat is elevated. Preferred columns: `etf_flow_score`, `etf_prem_disc`, `etf_boost`, `etf_reason`. Synthetic proxy acceptable offline.
 
 - [ ] **Rule 10b5-1 / Buyback Authorization vs Execution Overlay**. Cluster scheduled 10b5-1 plan adoptions/amendments and compare announced buyback authorizations against actual repurchase cadence. Soft boost when execution is running ahead of authorization with supportive narrative; caution on stalled buybacks. Preferred columns: `bb_util`, `bb_plan_delta`, `bb_boost`, `bb_reason`.
 
@@ -48,6 +46,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **CFTC Commitment-of-Traders Speculative Positioning Overlay**. Map watchlist names and sector ETFs to related futures and score non-commercial net positioning, weekly position deltas and crowding vs the prior-year percentile. Soft boost when speculative positioning is rebuilding from a washed-out extreme alongside authentic narrative; caution when non-commercials are already at multi-year crowded longs while social intent is still chasing. Preferred columns: `cot_net_spec`, `cot_crowd_pct`, `cot_boost`, `cot_reason`. Deterministic synthetic proxy acceptable offline.
 
+- [ ] **CEO / CFO Vocal-Affect & Earnings-Audio Hedge-Density Overlay**. Score earnings-call *audio* (not just transcript text) for vocal stress, pace, pitch variance and hedge-density in prepared remarks vs Q&A — MoodMetrics / Hume-style affect. Soft boost when vocal affect and transcript stance agree with rising whisper/event-contract odds; caution when upbeat text masks stressed affect or Q&A hedge spikes. Preferred columns: `va_affect`, `va_hedge_audio`, `va_boost`, `va_reason`. Distinct from `sie/earnings_call.py` text NLP. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **13F Amendment / Confidential-Treatment & Late-Filer Velocity Overlay**. Track 13F amendments, confidential-treatment requests and late-filer flags as a positioning-opacity pulse distinct from the shipped holdings snapshot. Soft boost when large holders file on time with rising active share; caution when amendment/late-filer velocity clusters into elevated social heat. Preferred columns: `f13_amend_vel`, `f13_late_share`, `f13_boost`, `f13_reason`. Deterministic synthetic proxy acceptable offline.
+
 ---
 
 ## Medium Priority
@@ -76,6 +78,10 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 
 - [ ] **Dual-Listed ADR / Ordinary-Share Basis Overlay**. Track premium/discount, borrow availability and session-lag between US ADRs and home-market ordinaries. Soft boost when the cheaper line is being accumulated with authentic narrative confirmation; caution when the ADR premium blows out on US social heat while the home print stays cold. Preferred columns: `adr_basis_bps`, `adr_lag`, `adr_boost`, `adr_reason`. Distinct from tokenized-share venue basis. Deterministic synthetic proxy acceptable offline.
 
+- [ ] **Hyperscaler Interconnection-Queue & AI Power-Lead-Time Overlay**. Score data-center interconnection-queue depth, utility interconnection study delays and announced campus power MW as a capacity-constraint pulse for AI-exposed semiconductors, utilities and landlords. Soft boost when queue clearance accelerates with CapEx confirmation; caution when study delays lengthen while narrative stays hot. Preferred columns: `aiq_queue_months`, `aiq_mw_delta`, `aiq_boost`, `aiq_reason`. Distinct from generic supply-chain CapEx. Deterministic synthetic proxy acceptable offline.
+
+- [ ] **Dealer Inventory / Market-Maker Hedging-Flow vs GEX Divergence Overlay**. Compare inferred MM inventory and hedging-flow direction against the shipped dealer GEX / pin-risk layer. Soft boost when hedging flow confirms GEX support under a constructive narrative; caution when inventory dump diverges from a still-positive GEX print. Preferred columns: `mmh_inv`, `mmh_gex_gap`, `mmh_boost`, `mmh_reason`. Deterministic synthetic proxy acceptable offline.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -94,10 +100,13 @@ See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, 
 
 - [ ] **Corporate-Jet / Executive-Travel Nowcast Overlay**. Use public ADS-B / flight-log proxies for C-suite and IR-roadshow aircraft as a slow-burn activity pulse (deal roadshows, site visits, unexpected multi-city bursts). Soft modest boost when travel clusters ahead of announced IR events with constructive narrative; caution when unexplained flight bursts coincide with honesty flags or widening credit. Preferred columns: `jet_activity`, `jet_burst`, `jet_boost`, `jet_reason`. Deterministic synthetic proxy acceptable offline.
 
+- [ ] **Central-Bank Speech Vocal-Stress / FOMC Q&A Affect Overlay**. Score FOMC / ECB / BoJ press-conference audio affect and Q&A hedge density as an index-level regime pulse distinct from text surprise prints. Soft caution when hawkish affect arrives with rising hedge density even if the statement is unchanged; modest boost when dovish affect clears with compressed event vol. Preferred columns: `cb_affect`, `cb_qa_hedge`, `cb_boost`, `cb_reason`. Deterministic synthetic proxy acceptable offline.
+
 ---
 
 ## Completed this cycle
 
+- [x] **ETF Creation / Redemption & Authorized-Participant Flow Overlay** — shipped in v2.41.0 (2026-09-24). Module `sie/etf_flow.py`, CLI `--no-etf-flow`, config `etf_flow:`, dashboard columns `etf_*`. Docs + dashboard version aligned in v2.41.1 (item was still listed open after the feature commit).
 - [x] **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector** — shipped in v2.40.0 (2026-09-23). Module `sie/kol_amplification.py`, CLI `--no-kol-amplification`, config `kol_amplification:`, dashboard columns `kol_*`. Docs synced in v2.40.1 (item was still listed open after the feature commit).
 - [x] **Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay** — shipped in v2.39.0 (2026-09-22). Module `sie/whisper_number.py`, CLI `--no-whisper-number`, config `whisper_number:`, dashboard columns `wn_*`.
 - [x] **News-Source Authority / Reliability Weighted Narrative Score** — shipped in v2.38.0 (2026-09-21). Module `sie/news_authority.py`, CLI `--no-news-authority`, config `news_authority:`, dashboard columns `nsa_*`. Docs synced in v2.38.1.
