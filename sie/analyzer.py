@@ -1,4 +1,4 @@
-"""Orchestrate narrative + technical analysis including ETF AP flow and Dealer GEX."""
+"""Orchestrate narrative + technical analysis including ETF AP flow, 10b5-1 buybacks and Dealer GEX."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -30,6 +30,7 @@ from sie.news_authority import integrate_news_authority_to_row
 from sie.whisper_number import integrate_whisper_number_to_row
 from sie.kol_amplification import integrate_kol_amplification_to_row
 from sie.etf_flow import integrate_etf_flow_to_row
+from sie.buyback_10b51 import integrate_buyback_10b51_to_row
 from sie.consumer_spend import integrate_consumer_spend_to_row
 from sie.borrow_fee import integrate_borrow_fee_to_row
 from sie.contagion import integrate_contagion_to_row
@@ -71,6 +72,7 @@ def analyze_watchlist(
     include_whisper_number: bool = True,
     include_kol_amplification: bool = True,
     include_etf_flow: bool = True,
+    include_buyback_10b51: bool = True,
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
     include_contagion: bool = True,
@@ -198,6 +200,8 @@ def analyze_watchlist(
             row = integrate_kol_amplification_to_row(row, cfg)
         if include_etf_flow:
             row = integrate_etf_flow_to_row(row, cfg)
+        if include_buyback_10b51:
+            row = integrate_buyback_10b51_to_row(row, cfg)
         if include_consumer_spend:
             row = integrate_consumer_spend_to_row(row, cfg)
         if include_borrow_fee:
@@ -260,6 +264,7 @@ def run_report(
     include_whisper_number: bool = True,
     include_kol_amplification: bool = True,
     include_etf_flow: bool = True,
+    include_buyback_10b51: bool = True,
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
     include_contagion: bool = True,
@@ -304,6 +309,7 @@ def run_report(
         include_whisper_number=include_whisper_number,
         include_kol_amplification=include_kol_amplification,
         include_etf_flow=include_etf_flow,
+        include_buyback_10b51=include_buyback_10b51,
         include_consumer_spend=include_consumer_spend,
         include_borrow_fee=include_borrow_fee,
         include_contagion=include_contagion,
