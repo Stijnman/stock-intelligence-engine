@@ -1,6 +1,6 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.40.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.41.1.
 
-KOL / Influencer Narrative Amplification +
+ETF AP Flow + KOL / Influencer Narrative Amplification +
 Whisper Number / Pre-Earnings Alt-Data Beat Probability +
 News-Source Authority Weighted Narrative +
 Earnings Call Transcript Sentiment & Guidance Drift +
@@ -16,7 +16,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.40.1"
+__version__ = "2.41.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -64,6 +64,7 @@ def signal_table_fragment():
         "nsa_authority", "nsa_weighted_vel", "nsa_tier1_share", "nsa_unverified_share", "nsa_boost", "nsa_reason",
         "wn_beat_prob", "wn_cluster_score", "wn_days_to_print", "wn_consensus_gap", "wn_boost", "wn_reason",
         "kol_score", "kol_cascade", "kol_amp_ratio", "kol_auth", "kol_boost", "kol_reason",
+        "etf_flow_score", "etf_prem_disc", "etf_create_streak", "etf_theme", "etf_boost", "etf_reason",
         "sti_intent", "sti_intent_share", "sti_high_intent_velocity", "sti_boost", "sti_reason",
         "auth_score", "auth_filtered_velocity", "auth_boost",
         "sc_capex_score", "sc_side", "sc_boost",
