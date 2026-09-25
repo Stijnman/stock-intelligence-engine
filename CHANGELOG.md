@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.41.1] - 2026-09-25
+
+### Research & Evolution
+- Executed the full autonomous research & evolution cycle against `main` @ 7e7df352.
+- Code audit confirmed **ETF Creation / Redemption & Authorized-Participant Flow** is fully wired (`sie/etf_flow.py`, analyzer `include_etf_flow`, CLI `--no-etf-flow`, config `etf_flow:`). Removed from FUTURE-IMPROVEMENTS.md High Priority (implementation shipped in v2.41.0; roadmap was lagging).
+- Dashboard `__version__` was still on 2.40.1 and omitted `etf_*` preferred columns — aligned to 2.41.1.
+- Added five 2026 research items: CEO/CFO vocal-affect earnings audio (High), 13F amendment / late-filer velocity (High), hyperscaler interconnection-queue / AI power lead-time (Medium), dealer inventory vs GEX divergence (Medium), FOMC / central-bank vocal-stress (Long-Term).
+
+### Version
+- Package, CLI, dashboard and docs aligned to **2.41.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.41.0] - 2026-09-24
 
 ### Added
