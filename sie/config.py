@@ -181,6 +181,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "buyback_10b51": {
+        "enabled": True,
+        "util_hot": 0.72,
+        "util_stall": 0.28,
+        "plan_delta_hot": 0.18,
+        "plan_delta_cold": -0.15,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -249,6 +258,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("whisper_number", {}).update(whisper_number)
     if etf_flow := raw.get("etf_flow"):
         cfg.setdefault("etf_flow", {}).update(etf_flow)
+    if buyback_10b51 := raw.get("buyback_10b51"):
+        cfg.setdefault("buyback_10b51", {}).update(buyback_10b51)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
