@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.42.0] - 2026-09-25
+
+### Added
+- **Rule 10b5-1 / Buyback Authorization vs Execution Overlay** (`sie/buyback_10b51.py`).
+  Clusters scheduled 10b5-1 plan adoptions/amendments and compares announced buyback authorizations against actual repurchase cadence.
+  Soft +1 when execution runs ahead of authorization with supportive narrative; soft -1 on stalled buybacks into elevated social heat.
+  Wired through analyzer (`include_buyback_10b51`), CLI (`--no-buyback-10b51`), config (`buyback_10b51:`), Streamlit preferred columns (`bb_util`, `bb_plan_delta`, `bb_auth_usd_bn`, `bb_exec_pace`, `bb_boost`, `bb_reason`).
+  Deterministic synthetic proxy when live Form 10b5-1 / 8-K execution feeds are unavailable.
+
+### Version
+- Package, CLI, dashboard and docs aligned to **2.42.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.41.1] - 2026-09-25
 
 ### Research & Evolution
@@ -27,44 +44,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **ETF Creation / Redemption & Authorized-Participant Flow Overlay** (`sie/etf_flow.py`).
-  Tracks net creation/redemption and premium/discount vs NAV for thematically relevant ETFs as a mechanical demand pulse into underlying names.
-  Soft +1 on multi-session creation streaks confirming narrative; soft -1 on redemption streaks or persistent NAV discount while social heat is elevated.
-  Wired through analyzer (`include_etf_flow`), CLI (`--no-etf-flow`), config (`etf_flow:`), Streamlit preferred columns (`etf_flow_score`, `etf_prem_disc`, `etf_create_streak`, `etf_theme`, `etf_boost`, `etf_reason`).
-  Deterministic synthetic proxy when live AP / iNAV feeds are unavailable.
 
 ### Version
 - Package, CLI, dashboard and docs aligned to **2.41.0**.
 
-### Notes
-- Educational research tool only — not financial advice.
-
 ---
 
-## [2.40.1] - 2026-09-24
-
-### Research & Evolution
-- Executed the full autonomous research & evolution cycle against `main` @ 404b8c09 / follow-on version bump commit.
-- Code audit confirmed **KOL / Influencer Narrative Amplification** is fully wired (`sie/kol_amplification.py`, analyzer `include_kol_amplification`, CLI `--no-kol-amplification`, config `kol_amplification:`). Removed from FUTURE-IMPROVEMENTS.md High Priority (implementation shipped in v2.40.0; roadmap was lagging).
-- Dashboard `__version__` and preferred-column list were still on 2.39.2 and omitted `kol_*` — aligned to 2.40.1.
-
-### Version
-- Aligned package, CLI, dashboard and docs to **2.40.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.40.0] - 2026-09-23
-
-### Added
-- **Key Opinion Leader (KOL) / Influencer Narrative Amplification Detector** (`sie/kol_amplification.py`).
-
-### Version
-- Package, CLI, dashboard and docs aligned to **2.40.0**.
-
----
-
-See git history for 2.39.2 and earlier releases.
+See git history for 2.40.1 and earlier releases.
 
 *Educational research tool only — not financial advice.*
