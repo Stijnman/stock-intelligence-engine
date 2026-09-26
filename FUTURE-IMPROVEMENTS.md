@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-09-26  
-**Current version baseline:** v2.42.1
+**Current version baseline:** v2.43.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -10,7 +10,7 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 ## High Priority
 
-- [ ] **Unusual Options Sweep vs Block Confirmation Overlay**. Distinguish aggressive sweep prints from passive blocks on the options tape and score confirmation vs fade against existing 0DTE / IV / GEX layers. Preferred columns: `uopt_sweep_score`, `uopt_block_ratio`, `uopt_boost`, `uopt_reason`. Synthetic proxy acceptable offline.
+- [x] **Unusual Options Sweep vs Block Confirmation Overlay** — DONE 2026-09-26 in v2.43.0 (`sie/unusual_options.py`, CLI `--no-unusual-options`, dashboard `uopt_*`). See CHANGELOG.
 
 - [ ] **Employee Outlook / Glassdoor Business Sentiment Overlay**. Preferred columns: `eo_outlook`, `eo_ceo`, `eo_boost`, `eo_reason`.
 

@@ -40,3 +40,12 @@
 #   plan_delta_cold: -0.15
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+#
+# unusual_options:
+#   enabled: true
+#   sweep_hot: 0.62
+#   sweep_cold: 0.22
+#   block_passive: 0.58
+#   block_confirm: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
