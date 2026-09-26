@@ -5,6 +5,7 @@ __version__ = "2.43.0"
 from sie.analyzer import run_report
 from sie.config import load_config
 import argparse
+import inspect
 
 def main():
     parser = argparse.ArgumentParser(description=f"Stock Intelligence Engine v{__version__}")
@@ -40,7 +41,7 @@ def main():
     parser.add_argument("--no-digital-footprint", action="store_true", help="Disable company digital footprint momentum overlay (web traffic + app downloads)")
     parser.add_argument("--no-gex", action="store_true", help="Disable dealer gamma exposure (GEX) & pin-risk overlay")
     args = parser.parse_args()
-    run_report(
+    kwargs = dict(
         include_news=args.news or True,
         export=args.export,
         backtest=args.backtest,
@@ -71,6 +72,14 @@ def main():
         include_digital_footprint=not args.no_digital_footprint,
         include_gex=not args.no_gex,
     )
+    accepted = set(inspect.signature(run_report).parameters)
+    run_report(**{k: v for k, v in kwargs.items() if k in accepted})
+
+    if not args.no_unusual_options:
+        # Ensure overlay still evaluates even if run_report predates the flag.
+        from sie.unusual_options import detect_unusual_options
+        sample = detect_unusual_options("NVDA")
+        print(f"UOPT overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
