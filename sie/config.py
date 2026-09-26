@@ -190,6 +190,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "unusual_options": {
+        "enabled": True,
+        "sweep_hot": 0.62,
+        "sweep_cold": 0.22,
+        "block_passive": 0.58,
+        "block_confirm": 0.28,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -260,6 +269,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("etf_flow", {}).update(etf_flow)
     if buyback_10b51 := raw.get("buyback_10b51"):
         cfg.setdefault("buyback_10b51", {}).update(buyback_10b51)
+    if unusual_options := raw.get("unusual_options"):
+        cfg.setdefault("unusual_options", {}).update(unusual_options)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
