@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.42.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.42.1.
 
 Rule 10b5-1 / Buyback Overlay + ETF AP Flow + KOL / Influencer Narrative Amplification +
 Whisper Number / Pre-Earnings Alt-Data Beat Probability +
@@ -16,7 +16,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.42.0"
+__version__ = "2.42.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
