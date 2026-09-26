@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.42.1] - 2026-09-26
+
+### Research & Evolution
+- Executed the full autonomous research & evolution cycle against `main` @ b85ac9a (2026-09-26).
+- Code audit confirmed **Rule 10b5-1 / Buyback Authorization vs Execution** is fully wired (`sie/buyback_10b51.py`, analyzer `include_buyback_10b51`, CLI `--no-buyback-10b51`, config `buyback_10b51:`, dashboard `bb_*`). Removed the leftover checked item from FUTURE-IMPROVEMENTS.md High Priority.
+- Confirmed ETF AP Flow, KOL amplification, whisper number, news authority, earnings-call, credit/CDS, social intent, GEX, digital footprint, patent momentum, estimate revision, contagion, borrow fee, consumer spend, authenticity, supply-chain, FINRA short, and attention overlays remain implemented; none of the remaining open High Priority items have matching `sie/` modules.
+- 2026 research (sentiment APIs + MCP agents, SEC-filing AI platforms, news-impact engines, ChatGPT Financial Services / GPT-6 Astra, ECB LLM stability sentiment) added five net-new roadmap items not previously listed.
+
+### Added (roadmap only)
+- High: Tariff / Trade-Policy Exposure Overlay.
+- High: AI Token-Cost / Inference-Price Deflation Overlay.
+- High: Corporate Aviation / Executive Flight-Pattern Overlay.
+- Medium: Form 8-K Item 1.05 Cybersecurity Incident Velocity Overlay.
+- Long-Term: Class-Action / Multidistrict Litigation Filing Velocity Overlay.
+
+### Version
+- Package, CLI, dashboard and docs aligned to **2.42.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.42.0] - 2026-09-25
 
 ### Added
