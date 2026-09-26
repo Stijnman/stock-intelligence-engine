@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.43.0] - 2026-09-26
+
+### Added
+- **Unusual Options Sweep vs Block Confirmation Overlay** (`sie/unusual_options.py`).
+  Distinguishes aggressive multi-exchange sweep prints from passive block prints on the options tape and scores confirmation vs fade against existing 0DTE / IV / GEX layers.
+  Soft +1 when high sweep score + low block ratio + call-side tape confirms narrative velocity; soft -1 when passive blocks / weak sweeps print into elevated social heat.
+  Wired through analyzer (`include_unusual_options`), CLI (`--no-unusual-options`), config (`unusual_options:`), Streamlit preferred columns (`uopt_sweep_score`, `uopt_block_ratio`, `uopt_call_put`, `uopt_premium_usd_m`, `uopt_boost`, `uopt_reason`).
+  Deterministic synthetic proxy when live OPRA / multi-exchange sweep feeds are unavailable.
+
+### Version
+- Package, CLI, dashboard and docs aligned to **2.43.0**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.42.1] - 2026-09-26
 
 ### Research & Evolution
