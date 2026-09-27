@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-26  
-**Current version baseline:** v2.43.0
+**Last updated:** 2026-09-27  
+**Current version baseline:** v2.43.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [x] **Unusual Options Sweep vs Block Confirmation Overlay** — DONE 2026-09-26 in v2.43.0 (`sie/unusual_options.py`, CLI `--no-unusual-options`, dashboard `uopt_*`). See CHANGELOG.
 
 - [ ] **Employee Outlook / Glassdoor Business Sentiment Overlay**. Preferred columns: `eo_outlook`, `eo_ceo`, `eo_boost`, `eo_reason`.
 
@@ -54,6 +52,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Corporate Aviation / Executive Flight-Pattern Overlay**. Uses public ADS-B / corporate-jet tail mappings as a leading activity proxy around plants, customer sites, M&A destinations, and capital-markets hubs. Soft boost on rising multi-site operational flight intensity confirming hiring/CapEx narrative; caution on unexplained hub-to-hub banker-route spikes into quiet periods. Preferred columns: `jet_ops_intensity`, `jet_hub_share`, `jet_boost`, `jet_reason`.
 
+- [ ] **NSCC / CNS Fail-to-Deliver & Settlement-Stress Overlay**. Tracks CNS fails, buy-in notices and settlement-cycle elongation as a mechanical squeeze / operational-stress pulse orthogonal to FINRA short volume and borrow fee. Soft caution when fail stock spikes into crowded narrative names; fade isolated batch fails with no lending-market confirmation. Preferred columns: `ftd_shares`, `ftd_days`, `ftd_boost`, `ftd_reason`.
+
+- [ ] **Behind-the-Meter Flexible-Load / Grid-Curtailment Overlay**. Maps AI data-center and crypto-miner interruptible load against ISO/RTO scarcity pricing and voluntary curtailment (ERCOT, PJM, CAISO). Soft boost when operators monetize flexibility without sustained utilization collapse; caution when forced curtailment coincides with rising token-cost or delayed interconnection. Preferred columns: `grid_curtail_mw`, `grid_scarcity_hrs`, `grid_boost`, `grid_reason`.
+
+- [ ] **LLM Street-vs-Machine Estimate Divergence Overlay**. Compares human-analyst consensus revisions against independently generated LLM/agent estimate clusters from filings, transcripts and alt-data. Soft boost when machine cluster leads street in the same direction with high provenance; caution when models diverge while narrative heat is one-sided. Preferred columns: `llm_est_gap`, `llm_lead_days`, `llm_boost`, `llm_reason`.
+
 ---
 
 ## Medium Priority
@@ -62,6 +66,8 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 
 - [ ] **Form 8-K Item 1.05 Cybersecurity Incident Velocity Overlay**. Times material cyber 8-Ks, amendment cadence, and subsequent guidance/insurance language against social and credit-spread overlays. Soft caution on clustered Item 1.05 + widening CDS; fade isolated low-specificity filings. Preferred columns: `cyb_days_since`, `cyb_amend_vel`, `cyb_boost`, `cyb_reason`.
 
+- [ ] **Long-form Newsletter / Substack Narrative Lead-Lag Overlay**. Scores specialist finance newsletters and paid Substacks as a slower, higher-signal narrative layer versus X/Reddit velocity. Soft boost when long-form theses confirm social heat with a multi-day lead; caution when social spikes without long-form corroboration. Preferred columns: `nl_lead_days`, `nl_authority`, `nl_boost`, `nl_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -69,3 +75,5 @@ See prior roadmap items (ESG narrative, multi-agent thesis debate, long-form vel
 See prior roadmap items (event-driven webhooks, AIS/freight, data-center power, satellite night-lights, SAR activity, on-chain liquidity pulse, SEC comment letters, climate exposure, auditor-change / going-concern language).
 
 - [ ] **Class-Action / Multidistrict Litigation Filing Velocity Overlay**. Tracks new securities and consumer class complaints, lead-plaintiff races, and MDL centralization as a legal-overhang score orthogonal to honesty/EDGAR layers. Preferred columns: `lit_new_filings`, `lit_mdl_flag`, `lit_boost`, `lit_reason`.
+
+- [ ] **Compute Waste-Heat / District-Heating Monetization Overlay**. Tracks data-center and miner waste-heat offtake contracts, district-heating pilots and thermal-reuse CapEx as a secondary cash-flow option on Nordic and constrained-grid campuses. Soft long-horizon boost when offtake is contracted; ignore one-off pilots. Preferred columns: `heat_mw_offtake`, `heat_contract_flag`, `heat_boost`, `heat_reason`.
