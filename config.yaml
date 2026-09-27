@@ -49,3 +49,12 @@
 #   block_confirm: 0.28
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+
+# employee_outlook:
+#   enabled: true
+#   outlook_hot: 0.62
+#   outlook_cold: 0.32
+#   ceo_hot: 0.68
+#   ceo_cold: 0.38
+#   narrative_hot: 1.4
+#   min_confidence: 0.40

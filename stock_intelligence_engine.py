@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.43.1"
+__version__ = "2.44.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -32,6 +32,7 @@ def main():
     parser.add_argument("--no-kol-amplification", action="store_true", help="Disable KOL / influencer narrative amplification detector")
     parser.add_argument("--no-etf-flow", action="store_true", help="Disable ETF creation/redemption & AP flow overlay")
     parser.add_argument("--no-buyback-10b51", action="store_true", help="Disable Rule 10b5-1 / buyback authorization vs execution overlay")
+    parser.add_argument("--no-employee-outlook", action="store_true", help="Disable employee outlook / Glassdoor business sentiment overlay")
     parser.add_argument("--no-unusual-options", action="store_true", help="Disable unusual options sweep vs block confirmation overlay")
     parser.add_argument("--no-consumer-spend", action="store_true", help="Disable aggregated consumer transaction / credit-card panel spend nowcasting overlay")
     parser.add_argument("--no-borrow-fee", action="store_true", help="Disable securities lending / borrow fee & short squeeze risk overlay")
@@ -63,6 +64,7 @@ def main():
         include_kol_amplification=not args.no_kol_amplification,
         include_etf_flow=not args.no_etf_flow,
         include_buyback_10b51=not args.no_buyback_10b51,
+        include_employee_outlook=not args.no_employee_outlook,
         include_unusual_options=not args.no_unusual_options,
         include_consumer_spend=not args.no_consumer_spend,
         include_borrow_fee=not args.no_borrow_fee,
@@ -76,10 +78,14 @@ def main():
     run_report(**{k: v for k, v in kwargs.items() if k in accepted})
 
     if not args.no_unusual_options:
-        # Ensure overlay still evaluates even if run_report predates the flag.
         from sie.unusual_options import detect_unusual_options
         sample = detect_unusual_options("NVDA")
         print(f"UOPT overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+
+    if not args.no_employee_outlook:
+        from sie.employee_outlook import detect_employee_outlook
+        sample = detect_employee_outlook("NVDA")
+        print(f"EO overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
