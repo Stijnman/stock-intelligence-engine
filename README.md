@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.43.0** — September 2026 · Unusual Options Sweep vs Block Confirmation (fully wired) + Rule 10b5-1 / Buyback Authorization vs Execution (fully wired) + ETF Creation / Redemption & AP Flow (fully wired) + KOL / Influencer Narrative Amplification (fully wired) + Whisper Number / Pre-Earnings Alt-Data Beat Probability (fully wired) + News-Source Authority Weighted Narrative + Earnings Call Transcript Sentiment & Guidance Drift Overlay + Corporate Credit Spread / CDS Momentum Overlay + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.43.1** — September 2026 · Unusual Options Sweep vs Block Confirmation (fully wired) + Rule 10b5-1 / Buyback Authorization vs Execution (fully wired) + ETF Creation / Redemption & AP Flow (fully wired) + KOL / Influencer Narrative Amplification (fully wired) + Whisper Number / Pre-Earnings Alt-Data Beat Probability (fully wired) + News-Source Authority Weighted Narrative + Earnings Call Transcript Sentiment & Guidance Drift Overlay + Corporate Credit Spread / CDS Momentum Overlay + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -28,6 +28,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.43.1 (2026-09-27)** : Autonomous research & evolution cycle against `main` @ f783f3ad. Removed leftover checked **Unusual Options Sweep vs Block** item from FUTURE-IMPROVEMENTS.md (shipped in v2.43.0). Added five 2026 research items: NSCC/CNS fail-to-deliver (High), behind-the-meter grid curtailment (High), LLM street-vs-machine estimate divergence (High), long-form newsletter/Substack lead-lag (Medium), compute waste-heat monetization (Long-Term). Docs, CLI and dashboard aligned to 2.43.1.
 * **v2.43.0 (2026-09-26)** : Fully implemented **Unusual Options Sweep vs Block Confirmation Overlay** (`sie/unusual_options.py`). Wired through analyzer (`include_unusual_options`), CLI (`--no-unusual-options`), config (`unusual_options:`), Streamlit preferred columns (`uopt_sweep_score`, `uopt_block_ratio`, `uopt_call_put`, `uopt_premium_usd_m`, `uopt_boost`, `uopt_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
 * **v2.42.1 (2026-09-26)** : Autonomous research & evolution cycle against `main` @ b85ac9a. Removed leftover checked **Rule 10b5-1 / Buyback** item from FUTURE-IMPROVEMENTS.md (shipped in v2.42.0). Added five 2026 research items: tariff/trade-policy exposure (High), AI token-cost / inference-price deflation (High), corporate aviation / executive flight-pattern (High), 8-K Item 1.05 cyber incident velocity (Medium), class-action / MDL filing velocity (Long-Term). Docs, CLI and dashboard aligned to 2.42.1.
 * **v2.42.0 (2026-09-25)** : Fully implemented **Rule 10b5-1 / Buyback Authorization vs Execution Overlay** (`sie/buyback_10b51.py`). Wired through analyzer (`include_buyback_10b51`), CLI (`--no-buyback-10b51`), config (`buyback_10b51:`), Streamlit preferred columns (`bb_util`, `bb_plan_delta`, `bb_auth_usd_bn`, `bb_exec_pace`, `bb_boost`, `bb_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
@@ -40,7 +41,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.43.0
+v2.43.1
 
 ## Flagship integration
 
