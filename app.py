@@ -1,14 +1,8 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.44.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.45.0.
 
-Employee Outlook / Glassdoor + Unusual Options Sweep vs Block + Rule 10b5-1 / Buyback Overlay + ETF AP Flow +
-KOL / Influencer Narrative Amplification +
-Whisper Number / Pre-Earnings Alt-Data Beat Probability +
-News-Source Authority Weighted Narrative +
-Earnings Call Transcript Sentiment & Guidance Drift +
-Corporate Credit Spread / CDS Momentum Overlay +
-Social Trading Action Intent Classifier +
-Authenticity-Filtered Social Narrative Velocity +
-Dealer Gamma Exposure (GEX) & Pin-Risk Overlay.
+App-Store Review Sentiment & Complaint Velocity Overlay +
+Employee Outlook / Glassdoor + Unusual Options Sweep vs Block +
+Rule 10b5-1 / Buyback Overlay + ETF AP Flow.
 """
 from __future__ import annotations
 
@@ -17,7 +11,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.44.1"
+__version__ = "2.45.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -29,18 +23,10 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Employee Outlook / Glassdoor + Unusual Options Sweep vs Block + 10b5-1 / Buyback + KOL Amplification + Whisper Number + News-Source Authority + Earnings-Call Transcript + Credit Spread / CDS + Social Intent + GEX + Digital Footprint + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Contagion + Borrow Fee / Squeeze Risk + Consumer Spend Nowcast + Authenticity Filter + "
-        "Supply-Chain CapEx + Short Interest + Attention + Fragment Live Refresh + Regime + Confidence + "
-        "Honesty + Thesis + Brief + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + "
-        "13F + Polymarket + Insider + Narrative Velocity"
+        f"**v{__version__}** — App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
     )
 
-st.title(
-    f"Stock Intelligence Engine v{__version__} — "
-    "Employee Outlook / Glassdoor Business Sentiment + Unusual Options Sweep vs Block Confirmation + Rule 10b5-1 / Buyback Authorization vs Execution + KOL / Influencer Narrative Amplification + Whisper Number / Pre-Earnings Alt-Data Beat Probability + News-Source Authority Weighted Narrative + Earnings-Call Transcript Sentiment & Guidance Drift + Corporate Credit Spread / CDS + Social Trading Action Intent + GEX + Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity & Breadth + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + "
-    "Consumer Spend Nowcasting + Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting"
-)
-
+st.title(f"Stock Intelligence Engine v{__version__}")
 st.metric("Engine Version", __version__)
 
 @st.fragment(run_every=refresh_interval if refresh_interval > 0 else None)
@@ -53,31 +39,11 @@ def signal_table_fragment():
         return
     df = pd.DataFrame(rows)
     preferred = [
-        "ticker", "name", "signal", "score", "rsi", "price", "change_pct",
-        "confidence_score", "confidence_label", "market_regime", "regime_confidence",
-        "er_velocity", "er_breadth", "er_direction", "er_boost", "er_reason",
-        "pm_filing_velocity", "pm_citation_velocity", "pm_grant_ratio", "pm_direction", "pm_boost", "pm_reason",
-        "ct_score", "ct_velocity_transfer", "ct_boost", "ct_peers", "ct_reason",
-        "bf_fee_pct", "bf_dtc", "bf_htb", "bf_boost",
-        "cs_momentum", "cs_score", "cs_boost",
-        "cds_spread_bp", "cds_delta_bp", "cds_direction", "cds_boost", "cds_reason",
-        "ect_sentiment", "ect_guidance_drift", "ect_hedge_density", "ect_direction", "ect_boost", "ect_reason",
-        "nsa_authority", "nsa_weighted_vel", "nsa_tier1_share", "nsa_unverified_share", "nsa_boost", "nsa_reason",
-        "wn_beat_prob", "wn_cluster_score", "wn_days_to_print", "wn_consensus_gap", "wn_boost", "wn_reason",
-        "kol_score", "kol_cascade", "kol_amp_ratio", "kol_auth", "kol_boost", "kol_reason",
-        "etf_flow_score", "etf_prem_disc", "etf_create_streak", "etf_theme", "etf_boost", "etf_reason",
-        "bb_util", "bb_plan_delta", "bb_auth_usd_bn", "bb_exec_pace", "bb_boost", "bb_reason",
-        "eo_outlook", "eo_ceo", "eo_review_velocity", "eo_complaint_share", "eo_boost", "eo_reason",
-        "uopt_sweep_score", "uopt_block_ratio", "uopt_call_put", "uopt_premium_usd_m", "uopt_boost", "uopt_reason",
-        "sti_intent", "sti_intent_share", "sti_high_intent_velocity", "sti_boost", "sti_reason",
-        "auth_score", "auth_filtered_velocity", "auth_boost",
-        "sc_capex_score", "sc_side", "sc_boost",
-        "si_ratio", "si_boost",
-        "attn_momentum", "attn_boost",
-        "df_web_traffic_velocity", "df_app_download_velocity", "df_engagement_score", "df_direction", "df_boost", "df_reason",
-        "gex_score", "pin_level", "gex_boost", "gex_reason", "gex_net", "gex_flip",
-        "honesty_risk", "honesty_label",
-        "brief", "thesis_bull", "thesis_bear",
+        "ticker", "name", "signal", "score", "rsi", "price",
+        "asr_sentiment", "asr_complaint_velocity", "asr_rating", "asr_boost", "asr_reason",
+        "eo_outlook", "eo_ceo", "eo_boost", "eo_reason",
+        "uopt_sweep_score", "uopt_boost", "uopt_reason",
+        "confidence_score", "market_regime", "brief", "thesis_bull", "thesis_bear",
     ]
     cols = [c for c in preferred if c in df.columns] + [c for c in df.columns if c not in preferred]
     st.dataframe(df[cols], use_container_width=True, height=600)
@@ -86,9 +52,5 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Employee Outlook / Glassdoor Business Sentiment Overlay fully wired + Unusual Options Sweep vs Block Confirmation Overlay fully wired + Rule 10b5-1 / Buyback Authorization vs Execution Overlay fully wired + KOL / Influencer Narrative Amplification fully wired + Whisper Number / Pre-Earnings Alt-Data Beat Probability Overlay fully wired + News-Source Authority / Reliability Weighted Narrative Overlay fully wired + Earnings Call Transcript Sentiment & Guidance Drift Overlay fully wired + Corporate Credit Spread / CDS Momentum Overlay fully wired + Social Trading Action Intent Classifier fully wired + Dealer GEX & Pin-Risk Overlay fully wired + Company Digital Footprint Momentum Overlay fully wired + Patent & Intellectual Property Filing Momentum Overlay + Analyst Estimate Revision Velocity & Breadth Overlay + Cross-Ticker Narrative Contagion Detector + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + "
-    "Authenticity-Filtered Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum "
-    "· Regime · Confidence · Honesty · Thesis · Brief · Hiring · EDGAR · 0DTE · "
-    "Options IV · Dark Pool · Realtime · Congressional · 13F · Polymarket · Insider · Narrative Velocity. "
-    "Educational research tool only — not financial advice."
+    f"v{__version__} — App-Store Review Sentiment & Complaint Velocity Overlay fully wired. Educational research tool only — not financial advice."
 )
