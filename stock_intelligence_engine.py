@@ -76,8 +76,16 @@ def main():
         include_gex=not args.no_gex,
         include_app_store_reviews=not args.no_app_store_reviews,
     )
-    accepted = set(inspect.signature(run_report).parameters)
-    run_report(**{k: v for k, v in kwargs.items() if k in accepted})
+    parameters = inspect.signature(run_report).parameters
+    # Preserve compatibility with wrappers and tests that accept arbitrary keywords.
+    accepts_var_kwargs = any(
+        parameter.kind is inspect.Parameter.VAR_KEYWORD
+        for parameter in parameters.values()
+    )
+    forwarded = kwargs if accepts_var_kwargs else {
+        key: value for key, value in kwargs.items() if key in parameters
+    }
+    run_report(**forwarded)
 
     if not args.no_unusual_options:
         from sie.unusual_options import detect_unusual_options
