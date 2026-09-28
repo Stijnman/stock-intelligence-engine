@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-27  
-**Current version baseline:** v2.44.0
+**Last updated:** 2026-09-28  
+**Current version baseline:** v2.44.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -56,6 +56,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **LLM Street-vs-Machine Estimate Divergence Overlay**. Preferred columns: `llm_est_gap`, `llm_lead_days`, `llm_boost`, `llm_reason`.
 
+- [ ] **Implied-vs-Realized News Impact Residual Overlay**. Scores the gap between model-predicted next-session impact (Rhea-AI / nimp-style) and the actual pre-market-to-close move. Soft +1 when a high-impact print realizes in the predicted direction; fade when residuals cluster as over-forecast. Preferred columns: `ivr_pred`, `ivr_realized`, `ivr_residual`, `ivr_boost`, `ivr_reason`.
+
+- [ ] **Corporate Treasury Stablecoin / On-Chain Cash Overlay**. Tracks disclosed or inferred corporate holdings of tokenized cash, stablecoins and on-chain T-bill wrappers as a liquidity / treasury-policy pulse orthogonal to credit-spread and buyback layers. Preferred columns: `tsc_onchain_usd`, `tsc_share_cash`, `tsc_boost`, `tsc_reason`.
+
+- [ ] **Port / AIS Shipping Congestion & Lead-Time Overlay**. Uses AIS dwell, berth wait and container lead-time proxies to nowcast physical-goods names ahead of earnings and guidance. Preferred columns: `ais_dwell_hrs`, `ais_lead_delta`, `ais_boost`, `ais_reason`.
+
 ---
 
 ## Medium Priority
@@ -64,6 +70,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Long-form Newsletter / Substack Narrative Lead-Lag Overlay**. Preferred columns: `nl_lead_days`, `nl_authority`, `nl_boost`, `nl_reason`.
 
+- [ ] **Guidance-vs-Delivery Promise Tracking Overlay**. Reconciles management guidance language against subsequent prints and 8-K updates (Marvin Labs / LangAlpha style) and flags broken vs beaten promises as an honesty-adjacent layer. Preferred columns: `gvd_open_promises`, `gvd_hit_rate`, `gvd_boost`, `gvd_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -71,3 +79,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Class-Action / Multidistrict Litigation Filing Velocity Overlay**. Preferred columns: `lit_new_filings`, `lit_mdl_flag`, `lit_boost`, `lit_reason`.
 
 - [ ] **Compute Waste-Heat / District-Heating Monetization Overlay**. Preferred columns: `heat_mw_offtake`, `heat_contract_flag`, `heat_boost`, `heat_reason`.
+
+- [ ] **Parking-Lot / Satellite Occupancy Nowcast Overlay**. Commercial satellite parking and rooftop occupancy as a lagging-to-coincident demand proxy for retailers, logistics hubs and data-center campuses. Preferred columns: `sat_occ_delta`, `sat_sample_n`, `sat_boost`, `sat_reason`.

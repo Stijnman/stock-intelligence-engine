@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.44.1] - 2026-09-28
+
+### Research & Evolution
+- Executed the full autonomous research & evolution cycle against `main` @ 0fba774e (2026-09-28).
+- Code audit confirmed **no leftover FUTURE-IMPROVEMENTS items are already shipped**. Employee Outlook, Unusual Options Sweep vs Block, 10b5-1 / buyback, ETF AP flow, KOL, whisper, news authority, earnings-call, credit/CDS, social intent, GEX, digital footprint, patent, estimate revision, contagion, borrow fee, consumer spend, authenticity, supply-chain, FINRA short, and attention overlays remain implemented. Remaining High Priority items still have no matching `sie/` modules.
+- 2026 research (SentiSense / Quiver / LangAlpha agent stacks, OpenAI ChatGPT for Financial Services + Daloopa/PitchBook/LSEG, Rhea-AI 8 implied-vs-realized news impact, Marvin Labs guidance tracking, AIS shipping nowcasts, corporate on-chain treasury cash) added five net-new roadmap items not previously listed.
+
+### Added (roadmap only)
+- High: Implied-vs-Realized News Impact Residual Overlay.
+- High: Corporate Treasury Stablecoin / On-Chain Cash Overlay.
+- High: Port / AIS Shipping Congestion & Lead-Time Overlay.
+- Medium: Guidance-vs-Delivery Promise Tracking Overlay.
+- Long-Term: Parking-Lot / Satellite Occupancy Nowcast Overlay.
+
+### Version
+- Package, CLI, dashboard and docs aligned to **2.44.1**.
+
+### Notes
+- Educational research tool only — not financial advice.
+
+---
+
 ## [2.44.0] - 2026-09-27
 
 ### Added

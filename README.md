@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.44.0** — September 2026 · Employee Outlook / Glassdoor Business Sentiment (fully wired) + Unusual Options Sweep vs Block Confirmation (fully wired) + Rule 10b5-1 / Buyback Authorization vs Execution (fully wired) + ETF Creation / Redemption & AP Flow (fully wired) + KOL / Influencer Narrative Amplification (fully wired) + Whisper Number / Pre-Earnings Alt-Data Beat Probability (fully wired) + News-Source Authority Weighted Narrative + Earnings Call Transcript Sentiment & Guidance Drift Overlay + Corporate Credit Spread / CDS Momentum Overlay + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.44.1** — September 2026 · Employee Outlook / Glassdoor Business Sentiment (fully wired) + Unusual Options Sweep vs Block Confirmation (fully wired) + Rule 10b5-1 / Buyback Authorization vs Execution (fully wired) + ETF Creation / Redemption & AP Flow (fully wired) + KOL / Influencer Narrative Amplification (fully wired) + Whisper Number / Pre-Earnings Alt-Data Beat Probability (fully wired) + News-Source Authority Weighted Narrative + Earnings Call Transcript Sentiment & Guidance Drift Overlay + Corporate Credit Spread / CDS Momentum Overlay + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -28,6 +28,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.44.1 (2026-09-28)** : Autonomous research & evolution cycle. Confirmed no open FUTURE-IMPROVEMENTS items were already shipped. Added five net-new roadmap items (implied-vs-realized news impact residual; corporate treasury stablecoin / on-chain cash; AIS port congestion; guidance-vs-delivery tracking; satellite parking occupancy).
 * **v2.44.0 (2026-09-27)** : Fully implemented **Employee Outlook / Glassdoor Business Sentiment Overlay** (`sie/employee_outlook.py`). Wired through analyzer (`include_employee_outlook`), CLI (`--no-employee-outlook`), config (`employee_outlook:`), Streamlit preferred columns (`eo_outlook`, `eo_ceo`, `eo_review_velocity`, `eo_complaint_share`, `eo_boost`, `eo_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
 * **v2.43.1 (2026-09-27)** : Autonomous research & evolution cycle. Confirmed Unusual Options Sweep vs Block fully wired.
 * **v2.43.0 (2026-09-26)** : Unusual Options Sweep vs Block Confirmation Overlay.
@@ -37,7 +38,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.44.0
+v2.44.1
 
 ## Flagship integration
 
