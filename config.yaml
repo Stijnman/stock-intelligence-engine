@@ -1,60 +1,11 @@
 # Stock Intelligence Engine configuration
 # All values are optional; defaults live in sie/config.py.
 #
-# kol_amplification:
+# app_store_reviews:
 #   enabled: true
-#   score_hot: 0.62
-#   score_cold: 0.28
-#   cascade_hot: 0.55
-#   amp_ratio_hot: 2.2
-#   auth_floor: 0.48
-#   coord_warn: 0.42
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-#
-# whisper_number:
-#   enabled: true
-#   beat_prob_hot: 0.68
-#   beat_prob_cold: 0.38
-#   cluster_hot: 0.55
-#   cluster_cold: -0.35
-#   narrative_hot: 1.4
-#   event_window_days: 21
-#   min_confidence: 0.40
-#
-# etf_flow:
-#   enabled: true
-#   create_hot: 0.45
-#   redeem_hot: -0.40
-#   premium_hot_bps: 18.0
-#   discount_hot_bps: -22.0
-#   streak_hot: 3
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-
-# buyback_10b51:
-#   enabled: true
-#   util_hot: 0.72
-#   util_stall: 0.28
-#   plan_delta_hot: 0.18
-#   plan_delta_cold: -0.15
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-#
-# unusual_options:
-#   enabled: true
-#   sweep_hot: 0.62
-#   sweep_cold: 0.22
-#   block_passive: 0.58
-#   block_confirm: 0.28
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-
-# employee_outlook:
-#   enabled: true
-#   outlook_hot: 0.62
-#   outlook_cold: 0.32
-#   ceo_hot: 0.68
-#   ceo_cold: 0.38
+#   sentiment_hot: 0.58
+#   sentiment_cold: 0.22
+#   complaint_hot: 0.55
+#   complaint_cold: 0.18
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
