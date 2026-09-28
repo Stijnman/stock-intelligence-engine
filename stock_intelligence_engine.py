@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.44.1"
+__version__ = "2.45.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -41,6 +41,7 @@ def main():
     parser.add_argument("--no-patent-momentum", action="store_true", help="Disable patent & intellectual property filing momentum overlay")
     parser.add_argument("--no-digital-footprint", action="store_true", help="Disable company digital footprint momentum overlay (web traffic + app downloads)")
     parser.add_argument("--no-gex", action="store_true", help="Disable dealer gamma exposure (GEX) & pin-risk overlay")
+    parser.add_argument("--no-app-store-reviews", action="store_true", help="Disable app-store review sentiment & complaint velocity overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -73,6 +74,7 @@ def main():
         include_patent_momentum=not args.no_patent_momentum,
         include_digital_footprint=not args.no_digital_footprint,
         include_gex=not args.no_gex,
+        include_app_store_reviews=not args.no_app_store_reviews,
     )
     accepted = set(inspect.signature(run_report).parameters)
     run_report(**{k: v for k, v in kwargs.items() if k in accepted})
@@ -86,6 +88,11 @@ def main():
         from sie.employee_outlook import detect_employee_outlook
         sample = detect_employee_outlook("NVDA")
         print(f"EO overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+
+    if not args.no_app_store_reviews:
+        from sie.app_store_reviews import detect_app_store_reviews
+        sample = detect_app_store_reviews("AAPL")
+        print(f"ASR overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
