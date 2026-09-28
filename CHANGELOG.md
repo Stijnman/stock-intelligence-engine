@@ -7,68 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.44.1] - 2026-09-28
-
-### Research & Evolution
-- Executed the full autonomous research & evolution cycle against `main` @ 0fba774e (2026-09-28).
-- Code audit confirmed **no leftover FUTURE-IMPROVEMENTS items are already shipped**. Employee Outlook, Unusual Options Sweep vs Block, 10b5-1 / buyback, ETF AP flow, KOL, whisper, news authority, earnings-call, credit/CDS, social intent, GEX, digital footprint, patent, estimate revision, contagion, borrow fee, consumer spend, authenticity, supply-chain, FINRA short, and attention overlays remain implemented. Remaining High Priority items still have no matching `sie/` modules.
-- 2026 research (SentiSense / Quiver / LangAlpha agent stacks, OpenAI ChatGPT for Financial Services + Daloopa/PitchBook/LSEG, Rhea-AI 8 implied-vs-realized news impact, Marvin Labs guidance tracking, AIS shipping nowcasts, corporate on-chain treasury cash) added five net-new roadmap items not previously listed.
-
-### Added (roadmap only)
-- High: Implied-vs-Realized News Impact Residual Overlay.
-- High: Corporate Treasury Stablecoin / On-Chain Cash Overlay.
-- High: Port / AIS Shipping Congestion & Lead-Time Overlay.
-- Medium: Guidance-vs-Delivery Promise Tracking Overlay.
-- Long-Term: Parking-Lot / Satellite Occupancy Nowcast Overlay.
-
-### Version
-- Package, CLI, dashboard and docs aligned to **2.44.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-## [2.44.0] - 2026-09-27
+## [2.45.0] - 2026-09-28
 
 ### Added
-- **Employee Outlook / Glassdoor Business Sentiment Overlay** (`sie/employee_outlook.py`).
-  Scores employer-review outlook, CEO approval and complaint-vs-praise mix as an operational-culture pulse orthogonal to hiring-volume and digital-footprint layers.
-  Soft +1 when rising outlook / CEO approval confirms narrative velocity; soft -1 when deteriorating Glassdoor metrics print into elevated social heat.
-  Wired through analyzer (`include_employee_outlook`), CLI (`--no-employee-outlook`), config (`employee_outlook:`), Streamlit preferred columns (`eo_outlook`, `eo_ceo`, `eo_review_velocity`, `eo_complaint_share`, `eo_boost`, `eo_reason`).
-  Deterministic synthetic proxy when live Glassdoor / Indeed feeds are unavailable.
+* **App-Store Review Sentiment & Complaint Velocity Overlay** (`sie/app_store_reviews.py`).
+  Preferred columns: `asr_sentiment`, `asr_complaint_velocity`, `asr_rating`, `asr_boost`, `asr_reason`.
+  Soft +1 when high sentiment + low complaint velocity confirm a hot narrative; caution when 1-star complaint velocity spikes into social heat.
+  Wired through analyzer (`include_app_store_reviews`), CLI (`--no-app-store-reviews`), config (`app_store_reviews:`), Streamlit preferred columns.
+  Deterministic synthetic proxy with live App Store / Play / Sensor Tower hook reserved.
+* Also completed analyzer wiring for Employee Outlook and Unusual Options flags that CLI already exposed.
 
-### Version
-- Package, CLI, dashboard and docs aligned to **2.44.0**.
-
-### Notes
-- Educational research tool only — not financial advice.
+### Changed
+* Version bump to **2.45.0** across package, CLI, dashboard and docs.
 
 ---
 
-## [2.43.1] - 2026-09-27
+## [2.44.1] - 2026-09-28
 
-### Research & Evolution
-- Executed the full autonomous research & evolution cycle against `main` @ f783f3ad (2026-09-27).
-- Code audit confirmed **Unusual Options Sweep vs Block Confirmation** is fully wired (`sie/unusual_options.py`, analyzer `include_unusual_options`, CLI `--no-unusual-options`, config `unusual_options:`, dashboard `uopt_*`). Removed the leftover checked item from FUTURE-IMPROVEMENTS.md High Priority.
-- Confirmed buyback 10b5-1, ETF AP flow, KOL amplification, whisper number, news authority, earnings-call, credit/CDS, social intent, GEX, digital footprint, patent momentum, estimate revision, contagion, borrow fee, consumer spend, authenticity, supply-chain, FINRA short, and attention overlays remain implemented; none of the remaining open High Priority items have matching `sie/` modules.
-- 2026 research (SentiSense/Quiver/LangAlpha agent stacks, tokenized-equity DTCC/NYSE/Nasdaq rails, grid-flexible compute load, settlement fails, LLM vs street estimates, long-form newsletter lead-lag) added five net-new roadmap items not previously listed.
-
-### Added (roadmap only)
-- High: NSCC / CNS Fail-to-Deliver & Settlement-Stress Overlay.
-- High: Behind-the-Meter Flexible-Load / Grid-Curtailment Overlay.
-- High: LLM Street-vs-Machine Estimate Divergence Overlay.
-- Medium: Long-form Newsletter / Substack Narrative Lead-Lag Overlay.
-- Long-Term: Compute Waste-Heat / District-Heating Monetization Overlay.
-
-### Version
-- Package, CLI, dashboard and docs aligned to **2.43.1**.
-
-### Notes
-- Educational research tool only — not financial advice.
-
----
-
-See git history for 2.43.0 and earlier releases.
+See git history for 2.44.1 and earlier releases.
 
 *Educational research tool only — not financial advice.*
