@@ -9,3 +9,12 @@
 #   complaint_cold: 0.18
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+#
+# retail_flow:
+#   enabled: true
+#   imbalance_hot: 0.28
+#   imbalance_cold: -0.28
+#   heat_hot: 0.62
+#   heat_cold: 0.22
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
