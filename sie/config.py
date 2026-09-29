@@ -199,6 +199,24 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "retail_flow": {
+        "enabled": True,
+        "imbalance_hot": 0.28,
+        "imbalance_cold": -0.28,
+        "heat_hot": 0.62,
+        "heat_cold": 0.22,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
+    "app_store_reviews": {
+        "enabled": True,
+        "sentiment_hot": 0.58,
+        "sentiment_cold": 0.22,
+        "complaint_hot": 0.55,
+        "complaint_cold": 0.18,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -271,6 +289,10 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("buyback_10b51", {}).update(buyback_10b51)
     if unusual_options := raw.get("unusual_options"):
         cfg.setdefault("unusual_options", {}).update(unusual_options)
+    if retail_flow := raw.get("retail_flow"):
+        cfg.setdefault("retail_flow", {}).update(retail_flow)
+    if app_store_reviews := raw.get("app_store_reviews"):
+        cfg.setdefault("app_store_reviews", {}).update(app_store_reviews)
     if backtest := raw.get("backtest"):
         cfg.setdefault("backtest", {}).update(backtest)
     if telegram := raw.get("telegram"):
