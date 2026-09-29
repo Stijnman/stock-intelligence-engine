@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.45.1"
+__version__ = "2.46.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -42,6 +42,7 @@ def main():
     parser.add_argument("--no-digital-footprint", action="store_true", help="Disable company digital footprint momentum overlay (web traffic + app downloads)")
     parser.add_argument("--no-gex", action="store_true", help="Disable dealer gamma exposure (GEX) & pin-risk overlay")
     parser.add_argument("--no-app-store-reviews", action="store_true", help="Disable app-store review sentiment & complaint velocity overlay")
+    parser.add_argument("--no-retail-flow", action="store_true", help="Disable retail brokerage order-flow imbalance overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -75,6 +76,7 @@ def main():
         include_digital_footprint=not args.no_digital_footprint,
         include_gex=not args.no_gex,
         include_app_store_reviews=not args.no_app_store_reviews,
+        include_retail_flow=not args.no_retail_flow,
     )
     parameters = inspect.signature(run_report).parameters
     # Preserve compatibility with wrappers and tests that accept arbitrary keywords.
@@ -101,6 +103,11 @@ def main():
         from sie.app_store_reviews import detect_app_store_reviews
         sample = detect_app_store_reviews("AAPL")
         print(f"ASR overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+
+    if not args.no_retail_flow:
+        from sie.retail_flow import detect_retail_flow
+        sample = detect_retail_flow("NVDA")
+        print(f"RFLOW overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
