@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.46.0] - 2026-09-29
+
+### Added
+* **Retail Brokerage Order-Flow Imbalance Overlay** (`sie/retail_flow.py`).
+  Preferred columns: `rflow_imbalance`, `rflow_heat`, `rflow_boost`, `rflow_reason`.
+  Soft +1 when retail buy-imbalance and heat confirm a hot narrative; caution when sell-imbalance hits elevated heat.
+  Wired through analyzer (`include_retail_flow`), CLI (`--no-retail-flow`), config (`retail_flow:`), Streamlit preferred columns.
+  Deterministic synthetic proxy with live FINRA ATS / brokerage-flow hook reserved.
+
+### Changed
+* Version bump to **2.46.0** across package, CLI, dashboard and docs.
+
+---
+
 ## [2.45.1] - 2026-09-29
 
 ### Changed
