@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.45.1] - 2026-09-29
+
+### Changed
+* Autonomous research & evolution cycle. Code audit confirmed no FUTURE-IMPROVEMENTS items were fully wired (analyzer + CLI + config + dashboard) since v2.45.0; none removed.
+* Roadmap expanded with five 2026 research-backed overlays: Form 144 planned-sale calendar, supplier invoice / freight BOL nowcast, activist 13D/13G accumulation velocity (High); board interlock / director-network centrality (Medium); satellite methane / flare intensity (Long-Term).
+* Version bump to **2.45.1** across package, CLI, dashboard and docs.
+
+---
+
 ## [2.45.0] - 2026-09-28
 
 ### Added

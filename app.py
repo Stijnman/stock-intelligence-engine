@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.45.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.45.1.
 
 App-Store Review Sentiment & Complaint Velocity Overlay +
 Employee Outlook / Glassdoor + Unusual Options Sweep vs Block +
@@ -11,7 +11,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.45.0"
+__version__ = "2.45.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

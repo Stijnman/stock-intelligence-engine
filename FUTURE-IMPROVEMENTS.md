@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-28  
-**Current version baseline:** v2.45.0
+**Last updated:** 2026-09-29  
+**Current version baseline:** v2.45.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -60,6 +60,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Port / AIS Shipping Congestion & Lead-Time Overlay**. Preferred columns: `ais_dwell_hrs`, `ais_lead_delta`, `ais_boost`, `ais_reason`.
 
+- [ ] **SEC Form 144 Planned-Sale Calendar Overlay**. Preferred columns: `f144_shares`, `f144_days_to_window`, `f144_boost`, `f144_reason`.
+
+- [ ] **Supplier Invoice / Freight Bill-of-Lading Nowcast Overlay**. Preferred columns: `bol_volume_delta`, `bol_lead_days`, `bol_boost`, `bol_reason`.
+
+- [ ] **Activist 13D/13G Accumulation Velocity Overlay**. Preferred columns: `act_stake_delta`, `act_filer_count`, `act_boost`, `act_reason`.
+
 ---
 
 ## Medium Priority
@@ -70,6 +76,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Guidance-vs-Delivery Promise Tracking Overlay**. Preferred columns: `gvd_open_promises`, `gvd_hit_rate`, `gvd_boost`, `gvd_reason`.
 
+- [ ] **Board Interlock / Director-Network Centrality Overlay**. Preferred columns: `brd_interlock_n`, `brd_centrality`, `brd_boost`, `brd_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -79,3 +87,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Compute Waste-Heat / District-Heating Monetization Overlay**. Preferred columns: `heat_mw_offtake`, `heat_contract_flag`, `heat_boost`, `heat_reason`.
 
 - [ ] **Parking-Lot / Satellite Occupancy Nowcast Overlay**. Preferred columns: `sat_occ_delta`, `sat_sample_n`, `sat_boost`, `sat_reason`.
+
+- [ ] **Satellite Methane / Flare Intensity Energy Overlay**. Preferred columns: `ch4_intensity`, `flare_delta`, `ch4_boost`, `ch4_reason`.
