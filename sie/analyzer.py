@@ -33,6 +33,7 @@ from sie.etf_flow import integrate_etf_flow_to_row
 from sie.buyback_10b51 import integrate_buyback_10b51_to_row
 from sie.employee_outlook import integrate_employee_outlook_to_row
 from sie.app_store_reviews import integrate_app_store_reviews_to_row
+from sie.retail_flow import integrate_retail_flow_to_row
 from sie.unusual_options import integrate_unusual_options_to_row
 from sie.consumer_spend import integrate_consumer_spend_to_row
 from sie.borrow_fee import integrate_borrow_fee_to_row
@@ -78,6 +79,7 @@ def analyze_watchlist(
     include_buyback_10b51: bool = True,
     include_employee_outlook: bool = True,
     include_app_store_reviews: bool = True,
+    include_retail_flow: bool = True,
     include_unusual_options: bool = True,
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
@@ -212,6 +214,8 @@ def analyze_watchlist(
             row = integrate_employee_outlook_to_row(row, cfg)
         if include_app_store_reviews:
             row = integrate_app_store_reviews_to_row(row, cfg)
+        if include_retail_flow:
+            row = integrate_retail_flow_to_row(row, cfg)
         if include_unusual_options:
             row = integrate_unusual_options_to_row(row, cfg)
         if include_consumer_spend:
@@ -279,6 +283,7 @@ def run_report(
     include_buyback_10b51: bool = True,
     include_employee_outlook: bool = True,
     include_app_store_reviews: bool = True,
+    include_retail_flow: bool = True,
     include_unusual_options: bool = True,
     include_consumer_spend: bool = True,
     include_borrow_fee: bool = True,
@@ -327,6 +332,7 @@ def run_report(
         include_buyback_10b51=include_buyback_10b51,
         include_employee_outlook=include_employee_outlook,
         include_app_store_reviews=include_app_store_reviews,
+        include_retail_flow=include_retail_flow,
         include_unusual_options=include_unusual_options,
         include_consumer_spend=include_consumer_spend,
         include_borrow_fee=include_borrow_fee,
