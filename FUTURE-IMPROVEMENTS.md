@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-29  
-**Current version baseline:** v2.46.0
+**Last updated:** 2026-09-30  
+**Current version baseline:** v2.46.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -64,6 +64,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Activist 13D/13G Accumulation Velocity Overlay**. Preferred columns: `act_stake_delta`, `act_filer_count`, `act_boost`, `act_reason`.
 
+- [ ] **Realized AI-Token Consumption Factor Beta Overlay**. Preferred columns: `aib_beta`, `aib_token_mom`, `aib_boost`, `aib_reason`.
+
+- [ ] **Multi-Platform Brand Audience / Short-Form Engagement Velocity Overlay**. Preferred columns: `aud_follower_delta`, `aud_shortform_vel`, `aud_boost`, `aud_reason`.
+
 ---
 
 ## Medium Priority
@@ -76,6 +80,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Board Interlock / Director-Network Centrality Overlay**. Preferred columns: `brd_interlock_n`, `brd_centrality`, `brd_boost`, `brd_reason`.
 
+- [ ] **Thematic Narrative Taxonomy Exposure Overlay**. Preferred columns: `thm_pillar`, `thm_score`, `thm_boost`, `thm_reason`.
+
+- [ ] **Point-in-Time Filing Freshness / Agent-Index Latency Overlay**. Preferred columns: `ptf_sec_lag_s`, `ptf_extract_lag_s`, `ptf_boost`, `ptf_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -87,3 +95,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Parking-Lot / Satellite Occupancy Nowcast Overlay**. Preferred columns: `sat_occ_delta`, `sat_sample_n`, `sat_boost`, `sat_reason`.
 
 - [ ] **Satellite Methane / Flare Intensity Energy Overlay**. Preferred columns: `ch4_intensity`, `flare_delta`, `ch4_boost`, `ch4_reason`.
+
+- [ ] **Data-Center Interconnection Queue / Power-Availability Overlay**. Preferred columns: `dcq_mw_queued`, `dcq_wait_months`, `dcq_boost`, `dcq_reason`.

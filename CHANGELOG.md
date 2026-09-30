@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.46.1] - 2026-09-30
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ a6230a64 (v2.46.0).
+* Code audit confirmed no remaining FUTURE-IMPROVEMENTS items are fully wired (analyzer + CLI + config + dashboard). Retail flow remains the latest implemented overlay. None removed from the roadmap.
+* 2026 research (realized AI-token consumption factors, multi-platform brand audience tracking, FTSE/MarketPsych thematic NLP indices, agent-native filing freshness, data-center interconnection queues) added five net-new roadmap items.
+* Version bump to **2.46.1** across package, CLI, dashboard and docs.
+
+### Added (roadmap only)
+* High: Realized AI-Token Consumption Factor Beta Overlay.
+* High: Multi-Platform Brand Audience / Short-Form Engagement Velocity Overlay.
+* Medium: Thematic Narrative Taxonomy Exposure Overlay.
+* Medium: Point-in-Time Filing Freshness / Agent-Index Latency Overlay.
+* Long-Term: Data-Center Interconnection Queue / Power-Availability Overlay.
+
+---
+
 ## [2.46.0] - 2026-09-29
 
 ### Added
