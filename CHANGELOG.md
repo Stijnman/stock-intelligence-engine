@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.47.0] - 2026-09-30
+
+### Added
+* **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay** (`sie/hiring_skill_mix.py`).
+  Preferred columns: `hmix_senior_share`, `hmix_comp_delta`, `hmix_boost`, `hmix_reason`.
+  Soft +1 when senior/scarce skill mix and posted-comp inflation confirm labor demand into a hot narrative; caution when senior-share collapses with posted-comp deflation.
+  Wired through analyzer (`include_hiring_skill_mix`), CLI (`--no-hiring-skill-mix`), config (`hiring_skill_mix:`), Streamlit preferred columns.
+  Deterministic synthetic proxy with live Lightcast / Revelio / Indeed hook reserved.
+
+### Changed
+* Version bump to **2.47.0** across package, CLI, dashboard and docs.
+
+---
+
 ## [2.46.1] - 2026-09-30
 
 ### Changed
