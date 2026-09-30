@@ -1,5 +1,6 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.46.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.47.0.
 
+Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay +
 Retail Brokerage Order-Flow Imbalance Overlay +
 App-Store Review Sentiment & Complaint Velocity Overlay +
 Employee Outlook / Glassdoor + Unusual Options Sweep vs Block +
@@ -12,7 +13,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.46.1"
+__version__ = "2.47.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -24,7 +25,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
+        f"**v{__version__}** — Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
     )
 
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -42,6 +43,7 @@ def signal_table_fragment():
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price",
         "asr_sentiment", "asr_complaint_velocity", "asr_rating", "asr_boost", "asr_reason",
+        "hmix_senior_share", "hmix_comp_delta", "hmix_boost", "hmix_reason",
         "rflow_imbalance", "rflow_heat", "rflow_boost", "rflow_reason",
         "eo_outlook", "eo_ceo", "eo_boost", "eo_reason",
         "uopt_sweep_score", "uopt_boost", "uopt_reason",
@@ -54,5 +56,5 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Retail Brokerage Order-Flow Imbalance Overlay fully wired. Educational research tool only — not financial advice."
+    f"v{__version__} — Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay fully wired. Educational research tool only — not financial advice."
 )

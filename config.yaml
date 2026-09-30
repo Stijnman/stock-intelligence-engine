@@ -18,3 +18,12 @@
 #   heat_cold: 0.22
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+#
+# hiring_skill_mix:
+#   enabled: true
+#   senior_hot: 0.38
+#   senior_cold: 0.14
+#   comp_hot: 0.08
+#   comp_cold: -0.04
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
