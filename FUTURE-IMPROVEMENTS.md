@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-09-30  
-**Current version baseline:** v2.46.1
+**Current version baseline:** v2.47.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -10,7 +10,7 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 ## High Priority
 
-- [ ] **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay**. Preferred columns: `hmix_senior_share`, `hmix_comp_delta`, `hmix_boost`, `hmix_reason`.
+- [x] **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay**. Done 2026-09-30 in v2.47.0 (`sie/hiring_skill_mix.py`). Preferred columns: `hmix_senior_share`, `hmix_comp_delta`, `hmix_boost`, `hmix_reason`.
 
 - [ ] **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay**. Preferred columns: `tok_basis_bps`, `tok_venue_liq`, `tok_boost`, `tok_reason`.
 
