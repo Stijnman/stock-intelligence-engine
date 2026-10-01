@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.47.1"
+__version__ = "2.48.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -44,6 +44,7 @@ def main():
     parser.add_argument("--no-app-store-reviews", action="store_true", help="Disable app-store review sentiment & complaint velocity overlay")
     parser.add_argument("--no-retail-flow", action="store_true", help="Disable retail brokerage order-flow imbalance overlay")
     parser.add_argument("--no-hiring-skill-mix", action="store_true", help="Disable job-posting skill-mix & posted-compensation inflation overlay")
+    parser.add_argument("--no-tokenized-basis", action="store_true", help="Disable cross-venue tokenized-share basis / on-chain equity premium overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -79,6 +80,7 @@ def main():
         include_app_store_reviews=not args.no_app_store_reviews,
         include_retail_flow=not args.no_retail_flow,
         include_hiring_skill_mix=not args.no_hiring_skill_mix,
+        include_tokenized_basis=not args.no_tokenized_basis,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -114,6 +116,11 @@ def main():
         from sie.hiring_skill_mix import detect_hiring_skill_mix
         sample = detect_hiring_skill_mix("NVDA")
         print(f"HMIX overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+
+    if not args.no_tokenized_basis:
+        from sie.tokenized_basis import detect_tokenized_basis
+        sample = detect_tokenized_basis("NVDA")
+        print(f"TOK overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
