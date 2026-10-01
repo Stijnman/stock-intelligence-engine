@@ -27,3 +27,12 @@
 #   comp_cold: -0.04
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+#
+# tokenized_basis:
+#   enabled: true
+#   premium_hot_bps: 35.0
+#   discount_hot_bps: -40.0
+#   liq_hot: 0.55
+#   liq_cold: 0.18
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
