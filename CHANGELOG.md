@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.47.1] - 2026-10-01
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ 5ba41fb (docs claimed v2.47.0; README still on v2.46.1).
+* Code audit: `sie/hiring_skill_mix.py` existed and dashboard preferred columns were present, but analyzer did not import or call the overlay and CLI had no `--no-hiring-skill-mix` flag. Wiring completed so the v2.47.0 claim is actually true.
+* Removed the completed Job-Posting Skill-Mix item from FUTURE-IMPROVEMENTS.md.
+* Version strings synchronized to **2.47.1** across package, CLI, dashboard and docs.
+
+### Added (roadmap only)
+* High: Cloud Committed-Use / Reserved-Instance Utilization Overlay.
+* High: Payment-Network Authorization Decline & Chargeback Velocity Overlay.
+* High: Critical-Mineral / Rare-Earth Export-Quota Exposure Overlay.
+* Medium: Expert-Call / Primary-Research Tone Overlay.
+* Long-Term: EU ETS / Carbon-Allowance Cost Pass-Through Overlay.
+
+---
+
 ## [2.47.0] - 2026-09-30
 
 ### Added

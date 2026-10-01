@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-09-30  
-**Current version baseline:** v2.47.0
+**Last updated:** 2026-10-01  
+**Current version baseline:** v2.47.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,8 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [x] **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay**. Done 2026-09-30 in v2.47.0 (`sie/hiring_skill_mix.py`). Preferred columns: `hmix_senior_share`, `hmix_comp_delta`, `hmix_boost`, `hmix_reason`.
 
 - [ ] **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay**. Preferred columns: `tok_basis_bps`, `tok_venue_liq`, `tok_boost`, `tok_reason`.
 
@@ -68,6 +66,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Multi-Platform Brand Audience / Short-Form Engagement Velocity Overlay**. Preferred columns: `aud_follower_delta`, `aud_shortform_vel`, `aud_boost`, `aud_reason`.
 
+- [ ] **Cloud Committed-Use / Reserved-Instance Utilization Overlay**. Preferred columns: `ccu_util`, `ccu_discount_bps`, `ccu_boost`, `ccu_reason`.
+
+- [ ] **Payment-Network Authorization Decline & Chargeback Velocity Overlay**. Preferred columns: `pay_auth_decline`, `pay_chargeback_vel`, `pay_boost`, `pay_reason`.
+
+- [ ] **Critical-Mineral / Rare-Earth Export-Quota Exposure Overlay**. Preferred columns: `crm_quota_tight`, `crm_rev_share`, `crm_boost`, `crm_reason`.
+
 ---
 
 ## Medium Priority
@@ -84,6 +88,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Point-in-Time Filing Freshness / Agent-Index Latency Overlay**. Preferred columns: `ptf_sec_lag_s`, `ptf_extract_lag_s`, `ptf_boost`, `ptf_reason`.
 
+- [ ] **Expert-Call / Primary-Research Tone Overlay**. Preferred columns: `exp_tone`, `exp_revision_delta`, `exp_boost`, `exp_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -97,3 +103,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Satellite Methane / Flare Intensity Energy Overlay**. Preferred columns: `ch4_intensity`, `flare_delta`, `ch4_boost`, `ch4_reason`.
 
 - [ ] **Data-Center Interconnection Queue / Power-Availability Overlay**. Preferred columns: `dcq_mw_queued`, `dcq_wait_months`, `dcq_boost`, `dcq_reason`.
+
+- [ ] **EU ETS / Carbon-Allowance Cost Pass-Through Overlay**. Preferred columns: `ets_cost_share`, `ets_price_mom`, `ets_boost`, `ets_reason`.
