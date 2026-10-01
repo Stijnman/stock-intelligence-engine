@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.46.1"
+__version__ = "2.47.1"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -43,6 +43,7 @@ def main():
     parser.add_argument("--no-gex", action="store_true", help="Disable dealer gamma exposure (GEX) & pin-risk overlay")
     parser.add_argument("--no-app-store-reviews", action="store_true", help="Disable app-store review sentiment & complaint velocity overlay")
     parser.add_argument("--no-retail-flow", action="store_true", help="Disable retail brokerage order-flow imbalance overlay")
+    parser.add_argument("--no-hiring-skill-mix", action="store_true", help="Disable job-posting skill-mix & posted-compensation inflation overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -77,9 +78,9 @@ def main():
         include_gex=not args.no_gex,
         include_app_store_reviews=not args.no_app_store_reviews,
         include_retail_flow=not args.no_retail_flow,
+        include_hiring_skill_mix=not args.no_hiring_skill_mix,
     )
     parameters = inspect.signature(run_report).parameters
-    # Preserve compatibility with wrappers and tests that accept arbitrary keywords.
     accepts_var_kwargs = any(
         parameter.kind is inspect.Parameter.VAR_KEYWORD
         for parameter in parameters.values()
@@ -108,6 +109,11 @@ def main():
         from sie.retail_flow import detect_retail_flow
         sample = detect_retail_flow("NVDA")
         print(f"RFLOW overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+
+    if not args.no_hiring_skill_mix:
+        from sie.hiring_skill_mix import detect_hiring_skill_mix
+        sample = detect_hiring_skill_mix("NVDA")
+        print(f"HMIX overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
