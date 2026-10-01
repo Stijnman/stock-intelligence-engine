@@ -1,16 +1,16 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-01  
-**Current version baseline:** v2.47.1
+**Current version baseline:** v2.48.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
 
+**Completed 2026-10-01 (v2.48.0):** Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay — `sie/tokenized_basis.py`.
+
 ---
 
 ## High Priority
-
-- [ ] **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay**. Preferred columns: `tok_basis_bps`, `tok_venue_liq`, `tok_boost`, `tok_reason`.
 
 - [ ] **News Materiality / Predicted Next-Session Impact Score Overlay**. Preferred columns: `nimp_score`, `nimp_vol_bucket`, `nimp_boost`, `nimp_reason`.
 
