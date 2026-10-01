@@ -4,18 +4,15 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.47.1** — October 2026 · Job-Posting Skill-Mix & Posted-Compensation Inflation (fully wired through analyzer + CLI) + Retail Brokerage Order-Flow Imbalance (fully wired) + App-Store Review Sentiment & Complaint Velocity (fully wired) + Employee Outlook / Glassdoor Business Sentiment (fully wired) + Unusual Options Sweep vs Block Confirmation (fully wired) + Rule 10b5-1 / Buyback Authorization vs Execution (fully wired) + ETF Creation / Redemption & AP Flow (fully wired) + KOL / Influencer Narrative Amplification (fully wired) + Whisper Number / Pre-Earnings Alt-Data Beat Probability (fully wired) + News-Source Authority Weighted Narrative + Earnings Call Transcript Sentiment & Guidance Drift Overlay + Corporate Credit Spread / CDS Momentum Overlay + Social Trading Action Intent Classifier + Dealer GEX & Pin-Risk Overlay + Company Digital Footprint Momentum + Patent & IP Filing Momentum + Analyst Estimate Revision Velocity + Cross-Ticker Narrative Contagion + Borrow Fee & Short Squeeze Risk + Consumer Spend Nowcasting + Authenticity-Filtered Social Narrative Velocity + Supply-Chain CapEx + FINRA Short + Attention Momentum + Regime Adaptive Weighting + Confidence Calibration + Streamlit Fragment Live Dashboard + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.48.0** — October 2026 · Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
 * Real-time signals with narrative intelligence
-* **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay** — Scores senior/scarce-skill mix and posted-comp inflation as a labor-demand confirmation layer. Soft boost when mix + comp confirm a hot narrative; caution when senior-share collapses with posted-comp deflation. Fully integrated into analyzer (`include_hiring_skill_mix`), CLI (`--no-hiring-skill-mix`) and dashboard (`hmix_*` columns).
-* **Retail Brokerage Order-Flow Imbalance Overlay** — Scores retail buy/sell imbalance and heat as a confirmation layer next to dark-pool and unusual-options. Soft boost on buy-imbalance + heat into a confirming narrative; caution on sell-imbalance into elevated heat. Fully integrated into analyzer, CLI (`--no-retail-flow`) and dashboard (`rflow_*` columns).
-* **App-Store Review Sentiment & Complaint Velocity** — Scores consumer app-store sentiment and 1-star complaint velocity as a product-quality pulse. Soft boost when ratings hold and complaints fade into a confirming narrative; caution on complaint spikes into social heat. Fully integrated into analyzer, CLI (`--no-app-store-reviews`) and dashboard (`asr_*` columns).
-* **Employee Outlook / Glassdoor Business Sentiment** — Fully integrated into analyzer, CLI (`--no-employee-outlook`) and dashboard (`eo_*` columns).
-* **Unusual Options Sweep vs Block Confirmation** — Fully integrated into analyzer, CLI (`--no-unusual-options`) and dashboard (`uopt_*` columns).
-* **Rule 10b5-1 / Buyback Authorization vs Execution** — Fully integrated into analyzer, CLI (`--no-buyback-10b51`) and dashboard (`bb_*` columns).
-* Dealer GEX & Pin-Risk, Digital Footprint, Patent Momentum, Estimate Revision, Contagion, Borrow Fee, Consumer Spend, Authenticity Filter, Supply-Chain CapEx, FINRA Short, Attention, Regime, Confidence, Thesis, Brief, Honesty, Hiring, EDGAR, 0DTE, IV, Dark Pool, Realtime, Congressional, 13F, Prediction Markets, Insider, Narrative Velocity, Backtesting
+* **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay** — Scores listed-vs-tokenized wrapper basis (bps) and venue liquidity. Soft boost when a liquid wrapper trades rich into a confirming narrative; caution on deep discounts with thin venue liquidity. Fully integrated into analyzer (`include_tokenized_basis`), CLI (`--no-tokenized-basis`) and dashboard (`tok_*` columns).
+* **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay** — Fully integrated into analyzer (`include_hiring_skill_mix`), CLI (`--no-hiring-skill-mix`) and dashboard (`hmix_*` columns).
+* **Retail Brokerage Order-Flow Imbalance Overlay** — Fully integrated into analyzer, CLI (`--no-retail-flow`) and dashboard (`rflow_*` columns).
+* **App-Store Review Sentiment & Complaint Velocity** — Fully integrated into analyzer, CLI (`--no-app-store-reviews`) and dashboard (`asr_*` columns).
 
 ## Quick Start
 
@@ -30,22 +27,17 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
-* **v2.47.1 (2026-10-01)** : Autonomous research & evolution cycle. Audit found Job-Posting Skill-Mix present as a module + dashboard columns but **not** called from analyzer and missing from CLI. Completed that wiring, removed the item from FUTURE-IMPROVEMENTS.md, synchronized README (was still v2.46.1). Added five new roadmap overlays (cloud committed-use utilization, payment-network decline/chargeback velocity, critical-mineral export-quota exposure, expert-call primary-research tone, EU ETS carbon-allowance pass-through).
-* **v2.47.0 (2026-09-30)** : Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay (`sie/hiring_skill_mix.py`). Module + config + dashboard columns landed; analyzer/CLI wiring completed in v2.47.1.
-* **v2.46.1 (2026-09-30)** : Autonomous research & evolution cycle. Code audit found no FUTURE-IMPROVEMENTS items fully wired since v2.46.0. Added five new roadmap overlays (realized AI-token consumption factor beta, multi-platform brand audience / short-form engagement velocity, thematic narrative taxonomy exposure, point-in-time filing freshness / agent-index latency, data-center interconnection queue / power availability).
-* **v2.46.0 (2026-09-29)** : Fully implemented **Retail Brokerage Order-Flow Imbalance Overlay** (`sie/retail_flow.py`). Wired through analyzer (`include_retail_flow`), CLI (`--no-retail-flow`), config (`retail_flow:`), Streamlit preferred columns (`rflow_imbalance`, `rflow_heat`, `rflow_boost`, `rflow_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
-* **v2.45.1 (2026-09-29)** : Autonomous research & evolution cycle. Code audit found no FUTURE-IMPROVEMENTS items fully wired since v2.45.0. Added five new roadmap overlays (Form 144 planned-sale calendar, freight BOL nowcast, activist 13D/13G accumulation, board interlock centrality, satellite methane / flare intensity). Version bump across package, CLI, dashboard and docs.
-* **v2.45.0 (2026-09-28)** : Fully implemented **App-Store Review Sentiment & Complaint Velocity Overlay** (`sie/app_store_reviews.py`). Wired through analyzer (`include_app_store_reviews`), CLI (`--no-app-store-reviews`), config (`app_store_reviews:`), Streamlit preferred columns (`asr_sentiment`, `asr_complaint_velocity`, `asr_rating`, `asr_boost`, `asr_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
-* **v2.44.1 (2026-09-28)** : Autonomous research & evolution cycle.
-* **v2.44.0 (2026-09-27)** : Employee Outlook / Glassdoor Business Sentiment Overlay.
-* **v2.43.1 (2026-09-27)** : Autonomous research & evolution cycle.
-* **v2.43.0 (2026-09-26)** : Unusual Options Sweep vs Block Confirmation Overlay.
+* **v2.48.0 (2026-10-01)** : Fully implemented **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay** (`sie/tokenized_basis.py`). Wired through analyzer (`include_tokenized_basis`), CLI (`--no-tokenized-basis`), config (`tokenized_basis:`), Streamlit preferred columns (`tok_basis_bps`, `tok_venue_liq`, `tok_boost`, `tok_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
+* **v2.47.1 (2026-10-01)** : Autonomous research & evolution cycle. Hiring skill-mix wiring completed.
+* **v2.47.0 (2026-09-30)** : Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay.
+* **v2.46.0 (2026-09-29)** : Retail Brokerage Order-Flow Imbalance Overlay.
+* **v2.45.0 (2026-09-28)** : App-Store Review Sentiment & Complaint Velocity Overlay.
 
 ## Disclaimer
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.47.1
+v2.48.0
 
 ## Flagship integration
 
