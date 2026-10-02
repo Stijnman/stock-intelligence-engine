@@ -299,4 +299,10 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("telegram", {}).update(telegram)
     if sentiment := raw.get("sentiment"):
         cfg.setdefault("sentiment", {}).update(sentiment)
+    if tokenized_basis := raw.get("tokenized_basis"):
+        cfg.setdefault("tokenized_basis", {}).update(tokenized_basis)
+    if news_materiality := raw.get("news_materiality"):
+        cfg.setdefault("news_materiality", {}).update(news_materiality)
+    if hiring_skill_mix := raw.get("hiring_skill_mix"):
+        cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
     return cfg

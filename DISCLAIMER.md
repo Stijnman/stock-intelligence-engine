@@ -7,3 +7,5 @@ It is **not** financial advice, a broker, an investment advisor, or a recommenda
 You are solely responsible for any decision you make with this software. Past patterns and simulated overlays do not predict future results.
 
 See LICENSE for terms.
+
+Overlay scores, including news-materiality next-session impact, are research signals derived from proxies. They are not predictions of price, not investment advice, and not a solicitation.

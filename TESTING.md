@@ -592,3 +592,7 @@ def create_test_stock(symbol="AAPL"):
 ---
 
 *Last updated: September 11, 2026*
+
+## News materiality overlay (v2.49.0)
+
+`tests/test_news_materiality.py` covers key contract, disabled path, row integration, and adverse-tape caution.

@@ -36,3 +36,12 @@
 #   liq_cold: 0.18
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+
+# news_materiality:
+#   enabled: true
+#   score_hot: 0.62
+#   score_mid: 0.40
+#   score_lo: 0.22
+#   adverse_hot: -0.35
+#   narrative_hot: 1.4
+#   min_confidence: 0.40

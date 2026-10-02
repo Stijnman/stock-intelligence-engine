@@ -275,3 +275,7 @@ Releases are created periodically with changelog updates.
 *Thank you for contributing!*
 
 *Last updated: September 11, 2026*
+
+## Overlay additions
+
+New overlays must ship a module under `sie/`, an analyzer flag, a CLI `--no-*` switch, a `config.yaml` block, Streamlit preferred columns, and a pytest in `tests/`. v2.49.0 example: `sie/news_materiality.py`.

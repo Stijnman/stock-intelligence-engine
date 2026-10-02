@@ -1,5 +1,9 @@
 # Improvement Report
 
+**2026-10-02 — v2.49.0** News Materiality / Predicted Next-Session Impact Score Overlay implemented and wired (analyzer, CLI, config, dashboard). Prior notes below.
+
+# Improvement Report
+
 ## Baseline
 Portfolio audit score: **80.0/100**.
 

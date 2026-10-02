@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="460" viewBox="0 0 1100 460">
+<rect width="1100" height="460" fill="#0e1117"/>
+<text x="28" y="40" fill="#f9fafb" font-family="Segoe UI, Arial" font-size="22">News Materiality / Next-Session Impact — v2.49.0</text>
+<text x="28" y="68" fill="#9ca3af" font-family="Segoe UI, Arial" font-size="14">nimp_score by ticker. Buckets: quiet, elevated, high, extreme.</text>
+<line x1="60" y1="380" x2="1040" y2="380" stroke="#374151"/>
+<rect x="80" y="120" width="70" height="260" fill="#ef4444"/>
+<text x="80" y="108" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="13">0.71 extreme -1</text>
+<text x="92" y="404" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="14">NVDA</text>
+<rect x="250" y="150" width="70" height="230" fill="#22c55e"/>
+<text x="250" y="138" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="13">0.62 high 0</text>
+<text x="266" y="404" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="14">TSLA</text>
+<rect x="420" y="155" width="70" height="225" fill="#22c55e"/>
+<text x="420" y="143" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="13">0.62 high 0</text>
+<text x="432" y="404" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="14">AAPL</text>
+<rect x="590" y="190" width="70" height="190" fill="#22c55e"/>
+<text x="590" y="178" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="13">0.53 high 0</text>
+<text x="602" y="404" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="14">MSFT</text>
+<rect x="760" y="250" width="70" height="130" fill="#f59e0b"/>
+<text x="760" y="238" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="13">0.36 elevated 0</text>
+<text x="778" y="404" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="14">XOM</text>
+<rect x="930" y="310" width="70" height="70" fill="#6b7280"/>
+<text x="930" y="298" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="13">0.19 quiet 0</text>
+<text x="950" y="404" fill="#e5e7eb" font-family="Segoe UI, Arial" font-size="14">KO</text>
+</svg>

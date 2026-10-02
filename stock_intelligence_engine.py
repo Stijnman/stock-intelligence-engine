@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.48.1"
+__version__ = "2.49.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -45,6 +45,7 @@ def main():
     parser.add_argument("--no-retail-flow", action="store_true", help="Disable retail brokerage order-flow imbalance overlay")
     parser.add_argument("--no-hiring-skill-mix", action="store_true", help="Disable job-posting skill-mix & posted-compensation inflation overlay")
     parser.add_argument("--no-tokenized-basis", action="store_true", help="Disable cross-venue tokenized-share basis / on-chain equity premium overlay")
+    parser.add_argument("--no-news-materiality", action="store_true", help="Disable news materiality / predicted next-session impact overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -81,6 +82,7 @@ def main():
         include_retail_flow=not args.no_retail_flow,
         include_hiring_skill_mix=not args.no_hiring_skill_mix,
         include_tokenized_basis=not args.no_tokenized_basis,
+        include_news_materiality=not args.no_news_materiality,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -121,6 +123,11 @@ def main():
         from sie.tokenized_basis import detect_tokenized_basis
         sample = detect_tokenized_basis("NVDA")
         print(f"TOK overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+
+    if not args.no_news_materiality:
+        from sie.news_materiality import detect_news_materiality
+        sample = detect_news_materiality("NVDA")
+        print(f"NIMP overlay ready source={sample.get('source')} boost={sample.get('signal_boost')} bucket={sample.get('nimp_vol_bucket')}")
 
 if __name__ == "__main__":
     main()

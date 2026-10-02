@@ -1,20 +1,20 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-02  
-**Current version baseline:** v2.48.1
+**Current version baseline:** v2.49.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
 
 **Completed 2026-10-01 (v2.48.0):** Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay — `sie/tokenized_basis.py`.
 
+**Completed 2026-10-02 (v2.49.0):** News Materiality / Predicted Next-Session Impact Score Overlay — `sie/news_materiality.py`. See CHANGELOG and the v2.49.0 commit on main.
+
 **Audit 2026-10-02 (v2.48.1):** No open item below is present as a wired overlay. Tokenized basis and hiring skill-mix stay completed and off this list.
 
 ---
 
 ## High Priority
-
-- [ ] **News Materiality / Predicted Next-Session Impact Score Overlay**. Preferred columns: `nimp_score`, `nimp_vol_bucket`, `nimp_boost`, `nimp_reason`.
 
 - [ ] **Secondary Offering / ATM Dilution Velocity Overlay**. Preferred columns: `dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`.
 
