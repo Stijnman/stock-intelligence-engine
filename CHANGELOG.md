@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.48.1] - 2026-10-02
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ b0847bc (v2.48.0).
+* Code audit: no FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.48.0 tokenized-basis overlay. Nothing removed from the roadmap.
+* Version strings synchronized to **2.48.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Government Contract Award & Obligation Velocity Overlay** (High Priority) — `gov_obligation_delta`, `gov_award_count`, `gov_boost`, `gov_reason`.
+  * **ADR / Dual-Listing Premium vs Local Close Overlay** (High Priority) — `adr_premium_bps`, `adr_fx_gap`, `adr_boost`, `adr_reason`.
+  * **Options Skew Term-Structure & Risk-Reversal Dislocation Overlay** (High Priority) — `skew_rr_25d`, `skew_term_slope`, `skew_boost`, `skew_reason`.
+  * **Weather / Degree-Day Demand Shock Overlay** (Medium Priority) — `wx_hdd_cdd_z`, `wx_demand_shock`, `wx_boost`, `wx_reason`.
+  * **Private-Credit / BDC NAV Mark-Lag Overlay** (Long-Term) — `bdc_nav_lag`, `bdc_discount`, `bdc_boost`, `bdc_reason`.
+
+---
+
 ## [2.48.0] - 2026-10-01
 
 ### Added

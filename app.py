@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.48.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.48.1.
 
 Cross-Venue Tokenized-Share Basis Overlay +
 Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay +
@@ -14,7 +14,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.48.0"
+__version__ = "2.48.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

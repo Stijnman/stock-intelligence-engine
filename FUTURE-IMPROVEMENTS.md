@@ -1,12 +1,14 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-01  
-**Current version baseline:** v2.48.0
+**Last updated:** 2026-10-02  
+**Current version baseline:** v2.48.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
 
 **Completed 2026-10-01 (v2.48.0):** Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay — `sie/tokenized_basis.py`.
+
+**Audit 2026-10-02 (v2.48.1):** No open item below is present as a wired overlay. Tokenized basis and hiring skill-mix stay completed and off this list.
 
 ---
 
@@ -72,6 +74,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Critical-Mineral / Rare-Earth Export-Quota Exposure Overlay**. Preferred columns: `crm_quota_tight`, `crm_rev_share`, `crm_boost`, `crm_reason`.
 
+- [ ] **Government Contract Award & Obligation Velocity Overlay**. Scores USAspending / FPDS award count and obligated-dollar delta as a public-demand nowcast, separate from congressional trading and lobbying. Soft boost when obligation velocity rises into a confirming narrative; caution on award cliffs or termination exposure. Preferred columns: `gov_obligation_delta`, `gov_award_count`, `gov_boost`, `gov_reason`.
+
+- [ ] **ADR / Dual-Listing Premium vs Local Close Overlay**. Scores the ADR-versus-local close premium after FX, distinct from the tokenized-wrapper basis overlay. Soft boost when a liquid ADR trades rich into a confirming narrative; caution on a persistent discount with thin local liquidity. Preferred columns: `adr_premium_bps`, `adr_fx_gap`, `adr_boost`, `adr_reason`.
+
+- [ ] **Options Skew Term-Structure & Risk-Reversal Dislocation Overlay**. Scores 25-delta risk reversal and skew term slope versus the name's own history. Complements IV rank, 0DTE and unusual-sweep overlays without duplicating them. Soft boost when put skew cheapens into a confirming narrative; caution on a steepening downside skew. Preferred columns: `skew_rr_25d`, `skew_term_slope`, `skew_boost`, `skew_reason`.
+
 ---
 
 ## Medium Priority
@@ -90,6 +98,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Expert-Call / Primary-Research Tone Overlay**. Preferred columns: `exp_tone`, `exp_revision_delta`, `exp_boost`, `exp_reason`.
 
+- [ ] **Weather / Degree-Day Demand Shock Overlay**. Scores HDD/CDD z-score versus seasonal normal as a demand shock for retail, utilities, ag and logistics names. Soft boost when degree-day shock aligns with a confirming spend narrative; caution on adverse weather into weak traffic. Preferred columns: `wx_hdd_cdd_z`, `wx_demand_shock`, `wx_boost`, `wx_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -105,3 +115,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Data-Center Interconnection Queue / Power-Availability Overlay**. Preferred columns: `dcq_mw_queued`, `dcq_wait_months`, `dcq_boost`, `dcq_reason`.
 
 - [ ] **EU ETS / Carbon-Allowance Cost Pass-Through Overlay**. Preferred columns: `ets_cost_share`, `ets_price_mom`, `ets_boost`, `ets_reason`.
+
+- [ ] **Private-Credit / BDC NAV Mark-Lag Overlay**. Scores BDC price-to-NAV discount and the lag between equity marks and private-credit portfolio marks. Soft boost when the discount narrows into a confirming credit narrative; caution on a widening discount with stale marks. Preferred columns: `bdc_nav_lag`, `bdc_discount`, `bdc_boost`, `bdc_reason`.
