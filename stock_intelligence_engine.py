@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.49.0"
+__version__ = "2.50.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -8,7 +8,7 @@ import argparse
 import inspect
 
 def main():
-    parser = argparse.ArgumentParser(description=f"Stock Intelligence Engine v{__version__}")
+    parser = argparse.ArgumentParser(description=f"Stock Intelligence Engine v{__version__}", allow_abbrev=False)
     parser.add_argument("--backtest", action="store_true", help="Run backtest on watchlist")
     parser.add_argument("--portfolio", action="store_true", help="Show portfolio correlation & risk metrics")
     parser.add_argument("--news", action="store_true", help="Include news headlines")
@@ -46,6 +46,7 @@ def main():
     parser.add_argument("--no-hiring-skill-mix", action="store_true", help="Disable job-posting skill-mix & posted-compensation inflation overlay")
     parser.add_argument("--no-tokenized-basis", action="store_true", help="Disable cross-venue tokenized-share basis / on-chain equity premium overlay")
     parser.add_argument("--no-news-materiality", action="store_true", help="Disable news materiality / predicted next-session impact overlay")
+    parser.add_argument("--no-dilution-atm", action="store_true", help="Disable secondary offering / ATM dilution velocity overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -83,6 +84,7 @@ def main():
         include_hiring_skill_mix=not args.no_hiring_skill_mix,
         include_tokenized_basis=not args.no_tokenized_basis,
         include_news_materiality=not args.no_news_materiality,
+        include_dilution_atm=not args.no_dilution_atm,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -128,6 +130,11 @@ def main():
         from sie.news_materiality import detect_news_materiality
         sample = detect_news_materiality("NVDA")
         print(f"NIMP overlay ready source={sample.get('source')} boost={sample.get('signal_boost')} bucket={sample.get('nimp_vol_bucket')}")
+
+    if not args.no_dilution_atm:
+        from sie.dilution_atm import detect_dilution_atm
+        sample = detect_dilution_atm("PLTR")
+        print(f"DIL overlay ready source={sample.get('source')} vel={sample.get('dil_atm_velocity')} delta={sample.get('dil_share_delta')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()

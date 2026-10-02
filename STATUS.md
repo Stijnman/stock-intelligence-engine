@@ -10,7 +10,7 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | ✅ Production | 2.49.0 | 2026-10-02 |
+| Core Engine | ✅ Production | 2.50.0 | 2026-10-02 |
 | Competitive Research | ✅ Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | ✅ Production | 1.0.0 | 2026-09-11 |
 | Research Automation | ✅ Production | 1.5.0 | 2026-08-15 |

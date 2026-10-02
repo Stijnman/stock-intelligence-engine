@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-02  
-**Current version baseline:** v2.49.0
+**Current version baseline:** v2.50.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -15,8 +15,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Secondary Offering / ATM Dilution Velocity Overlay**. Preferred columns: `dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`.
 
 - [ ] **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay**. Preferred columns: `trace_customer_flow`, `trace_liq_score`, `trace_boost`, `trace_reason`.
 

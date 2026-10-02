@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="280" viewBox="0 0 640 280">
+<rect width="100%" height="100%" fill="#f4f6f8"/>
+<text x="20" y="28" font-size="16" font-family="sans-serif" fill="#111">ATM dilution velocity — v2.50.0</text>
+<line x1="30" y1="230" x2="620" y2="230" stroke="#222"/>
+<rect x="40" y="171" width="48" height="59" fill="#2980b9"/><text x="44" y="250" font-size="12" fill="#222">PLTR</text><rect x="114" y="106" width="48" height="124" fill="#2980b9"/><text x="118" y="250" font-size="12" fill="#222">SMCI</text><rect x="188" y="97" width="48" height="133" fill="#2980b9"/><text x="192" y="250" font-size="12" fill="#222">COIN</text><rect x="262" y="180" width="48" height="50" fill="#2980b9"/><text x="266" y="250" font-size="12" fill="#222">NVDA</text><rect x="336" y="191" width="48" height="39" fill="#2980b9"/><text x="340" y="250" font-size="12" fill="#222">AAPL</text><rect x="410" y="178" width="48" height="52" fill="#2980b9"/><text x="414" y="250" font-size="12" fill="#222">MSFT</text><rect x="484" y="198" width="48" height="32" fill="#1e8449"/><text x="488" y="250" font-size="12" fill="#222">XOM</text><rect x="558" y="208" width="48" height="22" fill="#2980b9"/><text x="562" y="250" font-size="12" fill="#222">JNJ</text>
+</svg>

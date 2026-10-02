@@ -45,6 +45,7 @@ from sie.digital_footprint import integrate_digital_footprint_to_row
 from sie.gex import integrate_gex_to_row
 from sie.tokenized_basis import integrate_tokenized_basis_to_row
 from sie.news_materiality import integrate_news_materiality_to_row
+from sie.dilution_atm import integrate_dilution_atm_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -89,6 +90,7 @@ OVERLAYS: list[tuple[str, Callable]] = [
     ("include_hiring_skill_mix", integrate_hiring_skill_mix_to_row),
     ("include_tokenized_basis", integrate_tokenized_basis_to_row),
     ("include_news_materiality", integrate_news_materiality_to_row),
+    ("include_dilution_atm", integrate_dilution_atm_to_row),
     ("include_thesis", integrate_thesis_to_row),
     ("include_brief", integrate_brief_to_row),
     ("include_honesty", integrate_honesty_to_row),

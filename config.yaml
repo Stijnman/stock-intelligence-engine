@@ -1,3 +1,12 @@
+# dilution_atm:
+#   enabled: true
+#   velocity_hot: 0.55
+#   velocity_cold: 0.18
+#   share_delta_hot: 0.04
+#   share_delta_cold: 0.005
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # Stock Intelligence Engine configuration
 # All values are optional; defaults live in sie/config.py.
 #

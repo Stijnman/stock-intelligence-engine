@@ -217,6 +217,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "dilution_atm": {
+        "enabled": True,
+        "velocity_hot": 0.55,
+        "velocity_cold": 0.18,
+        "share_delta_hot": 0.04,
+        "share_delta_cold": 0.005,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -303,6 +312,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("tokenized_basis", {}).update(tokenized_basis)
     if news_materiality := raw.get("news_materiality"):
         cfg.setdefault("news_materiality", {}).update(news_materiality)
+    if dilution_atm := raw.get("dilution_atm"):
+        cfg.setdefault("dilution_atm", {}).update(dilution_atm)
     if hiring_skill_mix := raw.get("hiring_skill_mix"):
         cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
     return cfg

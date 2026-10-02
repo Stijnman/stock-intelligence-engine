@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.50.0] - 2026-10-02
+
+### Added
+* **Secondary Offering / ATM Dilution Velocity Overlay** (`sie/dilution_atm.py`).
+  Preferred columns: `dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`.
+  Soft +1 when ATM issuance is paused and the share count is stable into a confirming narrative; caution when ATM velocity and share-count delta accelerate (secondary supply pressure).
+  Wired through analyzer (`include_dilution_atm`), CLI (`--no-dilution-atm`), config (`dilution_atm:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live EDGAR S-3 / 424B5 hook reserved.
+* Dashboard chart: `assets/dilution_atm_v2.50.0.svg`.
+
+### Changed
+* Version bump to **2.50.0** across package, CLI, dashboard and docs.
+* CLI parser sets `allow_abbrev=False` so prefixed flags do not collide.
+* Removed the completed Secondary Offering / ATM Dilution item from FUTURE-IMPROVEMENTS.md High Priority.
+
+---
+
 ## [2.49.0] - 2026-10-02
 
 ### Added

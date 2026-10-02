@@ -4,11 +4,12 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.49.0** — October 2026 · Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.50.0** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Secondary Offering / ATM Dilution Velocity Overlay** — Scores ATM / secondary issuance velocity and share-count delta. Soft boost when issuance is paused into a confirming narrative; caution when ATM velocity accelerates. Fully integrated into analyzer (`include_dilution_atm`), CLI (`--no-dilution-atm`) and dashboard (`dil_*` columns).
 * **News Materiality / Predicted Next-Session Impact Score Overlay** — Scores expected next-session news impact and a volatility bucket (`quiet` / `elevated` / `high` / `extreme`). Soft boost when high materiality confirms the narrative; caution on a material adverse tape. Fully integrated into analyzer (`include_news_materiality`), CLI (`--no-news-materiality`) and dashboard (`nimp_*` columns).
 * **Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay** — Scores listed-vs-tokenized wrapper basis (bps) and venue liquidity. Soft boost when a liquid wrapper trades rich into a confirming narrative; caution on deep discounts with thin venue liquidity. Fully integrated into analyzer (`include_tokenized_basis`), CLI (`--no-tokenized-basis`) and dashboard (`tok_*` columns).
 * **Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay** — Fully integrated into analyzer (`include_hiring_skill_mix`), CLI (`--no-hiring-skill-mix`) and dashboard (`hmix_*` columns).
@@ -28,6 +29,9 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.50.0 (2026-10-02)** : Fully implemented **Secondary Offering / ATM Dilution Velocity Overlay** (`sie/dilution_atm.py`). Wired through analyzer (`include_dilution_atm`), CLI (`--no-dilution-atm`), config (`dilution_atm:`), Streamlit preferred columns (`dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+![ATM dilution overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/dilution_atm_v2.50.0.svg)
 * **v2.49.0 (2026-10-02)** : Fully implemented **News Materiality / Predicted Next-Session Impact Score Overlay** (`sie/news_materiality.py`). Wired through analyzer (`include_news_materiality`), CLI (`--no-news-materiality`), config (`news_materiality:`), Streamlit preferred columns (`nimp_score`, `nimp_vol_bucket`, `nimp_boost`, `nimp_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
 
 ![News materiality overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/news_materiality_overlay.svg)
@@ -42,7 +46,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.49.0
+v2.50.0
 
 ## Flagship integration
 
