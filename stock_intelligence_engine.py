@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.50.1"
+__version__ = "2.51.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -47,6 +47,7 @@ def main():
     parser.add_argument("--no-tokenized-basis", action="store_true", help="Disable cross-venue tokenized-share basis / on-chain equity premium overlay")
     parser.add_argument("--no-news-materiality", action="store_true", help="Disable news materiality / predicted next-session impact overlay")
     parser.add_argument("--no-dilution-atm", action="store_true", help="Disable secondary offering / ATM dilution velocity overlay")
+    parser.add_argument("--no-trace-flow", action="store_true", help="Disable TRACE corporate-bond customer-flow and liquidity shock overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -85,6 +86,7 @@ def main():
         include_tokenized_basis=not args.no_tokenized_basis,
         include_news_materiality=not args.no_news_materiality,
         include_dilution_atm=not args.no_dilution_atm,
+        include_trace_flow=not args.no_trace_flow,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -135,6 +137,11 @@ def main():
         from sie.dilution_atm import detect_dilution_atm
         sample = detect_dilution_atm("PLTR")
         print(f"DIL overlay ready source={sample.get('source')} vel={sample.get('dil_atm_velocity')} delta={sample.get('dil_share_delta')} boost={sample.get('signal_boost')}")
+
+    if not args.no_trace_flow:
+        from sie.trace_flow import detect_trace_flow
+        sample = detect_trace_flow("JPM")
+        print(f"TRACE overlay ready source={sample.get('source')} flow={sample.get('trace_customer_flow')} liq={sample.get('trace_liq_score')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()

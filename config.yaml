@@ -1,3 +1,12 @@
+# trace_flow:
+#   enabled: true
+#   flow_hot: 0.35
+#   flow_cold: -0.35
+#   liq_hot: 0.55
+#   liq_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # dilution_atm:
 #   enabled: true
 #   velocity_hot: 0.55

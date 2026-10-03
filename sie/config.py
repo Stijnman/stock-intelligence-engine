@@ -226,6 +226,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "trace_flow": {
+        "enabled": True,
+        "flow_hot": 0.35,
+        "flow_cold": -0.35,
+        "liq_hot": 0.55,
+        "liq_cold": 0.28,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -314,6 +323,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("news_materiality", {}).update(news_materiality)
     if dilution_atm := raw.get("dilution_atm"):
         cfg.setdefault("dilution_atm", {}).update(dilution_atm)
+    if trace_flow := raw.get("trace_flow"):
+        cfg.setdefault("trace_flow", {}).update(trace_flow)
     if hiring_skill_mix := raw.get("hiring_skill_mix"):
         cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
     return cfg

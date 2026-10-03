@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.50.1** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.51.0** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -29,7 +29,10 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
-* **v2.50.1 (2026-10-03)** : Autonomous research & evolution cycle. Audit of `main` @ 28864ab found no FUTURE-IMPROVEMENTS item fully wired since v2.50.0. Roadmap additions only: lock-up / resale-registration expiry, convertible-warrant-PIPE dilution overhang, non-GAAP bridge drift, BNPL delinquency spillover, podcast / long-form audio mention velocity. Version bump across package, CLI, dashboard and docs.
+* **v2.51.0 (2026-10-03)** : Autonomous research & evolution cycle. Audit of `main` @ 28864ab found no FUTURE-IMPROVEMENTS item fully wired since v2.50.0. Roadmap additions only: lock-up / resale-registration expiry, convertible-warrant-PIPE dilution overhang, non-GAAP bridge drift, BNPL delinquency spillover, podcast / long-form audio mention velocity. Version bump across package, CLI, dashboard and docs.
+* **v2.51.0 (2026-10-03)** : Fully implemented **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay** (`sie/trace_flow.py`). Wired through analyzer (`include_trace_flow`), CLI (`--no-trace-flow`), config (`trace_flow:`), Streamlit preferred columns (`trace_customer_flow`, `trace_liq_score`, `trace_boost`, `trace_reason`). Deterministic synthetic proxy (live FINRA TRACE hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+![TRACE customer-flow overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/trace_flow_v2.51.0.svg)
 * **v2.50.0 (2026-10-02)** : Fully implemented **Secondary Offering / ATM Dilution Velocity Overlay** (`sie/dilution_atm.py`). Wired through analyzer (`include_dilution_atm`), CLI (`--no-dilution-atm`), config (`dilution_atm:`), Streamlit preferred columns (`dil_atm_velocity`, `dil_share_delta`, `dil_boost`, `dil_reason`). Deterministic synthetic proxy. Removed from FUTURE-IMPROVEMENTS.md High Priority.
 
 ![ATM dilution overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/dilution_atm_v2.50.0.svg)
@@ -47,7 +50,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.50.1
+v2.51.0
 
 ## Flagship integration
 

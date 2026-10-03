@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.51.0] - 2026-10-03
+
+### Added
+* **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay** (`sie/trace_flow.py`).
+  Preferred columns: `trace_customer_flow`, `trace_liq_score`, `trace_boost`, `trace_reason`.
+  Soft +1 when TRACE customer buying lands in a liquid print into a confirming narrative; caution when customer selling meets a liquidity shock.
+  Wired through analyzer (`include_trace_flow`), CLI (`--no-trace-flow`), config (`trace_flow:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live FINRA TRACE hook reserved.
+* Dashboard chart: `assets/trace_flow_v2.51.0.svg`.
+* Unit tests: `tests/test_trace_flow.py`.
+
+### Changed
+* Version bump to **2.51.0** across package, CLI, dashboard and docs.
+* Removed the completed TRACE Corporate-Bond Customer-Flow item from FUTURE-IMPROVEMENTS.md High Priority.
+
 ## [2.50.1] - 2026-10-03
 
 ### Changed

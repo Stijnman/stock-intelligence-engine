@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-03  
-**Current version baseline:** v2.50.1
+**Current version baseline:** v2.51.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -14,11 +14,11 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Audit 2026-10-03 (v2.50.1):** No open item below is present as a wired overlay. Tokenized basis, news materiality, and ATM dilution stay completed and off this list.
 
+**Completed 2026-10-03 (v2.51.0):** TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay — `sie/trace_flow.py`. See CHANGELOG and the v2.51.0 commit on main.
+
 ---
 
 ## High Priority
-
-- [ ] **TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay**. Preferred columns: `trace_customer_flow`, `trace_liq_score`, `trace_boost`, `trace_reason`.
 
 - [ ] **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay**. Preferred columns: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
 

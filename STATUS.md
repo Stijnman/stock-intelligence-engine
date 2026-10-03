@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 03, 2026*
+*Last updated: October 03, 2026 — v2.51.0 TRACE overlay*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.50.1 | 2026-10-03 |
+| Core Engine | Production | 2.51.0 | 2026-10-03 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.50.1 | 2026-10-03 |
+| Streamlit UI | Production | 2.51.0 | 2026-10-03 |
 
 ### Documentation Status
 
@@ -70,7 +70,7 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.50.1 research cycle
+- **Last Commit**: v2.51.0 research cycle
 - **Branch**: main
 - **License**: MIT
 
@@ -78,11 +78,11 @@
 
 ## Recent Changes
 
-### v2.50.1 - 2026-10-03
+### v2.51.0 - 2026-10-03
 - Research cycle against main @ 28864ab
 - No open roadmap item retired (none fully wired)
 - Added lock-up expiry, convertible/PIPE overhang, non-GAAP bridge drift, BNPL delinquency spillover, podcast mention velocity to FUTURE-IMPROVEMENTS.md
-- Version strings synchronized to 2.50.1
+- Version strings synchronized to 2.51.0
 
 ### Commit: (Current) - 2026-09-11
 - Added comprehensive SKILL.md
@@ -142,4 +142,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 03, 2026*
+*Last updated: October 03, 2026 — v2.51.0 TRACE overlay*
