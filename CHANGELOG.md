@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.50.1] - 2026-10-03
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ 28864ab (v2.50.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.50.0 ATM dilution overlay. Nothing removed from the roadmap.
+* Version strings synchronized to **2.50.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Lock-up / Resale-Registration Expiry Calendar Overlay** (High Priority) — `lck_days_to_expiry`, `lck_shares_free`, `lck_boost`, `lck_reason`.
+  * **Convertible, Warrant & PIPE Dilution Overhang Overlay** (High Priority) — `cvp_overhang_pct`, `cvp_conversion_gap`, `cvp_boost`, `cvp_reason`.
+  * **Non-GAAP Bridge Drift / Adjusted-Earnings Quality Overlay** (Medium Priority) — `ngaap_bridge_bps`, `ngaap_addback_vel`, `ngaap_boost`, `ngaap_reason`.
+  * **BNPL Delinquency & Consumer-Credit Spillover Overlay** (Medium Priority) — `bnpl_dq_rate`, `bnpl_spillover`, `bnpl_boost`, `bnpl_reason`.
+  * **Podcast / Long-form Audio Mention Velocity Overlay** (Long-Term) — `pod_mention_vel`, `pod_authority`, `pod_boost`, `pod_reason`.
+
+---
+
 ## [2.50.0] - 2026-10-02
 
 ### Added

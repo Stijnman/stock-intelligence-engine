@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-02  
-**Current version baseline:** v2.50.0
+**Last updated:** 2026-10-03  
+**Current version baseline:** v2.50.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -10,7 +10,9 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Completed 2026-10-02 (v2.49.0):** News Materiality / Predicted Next-Session Impact Score Overlay — `sie/news_materiality.py`. See CHANGELOG and the v2.49.0 commit on main.
 
-**Audit 2026-10-02 (v2.48.1):** No open item below is present as a wired overlay. Tokenized basis and hiring skill-mix stay completed and off this list.
+**Completed 2026-10-02 (v2.50.0):** Secondary Offering / ATM Dilution Velocity Overlay — `sie/dilution_atm.py`.
+
+**Audit 2026-10-03 (v2.50.1):** No open item below is present as a wired overlay. Tokenized basis, news materiality, and ATM dilution stay completed and off this list.
 
 ---
 
@@ -78,6 +80,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Options Skew Term-Structure & Risk-Reversal Dislocation Overlay**. Scores 25-delta risk reversal and skew term slope versus the name's own history. Complements IV rank, 0DTE and unusual-sweep overlays without duplicating them. Soft boost when put skew cheapens into a confirming narrative; caution on a steepening downside skew. Preferred columns: `skew_rr_25d`, `skew_term_slope`, `skew_boost`, `skew_reason`.
 
+- [ ] **Lock-up / Resale-Registration Expiry Calendar Overlay**. Scores days to IPO, SPAC, or employee lock-up expiry and shares about to become freely tradable, distinct from Form 144 planned-sale windows and the already-wired ATM velocity overlay. Soft boost when the next expiry is distant and float is stable into a confirming narrative; caution inside a 15-day window with a large free-share print. Preferred columns: `lck_days_to_expiry`, `lck_shares_free`, `lck_boost`, `lck_reason`.
+
+- [ ] **Convertible, Warrant & PIPE Dilution Overhang Overlay**. Scores conversion / warrant overhang as a percent of diluted shares and the gap between spot and the conversion price, distinct from ATM / 424B5 issuance velocity. Soft boost when overhang is small and the conversion price is far out of the money into a confirming narrative; caution when spot approaches conversion and the overhang is large. Preferred columns: `cvp_overhang_pct`, `cvp_conversion_gap`, `cvp_boost`, `cvp_reason`.
+
 ---
 
 ## Medium Priority
@@ -98,6 +104,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Weather / Degree-Day Demand Shock Overlay**. Scores HDD/CDD z-score versus seasonal normal as a demand shock for retail, utilities, ag and logistics names. Soft boost when degree-day shock aligns with a confirming spend narrative; caution on adverse weather into weak traffic. Preferred columns: `wx_hdd_cdd_z`, `wx_demand_shock`, `wx_boost`, `wx_reason`.
 
+- [ ] **Non-GAAP Bridge Drift / Adjusted-Earnings Quality Overlay**. Scores the GAAP-to-adjusted EPS bridge in basis points and the velocity of recurring add-backs (stock comp, restructuring, "one-time" items). Complements earnings-call sentiment and guidance tracking without duplicating them. Soft boost when the bridge is stable and shrinking into a confirming narrative; caution when add-backs accelerate while reported GAAP lags. Preferred columns: `ngaap_bridge_bps`, `ngaap_addback_vel`, `ngaap_boost`, `ngaap_reason`.
+
+- [ ] **BNPL Delinquency & Consumer-Credit Spillover Overlay**. Scores buy-now-pay-later delinquency and late-stage consumer-credit stress as a demand spillover for discretionary retailers and card lenders, distinct from the aggregated card-spend nowcast. Soft boost when delinquency is falling into a confirming spend narrative; caution when DQ rates rise while traffic is still being reported as healthy. Preferred columns: `bnpl_dq_rate`, `bnpl_spillover`, `bnpl_boost`, `bnpl_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -115,3 +125,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **EU ETS / Carbon-Allowance Cost Pass-Through Overlay**. Preferred columns: `ets_cost_share`, `ets_price_mom`, `ets_boost`, `ets_reason`.
 
 - [ ] **Private-Credit / BDC NAV Mark-Lag Overlay**. Scores BDC price-to-NAV discount and the lag between equity marks and private-credit portfolio marks. Soft boost when the discount narrows into a confirming credit narrative; caution on a widening discount with stale marks. Preferred columns: `bdc_nav_lag`, `bdc_discount`, `bdc_boost`, `bdc_reason`.
+
+- [ ] **Podcast / Long-form Audio Mention Velocity Overlay**. Scores mention velocity and host authority on finance and company podcasts, distinct from newsletter lead-lag and short-form KOL amplification. Soft boost when authoritative long-form mentions lead a confirming narrative; caution on a spike in low-authority promotional episodes. Preferred columns: `pod_mention_vel`, `pod_authority`, `pod_boost`, `pod_reason`.
