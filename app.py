@@ -1,5 +1,7 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.48.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.50.1.
 
+Secondary Offering / ATM Dilution Velocity Overlay +
+News Materiality / Predicted Next-Session Impact Score Overlay +
 Cross-Venue Tokenized-Share Basis Overlay +
 Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay +
 Retail Brokerage Order-Flow Imbalance Overlay +
@@ -14,7 +16,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.50.0"
+__version__ = "2.50.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
