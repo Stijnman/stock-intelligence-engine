@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.51.1] - 2026-10-04
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ 995911f (v2.51.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.51.0 TRACE customer-flow overlay. Nothing removed from the roadmap.
+* Version strings synchronized to **2.51.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **NHTSA / CPSC Recall & Complaint Velocity Overlay** (High Priority) — `rcl_recall_count`, `rcl_complaint_vel`, `rcl_boost`, `rcl_reason`.
+  * **Overnight / Extended-Hours Return Residual Overlay** (High Priority) — `on_ext_return`, `on_cash_residual`, `on_boost`, `on_reason`.
+  * **Issuer MNPI Blackout & Buyback Window Calendar Overlay** (High Priority) — `mnpi_blackout_flag`, `mnpi_days_to_window`, `mnpi_boost`, `mnpi_reason`.
+  * **Customer Concentration / Top-Account Revenue Drift Overlay** (Medium Priority) — `ccn_top_share`, `ccn_drift`, `ccn_boost`, `ccn_reason`.
+  * **Autocallable Barrier Proximity & Observation-Calendar Hedge Overlay** (Long-Term) — `acb_barrier_gap`, `acb_obs_days`, `acb_boost`, `acb_reason`.
+
+---
+
 ## [2.51.0] - 2026-10-03
 
 ### Added

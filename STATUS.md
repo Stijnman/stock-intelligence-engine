@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 03, 2026 — v2.51.0 TRACE overlay*
+*Last updated: October 04, 2026 — v2.51.1 research cycle*
 
 ---
 
@@ -10,27 +10,27 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.51.0 | 2026-10-03 |
+| Core Engine | Production | 2.51.1 | 2026-10-04 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.51.0 | 2026-10-03 |
+| Streamlit UI | Production | 2.51.1 | 2026-10-04 |
 
 ### Documentation Status
 
 | Document | Status | Last Updated |
 |----------|--------|--------------|
-| README.md | Complete | 2026-10-03 |
+| README.md | Complete | 2026-10-04 |
 | SKILL.md | Complete | 2026-09-11 |
 | SECURITY.md | Complete | 2026-09-11 |
 | CONTRIBUTING.md | Complete | 2026-09-11 |
 | TESTING.md | Complete | 2026-09-11 |
 | CODE_OF_CONDUCT.md | Complete | 2026-09-11 |
-| CHANGELOG.md | Complete | 2026-10-03 |
+| CHANGELOG.md | Complete | 2026-10-04 |
 | AUTONOMOUS-RESEARCH-EVOLUTION-CYCLE.md | Complete | 2026-09-11 |
 | COMPETITION.md | Complete | 2026-09-11 |
-| FUTURE-IMPROVEMENTS.md | Complete | 2026-10-03 |
+| FUTURE-IMPROVEMENTS.md | Complete | 2026-10-04 |
 | SIMULATION.md | Complete | 2026-09-11 |
 
 ### Infrastructure Status
@@ -70,7 +70,7 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.51.0 research cycle
+- **Last Commit**: v2.51.1 research cycle
 - **Branch**: main
 - **License**: MIT
 
@@ -78,28 +78,14 @@
 
 ## Recent Changes
 
-### v2.51.0 - 2026-10-03
-- Research cycle against main @ 28864ab
-- No open roadmap item retired (none fully wired)
-- Added lock-up expiry, convertible/PIPE overhang, non-GAAP bridge drift, BNPL delinquency spillover, podcast mention velocity to FUTURE-IMPROVEMENTS.md
-- Version strings synchronized to 2.51.0
+### v2.51.1 - 2026-10-04
+- Research cycle against main @ 995911f
+- No open roadmap item retired (none fully wired beyond TRACE)
+- Added NHTSA/CPSC recall velocity, overnight residual, MNPI blackout, customer-concentration drift, autocallable barrier proximity to FUTURE-IMPROVEMENTS.md
+- Version strings synchronized to 2.51.1
 
-### Commit: (Current) - 2026-09-11
-- Added comprehensive SKILL.md
-- Added STATUS.md tracking
-- Added CONTRIBUTORS.md
-- Added standardized TESTING.md
-- Added standardized CONTRIBUTING.md
-- Added CODE_OF_CONDUCT.md
-- Added SECURITY.md
-- Updated CHANGELOG.md
-- Added GitHub Actions CI/CD workflow
-- Added issue templates (bug report, feature request)
-- Added pull request template
-- Added pre-commit configuration
-- Added markdown lint configuration
-- Updated .gitignore
-- Added .secrets.baseline
+### v2.51.0 - 2026-10-03
+- TRACE Corporate-Bond Customer-Flow overlay wired and removed from the roadmap
 
 ---
 
@@ -142,4 +128,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 03, 2026 — v2.51.0 TRACE overlay*
+*Last updated: October 04, 2026 — v2.51.1 research cycle*
