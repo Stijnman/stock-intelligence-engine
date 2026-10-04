@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-03  
-**Current version baseline:** v2.51.0
+**Last updated:** 2026-10-04  
+**Current version baseline:** v2.51.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -15,6 +15,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 **Audit 2026-10-03 (v2.50.1):** No open item below is present as a wired overlay. Tokenized basis, news materiality, and ATM dilution stay completed and off this list.
 
 **Completed 2026-10-03 (v2.51.0):** TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay — `sie/trace_flow.py`. See CHANGELOG and the v2.51.0 commit on main.
+
+**Audit 2026-10-04 (v2.51.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard). TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
 ---
 
@@ -84,6 +86,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Convertible, Warrant & PIPE Dilution Overhang Overlay**. Scores conversion / warrant overhang as a percent of diluted shares and the gap between spot and the conversion price, distinct from ATM / 424B5 issuance velocity. Soft boost when overhang is small and the conversion price is far out of the money into a confirming narrative; caution when spot approaches conversion and the overhang is large. Preferred columns: `cvp_overhang_pct`, `cvp_conversion_gap`, `cvp_boost`, `cvp_reason`.
 
+- [ ] **NHTSA / CPSC Recall & Complaint Velocity Overlay**. Scores open vehicle and consumer-product recalls plus complaint velocity as a demand and liability shock, distinct from app-store review sentiment and class-action filing counts. Soft boost when recall count is flat and complaint velocity is falling into a confirming narrative; caution when a new recall or complaint spike hits while social heat is still positive. Preferred columns: `rcl_recall_count`, `rcl_complaint_vel`, `rcl_boost`, `rcl_reason`.
+
+- [ ] **Overnight / Extended-Hours Return Residual Overlay**. Scores the extended-hours move and the residual versus the next cash session, distinct from the ADR/local premium and the tokenized-wrapper basis. Soft boost when an overnight bid is confirmed by the cash open into a hot narrative; caution when the extended-hours move fades at the open. Preferred columns: `on_ext_return`, `on_cash_residual`, `on_boost`, `on_reason`.
+
+- [ ] **Issuer MNPI Blackout & Buyback Window Calendar Overlay**. Scores whether the issuer is inside a pre-earnings MNPI blackout versus an open 10b5-1 trading window, distinct from the already-wired authorization-versus-execution overlay. Soft boost when the window is open and buyback capacity is unused into a confirming narrative; caution inside the blackout with elevated social heat. Preferred columns: `mnpi_blackout_flag`, `mnpi_days_to_window`, `mnpi_boost`, `mnpi_reason`.
+
 ---
 
 ## Medium Priority
@@ -108,6 +116,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **BNPL Delinquency & Consumer-Credit Spillover Overlay**. Scores buy-now-pay-later delinquency and late-stage consumer-credit stress as a demand spillover for discretionary retailers and card lenders, distinct from the aggregated card-spend nowcast. Soft boost when delinquency is falling into a confirming spend narrative; caution when DQ rates rise while traffic is still being reported as healthy. Preferred columns: `bnpl_dq_rate`, `bnpl_spillover`, `bnpl_boost`, `bnpl_reason`.
 
+- [ ] **Customer Concentration / Top-Account Revenue Drift Overlay**. Scores disclosed top-customer or top-10 revenue share and quarter-over-quarter drift from 10-K / 10-Q concentration tables. Distinct from supply-chain CapEx and government-obligation velocity. Soft boost when concentration is stable or falling into a confirming narrative; caution when a single account's share jumps or a named customer is lost. Preferred columns: `ccn_top_share`, `ccn_drift`, `ccn_boost`, `ccn_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -127,3 +137,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Private-Credit / BDC NAV Mark-Lag Overlay**. Scores BDC price-to-NAV discount and the lag between equity marks and private-credit portfolio marks. Soft boost when the discount narrows into a confirming credit narrative; caution on a widening discount with stale marks. Preferred columns: `bdc_nav_lag`, `bdc_discount`, `bdc_boost`, `bdc_reason`.
 
 - [ ] **Podcast / Long-form Audio Mention Velocity Overlay**. Scores mention velocity and host authority on finance and company podcasts, distinct from newsletter lead-lag and short-form KOL amplification. Soft boost when authoritative long-form mentions lead a confirming narrative; caution on a spike in low-authority promotional episodes. Preferred columns: `pod_mention_vel`, `pod_authority`, `pod_boost`, `pod_reason`.
+
+- [ ] **Autocallable Barrier Proximity & Observation-Calendar Hedge Overlay**. Scores distance to the nearest autocall / coupon barrier and days to the next shared observation date. Complements dealer GEX and pin-risk without duplicating listed-option gamma. Motivated by the 2026 expansion of laddered autocallable income ETFs and issuer hedge turnover around barriers. Soft boost when spot is comfortably above the barrier and the next observation is distant into a confirming narrative; caution inside a 5-day observation window with spot near the barrier. Preferred columns: `acb_barrier_gap`, `acb_obs_days`, `acb_boost`, `acb_reason`.
