@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.52.0] - 2026-10-04
 
 ### Added
+* Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/d147faa739beb02203c95e3885a96a718196ffda
 * **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** (`sie/primary_credit.py`).
   Preferred columns: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
   Soft +1 when the new-issue concession is tight and primary supply is scarce into a confirming narrative; caution when a wide concession meets a crowded primary calendar.

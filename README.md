@@ -30,7 +30,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
-* **v2.52.0 (2026-10-04)** : Fully implemented **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** (`sie/primary_credit.py`). Wired through analyzer (`include_primary_credit`), CLI (`--no-primary-credit`), config (`primary_credit:`), Streamlit preferred columns (`pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`). Deterministic synthetic proxy (live syndicate / new-issue TRACE hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+* **v2.52.0 (2026-10-04)** : Fully implemented **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** (`sie/primary_credit.py`). Wired through analyzer (`include_primary_credit`), CLI (`--no-primary-credit`), config (`primary_credit:`), Streamlit preferred columns (`pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`). Deterministic synthetic proxy (live syndicate / new-issue TRACE hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/d147faa739beb02203c95e3885a96a718196ffda.
 
 ![Primary credit issuance overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/primary_credit_v2.52.0.svg)
 * **v2.51.1 (2026-10-04)** : Autonomous research & evolution cycle. Audit of `main` @ 995911f found no FUTURE-IMPROVEMENTS item fully wired since v2.51.0 TRACE overlay. Roadmap additions only: NHTSA/CPSC recall velocity, overnight/extended-hours residual, issuer MNPI blackout calendar, customer-concentration drift, autocallable barrier proximity. Version bump across package, CLI, dashboard and docs.

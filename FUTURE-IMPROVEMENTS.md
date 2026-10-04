@@ -18,7 +18,7 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Audit 2026-10-04 (v2.51.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard). TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
-**Completed 2026-10-04 (v2.52.0):** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay — `sie/primary_credit.py`. Commit on main (see CHANGELOG). Preferred columns shipped: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
+**Completed 2026-10-04 (v2.52.0):** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay — `sie/primary_credit.py`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/d147faa739beb02203c95e3885a96a718196ffda. Preferred columns shipped: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
 
 ---
 
