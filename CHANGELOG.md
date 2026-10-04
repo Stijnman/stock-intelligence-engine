@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.52.0] - 2026-10-04
+
+### Added
+* **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** (`sie/primary_credit.py`).
+  Preferred columns: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
+  Soft +1 when the new-issue concession is tight and primary supply is scarce into a confirming narrative; caution when a wide concession meets a crowded primary calendar.
+  Wired through analyzer (`include_primary_credit`), CLI (`--no-primary-credit`), config (`primary_credit:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live syndicate book / TRACE new-issue hook reserved.
+* Dashboard chart: `assets/primary_credit_v2.52.0.svg`.
+* Unit tests: `tests/test_primary_credit.py`.
+
+### Changed
+* Version bump to **2.52.0** across package, CLI, dashboard and docs.
+* Removed the completed Primary Credit Issuance item from FUTURE-IMPROVEMENTS.md High Priority.
+
 ## [2.51.1] - 2026-10-04
 
 ### Changed

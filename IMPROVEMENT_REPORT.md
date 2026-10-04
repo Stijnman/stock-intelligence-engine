@@ -1,3 +1,5 @@
+**2026-10-04 — v2.52.0** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay implemented and wired (analyzer, CLI, config, dashboard, tests). Prior notes below.
+
 # Improvement Report
 
 **2026-10-02 — v2.49.0** News Materiality / Predicted Next-Session Impact Score Overlay implemented and wired (analyzer, CLI, config, dashboard). Prior notes below.

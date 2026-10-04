@@ -1,4 +1,7 @@
-# Testing Guide
+# Testing
+
+Primary credit issuance overlay checks live in `tests/test_primary_credit.py` (v2.52.0).
+ Guide
 
 This document outlines the testing requirements and best practices for the **stock-intelligence-engine** project.
 

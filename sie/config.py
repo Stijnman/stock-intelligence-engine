@@ -235,6 +235,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "primary_credit": {
+        "enabled": True,
+        "concession_tight_bp": 8.0,
+        "concession_wide_bp": 22.0,
+        "supply_hot": 0.62,
+        "supply_cold": 0.28,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -325,6 +334,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("dilution_atm", {}).update(dilution_atm)
     if trace_flow := raw.get("trace_flow"):
         cfg.setdefault("trace_flow", {}).update(trace_flow)
+    if primary_credit := raw.get("primary_credit"):
+        cfg.setdefault("primary_credit", {}).update(primary_credit)
     if hiring_skill_mix := raw.get("hiring_skill_mix"):
         cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
     return cfg

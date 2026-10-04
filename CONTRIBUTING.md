@@ -5,6 +5,8 @@ This document outlines how to contribute new features, improve existing ones, an
 
 ---
 
+Overlay pattern (v2.52.0): new signals live in `sie/<overlay>.py` with `detect_*` + `integrate_*_to_row`, a config block, a `--no-*` CLI flag, analyzer `OVERLAYS` entry, and Streamlit preferred columns. Latest example: `sie/primary_credit.py`.
+
 ## 📋 Table of Contents
 
 - [Code of Conduct](#-code-of-conduct)

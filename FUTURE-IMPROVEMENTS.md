@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-04  
-**Current version baseline:** v2.51.1
+**Current version baseline:** v2.52.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -18,11 +18,11 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Audit 2026-10-04 (v2.51.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard). TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
+**Completed 2026-10-04 (v2.52.0):** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay — `sie/primary_credit.py`. Commit on main (see CHANGELOG). Preferred columns shipped: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
+
 ---
 
 ## High Priority
-
-- [ ] **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay**. Preferred columns: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
 
 - [ ] **Target-Specific Financial Stance & Narrative Specificity Overlay**. Preferred columns: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`.
 

@@ -1,5 +1,6 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.51.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.52.0.
 
+Primary Credit Issuance / New-Issue Concession Overlay +
 TRACE Corporate-Bond Customer-Flow Overlay +
 Secondary Offering / ATM Dilution Velocity Overlay +
 News Materiality / Predicted Next-Session Impact Score Overlay +
@@ -17,7 +18,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.51.1"
+__version__ = "2.52.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -29,7 +30,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
+        f"**v{__version__}** — Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
     )
 
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -47,6 +48,7 @@ def signal_table_fragment():
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price",
         "asr_sentiment", "asr_complaint_velocity", "asr_rating", "asr_boost", "asr_reason",
+        "pci_concession_bp", "pci_supply_score", "pci_boost", "pci_reason",
         "trace_customer_flow", "trace_liq_score", "trace_boost", "trace_reason",
         "dil_atm_velocity", "dil_share_delta", "dil_boost", "dil_reason",
         "nimp_score", "nimp_vol_bucket", "nimp_boost", "nimp_reason",
@@ -64,5 +66,5 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — TRACE Corporate-Bond Customer-Flow & Liquidity Shock Overlay fully wired. Educational research tool only — not financial advice."
+    f"v{__version__} — Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay fully wired. Educational research tool only — not financial advice."
 )

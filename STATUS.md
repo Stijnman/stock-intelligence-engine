@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 04, 2026 — v2.51.1 research cycle*
+*Last updated: October 04, 2026 — v2.52.0 research cycle*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.51.1 | 2026-10-04 |
+| Core Engine | Production | 2.52.0 | 2026-10-04 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.51.1 | 2026-10-04 |
+| Streamlit UI | Production | 2.52.0 | 2026-10-04 |
 
 ### Documentation Status
 
@@ -70,7 +70,7 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.51.1 research cycle
+- **Last Commit**: v2.52.0 research cycle
 - **Branch**: main
 - **License**: MIT
 
@@ -78,11 +78,11 @@
 
 ## Recent Changes
 
-### v2.51.1 - 2026-10-04
+### v2.52.0 - 2026-10-04
 - Research cycle against main @ 995911f
 - No open roadmap item retired (none fully wired beyond TRACE)
 - Added NHTSA/CPSC recall velocity, overnight residual, MNPI blackout, customer-concentration drift, autocallable barrier proximity to FUTURE-IMPROVEMENTS.md
-- Version strings synchronized to 2.51.1
+- Version strings synchronized to 2.52.0
 
 ### v2.51.0 - 2026-10-03
 - TRACE Corporate-Bond Customer-Flow overlay wired and removed from the roadmap
@@ -128,4 +128,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 04, 2026 — v2.51.1 research cycle*
+*Last updated: October 04, 2026 — v2.52.0 research cycle*
