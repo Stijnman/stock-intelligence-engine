@@ -22,7 +22,7 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Audit 2026-10-05 (v2.52.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ 16a20ca. Primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
-**Completed 2026-10-05 (v2.53.0):** Target-Specific Financial Stance & Narrative Specificity Overlay — `sie/target_stance.py`. Preferred columns shipped: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`. Commit recorded in CHANGELOG after push.
+**Completed 2026-10-05 (v2.53.0):** Target-Specific Financial Stance & Narrative Specificity Overlay — `sie/target_stance.py`. Preferred columns shipped: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/f03614fd13a9078c076042def5e92e446d9c90be.
 
 ---
 

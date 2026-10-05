@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.53.0] - 2026-10-05
 
 ### Added
+* Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/f03614fd13a9078c076042def5e92e446d9c90be
 * **Target-Specific Financial Stance & Narrative Specificity Overlay** (`sie/target_stance.py`).
   Preferred columns: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`.
   Soft +1 when a constructive stance stays numerically specific through Q&A into a confirming narrative; caution when narrative heat arrives without target specificity or with a wide prepared-vs-Q&A gap.
