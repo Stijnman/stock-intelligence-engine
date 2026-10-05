@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420">
+  <rect width="960" height="420" fill="#0e1117"/>
+  <text x="32" y="42" fill="#e6edf3" font-family="ui-sans-serif,system-ui" font-size="22" font-weight="700">Target specificity vs Q&A gap — v2.53.0</text>
+  <text x="32" y="68" fill="#8b949e" font-family="ui-sans-serif,system-ui" font-size="13">Synthetic proxy. High specificity and a tight Q&A gap = soft boost. Vague heat or a wide Q&A gap = caution.</text>
+  <line x1="70" y1="340" x2="920" y2="340" stroke="#30363d"/>
+  <line x1="70" y1="100" x2="70" y2="340" stroke="#30363d"/>
+  <text x="78" y="118" fill="#8b949e" font-size="11" font-family="ui-sans-serif">qa gap 0.9</text>
+  <text x="78" y="336" fill="#8b949e" font-size="11" font-family="ui-sans-serif">qa gap 0.1</text>
+  <text x="80" y="368" fill="#8b949e" font-size="12" font-family="ui-sans-serif">low specificity</text>
+  <text x="760" y="368" fill="#8b949e" font-size="12" font-family="ui-sans-serif">high specificity</text>
+  <circle cx="760" cy="250" r="16" fill="#3fb950"/>
+  <text x="784" y="255" fill="#3fb950" font-size="13" font-family="ui-sans-serif">MSFT specific</text>
+  <circle cx="720" cy="230" r="14" fill="#3fb950"/>
+  <text x="742" y="214" fill="#3fb950" font-size="13" font-family="ui-sans-serif">NVDA</text>
+  <circle cx="200" cy="140" r="16" fill="#f85149"/>
+  <text x="224" y="145" fill="#f85149" font-size="13" font-family="ui-sans-serif">AMC vague</text>
+  <circle cx="250" cy="170" r="14" fill="#f85149"/>
+  <text x="272" y="175" fill="#f85149" font-size="13" font-family="ui-sans-serif">GME</text>
+  <circle cx="460" cy="210" r="10" fill="#d29922"/>
+  <text x="476" y="214" fill="#d29922" font-size="13" font-family="ui-sans-serif">neutral</text>
+  <text x="32" y="402" fill="#8b949e" font-size="12" font-family="ui-sans-serif">Columns: tsn_stance · tsn_specificity · tsn_qa_gap · tsn_boost · tsn_reason</text>
+</svg>

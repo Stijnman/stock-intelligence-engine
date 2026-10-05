@@ -1,3 +1,12 @@
+# target_stance:
+#   enabled: true
+#   specificity_hot: 0.62
+#   specificity_cold: 0.32
+#   qa_gap_hot: 0.48
+#   qa_gap_cold: 0.22
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # primary_credit:
 #   enabled: true
 #   concession_tight_bp: 8.0

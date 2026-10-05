@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 05, 2026 — v2.52.1 research cycle*
+*Last updated: October 05, 2026 — v2.53.0 target-stance overlay*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.52.1 | 2026-10-05 |
+| Core Engine | Production | 2.53.0 | 2026-10-05 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.52.1 | 2026-10-05 |
+| Streamlit UI | Production | 2.53.0 | 2026-10-05 |
 
 ### Documentation Status
 
@@ -70,13 +70,17 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.52.1 research cycle
+- **Last Commit**: v2.53.0 target-specific financial stance overlay
 - **Branch**: main
 - **License**: MIT
 
 ---
 
 ## Recent Changes
+
+### v2.53.0 - 2026-10-05
+- Target-Specific Financial Stance & Narrative Specificity Overlay wired (`sie/target_stance.py`)
+- Preferred columns: tsn_stance, tsn_specificity, tsn_qa_gap, tsn_boost, tsn_reason
 
 ### v2.52.1 - 2026-10-05
 - Research cycle against main @ 16a20ca
@@ -131,4 +135,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 05, 2026 — v2.52.1 research cycle*
+*Last updated: October 05, 2026 — v2.53.0 target-stance overlay*

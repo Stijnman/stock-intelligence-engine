@@ -130,6 +130,7 @@ All components have been tested for:
 
 | Date | Version | Changes |
 |------|---------|---------|
+| 2026-10-05 | 2.53.0 | Target-specific financial stance overlay wired (analyzer, CLI, dashboard) |
 | 2026-10-05 | 2.52.1 | Research cycle; roadmap additions only; version sync |
 | 2026-09-11 | 2.0.0 | Documentation standardization, security enhancements |
 | 2026-08-15 | 1.5.0 | Added simulation framework |
@@ -185,4 +186,4 @@ See [COMPETITION.md](./COMPETITION.md) for competitive analysis methodologies.
 
 ---
 
-*Last updated: October 05, 2026 — v2.52.1*
+*Last updated: October 05, 2026 — v2.53.0*

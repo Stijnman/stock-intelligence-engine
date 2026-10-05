@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.52.1"
+__version__ = "2.53.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -49,6 +49,7 @@ def main():
     parser.add_argument("--no-dilution-atm", action="store_true", help="Disable secondary offering / ATM dilution velocity overlay")
     parser.add_argument("--no-trace-flow", action="store_true", help="Disable TRACE corporate-bond customer-flow and liquidity shock overlay")
     parser.add_argument("--no-primary-credit", action="store_true", help="Disable primary credit issuance concession and supply-pressure overlay")
+    parser.add_argument("--no-target-stance", action="store_true", help="Disable target-specific financial stance and narrative specificity overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -89,6 +90,7 @@ def main():
         include_dilution_atm=not args.no_dilution_atm,
         include_trace_flow=not args.no_trace_flow,
         include_primary_credit=not args.no_primary_credit,
+        include_target_stance=not args.no_target_stance,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -149,6 +151,11 @@ def main():
         from sie.primary_credit import detect_primary_credit
         sample = detect_primary_credit("AAPL")
         print(f"PCI overlay ready source={sample.get('source')} concession={sample.get('pci_concession_bp')} supply={sample.get('pci_supply_score')} boost={sample.get('signal_boost')}")
+
+    if not args.no_target_stance:
+        from sie.target_stance import detect_target_stance
+        sample = detect_target_stance("NVDA")
+        print(f"TSN overlay ready source={sample.get('source')} stance={sample.get('tsn_stance')} spec={sample.get('tsn_specificity')} gap={sample.get('tsn_qa_gap')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()

@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-05  
-**Current version baseline:** v2.52.1
+**Current version baseline:** v2.53.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -22,11 +22,11 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Audit 2026-10-05 (v2.52.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ 16a20ca. Primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
+**Completed 2026-10-05 (v2.53.0):** Target-Specific Financial Stance & Narrative Specificity Overlay — `sie/target_stance.py`. Preferred columns shipped: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`. Commit recorded in CHANGELOG after push.
+
 ---
 
 ## High Priority
-
-- [ ] **Target-Specific Financial Stance & Narrative Specificity Overlay**. Preferred columns: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`.
 
 - [ ] **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay**. Preferred columns: `adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`.
 

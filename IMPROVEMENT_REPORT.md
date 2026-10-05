@@ -1,4 +1,4 @@
-**2026-10-04 — v2.52.0** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay implemented and wired (analyzer, CLI, config, dashboard, tests). Prior notes below.
+**2026-10-05 — v2.53.0** Target-Specific Financial Stance & Narrative Specificity Overlay implemented and wired (analyzer, CLI, config, dashboard, tests). Prior: **2026-10-04 — v2.52.0** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay implemented and wired (analyzer, CLI, config, dashboard, tests). Prior notes below.
 
 # Improvement Report
 

@@ -4,11 +4,12 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.52.1** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.53.0** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
 * Real-time signals with narrative intelligence
+* **Target-Specific Financial Stance & Narrative Specificity Overlay** — Scores management/street stance, numeric target specificity, and the prepared-remarks vs Q&A gap. Soft boost when constructive numeric targets hold through Q&A into a confirming narrative; caution when narrative heat arrives without specificity or with a wide Q&A gap. Fully integrated into analyzer (`include_target_stance`), CLI (`--no-target-stance`) and dashboard (`tsn_*` columns).
 * **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** — Scores new-issue concession (bps) and primary calendar supply. Soft boost when concession is tight and the book is scarce into a confirming narrative; caution when a wide concession meets crowded primary supply. Fully integrated into analyzer (`include_primary_credit`), CLI (`--no-primary-credit`) and dashboard (`pci_*` columns).
 * **Secondary Offering / ATM Dilution Velocity Overlay** — Scores ATM / secondary issuance velocity and share-count delta. Soft boost when issuance is paused into a confirming narrative; caution when ATM velocity accelerates. Fully integrated into analyzer (`include_dilution_atm`), CLI (`--no-dilution-atm`) and dashboard (`dil_*` columns).
 * **News Materiality / Predicted Next-Session Impact Score Overlay** — Scores expected next-session news impact and a volatility bucket (`quiet` / `elevated` / `high` / `extreme`). Soft boost when high materiality confirms the narrative; caution on a material adverse tape. Fully integrated into analyzer (`include_news_materiality`), CLI (`--no-news-materiality`) and dashboard (`nimp_*` columns).
@@ -30,6 +31,9 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.53.0 (2026-10-05)** : Fully implemented **Target-Specific Financial Stance & Narrative Specificity Overlay** (`sie/target_stance.py`). Wired through analyzer (`include_target_stance`), CLI (`--no-target-stance`), config (`target_stance:`), Streamlit preferred columns (`tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`). Deterministic synthetic proxy (live transcript parser hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+![Target-specific financial stance overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/target_stance_v2.53.0.svg)
 * **v2.52.1 (2026-10-05)** : Autonomous research & evolution cycle. Audit of `main` @ 16a20ca found no FUTURE-IMPROVEMENTS item fully wired since v2.52.0 primary-credit overlay. Roadmap additions only: single-stock levered ETF rebalance pressure, security-based swap / equity TRS disclosure, search-vs-download divergence, post-quiet-period initiation cluster, contracted PPA vs spot power. Version bump across package, CLI, dashboard and docs.
 * **v2.52.0 (2026-10-04)** : Fully implemented **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** (`sie/primary_credit.py`). Wired through analyzer (`include_primary_credit`), CLI (`--no-primary-credit`), config (`primary_credit:`), Streamlit preferred columns (`pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`). Deterministic synthetic proxy (live syndicate / new-issue TRACE hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/d147faa739beb02203c95e3885a96a718196ffda.
 
@@ -55,7 +59,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.52.1
+v2.53.0
 
 ## Flagship integration
 

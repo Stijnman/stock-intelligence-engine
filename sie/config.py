@@ -244,6 +244,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "target_stance": {
+        "enabled": True,
+        "specificity_hot": 0.62,
+        "specificity_cold": 0.32,
+        "qa_gap_hot": 0.48,
+        "qa_gap_cold": 0.22,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -336,6 +345,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("trace_flow", {}).update(trace_flow)
     if primary_credit := raw.get("primary_credit"):
         cfg.setdefault("primary_credit", {}).update(primary_credit)
+    if target_stance := raw.get("target_stance"):
+        cfg.setdefault("target_stance", {}).update(target_stance)
     if hiring_skill_mix := raw.get("hiring_skill_mix"):
         cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
     return cfg
