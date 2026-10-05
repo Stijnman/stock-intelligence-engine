@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.52.0** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.52.1** — October 2026 · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -30,6 +30,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.52.1 (2026-10-05)** : Autonomous research & evolution cycle. Audit of `main` @ 16a20ca found no FUTURE-IMPROVEMENTS item fully wired since v2.52.0 primary-credit overlay. Roadmap additions only: single-stock levered ETF rebalance pressure, security-based swap / equity TRS disclosure, search-vs-download divergence, post-quiet-period initiation cluster, contracted PPA vs spot power. Version bump across package, CLI, dashboard and docs.
 * **v2.52.0 (2026-10-04)** : Fully implemented **Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay** (`sie/primary_credit.py`). Wired through analyzer (`include_primary_credit`), CLI (`--no-primary-credit`), config (`primary_credit:`), Streamlit preferred columns (`pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`). Deterministic synthetic proxy (live syndicate / new-issue TRACE hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/d147faa739beb02203c95e3885a96a718196ffda.
 
 ![Primary credit issuance overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/primary_credit_v2.52.0.svg)
@@ -54,7 +55,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.51.1
+v2.52.1
 
 ## Flagship integration
 

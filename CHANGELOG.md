@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.52.1] - 2026-10-05
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ 16a20ca (v2.52.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.52.0 primary-credit overlay. Nothing removed from the roadmap.
+* Version strings synchronized to **2.52.1** across package, CLI, dashboard and docs.
+* README footer version corrected from the stale v2.51.1 pin.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Single-Stock / Levered ETF Rebalance Pressure Overlay** (High Priority) — `ssetf_lev_aum`, `ssetf_rebalance_usd`, `ssetf_boost`, `ssetf_reason`.
+  * **Security-Based Swap / Equity TRS Large-Position Disclosure Overlay** (High Priority) — `sbs_notional`, `sbs_direction`, `sbs_boost`, `sbs_reason`.
+  * **Search-Attention vs App-Download Divergence Overlay** (Medium Priority) — `sad_search_z`, `sad_download_z`, `sad_boost`, `sad_reason`.
+  * **Post-Quiet-Period Initiation Cluster Overlay** (Medium Priority) — `pq_initiation_n`, `pq_bull_share`, `pq_boost`, `pq_reason`.
+  * **Contracted Power-Purchase vs Spot Power Spread Overlay** (Long-Term) — `ppa_spread`, `ppa_tenor_mo`, `ppa_boost`, `ppa_reason`.
+
+---
+
 ## [2.52.0] - 2026-10-04
 
 ### Added

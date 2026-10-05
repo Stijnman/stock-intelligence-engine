@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-04  
-**Current version baseline:** v2.52.0
+**Last updated:** 2026-10-05  
+**Current version baseline:** v2.52.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -19,6 +19,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 **Audit 2026-10-04 (v2.51.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard). TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
 **Completed 2026-10-04 (v2.52.0):** Primary Credit Issuance / New-Issue Concession & Supply Pressure Overlay — `sie/primary_credit.py`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/d147faa739beb02203c95e3885a96a718196ffda. Preferred columns shipped: `pci_concession_bp`, `pci_supply_score`, `pci_boost`, `pci_reason`.
+
+**Audit 2026-10-05 (v2.52.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ 16a20ca. Primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
 ---
 
@@ -92,6 +94,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Issuer MNPI Blackout & Buyback Window Calendar Overlay**. Scores whether the issuer is inside a pre-earnings MNPI blackout versus an open 10b5-1 trading window, distinct from the already-wired authorization-versus-execution overlay. Soft boost when the window is open and buyback capacity is unused into a confirming narrative; caution inside the blackout with elevated social heat. Preferred columns: `mnpi_blackout_flag`, `mnpi_days_to_window`, `mnpi_boost`, `mnpi_reason`.
 
+- [ ] **Single-Stock / Levered ETF Rebalance Pressure Overlay**. Scores AUM in single-name and daily-reset levered products and the estimated end-of-day rebalance notional, distinct from the already-wired broad ETF creation/redemption overlay and from dealer GEX. Motivated by the 2026 expansion of single-stock leveraged ETFs, which options-flow and GEX dashboards still treat as a side channel. Soft boost when rebalance flow aligns with a confirming narrative and AUM is modest; caution when a large levered complex must buy or sell into the close against the narrative. Preferred columns: `ssetf_lev_aum`, `ssetf_rebalance_usd`, `ssetf_boost`, `ssetf_reason`.
+
+- [ ] **Security-Based Swap / Equity TRS Large-Position Disclosure Overlay**. Scores disclosed security-based swap and total-return-swap notional and direction versus free float, distinct from 13F long ownership and Form 4 insider clusters. 2026 agent research stacks still underweight swap-equivalent exposure relative to listed options flow and EDGAR insider prints. Soft boost when disclosed swap interest is adding in the same direction as a confirming narrative; caution when a large short-equivalent TRS appears into crowded social heat. Preferred columns: `sbs_notional`, `sbs_direction`, `sbs_boost`, `sbs_reason`.
+
 ---
 
 ## Medium Priority
@@ -118,6 +124,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Customer Concentration / Top-Account Revenue Drift Overlay**. Scores disclosed top-customer or top-10 revenue share and quarter-over-quarter drift from 10-K / 10-Q concentration tables. Distinct from supply-chain CapEx and government-obligation velocity. Soft boost when concentration is stable or falling into a confirming narrative; caution when a single account's share jumps or a named customer is lost. Preferred columns: `ccn_top_share`, `ccn_drift`, `ccn_boost`, `ccn_reason`.
 
+- [ ] **Search-Attention vs App-Download Divergence Overlay**. Scores the gap between Wikipedia / search attention momentum and app-download or digital-footprint momentum, distinct from either already-wired overlay alone. Retail dashboards in 2026 still publish those series side by side without a disagreement score. Soft boost when downloads confirm a search spike into a positive narrative; caution when search heat rises while downloads stall. Preferred columns: `sad_search_z`, `sad_download_z`, `sad_boost`, `sad_reason`.
+
+- [ ] **Post-Quiet-Period Initiation Cluster Overlay**. Scores the count and direction of analyst initiations in the first window after an IPO or spin-off quiet period, distinct from the already-wired estimate-revision velocity overlay on seasoned names. Soft boost when initiations cluster bullish into a confirming narrative; caution on a bearish initiation cluster with thin float. Preferred columns: `pq_initiation_n`, `pq_bull_share`, `pq_boost`, `pq_reason`.
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -139,3 +149,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Podcast / Long-form Audio Mention Velocity Overlay**. Scores mention velocity and host authority on finance and company podcasts, distinct from newsletter lead-lag and short-form KOL amplification. Soft boost when authoritative long-form mentions lead a confirming narrative; caution on a spike in low-authority promotional episodes. Preferred columns: `pod_mention_vel`, `pod_authority`, `pod_boost`, `pod_reason`.
 
 - [ ] **Autocallable Barrier Proximity & Observation-Calendar Hedge Overlay**. Scores distance to the nearest autocall / coupon barrier and days to the next shared observation date. Complements dealer GEX and pin-risk without duplicating listed-option gamma. Motivated by the 2026 expansion of laddered autocallable income ETFs and issuer hedge turnover around barriers. Soft boost when spot is comfortably above the barrier and the next observation is distant into a confirming narrative; caution inside a 5-day observation window with spot near the barrier. Preferred columns: `acb_barrier_gap`, `acb_obs_days`, `acb_boost`, `acb_reason`.
+
+- [ ] **Contracted Power-Purchase vs Spot Power Spread Overlay**. Scores contracted data-center / industrial PPA price versus spot power and remaining tenor, distinct from the interconnection-queue overlay. Soft boost when a long cheap PPA covers rising load into a confirming narrative; caution when spot power blows out and contracted cover is short. Preferred columns: `ppa_spread`, `ppa_tenor_mo`, `ppa_boost`, `ppa_reason`.
