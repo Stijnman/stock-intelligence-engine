@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 05, 2026 — v2.53.1 research cycle*
+*Last updated: October 06, 2026 — v2.54.0 alt-data provenance*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.53.1 | 2026-10-06 |
+| Core Engine | Production | 2.54.0 | 2026-10-06 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.53.1 | 2026-10-06 |
+| Streamlit UI | Production | 2.54.0 | 2026-10-06 |
 
 ### Documentation Status
 
@@ -70,13 +70,18 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.53.1 research cycle roadmap sync
+- **Last Commit**: v2.54.0 alternative-data provenance overlay
 - **Branch**: main
 - **License**: MIT
 
 ---
 
 ## Recent Changes
+
+### v2.54.0 - 2026-10-06
+- Alternative-Data Provenance & AI-Synthetic Contamination overlay wired (`sie/alt_data_provenance.py`)
+- Preferred columns: adp_provenance, adp_crosscheck, adp_boost, adp_reason
+- Removed from FUTURE-IMPROVEMENTS.md High Priority
 
 ### v2.53.1 - 2026-10-06
 - Research cycle against main @ c4c3bc5
@@ -141,4 +146,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 05, 2026 — v2.53.1 research cycle*
+*Last updated: October 06, 2026 — v2.54.0 alt-data provenance*

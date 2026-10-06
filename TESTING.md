@@ -599,3 +599,8 @@ def create_test_stock(symbol="AAPL"):
 ## News materiality overlay (v2.49.0)
 
 `tests/test_news_materiality.py` covers key contract, disabled path, row integration, and adverse-tape caution.
+
+
+## v2.54.0
+
+`tests/test_alt_data_provenance.py` covers preferred columns, disabled gate, synthetic-heat caution, and clean-confirm boost for `sie/alt_data_provenance.py`.

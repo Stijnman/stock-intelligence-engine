@@ -49,6 +49,7 @@ from sie.dilution_atm import integrate_dilution_atm_to_row
 from sie.trace_flow import integrate_trace_flow_to_row
 from sie.primary_credit import integrate_primary_credit_to_row
 from sie.target_stance import integrate_target_stance_to_row
+from sie.alt_data_provenance import integrate_alt_data_provenance_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -97,6 +98,7 @@ OVERLAYS: list[tuple[str, Callable]] = [
     ("include_trace_flow", integrate_trace_flow_to_row),
     ("include_primary_credit", integrate_primary_credit_to_row),
     ("include_target_stance", integrate_target_stance_to_row),
+    ("include_alt_data_provenance", integrate_alt_data_provenance_to_row),
     ("include_thesis", integrate_thesis_to_row),
     ("include_brief", integrate_brief_to_row),
     ("include_honesty", integrate_honesty_to_row),

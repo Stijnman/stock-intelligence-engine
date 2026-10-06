@@ -5,7 +5,7 @@ This document outlines how to contribute new features, improve existing ones, an
 
 ---
 
-Overlay pattern (v2.53.1 docs / v2.53.0 code): new signals live in `sie/<overlay>.py` with `detect_*` + `integrate_*_to_row`, a config block, a `--no-*` CLI flag, analyzer `OVERLAYS` entry, and Streamlit preferred columns. Latest example: `sie/target_stance.py`.
+Overlay pattern (v2.54.0): new signals live in `sie/<overlay>.py` with `detect_*` + `integrate_*_to_row`, a config block, a `--no-*` CLI flag, analyzer `OVERLAYS` entry, and Streamlit preferred columns. Latest example: `sie/alt_data_provenance.py`.
 
 ## 📋 Table of Contents
 

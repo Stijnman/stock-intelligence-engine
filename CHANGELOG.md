@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.54.0] - 2026-10-06
+
+### Added
+* **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay** (`sie/alt_data_provenance.py`).
+  Preferred columns: `adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`.
+  Soft +1 when attested provenance and an independent cross-check confirm a narrative; caution when narrative heat arrives on synthetic or uncorroborated alt-data.
+  Wired through analyzer (`include_alt_data_provenance`), CLI (`--no-alt-data-provenance`), config (`alt_data_provenance:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live vendor-attestation hook reserved.
+* Dashboard chart: `assets/alt_data_provenance_v2.54.0.svg`.
+* Unit tests: `tests/test_alt_data_provenance.py`.
+
+### Changed
+* Removed the completed Alternative-Data Provenance item from FUTURE-IMPROVEMENTS.md High Priority.
+* Version strings synchronized to **2.54.0**.
+
+---
+
 ## [2.53.1] - 2026-10-06
 
 ### Changed

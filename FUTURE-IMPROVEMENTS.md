@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-06  
-**Current version baseline:** v2.53.1
+**Current version baseline:** v2.54.0
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -24,13 +24,13 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 **Completed 2026-10-05 (v2.53.0):** Target-Specific Financial Stance & Narrative Specificity Overlay — `sie/target_stance.py`. Preferred columns shipped: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/f03614fd13a9078c076042def5e92e446d9c90be.
 
+**Completed 2026-10-06 (v2.54.0):** Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay — `sie/alt_data_provenance.py`. Preferred columns shipped: `adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`. Commit: pending-push.
+
 **Audit 2026-10-06 (v2.53.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ c4c3bc5. Target stance, primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
 ---
 
 ## High Priority
-
-- [ ] **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay**. Preferred columns: `adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`.
 
 - [ ] **Rule 606 Retail Options Routing & Execution-Quality Overlay**. Preferred columns: `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`.
 

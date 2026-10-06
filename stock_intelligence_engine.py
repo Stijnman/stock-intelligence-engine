@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.53.1"
+__version__ = "2.54.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -50,6 +50,7 @@ def main():
     parser.add_argument("--no-trace-flow", action="store_true", help="Disable TRACE corporate-bond customer-flow and liquidity shock overlay")
     parser.add_argument("--no-primary-credit", action="store_true", help="Disable primary credit issuance concession and supply-pressure overlay")
     parser.add_argument("--no-target-stance", action="store_true", help="Disable target-specific financial stance and narrative specificity overlay")
+    parser.add_argument("--no-alt-data-provenance", action="store_true", help="Disable alternative-data provenance and AI-synthetic contamination overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -91,6 +92,7 @@ def main():
         include_trace_flow=not args.no_trace_flow,
         include_primary_credit=not args.no_primary_credit,
         include_target_stance=not args.no_target_stance,
+        include_alt_data_provenance=not args.no_alt_data_provenance,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -156,6 +158,11 @@ def main():
         from sie.target_stance import detect_target_stance
         sample = detect_target_stance("NVDA")
         print(f"TSN overlay ready source={sample.get('source')} stance={sample.get('tsn_stance')} spec={sample.get('tsn_specificity')} gap={sample.get('tsn_qa_gap')} boost={sample.get('signal_boost')}")
+
+    if not args.no_alt_data_provenance:
+        from sie.alt_data_provenance import detect_alt_data_provenance
+        sample = detect_alt_data_provenance("NVDA")
+        print(f"ADP overlay ready source={sample.get('source')} provenance={sample.get('adp_provenance')} cross={sample.get('adp_crosscheck')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
