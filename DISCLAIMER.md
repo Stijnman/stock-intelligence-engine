@@ -10,4 +10,4 @@ See LICENSE for terms.
 
 Overlay scores, including news-materiality next-session impact, are research signals derived from proxies. They are not predictions of price, not investment advice, and not a solicitation.
 
-Overlay scores including the v2.53.0 target-specific financial stance layer are research signals only, not a recommendation to buy or sell any security.
+Overlay scores including the v2.53.1 research-cycle roadmap and the v2.53.0 target-specific financial stance layer are research signals only, not a recommendation to buy or sell any security.

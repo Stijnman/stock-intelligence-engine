@@ -1,6 +1,6 @@
 # Testing
 
-Target-specific financial stance overlay checks live in `tests/test_target_stance.py` (v2.53.0). Primary credit issuance overlay checks live in `tests/test_primary_credit.py` (v2.52.0).
+v2.53.1 is a docs/roadmap cycle; no new overlay tests. Target-specific financial stance overlay checks live in `tests/test_target_stance.py` (v2.53.0). Primary credit issuance overlay checks live in `tests/test_primary_credit.py` (v2.52.0).
  Guide
 
 This document outlines the testing requirements and best practices for the **stock-intelligence-engine** project.

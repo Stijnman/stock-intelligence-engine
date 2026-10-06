@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.53.1] - 2026-10-06
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ c4c3bc5 (v2.53.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.53.0 target-stance overlay. Nothing removed from the roadmap.
+* Version strings synchronized to **2.53.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **SEC Staff Comment-Letter & Filing-Review Velocity Overlay** (High Priority) — `cmt_open_letters`, `cmt_days_open`, `cmt_boost`, `cmt_reason`.
+  * **Rule 10b-18 Daily Volume-Cap Proximity Overlay** (High Priority) — `b18_cap_used`, `b18_days_left`, `b18_boost`, `b18_reason`.
+  * **Treasury GC / Sponsored-Repo Funding-Stress Spillover Overlay** (High Priority) — `repo_gc_spread`, `repo_equity_beta`, `repo_boost`, `repo_reason`.
+  * **Channel Inventory Days & Working-Capital Fill Overlay** (Medium Priority) — `inv_days`, `inv_fill_delta`, `inv_boost`, `inv_reason`.
+  * **State Incentive Clawback & Jobs-Credit Exposure Overlay** (Long-Term) — `inc_clawback_usd`, `inc_jobs_gap`, `inc_boost`, `inc_reason`.
+
+---
+
 ## [2.53.0] - 2026-10-05
 
 ### Added

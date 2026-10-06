@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-05  
-**Current version baseline:** v2.53.0
+**Last updated:** 2026-10-06  
+**Current version baseline:** v2.53.1
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -23,6 +23,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 **Audit 2026-10-05 (v2.52.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ 16a20ca. Primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
 **Completed 2026-10-05 (v2.53.0):** Target-Specific Financial Stance & Narrative Specificity Overlay — `sie/target_stance.py`. Preferred columns shipped: `tsn_stance`, `tsn_specificity`, `tsn_qa_gap`, `tsn_boost`, `tsn_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/f03614fd13a9078c076042def5e92e446d9c90be.
+
+**Audit 2026-10-06 (v2.53.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ c4c3bc5. Target stance, primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list.
 
 ---
 
@@ -100,6 +102,12 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 ---
 
+- [ ] **SEC Staff Comment-Letter & Filing-Review Velocity Overlay**. Scores open SEC staff comment letters, days since the last response, and amendment velocity on the latest 10-K / 10-Q. Distinct from 8-K cyber-incident velocity and from the already-wired target-specificity overlay. 2026 agent research desks still summarize filings without pricing unresolved staff review friction. Soft boost when the letter docket is clear into a confirming narrative; caution when an open comment letter ages while social heat is positive. Preferred columns: `cmt_open_letters`, `cmt_days_open`, `cmt_boost`, `cmt_reason`.
+
+- [ ] **Rule 10b-18 Daily Volume-Cap Proximity Overlay**. Scores how much of the safe-harbor daily volume cap the issuer has already used and days left in the current buyback window. Distinct from the wired 10b5-1 authorization-versus-execution overlay and from the open MNPI blackout calendar. Soft boost when unused cap remains into a confirming narrative; caution when the cap is nearly exhausted into a crowded bid. Preferred columns: `b18_cap_used`, `b18_days_left`, `b18_boost`, `b18_reason`.
+
+- [ ] **Treasury GC / Sponsored-Repo Funding-Stress Spillover Overlay**. Scores the general-collateral repo spread and the name's historical beta to dealer funding stress. Distinct from TRACE customer-flow and from the wired primary-credit concession overlay. Soft boost when funding is calm and the name is not a high funding-beta into a confirming narrative; caution when GC widens and the equity has historically sold off with dealer balance-sheet stress. Preferred columns: `repo_gc_spread`, `repo_equity_beta`, `repo_boost`, `repo_reason`.
+
 ## Medium Priority
 
 - [ ] **Form 8-K Item 1.05 Cybersecurity Incident Velocity Overlay**. Preferred columns: `cyb_days_since`, `cyb_amend_vel`, `cyb_boost`, `cyb_reason`.
@@ -130,6 +138,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 ---
 
+- [ ] **Channel Inventory Days & Working-Capital Fill Overlay**. Scores disclosed inventory days and the quarter-over-quarter fill delta from 10-Q working-capital tables. Distinct from the supplier bill-of-lading nowcast and from consumer-spend panels. Soft boost when inventory days are stable or falling into a confirming demand narrative; caution when channel fill rises while reported sell-through is still being described as healthy. Preferred columns: `inv_days`, `inv_fill_delta`, `inv_boost`, `inv_reason`.
+
 ## Long-Term / Nice-to-Have
 
 - [ ] **Class-Action / Multidistrict Litigation Filing Velocity Overlay**. Preferred columns: `lit_new_filings`, `lit_mdl_flag`, `lit_boost`, `lit_reason`.
@@ -151,3 +161,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Autocallable Barrier Proximity & Observation-Calendar Hedge Overlay**. Scores distance to the nearest autocall / coupon barrier and days to the next shared observation date. Complements dealer GEX and pin-risk without duplicating listed-option gamma. Motivated by the 2026 expansion of laddered autocallable income ETFs and issuer hedge turnover around barriers. Soft boost when spot is comfortably above the barrier and the next observation is distant into a confirming narrative; caution inside a 5-day observation window with spot near the barrier. Preferred columns: `acb_barrier_gap`, `acb_obs_days`, `acb_boost`, `acb_reason`.
 
 - [ ] **Contracted Power-Purchase vs Spot Power Spread Overlay**. Scores contracted data-center / industrial PPA price versus spot power and remaining tenor, distinct from the interconnection-queue overlay. Soft boost when a long cheap PPA covers rising load into a confirming narrative; caution when spot power blows out and contracted cover is short. Preferred columns: `ppa_spread`, `ppa_tenor_mo`, `ppa_boost`, `ppa_reason`.
+
+- [ ] **State Incentive Clawback & Jobs-Credit Exposure Overlay**. Scores disclosed state and local incentive agreements, remaining jobs-credit headroom, and clawback exposure if hiring misses the covenant. Distinct from the government-obligation velocity overlay and from job-posting skill-mix. Soft boost when credits are intact and hiring is tracking the covenant into a confirming narrative; caution when a jobs gap opens a clawback window. Preferred columns: `inc_clawback_usd`, `inc_jobs_gap`, `inc_boost`, `inc_reason`.
