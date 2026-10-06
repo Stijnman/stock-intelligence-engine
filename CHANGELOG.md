@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.54.0] - 2026-10-06
 
 ### Added
+* Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/b4710b4ccee1bdf2bfa3ba5fc33f9b8f7d015e59
 * **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay** (`sie/alt_data_provenance.py`).
   Preferred columns: `adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`.
   Soft +1 when attested provenance and an independent cross-check confirm a narrative; caution when narrative heat arrives on synthetic or uncorroborated alt-data.

@@ -32,7 +32,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
-* **v2.54.0 (2026-10-06)** : Fully implemented **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay** (`sie/alt_data_provenance.py`). Wired through analyzer (`include_alt_data_provenance`), CLI (`--no-alt-data-provenance`), config (`alt_data_provenance:`), Streamlit preferred columns (`adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`). Deterministic synthetic proxy (live vendor-attestation hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+* **v2.54.0 (2026-10-06)** : Fully implemented **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay** (`sie/alt_data_provenance.py`). Wired through analyzer (`include_alt_data_provenance`), CLI (`--no-alt-data-provenance`), config (`alt_data_provenance:`), Streamlit preferred columns (`adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`). Deterministic synthetic proxy (live vendor-attestation hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/b4710b4ccee1bdf2bfa3ba5fc33f9b8f7d015e59.
 
 ![Alternative-data provenance overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/alt_data_provenance_v2.54.0.svg)
 * **v2.53.1 (2026-10-06)** : Autonomous research & evolution cycle. Audit of `main` @ c4c3bc5 found no FUTURE-IMPROVEMENTS item fully wired since v2.53.0 target-stance overlay. Roadmap additions only: SEC staff comment-letter velocity, Rule 10b-18 volume-cap proximity, Treasury GC / sponsored-repo funding spillover, channel inventory-days fill, state incentive clawback. Version bump across package, CLI, dashboard and docs.
