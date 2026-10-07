@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.54.1"
+__version__ = "2.55.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -51,6 +51,7 @@ def main():
     parser.add_argument("--no-primary-credit", action="store_true", help="Disable primary credit issuance concession and supply-pressure overlay")
     parser.add_argument("--no-target-stance", action="store_true", help="Disable target-specific financial stance and narrative specificity overlay")
     parser.add_argument("--no-alt-data-provenance", action="store_true", help="Disable alternative-data provenance and AI-synthetic contamination overlay")
+    parser.add_argument("--no-rule-606", action="store_true", help="Disable Rule 606 retail options routing and execution-quality overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -93,6 +94,7 @@ def main():
         include_primary_credit=not args.no_primary_credit,
         include_target_stance=not args.no_target_stance,
         include_alt_data_provenance=not args.no_alt_data_provenance,
+        include_rule_606=not args.no_rule_606,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -163,6 +165,11 @@ def main():
         from sie.alt_data_provenance import detect_alt_data_provenance
         sample = detect_alt_data_provenance("NVDA")
         print(f"ADP overlay ready source={sample.get('source')} provenance={sample.get('adp_provenance')} cross={sample.get('adp_crosscheck')} boost={sample.get('signal_boost')}")
+
+    if not args.no_rule_606:
+        from sie.rule_606 import detect_rule_606
+        sample = detect_rule_606("NVDA")
+        print(f"R606 overlay ready source={sample.get('source')} concentration={sample.get('r606_concentration')} exec={sample.get('r606_exec_quality')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()

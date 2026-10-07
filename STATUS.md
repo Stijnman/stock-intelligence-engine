@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 06, 2026 — v2.54.0 alt-data provenance*
+*Last updated: October 07, 2026 — v2.55.0 Rule 606 routing*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.54.0 | 2026-10-06 |
+| Core Engine | Production | 2.55.0 | 2026-10-07 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.54.0 | 2026-10-06 |
+| Streamlit UI | Production | 2.55.0 | 2026-10-07 |
 
 ### Documentation Status
 
@@ -70,13 +70,17 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.54.0 alternative-data provenance overlay
+- **Last Commit**: v2.55.0 Rule 606 retail options routing overlay
 - **Branch**: main
 - **License**: MIT
 
 ---
 
 ## Recent Changes
+
+### v2.55.0 - 2026-10-07
+- Rule 606 Retail Options Routing & Execution-Quality Overlay wired (analyzer, CLI, config, dashboard).
+- Preferred columns: r606_concentration, r606_exec_quality, r606_boost, r606_reason.
 
 ### v2.54.0 - 2026-10-06
 - Alternative-Data Provenance & AI-Synthetic Contamination overlay wired (`sie/alt_data_provenance.py`)
@@ -146,4 +150,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 06, 2026 — v2.54.0 alt-data provenance*
+*Last updated: October 07, 2026 — v2.55.0 Rule 606 routing*

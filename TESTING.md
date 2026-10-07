@@ -601,6 +601,20 @@ def create_test_stock(symbol="AAPL"):
 `tests/test_news_materiality.py` covers key contract, disabled path, row integration, and adverse-tape caution.
 
 
+## v2.55.0
+
+Rule 606 overlay (`tests/test_rule_606.py`):
+
+* Competitive names (NVDA) produce higher execution quality and lower top-venue concentration than concentrated names (GME) under the synthetic proxy.
+* Confirming narrative on diversified routing yields `signal_boost == 1`; concentrated weak fills yield `-1`.
+* Disabled config returns `source=disabled` and a zero boost.
+* `integrate_rule_606_to_row` writes `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason` and can upgrade `buy` to `strong_buy`.
+
+```bash
+pytest tests/test_rule_606.py -q
+```
+
 ## v2.54.0
+
 
 `tests/test_alt_data_provenance.py` covers preferred columns, disabled gate, synthetic-heat caution, and clean-confirm boost for `sie/alt_data_provenance.py`.

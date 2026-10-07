@@ -130,6 +130,7 @@ All components have been tested for:
 
 | Date | Version | Changes |
 |------|---------|---------|
+| 2026-10-07 | 2.55.0 | Rule 606 retail options routing overlay wired (analyzer, CLI, dashboard) |
 | 2026-10-06 | 2.54.0 | Alternative-data provenance overlay wired (analyzer, CLI, dashboard) |
 | 2026-10-06 | 2.53.1 | Research cycle; roadmap additions only; version sync |
 | 2026-10-05 | 2.53.0 | Target-specific financial stance overlay wired (analyzer, CLI, dashboard) |
@@ -188,4 +189,4 @@ See [COMPETITION.md](./COMPETITION.md) for competitive analysis methodologies.
 
 ---
 
-*Last updated: October 06, 2026 — v2.54.0*
+*Last updated: October 07, 2026 — v2.55.0*

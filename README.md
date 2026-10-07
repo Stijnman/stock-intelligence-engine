@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.54.1** — October 2026 · Alternative-Data Provenance Overlay (fully wired) + · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.55.0** — October 2026 · Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -32,6 +32,9 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.55.0 (2026-10-07)** : Fully implemented **Rule 606 Retail Options Routing & Execution-Quality Overlay** (`sie/rule_606.py`). Wired through analyzer (`include_rule_606`), CLI (`--no-rule-606`), config (`rule_606:`), Streamlit preferred columns (`r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`). Deterministic synthetic proxy (live Rule 606 report parser reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/ffef498ba5d9689f20b438d6d36f57e03706e753.
+
+![Rule 606 routing overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/rule_606_v2.55.0.svg)
 * **v2.54.1 (2026-10-07)** : Autonomous research & evolution cycle. Audit of `main` @ ce6d39c found no FUTURE-IMPROVEMENTS item fully wired since v2.54.0 alt-data provenance overlay. Roadmap additions recorded in CHANGELOG: CFTC mention-market manipulation risk, tokenized NMS venue AMM pool premium, prediction-market ETF event-overlap beta, XBRL custom-extension tag ratio, water-rights / basin curtailment. Version bump across package, CLI, dashboard and docs.
 * **v2.54.0 (2026-10-06)** : Fully implemented **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay** (`sie/alt_data_provenance.py`). Wired through analyzer (`include_alt_data_provenance`), CLI (`--no-alt-data-provenance`), config (`alt_data_provenance:`), Streamlit preferred columns (`adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`). Deterministic synthetic proxy (live vendor-attestation hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/b4710b4ccee1bdf2bfa3ba5fc33f9b8f7d015e59.
 
@@ -65,7 +68,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.54.1
+v2.55.0
 
 ## Flagship integration
 

@@ -1,7 +1,9 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-06  
-**Current version baseline:** v2.54.0
+**Last updated:** 2026-10-07  
+**Current version baseline:** v2.55.0
+
+**Completed 2026-10-07 (v2.55.0):** Rule 606 Retail Options Routing & Execution-Quality Overlay — `sie/rule_606.py`. Preferred columns shipped: `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/ffef498ba5d9689f20b438d6d36f57e03706e753.
 
 This file is the single source of truth for the open roadmap.  
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -31,8 +33,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Rule 606 Retail Options Routing & Execution-Quality Overlay**. Preferred columns: `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`.
 
 - [ ] **Index Reconstitution & Forced Passive-Flow Overlay**. Preferred columns: `idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`.
 

@@ -15,3 +15,5 @@ Overlay scores including the v2.53.1 research-cycle roadmap and the v2.53.0 targ
 Overlay scores including the v2.54.0 alternative-data provenance layer are research signals only. A synthetic proxy is not a signed vendor attestation and is not a recommendation to buy or sell any security.
 
 Overlay scores including the v2.54.1 research-cycle roadmap are research signals only. Mention-market, tokenized-venue, and event-contract ETF items are not implemented overlays and are not a recommendation to buy or sell any security.
+
+Rule 606 routing scores are a synthetic research proxy, not a broker execution-quality report and not a solicitation to route orders.

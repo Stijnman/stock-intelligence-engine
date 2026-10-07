@@ -1,3 +1,12 @@
+# rule_606:
+#   enabled: true
+#   concentration_hot: 0.72
+#   concentration_ok: 0.48
+#   exec_quality_hot: 0.64
+#   exec_quality_cold: 0.32
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # alt_data_provenance:
 #   enabled: true
 #   provenance_hot: 0.68
