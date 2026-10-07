@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.54.0** — October 2026 · Alternative-Data Provenance Overlay (fully wired) + · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.54.1** — October 2026 · Alternative-Data Provenance Overlay (fully wired) + · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -32,6 +32,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.54.1 (2026-10-07)** : Autonomous research & evolution cycle. Audit of `main` @ ce6d39c found no FUTURE-IMPROVEMENTS item fully wired since v2.54.0 alt-data provenance overlay. Roadmap additions recorded in CHANGELOG: CFTC mention-market manipulation risk, tokenized NMS venue AMM pool premium, prediction-market ETF event-overlap beta, XBRL custom-extension tag ratio, water-rights / basin curtailment. Version bump across package, CLI, dashboard and docs.
 * **v2.54.0 (2026-10-06)** : Fully implemented **Alternative-Data Provenance & AI-Synthetic Contamination Confidence Overlay** (`sie/alt_data_provenance.py`). Wired through analyzer (`include_alt_data_provenance`), CLI (`--no-alt-data-provenance`), config (`alt_data_provenance:`), Streamlit preferred columns (`adp_provenance`, `adp_crosscheck`, `adp_boost`, `adp_reason`). Deterministic synthetic proxy (live vendor-attestation hook reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/b4710b4ccee1bdf2bfa3ba5fc33f9b8f7d015e59.
 
 ![Alternative-data provenance overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/alt_data_provenance_v2.54.0.svg)
@@ -64,7 +65,7 @@ See config.yaml for watchlist and overlay toggles.
 
 This is an educational research tool. Not financial advice. See DISCLAIMER.md.
 
-v2.54.0
+v2.54.1
 
 ## Flagship integration
 
