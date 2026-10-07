@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.55.0] - 2026-10-07
 
 ### Added
-* Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/ffef498ba5d9689f20b438d6d36f57e03706e753
+* Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/ac7d45952a624d4f29cf05a532342ea2040aa813
 * **Rule 606 Retail Options Routing & Execution-Quality Overlay** (`sie/rule_606.py`).
   Preferred columns: `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`.
   Soft +1 when top-venue share is moderate and execution quality (price improvement / effective spread) confirms a narrative; caution when retail options flow is concentrated at one wholesaler with weak fills into social heat.
