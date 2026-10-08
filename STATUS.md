@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 08, 2026 — v2.55.1 research cycle*
+*Last updated: October 08, 2026 — v2.56.0 index reconstitution*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.55.1 | 2026-10-08 |
+| Core Engine | Production | 2.56.0 | 2026-10-08 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.55.1 | 2026-10-08 |
+| Streamlit UI | Production | 2.56.0 | 2026-10-08 |
 
 ### Documentation Status
 
@@ -70,13 +70,18 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.55.1 research cycle; roadmap sync and five new overlays
+- **Last Commit**: v2.56.0 index reconstitution; roadmap sync and five new overlays
 - **Branch**: main
 - **License**: MIT
 
 ---
 
 ## Recent Changes
+
+### v2.56.0 - 2026-10-08
+- Index Reconstitution & Forced Passive-Flow Overlay wired (analyzer, CLI, config, dashboard).
+- Preferred columns: idx_event, idx_forced_usd, idx_boost, idx_reason.
+- Removed from FUTURE-IMPROVEMENTS.md High Priority.
 
 ### v2.55.1 - 2026-10-08
 - Research cycle against main @ 4709c657
@@ -157,4 +162,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 08, 2026 — v2.55.1 research cycle*
+*Last updated: October 08, 2026 — v2.56.0 index reconstitution*

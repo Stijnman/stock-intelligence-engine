@@ -618,3 +618,7 @@ pytest tests/test_rule_606.py -q
 
 
 `tests/test_alt_data_provenance.py` covers preferred columns, disabled gate, synthetic-heat caution, and clean-confirm boost for `sie/alt_data_provenance.py`.
+
+## v2.56.0
+
+`tests/test_index_reconstitution.py` covers add versus delete forced-flow direction, the disabled gate, and preferred-column integration (`idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`).

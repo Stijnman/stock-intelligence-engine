@@ -253,6 +253,13 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "index_reconstitution": {
+        "enabled": True,
+        "forced_hot_usd": 250_000_000,
+        "forced_cold_usd": -200_000_000,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -349,4 +356,6 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("target_stance", {}).update(target_stance)
     if hiring_skill_mix := raw.get("hiring_skill_mix"):
         cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
+    if index_reconstitution := raw.get("index_reconstitution"):
+        cfg.setdefault("index_reconstitution", {}).update(index_reconstitution)
     return cfg

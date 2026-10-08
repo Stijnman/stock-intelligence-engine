@@ -1,3 +1,16 @@
+## [2.56.0] - 2026-10-08
+
+### Added
+* **Index Reconstitution & Forced Passive-Flow Overlay** (`sie/index_reconstitution.py`).
+  Preferred columns: `idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`.
+  Soft boost when an add or upweight forces material passive inflow into a confirming narrative. Caution when a delete or downweight forces selling into narrative heat.
+  Wired through analyzer (`include_index_reconstitution`), CLI (`--no-index-reconstitution`), config (`index_reconstitution:`), Streamlit preferred columns.
+  Source labeled `synthetic_proxy` until a live index-notice parser is available. Distinct from ETF AP creation/redemption flow.
+* Dashboard caption and preferred columns updated. Asset: `assets/index_reconstitution_v2.56.0.svg`.
+* Removed the completed item from FUTURE-IMPROVEMENTS.md.
+
+---
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

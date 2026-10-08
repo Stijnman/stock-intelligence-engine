@@ -1,3 +1,10 @@
+# index_reconstitution:
+#   enabled: true
+#   forced_hot_usd: 250000000
+#   forced_cold_usd: -200000000
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # rule_606:
 #   enabled: true
 #   concentration_hot: 0.72

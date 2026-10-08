@@ -17,3 +17,5 @@ Overlay scores including the v2.54.0 alternative-data provenance layer are resea
 Overlay scores including the v2.54.1 research-cycle roadmap are research signals only. Mention-market, tokenized-venue, and event-contract ETF items are not implemented overlays and are not a recommendation to buy or sell any security.
 
 Rule 606 routing scores are a synthetic research proxy, not a broker execution-quality report and not a solicitation to route orders.
+
+Index reconstitution and forced passive-flow scores are a synthetic research proxy, not a signed index-provider notice and not a solicitation to trade into a rebalance.
