@@ -32,7 +32,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
-* **v2.56.0 (2026-10-08)** : Fully implemented **Index Reconstitution & Forced Passive-Flow Overlay** (`sie/index_reconstitution.py`). Wired through analyzer (`include_index_reconstitution`), CLI (`--no-index-reconstitution`), config (`index_reconstitution:`), Streamlit preferred columns (`idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`). Deterministic synthetic proxy (live S&P / Russell / Nasdaq notice parser reserved). Distinct from the ETF creation/redemption overlay. Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/PENDING.
+* **v2.56.0 (2026-10-08)** : Fully implemented **Index Reconstitution & Forced Passive-Flow Overlay** (`sie/index_reconstitution.py`). Wired through analyzer (`include_index_reconstitution`), CLI (`--no-index-reconstitution`), config (`index_reconstitution:`), Streamlit preferred columns (`idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`). Deterministic synthetic proxy (live S&P / Russell / Nasdaq notice parser reserved). Distinct from the ETF creation/redemption overlay. Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/76dd3af848a5126de874e83fb08fbc49690c3587.
 
 ![Index reconstitution forced flow](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/index_reconstitution_v2.56.0.svg)
 

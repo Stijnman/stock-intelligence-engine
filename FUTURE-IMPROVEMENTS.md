@@ -3,7 +3,7 @@
 **Last updated:** 2026-10-08  
 **Current version baseline:** v2.56.0
 
-**Completed 2026-10-08 (v2.56.0):** Index Reconstitution & Forced Passive-Flow Overlay — `sie/index_reconstitution.py`. Preferred columns shipped: `idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/PENDING.
+**Completed 2026-10-08 (v2.56.0):** Index Reconstitution & Forced Passive-Flow Overlay — `sie/index_reconstitution.py`. Preferred columns shipped: `idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/76dd3af848a5126de874e83fb08fbc49690c3587.
 
 **Audit 2026-10-08 (v2.55.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ 4709c657. Rule 606, alt-data provenance, target stance, primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list. v2.54.1 roadmap items that were logged in CHANGELOG but missing from this file are restored at the bottom of their sections.
 
