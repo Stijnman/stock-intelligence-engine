@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.55.1] - 2026-10-08
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ 4709c657 (v2.55.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.55.0 Rule 606 overlay. Nothing removed from the roadmap.
+* Restored five v2.54.1 roadmap items that were recorded in CHANGELOG but absent from FUTURE-IMPROVEMENTS.md (mention-market manipulation, TSV AMM pool premium, prediction-market ETF overlap, XBRL extension ratio, water-rights curtailment).
+* Version strings synchronized to **2.55.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Cboe KPI Binary vs Street Consensus Divergence Overlay** (High Priority) — `kpi_implied`, `kpi_street_gap`, `kpi_boost`, `kpi_reason`.
+  * **Single-Name Event-Contract Jurisdiction Friction Overlay** (High Priority) — `ecj_event_vol`, `ecj_sbs_flag`, `ecj_boost`, `ecj_reason`.
+  * **Opening Auction Imbalance vs Overnight Narrative Alignment Overlay** (Medium Priority) — `auc_imbalance_usd`, `auc_narrative_align`, `auc_boost`, `auc_reason`.
+  * **FedNow / Same-Day ACH Corporate Receipt Velocity Overlay** (Medium Priority) — `fnw_receipt_vel`, `fnw_fail_rate`, `fnw_boost`, `fnw_reason`.
+  * **Catastrophe-Bond / ILW Spread Spillover Overlay** (Long-Term) — `cat_spread`, `cat_issuance`, `cat_boost`, `cat_reason`.
+
+---
+
 ## [2.55.0] - 2026-10-07
 
 ### Added

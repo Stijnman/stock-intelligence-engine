@@ -1,7 +1,9 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-07  
-**Current version baseline:** v2.55.0
+**Last updated:** 2026-10-08  
+**Current version baseline:** v2.55.1
+
+**Audit 2026-10-08 (v2.55.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ 4709c657. Rule 606, alt-data provenance, target stance, primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list. v2.54.1 roadmap items that were logged in CHANGELOG but missing from this file are restored at the bottom of their sections.
 
 **Completed 2026-10-07 (v2.55.0):** Rule 606 Retail Options Routing & Execution-Quality Overlay — `sie/rule_606.py`. Preferred columns shipped: `r606_concentration`, `r606_exec_quality`, `r606_boost`, `r606_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/ac7d45952a624d4f29cf05a532342ea2040aa813.
 
@@ -108,6 +110,17 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Treasury GC / Sponsored-Repo Funding-Stress Spillover Overlay**. Scores the general-collateral repo spread and the name's historical beta to dealer funding stress. Distinct from TRACE customer-flow and from the wired primary-credit concession overlay. Soft boost when funding is calm and the name is not a high funding-beta into a confirming narrative; caution when GC widens and the equity has historically sold off with dealer balance-sheet stress. Preferred columns: `repo_gc_spread`, `repo_equity_beta`, `repo_boost`, `repo_reason`.
 
+
+- [ ] **CFTC Mention-Market / Named-Speaker Event-Contract Manipulation Overlay**. Scores open interest share in named-speaker or executive-mention event contracts and a manipulation flag when a thin contract leads the equity tape. Distinct from listed earnings event-contracts, KPI binaries, and prediction-market ETF overlap. Soft boost when mention-market positioning is diversified and agrees with a confirming narrative; caution when a thin contract's OI share spikes ahead of the stock. Preferred columns: `mmk_oi_share`, `mmk_manip_flag`, `mmk_boost`, `mmk_reason`.
+
+- [ ] **Tokenized NMS Venue (TSV) AMM Pool Premium Overlay**. Scores the AMM pool premium of a tokenized NMS wrapper versus the listed share and LP depth, distinct from the already-wired cross-venue tokenized-share basis overlay. Soft boost when a deep pool trades modestly rich into a confirming narrative; caution on a wide premium with thin LP depth. Preferred columns: `tsv_pool_premium_bps`, `tsv_lp_depth`, `tsv_boost`, `tsv_reason`.
+
+- [ ] **Prediction-Market ETF Event-Overlap Beta Overlay**. Scores the name's beta to filed prediction-market ETFs and the overlap between those event books and the issuer's own catalysts. Distinct from mention-market manipulation and from KPI binary vs street consensus. Soft boost when event-overlap beta confirms the narrative and the ETF book is liquid; caution when the equity is a high-beta passenger of an unrelated event book. Preferred columns: `pmetf_beta`, `pmetf_event_overlap`, `pmetf_boost`, `pmetf_reason`.
+
+- [ ] **Cboe KPI Binary vs Street Consensus Divergence Overlay**. Scores the implied print on SEC-regulated Cboe KPI binary options (company metric / delivery / launch contracts listed with Robinhood from October 2026) against the street consensus for the same KPI. Distinct from the listed earnings event-contract vs whisper overlay and from prediction-market ETF event-overlap. Soft boost when the KPI binary and the street agree into a confirming narrative; caution when the binary implies a miss while narrative heat is still positive. Preferred columns: `kpi_implied`, `kpi_street_gap`, `kpi_boost`, `kpi_reason`.
+
+- [ ] **Single-Name Event-Contract Jurisdiction Friction Overlay**. Scores equity-linked prediction-market volume and a flag for security-based-swap classification risk after the June 2026 SEC/CFTC request for comment on event-contract definitions. Distinct from disclosed equity TRS / SBS large-position filings and from mention-market manipulation. Soft boost when listed, SEC-regulated KPI binaries dominate and offshore single-stock event volume is small into a confirming narrative; caution when offshore single-name event volume is large relative to listed options open interest. Preferred columns: `ecj_event_vol`, `ecj_sbs_flag`, `ecj_boost`, `ecj_reason`.
+
 ## Medium Priority
 
 - [ ] **Form 8-K Item 1.05 Cybersecurity Incident Velocity Overlay**. Preferred columns: `cyb_days_since`, `cyb_amend_vel`, `cyb_boost`, `cyb_reason`.
@@ -140,6 +153,13 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Channel Inventory Days & Working-Capital Fill Overlay**. Scores disclosed inventory days and the quarter-over-quarter fill delta from 10-Q working-capital tables. Distinct from the supplier bill-of-lading nowcast and from consumer-spend panels. Soft boost when inventory days are stable or falling into a confirming demand narrative; caution when channel fill rises while reported sell-through is still being described as healthy. Preferred columns: `inv_days`, `inv_fill_delta`, `inv_boost`, `inv_reason`.
 
+
+- [ ] **XBRL Custom-Extension Tag Ratio Overlay**. Scores the share of custom extension tags in the latest 10-K / 10-Q XBRL and the count of tags new this period. Distinct from non-GAAP bridge drift and from staff comment-letter velocity. Soft boost when the extension ratio is stable and low into a confirming narrative; caution when new custom tags jump while reported GAAP lags. Preferred columns: `xbrl_ext_ratio`, `xbrl_new_tags`, `xbrl_boost`, `xbrl_reason`.
+
+- [ ] **Opening Auction Imbalance vs Overnight Narrative Alignment Overlay**. Scores the NYSE/Nasdaq opening-auction imbalance notional and whether it confirms the overnight narrative. Distinct from the overnight / extended-hours return residual overlay. Soft boost when a large opening imbalance agrees with a confirming narrative and the cash open holds; caution when the imbalance fades or opposes the overnight story. Preferred columns: `auc_imbalance_usd`, `auc_narrative_align`, `auc_boost`, `auc_reason`.
+
+- [ ] **FedNow / Same-Day ACH Corporate Receipt Velocity Overlay**. Scores same-day corporate receipt velocity and fail rate on FedNow and same-day ACH as a collections nowcast for payment, payroll, and B2B software names. Distinct from card authorization decline and chargeback velocity. Soft boost when receipt velocity rises and fails stay low into a confirming narrative; caution when fails spike while reported billings are still being described as healthy. Preferred columns: `fnw_receipt_vel`, `fnw_fail_rate`, `fnw_boost`, `fnw_reason`.
+
 ## Long-Term / Nice-to-Have
 
 - [ ] **Class-Action / Multidistrict Litigation Filing Velocity Overlay**. Preferred columns: `lit_new_filings`, `lit_mdl_flag`, `lit_boost`, `lit_reason`.
@@ -163,3 +183,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Contracted Power-Purchase vs Spot Power Spread Overlay**. Scores contracted data-center / industrial PPA price versus spot power and remaining tenor, distinct from the interconnection-queue overlay. Soft boost when a long cheap PPA covers rising load into a confirming narrative; caution when spot power blows out and contracted cover is short. Preferred columns: `ppa_spread`, `ppa_tenor_mo`, `ppa_boost`, `ppa_reason`.
 
 - [ ] **State Incentive Clawback & Jobs-Credit Exposure Overlay**. Scores disclosed state and local incentive agreements, remaining jobs-credit headroom, and clawback exposure if hiring misses the covenant. Distinct from the government-obligation velocity overlay and from job-posting skill-mix. Soft boost when credits are intact and hiring is tracking the covenant into a confirming narrative; caution when a jobs gap opens a clawback window. Preferred columns: `inc_clawback_usd`, `inc_jobs_gap`, `inc_boost`, `inc_reason`.
+
+- [ ] **Water-Rights / Basin Curtailment Exposure Overlay**. Scores disclosed basin curtailment flags and revenue share exposed to junior water rights. Distinct from the data-center interconnection queue and from contracted PPA vs spot power. Soft boost when curtailment risk is low and rights are senior into a confirming narrative; caution when a basin curtailment hits a material revenue share. Preferred columns: `wtr_curtail_flag`, `wtr_rev_share`, `wtr_boost`, `wtr_reason`.
+
+- [ ] **Catastrophe-Bond / ILW Spread Spillover Overlay**. Scores catastrophe-bond and industry-loss-warranty spread widening and new issuance as a reinsurance-capacity shock for carriers and brokers. Distinct from EU ETS pass-through and from private-credit NAV mark-lag. Soft boost when cat spreads are tight and issuance is absorbed into a confirming underwriting narrative; caution when spreads blow out into a crowded equity bid. Preferred columns: `cat_spread`, `cat_issuance`, `cat_boost`, `cat_reason`.
+

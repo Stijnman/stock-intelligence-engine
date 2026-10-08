@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 07, 2026 — v2.55.0 Rule 606 routing*
+*Last updated: October 08, 2026 — v2.55.1 research cycle*
 
 ---
 
@@ -10,12 +10,12 @@
 
 | Component | Status | Version | Last Updated |
 |-----------|--------|---------|--------------|
-| Core Engine | Production | 2.55.0 | 2026-10-07 |
+| Core Engine | Production | 2.55.1 | 2026-10-08 |
 | Competitive Research | Production | 1.0.0 | 2026-09-11 |
 | Pattern Recognition | Production | 1.0.0 | 2026-09-11 |
 | Research Automation | Production | 1.5.0 | 2026-08-15 |
 | Simulation Framework | Production | 1.0.0 | 2026-08-15 |
-| Streamlit UI | Production | 2.55.0 | 2026-10-07 |
+| Streamlit UI | Production | 2.55.1 | 2026-10-08 |
 
 ### Documentation Status
 
@@ -70,13 +70,20 @@
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.55.0 Rule 606 retail options routing overlay
+- **Last Commit**: v2.55.1 research cycle; roadmap sync and five new overlays
 - **Branch**: main
 - **License**: MIT
 
 ---
 
 ## Recent Changes
+
+### v2.55.1 - 2026-10-08
+- Research cycle against main @ 4709c657
+- No open roadmap item retired (none fully wired beyond Rule 606)
+- Restored missing v2.54.1 roadmap entries
+- Added Cboe KPI binary divergence, event-contract jurisdiction friction, opening-auction alignment, FedNow receipt velocity, cat-bond / ILW spillover
+- Version strings synchronized to 2.55.1
 
 ### v2.55.0 - 2026-10-07
 - Rule 606 Retail Options Routing & Execution-Quality Overlay wired (analyzer, CLI, config, dashboard).
@@ -150,4 +157,4 @@
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 07, 2026 — v2.55.0 Rule 606 routing*
+*Last updated: October 08, 2026 — v2.55.1 research cycle*
