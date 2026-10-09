@@ -622,3 +622,12 @@ pytest tests/test_rule_606.py -q
 ## v2.56.0
 
 `tests/test_index_reconstitution.py` covers add versus delete forced-flow direction, the disabled gate, and preferred-column integration (`idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`).
+
+
+Earnings event-contract overlay (`tests/test_earnings_event_contract.py`):
+
+* Rich names (NVDA) price a higher implied beat and a positive whisper gap versus miss names (INTC).
+* Disabled config returns source `disabled` and zero boost.
+* `integrate_earnings_event_contract_to_row` writes `eec_implied_beat`, `eec_whisper_gap`, `eec_boost`, `eec_reason`.
+
+pytest tests/test_earnings_event_contract.py -q

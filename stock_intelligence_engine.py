@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.56.1"
+__version__ = "2.57.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -53,6 +53,7 @@ def main():
     parser.add_argument("--no-alt-data-provenance", action="store_true", help="Disable alternative-data provenance and AI-synthetic contamination overlay")
     parser.add_argument("--no-rule-606", action="store_true", help="Disable Rule 606 retail options routing and execution-quality overlay")
     parser.add_argument("--no-index-reconstitution", action="store_true", help="Disable index reconstitution and forced passive-flow overlay")
+    parser.add_argument("--no-earnings-event-contract", action="store_true", help="Disable listed earnings event-contract vs whisper overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -97,6 +98,7 @@ def main():
         include_alt_data_provenance=not args.no_alt_data_provenance,
         include_rule_606=not args.no_rule_606,
         include_index_reconstitution=not args.no_index_reconstitution,
+        include_earnings_event_contract=not args.no_earnings_event_contract,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -176,6 +178,10 @@ def main():
         from sie.index_reconstitution import detect_index_reconstitution
         sample = detect_index_reconstitution("PLTR")
         print(f"IDX overlay ready source={sample.get('source')} event={sample.get('idx_event')} forced_usd={sample.get('idx_forced_usd')} boost={sample.get('signal_boost')}")
+    if not args.no_earnings_event_contract:
+        from sie.earnings_event_contract import detect_earnings_event_contract
+        sample = detect_earnings_event_contract("NVDA")
+        print(f"EEC overlay ready source={sample.get('source')} implied={sample.get('eec_implied_beat')} gap={sample.get('eec_whisper_gap')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()

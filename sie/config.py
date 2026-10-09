@@ -260,6 +260,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "earnings_event_contract": {
+        "enabled": True,
+        "implied_hot": 0.62,
+        "implied_cold": 0.42,
+        "gap_hot": 0.06,
+        "gap_cold": -0.05,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -358,4 +367,6 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("hiring_skill_mix", {}).update(hiring_skill_mix)
     if index_reconstitution := raw.get("index_reconstitution"):
         cfg.setdefault("index_reconstitution", {}).update(index_reconstitution)
+    if earnings_event_contract := raw.get("earnings_event_contract"):
+        cfg.setdefault("earnings_event_contract", {}).update(earnings_event_contract)
     return cfg

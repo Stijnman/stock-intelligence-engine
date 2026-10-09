@@ -1,5 +1,15 @@
 ## [2.56.1] - 2026-10-09
 
+## v2.57.0 — 2026-10-09
+
+* **Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay** (`sie/earnings_event_contract.py`).
+  Preferred columns: `eec_implied_beat`, `eec_whisper_gap`, `eec_boost`, `eec_reason`.
+  Soft boost when the listed contract prices a beat above whisper into a confirming narrative; caution when the contract implies a miss while narrative heat is still positive.
+  Wired through analyzer (`include_earnings_event_contract`), CLI (`--no-earnings-event-contract`), config (`earnings_event_contract:`), Streamlit preferred columns.
+  Source is a synthetic proxy until a live event-contract book is attached. Distinct from the whisper-number overlay.
+* Dashboard caption and preferred columns updated. Asset: `assets/earnings_event_contract_v2.57.0.svg`.
+
+
 ### Changed
 * Autonomous research & evolution cycle against `main` @ b5034313 (v2.56.0).
 * Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.56.0 index reconstitution overlay. Nothing removed from the roadmap.

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420">
+  <rect width="860" height="420" fill="#0d1117"/>
+  <text x="32" y="42" fill="#e6edf3" font-size="22" font-family="ui-sans-serif">Earnings Event-Contract vs Whisper — v2.57.0</text>
+  <text x="32" y="70" fill="#8b949e" font-size="13" font-family="ui-sans-serif">Implied beat probability vs whisper gap. Synthetic proxy, not a listed quote.</text>
+  <line x1="80" y1="340" x2="800" y2="340" stroke="#30363d"/>
+  <line x1="80" y1="100" x2="80" y2="340" stroke="#30363d"/>
+  <text x="90" y="360" fill="#8b949e" font-size="12" font-family="ui-sans-serif">whisper gap</text>
+  <text x="28" y="200" fill="#8b949e" font-size="12" font-family="ui-sans-serif" transform="rotate(-90 28 200)">implied beat</text>
+  <circle cx="640" cy="140" r="16" fill="#3fb950"/>
+  <text x="662" y="144" fill="#3fb950" font-size="13" font-family="ui-sans-serif">NVDA rich</text>
+  <circle cx="700" cy="160" r="14" fill="#3fb950"/>
+  <text x="720" y="164" fill="#3fb950" font-size="13" font-family="ui-sans-serif">AVGO</text>
+  <circle cx="220" cy="280" r="16" fill="#f85149"/>
+  <text x="242" y="284" fill="#f85149" font-size="13" font-family="ui-sans-serif">INTC miss</text>
+  <circle cx="260" cy="250" r="14" fill="#f85149"/>
+  <text x="280" y="254" fill="#f85149" font-size="13" font-family="ui-sans-serif">PFE</text>
+  <circle cx="430" cy="210" r="10" fill="#d29922"/>
+  <text x="448" y="214" fill="#d29922" font-size="13" font-family="ui-sans-serif">aligned</text>
+  <text x="32" y="400" fill="#8b949e" font-size="12" font-family="ui-sans-serif">Columns: eec_implied_beat · eec_whisper_gap · eec_boost · eec_reason</text>
+</svg>
