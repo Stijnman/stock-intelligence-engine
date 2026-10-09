@@ -1,7 +1,9 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-08  
-**Current version baseline:** v2.56.0
+**Last updated:** 2026-10-09  
+**Current version baseline:** v2.56.1
+
+**Audit 2026-10-09 (v2.56.1):** No open item below is present as a wired overlay (analyzer + CLI + config + dashboard) on `main` @ b5034313. Index reconstitution, Rule 606, alt-data provenance, target stance, primary credit, TRACE, ATM dilution, news materiality, and tokenized basis stay completed and off this list. Nothing removed this cycle.
 
 **Completed 2026-10-08 (v2.56.0):** Index Reconstitution & Forced Passive-Flow Overlay — `sie/index_reconstitution.py`. Preferred columns shipped: `idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/76dd3af848a5126de874e83fb08fbc49690c3587.
 
@@ -121,6 +123,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Single-Name Event-Contract Jurisdiction Friction Overlay**. Scores equity-linked prediction-market volume and a flag for security-based-swap classification risk after the June 2026 SEC/CFTC request for comment on event-contract definitions. Distinct from disclosed equity TRS / SBS large-position filings and from mention-market manipulation. Soft boost when listed, SEC-regulated KPI binaries dominate and offshore single-stock event volume is small into a confirming narrative; caution when offshore single-name event volume is large relative to listed options open interest. Preferred columns: `ecj_event_vol`, `ecj_sbs_flag`, `ecj_boost`, `ecj_reason`.
 
+- [ ] **LULD Band-Stress & Exchange-Halt Resume-Gap Overlay**. Scores limit-up/limit-down band hits and halt minutes, plus the cash gap on resume, as a microstructure stress check against narrative heat. Distinct from opening-auction imbalance and from overnight/extended-hours residual. Motivated by 2026 real-time dashboard practice that treats halt/LULD stress as a separate tape regime from sentiment. Soft boost when a confirming narrative prints without band stress; caution when repeated LULD hits or a halt-resume gap arrive into crowded social heat. Preferred columns: `luld_band_hits`, `luld_halt_min`, `luld_boost`, `luld_reason`.
+
 ## Medium Priority
 
 - [ ] **Form 8-K Item 1.05 Cybersecurity Incident Velocity Overlay**. Preferred columns: `cyb_days_since`, `cyb_amend_vel`, `cyb_boost`, `cyb_reason`.
@@ -160,6 +164,9 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **FedNow / Same-Day ACH Corporate Receipt Velocity Overlay**. Scores same-day corporate receipt velocity and fail rate on FedNow and same-day ACH as a collections nowcast for payment, payroll, and B2B software names. Distinct from card authorization decline and chargeback velocity. Soft boost when receipt velocity rises and fails stay low into a confirming narrative; caution when fails spike while reported billings are still being described as healthy. Preferred columns: `fnw_receipt_vel`, `fnw_fail_rate`, `fnw_boost`, `fnw_reason`.
 
+- [ ] **Delta 40-60 Directional Options Conviction Overlay**. Scores call-share and notional inside the delta 40-60 band (pure directional conviction, not lottery wings), distinct from unusual-options sweep-vs-block and from dealer GEX. Motivated by 2026 true-sentiment and options-flow desks that isolate this band rather than raw put/call volume. Soft boost when delta-band call dominance confirms the narrative; caution when put dominance in the same band fights a hot bid. Preferred columns: `d4060_call_share`, `d4060_notional`, `d4060_boost`, `d4060_reason`.
+- [ ] **Issuer-Paid Research & Sponsored-Coverage Disclosure Velocity Overlay**. Scores the count and recency of issuer-sponsored or paid-for research disclosures versus independent sell-side notes. Distinct from news-authority and from KOL amplification. Soft boost when narrative heat is carried by independent coverage; caution when a spike in sponsored notes is the only support under the narrative. Preferred columns: `ipr_sponsored_n`, `ipr_independent_ratio`, `ipr_boost`, `ipr_reason`.
+
 ## Long-Term / Nice-to-Have
 
 - [ ] **Class-Action / Multidistrict Litigation Filing Velocity Overlay**. Preferred columns: `lit_new_filings`, `lit_mdl_flag`, `lit_boost`, `lit_reason`.
@@ -188,3 +195,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Catastrophe-Bond / ILW Spread Spillover Overlay**. Scores catastrophe-bond and industry-loss-warranty spread widening and new issuance as a reinsurance-capacity shock for carriers and brokers. Distinct from EU ETS pass-through and from private-credit NAV mark-lag. Soft boost when cat spreads are tight and issuance is absorbed into a confirming underwriting narrative; caution when spreads blow out into a crowded equity bid. Preferred columns: `cat_spread`, `cat_issuance`, `cat_boost`, `cat_reason`.
 
+
+- [ ] **CMS IRA Medicare Drug-Price Negotiation List Exposure Overlay**. Scores whether a product sits on the CMS Medicare Drug Price Negotiation list and the revenue share exposed to the negotiated price. Distinct from FDA milestone velocity and from government-obligation velocity. Soft boost when list exposure is immaterial into a confirming narrative; caution when a material franchise is selected or the negotiated price gaps the street model. Preferred columns: `ira_list_flag`, `ira_rev_share`, `ira_boost`, `ira_reason`.

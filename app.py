@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.56.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.56.1.
 
 Alternative-Data Provenance & AI-Synthetic Contamination Overlay +
 Primary Credit Issuance / New-Issue Concession Overlay +

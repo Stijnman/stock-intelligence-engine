@@ -1,3 +1,19 @@
+## [2.56.1] - 2026-10-09
+
+### Changed
+* Autonomous research & evolution cycle against `main` @ b5034313 (v2.56.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard) beyond the v2.56.0 index reconstitution overlay. Nothing removed from the roadmap.
+* Version strings synchronized to **2.56.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **LULD Band-Stress & Exchange-Halt Resume-Gap Overlay** (High Priority) — `luld_band_hits`, `luld_halt_min`, `luld_boost`, `luld_reason`.
+  * **Delta 40-60 Directional Options Conviction Overlay** (Medium Priority) — `d4060_call_share`, `d4060_notional`, `d4060_boost`, `d4060_reason`.
+  * **Issuer-Paid Research & Sponsored-Coverage Disclosure Velocity Overlay** (Medium Priority) — `ipr_sponsored_n`, `ipr_independent_ratio`, `ipr_boost`, `ipr_reason`.
+  * **CMS IRA Medicare Drug-Price Negotiation List Exposure Overlay** (Long-Term) — `ira_list_flag`, `ira_rev_share`, `ira_boost`, `ira_reason`.
+
+---
+
 ## [2.56.0] - 2026-10-08
 
 ### Added

@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.56.0** — October 2026 · Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
+**v2.56.1** — October 2026 · Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + · Secondary Offering / ATM Dilution Velocity Overlay (fully wired) +  Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired through analyzer + CLI + dashboard) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow + KOL + Whisper + News Authority + Earnings Call + CDS + Social Intent + GEX + Digital Footprint + Patent + Estimate Revision + Contagion + Borrow Fee + Consumer Spend + Authenticity + Supply-Chain + FINRA Short + Attention + Regime + Confidence + Thesis + Brief + Honesty + Hiring + EDGAR + 0DTE + IV + Dark Pool + Realtime + Congressional + 13F + Prediction Markets + Insider + Narrative Velocity + Backtesting
 
 ## Features
 
@@ -32,6 +32,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
+* **v2.56.1 (2026-10-09)** : Autonomous research & evolution cycle. Audit of `main` @ b5034313 found no FUTURE-IMPROVEMENTS item fully wired since v2.56.0 index reconstitution overlay. Nothing removed from the roadmap. New roadmap only: LULD band-stress / halt resume-gap, delta 40-60 directional options conviction, issuer-paid research disclosure velocity, CMS IRA drug-price negotiation list exposure. Version bump across package, CLI, dashboard and docs.
 * **v2.56.0 (2026-10-08)** : Fully implemented **Index Reconstitution & Forced Passive-Flow Overlay** (`sie/index_reconstitution.py`). Wired through analyzer (`include_index_reconstitution`), CLI (`--no-index-reconstitution`), config (`index_reconstitution:`), Streamlit preferred columns (`idx_event`, `idx_forced_usd`, `idx_boost`, `idx_reason`). Deterministic synthetic proxy (live S&P / Russell / Nasdaq notice parser reserved). Distinct from the ETF creation/redemption overlay. Removed from FUTURE-IMPROVEMENTS.md High Priority. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/76dd3af848a5126de874e83fb08fbc49690c3587.
 
 ![Index reconstitution forced flow](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/index_reconstitution_v2.56.0.svg)
