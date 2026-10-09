@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-09  
-**Completed 2026-10-09 (v2.57.0):** Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay — `sie/earnings_event_contract.py`. Preferred columns shipped: `eec_implied_beat`, `eec_whisper_gap`, `eec_boost`, `eec_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/PENDING.
+**Completed 2026-10-09 (v2.57.0):** Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay — `sie/earnings_event_contract.py`. Preferred columns shipped: `eec_implied_beat`, `eec_whisper_gap`, `eec_boost`, `eec_reason`. Commit: https://github.com/Stijnman/stock-intelligence-engine/commit/5a6dee85e282ab1357626d754bdc0cb2f5e2ce4e.
 
 **Current version baseline:** v2.57.0
 
