@@ -1,3 +1,12 @@
+# agentic_flow:
+#   enabled: true
+#   share_hot: 0.28
+#   share_cold: 0.08
+#   intensity_hot: 0.62
+#   intensity_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # earnings_event_contract:
 #   enabled: true
 #   implied_hot: 0.62

@@ -53,6 +53,7 @@ from sie.alt_data_provenance import integrate_alt_data_provenance_to_row
 from sie.rule_606 import integrate_rule_606_to_row
 from sie.index_reconstitution import integrate_index_reconstitution_to_row
 from sie.earnings_event_contract import integrate_earnings_event_contract_to_row
+from sie.agentic_flow import integrate_agentic_flow_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -105,6 +106,7 @@ OVERLAYS: list[tuple[str, Callable]] = [
     ("include_rule_606", integrate_rule_606_to_row),
     ("include_index_reconstitution", integrate_index_reconstitution_to_row),
     ("include_earnings_event_contract", integrate_earnings_event_contract_to_row),
+    ("include_agentic_flow", integrate_agentic_flow_to_row),
     ("include_thesis", integrate_thesis_to_row),
     ("include_brief", integrate_brief_to_row),
     ("include_honesty", integrate_honesty_to_row),

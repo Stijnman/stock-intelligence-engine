@@ -1,6 +1,6 @@
 # Repository Status
 
-*Last updated: October 09, 2026 — v2.57.0 research cycle*
+*Last updated: October 10, 2026 — v2.58.0 research cycle*
 
 ---
 
@@ -8,7 +8,7 @@
 
 ### Latest overlay
 
-Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay is wired in v2.57.0 (`sie/earnings_event_contract.py`). Preferred columns: eec_implied_beat, eec_whisper_gap, eec_boost, eec_reason.
+Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay is wired in v2.58.0 (`sie/earnings_event_contract.py`). Preferred columns: eec_implied_beat, eec_whisper_gap, eec_boost, eec_reason.
 
 ### Engine Status
 
@@ -74,7 +74,7 @@ Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay is wired i
 - **Source Code Files**: 10
 - **Test Files**: 5+
 - **Total Lines**: ~15,000
-- **Last Commit**: v2.57.0 research cycle; roadmap sync, four new overlays, no wired item retired
+- **Last Commit**: v2.58.0 research cycle; roadmap sync, four new overlays, no wired item retired
 - **Branch**: main
 - **License**: MIT
 
@@ -82,7 +82,7 @@ Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay is wired i
 
 ## Recent Changes
 
-### v2.57.0 - 2026-10-09
+### v2.58.0 - 2026-10-09
 * Research cycle. Audit of main @ b5034313: no open roadmap item fully wired since index reconstitution. Added LULD halt stress, delta 40-60 options conviction, issuer-paid research velocity, and CMS IRA list exposure to the roadmap.
 
 ### v2.56.0 - 2026-10-08
@@ -169,4 +169,4 @@ Listed Earnings Event-Contract vs Whisper / Street Divergence Overlay is wired i
 
 *Status: PRODUCTION READY*  
 *Maintainer: Stijnman*  
-*Last updated: October 09, 2026 — v2.57.0 research cycle*
+*Last updated: October 10, 2026 — v2.58.0 research cycle*

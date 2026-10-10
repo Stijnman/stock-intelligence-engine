@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.57.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.58.0.
 
 Alternative-Data Provenance & AI-Synthetic Contamination Overlay +
 Primary Credit Issuance / New-Issue Concession Overlay +
@@ -19,7 +19,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.57.1"
+__version__ = "2.58.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -31,7 +31,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Earnings Event-Contract vs Whisper + Index Reconstitution + Rule 606 Routing + Alt-Data Provenance + Target-Specific Stance + Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
+        f"**v{__version__}** — Agentic Brokerage Flow + Earnings Event-Contract vs Whisper + Index Reconstitution + Rule 606 Routing + Alt-Data Provenance + Target-Specific Stance + Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
     )
 
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -48,6 +48,7 @@ def signal_table_fragment():
     df = pd.DataFrame(rows)
     preferred = [
         "ticker", "name", "signal", "score", "rsi", "price",
+        "agt_flow_share", "agt_tool_intensity", "agt_boost", "agt_reason",
         "eec_implied_beat", "eec_whisper_gap", "eec_boost", "eec_reason",
         "idx_event", "idx_forced_usd", "idx_boost", "idx_reason",
         "r606_concentration", "r606_exec_quality", "r606_boost", "r606_reason",
@@ -72,5 +73,5 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Listed Earnings Event-Contract vs Whisper Overlay fully wired. Index reconstitution overlay remains wired. Educational research tool only — not financial advice."
+    f"v{__version__} — Agentic Brokerage Account Flow & Penetration Overlay fully wired. Listed Earnings Event-Contract vs Whisper Overlay remains wired. Index reconstitution overlay remains wired. Educational research tool only — not financial advice."
 )
