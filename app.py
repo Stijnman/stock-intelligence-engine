@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.57.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.57.1.
 
 Alternative-Data Provenance & AI-Synthetic Contamination Overlay +
 Primary Credit Issuance / New-Issue Concession Overlay +
@@ -19,7 +19,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.57.0"
+__version__ = "2.57.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
