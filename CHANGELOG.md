@@ -1,3 +1,20 @@
+## [2.58.1] - 2026-10-11
+
+### Changed
+* Autonomous research & evolution cycle against main (v2.58.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap.
+* Version strings synchronized to **2.58.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Satellite Imagery / Geospatial Physical Activity Overlay** (High Priority) — `sat_fill`, `sat_delta`, `sat_boost`, `sat_reason`.
+  * **AIS Maritime Traffic & Port Congestion Overlay** (High Priority) — `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`.
+  * **Real-Time X/Twitter Cashtag Firehose Velocity with Bot Filter Overlay** (Medium Priority) — `xtw_vel`, `xtw_auth`, `xtw_boost`, `xtw_reason`.
+  * **Multi-Venue Options Flow Sweep Aggregation & Dark-Pool Cross-Confirmation Overlay** (Medium Priority) — `mvo_sweep`, `mvo_dark_conf`, `mvo_boost`, `mvo_reason`.
+  * **European Consolidated Tape Liquidity Visibility Overlay** (Long-Term) — `ect_liq`, `ect_spread`, `ect_boost`, `ect_reason`.
+
+---
+
 ## [2.58.0] - 2026-10-10
 
 ### Added
