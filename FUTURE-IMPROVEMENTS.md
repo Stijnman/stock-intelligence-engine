@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-11
-**Current version baseline:** v2.58.1
+**Current version baseline:** v2.59.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -17,10 +17,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay**.
   Preferred columns: `lec_basis_bps`, `lec_listed_depth`, `lec_boost`, `lec_reason`.
   Soft boost when listed event-contract book depth supports a rich basis versus offshore prediction markets into a confirming narrative; caution on thin listed depth with adverse basis.
-
-- [ ] **Satellite Imagery / Geospatial Physical Activity Overlay**.
-  Preferred columns: `sat_fill`, `sat_delta`, `sat_boost`, `sat_reason`.
-  Soft boost when rising physical activity proxies (parking-lot fill rates, oil-tank levels, night-light intensity, vessel counts) confirm a narrative; caution on sharp activity drops while narrative heat remains elevated. Synthetic proxy (live satellite feed reserved).
 
 - [ ] **AIS Maritime Traffic & Port Congestion Overlay**.
   Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`.
@@ -56,4 +52,5 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 ## Completed (moved to CHANGELOG)
 
+- [x] **Satellite Imagery / Geospatial Physical Activity Overlay** (v2.59.0, 2026-10-11). Preferred columns: `sat_fill`, `sat_delta`, `sat_boost`, `sat_reason`.
 - [x] **Agentic Brokerage Account Flow & Penetration Overlay** (v2.58.0, 2026-10-10). Preferred columns: `agt_flow_share`, `agt_tool_intensity`, `agt_boost`, `agt_reason`.
