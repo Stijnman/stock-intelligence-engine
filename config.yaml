@@ -1,1 +1,135 @@
-PLACEHOLDER_CONFIG
+# agentic_flow:
+#   enabled: true
+#   share_hot: 0.28
+#   share_cold: 0.08
+#   intensity_hot: 0.62
+#   intensity_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# earnings_event_contract:
+#   enabled: true
+#   implied_hot: 0.62
+#   implied_cold: 0.42
+#   gap_hot: 0.06
+#   gap_cold: -0.05
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# index_reconstitution:
+#   enabled: true
+#   forced_hot_usd: 250000000
+#   forced_cold_usd: -200000000
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# rule_606:
+#   enabled: true
+#   concentration_hot: 0.72
+#   concentration_ok: 0.48
+#   exec_quality_hot: 0.64
+#   exec_quality_cold: 0.32
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# alt_data_provenance:
+#   enabled: true
+#   provenance_hot: 0.68
+#   provenance_cold: 0.34
+#   crosscheck_hot: 0.62
+#   crosscheck_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# target_stance:
+#   enabled: true
+#   specificity_hot: 0.62
+#   specificity_cold: 0.32
+#   qa_gap_hot: 0.48
+#   qa_gap_cold: 0.22
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# primary_credit:
+#   enabled: true
+#   concession_tight_bp: 8.0
+#   concession_wide_bp: 22.0
+#   supply_hot: 0.62
+#   supply_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# trace_flow:
+#   enabled: true
+#   flow_hot: 0.35
+#   flow_cold: -0.35
+#   liq_hot: 0.55
+#   liq_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# dilution_atm:
+#   enabled: true
+#   velocity_hot: 0.55
+#   velocity_cold: 0.18
+#   share_delta_hot: 0.04
+#   share_delta_cold: 0.005
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# Stock Intelligence Engine configuration
+# All values are optional; defaults live in sie/config.py.
+#
+# app_store_reviews:
+#   enabled: true
+#   sentiment_hot: 0.58
+#   sentiment_cold: 0.22
+#   complaint_hot: 0.55
+#   complaint_cold: 0.18
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# retail_flow:
+#   enabled: true
+#   imbalance_hot: 0.28
+#   imbalance_cold: -0.28
+#   heat_hot: 0.62
+#   heat_cold: 0.22
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# hiring_skill_mix:
+#   enabled: true
+#   senior_hot: 0.38
+#   senior_cold: 0.14
+#   comp_hot: 0.08
+#   comp_cold: -0.04
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
+# tokenized_basis:
+#   enabled: true
+#   premium_hot_bps: 35.0
+#   discount_hot_bps: -40.0
+#   liq_hot: 0.55
+#   liq_cold: 0.18
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+
+# news_materiality:
+#   enabled: true
+#   score_hot: 0.62
+#   score_mid: 0.40
+#   score_lo: 0.22
+#   adverse_hot: -0.35
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+
+# satellite_imagery:
+#   enabled: true
+#   fill_hot: 0.72
+#   fill_cold: 0.35
+#   delta_hot: 0.12
+#   delta_cold: -0.08
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
