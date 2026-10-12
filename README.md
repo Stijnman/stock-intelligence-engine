@@ -4,9 +4,11 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.59.1** — October 2026 · Autonomous research cycle (roadmap expansion) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
+**v2.60.0** — October 2026 · Autonomous research cycle (roadmap expansion) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
 
 ## Features
+
+- **Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay** — Scores divergence between domain-tuned financial LLM (FinBERT-style) and general LLM baseline. Soft boost on constructive gap into confirming narrative; caution on adverse gap. Fully integrated into analyzer (`include_fin_llm_gap`), CLI (`--no-fin-llm-gap`) and dashboard (`flm_*` columns).
 
 - Real-time signals with narrative intelligence
 - **Satellite Imagery / Geospatial Physical Activity Overlay** — Scores parking-lot fill, oil-tank levels, night-light intensity, vessel counts. Soft boost when rising physical activity confirms a narrative; caution on sharp drops. Fully integrated into analyzer (`include_satellite_imagery`), CLI (`--no-satellite-imagery`) and dashboard (`sat_*` columns).
@@ -25,6 +27,8 @@ streamlit run app.py
 See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
+
+- **v2.60.0 (2026-10-12)**: Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (`sie/fin_llm_gap.py`). Preferred columns: `flm_sent`, `flm_gen_gap`, `flm_boost`, `flm_reason`. Soft boost when domain-tuned model diverges constructively from general baseline into confirming narrative; caution on adverse gap. Wired through analyzer, CLI, config, and Streamlit. Restored core analyzer/CLI after placeholder. Synthetic proxy (live dual-LLM reserved).
 
 - **v2.59.1 (2026-10-12)**: Autonomous research & evolution cycle against main (v2.59.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Always-On AI Agent Research Freshness, SEC Filing Structured Extraction Latency, Cross-Platform Retail Sentiment Divergence, Social Narrative Authenticity Scoring, WebSocket Streaming Latency Attribution). Version strings synchronized to **2.59.1**.
 - **v2.59.0 (2026-10-11)**: Fully implemented **Satellite Imagery / Geospatial Physical Activity Overlay** (`sie/satellite_imagery.py`). Preferred columns: `sat_fill`, `sat_delta`, `sat_boost`, `sat_reason`. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live satellite feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.

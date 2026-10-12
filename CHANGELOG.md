@@ -1,3 +1,19 @@
+## [2.60.0] - 2026-10-12
+
+### Added
+* **Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay** (`sie/fin_llm_gap.py`).
+  Preferred columns: `flm_sent`, `flm_gen_gap`, `flm_boost`, `flm_reason`.
+  Soft +1 when domain-tuned financial LLM sentiment is constructively more positive than a general LLM baseline into a confirming narrative; caution on adverse divergence while narrative heat remains elevated.
+  Wired through analyzer (`include_fin_llm_gap`), CLI (`--no-fin-llm-gap`), config (`fin_llm_gap:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live dual-LLM inference hook reserved.
+
+### Changed
+* Version bump to **2.60.0** across package, CLI, dashboard and docs.
+* Removed completed Domain-Tuned FinLLM Gap item from FUTURE-IMPROVEMENTS.md High Priority.
+* Restored full analyzer.py and CLI from prior production state after placeholder drift.
+
+---
+
 ## [2.59.1] - 2026-10-12
 
 ### Changed

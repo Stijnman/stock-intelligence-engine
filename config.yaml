@@ -133,3 +133,12 @@
 #   delta_cold: -0.08
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+
+# fin_llm_gap:
+#   enabled: true
+#   sent_hot: 0.62
+#   sent_cold: 0.28
+#   gap_hot: 0.18
+#   gap_cold: -0.12
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
