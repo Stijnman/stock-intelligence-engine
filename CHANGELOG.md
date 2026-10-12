@@ -1,3 +1,20 @@
+## [2.59.1] - 2026-10-12
+
+### Changed
+* Autonomous research & evolution cycle against main (v2.59.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap.
+* Version strings synchronized to **2.59.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Always-On AI Agent Research Freshness & Workflow Completion Overlay** (High Priority) — `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`.
+  * **SEC Filing Structured Extraction Latency & Completeness Overlay** (High Priority) — `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
+  * **Cross-Platform Retail Sentiment Divergence (X + Reddit + StockTwits) Overlay** (Medium Priority) — `xrs_div`, `xrs_align`, `xrs_boost`, `xrs_reason`.
+  * **Social Narrative Authenticity Scoring & Cluster Confidence Overlay** (Medium Priority) — `sna_auth`, `sna_cluster_conf`, `sna_boost`, `sna_reason`.
+  * **WebSocket Streaming Latency Attribution vs Polling Overlay** (Long-Term) — `ws_latency_ms`, `poll_delta_ms`, `ws_boost`, `ws_reason`.
+
+---
+
 ## [2.59.0] - 2026-10-11
 
 ### Added
