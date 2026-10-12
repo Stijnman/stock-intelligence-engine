@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-11
-**Current version baseline:** v2.59.0
+**Last updated:** 2026-10-12
+**Current version baseline:** v2.59.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -22,6 +22,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`.
   Soft boost when key-port congestion eases and vessel waiting times fall into a confirming narrative; caution on rising AIS congestion or extended wait hours. Synthetic proxy (live AIS feed reserved).
 
+- [ ] **Always-On AI Agent Research Freshness & Workflow Completion Overlay**.
+  Preferred columns: `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`.
+  Soft boost when always-on agent research (SuperAnalyst-style continuous workflow execution, memo refresh, evidence reconciliation) is fresh and high-completion into a confirming narrative; caution when agent workflows stall or research age spikes while narrative heat remains elevated. Synthetic proxy (live agent-monitor feed reserved).
+
+- [ ] **SEC Filing Structured Extraction Latency & Completeness Overlay**.
+  Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
+  Soft boost when structured 10-K/10-Q/8-K extraction latency is low and completeness high into a confirming narrative; caution on delayed or incomplete agent-facing filing parses. Synthetic proxy (live filing-monitor feed reserved).
+
 ---
 
 ## Medium Priority
@@ -40,6 +48,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `mvo_sweep`, `mvo_dark_conf`, `mvo_boost`, `mvo_reason`.
   Soft boost when multi-venue sweep aggregation is confirmed by dark-pool prints into a confirming narrative; caution on unconfirmed or conflicting flow. Synthetic proxy (live multi-venue feed reserved).
 
+- [ ] **Cross-Platform Retail Sentiment Divergence (X + Reddit + StockTwits) Overlay**.
+  Preferred columns: `xrs_div`, `xrs_align`, `xrs_boost`, `xrs_reason`.
+  Soft boost when cross-platform retail sentiment (X, Reddit, StockTwits) aligns constructively into a confirming narrative; caution on sharp divergence while narrative heat remains elevated. Synthetic proxy (live multi-platform feed reserved).
+
+- [ ] **Social Narrative Authenticity Scoring & Cluster Confidence Overlay**.
+  Preferred columns: `sna_auth`, `sna_cluster_conf`, `sna_boost`, `sna_reason`.
+  Soft boost when high-authenticity narrative clusters (bot-filtered, source-attested) confirm a narrative; caution on low-authenticity or fragmented clusters while narrative heat stays elevated. Synthetic proxy (live authenticity scorer reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -47,6 +63,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **European Consolidated Tape Liquidity Visibility Overlay**.
   Preferred columns: `ect_liq`, `ect_spread`, `ect_boost`, `ect_reason`.
   Soft boost when improved European consolidated-tape visibility and tighter spreads confirm narrative; caution on fragmented liquidity. Synthetic proxy reserved.
+
+- [ ] **WebSocket Streaming Latency Attribution vs Polling Overlay**.
+  Preferred columns: `ws_latency_ms`, `poll_delta_ms`, `ws_boost`, `ws_reason`.
+  Soft boost when WebSocket streaming latency is materially lower than polling and supports real-time narrative confirmation; caution on persistent high streaming latency or fallback to polling. Synthetic proxy (live dashboard telemetry reserved).
 
 ---
 
