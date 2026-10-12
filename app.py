@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.59.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.59.1.
 
 Alternative-Data Provenance & AI-Synthetic Contamination Overlay +
 Primary Credit Issuance / New-Issue Concession Overlay +
@@ -10,7 +10,8 @@ Job-Posting Skill-Mix & Posted-Compensation Inflation Overlay +
 Retail Brokerage Order-Flow Imbalance Overlay +
 App-Store Review Sentiment & Complaint Velocity Overlay +
 Employee Outlook / Glassdoor + Unusual Options Sweep vs Block +
-Rule 10b5-1 / Buyback Overlay + ETF AP Flow.
+Rule 10b5-1 / Buyback Overlay + ETF AP Flow +
+Satellite Imagery / Geospatial Physical Activity Overlay.
 """
 from __future__ import annotations
 
@@ -19,7 +20,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.59.0"
+__version__ = "2.59.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
