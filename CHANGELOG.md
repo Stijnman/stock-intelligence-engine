@@ -1,3 +1,18 @@
+## [2.61.0] - 2026-10-13
+
+### Added
+* **AIS Maritime Traffic & Port Congestion Overlay** (`sie/ais_maritime.py`).
+  Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`.
+  Soft +1 when key-port congestion eases and vessel waiting times fall into a confirming narrative; caution on rising AIS congestion or extended wait hours while narrative heat remains elevated.
+  Wired through analyzer (`include_ais_maritime`), CLI (`--no-ais-maritime`), config (`ais_maritime:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live AIS feed reserved.
+
+### Changed
+* Version bump to **2.61.0** across package, CLI, dashboard and docs.
+* Removed completed AIS Maritime item from FUTURE-IMPROVEMENTS.md High Priority.
+
+---
+
 ## [2.60.0] - 2026-10-12
 
 ### Added

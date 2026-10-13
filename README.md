@@ -4,9 +4,11 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.60.0** — October 2026 · Autonomous research cycle (roadmap expansion) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
+**v2.61.0** — October 2026 · AIS Maritime Traffic & Port Congestion Overlay (fully wired) + Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (fully wired) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
 
 ## Features
+
+- **AIS Maritime Traffic & Port Congestion Overlay** — Scores key-port congestion and vessel waiting times from AIS maritime traffic proxies. Soft boost when congestion eases and waiting times fall into a confirming narrative; caution on rising congestion or extended wait hours. Fully integrated into analyzer (`include_ais_maritime`), CLI (`--no-ais-maritime`) and dashboard (`ais_*` columns).
 
 - **Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay** — Scores divergence between domain-tuned financial LLM (FinBERT-style) and general LLM baseline. Soft boost on constructive gap into confirming narrative; caution on adverse gap. Fully integrated into analyzer (`include_fin_llm_gap`), CLI (`--no-fin-llm-gap`) and dashboard (`flm_*` columns).
 
@@ -27,6 +29,8 @@ streamlit run app.py
 See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
+
+- **v2.61.0 (2026-10-13)**: Fully implemented **AIS Maritime Traffic & Port Congestion Overlay** (`sie/ais_maritime.py`). Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`. Soft boost when key-port congestion eases and vessel waiting times fall into a confirming narrative; caution on rising congestion or extended waits. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live AIS feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
 
 - **v2.60.0 (2026-10-12)**: Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (`sie/fin_llm_gap.py`). Preferred columns: `flm_sent`, `flm_gen_gap`, `flm_boost`, `flm_reason`. Soft boost when domain-tuned model diverges constructively from general baseline into confirming narrative; caution on adverse gap. Wired through analyzer, CLI, config, and Streamlit. Restored core analyzer/CLI after placeholder. Synthetic proxy (live dual-LLM reserved).
 

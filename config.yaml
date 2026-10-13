@@ -142,3 +142,12 @@
 #   gap_cold: -0.12
 #   narrative_hot: 1.4
 #   min_confidence: 0.40
+
+# ais_maritime:
+#   enabled: true
+#   cong_hot: 0.72
+#   cong_cold: 0.32
+#   wait_hot: 48.0
+#   wait_cold: 12.0
+#   narrative_hot: 1.4
+#   min_confidence: 0.40

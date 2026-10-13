@@ -55,6 +55,7 @@ from sie.index_reconstitution import integrate_index_reconstitution_to_row
 from sie.earnings_event_contract import integrate_earnings_event_contract_to_row
 from sie.agentic_flow import integrate_agentic_flow_to_row
 from sie.fin_llm_gap import integrate_fin_llm_gap_to_row
+from sie.ais_maritime import integrate_ais_maritime_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -109,6 +110,7 @@ OVERLAYS: list[tuple[str, Callable]] = [
     ("include_earnings_event_contract", integrate_earnings_event_contract_to_row),
     ("include_agentic_flow", integrate_agentic_flow_to_row),
     ("include_fin_llm_gap", integrate_fin_llm_gap_to_row),
+    ("include_ais_maritime", integrate_ais_maritime_to_row),
     ("include_thesis", integrate_thesis_to_row),
     ("include_brief", integrate_brief_to_row),
     ("include_honesty", integrate_honesty_to_row),
