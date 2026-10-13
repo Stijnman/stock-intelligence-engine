@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.60.0"
+__version__ = "2.61.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -56,6 +56,7 @@ def main():
     parser.add_argument("--no-earnings-event-contract", action="store_true", help="Disable listed earnings event-contract vs whisper overlay")
     parser.add_argument("--no-agentic-flow", action="store_true", help="Disable agentic brokerage account flow & penetration overlay")
     parser.add_argument("--no-fin-llm-gap", action="store_true", help="Disable domain-tuned financial LLM vs general LLM sentiment gap overlay")
+    parser.add_argument("--no-ais-maritime", action="store_true", help="Disable AIS maritime traffic & port congestion overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -103,6 +104,7 @@ def main():
         include_earnings_event_contract=not args.no_earnings_event_contract,
         include_agentic_flow=not args.no_agentic_flow,
         include_fin_llm_gap=not args.no_fin_llm_gap,
+        include_ais_maritime=not args.no_ais_maritime,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -190,6 +192,14 @@ def main():
         from sie.agentic_flow import detect_agentic_flow
         sample = detect_agentic_flow("NVDA")
         print(f"AGT overlay ready source={sample.get('source')} share={sample.get('agt_flow_share')} intensity={sample.get('agt_tool_intensity')} boost={sample.get('signal_boost')}")
+    if not args.no_fin_llm_gap:
+        from sie.fin_llm_gap import detect_fin_llm_gap
+        sample = detect_fin_llm_gap("NVDA")
+        print(f"FLM overlay ready source={sample.get('source')} sent={sample.get('flm_sent')} gap={sample.get('flm_gen_gap')} boost={sample.get('signal_boost')}")
+    if not args.no_ais_maritime:
+        from sie.ais_maritime import detect_ais_maritime
+        sample = detect_ais_maritime("AMZN")
+        print(f"AIS overlay ready source={sample.get('source')} cong={sample.get('ais_congestion')} wait={sample.get('ais_wait_hrs')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
