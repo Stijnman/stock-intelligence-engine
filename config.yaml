@@ -1,3 +1,12 @@
+# agent_research_freshness:
+#   enabled: true
+#   fresh_hot: 300.0
+#   fresh_cold: 1800.0
+#   workflow_hot: 0.85
+#   workflow_cold: 0.45
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # agentic_flow:
 #   enabled: true
 #   share_hot: 0.28
