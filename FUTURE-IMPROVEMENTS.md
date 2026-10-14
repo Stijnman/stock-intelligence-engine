@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-14
-**Current version baseline:** v2.61.1
+**Current version baseline:** v2.62.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -13,10 +13,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay**.
   Preferred columns: `lec_basis_bps`, `lec_listed_depth`, `lec_boost`, `lec_reason`.
   Soft boost when listed event-contract book depth supports a rich basis versus offshore prediction markets into a confirming narrative; caution on thin listed depth with adverse basis.
-
-- [ ] **Always-On AI Agent Research Freshness & Workflow Completion Overlay**.
-  Preferred columns: `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`.
-  Soft boost when always-on agent research (SuperAnalyst-style continuous workflow execution, memo refresh, evidence reconciliation) is fresh and high-completion into a confirming narrative; caution when agent workflows stall or research age spikes while narrative heat remains elevated. Synthetic proxy (live agent-monitor feed reserved).
 
 - [ ] **SEC Filing Structured Extraction Latency & Completeness Overlay**.
   Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
@@ -83,6 +79,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Always-On AI Agent Research Freshness & Workflow Completion Overlay** (v2.62.0, 2026-10-14). Preferred columns: `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`.
 
 - [x] **AIS Maritime Traffic & Port Congestion Overlay** (v2.61.0, 2026-10-13). Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`.
 - [x] **Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay** (v2.60.0, 2026-10-12). Preferred columns: `flm_sent`, `flm_gen_gap`, `flm_boost`, `flm_reason`.
