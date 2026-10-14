@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.61.1"
+__version__ = "2.62.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -57,6 +57,7 @@ def main():
     parser.add_argument("--no-agentic-flow", action="store_true", help="Disable agentic brokerage account flow & penetration overlay")
     parser.add_argument("--no-fin-llm-gap", action="store_true", help="Disable domain-tuned financial LLM vs general LLM sentiment gap overlay")
     parser.add_argument("--no-ais-maritime", action="store_true", help="Disable AIS maritime traffic & port congestion overlay")
+    parser.add_argument("--no-agent-research-freshness", action="store_true", help="Disable always-on AI agent research freshness & workflow completion overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -105,6 +106,7 @@ def main():
         include_agentic_flow=not args.no_agentic_flow,
         include_fin_llm_gap=not args.no_fin_llm_gap,
         include_ais_maritime=not args.no_ais_maritime,
+        include_agent_research_freshness=not args.no_agent_research_freshness,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -200,6 +202,10 @@ def main():
         from sie.ais_maritime import detect_ais_maritime
         sample = detect_ais_maritime("AMZN")
         print(f"AIS overlay ready source={sample.get('source')} cong={sample.get('ais_congestion')} wait={sample.get('ais_wait_hrs')} boost={sample.get('signal_boost')}")
+    if not args.no_agent_research_freshness:
+        from sie.agent_research_freshness import detect_agent_research_freshness
+        sample = detect_agent_research_freshness("NVDA")
+        print(f"AGT freshness overlay ready source={sample.get('source')} fresh={sample.get('agt_fresh_s')} workflow={sample.get('agt_workflow_pct')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
