@@ -4,7 +4,7 @@
 **Confirm with technicals.**  
 **Explain every signal.**
 
-**v2.61.0** — October 2026 · AIS Maritime Traffic & Port Congestion Overlay (fully wired) + Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (fully wired) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
+**v2.61.1** — October 2026 · Autonomous research cycle (no roadmap cleanups) + new Agentic Narrative Contagion, RAG Earnings Guidance Novelty, Polymarket vs Options Basis, Narrative Gravity, and Streamlit Fragment Refresh overlays added to roadmap. AIS Maritime Traffic & Port Congestion Overlay (fully wired) + Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (fully wired) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
 
 ## Features
 
@@ -29,6 +29,8 @@ streamlit run app.py
 See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
+
+- **v2.61.1 (2026-10-14)**: Autonomous research & evolution cycle against main (v2.61.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Agentic Narrative Contagion Velocity, RAG-Extracted Earnings Guidance Novelty & Hedge Density, Prediction-Market vs Options-Implied Probability Basis, Narrative Gravity Divergence from Fundamental Valuation, Streamlit Fragment Refresh Health & Staleness Attribution). Version strings synchronized to **2.61.1**.
 
 - **v2.61.0 (2026-10-13)**: Fully implemented **AIS Maritime Traffic & Port Congestion Overlay** (`sie/ais_maritime.py`). Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`. Soft boost when key-port congestion eases and vessel waiting times fall into a confirming narrative; caution on rising congestion or extended waits. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live AIS feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
 

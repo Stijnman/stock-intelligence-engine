@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.61.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.61.1.
 
 AIS Maritime Traffic & Port Congestion Overlay +
 Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay +
@@ -23,7 +23,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.61.0"
+__version__ = "2.61.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

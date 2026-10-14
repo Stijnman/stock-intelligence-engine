@@ -1,3 +1,20 @@
+## [2.61.1] - 2026-10-14
+
+### Changed
+* Autonomous research & evolution cycle against main (v2.61.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap.
+* Version strings synchronized to **2.61.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Agentic Narrative Contagion Velocity Overlay** (High Priority) — `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
+  * **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay** (High Priority) — `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
+  * **Prediction-Market (Polymarket) vs Options-Implied Probability Basis Overlay** (Medium Priority) — `pmo_basis_bps`, `pmo_poly_prob`, `pmo_boost`, `pmo_reason`.
+  * **Narrative Gravity Divergence from Fundamental Valuation Overlay** (Medium Priority) — `ngd_gravity`, `ngd_fund_gap`, `ngd_boost`, `ngd_reason`.
+  * **Streamlit Fragment Refresh Health & Staleness Attribution Overlay** (Long-Term) — `sfr_age_s`, `sfr_fragment_ok`, `sfr_boost`, `sfr_reason`.
+
+---
+
 ## [2.61.0] - 2026-10-13
 
 ### Added

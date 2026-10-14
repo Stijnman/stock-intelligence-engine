@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-13
-**Current version baseline:** v2.61.0
+**Last updated:** 2026-10-14
+**Current version baseline:** v2.61.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -21,6 +21,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **SEC Filing Structured Extraction Latency & Completeness Overlay**.
   Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
   Soft boost when structured 10-K/10-Q/8-K extraction latency is low and completeness high into a confirming narrative; caution on delayed or incomplete agent-facing filing parses. Synthetic proxy (live filing-monitor feed reserved).
+
+- [ ] **Agentic Narrative Contagion Velocity Overlay**.
+  Preferred columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
+  Soft boost when high-velocity narrative propagation through autonomous AI agents (agent-to-agent contagion, generative memo cascades) confirms a narrative into technical strength; caution when agent-driven contagion collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live agent-network monitor reserved).
+
+- [ ] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay**.
+  Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
+  Soft boost when RAG-grounded extraction of earnings-call transcripts surfaces high-novelty guidance language with low hedge density into a confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat stays elevated. Synthetic proxy (live transcript RAG reserved).
 
 ---
 
@@ -48,6 +56,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `sna_auth`, `sna_cluster_conf`, `sna_boost`, `sna_reason`.
   Soft boost when high-authenticity narrative clusters (bot-filtered, source-attested) confirm a narrative; caution on low-authenticity or fragmented clusters while narrative heat stays elevated. Synthetic proxy (live authenticity scorer reserved).
 
+- [ ] **Prediction-Market (Polymarket) vs Options-Implied Probability Basis Overlay**.
+  Preferred columns: `pmo_basis_bps`, `pmo_poly_prob`, `pmo_boost`, `pmo_reason`.
+  Soft boost when Polymarket (or equivalent real-money prediction market) implied probability shows a rich constructive basis versus options-implied probability into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Synthetic proxy (live Polymarket + options feed reserved).
+
+- [ ] **Narrative Gravity Divergence from Fundamental Valuation Overlay**.
+  Preferred columns: `ngd_gravity`, `ngd_fund_gap`, `ngd_boost`, `ngd_reason`.
+  Soft boost when measured narrative gravity (viral story pull on price) remains constructively aligned with or below fundamental valuation anchors into a confirming narrative; caution when narrative gravity sharply diverges from fundamentals while heat stays elevated. Synthetic proxy (live narrative-gravity scorer reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -59,6 +75,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **WebSocket Streaming Latency Attribution vs Polling Overlay**.
   Preferred columns: `ws_latency_ms`, `poll_delta_ms`, `ws_boost`, `ws_reason`.
   Soft boost when WebSocket streaming latency is materially lower than polling and supports real-time narrative confirmation; caution on persistent high streaming latency or fallback to polling. Synthetic proxy (live dashboard telemetry reserved).
+
+- [ ] **Streamlit Fragment Refresh Health & Staleness Attribution Overlay**.
+  Preferred columns: `sfr_age_s`, `sfr_fragment_ok`, `sfr_boost`, `sfr_reason`.
+  Soft boost when Streamlit `st.fragment` incremental refresh cycles remain healthy and low-staleness for live market panels; caution on fragment failures, excessive age, or fallback to full-app reruns. Synthetic proxy (live dashboard telemetry reserved).
 
 ---
 
