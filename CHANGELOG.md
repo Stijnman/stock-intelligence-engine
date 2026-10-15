@@ -1,78 +1,41 @@
-## [2.63.0] - 2026-10-15
+# Changelog
 
-### Added
-* **Multi-Agent Debate Consensus Strength Overlay** (`sie/multi_agent_debate.py`).
-  Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
-  Soft +1 when specialized multi-agent debate (fundamental, narrative, options-flow agents) reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated.
-  Wired through analyzer (`include_multi_agent_debate`), CLI (`--no-multi-agent-debate`), config (`multi_agent_debate:`), Streamlit preferred columns.
-  Deterministic synthetic proxy; live multi-agent orchestrator reserved.
+## v2.63.0 (2026-10-15)
 
-### Changed
-* Version bump to **2.63.0** across package, CLI, dashboard and docs.
-* Removed completed Multi-Agent Debate Consensus Strength item from FUTURE-IMPROVEMENTS.md High Priority.
+- Fully implemented **Multi-Agent Debate Consensus Strength Overlay** (`sie/multi_agent_debate.py`). Columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`. Soft boost when specialized multi-agent debate reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live multi-agent orchestrator reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Asset: [multi_agent_debate_v2.63.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/multi_agent_debate_v2.63.0.svg).
 
----
+## v2.62.1 (2026-10-15)
 
-## [2.62.1] - 2026-10-15
+- Autonomous research & evolution cycle against main (v2.62.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Multi-Agent Debate Consensus Strength, Live Macro Event Narrative Spillover Velocity, Cross-Exchange Tokenized Equity Order-Book Depth, Streamlit Session-State Persistence & Crash Recovery, Earnings Call Speaker Sentiment Divergence). Version strings synchronized to 2.62.1.
 
-### Changed
-* Autonomous research & evolution cycle against main (v2.62.0).
-* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap.
-* Version strings synchronized to **2.62.1** across package, CLI, dashboard and docs.
+## v2.62.0 (2026-10-14)
 
-### Added
-* Roadmap only (not yet implemented):
-  * **Multi-Agent Debate Consensus Strength Overlay** (High Priority) — `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
-  * **Live Macro Event Narrative Spillover Velocity Overlay** (Medium Priority) — `lms_spillover`, `lms_macro_align`, `lms_boost`, `lms_reason`.
-  * **Cross-Exchange Tokenized Equity Order-Book Depth Overlay** (Medium Priority) — `cto_depth`, `cto_basis_bps`, `cto_boost`, `cto_reason`.
-  * **Streamlit Session-State Persistence & Crash Recovery Overlay** (Long-Term) — `ssp_persist_ok`, `ssp_recovery_ms`, `ssp_boost`, `ssp_reason`.
-  * **Earnings Call Speaker Sentiment Divergence Overlay** (Long-Term) — `ecs_div`, `ecs_ceo_tone`, `ecs_boost`, `ecs_reason`.
+- Fully implemented **Always-On AI Agent Research Freshness & Workflow Completion Overlay** (`sie/agent_research_freshness.py`). Columns: `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`. Soft boost when always-on agent research is fresh and high workflow completion into a confirming narrative; caution when agent workflows stall or research age spikes. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live agent-monitor feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
 
----
+## v2.61.1 (2026-10-14)
 
-## [2.62.0] - 2026-10-14
+- Autonomous research & evolution cycle against main (v2.61.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired. Added five overlays to FUTURE-IMPROVEMENTS.md (Agentic Narrative Contagion Velocity, RAG-Extracted Earnings Guidance Novelty & Hedge Density, Prediction-Market vs Options-Implied Probability Basis, Narrative Gravity Divergence from Fundamental Valuation, Streamlit Fragment Refresh Health & Staleness Attribution). Version strings synchronized to 2.61.1.
 
-### Added
-* **Always-On AI Agent Research Freshness & Workflow Completion Overlay** (`sie/agent_research_freshness.py`).
-  Preferred columns: `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`.
-  Soft +1 when always-on agent research is fresh and high workflow completion into a confirming narrative; caution when agent workflows stall or research age spikes while narrative heat remains elevated.
-  Wired through analyzer (`include_agent_research_freshness`), CLI (`--no-agent-research-freshness`), config (`agent_research_freshness:`), Streamlit preferred columns.
-  Deterministic synthetic proxy; live agent-monitor feed reserved.
+## v2.61.0 (2026-10-13)
 
-### Changed
-* Version bump to **2.62.0** across package, CLI, dashboard and docs.
-* Removed completed Always-On AI Agent Research Freshness item from FUTURE-IMPROVEMENTS.md High Priority.
+- Fully implemented **AIS Maritime Traffic & Port Congestion Overlay** (`sie/ais_maritime.py`). Columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`. Soft boost when key-port congestion eases and vessel waiting times fall into a confirming narrative. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live AIS feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+## v2.60.0 (2026-10-12)
+
+- Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (`sie/fin_llm_gap.py`). Columns: `flm_sent`, `flm_gen_gap`, `flm_boost`, `flm_reason`. Soft boost when domain-tuned model diverges constructively from general baseline. Wired through analyzer, CLI, config, and Streamlit. Restored core analyzer/CLI after placeholder. Synthetic proxy (live dual-LLM reserved).
+
+## v2.59.1 (2026-10-12)
+
+- Autonomous research & evolution cycle against main (v2.59.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired. Added five overlays to FUTURE-IMPROVEMENTS.md (Always-On AI Agent Research Freshness, SEC Filing Structured Extraction Latency, Cross-Platform Retail Sentiment Divergence, Social Narrative Authenticity Scoring, WebSocket Streaming Latency Attribution). Version strings synchronized to 2.59.1.
+
+## v2.59.0 (2026-10-11)
+
+- Fully implemented **Satellite Imagery / Geospatial Physical Activity Overlay** (`sie/satellite_imagery.py`). Columns: `sat_fill`, `sat_delta`, `sat_boost`, `sat_reason`. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live satellite feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+
+## v2.58.0 (2026-10-10)
+
+- Fully implemented **Agentic Brokerage Account Flow & Penetration Overlay** (`sie/agentic_flow.py`). Columns: `agt_flow_share`, `agt_tool_intensity`, `agt_boost`, `agt_reason`. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live brokerage agent-flow feed reserved).
 
 ---
 
-## [2.61.1] - 2026-10-14
-
-### Changed
-* Autonomous research & evolution cycle against main (v2.61.0).
-* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap.
-* Version strings synchronized to **2.61.1** across package, CLI, dashboard and docs.
-
-### Added
-* Roadmap only (not yet implemented):
-  * **Agentic Narrative Contagion Velocity Overlay** (High Priority) — `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
-  * **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay** (High Priority) — `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
-  * **Prediction-Market (Polymarket) vs Options-Implied Probability Basis Overlay** (Medium Priority) — `pmo_basis_bps`, `pmo_poly_prob`, `pmo_boost`, `pmo_reason`.
-  * **Narrative Gravity Divergence from Fundamental Valuation Overlay** (Medium Priority) — `ngd_gravity`, `ngd_fund_gap`, `ngd_boost`, `ngd_reason`.
-  * **Streamlit Fragment Refresh Health & Staleness Attribution Overlay** (Long-Term) — `sfr_age_s`, `sfr_fragment_ok`, `sfr_boost`, `sfr_reason`.
-
----
-
-## [2.61.0] - 2026-10-13
-
-### Added
-* **AIS Maritime Traffic & Port Congestion Overlay** (`sie/ais_maritime.py`).
-  Preferred columns: `ais_congestion`, `ais_wait_hrs`, `ais_boost`, `ais_reason`.
-  Soft +1 when key-port congestion eases and vessel waiting times fall into a confirming narrative; caution on rising AIS congestion or extended wait hours while narrative heat remains elevated.
-  Wired through analyzer (`include_ais_maritime`), CLI (`--no-ais-maritime`), config (`ais_maritime:`), Streamlit preferred columns.
-  Deterministic synthetic proxy; live AIS feed reserved.
-
-### Changed
-* Version bump to **2.61.0** across package, CLI, dashboard and docs.
-* Removed completed AIS Maritime item from FUTURE-IMPROVEMENTS.md High Priority.
-
----
+Earlier history predates this changelog file; see git history for versions before v2.58.0.
