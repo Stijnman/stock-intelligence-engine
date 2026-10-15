@@ -6,6 +6,8 @@
 
 **v2.63.0** — October 2026 · Multi-Agent Debate Consensus Strength Overlay (fully wired) + Always-On AI Agent Research Freshness & Workflow Completion Overlay (fully wired) + AIS Maritime Traffic & Port Congestion Overlay (fully wired) + Domain-Tuned Financial LLM vs General LLM Sentiment Gap Overlay (fully wired) + Satellite Imagery / Geospatial Physical Activity Overlay (fully wired) + Agentic Brokerage Account Flow & Penetration Overlay (fully wired) + Index Reconstitution & Forced Passive-Flow Overlay (fully wired) + Rule 606 Retail Options Routing Overlay (fully wired) + Alternative-Data Provenance Overlay (fully wired) + Secondary Offering / ATM Dilution Velocity Overlay (fully wired) + Cross-Venue Tokenized-Share Basis / On-Chain Equity Premium Overlay (fully wired) + Job-Posting Skill-Mix + Retail Brokerage Order-Flow + App-Store Review Sentiment + Employee Outlook + Unusual Options + Rule 10b5-1 / Buyback + ETF AP Flow.
 
+![Multi-Agent Debate Overlay](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/multi_agent_debate_v2.63.0.svg)
+
 ## Features
 
 - **Multi-Agent Debate Consensus Strength Overlay** — Scores consensus strength and disagreement among specialized multi-agent debates (fundamental, narrative, options-flow agents). Soft boost when high consensus confirms a narrative; caution on high disagreement or rapid flip-flops. Fully integrated into analyzer (`include_multi_agent_debate`), CLI (`--no-multi-agent-debate`) and dashboard (`mad_*` columns).
@@ -34,7 +36,7 @@ See config.yaml for watchlist and overlay toggles.
 
 ## Recent Edits & Version History
 
-- **v2.63.0 (2026-10-15)**: Fully implemented **Multi-Agent Debate Consensus Strength Overlay** (`sie/multi_agent_debate.py`). Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`. Soft boost when specialized multi-agent debate reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live multi-agent orchestrator reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority.
+- **v2.63.0 (2026-10-15)**: Fully implemented **Multi-Agent Debate Consensus Strength Overlay** (`sie/multi_agent_debate.py`). Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`. Soft boost when specialized multi-agent debate reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live multi-agent orchestrator reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Asset: [multi_agent_debate_v2.63.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/multi_agent_debate_v2.63.0.svg).
 
 - **v2.62.1 (2026-10-15)**: Autonomous research & evolution cycle against main (v2.62.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Multi-Agent Debate Consensus Strength, Live Macro Event Narrative Spillover Velocity, Cross-Exchange Tokenized Equity Order-Book Depth, Streamlit Session-State Persistence & Crash Recovery, Earnings Call Speaker Sentiment Divergence). Version strings synchronized to **2.62.1**.
 
