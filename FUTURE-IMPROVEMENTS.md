@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-15
-**Current version baseline:** v2.62.1
+**Current version baseline:** v2.63.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -25,10 +25,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay**.
   Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
   Soft boost when RAG-grounded extraction of earnings-call transcripts surfaces high-novelty guidance language with low hedge density into a confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat stays elevated. Synthetic proxy (live transcript RAG reserved).
-
-- [ ] **Multi-Agent Debate Consensus Strength Overlay**.
-  Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
-  Soft boost when specialized multi-agent debate (fundamental, narrative, options-flow agents) reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Synthetic proxy (live multi-agent orchestrator reserved).
 
 ---
 
@@ -99,6 +95,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Multi-Agent Debate Consensus Strength Overlay** (v2.63.0, 2026-10-15). Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
 
 - [x] **Always-On AI Agent Research Freshness & Workflow Completion Overlay** (v2.62.0, 2026-10-14). Preferred columns: `agt_fresh_s`, `agt_workflow_pct`, `agt_boost`, `agt_reason`.
 
