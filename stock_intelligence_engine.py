@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.62.1"
+__version__ = "2.63.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -58,6 +58,7 @@ def main():
     parser.add_argument("--no-fin-llm-gap", action="store_true", help="Disable domain-tuned financial LLM vs general LLM sentiment gap overlay")
     parser.add_argument("--no-ais-maritime", action="store_true", help="Disable AIS maritime traffic & port congestion overlay")
     parser.add_argument("--no-agent-research-freshness", action="store_true", help="Disable always-on AI agent research freshness & workflow completion overlay")
+    parser.add_argument("--no-multi-agent-debate", action="store_true", help="Disable multi-agent debate consensus strength overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -107,6 +108,7 @@ def main():
         include_fin_llm_gap=not args.no_fin_llm_gap,
         include_ais_maritime=not args.no_ais_maritime,
         include_agent_research_freshness=not args.no_agent_research_freshness,
+        include_multi_agent_debate=not args.no_multi_agent_debate,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -206,6 +208,10 @@ def main():
         from sie.agent_research_freshness import detect_agent_research_freshness
         sample = detect_agent_research_freshness("NVDA")
         print(f"AGT freshness overlay ready source={sample.get('source')} fresh={sample.get('agt_fresh_s')} workflow={sample.get('agt_workflow_pct')} boost={sample.get('signal_boost')}")
+    if not args.no_multi_agent_debate:
+        from sie.multi_agent_debate import detect_multi_agent_debate
+        sample = detect_multi_agent_debate("NVDA")
+        print(f"MAD overlay ready source={sample.get('source')} consensus={sample.get('mad_consensus')} disagreement={sample.get('mad_disagreement')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
