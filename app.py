@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.62.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.62.1.
 
 Always-On AI Agent Research Freshness & Workflow Completion Overlay +
 AIS Maritime Traffic & Port Congestion Overlay +
@@ -24,7 +24,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.62.0"
+__version__ = "2.62.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

@@ -1,3 +1,20 @@
+## [2.62.1] - 2026-10-15
+
+### Changed
+* Autonomous research & evolution cycle against main (v2.62.0).
+* Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap.
+* Version strings synchronized to **2.62.1** across package, CLI, dashboard and docs.
+
+### Added
+* Roadmap only (not yet implemented):
+  * **Multi-Agent Debate Consensus Strength Overlay** (High Priority) — `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
+  * **Live Macro Event Narrative Spillover Velocity Overlay** (Medium Priority) — `lms_spillover`, `lms_macro_align`, `lms_boost`, `lms_reason`.
+  * **Cross-Exchange Tokenized Equity Order-Book Depth Overlay** (Medium Priority) — `cto_depth`, `cto_basis_bps`, `cto_boost`, `cto_reason`.
+  * **Streamlit Session-State Persistence & Crash Recovery Overlay** (Long-Term) — `ssp_persist_ok`, `ssp_recovery_ms`, `ssp_boost`, `ssp_reason`.
+  * **Earnings Call Speaker Sentiment Divergence Overlay** (Long-Term) — `ecs_div`, `ecs_ceo_tone`, `ecs_boost`, `ecs_reason`.
+
+---
+
 ## [2.62.0] - 2026-10-14
 
 ### Added

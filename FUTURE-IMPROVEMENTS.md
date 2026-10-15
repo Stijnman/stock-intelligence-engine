@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-14
-**Current version baseline:** v2.62.0
+**Last updated:** 2026-10-15
+**Current version baseline:** v2.62.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -25,6 +25,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay**.
   Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
   Soft boost when RAG-grounded extraction of earnings-call transcripts surfaces high-novelty guidance language with low hedge density into a confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat stays elevated. Synthetic proxy (live transcript RAG reserved).
+
+- [ ] **Multi-Agent Debate Consensus Strength Overlay**.
+  Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
+  Soft boost when specialized multi-agent debate (fundamental, narrative, options-flow agents) reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Synthetic proxy (live multi-agent orchestrator reserved).
 
 ---
 
@@ -60,6 +64,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `ngd_gravity`, `ngd_fund_gap`, `ngd_boost`, `ngd_reason`.
   Soft boost when measured narrative gravity (viral story pull on price) remains constructively aligned with or below fundamental valuation anchors into a confirming narrative; caution when narrative gravity sharply diverges from fundamentals while heat stays elevated. Synthetic proxy (live narrative-gravity scorer reserved).
 
+- [ ] **Live Macro Event Narrative Spillover Velocity Overlay**.
+  Preferred columns: `lms_spillover`, `lms_macro_align`, `lms_boost`, `lms_reason`.
+  Soft boost when live macro events (Fed speakers, CPI, geopolitics) produce constructive narrative spillover into the ticker; caution on adverse or lagged spillover while narrative heat stays elevated. Synthetic proxy (live macro-event monitor reserved).
+
+- [ ] **Cross-Exchange Tokenized Equity Order-Book Depth Overlay**.
+  Preferred columns: `cto_depth`, `cto_basis_bps`, `cto_boost`, `cto_reason`.
+  Soft boost when cross-exchange tokenized equity order-book depth supports tight basis into a confirming narrative; caution on thin depth or adverse basis. Synthetic proxy (live tokenized venue feed reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -75,6 +87,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Streamlit Fragment Refresh Health & Staleness Attribution Overlay**.
   Preferred columns: `sfr_age_s`, `sfr_fragment_ok`, `sfr_boost`, `sfr_reason`.
   Soft boost when Streamlit `st.fragment` incremental refresh cycles remain healthy and low-staleness for live market panels; caution on fragment failures, excessive age, or fallback to full-app reruns. Synthetic proxy (live dashboard telemetry reserved).
+
+- [ ] **Streamlit Session-State Persistence & Crash Recovery Overlay**.
+  Preferred columns: `ssp_persist_ok`, `ssp_recovery_ms`, `ssp_boost`, `ssp_reason`.
+  Soft boost when Streamlit session-state persistence remains healthy and recovery is fast after fragment or full-app restarts; caution on persistence failures or slow recovery. Synthetic proxy (live dashboard telemetry reserved).
+
+- [ ] **Earnings Call Speaker Sentiment Divergence Overlay**.
+  Preferred columns: `ecs_div`, `ecs_ceo_tone`, `ecs_boost`, `ecs_reason`.
+  Soft boost when CEO vs CFO (or key speakers) sentiment divergence remains constructive or low into a confirming narrative; caution on sharp adverse divergence while narrative heat stays elevated. Synthetic proxy (live transcript speaker-level scorer reserved).
 
 ---
 
