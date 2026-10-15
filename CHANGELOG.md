@@ -1,3 +1,18 @@
+## [2.63.0] - 2026-10-15
+
+### Added
+* **Multi-Agent Debate Consensus Strength Overlay** (`sie/multi_agent_debate.py`).
+  Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
+  Soft +1 when specialized multi-agent debate (fundamental, narrative, options-flow agents) reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated.
+  Wired through analyzer (`include_multi_agent_debate`), CLI (`--no-multi-agent-debate`), config (`multi_agent_debate:`), Streamlit preferred columns.
+  Deterministic synthetic proxy; live multi-agent orchestrator reserved.
+
+### Changed
+* Version bump to **2.63.0** across package, CLI, dashboard and docs.
+* Removed completed Multi-Agent Debate Consensus Strength item from FUTURE-IMPROVEMENTS.md High Priority.
+
+---
+
 ## [2.62.1] - 2026-10-15
 
 ### Changed
