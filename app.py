@@ -1,5 +1,6 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.63.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.64.0.
 
+Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay +
 Multi-Agent Debate Consensus Strength Overlay +
 Always-On AI Agent Research Freshness & Workflow Completion Overlay +
 AIS Maritime Traffic & Port Congestion Overlay +
@@ -25,7 +26,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.63.1"
+__version__ = "2.64.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -37,7 +38,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — Multi-Agent Debate Consensus Strength + Always-On AI Agent Research Freshness & Workflow Completion + AIS Maritime Traffic & Port Congestion + Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity + Agentic Brokerage Flow + Earnings Event-Contract vs Whisper + Index Reconstitution + Rule 606 Routing + Alt-Data Provenance + Target-Specific Stance + Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
+        f"**v{__version__}** — Listed Event-Contract Book Depth vs Offshore Basis + Multi-Agent Debate Consensus Strength + Always-On AI Agent Research Freshness & Workflow Completion + AIS Maritime Traffic & Port Congestion + Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity + Agentic Brokerage Flow + Earnings Event-Contract vs Whisper + Index Reconstitution + Rule 606 Routing + Alt-Data Provenance + Target-Specific Stance + Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
     )
 
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -53,6 +54,7 @@ def signal_table_fragment():
         return
     df = pd.DataFrame(rows)
     preferred = [
+        "lec_basis_bps", "lec_listed_depth", "lec_boost", "lec_reason",
         "mad_consensus", "mad_disagreement", "mad_boost", "mad_reason",
         "agt_fresh_s", "agt_workflow_pct", "agt_boost", "agt_reason",
         "ais_congestion", "ais_wait_hrs", "ais_boost", "ais_reason",
@@ -84,5 +86,5 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — Multi-Agent Debate Consensus Strength Overlay fully wired. Always-On AI Agent Research Freshness & Workflow Completion Overlay fully wired. AIS Maritime Traffic & Port Congestion Overlay fully wired. Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity Overlay fully wired. Agentic Brokerage Account Flow & Penetration Overlay remains wired. Educational research tool only — not financial advice."
+    f"v{__version__} — Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay fully wired. Multi-Agent Debate Consensus Strength Overlay fully wired. Always-On AI Agent Research Freshness & Workflow Completion Overlay fully wired. AIS Maritime Traffic & Port Congestion Overlay fully wired. Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity Overlay fully wired. Agentic Brokerage Account Flow & Penetration Overlay remains wired. Educational research tool only — not financial advice."
 )
