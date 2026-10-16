@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-16
-**Current version baseline:** v2.63.1
+**Current version baseline:** v2.64.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay**.
-  Preferred columns: `lec_basis_bps`, `lec_listed_depth`, `lec_boost`, `lec_reason`.
-  Soft boost when listed event-contract book depth supports a rich basis versus offshore prediction markets into a confirming narrative; caution on thin listed depth with adverse basis.
 
 - [ ] **SEC Filing Structured Extraction Latency & Completeness Overlay**.
   Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
@@ -115,6 +111,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay** (v2.64.0, 2026-10-16). Preferred columns: `lec_basis_bps`, `lec_listed_depth`, `lec_boost`, `lec_reason`.
 
 - [x] **Multi-Agent Debate Consensus Strength Overlay** (v2.63.0, 2026-10-15). Preferred columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`.
 
