@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.63.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.64.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| Listed Event-Contract Book Depth vs Offshore Basis | `lec_*` | Listed event-contract depth and basis versus offshore prediction markets |
 | Multi-Agent Debate Consensus Strength | `mad_*` | Consensus/disagreement among specialized debate agents |
 | Always-On Agent Research Freshness | `agt_fresh_s`, `agt_workflow_pct` | Freshness and completion of continuous agent research |
 | AIS Maritime Traffic & Port Congestion | `ais_*` | Key-port congestion, vessel waiting times |
@@ -40,7 +41,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 ### Data status — read this before trusting a signal
 
-Several of the newer overlays (multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
