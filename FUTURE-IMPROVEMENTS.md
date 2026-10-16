@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-15
-**Current version baseline:** v2.63.0
+**Last updated:** 2026-10-16
+**Current version baseline:** v2.63.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -25,6 +25,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay**.
   Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
   Soft boost when RAG-grounded extraction of earnings-call transcripts surfaces high-novelty guidance language with low hedge density into a confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat stays elevated. Synthetic proxy (live transcript RAG reserved).
+
+- [ ] **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay**.
+  Preferred columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
+  Soft boost when high-velocity authentic sentiment from financial YouTube creator transcripts and comments confirms a narrative into technical strength; caution when creator sentiment collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live YouTube transcript + comment feed reserved).
 
 ---
 
@@ -68,6 +72,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `cto_depth`, `cto_basis_bps`, `cto_boost`, `cto_reason`.
   Soft boost when cross-exchange tokenized equity order-book depth supports tight basis into a confirming narrative; caution on thin depth or adverse basis. Synthetic proxy (live tokenized venue feed reserved).
 
+- [ ] **LLM Source-Grounding Confidence & Hallucination Rate Overlay**.
+  Preferred columns: `lgc_ground`, `lgc_halluc`, `lgc_boost`, `lgc_reason`.
+  Soft boost when narrative extraction shows high source-grounding confidence and low hallucination rate into a confirming narrative; caution on elevated hallucination or weak grounding while narrative heat remains elevated. Synthetic proxy (live dual-LLM + citation scorer reserved).
+
+- [ ] **Insider Cluster Buying Acceleration & Timing Overlay**.
+  Preferred columns: `icb_accel`, `icb_cluster_size`, `icb_boost`, `icb_reason`.
+  Soft boost when accelerating cluster buying by multiple insiders with constructive timing confirms a narrative; caution on cluster selling or stalled acceleration while narrative heat stays elevated. Synthetic proxy (live Form 4 cluster monitor reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -91,6 +103,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Earnings Call Speaker Sentiment Divergence Overlay**.
   Preferred columns: `ecs_div`, `ecs_ceo_tone`, `ecs_boost`, `ecs_reason`.
   Soft boost when CEO vs CFO (or key speakers) sentiment divergence remains constructive or low into a confirming narrative; caution on sharp adverse divergence while narrative heat stays elevated. Synthetic proxy (live transcript speaker-level scorer reserved).
+
+- [ ] **Cross-Asset (Equity-Crypto) Narrative Contagion Velocity Overlay**.
+  Preferred columns: `cac_vel`, `cac_crypto_align`, `cac_boost`, `cac_reason`.
+  Soft boost when high-velocity narrative contagion from related crypto or tokenized assets confirms an equity narrative; caution when cross-asset contagion collapses or turns adversarial while equity narrative heat remains elevated. Synthetic proxy (live cross-asset monitor reserved).
+
+- [ ] **Real-Time WebSocket Multi-Source Sentiment Aggregation Latency Overlay**.
+  Preferred columns: `wms_latency_ms`, `wms_sources_ok`, `wms_boost`, `wms_reason`.
+  Soft boost when WebSocket multi-source sentiment aggregation latency remains low and sources healthy into a confirming narrative; caution on high latency, source dropouts, or fallback to polling. Synthetic proxy (live dashboard telemetry reserved).
 
 ---
 

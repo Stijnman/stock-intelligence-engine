@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.63.1 (2026-10-16)
+
+- Autonomous research & evolution cycle against main (v2.63.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (YouTube Financial Creator Transcript & Comment Sentiment Velocity, LLM Source-Grounding Confidence & Hallucination Rate, Insider Cluster Buying Acceleration & Timing, Cross-Asset (Equity-Crypto) Narrative Contagion Velocity, Real-Time WebSocket Multi-Source Sentiment Aggregation Latency). Version strings synchronized to 2.63.1.
+
 ## v2.63.0 (2026-10-15)
 
 - Fully implemented **Multi-Agent Debate Consensus Strength Overlay** (`sie/multi_agent_debate.py`). Columns: `mad_consensus`, `mad_disagreement`, `mad_boost`, `mad_reason`. Soft boost when specialized multi-agent debate reaches high consensus into a confirming narrative; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live multi-agent orchestrator reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Asset: [multi_agent_debate_v2.63.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/multi_agent_debate_v2.63.0.svg).
