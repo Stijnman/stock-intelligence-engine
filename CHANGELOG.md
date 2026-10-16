@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.64.0 (2026-10-16)
+
+- Fully implemented **Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay** (`sie/listed_event_contract.py`). Columns: `lec_basis_bps`, `lec_listed_depth`, `lec_boost`, `lec_reason`. Soft boost when listed event-contract book depth supports a rich constructive basis versus offshore prediction markets into a confirming narrative; caution on thin listed depth with adverse basis while narrative heat remains elevated. Wired through analyzer, CLI, config, and Streamlit. Deterministic synthetic proxy (live listed + offshore book feed reserved). Removed from FUTURE-IMPROVEMENTS.md High Priority. Asset: [listed_event_contract_v2.64.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/listed_event_contract_v2.64.0.svg).
+
 ## v2.63.1 (2026-10-16)
 
 - Autonomous research & evolution cycle against main (v2.63.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (YouTube Financial Creator Transcript & Comment Sentiment Velocity, LLM Source-Grounding Confidence & Hallucination Rate, Insider Cluster Buying Acceleration & Timing, Cross-Asset (Equity-Crypto) Narrative Contagion Velocity, Real-Time WebSocket Multi-Source Sentiment Aggregation Latency). Version strings synchronized to 2.63.1.
