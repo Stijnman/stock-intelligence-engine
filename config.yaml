@@ -1,3 +1,12 @@
+# listed_event_contract:
+#   enabled: true
+#   basis_hot_bps: 35.0
+#   basis_cold_bps: -25.0
+#   depth_hot: 0.72
+#   depth_cold: 0.28
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # multi_agent_debate:
 #   enabled: true
 #   consensus_hot: 0.78
