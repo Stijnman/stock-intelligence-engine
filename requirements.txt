@@ -12,4 +12,4 @@ vaderSentiment>=3.3.2
 transformers>=4.41.0
 requests>=2.31.0
 msgpack>=1.2.1
-setuptools>=78.1.1
+setuptools>=84.0.0
