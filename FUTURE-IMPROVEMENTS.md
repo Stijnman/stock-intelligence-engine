@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-17
-**Current version baseline:** v2.64.1
+**Current version baseline:** v2.65.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **SEC Filing Structured Extraction Latency & Completeness Overlay**.
-  Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
-  Soft boost when structured 10-K/10-Q/8-K extraction latency is low and completeness high into a confirming narrative; caution on delayed or incomplete agent-facing filing parses. Synthetic proxy (live filing-monitor feed reserved).
 
 - [ ] **Agentic Narrative Contagion Velocity Overlay**.
   Preferred columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
@@ -131,6 +127,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **SEC Filing Structured Extraction Latency & Completeness Overlay** (v2.65.0, 2026-10-17). Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
 
 - [x] **Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay** (v2.64.0, 2026-10-16). Preferred columns: `lec_basis_bps`, `lec_listed_depth`, `lec_boost`, `lec_reason`.
 

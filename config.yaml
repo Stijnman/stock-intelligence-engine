@@ -1,3 +1,12 @@
+# sec_filing_extraction:
+#   enabled: true
+#   latency_hot_s: 45.0
+#   latency_cold_s: 420.0
+#   completeness_hot: 0.88
+#   completeness_cold: 0.45
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # listed_event_contract:
 #   enabled: true
 #   basis_hot_bps: 35.0

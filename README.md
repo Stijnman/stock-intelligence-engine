@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.64.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.65.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| SEC Filing Structured Extraction Latency & Completeness | `sec_*` | Latency and completeness of structured 10-K/10-Q/8-K extraction for agent consumption |
 | Listed Event-Contract Book Depth vs Offshore Basis | `lec_*` | Listed event-contract depth and basis versus offshore prediction markets |
 | Multi-Agent Debate Consensus Strength | `mad_*` | Consensus/disagreement among specialized debate agents |
 | Always-On Agent Research Freshness | `agt_fresh_s`, `agt_workflow_pct` | Freshness and completion of continuous agent research |

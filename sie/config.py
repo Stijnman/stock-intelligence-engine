@@ -269,6 +269,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "sec_filing_extraction": {
+        "enabled": True,
+        "latency_hot_s": 45.0,
+        "latency_cold_s": 420.0,
+        "completeness_hot": 0.88,
+        "completeness_cold": 0.45,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
 }
 
 
@@ -369,4 +378,6 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
         cfg.setdefault("index_reconstitution", {}).update(index_reconstitution)
     if earnings_event_contract := raw.get("earnings_event_contract"):
         cfg.setdefault("earnings_event_contract", {}).update(earnings_event_contract)
+    if sec_filing_extraction := raw.get("sec_filing_extraction"):
+        cfg.setdefault("sec_filing_extraction", {}).update(sec_filing_extraction)
     return cfg

@@ -59,6 +59,7 @@ from sie.ais_maritime import integrate_ais_maritime_to_row
 from sie.agent_research_freshness import integrate_agent_research_freshness_to_row
 from sie.multi_agent_debate import integrate_multi_agent_debate_to_row
 from sie.listed_event_contract import integrate_listed_event_contract_to_row
+from sie.sec_filing_extraction import integrate_sec_filing_extraction_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
 from sie.honesty import integrate_honesty_to_row
@@ -117,6 +118,7 @@ OVERLAYS: list[tuple[str, Callable]] = [
     ("include_agent_research_freshness", integrate_agent_research_freshness_to_row),
     ("include_multi_agent_debate", integrate_multi_agent_debate_to_row),
     ("include_listed_event_contract", integrate_listed_event_contract_to_row),
+    ("include_sec_filing_extraction", integrate_sec_filing_extraction_to_row),
     ("include_thesis", integrate_thesis_to_row),
     ("include_brief", integrate_brief_to_row),
     ("include_honesty", integrate_honesty_to_row),

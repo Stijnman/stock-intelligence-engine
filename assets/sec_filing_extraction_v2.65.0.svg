@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="180" viewBox="0 0 480 180">
+  <rect width="480" height="180" fill="#0f172a"/>
+  <text x="20" y="36" fill="#e2e8f0" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600">SEC Filing Extraction Overlay</text>
+  <text x="20" y="62" fill="#94a3b8" font-family="Inter, system-ui, sans-serif" font-size="13">v2.65.0 — latency & completeness</text>
+  <rect x="20" y="84" width="200" height="60" rx="8" fill="#1e293b"/>
+  <text x="32" y="110" fill="#22c55e" font-family="Inter, system-ui, sans-serif" font-size="13">low latency</text>
+  <text x="32" y="128" fill="#22c55e" font-family="Inter, system-ui, sans-serif" font-size="13">high completeness</text>
+  <rect x="240" y="84" width="200" height="60" rx="8" fill="#1e293b"/>
+  <text x="252" y="110" fill="#f59e0b" font-family="Inter, system-ui, sans-serif" font-size="13">delayed parse</text>
+  <text x="252" y="128" fill="#f59e0b" font-family="Inter, system-ui, sans-serif" font-size="13">incomplete extract</text>
+</svg>

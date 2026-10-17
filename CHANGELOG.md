@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.65.0 (2026-10-17)
+
+- Fully implemented **SEC Filing Structured Extraction Latency & Completeness Overlay** (`sie/sec_filing_extraction.py`).
+  Columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
+  Soft boost when structured 10-K/10-Q/8-K extraction latency is low and completeness high into a confirming narrative; caution on delayed or incomplete agent-facing filing parses while narrative heat remains elevated.
+  Wired through analyzer, CLI, config, and Streamlit.
+  Deterministic synthetic proxy (live filing-monitor feed reserved).
+  Removed from FUTURE-IMPROVEMENTS.md High Priority.
+  Asset: [sec_filing_extraction_v2.65.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/sec_filing_extraction_v2.65.0.svg).
+
 ## v2.64.1 (2026-10-17)
 
 - Autonomous research & evolution cycle against main (v2.64.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis, Agent-Generated Research Memo Cascade Velocity, ICE Reddit Signals Institutional Sentiment Freshness, Substack Financial Author Narrative Velocity & Authenticity, Cross-Venue Prediction Market Liquidity Depth). Version strings synchronized to 2.64.1.
