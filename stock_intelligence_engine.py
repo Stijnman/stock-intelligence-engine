@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.64.0"
+__version__ = "2.64.1"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -145,7 +145,7 @@ def main():
     if not args.no_hiring_skill_mix:
         from sie.hiring_skill_mix import detect_hiring_skill_mix
         sample = detect_hiring_skill_mix("NVDA")
-        print(f"HMIX overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
+        print(f"HMIX overlay ready source={sample.get('source')} vel={sample.get('dil_atm_velocity')} delta={sample.get('dil_share_delta')} boost={sample.get('signal_boost')}")
 
     if not args.no_tokenized_basis:
         from sie.tokenized_basis import detect_tokenized_basis
