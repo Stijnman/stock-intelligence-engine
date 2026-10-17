@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.64.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.64.1.
 
 Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay +
 Multi-Agent Debate Consensus Strength Overlay +
@@ -26,7 +26,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.64.0"
+__version__ = "2.64.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
