@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.64.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.64.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -52,7 +52,7 @@ python stock_intelligence_engine.py
 streamlit run app.py
 ```
 
-```config.yaml` holds the watchlist and per-overlay toggles. Every overlay can be disabled individually via config, CLI flag, or the dashboard.```
+`config.yaml` holds the watchlist and per-overlay toggles. Every overlay can be disabled individually via config, CLI flag, or the dashboard.
 
 ## Requirements
 

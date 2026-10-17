@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-16
-**Current version baseline:** v2.64.0
+**Last updated:** 2026-10-17
+**Current version baseline:** v2.64.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -25,6 +25,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay**.
   Preferred columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
   Soft boost when high-velocity authentic sentiment from financial YouTube creator transcripts and comments confirms a narrative into technical strength; caution when creator sentiment collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live YouTube transcript + comment feed reserved).
+
+- [ ] **Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay**.
+  Preferred columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`.
+  Soft boost when regulated Kalshi earnings-beat probability shows a rich constructive basis versus offshore Polymarket into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Synthetic proxy (live Kalshi + Polymarket feed reserved).
+
+- [ ] **Agent-Generated Research Memo Cascade Velocity Overlay**.
+  Preferred columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`.
+  Soft boost when high-velocity cascade of agent-generated research memos (AlphaSense SuperAnalyst-style always-on workflows) confirms a narrative into technical strength; caution when cascade collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live agent-memo monitor reserved).
 
 ---
 
@@ -76,6 +84,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `icb_accel`, `icb_cluster_size`, `icb_boost`, `icb_reason`.
   Soft boost when accelerating cluster buying by multiple insiders with constructive timing confirms a narrative; caution on cluster selling or stalled acceleration while narrative heat stays elevated. Synthetic proxy (live Form 4 cluster monitor reserved).
 
+- [ ] **ICE Reddit Signals Institutional Sentiment Freshness Overlay**.
+  Preferred columns: `irs_fresh_s`, `irs_sent`, `irs_boost`, `irs_reason`.
+  Soft boost when ICE-distributed Reddit Signals & Sentiment feed remains fresh and constructively aligned into a confirming narrative; caution on stale or adverse institutional Reddit signal while narrative heat stays elevated. Synthetic proxy (live ICE Reddit feed reserved).
+
+- [ ] **Substack Financial Author Narrative Velocity & Authenticity Overlay**.
+  Preferred columns: `ssa_vel`, `ssa_auth`, `ssa_boost`, `ssa_reason`.
+  Soft boost when high-velocity authentic sentiment from Substack financial authors and newsletters confirms a narrative into technical strength; caution when author sentiment collapses or low authenticity while narrative heat remains elevated. Synthetic proxy (live Substack feed reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -107,6 +123,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Real-Time WebSocket Multi-Source Sentiment Aggregation Latency Overlay**.
   Preferred columns: `wms_latency_ms`, `wms_sources_ok`, `wms_boost`, `wms_reason`.
   Soft boost when WebSocket multi-source sentiment aggregation latency remains low and sources healthy into a confirming narrative; caution on high latency, source dropouts, or fallback to polling. Synthetic proxy (live dashboard telemetry reserved).
+
+- [ ] **Cross-Venue Prediction Market Liquidity Depth Overlay**.
+  Preferred columns: `cpd_depth`, `cpd_basis_bps`, `cpd_boost`, `cpd_reason`.
+  Soft boost when cross-venue (Kalshi + Polymarket) prediction-market liquidity depth supports tight basis into a confirming narrative; caution on thin depth or adverse basis. Synthetic proxy (live multi-venue prediction-market feed reserved).
 
 ---
 
