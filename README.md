@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.65.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.66.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| Agentic Narrative Contagion Velocity | `anc_*` | Velocity and agent share of narrative propagation through autonomous AI agents |
 | SEC Filing Structured Extraction Latency & Completeness | `sec_*` | Latency and completeness of structured 10-K/10-Q/8-K extraction for agent consumption |
 | Listed Event-Contract Book Depth vs Offshore Basis | `lec_*` | Listed event-contract depth and basis versus offshore prediction markets |
 | Multi-Agent Debate Consensus Strength | `mad_*` | Consensus/disagreement among specialized debate agents |
@@ -64,5 +65,7 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.66.0 (2026-10-18)**: Fully implemented Agentic Narrative Contagion Velocity Overlay (`sie/agentic_narrative_contagion.py`). Columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`. Soft boost on high-velocity agent-to-agent narrative contagion into confirming narrative; caution on collapse or adversarial turn while human narrative heat remains elevated. Wired through analyzer, CLI (`--no-agentic-narrative-contagion`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![ANC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agentic_narrative_contagion_v2.66.0.svg)
 
 - **v2.65.1 (2026-10-18)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays (Unified Real-Time Multi-Source Narrative Freshness, CFPB Consumer Complaint Topic Cluster & Sentiment Velocity, Short-Form Video Financial Creator Cascade Velocity, Cross-Agent Research Consensus Strength, Streamlit Multi-Fragment Parallel Refresh Health). Version bump.

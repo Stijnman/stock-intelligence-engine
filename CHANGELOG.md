@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.66.0 (2026-10-18)
+
+- Fully implemented **Agentic Narrative Contagion Velocity Overlay** (`sie/agentic_narrative_contagion.py`).
+  Columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
+  Soft boost when high-velocity narrative propagation through autonomous AI agents (agent-to-agent contagion, generative memo cascades) confirms a narrative into technical strength; caution when agent-driven contagion collapses or turns adversarial while human narrative heat remains elevated.
+  Wired through analyzer, CLI, config, and Streamlit.
+  Deterministic synthetic proxy (live agent-network monitor reserved).
+  Removed from FUTURE-IMPROVEMENTS.md High Priority.
+  Asset: [agentic_narrative_contagion_v2.66.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agentic_narrative_contagion_v2.66.0.svg).
+
 ## v2.65.1 (2026-10-18)
 
 - Autonomous research & evolution cycle against main (v2.65.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Unified Real-Time Multi-Source Narrative Freshness, CFPB Consumer Complaint Topic Cluster & Sentiment Velocity, Short-Form Video Financial Creator Cascade Velocity, Cross-Agent Research Consensus Strength, Streamlit Multi-Fragment Parallel Refresh Health). Version strings synchronized to 2.65.1.

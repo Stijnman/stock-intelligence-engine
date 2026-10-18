@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.65.0"
+__version__ = "2.66.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -61,6 +61,7 @@ def main():
     parser.add_argument("--no-multi-agent-debate", action="store_true", help="Disable multi-agent debate consensus strength overlay")
     parser.add_argument("--no-listed-event-contract", action="store_true", help="Disable listed event-contract book depth vs offshore prediction-market basis overlay")
     parser.add_argument("--no-sec-filing-extraction", action="store_true", help="Disable SEC filing structured extraction latency & completeness overlay")
+    parser.add_argument("--no-agentic-narrative-contagion", action="store_true", help="Disable agentic narrative contagion velocity overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -113,6 +114,7 @@ def main():
         include_multi_agent_debate=not args.no_multi_agent_debate,
         include_listed_event_contract=not args.no_listed_event_contract,
         include_sec_filing_extraction=not args.no_sec_filing_extraction,
+        include_agentic_narrative_contagion=not args.no_agentic_narrative_contagion,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -225,6 +227,11 @@ def main():
         from sie.sec_filing_extraction import detect_sec_filing_extraction
         sample = detect_sec_filing_extraction("NVDA")
         print(f"SEC overlay ready source={sample.get('source')} latency={sample.get('sec_latency_s')} completeness={sample.get('sec_completeness')} boost={sample.get('signal_boost')}")
+
+    if not args.no_agentic_narrative_contagion:
+        from sie.agentic_narrative_contagion import detect_agentic_narrative_contagion
+        sample = detect_agentic_narrative_contagion("NVDA")
+        print(f"ANC overlay ready source={sample.get('source')} vel={sample.get('anc_vel')} agent_share={sample.get('anc_agent_share')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()

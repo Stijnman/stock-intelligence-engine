@@ -1,3 +1,12 @@
+# agentic_narrative_contagion:
+#   enabled: true
+#   vel_hot: 0.72
+#   vel_cold: 0.28
+#   share_hot: 0.55
+#   share_cold: 0.18
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # sec_filing_extraction:
 #   enabled: true
 #   latency_hot_s: 45.0

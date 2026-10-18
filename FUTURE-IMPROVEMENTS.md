@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-18
-**Current version baseline:** v2.65.1
+**Current version baseline:** v2.66.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Agentic Narrative Contagion Velocity Overlay**.
-  Preferred columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
-  Soft boost when high-velocity narrative propagation through autonomous AI agents (agent-to-agent contagion, generative memo cascades) confirms a narrative into technical strength; caution when agent-driven contagion collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live agent-network monitor reserved).
 
 - [ ] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay**.
   Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
@@ -147,6 +143,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Agentic Narrative Contagion Velocity Overlay** (v2.66.0, 2026-10-18). Preferred columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
 
 - [x] **SEC Filing Structured Extraction Latency & Completeness Overlay** (v2.65.0, 2026-10-17). Preferred columns: `sec_latency_s`, `sec_completeness`, `sec_boost`, `sec_reason`.
 
