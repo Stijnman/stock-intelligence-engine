@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-17
-**Current version baseline:** v2.65.0
+**Last updated:** 2026-10-18
+**Current version baseline:** v2.65.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -29,6 +29,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Agent-Generated Research Memo Cascade Velocity Overlay**.
   Preferred columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`.
   Soft boost when high-velocity cascade of agent-generated research memos (AlphaSense SuperAnalyst-style always-on workflows) confirms a narrative into technical strength; caution when cascade collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live agent-memo monitor reserved).
+
+- [ ] **Unified Real-Time Multi-Source Narrative Freshness Overlay**.
+  Preferred columns: `ums_fresh_s`, `ums_sources_ok`, `ums_boost`, `ums_reason`.
+  Soft boost when unified multi-source (news, X cashtags, SEC filings, Form 4, congressional disclosures) remains fresh and constructively aligned into a confirming narrative; caution on stale sources or adverse clustering while narrative heat stays elevated. Synthetic proxy (live multi-source aggregator reserved).
 
 ---
 
@@ -88,6 +92,18 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `ssa_vel`, `ssa_auth`, `ssa_boost`, `ssa_reason`.
   Soft boost when high-velocity authentic sentiment from Substack financial authors and newsletters confirms a narrative into technical strength; caution when author sentiment collapses or low authenticity while narrative heat remains elevated. Synthetic proxy (live Substack feed reserved).
 
+- [ ] **CFPB Consumer Complaint Topic Cluster & Sentiment Velocity Overlay**.
+  Preferred columns: `cfp_topic_vel`, `cfp_sent`, `cfp_boost`, `cfp_reason`.
+  Soft boost when accelerating authentic consumer-complaint topic clusters (BERTopic-style) with constructive sentiment confirm a narrative; caution on adverse complaint velocity or low authenticity while narrative heat remains elevated. Synthetic proxy (live CFPB feed reserved).
+
+- [ ] **Short-Form Video Financial Creator Cascade Velocity Overlay**.
+  Preferred columns: `sfv_vel`, `sfv_sent`, `sfv_boost`, `sfv_reason`.
+  Soft boost when high-velocity authentic sentiment cascades from short-form video financial creators (TikTok, Reels, Shorts) confirm a narrative into technical strength; caution when creator cascade collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live short-form video feed reserved).
+
+- [ ] **Cross-Agent Research Consensus Strength Overlay**.
+  Preferred columns: `car_consensus`, `car_disagreement`, `car_boost`, `car_reason`.
+  Soft boost when multiple specialized AI research agents (Grok, Claude, Perplexity-style) reach high consensus on narrative into technical confirmation; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Synthetic proxy (live multi-agent orchestrator reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -123,6 +139,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Cross-Venue Prediction Market Liquidity Depth Overlay**.
   Preferred columns: `cpd_depth`, `cpd_basis_bps`, `cpd_boost`, `cpd_reason`.
   Soft boost when cross-venue (Kalshi + Polymarket) prediction-market liquidity depth supports tight basis into a confirming narrative; caution on thin depth or adverse basis. Synthetic proxy (live multi-venue prediction-market feed reserved).
+
+- [ ] **Streamlit Multi-Fragment Parallel Refresh Health Overlay**.
+  Preferred columns: `smf_parallel_ok`, `smf_age_s`, `smf_boost`, `smf_reason`.
+  Soft boost when Streamlit multi-fragment parallel refresh cycles remain healthy and low-staleness; caution on fragment failures or excessive age. Synthetic proxy (live dashboard telemetry reserved).
 
 ---
 

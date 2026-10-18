@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.65.1 (2026-10-18)
+
+- Autonomous research & evolution cycle against main (v2.65.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Unified Real-Time Multi-Source Narrative Freshness, CFPB Consumer Complaint Topic Cluster & Sentiment Velocity, Short-Form Video Financial Creator Cascade Velocity, Cross-Agent Research Consensus Strength, Streamlit Multi-Fragment Parallel Refresh Health). Version strings synchronized to 2.65.1.
+
 ## v2.65.0 (2026-10-17)
 
 - Fully implemented **SEC Filing Structured Extraction Latency & Completeness Overlay** (`sie/sec_filing_extraction.py`).
