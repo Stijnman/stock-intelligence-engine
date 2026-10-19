@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-18
-**Current version baseline:** v2.66.0
+**Last updated:** 2026-10-19
+**Current version baseline:** v2.66.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -29,6 +29,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Unified Real-Time Multi-Source Narrative Freshness Overlay**.
   Preferred columns: `ums_fresh_s`, `ums_sources_ok`, `ums_boost`, `ums_reason`.
   Soft boost when unified multi-source (news, X cashtags, SEC filings, Form 4, congressional disclosures) remains fresh and constructively aligned into a confirming narrative; caution on stale sources or adverse clustering while narrative heat stays elevated. Synthetic proxy (live multi-source aggregator reserved).
+
+- [ ] **Signed Options Flow Toxicity & Informed Trading Probability Overlay**.
+  Preferred columns: `oft_toxicity`, `oft_informed_prob`, `oft_boost`, `oft_reason`.
+  Soft boost when signed OPRA flow (customer buys/sells) shows low toxicity and constructive informed-trading probability into a confirming narrative; caution on elevated toxicity or adverse informed flow while narrative heat remains elevated. Synthetic proxy (live signed options-flow feed reserved).
+
+- [ ] **Expert Network Call Novelty & Sentiment Velocity Overlay**.
+  Preferred columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`.
+  Soft boost when high-novelty expert-network (Tegus/GLG-style) call transcripts exhibit constructive sentiment velocity confirming a narrative into technical strength; caution on low-novelty or adverse expert sentiment while narrative heat remains elevated. Synthetic proxy (live expert-network feed reserved).
 
 ---
 
@@ -100,6 +108,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `car_consensus`, `car_disagreement`, `car_boost`, `car_reason`.
   Soft boost when multiple specialized AI research agents (Grok, Claude, Perplexity-style) reach high consensus on narrative into technical confirmation; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Synthetic proxy (live multi-agent orchestrator reserved).
 
+- [ ] **Multi-Model Ensemble Sentiment Disagreement Rate Overlay**.
+  Preferred columns: `mme_disagreement`, `mme_consensus`, `mme_boost`, `mme_reason`.
+  Soft boost when multi-model ensemble (domain-tuned FinLLM + general LLMs) shows low disagreement and constructive consensus into a confirming narrative; caution on high disagreement rate while narrative heat stays elevated. Synthetic proxy (live ensemble scorer reserved).
+
+- [ ] **Supply-Chain Bill-of-Lading Anomaly & Delay Velocity Overlay**.
+  Preferred columns: `bol_anomaly`, `bol_delay_hrs`, `bol_boost`, `bol_reason`.
+  Soft boost when bill-of-lading data shows low anomaly rate and reduced delay velocity confirming narrative for logistics-sensitive names; caution on rising anomalies or delays while narrative heat remains elevated. Synthetic proxy (live BOL feed reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -139,6 +155,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Streamlit Multi-Fragment Parallel Refresh Health Overlay**.
   Preferred columns: `smf_parallel_ok`, `smf_age_s`, `smf_boost`, `smf_reason`.
   Soft boost when Streamlit multi-fragment parallel refresh cycles remain healthy and low-staleness; caution on fragment failures or excessive age. Synthetic proxy (live dashboard telemetry reserved).
+
+- [ ] **Decentralized Oracle Attested Alt-Data Provenance Overlay**.
+  Preferred columns: `doa_attested`, `doa_oracle_score`, `doa_boost`, `doa_reason`.
+  Soft boost when alternative-data feeds are cryptographically attested via decentralized oracles with high provenance score into a confirming narrative; caution on unaudited or low-score feeds. Synthetic proxy reserved.
 
 ---
 
