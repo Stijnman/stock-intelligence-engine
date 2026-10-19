@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <rect width="400" height="200" fill="#0f1419"/>
+  <text x="20" y="40" fill="#1da1f2" font-family="Arial" font-size="18" font-weight="bold">X/Twitter Cashtag Firehose</text>
+  <text x="20" y="70" fill="#ffffff" font-family="Arial" font-size="14">Velocity + Bot Filter Overlay</text>
+  <text x="20" y="110" fill="#00ba7c" font-family="Arial" font-size="16">xtw_vel | xtw_auth | xtw_boost</text>
+  <text x="20" y="140" fill="#aaaaaa" font-family="Arial" font-size="12">v2.67.0 — synthetic proxy</text>
+  <circle cx="320" cy="100" r="40" fill="none" stroke="#1da1f2" stroke-width="4"/>
+  <text x="300" y="105" fill="#1da1f2" font-family="Arial" font-size="20">X</text>
+</svg>
