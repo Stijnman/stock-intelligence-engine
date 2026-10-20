@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-19
-**Current version baseline:** v2.66.1
+**Last updated:** 2026-10-20
+**Current version baseline:** v2.66.2
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -37,6 +37,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Expert Network Call Novelty & Sentiment Velocity Overlay**.
   Preferred columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`.
   Soft boost when high-novelty expert-network (Tegus/GLG-style) call transcripts exhibit constructive sentiment velocity confirming a narrative into technical strength; caution on low-novelty or adverse expert sentiment while narrative heat remains elevated. Synthetic proxy (live expert-network feed reserved).
+
+- [ ] **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay**.
+  Preferred columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
+  Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers (Distilla, Equibles, Alpha Vantage MCP, etc.) into a confirming narrative; caution on elevated latency, tool failures, or incomplete chains while narrative heat remains elevated. Synthetic proxy (live MCP telemetry reserved).
 
 ---
 
@@ -116,6 +120,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `bol_anomaly`, `bol_delay_hrs`, `bol_boost`, `bol_reason`.
   Soft boost when bill-of-lading data shows low anomaly rate and reduced delay velocity confirming narrative for logistics-sensitive names; caution on rising anomalies or delays while narrative heat remains elevated. Synthetic proxy (live BOL feed reserved).
 
+- [ ] **Podcast Financial Narrative Velocity & Entity Sentiment Overlay**.
+  Preferred columns: `pod_vel`, `pod_sent`, `pod_boost`, `pod_reason`.
+  Soft boost when high-velocity authentic sentiment from financial and business podcast transcripts (Context Analytics-style ticker-level entity tagging) confirms a narrative into technical strength; caution when podcast sentiment collapses or entity coverage drops while narrative heat remains elevated. Synthetic proxy (live podcast transcript feed reserved).
+
+- [ ] **Sell-Side Broker Research Note Novelty & Recommendation Revision Velocity Overlay**.
+  Preferred columns: `brn_novelty`, `brn_rev_vel`, `brn_boost`, `brn_reason`.
+  Soft boost when high-novelty sell-side broker research notes exhibit constructive recommendation revision velocity confirming a narrative; caution on low-novelty or adverse revisions while narrative heat remains elevated. Synthetic proxy (live broker-note monitor reserved).
+
 ---
 
 ## Long-Term / Nice-to-Have
@@ -159,6 +171,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Decentralized Oracle Attested Alt-Data Provenance Overlay**.
   Preferred columns: `doa_attested`, `doa_oracle_score`, `doa_boost`, `doa_reason`.
   Soft boost when alternative-data feeds are cryptographically attested via decentralized oracles with high provenance score into a confirming narrative; caution on unaudited or low-score feeds. Synthetic proxy reserved.
+
+- [ ] **Explainable AI Score Attribution Stability & Feature Drift Overlay**.
+  Preferred columns: `xai_stability`, `xai_drift`, `xai_boost`, `xai_reason`.
+  Soft boost when explainable AI score attributions (Danelfin-style feature importance) remain stable with low feature drift into a confirming narrative; caution on high attribution volatility or sudden feature drift while narrative heat remains elevated. Synthetic proxy (live XAI scorer reserved).
 
 ---
 

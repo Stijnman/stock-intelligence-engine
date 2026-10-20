@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.66.2 (2026-10-20)
+
+- Autonomous research & evolution cycle against main (v2.66.1). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (Agentic MCP Tool-Call Chain Latency & Success Rate, Podcast Financial Narrative Velocity & Entity Sentiment, Sell-Side Broker Research Note Novelty & Recommendation Revision Velocity, Explainable AI Score Attribution Stability & Feature Drift). Version strings synchronized to 2.66.2.
+
 ## v2.66.1 (2026-10-19)
 
 - Autonomous research & evolution cycle against main (v2.66.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (Signed Options Flow Toxicity & Informed Trading Probability, Expert Network Call Novelty & Sentiment Velocity, Multi-Model Ensemble Sentiment Disagreement Rate, Supply-Chain Bill-of-Lading Anomaly & Delay Velocity, Decentralized Oracle Attested Alt-Data Provenance). Version strings synchronized to 2.66.1.

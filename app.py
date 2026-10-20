@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.66.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.66.2.
 
 Agentic Narrative Contagion Velocity Overlay +
 SEC Filing Structured Extraction Latency & Completeness Overlay +
@@ -28,7 +28,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.66.1"
+__version__ = "2.66.2"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
