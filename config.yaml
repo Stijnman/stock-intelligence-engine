@@ -1,3 +1,12 @@
+# rag_earnings_guidance:
+#   enabled: true
+#   novelty_hot: 0.68
+#   novelty_cold: 0.32
+#   hedge_hot: 0.62
+#   hedge_cold: 0.22
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # agentic_narrative_contagion:
 #   enabled: true
 #   vel_hot: 0.72
