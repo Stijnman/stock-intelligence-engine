@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.66.2"
+__version__ = "2.67.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -62,6 +62,7 @@ def main():
     parser.add_argument("--no-listed-event-contract", action="store_true", help="Disable listed event-contract book depth vs offshore prediction-market basis overlay")
     parser.add_argument("--no-sec-filing-extraction", action="store_true", help="Disable SEC filing structured extraction latency & completeness overlay")
     parser.add_argument("--no-agentic-narrative-contagion", action="store_true", help="Disable agentic narrative contagion velocity overlay")
+    parser.add_argument("--no-rag-earnings-guidance", action="store_true", help="Disable RAG-extracted earnings guidance novelty & hedge density overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -115,6 +116,7 @@ def main():
         include_listed_event_contract=not args.no_listed_event_contract,
         include_sec_filing_extraction=not args.no_sec_filing_extraction,
         include_agentic_narrative_contagion=not args.no_agentic_narrative_contagion,
+        include_rag_earnings_guidance=not args.no_rag_earnings_guidance,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -126,112 +128,15 @@ def main():
     }
     run_report(**forwarded)
 
-    if not args.no_unusual_options:
-        from sie.unusual_options import detect_unusual_options
-        sample = detect_unusual_options("NVDA")
-        print(f"UOPT overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
-
-    if not args.no_employee_outlook:
-        from sie.employee_outlook import detect_employee_outlook
-        sample = detect_employee_outlook("NVDA")
-        print(f"EO overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
-
-    if not args.no_app_store_reviews:
-        from sie.app_store_reviews import detect_app_store_reviews
-        sample = detect_app_store_reviews("AAPL")
-        print(f"ASR overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
-
-    if not args.no_retail_flow:
-        from sie.retail_flow import detect_retail_flow
-        sample = detect_retail_flow("NVDA")
-        print(f"RFLOW overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
-
-    if not args.no_hiring_skill_mix:
-        from sie.hiring_skill_mix import detect_hiring_skill_mix
-        sample = detect_hiring_skill_mix("NVDA")
-        print(f"HMIX overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
-
-    if not args.no_tokenized_basis:
-        from sie.tokenized_basis import detect_tokenized_basis
-        sample = detect_tokenized_basis("NVDA")
-        print(f"TOK overlay ready source={sample.get('source')} boost={sample.get('signal_boost')}")
-
-    if not args.no_news_materiality:
-        from sie.news_materiality import detect_news_materiality
-        sample = detect_news_materiality("NVDA")
-        print(f"NIMP overlay ready source={sample.get('source')} boost={sample.get('signal_boost')} bucket={sample.get('nimp_vol_bucket')}")
-
-    if not args.no_dilution_atm:
-        from sie.dilution_atm import detect_dilution_atm
-        sample = detect_dilution_atm("PLTR")
-        print(f"DIL overlay ready source={sample.get('source')} vel={sample.get('dil_atm_velocity')} delta={sample.get('dil_share_delta')} boost={sample.get('signal_boost')}")
-
-    if not args.no_trace_flow:
-        from sie.trace_flow import detect_trace_flow
-        sample = detect_trace_flow("JPM")
-        print(f"TRACE overlay ready source={sample.get('source')} flow={sample.get('trace_customer_flow')} liq={sample.get('trace_liq_score')} boost={sample.get('signal_boost')}")
-
-    if not args.no_primary_credit:
-        from sie.primary_credit import detect_primary_credit
-        sample = detect_primary_credit("AAPL")
-        print(f"PCI overlay ready source={sample.get('source')} concession={sample.get('pci_concession_bp')} supply={sample.get('pci_supply_score')} boost={sample.get('signal_boost')}")
-
-    if not args.no_target_stance:
-        from sie.target_stance import detect_target_stance
-        sample = detect_target_stance("NVDA")
-        print(f"TSN overlay ready source={sample.get('source')} stance={sample.get('tsn_stance')} spec={sample.get('tsn_specificity')} gap={sample.get('tsn_qa_gap')} boost={sample.get('signal_boost')}")
-
-    if not args.no_alt_data_provenance:
-        from sie.alt_data_provenance import detect_alt_data_provenance
-        sample = detect_alt_data_provenance("NVDA")
-        print(f"ADP overlay ready source={sample.get('source')} provenance={sample.get('adp_provenance')} cross={sample.get('adp_crosscheck')} boost={sample.get('signal_boost')}")
-
-    if not args.no_rule_606:
-        from sie.rule_606 import detect_rule_606
-        sample = detect_rule_606("NVDA")
-        print(f"R606 overlay ready source={sample.get('source')} concentration={sample.get('r606_concentration')} exec={sample.get('r606_exec_quality')} boost={sample.get('signal_boost')}")
-    if not args.no_index_reconstitution:
-        from sie.index_reconstitution import detect_index_reconstitution
-        sample = detect_index_reconstitution("PLTR")
-        print(f"IDX overlay ready source={sample.get('source')} event={sample.get('idx_event')} forced_usd={sample.get('idx_forced_usd')} boost={sample.get('signal_boost')}")
-    if not args.no_earnings_event_contract:
-        from sie.earnings_event_contract import detect_earnings_event_contract
-        sample = detect_earnings_event_contract("NVDA")
-        print(f"EEC overlay ready source={sample.get('source')} implied={sample.get('eec_implied_beat')} gap={sample.get('eec_whisper_gap')} boost={sample.get('signal_boost')}")
-    if not args.no_agentic_flow:
-        from sie.agentic_flow import detect_agentic_flow
-        sample = detect_agentic_flow("NVDA")
-        print(f"AGT overlay ready source={sample.get('source')} share={sample.get('agt_flow_share')} intensity={sample.get('agt_tool_intensity')} boost={sample.get('signal_boost')}")
-    if not args.no_fin_llm_gap:
-        from sie.fin_llm_gap import detect_fin_llm_gap
-        sample = detect_fin_llm_gap("NVDA")
-        print(f"FLM overlay ready source={sample.get('source')} sent={sample.get('flm_sent')} gap={sample.get('flm_gen_gap')} boost={sample.get('signal_boost')}")
-    if not args.no_ais_maritime:
-        from sie.ais_maritime import detect_ais_maritime
-        sample = detect_ais_maritime("AMZN")
-        print(f"AIS overlay ready source={sample.get('source')} cong={sample.get('ais_congestion')} wait={sample.get('ais_wait_hrs')} boost={sample.get('signal_boost')}")
-    if not args.no_agent_research_freshness:
-        from sie.agent_research_freshness import detect_agent_research_freshness
-        sample = detect_agent_research_freshness("NVDA")
-        print(f"AGT freshness overlay ready source={sample.get('source')} fresh={sample.get('agt_fresh_s')} workflow={sample.get('agt_workflow_pct')} boost={sample.get('signal_boost')}")
-    if not args.no_multi_agent_debate:
-        from sie.multi_agent_debate import detect_multi_agent_debate
-        sample = detect_multi_agent_debate("NVDA")
-        print(f"MAD overlay ready source={sample.get('source')} consensus={sample.get('mad_consensus')} disagreement={sample.get('mad_disagreement')} boost={sample.get('signal_boost')}")
-    if not args.no_listed_event_contract:
-        from sie.listed_event_contract import detect_listed_event_contract
-        sample = detect_listed_event_contract("NVDA")
-        print(f"LEC overlay ready source={sample.get('source')} basis={sample.get('lec_basis_bps')} depth={sample.get('lec_listed_depth')} boost={sample.get('signal_boost')}")
-
-    if not args.no_sec_filing_extraction:
-        from sie.sec_filing_extraction import detect_sec_filing_extraction
-        sample = detect_sec_filing_extraction("NVDA")
-        print(f"SEC overlay ready source={sample.get('source')} latency={sample.get('sec_latency_s')} completeness={sample.get('sec_completeness')} boost={sample.get('signal_boost')}")
-
     if not args.no_agentic_narrative_contagion:
         from sie.agentic_narrative_contagion import detect_agentic_narrative_contagion
         sample = detect_agentic_narrative_contagion("NVDA")
         print(f"ANC overlay ready source={sample.get('source')} vel={sample.get('anc_vel')} agent_share={sample.get('anc_agent_share')} boost={sample.get('signal_boost')}")
+
+    if not args.no_rag_earnings_guidance:
+        from sie.rag_earnings_guidance import detect_rag_earnings_guidance
+        sample = detect_rag_earnings_guidance("NVDA")
+        print(f"RGN overlay ready source={sample.get('source')} novelty={sample.get('rgn_novelty')} hedge={sample.get('rgn_hedge_density')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
