@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <rect width="800" height="200" fill="#0f172a"/>
+  <text x="40" y="70" font-family="system-ui, sans-serif" font-size="26" fill="#38bdf8" font-weight="700">RAG Earnings Guidance Novelty &amp; Hedge Density</text>
+  <text x="40" y="110" font-family="system-ui, sans-serif" font-size="18" fill="#e2e8f0">rgn_novelty · rgn_hedge_density · rgn_boost · rgn_reason</text>
+  <text x="40" y="150" font-family="system-ui, sans-serif" font-size="16" fill="#94a3b8">v2.67.0 · synthetic_proxy · Stock Intelligence Engine</text>
+</svg>
