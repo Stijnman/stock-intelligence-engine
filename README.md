@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.66.2 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.67.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| RAG-Extracted Earnings Guidance Novelty & Hedge Density | `rgn_*` | Novelty and hedge density of RAG-extracted earnings guidance |
 | Agentic Narrative Contagion Velocity | `anc_*` | Velocity and agent share of narrative propagation through autonomous AI agents |
 | SEC Filing Structured Extraction Latency & Completeness | `sec_*` | Latency and completeness of structured 10-K/10-Q/8-K extraction for agent consumption |
 | Listed Event-Contract Book Depth vs Offshore Basis | `lec_*` | Listed event-contract depth and basis versus offshore prediction markets |
@@ -43,7 +44,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 ### Data status — read this before trusting a signal
 
-Several of the newer overlays (listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
@@ -66,10 +67,10 @@ Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in
 
 ## Recent Edits & Version History
 
+- **v2.67.0 (2026-10-20)**: Fully implemented RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay (`sie/rag_earnings_guidance.py`). Columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`. Soft boost on high-novelty low-hedge RAG earnings guidance into confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat remains elevated. Wired through analyzer, CLI (`--no-rag-earnings-guidance`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![RGN](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/rag_earnings_guidance_v2.67.0.svg)
+
 - **v2.66.2 (2026-10-20)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays (Agentic MCP Tool-Call Chain Latency & Success Rate, Podcast Financial Narrative Velocity & Entity Sentiment, Sell-Side Broker Research Note Novelty & Recommendation Revision Velocity, Explainable AI Score Attribution Stability & Feature Drift). Version bump.
 
 - **v2.66.1 (2026-10-19)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays (Signed Options Flow Toxicity & Informed Trading Probability, Expert Network Call Novelty & Sentiment Velocity, Multi-Model Ensemble Sentiment Disagreement Rate, Supply-Chain Bill-of-Lading Anomaly & Delay Velocity, Decentralized Oracle Attested Alt-Data Provenance). Version bump.
 
 - **v2.66.0 (2026-10-18)**: Fully implemented Agentic Narrative Contagion Velocity Overlay (`sie/agentic_narrative_contagion.py`). Columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`. Soft boost on high-velocity agent-to-agent narrative contagion into confirming narrative; caution on collapse or adversarial turn while human narrative heat remains elevated. Wired through analyzer, CLI (`--no-agentic-narrative-contagion`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![ANC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agentic_narrative_contagion_v2.66.0.svg)
-
-- **v2.65.1 (2026-10-18)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays (Unified Real-Time Multi-Source Narrative Freshness, CFPB Consumer Complaint Topic Cluster & Sentiment Velocity, Short-Form Video Financial Creator Cascade Velocity, Cross-Agent Research Consensus Strength, Streamlit Multi-Fragment Parallel Refresh Health). Version bump.

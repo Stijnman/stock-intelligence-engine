@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-20
-**Current version baseline:** v2.66.2
+**Current version baseline:** v2.67.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay**.
-  Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
-  Soft boost when RAG-grounded extraction of earnings-call transcripts surfaces high-novelty guidance language with low hedge density into a confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat stays elevated. Synthetic proxy (live transcript RAG reserved).
 
 - [ ] **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay**.
   Preferred columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
@@ -44,141 +40,9 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 ---
 
-## Medium Priority
-
-- [ ] **Reddit-ICE Market Insights Conversation Velocity Overlay**.
-  Preferred columns: `rdt_vel`, `rdt_theme_align`, `rdt_boost`, `rdt_reason`.
-
-- [ ] **MCP Data-Feed Freshness & Attestation Overlay**.
-  Preferred columns: `mcp_age_s`, `mcp_attested`, `mcp_boost`, `mcp_reason`.
-
-- [ ] **Real-Time X/Twitter Cashtag Firehose Velocity with Bot Filter Overlay**.
-  Preferred columns: `xtw_vel`, `xtw_auth`, `xtw_boost`, `xtw_reason`.
-  Soft boost when high-velocity authentic cashtag volume confirms narrative; caution when bot-filtered velocity collapses while narrative heat stays elevated. Synthetic proxy (live X API v2 firehose reserved).
-
-- [ ] **Multi-Venue Options Flow Sweep Aggregation & Dark-Pool Cross-Confirmation Overlay**.
-  Preferred columns: `mvo_sweep`, `mvo_dark_conf`, `mvo_boost`, `mvo_reason`.
-  Soft boost when multi-venue sweep aggregation is confirmed by dark-pool prints into a confirming narrative; caution on unconfirmed or conflicting flow. Synthetic proxy (live multi-venue feed reserved).
-
-- [ ] **Cross-Platform Retail Sentiment Divergence (X + Reddit + StockTwits) Overlay**.
-  Preferred columns: `xrs_div`, `xrs_align`, `xrs_boost`, `xrs_reason`.
-  Soft boost when cross-platform retail sentiment (X, Reddit, StockTwits) aligns constructively into a confirming narrative; caution on sharp divergence while narrative heat remains elevated. Synthetic proxy (live multi-platform feed reserved).
-
-- [ ] **Social Narrative Authenticity Scoring & Cluster Confidence Overlay**.
-  Preferred columns: `sna_auth`, `sna_cluster_conf`, `sna_boost`, `sna_reason`.
-  Soft boost when high-authenticity narrative clusters (bot-filtered, source-attested) confirm a narrative; caution on low-authenticity or fragmented clusters while narrative heat stays elevated. Synthetic proxy (live authenticity scorer reserved).
-
-- [ ] **Prediction-Market (Polymarket) vs Options-Implied Probability Basis Overlay**.
-  Preferred columns: `pmo_basis_bps`, `pmo_poly_prob`, `pmo_boost`, `pmo_reason`.
-  Soft boost when Polymarket (or equivalent real-money prediction market) implied probability shows a rich constructive basis versus options-implied probability into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Synthetic proxy (live Polymarket + options feed reserved).
-
-- [ ] **Narrative Gravity Divergence from Fundamental Valuation Overlay**.
-  Preferred columns: `ngd_gravity`, `ngd_fund_gap`, `ngd_boost`, `ngd_reason`.
-  Soft boost when measured narrative gravity (viral story pull on price) remains constructively aligned with or below fundamental valuation anchors into a confirming narrative; caution when narrative gravity sharply diverges from fundamentals while heat stays elevated. Synthetic proxy (live narrative-gravity scorer reserved).
-
-- [ ] **Live Macro Event Narrative Spillover Velocity Overlay**.
-  Preferred columns: `lms_spillover`, `lms_macro_align`, `lms_boost`, `lms_reason`.
-  Soft boost when live macro events (Fed speakers, CPI, geopolitics) produce constructive narrative spillover into the ticker; caution on adverse or lagged spillover while narrative heat stays elevated. Synthetic proxy (live macro-event monitor reserved).
-
-- [ ] **Cross-Exchange Tokenized Equity Order-Book Depth Overlay**.
-  Preferred columns: `cto_depth`, `cto_basis_bps`, `cto_boost`, `cto_reason`.
-  Soft boost when cross-exchange tokenized equity order-book depth supports tight basis into a confirming narrative; caution on thin depth or adverse basis. Synthetic proxy (live tokenized venue feed reserved).
-
-- [ ] **LLM Source-Grounding Confidence & Hallucination Rate Overlay**.
-  Preferred columns: `lgc_ground`, `lgc_halluc`, `lgc_boost`, `lgc_reason`.
-  Soft boost when narrative extraction shows high source-grounding confidence and low hallucination rate into a confirming narrative; caution on elevated hallucination or weak grounding while narrative heat remains elevated. Synthetic proxy (live dual-LLM + citation scorer reserved).
-
-- [ ] **Insider Cluster Buying Acceleration & Timing Overlay**.
-  Preferred columns: `icb_accel`, `icb_cluster_size`, `icb_boost`, `icb_reason`.
-  Soft boost when accelerating cluster buying by multiple insiders with constructive timing confirms a narrative; caution on cluster selling or stalled acceleration while narrative heat stays elevated. Synthetic proxy (live Form 4 cluster monitor reserved).
-
-- [ ] **ICE Reddit Signals Institutional Sentiment Freshness Overlay**.
-  Preferred columns: `irs_fresh_s`, `irs_sent`, `irs_boost`, `irs_reason`.
-  Soft boost when ICE-distributed Reddit Signals & Sentiment feed remains fresh and constructively aligned into a confirming narrative; caution on stale or adverse institutional Reddit signal while narrative heat stays elevated. Synthetic proxy (live ICE Reddit feed reserved).
-
-- [ ] **Substack Financial Author Narrative Velocity & Authenticity Overlay**.
-  Preferred columns: `ssa_vel`, `ssa_auth`, `ssa_boost`, `ssa_reason`.
-  Soft boost when high-velocity authentic sentiment from Substack financial authors and newsletters confirms a narrative into technical strength; caution when author sentiment collapses or low authenticity while narrative heat remains elevated. Synthetic proxy (live Substack feed reserved).
-
-- [ ] **CFPB Consumer Complaint Topic Cluster & Sentiment Velocity Overlay**.
-  Preferred columns: `cfp_topic_vel`, `cfp_sent`, `cfp_boost`, `cfp_reason`.
-  Soft boost when accelerating authentic consumer-complaint topic clusters (BERTopic-style) with constructive sentiment confirm a narrative; caution on adverse complaint velocity or low authenticity while narrative heat remains elevated. Synthetic proxy (live CFPB feed reserved).
-
-- [ ] **Short-Form Video Financial Creator Cascade Velocity Overlay**.
-  Preferred columns: `sfv_vel`, `sfv_sent`, `sfv_boost`, `sfv_reason`.
-  Soft boost when high-velocity authentic sentiment cascades from short-form video financial creators (TikTok, Reels, Shorts) confirm a narrative into technical strength; caution when creator cascade collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live short-form video feed reserved).
-
-- [ ] **Cross-Agent Research Consensus Strength Overlay**.
-  Preferred columns: `car_consensus`, `car_disagreement`, `car_boost`, `car_reason`.
-  Soft boost when multiple specialized AI research agents (Grok, Claude, Perplexity-style) reach high consensus on narrative into technical confirmation; caution on high disagreement or rapid flip-flops while narrative heat remains elevated. Synthetic proxy (live multi-agent orchestrator reserved).
-
-- [ ] **Multi-Model Ensemble Sentiment Disagreement Rate Overlay**.
-  Preferred columns: `mme_disagreement`, `mme_consensus`, `mme_boost`, `mme_reason`.
-  Soft boost when multi-model ensemble (domain-tuned FinLLM + general LLMs) shows low disagreement and constructive consensus into a confirming narrative; caution on high disagreement rate while narrative heat stays elevated. Synthetic proxy (live ensemble scorer reserved).
-
-- [ ] **Supply-Chain Bill-of-Lading Anomaly & Delay Velocity Overlay**.
-  Preferred columns: `bol_anomaly`, `bol_delay_hrs`, `bol_boost`, `bol_reason`.
-  Soft boost when bill-of-lading data shows low anomaly rate and reduced delay velocity confirming narrative for logistics-sensitive names; caution on rising anomalies or delays while narrative heat remains elevated. Synthetic proxy (live BOL feed reserved).
-
-- [ ] **Podcast Financial Narrative Velocity & Entity Sentiment Overlay**.
-  Preferred columns: `pod_vel`, `pod_sent`, `pod_boost`, `pod_reason`.
-  Soft boost when high-velocity authentic sentiment from financial and business podcast transcripts (Context Analytics-style ticker-level entity tagging) confirms a narrative into technical strength; caution when podcast sentiment collapses or entity coverage drops while narrative heat remains elevated. Synthetic proxy (live podcast transcript feed reserved).
-
-- [ ] **Sell-Side Broker Research Note Novelty & Recommendation Revision Velocity Overlay**.
-  Preferred columns: `brn_novelty`, `brn_rev_vel`, `brn_boost`, `brn_reason`.
-  Soft boost when high-novelty sell-side broker research notes exhibit constructive recommendation revision velocity confirming a narrative; caution on low-novelty or adverse revisions while narrative heat remains elevated. Synthetic proxy (live broker-note monitor reserved).
-
----
-
-## Long-Term / Nice-to-Have
-
-- [ ] **European Consolidated Tape Liquidity Visibility Overlay**.
-  Preferred columns: `ect_liq`, `ect_spread`, `ect_boost`, `ect_reason`.
-  Soft boost when improved European consolidated-tape visibility and tighter spreads confirm narrative; caution on fragmented liquidity. Synthetic proxy reserved.
-
-- [ ] **WebSocket Streaming Latency Attribution vs Polling Overlay**.
-  Preferred columns: `ws_latency_ms`, `poll_delta_ms`, `ws_boost`, `ws_reason`.
-  Soft boost when WebSocket streaming latency is materially lower than polling and supports real-time narrative confirmation; caution on persistent high streaming latency or fallback to polling. Synthetic proxy (live dashboard telemetry reserved).
-
-- [ ] **Streamlit Fragment Refresh Health & Staleness Attribution Overlay**.
-  Preferred columns: `sfr_age_s`, `sfr_fragment_ok`, `sfr_boost`, `sfr_reason`.
-  Soft boost when Streamlit `st.fragment` incremental refresh cycles remain healthy and low-staleness for live market panels; caution on fragment failures, excessive age, or fallback to full-app reruns. Synthetic proxy (live dashboard telemetry reserved).
-
-- [ ] **Streamlit Session-State Persistence & Crash Recovery Overlay**.
-  Preferred columns: `ssp_persist_ok`, `ssp_recovery_ms`, `ssp_boost`, `ssp_reason`.
-  Soft boost when Streamlit session-state persistence remains healthy and recovery is fast after fragment or full-app restarts; caution on persistence failures or slow recovery. Synthetic proxy (live dashboard telemetry reserved).
-
-- [ ] **Earnings Call Speaker Sentiment Divergence Overlay**.
-  Preferred columns: `ecs_div`, `ecs_ceo_tone`, `ecs_boost`, `ecs_reason`.
-  Soft boost when CEO vs CFO (or key speakers) sentiment divergence remains constructive or low into a confirming narrative; caution on sharp adverse divergence while narrative heat stays elevated. Synthetic proxy (live transcript speaker-level scorer reserved).
-
-- [ ] **Cross-Asset (Equity-Crypto) Narrative Contagion Velocity Overlay**.
-  Preferred columns: `cac_vel`, `cac_crypto_align`, `cac_boost`, `cac_reason`.
-  Soft boost when high-velocity narrative contagion from related crypto or tokenized assets confirms an equity narrative; caution when cross-asset contagion collapses or turns adversarial while equity narrative heat remains elevated. Synthetic proxy (live cross-asset monitor reserved).
-
-- [ ] **Real-Time WebSocket Multi-Source Sentiment Aggregation Latency Overlay**.
-  Preferred columns: `wms_latency_ms`, `wms_sources_ok`, `wms_boost`, `wms_reason`.
-  Soft boost when WebSocket multi-source sentiment aggregation latency remains low and sources healthy into a confirming narrative; caution on high latency, source dropouts, or fallback to polling. Synthetic proxy (live dashboard telemetry reserved).
-
-- [ ] **Cross-Venue Prediction Market Liquidity Depth Overlay**.
-  Preferred columns: `cpd_depth`, `cpd_basis_bps`, `cpd_boost`, `cpd_reason`.
-  Soft boost when cross-venue (Kalshi + Polymarket) prediction-market liquidity depth supports tight basis into a confirming narrative; caution on thin depth or adverse basis. Synthetic proxy (live multi-venue prediction-market feed reserved).
-
-- [ ] **Streamlit Multi-Fragment Parallel Refresh Health Overlay**.
-  Preferred columns: `smf_parallel_ok`, `smf_age_s`, `smf_boost`, `smf_reason`.
-  Soft boost when Streamlit multi-fragment parallel refresh cycles remain healthy and low-staleness; caution on fragment failures or excessive age. Synthetic proxy (live dashboard telemetry reserved).
-
-- [ ] **Decentralized Oracle Attested Alt-Data Provenance Overlay**.
-  Preferred columns: `doa_attested`, `doa_oracle_score`, `doa_boost`, `doa_reason`.
-  Soft boost when alternative-data feeds are cryptographically attested via decentralized oracles with high provenance score into a confirming narrative; caution on unaudited or low-score feeds. Synthetic proxy reserved.
-
-- [ ] **Explainable AI Score Attribution Stability & Feature Drift Overlay**.
-  Preferred columns: `xai_stability`, `xai_drift`, `xai_boost`, `xai_reason`.
-  Soft boost when explainable AI score attributions (Danelfin-style feature importance) remain stable with low feature drift into a confirming narrative; caution on high attribution volatility or sudden feature drift while narrative heat remains elevated. Synthetic proxy (live XAI scorer reserved).
-
----
-
 ## Completed (moved to CHANGELOG)
+
+- [x] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay** (v2.67.0, 2026-10-20). Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
 
 - [x] **Agentic Narrative Contagion Velocity Overlay** (v2.66.0, 2026-10-18). Preferred columns: `anc_vel`, `anc_agent_share`, `anc_boost`, `anc_reason`.
 
