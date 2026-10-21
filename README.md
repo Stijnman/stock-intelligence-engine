@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.67.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.68.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| YouTube Financial Creator Transcript & Comment Sentiment Velocity | `ytc_*` | Velocity and sentiment of financial YouTube creator transcripts and comments |
 | RAG-Extracted Earnings Guidance Novelty & Hedge Density | `rgn_*` | Novelty and hedge density of RAG-extracted earnings guidance |
 | Agentic Narrative Contagion Velocity | `anc_*` | Velocity and agent share of narrative propagation through autonomous AI agents |
 | SEC Filing Structured Extraction Latency & Completeness | `sec_*` | Latency and completeness of structured 10-K/10-Q/8-K extraction for agent consumption |
@@ -44,7 +45,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 ### Data status — read this before trusting a signal
 
-Several of the newer overlays (RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
@@ -66,6 +67,8 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.68.0 (2026-10-21)**: Fully implemented YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay (`sie/youtube_creator_sentiment.py`). Columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`. Soft boost on high-velocity authentic positive YouTube creator sentiment into confirming narrative; caution on collapse or adversarial turn while narrative heat remains elevated. Wired through analyzer, CLI (`--no-youtube-creator`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![YTC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/youtube_creator_sentiment_v2.68.0.svg)
 
 - **v2.67.0 (2026-10-20)**: Fully implemented RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay (`sie/rag_earnings_guidance.py`). Columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`. Soft boost on high-novelty low-hedge RAG earnings guidance into confirming narrative; caution on boilerplate or heavily hedged guidance while narrative heat remains elevated. Wired through analyzer, CLI (`--no-rag-earnings-guidance`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![RGN](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/rag_earnings_guidance_v2.67.0.svg)
 
