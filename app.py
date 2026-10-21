@@ -1,5 +1,6 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.67.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.68.0.
 
+YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay +
 RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay +
 Agentic Narrative Contagion Velocity Overlay +
 SEC Filing Structured Extraction Latency & Completeness Overlay +
@@ -29,7 +30,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.67.0"
+__version__ = "2.68.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
@@ -41,7 +42,7 @@ with st.sidebar:
     force_full = st.button("Force Full Refresh", type="primary", use_container_width=True)
     st.divider()
     st.markdown(
-        f"**v{__version__}** — RAG Earnings Guidance Novelty & Hedge Density + Agentic Narrative Contagion Velocity + SEC Filing Structured Extraction Latency & Completeness + Listed Event-Contract Book Depth vs Offshore Basis + Multi-Agent Debate Consensus Strength + Always-On AI Agent Research Freshness & Workflow Completion + AIS Maritime Traffic & Port Congestion + Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity + Agentic Brokerage Flow + Earnings Event-Contract vs Whisper + Index Reconstitution + Rule 606 Routing + Alt-Data Provenance + Target-Specific Stance + Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
+        f"**v{__version__}** — YouTube Financial Creator Transcript & Comment Sentiment Velocity + RAG Earnings Guidance Novelty & Hedge Density + Agentic Narrative Contagion Velocity + SEC Filing Structured Extraction Latency & Completeness + Listed Event-Contract Book Depth vs Offshore Basis + Multi-Agent Debate Consensus Strength + Always-On AI Agent Research Freshness & Workflow Completion + AIS Maritime Traffic & Port Congestion + Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity + Agentic Brokerage Flow + Earnings Event-Contract vs Whisper + Index Reconstitution + Rule 606 Routing + Alt-Data Provenance + Target-Specific Stance + Primary Credit Issuance + TRACE Customer-Flow + ATM Dilution Velocity + News Materiality + Tokenized-Share Basis + Job-Posting Skill-Mix + Retail Order-Flow Imbalance + App-Store Review Sentiment & Complaint Velocity + Employee Outlook / Glassdoor + Unusual Options + 10b5-1 / Buyback + KOL + Whisper + News Authority + Earnings-Call + CDS + Social Intent + GEX + Digital Footprint"
     )
 
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -57,6 +58,7 @@ def signal_table_fragment():
         return
     df = pd.DataFrame(rows)
     preferred = [
+        "ytc_vel", "ytc_sent", "ytc_boost", "ytc_reason",
         "rgn_novelty", "rgn_hedge_density", "rgn_boost", "rgn_reason",
         "anc_vel", "anc_agent_share", "anc_boost", "anc_reason",
         "sec_latency_s", "sec_completeness", "sec_boost", "sec_reason",
@@ -92,5 +94,5 @@ signal_table_fragment()
 
 st.divider()
 st.caption(
-    f"v{__version__} — RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay fully wired. Agentic Narrative Contagion Velocity Overlay fully wired. SEC Filing Structured Extraction Latency & Completeness Overlay fully wired. Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay fully wired. Multi-Agent Debate Consensus Strength Overlay fully wired. Always-On AI Agent Research Freshness & Workflow Completion Overlay fully wired. AIS Maritime Traffic & Port Congestion Overlay fully wired. Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity Overlay fully wired. Agentic Brokerage Account Flow & Penetration Overlay remains wired. Educational research tool only — not financial advice."
+    f"v{__version__} — YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay fully wired. RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay fully wired. Agentic Narrative Contagion Velocity Overlay fully wired. SEC Filing Structured Extraction Latency & Completeness Overlay fully wired. Listed Event-Contract Book Depth vs Offshore Prediction-Market Basis Overlay fully wired. Multi-Agent Debate Consensus Strength Overlay fully wired. Always-On AI Agent Research Freshness & Workflow Completion Overlay fully wired. AIS Maritime Traffic & Port Congestion Overlay fully wired. Domain-Tuned FinLLM Gap + Satellite Imagery / Geospatial Physical Activity Overlay fully wired. Agentic Brokerage Account Flow & Penetration Overlay remains wired. Educational research tool only — not financial advice."
 )
