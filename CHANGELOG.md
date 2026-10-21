@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.68.0 (2026-10-21)
+
+- Fully implemented **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay** (`sie/youtube_creator_sentiment.py`).
+  Columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
+  Soft boost when high-velocity authentic positive sentiment from financial YouTube creator transcripts and comments confirms a narrative into technical strength; caution when creator sentiment collapses or turns adversarial while human narrative heat remains elevated.
+  Wired through analyzer, CLI (`--no-youtube-creator`), config, and Streamlit dashboard.
+  Deterministic synthetic proxy (live YouTube transcript + comment feed reserved).
+  Removed from FUTURE-IMPROVEMENTS.md High Priority.
+  Asset: [youtube_creator_sentiment_v2.68.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/youtube_creator_sentiment_v2.68.0.svg).
+
 ## v2.67.0 (2026-10-20)
 
 - Fully implemented **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay** (`sie/rag_earnings_guidance.py`).
