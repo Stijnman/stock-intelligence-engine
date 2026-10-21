@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stock Intelligence Engine CLI entrypoint."""
-__version__ = "2.67.0"
+__version__ = "2.68.0"
 
 from sie.analyzer import run_report
 from sie.config import load_config
@@ -63,6 +63,7 @@ def main():
     parser.add_argument("--no-sec-filing-extraction", action="store_true", help="Disable SEC filing structured extraction latency & completeness overlay")
     parser.add_argument("--no-agentic-narrative-contagion", action="store_true", help="Disable agentic narrative contagion velocity overlay")
     parser.add_argument("--no-rag-earnings-guidance", action="store_true", help="Disable RAG-extracted earnings guidance novelty & hedge density overlay")
+    parser.add_argument("--no-youtube-creator", action="store_true", help="Disable YouTube financial creator transcript & comment sentiment velocity overlay")
     args = parser.parse_args()
     kwargs = dict(
         include_news=args.news or True,
@@ -117,6 +118,7 @@ def main():
         include_sec_filing_extraction=not args.no_sec_filing_extraction,
         include_agentic_narrative_contagion=not args.no_agentic_narrative_contagion,
         include_rag_earnings_guidance=not args.no_rag_earnings_guidance,
+        include_youtube_creator_sentiment=not args.no_youtube_creator,
     )
     parameters = inspect.signature(run_report).parameters
     accepts_var_kwargs = any(
@@ -137,6 +139,11 @@ def main():
         from sie.rag_earnings_guidance import detect_rag_earnings_guidance
         sample = detect_rag_earnings_guidance("NVDA")
         print(f"RGN overlay ready source={sample.get('source')} novelty={sample.get('rgn_novelty')} hedge={sample.get('rgn_hedge_density')} boost={sample.get('signal_boost')}")
+
+    if not args.no_youtube_creator:
+        from sie.youtube_creator_sentiment import detect_youtube_creator_sentiment
+        sample = detect_youtube_creator_sentiment("NVDA")
+        print(f"YTC overlay ready source={sample.get('source')} vel={sample.get('ytc_vel')} sent={sample.get('ytc_sent')} boost={sample.get('signal_boost')}")
 
 if __name__ == "__main__":
     main()
