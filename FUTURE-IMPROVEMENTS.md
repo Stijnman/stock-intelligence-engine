@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-20
-**Current version baseline:** v2.67.0
+**Last updated:** 2026-10-21
+**Current version baseline:** v2.68.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay**.
-  Preferred columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
-  Soft boost when high-velocity authentic sentiment from financial YouTube creator transcripts and comments confirms a narrative into technical strength; caution when creator sentiment collapses or turns adversarial while human narrative heat remains elevated. Synthetic proxy (live YouTube transcript + comment feed reserved).
 
 - [ ] **Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay**.
   Preferred columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`.
@@ -41,6 +37,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay** (v2.68.0, 2026-10-21). Preferred columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
 
 - [x] **RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay** (v2.67.0, 2026-10-20). Preferred columns: `rgn_novelty`, `rgn_hedge_density`, `rgn_boost`, `rgn_reason`.
 
