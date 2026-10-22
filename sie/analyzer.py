@@ -63,6 +63,7 @@ from sie.sec_filing_extraction import integrate_sec_filing_extraction_to_row
 from sie.agentic_narrative_contagion import integrate_agentic_narrative_contagion_to_row
 from sie.rag_earnings_guidance import integrate_rag_earnings_guidance_to_row
 from sie.youtube_creator_sentiment import integrate_youtube_creator_sentiment_to_row
+from sie.kalshi_polymarket_basis import integrate_kalshi_polymarket_basis_to_row
 from sie.xtwitter_cashtag import integrate_xtwitter_cashtag_to_row
 from sie.thesis import integrate_thesis_to_row
 from sie.brief import integrate_brief_to_row
@@ -126,6 +127,7 @@ OVERLAYS: list[tuple[str, Callable]] = [
     ("include_agentic_narrative_contagion", integrate_agentic_narrative_contagion_to_row),
     ("include_rag_earnings_guidance", integrate_rag_earnings_guidance_to_row),
     ("include_youtube_creator_sentiment", integrate_youtube_creator_sentiment_to_row),
+    ("include_kalshi_polymarket_basis", integrate_kalshi_polymarket_basis_to_row),
     ("include_xtwitter_cashtag", integrate_xtwitter_cashtag_to_row),
     ("include_thesis", integrate_thesis_to_row),
     ("include_brief", integrate_brief_to_row),
