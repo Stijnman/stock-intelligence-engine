@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.69.0 (2026-10-22)
+
+- Fully implemented **Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay** (`sie/kalshi_polymarket_basis.py`).
+  Columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`.
+  Soft boost when regulated Kalshi earnings-beat probability shows a rich constructive basis versus offshore Polymarket into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated.
+  Wired through analyzer, CLI (`--no-kalshi-polymarket`), config, and Streamlit dashboard.
+  Deterministic synthetic proxy (live Kalshi + Polymarket feed reserved).
+  Removed from FUTURE-IMPROVEMENTS.md High Priority.
+  Asset: [kalshi_polymarket_basis_v2.69.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/kalshi_polymarket_basis_v2.69.0.svg).
+
 ## v2.68.1 (2026-10-22)
 
 - Autonomous research & evolution cycle against main (v2.68.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md High Priority (Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis, Autonomous AI Agent Brokerage Order-Flow Share, Cross-Source Narrative Contradiction Density & Honesty Score, Physical Commodity Trade-Flow & Vessel Activity Equity Mapping, Prediction-Market Semantic Cluster Arbitrage Basis). Version strings synchronized to 2.68.1.
