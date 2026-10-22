@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.68.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.69.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis | `kpm_*` | Basis between regulated Kalshi and offshore Polymarket earnings-beat probabilities |
 | YouTube Financial Creator Transcript & Comment Sentiment Velocity | `ytc_*` | Velocity and sentiment of financial YouTube creator transcripts and comments |
 | RAG-Extracted Earnings Guidance Novelty & Hedge Density | `rgn_*` | Novelty and hedge density of RAG-extracted earnings guidance |
 | Agentic Narrative Contagion Velocity | `anc_*` | Velocity and agent share of narrative propagation through autonomous AI agents |
@@ -45,7 +46,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 ### Data status — read this before trusting a signal
 
-Several of the newer overlays (YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
@@ -67,6 +68,8 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.69.0 (2026-10-22)**: Fully implemented Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay (`sie/kalshi_polymarket_basis.py`). Columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`. Soft boost on rich constructive Kalshi regulated earnings-beat basis vs Polymarket into confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Wired through analyzer, CLI (`--no-kalshi-polymarket`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![KPM](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/kalshi_polymarket_basis_v2.69.0.svg)
 
 - **v2.68.1 (2026-10-22)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays to High Priority (Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis, Autonomous AI Agent Brokerage Order-Flow Share, Cross-Source Narrative Contradiction Density & Honesty Score, Physical Commodity Trade-Flow & Vessel Activity Equity Mapping, Prediction-Market Semantic Cluster Arbitrage Basis). Version bump.
 
