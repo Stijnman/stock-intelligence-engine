@@ -1,3 +1,12 @@
+# kalshi_polymarket_basis:
+#   enabled: true
+#   basis_hot_bps: 40.0
+#   basis_cold_bps: -30.0
+#   prob_hot: 0.62
+#   prob_cold: 0.38
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # youtube_creator_sentiment:
 #   enabled: true
 #   vel_hot: 0.70
