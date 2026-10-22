@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-22
-**Current version baseline:** v2.68.1
+**Current version baseline:** v2.69.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay**.
-  Preferred columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`.
-  Soft boost when regulated Kalshi earnings-beat probability shows a rich constructive basis versus offshore Polymarket into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Synthetic proxy (live Kalshi + Polymarket feed reserved).
 
 - [ ] **Agent-Generated Research Memo Cascade Velocity Overlay**.
   Preferred columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`.
@@ -58,6 +54,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay** (v2.69.0, 2026-10-22). Preferred columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`.
 
 - [x] **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay** (v2.68.0, 2026-10-21). Preferred columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.
 
