@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.68.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.68.1.
 
 YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay +
 RAG-Extracted Earnings Guidance Novelty & Hedge Density Overlay +
@@ -30,7 +30,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.68.0"
+__version__ = "2.68.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 

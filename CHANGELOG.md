@@ -1,6 +1,10 @@
 # Changelog
 
-## v2.68.0 (2026-10-21)
+## v2.68.1 (2026-10-22)
+
+- Autonomous research & evolution cycle against main (v2.68.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md High Priority (Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis, Autonomous AI Agent Brokerage Order-Flow Share, Cross-Source Narrative Contradiction Density & Honesty Score, Physical Commodity Trade-Flow & Vessel Activity Equity Mapping, Prediction-Market Semantic Cluster Arbitrage Basis). Version strings synchronized to 2.68.1.
+
+v2.68.0 (2026-10-21)
 
 - Fully implemented **YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay** (`sie/youtube_creator_sentiment.py`).
   Columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`.

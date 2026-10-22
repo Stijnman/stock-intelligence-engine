@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.68.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.68.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -67,6 +67,8 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.68.1 (2026-10-22)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays to High Priority (Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis, Autonomous AI Agent Brokerage Order-Flow Share, Cross-Source Narrative Contradiction Density & Honesty Score, Physical Commodity Trade-Flow & Vessel Activity Equity Mapping, Prediction-Market Semantic Cluster Arbitrage Basis). Version bump.
 
 - **v2.68.0 (2026-10-21)**: Fully implemented YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay (`sie/youtube_creator_sentiment.py`). Columns: `ytc_vel`, `ytc_sent`, `ytc_boost`, `ytc_reason`. Soft boost on high-velocity authentic positive YouTube creator sentiment into confirming narrative; caution on collapse or adversarial turn while narrative heat remains elevated. Wired through analyzer, CLI (`--no-youtube-creator`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![YTC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/youtube_creator_sentiment_v2.68.0.svg)
 

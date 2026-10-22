@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-21
-**Current version baseline:** v2.68.0
+**Last updated:** 2026-10-22
+**Current version baseline:** v2.68.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -33,6 +33,27 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay**.
   Preferred columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
   Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers (Distilla, Equibles, Alpha Vantage MCP, etc.) into a confirming narrative; caution on elevated latency, tool failures, or incomplete chains while narrative heat remains elevated. Synthetic proxy (live MCP telemetry reserved).
+
+
+- [ ] **Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis Overlay**.
+  Preferred columns: `tep_basis_bps`, `tep_24_5_vol_share`, `tep_boost`, `tep_reason`.
+  Soft boost when on-chain/tokenized equity continuous pricing (Robinhood, Ondo, MarketVector 24/5 indexes, etc.) shows a rich constructive premium and elevated 24/5 volume share into a confirming narrative; caution on adverse or collapsing continuous basis while narrative heat remains elevated. Synthetic proxy (live tokenized equity feed reserved).
+
+- [ ] **Autonomous AI Agent Brokerage Order-Flow Share Overlay**.
+  Preferred columns: `aaf_share`, `aaf_intensity`, `aaf_boost`, `aaf_reason`.
+  Soft boost when the share of order flow originating from autonomous AI agents (Robinhood Agents, broker MCP-connected agents, eToro agents) rises constructively into a confirming narrative; caution when agent-driven flow collapses or turns adverse while human narrative heat stays elevated. Synthetic proxy (live agent-brokerage telemetry reserved).
+
+- [ ] **Cross-Source Narrative Contradiction Density & Honesty Score Overlay**.
+  Preferred columns: `ncd_density`, `ncd_honesty`, `ncd_boost`, `ncd_reason`.
+  Soft boost when low contradiction density across news, X, filings, expert notes and agent memos produces a high honesty score confirming a narrative; caution on rising contradiction density or low honesty while narrative heat remains elevated. Synthetic proxy (live multi-source contradiction detector reserved).
+
+- [ ] **Physical Commodity Trade-Flow & Vessel Activity Equity Mapping Overlay**.
+  Preferred columns: `ctf_activity`, `ctf_delta`, `ctf_boost`, `ctf_reason`.
+  Soft boost when elevated or improving physical commodity trade flows / vessel activity (Kpler-style mapping to public equities) confirms operational strength into a narrative; caution on deteriorating physical activity while narrative heat remains elevated. Synthetic proxy (live commodity trade-flow feed reserved).
+
+- [ ] **Prediction-Market Semantic Cluster Arbitrage Basis Overlay**.
+  Preferred columns: `pmc_basis_bps`, `pmc_cluster_strength`, `pmc_boost`, `pmc_reason`.
+  Soft boost when agentic semantic clustering of related prediction-market contracts reveals a rich constructive arbitrage basis into a confirming narrative; caution on collapsing basis or weak cluster consistency while narrative heat remains elevated. Synthetic proxy (live prediction-market semantic graph reserved).
 
 ---
 
