@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.69.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.69.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -68,6 +68,8 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.69.1 (2026-10-23)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays to High Priority (Reddit WallStreetBets & Financial Subreddit Mention Cascade Velocity, Prediction-Market Firm-Level KPI Probability vs Analyst Consensus Basis, Live Insider Trading Cluster Significance & Direct Ownership, Agentic Research Citation Density & Source Authenticity). Version bump.
 
 - **v2.69.0 (2026-10-22)**: Fully implemented Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay (`sie/kalshi_polymarket_basis.py`). Columns: `kpm_basis_bps`, `kpm_kalshi_prob`, `kpm_boost`, `kpm_reason`. Soft boost on rich constructive Kalshi regulated earnings-beat basis vs Polymarket into confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Wired through analyzer, CLI (`--no-kalshi-polymarket`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![KPM](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/kalshi_polymarket_basis_v2.69.0.svg)
 

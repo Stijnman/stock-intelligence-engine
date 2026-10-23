@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-22
-**Current version baseline:** v2.69.0
+**Last updated:** 2026-10-23
+**Current version baseline:** v2.69.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -50,6 +50,22 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Prediction-Market Semantic Cluster Arbitrage Basis Overlay**.
   Preferred columns: `pmc_basis_bps`, `pmc_cluster_strength`, `pmc_boost`, `pmc_reason`.
   Soft boost when agentic semantic clustering of related prediction-market contracts reveals a rich constructive arbitrage basis into a confirming narrative; caution on collapsing basis or weak cluster consistency while narrative heat remains elevated. Synthetic proxy (live prediction-market semantic graph reserved).
+
+- [ ] **Reddit WallStreetBets & Financial Subreddit Mention Cascade Velocity Overlay**.
+  Preferred columns: `rws_vel`, `rws_mention_share`, `rws_boost`, `rws_reason`.
+  Soft boost when high-velocity constructive mention cascades on r/wallstreetbets, r/stocks and related financial subreddits confirm a narrative into technical strength; caution when cascade collapses or turns adversarial while narrative heat remains elevated. Synthetic proxy (live Reddit API / PRAW feed reserved).
+
+- [ ] **Prediction-Market Firm-Level KPI Probability vs Analyst Consensus Basis Overlay**.
+  Preferred columns: `kpi_basis_bps`, `kpi_market_prob`, `kpi_boost`, `kpi_reason`.
+  Soft boost when Kalshi/Polymarket-style prediction-market implied probabilities for firm KPIs (revenue growth, margin, beat probability) show a rich constructive basis versus street consensus into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Synthetic proxy (live KPI-market feed reserved).
+
+- [ ] **Live Insider Trading Cluster Significance & Direct Ownership Overlay**.
+  Preferred columns: `ins_cluster_sig`, `ins_direct_pct`, `ins_boost`, `ins_reason`.
+  Soft boost when high-significance cluster of direct open-market insider purchases (Form 4) aligns constructively with narrative into technical strength; caution on cluster selling or low direct ownership while narrative heat remains elevated. Synthetic proxy (live EDGAR Form 4 cluster detector reserved).
+
+- [ ] **Agentic Research Citation Density & Source Authenticity Overlay**.
+  Preferred columns: `arc_density`, `arc_authenticity`, `arc_boost`, `arc_reason`.
+  Soft boost when agent-generated research memos and workflows exhibit high citation density to primary sources with strong authenticity scores confirming a narrative; caution on low citation density or synthetic/contaminated sources while narrative heat remains elevated. Synthetic proxy (live agent-citation monitor reserved).
 
 ---
 

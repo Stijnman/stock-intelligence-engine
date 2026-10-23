@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.69.1 (2026-10-23)
+
+- Autonomous research & evolution cycle against main (v2.69.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md High Priority (Reddit WallStreetBets & Financial Subreddit Mention Cascade Velocity, Prediction-Market Firm-Level KPI Probability vs Analyst Consensus Basis, Live Insider Trading Cluster Significance & Direct Ownership, Agentic Research Citation Density & Source Authenticity). Version strings synchronized to 2.69.1.
+
 ## v2.69.0 (2026-10-22)
 
 - Fully implemented **Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay** (`sie/kalshi_polymarket_basis.py`).

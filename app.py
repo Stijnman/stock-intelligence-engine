@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine — Streamlit Dashboard v2.69.0.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.69.1.
 
 Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis Overlay +
 YouTube Financial Creator Transcript & Comment Sentiment Velocity Overlay +
@@ -31,7 +31,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.69.0"
+__version__ = "2.69.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 
