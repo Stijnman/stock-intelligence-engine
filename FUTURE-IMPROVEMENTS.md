@@ -1,7 +1,7 @@
-# Future Improvements — Stock Intelligence Engine
+# Future Improvements \u2014 Stock Intelligence Engine
 
 **Last updated:** 2026-10-24
-**Current version baseline:** v2.70.1
+**Current version baseline:** v2.71.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Unified Real-Time Multi-Source Narrative Freshness Overlay**.
-  Preferred columns: `ums_fresh_s`, `ums_sources_ok`, `ums_boost`, `ums_reason`.
-  Soft boost when unified multi-source (news, X cashtags, SEC filings, Form 4, congressional disclosures) remains fresh and constructively aligned into a confirming narrative; caution on stale sources or adverse clustering while narrative heat stays elevated. Synthetic proxy (live multi-source aggregator reserved).
 
 - [ ] **Signed Options Flow Toxicity & Informed Trading Probability Overlay**.
   Preferred columns: `oft_toxicity`, `oft_informed_prob`, `oft_boost`, `oft_reason`.
@@ -89,6 +85,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Unified Real-Time Multi-Source Narrative Freshness Overlay** (v2.71.0, 2026-10-24). Preferred columns: `ums_fresh_s`, `ums_sources_ok`, `ums_boost`, `ums_reason`.
 
 - [x] **Agent-Generated Research Memo Cascade Velocity Overlay** (v2.70.0, 2026-10-23). Preferred columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`.
 
