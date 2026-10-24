@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.70.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.70.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -69,6 +69,8 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.70.1 (2026-10-24)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays to the roadmap (Dark Pool / Off-Exchange Institutional Block Print Intensity & Informed Flow, Real-Time Earnings Call Transcript Sentiment Velocity vs Pre-Call Narrative, Gamma Exposure (GEX) Regime & Dealer Hedging Pressure to High Priority; Congressional Trade Disclosure Clustering & Timing Alpha, Web Traffic & App Engagement Velocity as Leading Demand Proxy to Medium Priority). Version bump.
 
 - **v2.70.0 (2026-10-23)**: Fully implemented Agent-Generated Research Memo Cascade Velocity Overlay (`sie/agent_generated_memo_cascade.py`). Columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`. Soft boost on high-velocity agent-generated research memo cascade into confirming narrative; caution on collapse or adversarial turn while human narrative heat remains elevated. Wired through analyzer, CLI (`--no-agent-generated-memo-cascade`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![AGC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agent_generated_memo_cascade_v2.70.0.svg)
 

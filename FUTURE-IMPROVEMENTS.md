@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-23
-**Current version baseline:** v2.70.0
+**Last updated:** 2026-10-24
+**Current version baseline:** v2.70.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -25,7 +25,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay**.
   Preferred columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
   Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers (Distilla, Equibles, Alpha Vantage MCP, etc.) into a confirming narrative; caution on elevated latency, tool failures, or incomplete chains while narrative heat remains elevated. Synthetic proxy (live MCP telemetry reserved).
-
 
 - [ ] **Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis Overlay**.
   Preferred columns: `tep_basis_bps`, `tep_24_5_vol_share`, `tep_boost`, `tep_reason`.
@@ -62,6 +61,30 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Agentic Research Citation Density & Source Authenticity Overlay**.
   Preferred columns: `arc_density`, `arc_authenticity`, `arc_boost`, `arc_reason`.
   Soft boost when agent-generated research memos and workflows exhibit high citation density to primary sources with strong authenticity scores confirming a narrative; caution on low citation density or synthetic/contaminated sources while narrative heat remains elevated. Synthetic proxy (live agent-citation monitor reserved).
+
+- [ ] **Dark Pool / Off-Exchange Institutional Block Print Intensity & Informed Flow Overlay**.
+  Preferred columns: `dp_intensity`, `dp_informed_bias`, `dp_boost`, `dp_reason`.
+  Soft boost when elevated off-exchange block print intensity shows constructive informed institutional bias into a confirming narrative; caution on adverse or collapsing dark-pool intensity while narrative heat remains elevated. Synthetic proxy (live dark-pool / ATS feed reserved).
+
+- [ ] **Real-Time Earnings Call Transcript Sentiment Velocity vs Pre-Call Narrative Overlay**.
+  Preferred columns: `ect_sent_vel`, `ect_divergence`, `ect_boost`, `ect_reason`.
+  Soft boost when live earnings-call transcript sentiment velocity diverges constructively from pre-call narrative heat into technical strength; caution on adverse divergence or sentiment collapse while narrative heat remains elevated. Synthetic proxy (live transcript feed reserved).
+
+- [ ] **Gamma Exposure (GEX) Regime & Dealer Hedging Pressure Overlay**.
+  Preferred columns: `gex_regime`, `gex_pressure`, `gex_boost`, `gex_reason`.
+  Soft boost when gamma exposure regime indicates constructive dealer hedging pressure confirming a narrative; caution on adverse GEX regime or hedging pressure while narrative heat remains elevated. Synthetic proxy (live GEX / options positioning feed reserved).
+
+---
+
+## Medium Priority
+
+- [ ] **Congressional Trade Disclosure Clustering & Timing Alpha Overlay**.
+  Preferred columns: `cong_cluster`, `cong_timing`, `cong_boost`, `cong_reason`.
+  Soft boost when clustered congressional disclosure trades show constructive timing alpha aligning with narrative; caution on adverse clusters or poor timing while narrative heat remains elevated. Synthetic proxy (live congressional disclosure feed reserved).
+
+- [ ] **Web Traffic & App Engagement Velocity as Leading Demand Proxy Overlay**.
+  Preferred columns: `web_vel`, `app_engagement`, `web_boost`, `web_reason`.
+  Soft boost when rising web traffic and app engagement velocity for consumer-facing issuers confirms operational demand into a narrative; caution on collapsing engagement while narrative heat remains elevated. Synthetic proxy (live web/app analytics feed reserved).
 
 ---
 

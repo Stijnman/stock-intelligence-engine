@@ -1,3 +1,7 @@
+## v2.70.1 (2026-10-24)
+
+- Autonomous research & evolution cycle against main (v2.70.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added five new high-value overlays to FUTURE-IMPROVEMENTS.md (three High Priority: Dark Pool / Off-Exchange Institutional Block Print Intensity & Informed Flow Overlay, Real-Time Earnings Call Transcript Sentiment Velocity vs Pre-Call Narrative Overlay, Gamma Exposure (GEX) Regime & Dealer Hedging Pressure Overlay; two Medium Priority: Congressional Trade Disclosure Clustering & Timing Alpha Overlay, Web Traffic & App Engagement Velocity as Leading Demand Proxy Overlay). Version strings synchronized to 2.70.1.
+
 ## v2.70.0 (2026-10-23)
 
 - Fully implemented **Agent-Generated Research Memo Cascade Velocity Overlay** (`sie/agent_generated_memo_cascade.py`).
