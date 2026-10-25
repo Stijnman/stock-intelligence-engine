@@ -1,3 +1,7 @@
+## v2.71.1 (2026-10-25)
+
+- Autonomous research & evolution cycle against main (v2.71.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (two High Priority: Truth Social Influential Political Account Narrative Velocity Overlay, Adanos Unified Social + Prediction-Market Buzz Velocity Overlay; two Medium Priority: Multi-LLM Ensemble Financial Headline Sentiment Divergence Overlay, Streamlit st.fragment Live Market Pulse Auto-Refresh Overlay). Version strings synchronized to 2.71.1.
+
 ## v2.71.0 (2026-10-24)
 
 - Fully implemented **Unified Real-Time Multi-Source Narrative Freshness Overlay** (`sie/unified_multi_source_narrative_freshness.py`).
