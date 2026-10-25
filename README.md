@@ -4,14 +4,14 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.71.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.71.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
-1. **Narrative detection** \u2014 identifies the dominant narrative per ticker (viral signals, news impact, historical context).
-2. **Overlay scoring** \u2014 a stack of alternative-data overlays each produce a `boost` (score adjustment) and a `reason` (human-readable explanation). Overlays are independently toggleable.
-3. **Technical confirmation** \u2014 narrative signals are cross-checked against technicals before producing a buy/hold/caution output.
-4. **Explanation** \u2014 every signal ships with the overlay reasons that moved it, so output is auditable rather than a black-box score.
+1. **Narrative detection** — identifies the dominant narrative per ticker (viral signals, news impact, historical context).
+2. **Overlay scoring** — a stack of alternative-data overlays each produce a `boost` (score adjustment) and a `reason` (human-readable explanation). Overlays are independently toggleable.
+3. **Technical confirmation** — narrative signals are cross-checked against technicals before producing a buy/hold/caution output.
+4. **Explanation** — every signal ships with the overlay reasons that moved it, so output is auditable rather than a black-box score.
 
 ## Overlay stack
 
@@ -34,9 +34,9 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 | Satellite Imagery / Geospatial Activity | `sat_*` | Parking-lot fill, oil-tank levels, night lights, vessel counts |
 | Agentic Brokerage Account Flow | `agt_flow_share`, `agt_tool_intensity` | Share of order flow from autonomous accounts |
 
-### Data status \u2014 read this before trusting a signal
+### Data status — read this before trusting a signal
 
-Several of the newer overlays (Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** \u2014 live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
@@ -51,13 +51,15 @@ streamlit run app.py
 
 ## Requirements
 
-Python 3.10+. API keys optional depending on which overlays you enable \u2014 see `.env.example` for the supported providers.
+Python 3.10+. API keys optional depending on which overlays you enable — see `.env.example` for the supported providers.
 
 ## Version history
 
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.71.1 (2026-10-25)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays to the roadmap (Truth Social Influential Political Account Narrative Velocity and Adanos Unified Social + Prediction-Market Buzz Velocity to High Priority; Multi-LLM Ensemble Financial Headline Sentiment Divergence and Streamlit st.fragment Live Market Pulse Auto-Refresh to Medium Priority). Version bump.
 
 - **v2.71.0 (2026-10-24)**: Fully implemented Unified Real-Time Multi-Source Narrative Freshness Overlay (`sie/unified_multi_source_narrative_freshness.py`). Columns: `ums_fresh_s`, `ums_sources_ok`, `ums_boost`, `ums_reason`. Soft boost on fresh, constructively aligned multi-source narrative (news, X cashtags, SEC filings, Form 4, congressional disclosures); caution on stale sources or adverse clustering while narrative heat remains elevated. Wired through analyzer, CLI (`--no-unified-multi-source-narrative-freshness`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![UMS](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/unified_multi_source_narrative_freshness_v2.71.0.svg)
 
