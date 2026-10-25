@@ -1,7 +1,7 @@
-# Future Improvements \u2014 Stock Intelligence Engine
+# Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-24
-**Current version baseline:** v2.71.0
+**Last updated:** 2026-10-25
+**Current version baseline:** v2.71.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -70,6 +70,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `gex_regime`, `gex_pressure`, `gex_boost`, `gex_reason`.
   Soft boost when gamma exposure regime indicates constructive dealer hedging pressure confirming a narrative; caution on adverse GEX regime or hedging pressure while narrative heat remains elevated. Synthetic proxy (live GEX / options positioning feed reserved).
 
+- [ ] **Truth Social Influential Political Account Narrative Velocity Overlay**.
+  Preferred columns: `ts_vel`, `ts_impact`, `ts_boost`, `ts_reason`.
+  Soft boost when high-velocity posts from market-moving Truth Social accounts (via Truth API or equivalent) confirm a constructive narrative into technical strength; caution on adverse or collapsing velocity while narrative heat remains elevated. Synthetic proxy (live Truth Social feed reserved).
+
+- [ ] **Adanos Unified Social + Prediction-Market Buzz Velocity Overlay**.
+  Preferred columns: `ads_buzz_vel`, `ads_mention_share`, `ads_boost`, `ads_reason`.
+  Soft boost when high-velocity constructive buzz aggregated from Reddit, X, and Polymarket via unified APIs confirms a narrative into technical strength; caution when buzz collapses or turns adversarial while narrative heat remains elevated. Synthetic proxy (live Adanos-style multi-source feed reserved).
+
 ---
 
 ## Medium Priority
@@ -81,6 +89,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Web Traffic & App Engagement Velocity as Leading Demand Proxy Overlay**.
   Preferred columns: `web_vel`, `app_engagement`, `web_boost`, `web_reason`.
   Soft boost when rising web traffic and app engagement velocity for consumer-facing issuers confirms operational demand into a narrative; caution on collapsing engagement while narrative heat remains elevated. Synthetic proxy (live web/app analytics feed reserved).
+
+- [ ] **Multi-LLM Ensemble Financial Headline Sentiment Divergence Overlay**.
+  Preferred columns: `mle_divergence`, `mle_consensus`, `mle_boost`, `mle_reason`.
+  Soft boost when low divergence across FinBERT, general LLM, and specialized models (Vicuna-style) produces high consensus confirming a narrative; caution on rising ensemble divergence while narrative heat remains elevated. Synthetic proxy (live multi-LLM sentiment ensemble reserved).
+
+- [ ] **Streamlit st.fragment Live Market Pulse Auto-Refresh Overlay**.
+  Preferred columns: `stf_refresh_ms`, `stf_freshness`, `stf_boost`, `stf_reason`.
+  Soft boost when Streamlit fragment-based live market pulse maintains sub-second freshness and constructive data alignment into a confirming narrative dashboard view; caution on stale fragments or elevated refresh latency while narrative heat remains elevated. Synthetic proxy (live Streamlit fragment telemetry reserved).
 
 ---
 
