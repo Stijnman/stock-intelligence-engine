@@ -1,44 +1,17 @@
+# signed_options_flow_toxicity:
+#   enabled: true
+#   tox_hot: 0.28
+#   tox_cold: 0.72
+#   inf_hot: 0.68
+#   inf_cold: 0.32
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # unified_multi_source_narrative_freshness:
 #   enabled: true
 #   fresh_hot_s: 180.0
 #   fresh_cold_s: 1200.0
 #   sources_hot: 0.75
 #   sources_cold: 0.35
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-#
-# agent_generated_memo_cascade:
-#   enabled: true
-#   vel_hot: 0.68
-#   vel_cold: 0.28
-#   share_hot: 0.52
-#   share_cold: 0.16
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-#
-# kalshi_polymarket_basis:
-#   enabled: true
-#   basis_hot_bps: 40.0
-#   basis_cold_bps: -30.0
-#   prob_hot: 0.62
-#   prob_cold: 0.38
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-#
-# youtube_creator_sentiment:
-#   enabled: true
-#   vel_hot: 0.70
-#   vel_cold: 0.30
-#   sent_hot: 0.65
-#   sent_cold: 0.25
-#   narrative_hot: 1.4
-#   min_confidence: 0.40
-#
-# rag_earnings_guidance:
-#   enabled: true
-#   novelty_hot: 0.68
-#   novelty_cold: 0.32
-#   hedge_hot: 0.62
-#   hedge_cold: 0.22
 #   narrative_hot: 1.4
 #   min_confidence: 0.40

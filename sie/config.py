@@ -6,8 +6,16 @@ from typing import Any
 
 import yaml
 
-# ... (defaults truncated for brevity in this push summary; full file includes unified_multi_source_narrative_freshness block)
 DEFAULT_CONFIG: dict[str, Any] = {
+    "signed_options_flow_toxicity": {
+        "enabled": True,
+        "tox_hot": 0.28,
+        "tox_cold": 0.72,
+        "inf_hot": 0.68,
+        "inf_cold": 0.32,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
     "unified_multi_source_narrative_freshness": {
         "enabled": True,
         "fresh_hot_s": 180.0,
@@ -17,12 +25,28 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
-    # remaining defaults unchanged from prior version
+    "tickers": {
+        "NVDA": {},
+        "TSLA": {},
+        "AAPL": {},
+        "MSFT": {},
+        "INTC": {},
+    },
 }
+
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
     cfg = {**DEFAULT_CONFIG}
-    # ... load logic includes:
-    # if unified_multi_source_narrative_freshness := raw.get("unified_multi_source_narrative_freshness"):
-    #     cfg.setdefault("unified_multi_source_narrative_freshness", {}).update(unified_multi_source_narrative_freshness)
+    path = Path(path or "config.yaml")
+    if path.exists():
+        try:
+            with path.open() as f:
+                raw = yaml.safe_load(f) or {}
+            for key in DEFAULT_CONFIG:
+                if key in raw and isinstance(raw[key], dict):
+                    cfg[key].update(raw[key])
+            if "tickers" in raw:
+                cfg["tickers"] = raw["tickers"]
+        except Exception:
+            pass
     return cfg

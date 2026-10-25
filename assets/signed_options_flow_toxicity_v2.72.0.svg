@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="80" viewBox="0 0 400 80">
+  <rect width="400" height="80" fill="#0f172a"/>
+  <text x="20" y="35" fill="#f59e0b" font-family="monospace" font-size="16" font-weight="bold">OFT Overlay v2.72.0</text>
+  <text x="20" y="55" fill="#94a3b8" font-family="monospace" font-size="12">Signed Options Flow Toxicity</text>
+  <circle cx="360" cy="40" r="12" fill="#22c55e"/>
+</svg>
