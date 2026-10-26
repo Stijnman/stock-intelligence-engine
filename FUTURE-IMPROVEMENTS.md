@@ -1,7 +1,7 @@
 # Future Improvements \u2014 Stock Intelligence Engine
 
-**Last updated:** 2026-10-25
-**Current version baseline:** v2.72.0
+**Last updated:** 2026-10-26
+**Current version baseline:** v2.72.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -74,6 +74,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `ads_buzz_vel`, `ads_mention_share`, `ads_boost`, `ads_reason`.
   Soft boost when high-velocity constructive buzz aggregated from Reddit, X, and Polymarket via unified APIs confirms a narrative into technical strength; caution when buzz collapses or turns adversarial while narrative heat remains elevated. Synthetic proxy (live Adanos-style multi-source feed reserved).
 
+- [ ] **Hiring Velocity & Employee Outlook Sentiment Overlay**.
+  Preferred columns: `hiv_vel`, `hiv_outlook`, `hiv_boost`, `hiv_reason`.
+  Soft boost when rising open job postings and constructive employee business outlook (Glassdoor-style) velocity confirm operational confidence into a narrative into technical strength; caution on collapsing hiring or adverse employee outlook while narrative heat remains elevated. Synthetic proxy (live hiring/employee-outlook feed reserved).
+
+- [ ] **Short Interest & Fails-to-Deliver Squeeze Pressure Overlay**.
+  Preferred columns: `sis_short_int`, `sis_squeeze_score`, `sis_boost`, `sis_reason`.
+  Soft boost when declining short interest, elevated fails-to-deliver, or rising squeeze score from off-exchange volume aligns constructively with narrative into technical strength; caution on rising short interest or collapsing squeeze pressure while narrative heat remains elevated. Synthetic proxy (live short-interest / FTD feed reserved).
+
 ---
 
 ## Medium Priority
@@ -93,6 +101,14 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Streamlit st.fragment Live Market Pulse Auto-Refresh Overlay**.
   Preferred columns: `stf_refresh_ms`, `stf_freshness`, `stf_boost`, `stf_reason`.
   Soft boost when Streamlit fragment-based live market pulse maintains sub-second freshness and constructive data alignment into a confirming narrative dashboard view; caution on stale fragments or elevated refresh latency while narrative heat remains elevated. Synthetic proxy (live Streamlit fragment telemetry reserved).
+
+- [ ] **App Download & Consumer Engagement Velocity Overlay**.
+  Preferred columns: `app_dl_vel`, `app_engagement`, `app_boost`, `app_reason`.
+  Soft boost when rising app download velocity and constructive consumer engagement metrics for consumer-facing issuers confirm leading demand into a narrative into technical strength; caution on collapsing downloads or adverse engagement while narrative heat remains elevated. Synthetic proxy (live app-download analytics feed reserved).
+
+- [ ] **Prediction-Market Agent Signal Cascade Velocity Overlay**.
+  Preferred columns: `pma_vel`, `pma_agent_share`, `pma_boost`, `pma_reason`.
+  Soft boost when high-velocity cascade of AI-agent signals derived from prediction-market probabilities (Public.com-style agentic brokerage triggers) confirms a narrative into technical strength; caution when cascade collapses or turns adversarial while narrative heat remains elevated. Synthetic proxy (live prediction-market agent telemetry reserved).
 
 ---
 

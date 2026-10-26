@@ -1,4 +1,4 @@
-"""Analyzer wiring Signed Options Flow Toxicity Overlay (v2.72.0).
+"""Analyzer wiring Signed Options Flow Toxicity Overlay (v2.72.1).
 
 Also retains prior Unified Multi-Source Narrative Freshness for continuity.
 """
@@ -28,4 +28,4 @@ def run_report(export: bool = False, backtest: bool = False, **kwargs: Any) -> d
         row = integrate_unified_multi_source_narrative_freshness_to_row(row, cfg)
         row = integrate_signed_options_flow_toxicity_to_row(row, cfg)
         rows.append(row)
-    return {"rows": rows, "version": "2.72.0", "overlays": ["ums", "oft"]}
+    return {"rows": rows, "version": "2.72.1", "overlays": ["ums", "oft"]}

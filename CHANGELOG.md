@@ -1,3 +1,7 @@
+## v2.72.1 (2026-10-26)
+
+- Autonomous research & evolution cycle against main (v2.72.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (two High Priority: Hiring Velocity & Employee Outlook Sentiment Overlay, Short Interest & Fails-to-Deliver Squeeze Pressure Overlay; two Medium Priority: App Download & Consumer Engagement Velocity Overlay, Prediction-Market Agent Signal Cascade Velocity Overlay). Version strings synchronized to 2.72.1.
+
 ## v2.72.0 (2026-10-25)
 
 - Fully implemented **Signed Options Flow Toxicity & Informed Trading Probability Overlay** (`sie/signed_options_flow_toxicity.py`).

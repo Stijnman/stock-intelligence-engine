@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.72.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.72.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -59,6 +59,8 @@ Python 3.10+. API keys optional depending on which overlays you enable \u2014 se
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.72.1 (2026-10-26)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays to the roadmap (Hiring Velocity & Employee Outlook Sentiment and Short Interest & Fails-to-Deliver Squeeze Pressure to High Priority; App Download & Consumer Engagement Velocity and Prediction-Market Agent Signal Cascade Velocity to Medium Priority). Version bump.
 
 - **v2.72.0 (2026-10-25)**: Fully implemented Signed Options Flow Toxicity & Informed Trading Probability Overlay (`sie/signed_options_flow_toxicity.py`). Columns: `oft_toxicity`, `oft_informed_prob`, `oft_boost`, `oft_reason`. Soft boost when signed OPRA flow shows low toxicity and constructive informed-trading probability into a confirming narrative; caution on elevated toxicity or adverse informed flow while narrative heat remains elevated. Wired through analyzer, CLI (`--no-signed-options-flow-toxicity`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![OFT](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/signed_options_flow_toxicity_v2.72.0.svg)
 

@@ -1,2 +1,2 @@
 """Stock Intelligence Engine package."""
-__version__ = "2.71.0"
+__version__ = "2.72.1"

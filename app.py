@@ -1,4 +1,4 @@
-"""Stock Intelligence Engine \u2014 Streamlit Dashboard v2.72.0.
+"""Stock Intelligence Engine \u2014 Streamlit Dashboard v2.72.1.
 
 Signed Options Flow Toxicity & Informed Trading Probability Overlay wired.
 """
@@ -10,7 +10,7 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.72.0"
+__version__ = "2.72.1"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(f"Stock Intelligence Engine v{__version__}")
