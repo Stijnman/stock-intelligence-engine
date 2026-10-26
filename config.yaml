@@ -1,3 +1,12 @@
+# expert_network_call_novelty:
+#   enabled: true
+#   nov_hot: 0.68
+#   nov_cold: 0.32
+#   vel_hot: 0.55
+#   vel_cold: -0.35
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # signed_options_flow_toxicity:
 #   enabled: true
 #   tox_hot: 0.28

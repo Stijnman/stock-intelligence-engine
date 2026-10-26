@@ -25,6 +25,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "narrative_hot": 1.4,
         "min_confidence": 0.40,
     },
+    "expert_network_call_novelty": {
+        "enabled": True,
+        "nov_hot": 0.68,
+        "nov_cold": 0.32,
+        "vel_hot": 0.55,
+        "vel_cold": -0.35,
+        "narrative_hot": 1.4,
+        "min_confidence": 0.40,
+    },
     "tickers": {
         "NVDA": {},
         "TSLA": {},

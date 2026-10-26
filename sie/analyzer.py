@@ -1,12 +1,13 @@
-"""Analyzer wiring Signed Options Flow Toxicity Overlay (v2.72.1).
+"""Analyzer wiring Expert Network Call Novelty & Sentiment Velocity Overlay (v2.73.0).
 
-Also retains prior Unified Multi-Source Narrative Freshness for continuity.
+Also retains prior Signed Options Flow Toxicity and Unified Multi-Source Narrative Freshness for continuity.
 """
 from __future__ import annotations
 
 from typing import Any
 
 from sie.config import load_config
+from sie.expert_network_call_novelty import integrate_expert_network_call_novelty_to_row
 from sie.signed_options_flow_toxicity import integrate_signed_options_flow_toxicity_to_row
 from sie.unified_multi_source_narrative_freshness import (
     integrate_unified_multi_source_narrative_freshness_to_row,
@@ -27,5 +28,6 @@ def run_report(export: bool = False, backtest: bool = False, **kwargs: Any) -> d
         }
         row = integrate_unified_multi_source_narrative_freshness_to_row(row, cfg)
         row = integrate_signed_options_flow_toxicity_to_row(row, cfg)
+        row = integrate_expert_network_call_novelty_to_row(row, cfg)
         rows.append(row)
-    return {"rows": rows, "version": "2.72.1", "overlays": ["ums", "oft"]}
+    return {"rows": rows, "version": "2.73.0", "overlays": ["ums", "oft", "enc"]}

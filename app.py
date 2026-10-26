@@ -1,6 +1,6 @@
-"""Stock Intelligence Engine \u2014 Streamlit Dashboard v2.72.1.
+"""Stock Intelligence Engine — Streamlit Dashboard v2.73.0.
 
-Signed Options Flow Toxicity & Informed Trading Probability Overlay wired.
+Expert Network Call Novelty & Sentiment Velocity Overlay wired.
 """
 from __future__ import annotations
 
@@ -10,15 +10,15 @@ import pandas as pd
 from sie.config import load_config
 from sie.analyzer import run_report
 
-__version__ = "2.72.1"
+__version__ = "2.73.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(f"Stock Intelligence Engine v{__version__}")
 st.metric("Engine Version", __version__)
 st.markdown(
-    "**Signed Options Flow Toxicity & Informed Trading Probability Overlay** "
-    "(`oft_toxicity`, `oft_informed_prob`, `oft_boost`, `oft_reason`) is now active. "
-    "Unified Multi-Source Narrative Freshness also retained."
+    "**Expert Network Call Novelty & Sentiment Velocity Overlay** "
+    "(`enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`) is now active. "
+    "Signed Options Flow Toxicity and Unified Multi-Source Narrative Freshness also retained."
 )
 
 result = run_report(export=False, backtest=False)
