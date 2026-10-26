@@ -1,7 +1,7 @@
 # Future Improvements \u2014 Stock Intelligence Engine
 
 **Last updated:** 2026-10-26
-**Current version baseline:** v2.72.1
+**Current version baseline:** v2.73.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Expert Network Call Novelty & Sentiment Velocity Overlay**.
-  Preferred columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`.
-  Soft boost when high-novelty expert-network (Tegus/GLG-style) call transcripts exhibit constructive sentiment velocity confirming a narrative into technical strength; caution on low-novelty or adverse expert sentiment while narrative heat remains elevated. Synthetic proxy (live expert-network feed reserved).
 
 - [ ] **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay**.
   Preferred columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
@@ -113,6 +109,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Expert Network Call Novelty & Sentiment Velocity Overlay** (v2.73.0, 2026-10-26). Preferred columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`.
 
 - [x] **Signed Options Flow Toxicity & Informed Trading Probability Overlay** (v2.72.0, 2026-10-25). Preferred columns: `oft_toxicity`, `oft_informed_prob`, `oft_boost`, `oft_reason`.
 
