@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.72.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.73.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| Expert Network Call Novelty & Sentiment Velocity | `enc_*` | Novelty and constructive sentiment velocity from expert-network call transcripts |
 | Signed Options Flow Toxicity & Informed Trading Probability | `oft_*` | Low toxicity + constructive informed-trading probability from signed OPRA flow |
 | Unified Real-Time Multi-Source Narrative Freshness | `ums_*` | Freshness and constructive alignment across news, X, SEC, Form 4, congressional |
 | Agent-Generated Research Memo Cascade Velocity | `agc_*` | Velocity and share of agent-generated research memo cascades |
@@ -37,7 +38,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 ### Data status \u2014 read this before trusting a signal
 
-Several of the newer overlays (Signed Options Flow Toxicity, Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** \u2014 live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (Expert Network Call Novelty, Signed Options Flow Toxicity, Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** \u2014 live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
@@ -59,6 +60,8 @@ Python 3.10+. API keys optional depending on which overlays you enable \u2014 se
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.73.0 (2026-10-26)**: Fully implemented Expert Network Call Novelty & Sentiment Velocity Overlay (`sie/expert_network_call_novelty.py`). Columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`. Soft boost when high-novelty expert-network (Tegus/GLG-style) call transcripts exhibit constructive sentiment velocity confirming a narrative into technical strength; caution on low-novelty or adverse expert sentiment while narrative heat remains elevated. Wired through analyzer, CLI (`--no-expert-network-call-novelty`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![ENC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/expert_network_call_novelty_v2.73.0.svg)
 
 - **v2.72.1 (2026-10-26)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays to the roadmap (Hiring Velocity & Employee Outlook Sentiment and Short Interest & Fails-to-Deliver Squeeze Pressure to High Priority; App Download & Consumer Engagement Velocity and Prediction-Market Agent Signal Cascade Velocity to Medium Priority). Version bump.
 
