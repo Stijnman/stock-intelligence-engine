@@ -1,4 +1,4 @@
-"""Analyzer wiring Expert Network Call Novelty & Sentiment Velocity Overlay (v2.73.0).
+"""Analyzer wiring Expert Network Call Novelty & Sentiment Velocity Overlay (v2.73.1).
 
 Also retains prior Signed Options Flow Toxicity and Unified Multi-Source Narrative Freshness for continuity.
 """
@@ -30,4 +30,4 @@ def run_report(export: bool = False, backtest: bool = False, **kwargs: Any) -> d
         row = integrate_signed_options_flow_toxicity_to_row(row, cfg)
         row = integrate_expert_network_call_novelty_to_row(row, cfg)
         rows.append(row)
-    return {"rows": rows, "version": "2.73.0", "overlays": ["ums", "oft", "enc"]}
+    return {"rows": rows, "version": "2.73.1", "overlays": ["ums", "oft", "enc"]}

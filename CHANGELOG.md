@@ -1,3 +1,7 @@
+## v2.73.1 (2026-10-27)
+
+- Autonomous research & evolution cycle against main (v2.73.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (one High Priority: AI Multi-Model Council Forecast vs Prediction Market Probability Basis Overlay; two Medium Priority: Equibles MCP Full-Text Filing & Transcript Extraction Completeness & Latency Overlay, Graded AI Verdict Hit-Rate Cascade on Prediction Markets Overlay; one Long-Term: Sports Prediction Market Official Data Partnership Spillover Narrative Contagion Overlay). Version strings synchronized to 2.73.1.
+
 ## v2.73.0 (2026-10-26)
 
 - Fully implemented **Expert Network Call Novelty & Sentiment Velocity Overlay** (`sie/expert_network_call_novelty.py`).

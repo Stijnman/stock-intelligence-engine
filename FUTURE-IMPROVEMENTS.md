@@ -1,7 +1,7 @@
-# Future Improvements \u2014 Stock Intelligence Engine
+# Future Improvements — Stock Intelligence Engine
 
-**Last updated:** 2026-10-26
-**Current version baseline:** v2.73.0
+**Last updated:** 2026-10-27
+**Current version baseline:** v2.73.1
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -78,6 +78,10 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
   Preferred columns: `sis_short_int`, `sis_squeeze_score`, `sis_boost`, `sis_reason`.
   Soft boost when declining short interest, elevated fails-to-deliver, or rising squeeze score from off-exchange volume aligns constructively with narrative into technical strength; caution on rising short interest or collapsing squeeze pressure while narrative heat remains elevated. Synthetic proxy (live short-interest / FTD feed reserved).
 
+- [ ] **AI Multi-Model Council Forecast vs Prediction Market Probability Basis Overlay**.
+  Preferred columns: `aic_basis_bps`, `aic_council_prob`, `aic_boost`, `aic_reason`.
+  Soft boost when multi-model AI council (Grok, Claude, GPT, Gemini ensemble) sealed forecasts show a rich constructive basis versus Kalshi/Polymarket implied probabilities into a confirming narrative; caution on adverse or collapsing basis while narrative heat remains elevated. Synthetic proxy (live AI-council + prediction-market feed reserved).
+
 ---
 
 ## Medium Priority
@@ -105,6 +109,22 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 - [ ] **Prediction-Market Agent Signal Cascade Velocity Overlay**.
   Preferred columns: `pma_vel`, `pma_agent_share`, `pma_boost`, `pma_reason`.
   Soft boost when high-velocity cascade of AI-agent signals derived from prediction-market probabilities (Public.com-style agentic brokerage triggers) confirms a narrative into technical strength; caution when cascade collapses or turns adversarial while narrative heat remains elevated. Synthetic proxy (live prediction-market agent telemetry reserved).
+
+- [ ] **Equibles MCP Full-Text Filing & Transcript Extraction Completeness & Latency Overlay**.
+  Preferred columns: `eqm_latency_ms`, `eqm_completeness`, `eqm_boost`, `eqm_reason`.
+  Soft boost when Equibles-style MCP tool-calls for full-text SEC filings, speaker-labeled transcripts and Form 4 clusters show low latency and high completeness/citation density confirming a narrative; caution on elevated latency or incomplete extraction while narrative heat remains elevated. Synthetic proxy (live Equibles MCP telemetry reserved).
+
+- [ ] **Graded AI Verdict Hit-Rate Cascade on Prediction Markets Overlay**.
+  Preferred columns: `gav_hit_rate`, `gav_cascade_vel`, `gav_boost`, `gav_reason`.
+  Soft boost when high historical hit-rate cascade of graded AI verdicts (OddsShift-style) on related prediction-market contracts confirms a narrative into technical strength; caution when hit-rate collapses or cascade turns adversarial while narrative heat remains elevated. Synthetic proxy (live graded-verdict tracker reserved).
+
+---
+
+## Long-Term / Nice-to-Have
+
+- [ ] **Sports Prediction Market Official Data Partnership Spillover Narrative Contagion Overlay**.
+  Preferred columns: `spm_spillover`, `spm_contagion_vel`, `spm_boost`, `spm_reason`.
+  Soft boost when official league partnerships (NBA-Kalshi/Polymarket style) and live event-contract volume create constructive spillover narrative contagion to related public equities; caution on adverse spillover or volume collapse while narrative heat remains elevated. Synthetic proxy (live sports-prediction spillover feed reserved).
 
 ---
 
