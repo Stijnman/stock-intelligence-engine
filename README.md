@@ -4,7 +4,7 @@ Connect market narratives to your watchlist, confirm with technicals, and explai
 
 Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
 
-**Current version:** v2.73.1 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+**Current version:** v2.74.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ## How it works
 
@@ -19,6 +19,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 | Overlay | Columns | Purpose |
 |---------|---------|---------|
+| Agentic MCP Tool-Call Chain Latency & Success Rate | `mcp_*` | Latency and success rate of agentic MCP tool-call chains against financial servers |
 | Expert Network Call Novelty & Sentiment Velocity | `enc_*` | Novelty and constructive sentiment velocity from expert-network call transcripts |
 | Signed Options Flow Toxicity & Informed Trading Probability | `oft_*` | Low toxicity + constructive informed-trading probability from signed OPRA flow |
 | Unified Real-Time Multi-Source Narrative Freshness | `ums_*` | Freshness and constructive alignment across news, X, SEC, Form 4, congressional |
@@ -38,7 +39,7 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 ### Data status — read this before trusting a signal
 
-Several of the newer overlays (Expert Network Call Novelty, Signed Options Flow Toxicity, Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
+Several of the newer overlays (Agentic MCP Tool-Call Latency, Expert Network Call Novelty, Signed Options Flow Toxicity, Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
 ## Quick start
 
@@ -60,6 +61,8 @@ Python 3.10+. API keys optional depending on which overlays you enable — see `
 Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
 
 ## Recent Edits & Version History
+
+- **v2.74.0 (2026-10-27)**: Fully implemented Agentic MCP Tool-Call Chain Latency & Success Rate Overlay (`sie/agentic_mcp_tool_call_latency.py`). Columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`. Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers into a confirming narrative; caution on elevated latency or incomplete chains while narrative heat remains elevated. Wired through analyzer, CLI (`--no-agentic-mcp-tool-call-latency`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![MCP](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agentic_mcp_tool_call_latency_v2.74.0.svg)
 
 - **v2.73.1 (2026-10-27)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (one High Priority: AI Multi-Model Council Forecast vs Prediction Market Probability Basis Overlay; two Medium Priority: Equibles MCP Full-Text Filing & Transcript Extraction Completeness & Latency Overlay, Graded AI Verdict Hit-Rate Cascade on Prediction Markets Overlay; one Long-Term: Sports Prediction Market Official Data Partnership Spillover Narrative Contagion Overlay). Version bump.
 

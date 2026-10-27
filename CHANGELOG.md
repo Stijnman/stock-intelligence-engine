@@ -1,3 +1,13 @@
+## v2.74.0 (2026-10-27)
+
+- Fully implemented **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay** (`sie/agentic_mcp_tool_call_latency.py`).
+  Columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
+  Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers (Distilla, Equibles, Alpha Vantage MCP, etc.) into a confirming narrative; caution on elevated latency, tool failures, or incomplete chains while narrative heat remains elevated.
+  Wired through analyzer, CLI (`--no-agentic-mcp-tool-call-latency`), config, and Streamlit dashboard.
+  Deterministic synthetic proxy (live MCP telemetry reserved).
+  Removed from FUTURE-IMPROVEMENTS.md High Priority.
+  Asset: [agentic_mcp_tool_call_latency_v2.74.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agentic_mcp_tool_call_latency_v2.74.0.svg).
+
 ## v2.73.1 (2026-10-27)
 
 - Autonomous research & evolution cycle against main (v2.73.0). Code audit: no open FUTURE-IMPROVEMENTS item is fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (one High Priority: AI Multi-Model Council Forecast vs Prediction Market Probability Basis Overlay; two Medium Priority: Equibles MCP Full-Text Filing & Transcript Extraction Completeness & Latency Overlay, Graded AI Verdict Hit-Rate Cascade on Prediction Markets Overlay; one Long-Term: Sports Prediction Market Official Data Partnership Spillover Narrative Contagion Overlay). Version strings synchronized to 2.73.1.

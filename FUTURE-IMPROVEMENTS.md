@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-27
-**Current version baseline:** v2.73.1
+**Current version baseline:** v2.74.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,10 +9,6 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
-
-- [ ] **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay**.
-  Preferred columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
-  Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers (Distilla, Equibles, Alpha Vantage MCP, etc.) into a confirming narrative; caution on elevated latency, tool failures, or incomplete chains while narrative heat remains elevated. Synthetic proxy (live MCP telemetry reserved).
 
 - [ ] **Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis Overlay**.
   Preferred columns: `tep_basis_bps`, `tep_24_5_vol_share`, `tep_boost`, `tep_reason`.
@@ -129,6 +125,8 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## Completed (moved to CHANGELOG)
+
+- [x] **Agentic MCP Tool-Call Chain Latency & Success Rate Overlay** (v2.74.0, 2026-10-27). Preferred columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`.
 
 - [x] **Expert Network Call Novelty & Sentiment Velocity Overlay** (v2.73.0, 2026-10-26). Preferred columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`.
 
