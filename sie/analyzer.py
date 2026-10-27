@@ -1,12 +1,13 @@
-"""Analyzer wiring Expert Network Call Novelty & Sentiment Velocity Overlay (v2.73.1).
+"""Analyzer wiring Agentic MCP Tool-Call Chain Latency & Success Rate Overlay (v2.74.0).
 
-Also retains prior Signed Options Flow Toxicity and Unified Multi-Source Narrative Freshness for continuity.
+Also retains prior Expert Network Call Novelty, Signed Options Flow Toxicity and Unified Multi-Source Narrative Freshness for continuity.
 """
 from __future__ import annotations
 
 from typing import Any
 
 from sie.config import load_config
+from sie.agentic_mcp_tool_call_latency import integrate_agentic_mcp_tool_call_latency_to_row
 from sie.expert_network_call_novelty import integrate_expert_network_call_novelty_to_row
 from sie.signed_options_flow_toxicity import integrate_signed_options_flow_toxicity_to_row
 from sie.unified_multi_source_narrative_freshness import (
@@ -29,5 +30,6 @@ def run_report(export: bool = False, backtest: bool = False, **kwargs: Any) -> d
         row = integrate_unified_multi_source_narrative_freshness_to_row(row, cfg)
         row = integrate_signed_options_flow_toxicity_to_row(row, cfg)
         row = integrate_expert_network_call_novelty_to_row(row, cfg)
+        row = integrate_agentic_mcp_tool_call_latency_to_row(row, cfg)
         rows.append(row)
-    return {"rows": rows, "version": "2.73.1", "overlays": ["ums", "oft", "enc"]}
+    return {"rows": rows, "version": "2.74.0", "overlays": ["ums", "oft", "enc", "mcp"]}

@@ -1,3 +1,12 @@
+# agentic_mcp_tool_call_latency:
+#   enabled: true
+#   lat_hot: 180.0
+#   lat_cold: 1200.0
+#   succ_hot: 0.82
+#   succ_cold: 0.45
+#   narrative_hot: 1.4
+#   min_confidence: 0.40
+#
 # expert_network_call_novelty:
 #   enabled: true
 #   nov_hot: 0.68
