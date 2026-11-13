@@ -1,0 +1,16 @@
+{
+  "ticker": "VWCE",
+  "isin": "IE00BK5BQT80",
+  "name": "Vanguard FTSE All-World UCITS ETF",
+  "ter_pct": null,
+  "aum": null,
+  "domicile": "Ireland",
+  "ucits": true,
+  "distribution": "accumulating",
+  "replication": "physical",
+  "benchmark": "FTSE All-World",
+  "holdings_count": null,
+  "currency": "USD",
+  "source_url": "https://www.vanguard.nl/",
+  "as_of": null
+}
