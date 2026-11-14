@@ -99,7 +99,7 @@ def run_report(
 
     result: dict[str, Any] = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "version": "2.76.0",
+        "version": "2.77.0",
         "rows": rows,
         "overlays": enabled_overlays,
         "data_quality": {

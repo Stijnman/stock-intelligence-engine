@@ -13,7 +13,7 @@ def test_run_report_returns_current_public_contract(monkeypatch):
 
     result = run_report()
 
-    assert result["version"] == "2.75.0"
+    assert result["version"] == "2.77.0"
     assert result["overlays"] == ["ums", "oft", "enc", "mcp", "tep"]
     assert len(result["rows"]) == 1
     assert result["rows"][0]["ticker"] == "AAPL"
