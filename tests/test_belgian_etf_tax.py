@@ -173,3 +173,12 @@ class EtfCostExtractionTests(unittest.TestCase):
         from sie.investment.data.etf_costs import extract_etf_costs
         with self.assertRaises(ValueError):
             extract_etf_costs("IE00B4L5Y983", issuer="ishares", document_url="https://ishares.com.attacker.example/fake.pdf")
+
+    def test_extracts_non_eur_kid_cost_amounts_with_currency(self):
+        from sie.investment.data.etf_costs import parse_issuer_cost_document
+        text = '''Key Information Document\nProduct: Xtrackers Example ETF\nISIN IE00BJ0KDQ92\nWhat are the costs?\nEntry costs We do not charge an entry fee. 0 USD\nExit costs We do not charge an exit fee. 0 USD\nManagement fees and 0.12% per year 12 USD\nTransaction costs 0.01% per year 1 USD\n'''
+        result = parse_issuer_cost_document(text, isin="IE00BJ0KDQ92", issuer="xtrackers", source_url="https://etf.dws.com/test.pdf")
+        self.assertEqual(result["costs"]["entry_costs_pct"]["value_amount"], 0)
+        self.assertEqual(result["costs"]["entry_costs_pct"]["amount_currency"], "USD")
+        self.assertEqual(result["costs"]["ongoing_charges_pct"]["amount"], 12)
+        self.assertEqual(result["costs"]["ongoing_charges_pct"]["amount_currency"], "USD")

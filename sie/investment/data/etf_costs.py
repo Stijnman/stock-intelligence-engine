@@ -123,19 +123,27 @@ def _pct_near(text: str, patterns: list[str], *, window: int = 450) -> dict[str,
                           "method": "issuer_pdf_text_label_adjacent_table_row"}
                 # KID tables can show both a percentage and its EUR impact.
                 for amount_row in (lines[index], lines[index + 1] if index + 1 < len(lines) else "", lines[index - 1] if index else ""):
-                    euro = re.search(r"EUR\s*([0-9][0-9.,]*)", amount_row, re.I)
-                    if euro:
-                        result["amount_eur"] = float(euro.group(1).replace(",", "."))
+                    money = re.search(r"\b(EUR|USD|GBP|CHF|SEK|NOK|DKK)\s*([0-9][0-9.,]*)|([0-9][0-9.,]*)\s*(EUR|USD|GBP|CHF|SEK|NOK|DKK)\b", amount_row, re.I)
+                    if money:
+                        currency = (money.group(1) or money.group(4)).upper()
+                        amount = float((money.group(2) or money.group(3)).replace(",", "."))
+                        result["amount_currency"] = currency
+                        result["amount"] = amount
+                        if currency == "EUR": result["amount_eur"] = amount
                         break
                 return result
-            # KID entry/exit lines are often expressed in EUR, not percent.
+            # KID entry/exit lines are often expressed as a currency amount, not %.
             for row_index in (index, index + 1):
                 if 0 <= row_index < len(lines):
-                    euro = re.search(r"EUR\s*([0-9][0-9.,]*)", lines[row_index], re.I)
-                    if euro:
-                        return {"value_eur": float(euro.group(1).replace(",", ".")),
+                    money = re.search(r"\b(EUR|USD|GBP|CHF|SEK|NOK|DKK)\s*([0-9][0-9.,]*)|([0-9][0-9.,]*)\s*(EUR|USD|GBP|CHF|SEK|NOK|DKK)\b", lines[row_index], re.I)
+                    if money:
+                        currency = (money.group(1) or money.group(4)).upper()
+                        amount = float((money.group(2) or money.group(3)).replace(",", "."))
+                        item = {"value_amount": amount, "amount_currency": currency,
                                 "evidence": lines[row_index].strip(), "label": label,
-                                "method": "issuer_pdf_text_label_euro_amount"}
+                                "method": "issuer_pdf_text_label_currency_amount"}
+                        if currency == "EUR": item["value_eur"] = amount
+                        return item
     return None
 
 
