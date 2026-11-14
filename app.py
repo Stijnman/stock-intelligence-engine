@@ -307,7 +307,7 @@ with st.expander("Automatic ETF KID / factsheet cost extraction", expanded=False
             st.dataframe([{k: v for k, v in item.items() if k not in {"previous_costs", "current_costs"}} for item in history["document_changes"]], use_container_width=True, hide_index=True)
 
 with st.expander("ETF-kosten vergelijken", expanded=False):
-    st.caption("Vergelijkt uitsluitend door de uitgever gelabelde TER/OCF. PRIIPs-beheerkosten, transactiekosten en RIY worden niet als TER voorgesteld.")
+    st.caption("Vergelijkt uitsluitend door de uitgever gelabelde TER/OCF. PRIIPs-beheerkosten, transactiekosten en RIY blijven apart en tellen niet mee in de TER-rangschikking.")
     compare_isins = st.text_input("ISIN:issuer (komma-gescheiden)", key="etf_compare_isins", placeholder="IE00B4L5Y983:ishares, LU1681038169:amundi")
     if st.button("Haal actuele documenten op en vergelijk", key="etf_compare_run"):
         try:
