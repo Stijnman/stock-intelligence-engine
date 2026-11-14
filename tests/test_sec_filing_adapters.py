@@ -2,7 +2,7 @@ import os
 import unittest
 from unittest.mock import patch
 
-from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_holdings
+from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_holdings, fetch_reported_earnings_filings
 from sie.investment.advanced import insider_sentiment
 
 
@@ -66,6 +66,29 @@ class SECFilingAdapterTests(unittest.TestCase):
         self.assertEqual(rows[0]["issuer"], "Example Corp")
         self.assertEqual(rows[0]["value_usd_thousands"], 125000)
         self.assertEqual(rows[0]["shares"], 2500)
+
+    @patch("sie.investment.data.sec_filings.sec_cik_for_ticker", return_value="0000000123")
+    @patch("sie.investment.data.sec_filings._json")
+    def test_reported_earnings_only_selects_item_202(self, json_call, cik):
+        json_call.return_value = {
+            "filings": {"recent": {
+                "form": ["8-K", "8-K", "8-K"],
+                "items": ["2.02,9.01", "7.01,9.01", "2.02"],
+                "filingDate": ["2026-11-12", "2026-11-10", "2026-10-20"],
+                "reportDate": ["2026-11-11", "2026-11-10", "2026-10-19"],
+                "accessionNumber": ["0000000123-26-000001", "0000000123-26-000002", "0000000123-26-000003"],
+                "primaryDocument": ["earnings1.htm", "other.htm", "earnings2.htm"]
+            }}
+        }
+        rows = fetch_reported_earnings_filings("EXM", limit_filings=10)
+        self.assertEqual([row["date"] for row in rows], ["2026-11-12", "2026-10-20"])
+        self.assertTrue(all(row["status"] == "reported" for row in rows))
+        self.assertTrue(all(row["source_status"] == "LIVE_SOURCE_FILING" for row in rows))
+        self.assertIn("2.02", rows[0]["items"])
+
+    def test_reported_earnings_validates_limit(self):
+        with self.assertRaises(ValueError):
+            fetch_reported_earnings_filings("EXM", limit_filings=0)
 
     def test_sec_requires_contact_user_agent(self):
         with patch.dict(os.environ, {}, clear=True):

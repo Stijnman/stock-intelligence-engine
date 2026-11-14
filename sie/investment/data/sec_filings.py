@@ -77,6 +77,7 @@ def _recent_filings(ticker: str, forms: set[str], limit: int) -> tuple[str, list
         cik_path = str(int(cik))
         filings.append({
             "form": form,
+            "items": (recent.get("items") or [""] * count)[index],
             "filing_date": recent["filingDate"][index],
             "report_date": (recent.get("reportDate") or [""] * count)[index],
             "accession_number": accession,
@@ -185,3 +186,34 @@ def fetch_13f_holdings(ticker: str, *, limit_filings: int = 1) -> list[dict]:
                     "source_status": "LIVE_SOURCE_FILING",
                 })
     return holdings
+
+def fetch_reported_earnings_filings(ticker: str, *, limit_filings: int = 20) -> list[dict]:
+    """Return official SEC 8-K filings that disclose earnings under Item 2.02.
+
+    This is a reported-results history, not a forward earnings calendar and does
+    not provide analyst consensus or EPS surprise estimates. Foreign private
+    issuers commonly use 6-K and are not included by this Item 2.02 filter.
+    """
+    if not 1 <= limit_filings <= 100:
+        raise ValueError("limit_filings must be between 1 and 100")
+    _, candidates = _recent_filings(ticker, {"8-K"}, 100)
+    results = []
+    for filing in candidates:
+        items = {value.strip() for value in str(filing.get("items") or "").split(",")}
+        if "2.02" not in items:
+            continue
+        results.append({
+            "ticker": ticker.upper(),
+            "date": filing["filing_date"],
+            "report_date": filing.get("report_date"),
+            "status": "reported",
+            "event_type": "SEC Form 8-K Item 2.02",
+            "items": filing.get("items"),
+            "accession_number": filing["accession_number"],
+            "source": "SEC EDGAR",
+            "source_url": filing["source_url"],
+            "source_status": "LIVE_SOURCE_FILING",
+        })
+        if len(results) >= limit_filings:
+            break
+    return results

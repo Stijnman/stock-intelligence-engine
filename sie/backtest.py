@@ -1,56 +1,39 @@
-"""Backtesting framework for historical signal performance."""
-from datetime import datetime, timedelta
-import pandas as pd
-import yfinance as yf
-from sie.technical import analyze_ticker, compute_signal
+"""Price-only historical backtest compatibility wrappers.
+
+This module deliberately avoids fabricated signals or placeholder performance.
+Use the CLI quantitative backtest for multi-asset portfolios and full assumptions.
+"""
+from __future__ import annotations
+
+from sie.investment.quantitative import run_historical_backtest
 from sie.config import load_config
 
-def run_backtest(ticker: str, start_date: str = '2023-01-01', end_date: str = None, cfg=None):
-    cfg = cfg or load_config()
-    if end_date is None:
-        end_date = datetime.now().strftime('%Y-%m-%d')
-    
-    hist = yf.download(ticker, start=start_date, end=end_date, progress=False)
-    if hist.empty:
-        return {'error': 'No data'}
-    
-    signals = []
-    positions = []
-    returns = []
-    
-    for i in range(50, len(hist)):  # Need enough history for MAs
-        slice_hist = hist.iloc[:i+1]
-        # Simulate snapshot
-        meta = {'narrative_fit': 'strong'}  # Simplified
-        snap = analyze_ticker(ticker, meta, cfg)  # Note: adjust for historical
-        # For simplicity, re-compute on slice but this is approx
-        signal = snap.signal
-        signals.append((hist.index[i], signal))
-        
-        # Simple backtest logic: buy on strong_buy, hold, sell on caution
-        if signal in ['strong_buy', 'buy']:
-            positions.append(1)
-        else:
-            positions.append(0)
-    
-    # Calculate performance
-    hist['signal'] = [s[1] for s in signals] + [None] * (len(hist) - len(signals))  # align
-    # ... compute cumulative returns, sharpe etc.
-    sharpe = 1.2  # placeholder
-    total_return = 25.5  # placeholder
-    
-    return {
-        'ticker': ticker,
-        'period': f'{start_date} to {end_date}',
-        'num_signals': len(signals),
-        'sharpe_ratio': sharpe,
-        'total_return_pct': total_return,
-        'signals': signals[-10:]  # recent
-    }
+
+def run_backtest(ticker: str, start_date: str = "2023-01-01", end_date: str | None = None, cfg=None):
+    """Run a real single-asset buy-and-hold-style backtest.
+
+    The Yahoo chart adapter accepts named ranges rather than arbitrary dates here;
+    start_date/end_date remain in the signature for backward compatibility and
+    are reported as requested bounds, while the actual returned period is explicit.
+    """
+    range_ = (cfg or {}).get("backtest_range", "5y")
+    result = run_historical_backtest(
+        [ticker], {ticker.upper(): 1.0}, range_=range_,
+        initial_cash=float((cfg or {}).get("backtest_initial_cash", 10000)),
+        fee_bps=float((cfg or {}).get("backtest_fee_bps", 5)),
+        slippage_bps=float((cfg or {}).get("backtest_slippage_bps", 5)),
+        rebalance_every=252,
+    )
+    result["ticker"] = ticker.upper()
+    result["requested_start_date"] = start_date
+    result["requested_end_date"] = end_date
+    result["period_note"] = "The current chart adapter uses named lookback ranges; actual start_date/end_date are returned separately."
+    return result
+
 
 def backtest_watchlist(cfg=None):
     cfg = cfg or load_config()
-    results = {}
-    for ticker in cfg.get('tickers', {}):
-        results[ticker] = run_backtest(ticker, cfg=cfg)
-    return results
+    return {
+        ticker: run_backtest(ticker, cfg=cfg)
+        for ticker in (cfg.get("tickers") or {})
+    }

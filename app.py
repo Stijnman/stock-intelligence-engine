@@ -90,6 +90,13 @@ quant_tickers = st.multiselect(
     default=(selected or configured_tickers or ["ASML", "MSFT", "NVDA", "SPY"])[:5],
     key="quant_tickers",
 )
+backtest_col1, backtest_col2, backtest_col3 = st.columns(3)
+with backtest_col1:
+    quant_fee_bps = st.number_input("Backtest fee (bps / side)", min_value=0.0, value=5.0, step=1.0, key="quant_fee_bps")
+with backtest_col2:
+    quant_slippage_bps = st.number_input("Backtest slippage (bps / side)", min_value=0.0, value=5.0, step=1.0, key="quant_slippage_bps")
+with backtest_col3:
+    quant_rebalance_days = st.number_input("Rebalance interval (trading days)", min_value=1, max_value=252, value=21, step=1, key="quant_rebalance_days")
 quant_run = st.button("Load price history and calculate portfolio analytics", key="quant_run")
 if quant_run:
     if len(quant_tickers) < 2:
@@ -97,7 +104,7 @@ if quant_run:
     else:
         from sie.investment.providers import quote_and_history
         from sie.investment.advanced import (
-            correlation_matrix, monte_carlo_projection, optimize_portfolio,
+            backtest_target_weights, correlation_matrix, monte_carlo_projection, optimize_portfolio,
             portfolio_risk,
         )
         with st.spinner("Loading historical price series..."):
@@ -124,6 +131,13 @@ if quant_run:
                 quant_result["risk"] = portfolio_risk(histories)
                 quant_result["correlation"] = correlation_matrix(histories)
                 quant_result["optimizer"] = optimize_portfolio(histories, objective="max_sharpe")
+                quant_result["backtest"] = backtest_target_weights(
+                    histories,
+                    {symbol: 1.0 for symbol in histories},
+                    fee_bps=quant_fee_bps,
+                    slippage_bps=quant_slippage_bps,
+                    rebalance_every=int(quant_rebalance_days),
+                )
                 risk = quant_result["risk"]
                 if risk.get("status") == "ok":
                     quant_result["monte_carlo"] = monte_carlo_projection(
@@ -148,7 +162,7 @@ if quant_result:
         metrics[1].metric("Annualized volatility", f"{risk['annual_volatility_pct']:.2f}%")
         metrics[2].metric("Sharpe ratio", f"{risk['sharpe']:.2f}" if risk.get("sharpe") is not None else "N/A")
         metrics[3].metric("Maximum drawdown", f"{risk['max_drawdown_pct']:.2f}%")
-        risk_tabs = st.tabs(["Risk", "Optimizer", "Correlation", "Monte Carlo"])
+        risk_tabs = st.tabs(["Risk", "Optimizer", "Correlation", "Monte Carlo", "Backtest"])
         with risk_tabs[0]:
             st.json(risk)
         with risk_tabs[1]:
@@ -178,6 +192,18 @@ if quant_result:
                     "Probability of ending below starting value": simulation["probability_loss_pct"],
                 })
                 st.caption(simulation["method"])
+        with risk_tabs[4]:
+            backtest = quant_result.get("backtest", {})
+            if backtest.get("status") == "ok":
+                backtest_metrics = st.columns(4)
+                backtest_metrics[0].metric("Backtest return", f"{backtest['total_return_pct']:.2f}%")
+                backtest_metrics[1].metric("Final value (currency units)", f"{backtest['final_value']:,.2f}")
+                backtest_metrics[2].metric("Maximum drawdown", f"{backtest['max_drawdown_pct']:.2f}%")
+                backtest_metrics[3].metric("Rebalance events", str(backtest["rebalance_events"]))
+                st.json(backtest)
+                st.caption(backtest["warning"])
+            else:
+                st.warning(backtest.get("reason", "Backtest unavailable."))
     elif quant_result.get("errors"):
         st.error("Quantitative analysis could not be completed for at least two selected assets.")
 

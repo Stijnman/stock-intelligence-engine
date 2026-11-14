@@ -13,9 +13,10 @@ from sie.investment.data.nbb import fetch_sdmx_csv, fetch_preset as fetch_nbb_pr
 from sie.investment.data.worldbank import fetch_indicator
 from sie.investment.data.cftc import fetch_legacy_futures_only, positioning_summary
 from sie.investment.data.fred import fetch_series as fetch_fred_series
-from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_holdings
+from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_holdings, fetch_reported_earnings_filings
 from sie.investment.data.treasury import fetch_debt_to_penny
 from sie.investment.advanced import insider_sentiment
+from sie.investment.quantitative import analyze_live_portfolio_risk, run_historical_backtest
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="sie-invest", description="Free-first stock and ETF research")
@@ -60,9 +61,25 @@ def main() -> int:
     sec_insiders.add_argument("--include-amendments", action="store_true")
     sec_13f = sub.add_parser("sec-13f", help="Fetch delayed SEC 13F institutional holdings (requires SEC_USER_AGENT)")
     sec_13f.add_argument("manager_ticker")
+    sec_earnings = sub.add_parser("sec-earnings", help="Fetch official reported earnings dates from SEC 8-K Item 2.02")
+    sec_earnings.add_argument("ticker")
+    sec_earnings.add_argument("--filings", type=int, default=20)
     treasury = sub.add_parser("treasury-debt", help="Fetch public U.S. Treasury daily debt data")
     treasury.add_argument("--start", help="Start date YYYY-MM-DD")
     treasury.add_argument("--limit", type=int, default=100)
+    risk = sub.add_parser("risk", help="Calculate historical portfolio risk from aligned price history")
+    risk.add_argument("tickers", help="Comma-separated ticker symbols")
+    risk.add_argument("--weights", help="Comma-separated TICKER=WEIGHT pairs; defaults to equal weights")
+    risk.add_argument("--range", dest="range_", default="5y", choices=["1mo", "3mo", "6mo", "1y", "2y", "5y", "10y", "max"])
+    risk.add_argument("--risk-free-rate", type=float, default=0.0, help="Annual risk-free rate as decimal, e.g. 0.03")
+    backtest = sub.add_parser("backtest", help="Run a price-only periodic-rebalance historical baseline")
+    backtest.add_argument("tickers", help="Comma-separated ticker symbols")
+    backtest.add_argument("--weights", help="Comma-separated TICKER=WEIGHT pairs; defaults to equal weights")
+    backtest.add_argument("--range", dest="range_", default="5y", choices=["1mo", "3mo", "6mo", "1y", "2y", "5y", "10y", "max"])
+    backtest.add_argument("--cash", type=float, default=10000.0)
+    backtest.add_argument("--fee-bps", type=float, default=5.0)
+    backtest.add_argument("--slippage-bps", type=float, default=5.0)
+    backtest.add_argument("--rebalance-days", type=int, default=21)
     args = parser.parse_args()
     try:
         if args.command == "analyze":
@@ -108,8 +125,34 @@ def main() -> int:
             rows = fetch_13f_holdings(args.manager_ticker)
             payload = {"holdings": rows,
                        "notice": "13F reports are delayed long-equity disclosures; they are not complete real-time portfolios and omit short positions."}
+        elif args.command == "sec-earnings":
+            rows = fetch_reported_earnings_filings(args.ticker, limit_filings=args.filings)
+            payload = {"events": rows,
+                       "notice": "Official reported dates only: SEC 8-K Item 2.02. Not a forward calendar, no consensus/EPS estimates; foreign private issuers using 6-K are not included."}
         elif args.command == "treasury-debt":
             payload = {"observations": fetch_debt_to_penny(start_date=args.start, limit=args.limit)}
+        elif args.command in {"risk", "backtest"}:
+            symbols = [value.strip().upper() for value in args.tickers.split(",") if value.strip()]
+            if not symbols:
+                raise ValueError("Provide at least one ticker.")
+            weights = None
+            if args.weights:
+                weights = {}
+                for item in args.weights.split(","):
+                    if "=" not in item:
+                        raise ValueError(f"Invalid weight {item!r}; use TICKER=WEIGHT")
+                    symbol, value = item.split("=", 1)
+                    weights[symbol.strip().upper()] = float(value)
+            if args.command == "risk":
+                if not 0 <= args.risk_free_rate < 1:
+                    raise ValueError("--risk-free-rate must be between 0 and 1.")
+                payload = analyze_live_portfolio_risk(symbols, weights, range_=args.range_, risk_free_rate=args.risk_free_rate)
+            else:
+                payload = run_historical_backtest(
+                    symbols, weights, range_=args.range_, initial_cash=args.cash,
+                    fee_bps=args.fee_bps, slippage_bps=args.slippage_bps,
+                    rebalance_every=args.rebalance_days,
+                )
         print(json.dumps(payload, indent=2, ensure_ascii=False)); return 0
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr); return 2

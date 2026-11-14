@@ -96,3 +96,6 @@
 - Added CLI commands for Form 4 insider scans and 13F manager holdings; live-source provenance is preserved in insider sentiment summaries.
 
 - Added U.S. Treasury Fiscal Data Debt to the Penny adapter (no key), CLI access and graceful integration into the macro snapshot.
+
+- Added date-aligned multi-asset historical risk and backtest workflows, exposed through CLI commands. Removed hard-coded Sharpe/return placeholders from the legacy backtest wrapper.
+- Added an official SEC 8-K Item 2.02 reported-earnings history command; dates are verified filings, not estimated future events or consensus surprises.

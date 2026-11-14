@@ -29,6 +29,9 @@ execute trades, call paid APIs, or silently manufacture live market data.
 | FRED macro series | Series observation retrieval with missing-value and vintage metadata | Free FRED API key; third-party series terms apply |
 | U.S. Treasury debt | Daily debt held by public, intragovernmental holdings and total debt | Public Fiscal Data API; no key |
 | Options risk | IV, open interest, volume and put/call volume summary | Caller-supplied option chain |
+| Historical portfolio risk | Date-aligned closes, CAGR, Sharpe/Sortino, VaR/CVaR, drawdown, correlations and SPY beta | Yahoo chart indicative prices; explicit FX/dividend limitations |
+| Price-only portfolio backtest | Periodic target weights, initial/rebalance/final trading friction and drawdown | Yahoo chart indicative prices; not a fundamental-signal backtest |
+| Reported earnings history | SEC 8-K Item 2.02 filed earnings dates | Official SEC filings; reported history only, no estimates |
 | Data provenance | Strict LIVE/CACHED/ESTIMATED/SYNTHETIC/UNAVAILABLE labels | Provider metadata |
 
 ## API examples

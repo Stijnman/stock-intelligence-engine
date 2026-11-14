@@ -182,5 +182,15 @@ The CFTC adapter's source and report semantics are documented at the [official C
 
 - **SEC Form 4 insider transactions:** `python -m sie.investment_cli sec-insiders MSFT --filings 10`. Parses non-derivative and derivative transactions, P/S codes, owner role, filing/report dates and 10b5-1 flags. Set `SEC_USER_AGENT="Your App contact: <your-contact-email>"` before requesting SEC filings; SEC asks automated clients to identify themselves and provide a contact.
 - **SEC 13F holdings:** `python -m sie.investment_cli sec-13f BRK-B`. Retrieves information-table holdings for a manager that files 13F. Reported values are USD thousands and filings are delayed; 13F is not a complete portfolio and does not disclose short positions.
+- **Reported earnings history:** `python -m sie.investment_cli sec-earnings MSFT --filings 20`. Reads official SEC 8-K Item 2.02 filing dates. It is a history of reported earnings, not a forward calendar or analyst EPS-surprise feed; foreign private issuers using 6-K are not included.
 
 - **U.S. Treasury Fiscal Data:** daily Debt to the Penny series, no API key. Example: `python -m sie.investment_cli treasury-debt --limit 100`. The combined `macro` snapshot now includes the latest U.S. public debt observation where the source is reachable.
+
+### Quantitative portfolio risk and backtesting
+
+- **Risk analytics:** `python -m sie.investment_cli risk ASML,MSFT,SPY --weights ASML=0.4,MSFT=0.4,SPY=0.2 --range 5y`
+- **Historical backtest:** `python -m sie.investment_cli backtest ASML,MSFT --weights ASML=0.6,MSFT=0.4 --range 5y --cash 10000 --fee-bps 5 --slippage-bps 5 --rebalance-days 21`
+- The risk command reports realized CAGR, annualized volatility, arithmetic-return Sharpe/Sortino, drawdown, Calmar, historical VaR/CVaR and correlations; it also reports single-factor beta versus SPY when SPY is included.
+- Histories are aligned on exact common trading dates, not array position. Failed providers are reported per ticker; no prices are fabricated.
+- The backtest is a transparent price-only periodic-rebalance baseline with configurable fees and slippage. It is **not** a historical fundamental-signal backtest. Dividends, FX, Belgian taxes, corporate actions, delistings and point-in-time universe bias remain excluded.
+- Yahoo chart data is unofficial/indicative. Verify prices and results independently before using them.

@@ -61,7 +61,6 @@ def portfolio_risk(
     w = {t: v / total for t, v in raw.items()}
     daily = [sum(w[t] * series[t][i] for t in tickers) for i in range(n)]
     mu, sigma = _mean(daily), _stdev(daily)
-    annual_return = (1 + mu) ** periods_per_year - 1 if mu is not None and mu > -1 else None
     annual_vol = sigma * math.sqrt(periods_per_year) if sigma is not None else None
     downside = [min(0.0, x) for x in daily]
     downside_dev = math.sqrt(sum(x * x for x in downside) / len(downside)) * math.sqrt(periods_per_year)
@@ -70,12 +69,16 @@ def portfolio_risk(
         nav *= 1 + r
         peak = max(peak, nav)
         max_dd = min(max_dd, nav / peak - 1)
+    # CAGR uses the realized compounded NAV; Sharpe/Sortino use arithmetic
+    # annualized excess return, consistent with their daily-return denominator.
+    annual_return = nav ** (periods_per_year / n) - 1 if nav > 0 else None
+    annualized_mean_return = mu * periods_per_year if mu is not None else None
     sorted_returns = sorted(daily)
     tail = [x for x in sorted_returns if x <= (_percentile(sorted_returns, 1 - confidence) or 0)]
     var = -(_percentile(daily, 1 - confidence) or 0) * math.sqrt(periods_per_year)
     cvar = -(mean(tail) if tail else 0.0) * math.sqrt(periods_per_year)
-    sharpe = (annual_return - risk_free_rate) / annual_vol if annual_return is not None and annual_vol else None
-    sortino = (annual_return - risk_free_rate) / downside_dev if annual_return is not None and downside_dev else None
+    sharpe = (annualized_mean_return - risk_free_rate) / annual_vol if annualized_mean_return is not None and annual_vol else None
+    sortino = (annualized_mean_return - risk_free_rate) / downside_dev if annualized_mean_return is not None and downside_dev else None
     calmar = annual_return / abs(max_dd) if annual_return is not None and max_dd < 0 else None
     return {
         "status": "ok", "observations": n, "periods_per_year": periods_per_year,
@@ -626,6 +629,10 @@ def backtest_target_weights(
     names = [name for name in target_weights if name in price_history]
     if len(names) < 1 or initial_cash <= 0 or rebalance_every < 1:
         return {"status": "unavailable", "reason": "Need matching assets, positive cash and rebalance interval."}
+    if fee_bps < 0 or slippage_bps < 0 or fee_bps + slippage_bps >= 10000:
+        raise ValueError("Fees and slippage must be non-negative and total less than 10000 bps per side.")
+    if any(float(target_weights[name]) < 0 for name in names):
+        raise ValueError("Negative target weights are not supported; this backtest is long-only.")
     series = {name: _clean(price_history[name]) for name in names}
     n = min(map(len, series.values()))
     if n < 3 or any(min(values[-n:]) <= 0 for values in series.values()):
@@ -636,8 +643,11 @@ def backtest_target_weights(
     weights = [value / sum(raw) for value in raw]
     prices_by_asset = [series[name][-n:] for name in names]
     fee_rate = max(0.0, fee_bps + slippage_bps) / 10000
-    nav, peak, max_drawdown = initial_cash, initial_cash, 0.0
-    turnover_events, total_turnover, current_weights = 0, 0.0, list(weights)
+    # Charge the initial portfolio construction and final liquidation as well as
+    # scheduled rebalances; otherwise short backtests understate trading friction.
+    nav = initial_cash * max(0.0, 1 - fee_rate)
+    peak, max_drawdown = initial_cash, nav / initial_cash - 1
+    turnover_events, total_turnover, current_weights = 0, 1.0, list(weights)
     for day in range(1, n):
         asset_returns = [prices_by_asset[i][day] / prices_by_asset[i][day - 1] - 1 for i in range(len(names))]
         portfolio_return = sum(current_weights[i] * asset_returns[i] for i in range(len(names)))
@@ -654,6 +664,10 @@ def backtest_target_weights(
             current_weights = drifted
         peak = max(peak, nav)
         max_drawdown = min(max_drawdown, nav / peak - 1)
+    nav *= max(0.0, 1 - fee_rate)  # liquidate all positions at the end of the test
+    peak = max(peak, nav)
+    max_drawdown = min(max_drawdown, nav / peak - 1)
+    total_turnover += 1.0
     final_value = nav
     return {"status": "ok", "initial_value": initial_cash, "final_value": final_value,
             "total_return_pct": (final_value / initial_cash - 1) * 100,
