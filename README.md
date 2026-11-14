@@ -11,7 +11,7 @@ The project runs as a Python CLI and a Streamlit dashboard. It also includes a f
 - **Narrative intelligence:** news and optional X/Twitter search, sentiment, mention velocity and narrative classification.
 - **Overlay engine:** independently configurable signal adjustments with human-readable reasons.
 - **Investment analysis:** market data, technical indicators, valuation/DCF scenarios, dividend analysis, ETF and portfolio utilities.
-- **Public-data adapters:** ECB, Eurostat, NBB.Stat, World Bank Indicators and SEC company facts.
+- **Public-data adapters:** ECB, Eurostat, NBB.Stat, World Bank Indicators, SEC CompanyFacts/Form 4/13F, CFTC COT, FRED (optional key) and U.S. Treasury Fiscal Data.
 - **Outputs:** CLI reports, JSON, CSV exports and an interactive Streamlit dashboard.
 - **Docker:** batch export and dashboard services via Docker Compose.
 

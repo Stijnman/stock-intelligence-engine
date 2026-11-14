@@ -27,6 +27,7 @@ execute trades, call paid APIs, or silently manufacture live market data.
 | Institutional holdings | SEC 13F-HR information-table retrieval and normalization | Public SEC filings; delayed long-equity disclosure |
 | CFTC positioning | Legacy futures-only COT net positioning by contract | Public CFTC Socrata API; weekly reports |
 | FRED macro series | Series observation retrieval with missing-value and vintage metadata | Free FRED API key; third-party series terms apply |
+| U.S. Treasury debt | Daily debt held by public, intragovernmental holdings and total debt | Public Fiscal Data API; no key |
 | Options risk | IV, open interest, volume and put/call volume summary | Caller-supplied option chain |
 | Data provenance | Strict LIVE/CACHED/ESTIMATED/SYNTHETIC/UNAVAILABLE labels | Provider metadata |
 
