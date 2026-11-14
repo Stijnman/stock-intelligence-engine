@@ -84,3 +84,36 @@ Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in
 - **v2.70.1 (2026-10-24)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays to the roadmap (Dark Pool / Off-Exchange Institutional Block Print Intensity & Informed Flow, Real-Time Earnings Call Transcript Sentiment Velocity vs Pre-Call Narrative, Gamma Exposure (GEX) Regime & Dealer Hedging Pressure to High Priority; Congressional Trade Disclosure Clustering & Timing Alpha, Web Traffic & App Engagement Velocity as Leading Demand Proxy to Medium Priority). Version bump.
 
 - **v2.70.0 (2026-10-23)**: Fully implemented Agent-Generated Research Memo Cascade Velocity Overlay (`sie/agent_generated_memo_cascade.py`). Columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`. Soft boost on high-velocity agent-generated research memo cascade into confirming narrative; caution on collapse or adversarial turn while human narrative heat remains elevated. Wired through analyzer, CLI (`--no-agent-generated-memo-cascade`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![AGC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agent_generated_memo_cascade_v2.70.0.svg)
+
+## Free public-data adapters (investment intelligence)
+
+The `sie.investment.data` package provides standard-library-only adapters for
+public macroeconomic data. No paid API subscription is required.
+
+```bash
+# ECB daily USD reference rates against EUR
+python3 -m sie.investment_cli ecb-fx USD --start 2025-01-01
+
+# Combined ECB FX, Eurostat HICP and World Bank macro snapshot
+python3 -m sie.investment_cli macro --country BE --currency USD
+
+# Eurostat Belgian HICP
+python3 -m sie.investment_cli eurostat prc_hicp_midx \\
+  --filter geo=BE --filter coicop=CP00 --filter unit=I15
+
+# World Bank GDP growth
+python3 -m sie.investment_cli worldbank BE NY.GDP.MKTP.KD.ZG --start 2000 --end 2025
+
+# Verified NBB MFI interest-rate preset
+python3 -m sie.investment_cli nbb-preset mfi-interest-rates --start-period 2020-01
+```
+
+The adapters cover ECB Data Portal, Eurostat, NBB.Stat, World Bank Indicators
+API v2 and SEC company facts. Yahoo Finance remains an unofficial optional
+market-data source. Results include source/series metadata and retrieval time;
+responses are cached under `~/.cache/stock-intelligence` (override with
+`SIE_CACHE_DIR`). Annual World Bank indicators can lag, so interpret their
+observation periods rather than retrieval dates. NBB's standard reuse terms
+are generally non-commercial with attribution unless dataset-specific terms
+say otherwise; verify licensing before commercial use. SEC access requires a
+descriptive `SEC_USER_AGENT` and compliance with fair-access limits.
