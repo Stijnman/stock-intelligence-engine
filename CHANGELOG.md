@@ -87,3 +87,7 @@
 - Added strict provenance states and documented which features still require live provider adapters and dashboard wiring. No trade execution or paid API dependency was introduced.
 - Added deterministic unit coverage for the new analytics layer.
 - Added periodic target-weight backtesting, explicit-metric stock screening and transparent watchlist ranking.
+
+
+- Added public CFTC Legacy Futures Only COT adapter with weekly non-commercial/commercial net positioning summaries.
+- Added optional FRED observations adapter requiring a user-owned free API key, plus CLI commands and terms/non-endorsement notice.

@@ -11,6 +11,8 @@ from sie.investment.data.eurostat import fetch_dataset
 from sie.investment.data.macro import macro_snapshot
 from sie.investment.data.nbb import fetch_sdmx_csv, fetch_preset as fetch_nbb_preset, list_presets as list_nbb_presets
 from sie.investment.data.worldbank import fetch_indicator
+from sie.investment.data.cftc import fetch_legacy_futures_only, positioning_summary
+from sie.investment.data.fred import fetch_series as fetch_fred_series
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="sie-invest", description="Free-first stock and ETF research")
@@ -42,6 +44,13 @@ def main() -> int:
     macro = sub.add_parser("macro", help="Fetch free ECB + Eurostat + World Bank macro context")
     macro.add_argument("--country", default="BE")
     macro.add_argument("--currency", default="USD")
+    cot = sub.add_parser("cftc-cot", help="Fetch free weekly CFTC Legacy futures-only positioning")
+    cot.add_argument("--commodity", help="Commodity name filter, e.g. GOLD or NATURAL GAS")
+    cot.add_argument("--start", help="First report date YYYY-MM-DD")
+    cot.add_argument("--limit", type=int, default=500)
+    fred = sub.add_parser("fred", help="Fetch a FRED series (requires your free FRED_API_KEY)")
+    fred.add_argument("series_id", help="FRED series ID, e.g. DFF, CPIAUCSL, UNRATE")
+    fred.add_argument("--start"); fred.add_argument("--end")
     args = parser.parse_args()
     try:
         if args.command == "analyze":
@@ -72,6 +81,13 @@ def main() -> int:
         elif args.command == "worldbank":
             payload = {"observations": fetch_indicator(args.country, args.indicator, start=args.start, end=args.end)}
         elif args.command == "macro": payload = macro_snapshot(country=args.country, currency=args.currency)
+        elif args.command == "cftc-cot":
+            rows = fetch_legacy_futures_only(commodity=args.commodity, start_date=args.start, limit=args.limit)
+            payload = {"observations": rows, "summary": positioning_summary(rows) if rows else {"status": "unavailable"}}
+        elif args.command == "fred":
+            payload = {"observations": fetch_fred_series(args.series_id, start=args.start, end=args.end),
+                       "notice": "This product uses the FRED API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.",
+                       "terms_url": "https://fred.stlouisfed.org/legal/terms/"}
         print(json.dumps(payload, indent=2, ensure_ascii=False)); return 0
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr); return 2

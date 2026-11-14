@@ -1,4 +1,4 @@
 """Stable public interface for free public-data adapters."""
-from . import ecb, eurostat, nbb, worldbank
+from . import cftc, ecb, eurostat, fred, nbb, worldbank
 
-__all__ = ["ecb", "eurostat", "nbb", "worldbank"]
+__all__ = ["cftc", "ecb", "eurostat", "fred", "nbb", "worldbank"]

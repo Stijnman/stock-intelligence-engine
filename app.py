@@ -205,3 +205,52 @@ with st.expander("Belgian tax and broker-cost scenario calculator"):
                 fx_spread_pct=fx_spread, other_fees_eur=other_cost,
             ))
     st.caption("Rates are editable assumptions, not confirmation of current Belgian tax law. Verify TOB classification, caps, exemptions, fund taxes and withholding before investing.")
+
+
+with st.expander("CFTC Commitments of Traders — weekly positioning"):
+    st.caption("Official CFTC futures-only positioning. Weekly Tuesday snapshot, normally published Friday; not live order flow.")
+    cot_col1, cot_col2 = st.columns([2, 1])
+    with cot_col1:
+        cot_commodity = st.text_input("Commodity filter", value="GOLD", key="cot_commodity")
+    with cot_col2:
+        cot_limit = st.number_input("Rows", min_value=10, max_value=2000, value=200, step=50, key="cot_limit")
+    if st.button("Fetch CFTC positioning", key="fetch_cftc"):
+        try:
+            from sie.investment.data.cftc import fetch_legacy_futures_only
+            cot_rows = fetch_legacy_futures_only(
+                commodity=cot_commodity.strip() or None, limit=int(cot_limit)
+            )
+            st.session_state["sie_cot_rows"] = cot_rows
+            st.session_state["sie_cot_error"] = None
+        except Exception as exc:
+            st.session_state["sie_cot_error"] = str(exc)
+    if st.session_state.get("sie_cot_error"):
+        st.error(st.session_state["sie_cot_error"])
+    cot_rows = st.session_state.get("sie_cot_rows", [])
+    if cot_rows:
+        cot_markets = sorted({row.get("market") for row in cot_rows if row.get("market")})
+        cot_market = st.selectbox("Contract / market", cot_markets, key="cot_market")
+        cot_history = sorted(
+            [row for row in cot_rows if row.get("market") == cot_market],
+            key=lambda row: row.get("report_date", "")
+        )
+        cot_latest = cot_history[-1]
+        cot_metrics = st.columns(3)
+        cot_metrics[0].metric("Latest report", cot_latest.get("report_date", "N/A"))
+        cot_metrics[1].metric(
+            "Non-commercial net",
+            f"{cot_latest['noncommercial_net']:,.0f}" if cot_latest.get("noncommercial_net") is not None else "N/A"
+        )
+        cot_metrics[2].metric(
+            "Net / open interest",
+            f"{cot_latest['noncommercial_net_pct_open_interest']:.1f}%"
+            if cot_latest.get("noncommercial_net_pct_open_interest") is not None else "N/A"
+        )
+        cot_chart = pd.DataFrame([
+            {"Report date": row.get("report_date"), "Non-commercial net": row.get("noncommercial_net")}
+            for row in cot_history if row.get("noncommercial_net") is not None
+        ])
+        if not cot_chart.empty:
+            st.line_chart(cot_chart.set_index("Report date"))
+        st.dataframe(pd.DataFrame(cot_history).tail(20), use_container_width=True, hide_index=True)
+        st.caption("Source: CFTC Public Reporting Environment. Positioning can be stale, crowded or hedging-related; it is not a directional trading signal by itself.")
