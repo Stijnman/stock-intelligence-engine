@@ -139,6 +139,10 @@ def optimize_portfolio(
     data = {t: _returns(price_history[t]) for t in names}
     if len(names) < 2 or min((len(v) for v in data.values()), default=0) < 3:
         return {"status": "unavailable", "reason": "At least two assets and four prices each are required."}
+    if not 0 < max_weight <= 1:
+        raise ValueError("max_weight must be in (0, 1].")
+    if max_weight * len(names) < 1 - 1e-10:
+        return {"status": "unavailable", "reason": "max_weight is infeasible for this asset count."}
     n = min(map(len, data.values()))
     x = [data[t][-n:] for t in names]
     mus = [mean(v) for v in x]

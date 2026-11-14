@@ -47,6 +47,10 @@ class AdvancedInvestmentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             optimize_portfolio({"A": prices(), "B": prices()}, objective="magic")
 
+    def test_optimizer_rejects_infeasible_max_weight(self):
+        result = optimize_portfolio({"A": prices(), "B": prices(), "C": prices()}, max_weight=.3)
+        self.assertEqual(result["status"], "unavailable")
+
     def test_monte_carlo_is_reproducible(self):
         a = monte_carlo_projection(1000, .06, .18, years=3, simulations=300, seed=7)
         b = monte_carlo_projection(1000, .06, .18, years=3, simulations=300, seed=7)
