@@ -16,12 +16,13 @@ def run_backtest(ticker: str, start_date: str = "2023-01-01", end_date: str | No
     start_date/end_date remain in the signature for backward compatibility and
     are reported as requested bounds, while the actual returned period is explicit.
     """
-    range_ = (cfg or {}).get("backtest_range", "5y")
+    settings = cfg or load_config()
+    range_ = settings.get("backtest_range", "5y")
     result = run_historical_backtest(
         [ticker], {ticker.upper(): 1.0}, range_=range_,
-        initial_cash=float((cfg or {}).get("backtest_initial_cash", 10000)),
-        fee_bps=float((cfg or {}).get("backtest_fee_bps", 5)),
-        slippage_bps=float((cfg or {}).get("backtest_slippage_bps", 5)),
+        initial_cash=float(settings.get("backtest_initial_cash", 10000)),
+        fee_bps=float(settings.get("backtest_fee_bps", 5)),
+        slippage_bps=float(settings.get("backtest_slippage_bps", 5)),
         rebalance_every=252,
     )
     result["ticker"] = ticker.upper()
