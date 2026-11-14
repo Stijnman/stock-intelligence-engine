@@ -42,11 +42,31 @@ Every overlay follows the same contract: wired through the analyzer (a `include_
 
 Several of the newer overlays (Tokenized Equity Premium, Agentic MCP Tool-Call Latency, Expert Network Call Novelty, Signed Options Flow Toxicity, Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
 
+## Unified investment analysis and Docker
+
+The report pipeline can combine the narrative overlay diagnostics with market prices,
+SEC fundamentals, technical indicators, DCF scenarios, dividend analysis and optional
+headlines. The narrative overlays remain explicitly marked as synthetic proxies until
+their live feeds are implemented; they are not tradeable market evidence.
+
+Run the CLI with live market/fundamental analysis and JSON output:
+
+```bash
+python stock_intelligence_engine.py --json
+python stock_intelligence_engine.py --no-investment --export
+python stock_intelligence_engine.py --news --export
+```
+
+Use `--no-<overlay-name>` switches to disable overlays for a single run.
+The Streamlit dashboard exposes the watchlist, live research toggle and optional news.
+Docker Compose accepts the same CLI flags; its batch service runs `--news --export`
+and writes CSV files into the mounted `exports/` directory.
+
 ## Quick start
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env   # add any API keys
+cp .env.example .env   # configure SEC_USER_AGENT with a descriptive app name and contact
 python stock_intelligence_engine.py
 streamlit run app.py
 ```

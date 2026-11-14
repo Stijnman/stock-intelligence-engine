@@ -5,7 +5,8 @@ services:
     command: ["--news", "--export"]
     volumes:
       - ./exports:/app/exports
-    # Optional: cp .env.example .env for --email alerts
+      - ./config.yaml:/app/config.yaml:ro
+    restart: "no"
 
   dashboard:
     build: .
@@ -15,3 +16,5 @@ services:
       - "8501:8501"
     volumes:
       - ./exports:/app/exports
+      - ./config.yaml:/app/config.yaml:ro
+    restart: unless-stopped
