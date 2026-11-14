@@ -94,3 +94,5 @@
 
 - Added SEC EDGAR Form 4 transaction parsing and 13F-HR information-table extraction using public filings, with mandatory contact-bearing User-Agent and delayed-disclosure caveats.
 - Added CLI commands for Form 4 insider scans and 13F manager holdings; live-source provenance is preserved in insider sentiment summaries.
+
+- Added U.S. Treasury Fiscal Data Debt to the Penny adapter (no key), CLI access and graceful integration into the macro snapshot.

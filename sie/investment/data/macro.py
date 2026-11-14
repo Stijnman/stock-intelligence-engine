@@ -4,6 +4,7 @@ from datetime import date, datetime, timezone
 from .ecb import euro_reference_rates
 from .eurostat import fetch_dataset
 from .worldbank import fetch_indicator
+from .treasury import latest_debt_snapshot
 
 
 def macro_snapshot(*, country: str = "BE", currency: str = "USD") -> dict:
@@ -51,6 +52,10 @@ def macro_snapshot(*, country: str = "BE", currency: str = "USD") -> dict:
                                 "note": "Annual series; publication can lag the current year."}
         except Exception as exc:
             world_bank[code] = {"label": label, "latest": None, "error": str(exc)}
+    try:
+        us_treasury_debt = latest_debt_snapshot()
+    except Exception as exc:
+        us_treasury_debt = {"status": "unavailable", "error": str(exc)}
     return {
         "country": country.upper(),
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
@@ -61,6 +66,7 @@ def macro_snapshot(*, country: str = "BE", currency: str = "USD") -> dict:
             "index_crosscheck": latest_index, "derived_yoy_pct_from_index": derived_yoy,
         },
         "world_bank": world_bank,
-        "sources": ["ECB Data Portal", "Eurostat", "World Bank"],
+        "us_treasury_debt": us_treasury_debt,
+        "sources": ["ECB Data Portal", "Eurostat", "World Bank", "U.S. Treasury Fiscal Data"],
         "data_quality": quality,
     }

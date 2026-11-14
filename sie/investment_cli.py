@@ -14,6 +14,7 @@ from sie.investment.data.worldbank import fetch_indicator
 from sie.investment.data.cftc import fetch_legacy_futures_only, positioning_summary
 from sie.investment.data.fred import fetch_series as fetch_fred_series
 from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_holdings
+from sie.investment.data.treasury import fetch_debt_to_penny
 from sie.investment.advanced import insider_sentiment
 
 def main() -> int:
@@ -59,6 +60,9 @@ def main() -> int:
     sec_insiders.add_argument("--include-amendments", action="store_true")
     sec_13f = sub.add_parser("sec-13f", help="Fetch delayed SEC 13F institutional holdings (requires SEC_USER_AGENT)")
     sec_13f.add_argument("manager_ticker")
+    treasury = sub.add_parser("treasury-debt", help="Fetch public U.S. Treasury daily debt data")
+    treasury.add_argument("--start", help="Start date YYYY-MM-DD")
+    treasury.add_argument("--limit", type=int, default=100)
     args = parser.parse_args()
     try:
         if args.command == "analyze":
@@ -104,6 +108,8 @@ def main() -> int:
             rows = fetch_13f_holdings(args.manager_ticker)
             payload = {"holdings": rows,
                        "notice": "13F reports are delayed long-equity disclosures; they are not complete real-time portfolios and omit short positions."}
+        elif args.command == "treasury-debt":
+            payload = {"observations": fetch_debt_to_penny(start_date=args.start, limit=args.limit)}
         print(json.dumps(payload, indent=2, ensure_ascii=False)); return 0
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr); return 2
