@@ -1,139 +1,167 @@
 # Stock Intelligence Engine
 
-Connect market narratives to your watchlist, confirm with technicals, and explain every signal. A narrative-first equity signal engine: for each ticker on your watchlist, it detects the dominant market narrative, scores it against a configurable stack of alternative-data overlays, cross-checks the result with technical indicators, and emits a per-signal explanation of why the score moved.
+A narrative-first equity research and investment analysis toolkit. It combines market narratives, configurable alternative-data overlays, technical confirmation and fundamental analysis, then explains which inputs influenced each signal.
 
-Runs as a CLI (`stock_intelligence_engine.py`) and a Streamlit dashboard (`app.py`). Configuration lives in `config.yaml`: watchlist, overlay toggles, thresholds.
+The project runs as a Python CLI and a Streamlit dashboard. It also includes a free-first investment data package for public macroeconomic and regulatory datasets.
 
-**Current version:** v2.75.0 (October 2026). See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+> **Research tool, not financial advice.** Outputs are estimates and research aids, not instructions to buy or sell. Verify source data, timestamps, assumptions and licensing before relying on a result.
 
-## How it works
+## Features
 
-1. **Narrative detection** — identifies the dominant narrative per ticker (viral signals, news impact, historical context).
-2. **Overlay scoring** — a stack of alternative-data overlays each produce a `boost` (score adjustment) and a `reason` (human-readable explanation). Overlays are independently toggleable.
-3. **Technical confirmation** — narrative signals are cross-checked against technicals before producing a buy/hold/caution output.
-4. **Explanation** — every signal ships with the overlay reasons that moved it, so output is auditable rather than a black-box score.
+- **Narrative intelligence:** news and optional X/Twitter search, sentiment, mention velocity and narrative classification.
+- **Overlay engine:** independently configurable signal adjustments with human-readable reasons.
+- **Investment analysis:** market data, technical indicators, valuation/DCF scenarios, dividend analysis, ETF and portfolio utilities.
+- **Public-data adapters:** ECB, Eurostat, NBB.Stat, World Bank Indicators and SEC company facts.
+- **Outputs:** CLI reports, JSON, CSV exports and an interactive Streamlit dashboard.
+- **Docker:** batch export and dashboard services via Docker Compose.
 
-## Overlay stack
+## Important: understand data provenance
 
-Every overlay follows the same contract: wired through the analyzer (a `include_*` flag), the CLI (a `--no-*` flag), config.yaml, and the dashboard (`prefix_*` columns). Current overlays:
+Not every overlay is backed by a live external feed. A number of advanced overlays currently use deterministic synthetic inputs to validate their schemas and scoring logic. These include tokenized-equity pricing, agentic MCP latency, expert-network novelty, signed options flow, multi-source freshness, generated research memos, prediction-market basis, YouTube sentiment, RAG earnings guidance, multi-agent debate, AIS maritime, satellite imagery and related experimental signals.
 
-| Overlay | Columns | Purpose |
-|---------|---------|---------|
-| Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis | `tep_*` | Continuous/tokenized equity pricing premium (bps) and 24/5 volume share vs session close |
-| Agentic MCP Tool-Call Chain Latency & Success Rate | `mcp_*` | Latency and success rate of agentic MCP tool-call chains against financial servers |
-| Expert Network Call Novelty & Sentiment Velocity | `enc_*` | Novelty and constructive sentiment velocity from expert-network call transcripts |
-| Signed Options Flow Toxicity & Informed Trading Probability | `oft_*` | Low toxicity + constructive informed-trading probability from signed OPRA flow |
-| Unified Real-Time Multi-Source Narrative Freshness | `ums_*` | Freshness and constructive alignment across news, X, SEC, Form 4, congressional |
-| Agent-Generated Research Memo Cascade Velocity | `agc_*` | Velocity and share of agent-generated research memo cascades |
-| Kalshi Regulated vs Polymarket Offshore Earnings Beat Probability Basis | `kpm_*` | Basis between regulated Kalshi and offshore Polymarket earnings-beat probabilities |
-| YouTube Financial Creator Transcript & Comment Sentiment Velocity | `ytc_*` | Velocity and sentiment of financial YouTube creator transcripts and comments |
-| RAG-Extracted Earnings Guidance Novelty & Hedge Density | `rgn_*` | Novelty and hedge density of RAG-extracted earnings guidance |
-| Agentic Narrative Contagion Velocity | `anc_*` | Velocity and agent share of narrative propagation through autonomous AI agents |
-| SEC Filing Structured Extraction Latency & Completeness | `sec_*` | Latency and completeness of structured 10-K/10-Q/8-K extraction for agent consumption |
-| Listed Event-Contract Book Depth vs Offshore Basis | `lec_*` | Listed event-contract depth and basis versus offshore prediction markets |
-| Multi-Agent Debate Consensus Strength | `mad_*` | Consensus/disagreement among specialized debate agents |
-| Always-On Agent Research Freshness | `agt_fresh_s`, `agt_workflow_pct` | Freshness and completion of continuous agent research |
-| AIS Maritime Traffic & Port Congestion | `ais_*` | Key-port congestion, vessel waiting times |
-| Domain-Tuned vs General LLM Sentiment Gap | `flm_*` | FinBERT-style vs general-LLM divergence |
-| Satellite Imagery / Geospatial Activity | `sat_*` | Parking-lot fill, oil-tank levels, night lights, vessel counts |
-| Agentic Brokerage Account Flow | `agt_flow_share`, `agt_tool_intensity` | Share of order flow from autonomous accounts |
+Treat synthetic overlays as **pipeline demonstrations, not market evidence**. Check each overlay's implementation, configuration and [FUTURE-IMPROVEMENTS.md](FUTURE-IMPROVEMENTS.md) before using it in research. A plausible-looking score does not mean a live data source was queried.
 
-### Data status — read this before trusting a signal
-
-Several of the newer overlays (Tokenized Equity Premium, Agentic MCP Tool-Call Latency, Expert Network Call Novelty, Signed Options Flow Toxicity, Unified Multi-Source Narrative Freshness, Agent-Generated Memo Cascade, Kalshi vs Polymarket basis, YouTube creator sentiment, RAG earnings guidance, listed event-contract basis, multi-agent debate, agent research freshness, AIS maritime, Fin-LLM gap, satellite imagery, agentic brokerage flow) currently run on **deterministic synthetic proxies** — live feeds are stubbed and reserved for future wiring (see CHANGELOG entries). Their column shapes and boost logic are real; their input data is not yet. Treat signals from those overlays as pipeline validation, not tradable information. Check `config.yaml` and the CHANGELOG for which feeds are live before acting on any output.
-
-## Unified investment analysis and Docker
-
-The report pipeline can combine the narrative overlay diagnostics with market prices,
-SEC fundamentals, technical indicators, DCF scenarios, dividend analysis and optional
-headlines. The narrative overlays remain explicitly marked as synthetic proxies until
-their live feeds are implemented; they are not tradeable market evidence.
-
-Run the CLI with live market/fundamental analysis and JSON output:
-
-```bash
-python stock_intelligence_engine.py --json
-python stock_intelligence_engine.py --no-investment --export
-python stock_intelligence_engine.py --news --export
-```
-
-Use `--no-<overlay-name>` switches to disable overlays for a single run.
-The Streamlit dashboard exposes the watchlist, live research toggle and optional news.
-Docker Compose accepts the same CLI flags; its batch service runs `--news --export`
-and writes CSV files into the mounted `exports/` directory.
+Yahoo Finance access through `yfinance` is unofficial and may change or be rate-limited. X/Twitter search requires a valid Bearer Token and API access that supports recent search; availability and limits depend on the X developer plan. No paid data provider is required for the public ECB, Eurostat, NBB and World Bank adapters.
 
 ## Quick start
 
+Python 3.10 or newer is required.
+
 ```bash
+git clone https://github.com/Stijnman/stock-intelligence-engine.git
+cd stock-intelligence-engine
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-cp .env.example .env   # configure SEC_USER_AGENT with a descriptive app name and contact
-python stock_intelligence_engine.py
+
+# Run the main research CLI
+python stock_intelligence_engine.py --help
+python stock_intelligence_engine.py --json
+
+# Launch the dashboard
 streamlit run app.py
 ```
 
-`config.yaml` holds the watchlist and per-overlay toggles. Every overlay can be disabled individually via config, CLI flag, or the dashboard.
+The default watchlist and overlay settings are in `config.yaml`. Edit that file to change tickers and provider/overlay options. Keep credentials out of tracked files: use local-only configuration or environment variables only where the relevant adapter explicitly supports them. Do not commit API tokens, passwords or personal data.
 
-## Requirements
+## Main CLI
 
-Python 3.10+. API keys optional depending on which overlays you enable — see `.env.example` for the supported providers.
-
-## Version history
-
-Moved to [CHANGELOG.md](CHANGELOG.md). The roadmap for unwired overlays lives in FUTURE-IMPROVEMENTS.md.
-
-## Recent Edits & Version History
-
-- **v2.75.0 (2026-10-28)**: Fully implemented Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis Overlay (`sie/tokenized_equity_premium.py`). Columns: `tep_basis_bps`, `tep_24_5_vol_share`, `tep_boost`, `tep_reason`. Soft boost when on-chain/tokenized equity continuous pricing shows a rich constructive premium and elevated 24/5 volume share into a confirming narrative; caution on adverse or collapsing continuous basis while narrative heat remains elevated. Wired through analyzer, CLI (`--no-tokenized-equity-premium`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![TEP](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/tokenized_equity_premium_v2.75.0.svg)
-
-- **v2.74.1 (2026-10-28)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (two High Priority: Agentic Prediction-Market Trade Execution Latency & Fill Quality Overlay, Crowdsourced Earnings Estimate Revision Cascade Velocity Overlay; two Medium Priority: Finance Podcast & Long-Form Audio Transcript Sentiment Velocity Overlay, On-Chain Tokenized Equity Smart-Money Wallet Clustering Overlay). Version bump.
-
-- **v2.74.0 (2026-10-27)**: Fully implemented Agentic MCP Tool-Call Chain Latency & Success Rate Overlay (`sie/agentic_mcp_tool_call_latency.py`). Columns: `mcp_latency_ms`, `mcp_success_rate`, `mcp_boost`, `mcp_reason`. Soft boost when agentic research workflows show low tool-call latency and high success/completion rate against financial MCP servers into a confirming narrative; caution on elevated latency or incomplete chains while narrative heat remains elevated. Wired through analyzer, CLI (`--no-agentic-mcp-tool-call-latency`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![MCP](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agentic_mcp_tool_call_latency_v2.74.0.svg)
-
-- **v2.73.1 (2026-10-27)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired (analyzer + CLI + config + dashboard). Nothing removed from the roadmap. Added four new high-value overlays to FUTURE-IMPROVEMENTS.md (one High Priority: AI Multi-Model Council Forecast vs Prediction Market Probability Basis Overlay; two Medium Priority: Equibles MCP Full-Text Filing & Transcript Extraction Completeness & Latency Overlay, Graded AI Verdict Hit-Rate Cascade on Prediction Markets Overlay; one Long-Term: Sports Prediction Market Official Data Partnership Spillover Narrative Contagion Overlay). Version bump.
-
-- **v2.73.0 (2026-10-26)**: Fully implemented Expert Network Call Novelty & Sentiment Velocity Overlay (`sie/expert_network_call_novelty.py`). Columns: `enc_novelty`, `enc_sent_vel`, `enc_boost`, `enc_reason`. Soft boost when high-novelty expert-network (Tegus/GLG-style) call transcripts exhibit constructive sentiment velocity confirming a narrative into technical strength; caution on low-novelty or adverse expert sentiment while narrative heat remains elevated. Wired through analyzer, CLI (`--no-expert-network-call-novelty`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![ENC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/expert_network_call_novelty_v2.73.0.svg)
-
-- **v2.72.1 (2026-10-26)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays to the roadmap (Hiring Velocity & Employee Outlook Sentiment and Short Interest & Fails-to-Deliver Squeeze Pressure to High Priority; App Download & Consumer Engagement Velocity and Prediction-Market Agent Signal Cascade Velocity to Medium Priority). Version bump.
-
-- **v2.72.0 (2026-10-25)**: Fully implemented Signed Options Flow Toxicity & Informed Trading Probability Overlay (`sie/signed_options_flow_toxicity.py`). Columns: `oft_toxicity`, `oft_informed_prob`, `oft_boost`, `oft_reason`. Soft boost when signed OPRA flow shows low toxicity and constructive informed-trading probability into a confirming narrative; caution on elevated toxicity or adverse informed flow while narrative heat remains elevated. Wired through analyzer, CLI (`--no-signed-options-flow-toxicity`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![OFT](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/signed_options_flow_toxicity_v2.72.0.svg)
-
-- **v2.71.1 (2026-10-25)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added four new high-value overlays to the roadmap (Truth Social Influential Political Account Narrative Velocity and Adanos Unified Social + Prediction-Market Buzz Velocity to High Priority; Multi-LLM Ensemble Financial Headline Sentiment Divergence and Streamlit st.fragment Live Market Pulse Auto-Refresh to Medium Priority). Version bump.
-
-- **v2.71.0 (2026-10-24)**: Fully implemented Unified Real-Time Multi-Source Narrative Freshness Overlay (`sie/unified_multi_source_narrative_freshness.py`). Columns: `ums_fresh_s`, `ums_sources_ok`, `ums_boost`, `ums_reason`. Soft boost on fresh, constructively aligned multi-source narrative (news, X cashtags, SEC filings, Form 4, congressional disclosures); caution on stale sources or adverse clustering while narrative heat remains elevated. Wired through analyzer, CLI (`--no-unified-multi-source-narrative-freshness`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![UMS](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/unified_multi_source_narrative_freshness_v2.71.0.svg)
-
-- **v2.70.1 (2026-10-24)**: Autonomous research & evolution cycle. Code audit confirmed no open FUTURE-IMPROVEMENTS items fully wired. Added five new high-value overlays to the roadmap (Dark Pool / Off-Exchange Institutional Block Print Intensity & Informed Flow, Real-Time Earnings Call Transcript Sentiment Velocity vs Pre-Call Narrative, Gamma Exposure (GEX) Regime & Dealer Hedging Pressure to High Priority; Congressional Trade Disclosure Clustering & Timing Alpha, Web Traffic & App Engagement Velocity as Leading Demand Proxy to Medium Priority). Version bump.
-
-- **v2.70.0 (2026-10-23)**: Fully implemented Agent-Generated Research Memo Cascade Velocity Overlay (`sie/agent_generated_memo_cascade.py`). Columns: `agc_vel`, `agc_memo_share`, `agc_boost`, `agc_reason`. Soft boost on high-velocity agent-generated research memo cascade into confirming narrative; caution on collapse or adversarial turn while human narrative heat remains elevated. Wired through analyzer, CLI (`--no-agent-generated-memo-cascade`), config, and Streamlit dashboard. Deterministic synthetic proxy. Asset: ![AGC](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agent_generated_memo_cascade_v2.70.0.svg)
-
-## Free public-data adapters (investment intelligence)
-
-The `sie.investment.data` package provides standard-library-only adapters for
-public macroeconomic data. No paid API subscription is required.
+The primary application CLI supports analysis, optional headlines, JSON output and CSV export. See the current argument list before running:
 
 ```bash
-# ECB daily USD reference rates against EUR
-python3 -m sie.investment_cli ecb-fx USD --start 2025-01-01
+python stock_intelligence_engine.py --help
 
-# Combined ECB FX, Eurostat HICP and World Bank macro snapshot
-python3 -m sie.investment_cli macro --country BE --currency USD
+# JSON report
+python stock_intelligence_engine.py --json
 
-# Eurostat Belgian HICP
-python3 -m sie.investment_cli eurostat prc_hicp_midx \\
-  --filter geo=BE --filter coicop=CP00 --filter unit=I15
+# Include news and export report files
+python stock_intelligence_engine.py --news --export
 
-# World Bank GDP growth
-python3 -m sie.investment_cli worldbank BE NY.GDP.MKTP.KD.ZG --start 2000 --end 2025
-
-# Verified NBB MFI interest-rate preset
-python3 -m sie.investment_cli nbb-preset mfi-interest-rates --start-period 2020-01
+# Run without the investment-analysis section
+python stock_intelligence_engine.py --no-investment --export
 ```
 
-The adapters cover ECB Data Portal, Eurostat, NBB.Stat, World Bank Indicators
-API v2 and SEC company facts. Yahoo Finance remains an unofficial optional
-market-data source. Results include source/series metadata and retrieval time;
-responses are cached under `~/.cache/stock-intelligence` (override with
-`SIE_CACHE_DIR`). Annual World Bank indicators can lag, so interpret their
-observation periods rather than retrieval dates. NBB's standard reuse terms
-are generally non-commercial with attribution unless dataset-specific terms
-say otherwise; verify licensing before commercial use. SEC access requires a
-descriptive `SEC_USER_AGENT` and compliance with fair-access limits.
+Individual overlays can be disabled for a run with their corresponding `--no-<overlay-name>` option. Overlay settings can also be changed in `config.yaml` or through the dashboard.
+
+## Free public-data CLI
+
+The investment research CLI is available as `sie-invest` (module form: `python -m sie.investment_cli`).
+
+```bash
+# Show available commands
+python -m sie.investment_cli --help
+
+# ECB daily EUR reference rates against USD
+python -m sie.investment_cli ecb-fx USD --start 2025-01-01
+
+# Combined ECB, Eurostat and World Bank macro context
+python -m sie.investment_cli macro --country BE --currency USD
+
+# Belgian HICP dataset from Eurostat
+python -m sie.investment_cli eurostat prc_hicp_midx \
+  --filter geo=BE --filter coicop=CP00 --filter unit=I15
+
+# World Bank GDP growth indicator
+python -m sie.investment_cli worldbank BE NY.GDP.MKTP.KD.ZG --start 2000 --end 2025
+
+# List available NBB.Stat presets
+python -m sie.investment_cli nbb-preset
+
+# Fetch an NBB preset
+python -m sie.investment_cli nbb-preset mfi-interest-rates --start-period 2020-01
+
+# Analyze a ticker with macro context
+python -m sie.investment_cli analyze AAPL --macro --macro-country BE --macro-currency USD
+```
+
+### Data-source coverage
+
+| Source | Data | Access / caveats |
+|---|---|---|
+| European Central Bank (ECB) | EUR reference exchange rates and macro series | Public data portal; no API key required |
+| Eurostat | European economic and price statistics, including HICP | Public API; dataset and dimension codes matter |
+| National Bank of Belgium (NBB.Stat) | Belgian monetary and financial statistics | Public SDMX/CSV endpoints and verified presets; check dataset reuse terms |
+| World Bank | Country-level development and macro indicators | Public Indicators API v2; annual observations may be published with a delay |
+| SEC EDGAR | Company facts and filing-derived fundamentals | Public endpoints; provide a descriptive User-Agent and respect SEC fair-access guidance |
+| Yahoo Finance via `yfinance` | Quotes and historical market data | Unofficial interface; no availability or stability guarantee |
+| X API v2 | Recent public posts for narrative analysis | Optional Bearer Token; API access, quotas and recent-search availability depend on the account plan |
+
+Public data does not automatically mean unrestricted commercial reuse. Check the source's current terms, attribution requirements and dataset-specific licence before redistribution or commercial use. SEC access must follow the SEC's current fair-access policy.
+
+### Cache
+
+Public-data adapter responses are cached under `~/.cache/stock-intelligence` by default. Set `SIE_CACHE_DIR` to use another cache directory. Check the observation period as well as the retrieval timestamp; macroeconomic datasets are often revised or published with a lag.
+
+## Dashboard and Docker
+
+Start the dashboard locally:
+
+```bash
+streamlit run app.py
+```
+
+Or run the dashboard in Docker:
+
+```bash
+docker compose up --build dashboard
+```
+
+Open `http://localhost:8501`.
+
+Run the batch export service:
+
+```bash
+docker compose run --build --rm stock-intel
+```
+
+The batch service runs the configured news/export command and writes generated CSV files to the host's `exports/` directory. The dashboard and batch service mount `config.yaml` read-only.
+
+## Configuration
+
+- `config.yaml`: watchlist, overlay switches and thresholds.
+- `.env.example`: optional email-alert configuration template.
+- `exports/`: generated reports (created by the application when needed).
+
+For X narrative analysis, configure the `twitter` section with `enabled`, `bearer_token`, `lookback_hours` and `search_limit`. The token is a secret: keep your local configuration private and never commit a real token. Without a token, the current social module returns mock narrative data; those results must not be mistaken for live X observations.
+
+## Development and checks
+
+```bash
+python -m compileall -q sie
+python -m pytest -q
+git diff --check
+```
+
+The GitHub Actions workflows run the test suite, CI checks, CodeQL and security scans. The container workflow builds the Docker image and runs Trivy against CRITICAL and HIGH vulnerabilities (unfixed findings are excluded by the workflow configuration). A successful application test run is not a substitute for a successful container scan.
+
+## Project documentation
+
+- [CHANGELOG.md](CHANGELOG.md) — release and implementation history.
+- [FUTURE-IMPROVEMENTS.md](FUTURE-IMPROVEMENTS.md) — planned work and unwired data sources.
+- [config.yaml](config.yaml) — default watchlist and overlay configuration.
+
+## Version
+
+The application version is maintained in the project source and release history. See [CHANGELOG.md](CHANGELOG.md) for the latest recorded changes.
