@@ -127,3 +127,44 @@ This tool is for **education and research**. Past patterns do not guarantee futu
 ---
 
 *Stock Intelligence Engine v2.0.0*
+
+## Free public-data adapters (investment intelligence)
+
+The sie.investment.data package provides standard-library-only adapters for
+public macroeconomic data. No paid API subscription is required.
+
+```bash
+# ECB daily USD reference rates against EUR
+python3 -m sie.investment_cli ecb-fx USD --start 2025-01-01
+
+# Combined ECB FX + Eurostat Belgian HICP macro snapshot
+python3 -m sie.investment_cli macro --country BE --currency USD
+
+# Eurostat Belgian HICP index (overall, 2015=100)
+python3 -m sie.investment_cli eurostat prc_hicp_midx \
+  --filter geo=BE --filter coicop=CP00 --filter unit=I15
+```
+
+ECB series identifiers use SDMX flow/key syntax. The example
+EXR/D.USD.EUR.SP00.A represents the ECB daily USD-per-EUR reference rate.
+Eurostat dataset filters are dimension codes; check dataset metadata before
+using a different series. Results include source, dataset, series, period,
+retrieval timestamp and source URL. Responses are cached under
+~/.cache/stock-intelligence (override with SIE_CACHE_DIR).
+
+SEC annual XBRL extraction distinguishes point-in-time balance-sheet facts
+from duration-based income/cash-flow facts and excludes quarterly/YTD durations
+from annual values. Configure SEC_USER_AGENT with a descriptive contact string
+and respect SEC fair-access limits. Yahoo remains unofficial and optional.
+
+
+### Additional free public macro sources
+
+- **NBB.Stat**: SDMX CSV adapter. Copy the dataset-specific CSV API query URL from NBB.Stat's **API queries** panel and run `python3 -m sie.investment_cli nbb 'https://stat.nbb.be/...'`. The adapter normalizes time, value, unit and observation-status fields. NBB's standard reuse terms state non-commercial reuse with attribution unless a dataset says otherwise; verify dataset-specific terms before commercial use.
+- **World Bank Indicators API v2**: free, no API key. Example: `python3 -m sie.investment_cli worldbank BE NY.GDP.MKTP.KD.ZG --start 2000 --end 2025`.
+- `macro --country BE` now adds annual World Bank GDP growth, unemployment and current-account context alongside ECB FX and Eurostat HICP. Annual World Bank series can lag; use observation periods and freshness checks, not the retrieval date, when interpreting them.
+
+
+### Verified NBB.Stat presets
+
+Run `python3 -m sie.investment_cli nbb-preset` to list built-in presets. The initial verified preset is `mfi-interest-rates`, sourced from the official NBB.Stat Data Explorer's DF_MIR query: `python3 -m sie.investment_cli nbb-preset mfi-interest-rates --start-period 2020-01`. It preserves SDMX dimensions and observation status; do not compare rates across instrument/maturity codes without interpreting the NBB metadata. Monthly business-survey data are available in NBB.Stat, but a safe fixed query requires the selected indicator/region/sector/adjustment codes; use the generic `nbb` command with a copied API query until those codes are verified.

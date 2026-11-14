@@ -1,6 +1,7 @@
 """Keyless-by-default providers: Yahoo chart data and SEC CompanyFacts."""
 from __future__ import annotations
 import json, os, time, urllib.error, urllib.parse, urllib.request
+from datetime import date
 from pathlib import Path
 from typing import Any
 CACHE_DIR = Path(os.getenv("SIE_CACHE_DIR", Path.home() / ".cache/stock-intelligence"))
@@ -40,21 +41,48 @@ def sec_companyfacts(ticker: str) -> dict[str, Any]:
     cik = sec_cik_for_ticker(ticker)
     return _get_json(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json", f"sec-companyfacts-{cik}.json", ttl=86400)
 
-def _annual_series(facts: dict[str, Any], candidates: tuple[str, ...]) -> dict[int, float]:
+def _annual_series(facts: dict[str, Any], candidates: tuple[str, ...], *, instant: bool = False) -> dict[int, float]:
+    """Select annual SEC facts without mixing quarterly/YTD durations or fiscal years."""
     usgaap = facts.get("facts", {}).get("us-gaap", {})
     for tag in candidates:
         node = usgaap.get(tag)
-        if not node: continue
+        if not node:
+            continue
         units = node.get("units", {})
         values = units.get("USD") or units.get("shares") or []
         annual: dict[int, tuple[str, float]] = {}
         for item in values:
-            if item.get("form") not in {"10-K", "20-F", "40-F"}: continue
+            if item.get("form") not in {"10-K", "20-F", "40-F"}:
+                continue
             end = item.get("end", "")
-            if len(end) < 4: continue
-            year, filed, value = int(end[:4]), item.get("filed", ""), float(item.get("val", 0))
-            if year not in annual or filed > annual[year][0]: annual[year] = (filed, value)
-        if annual: return {year: value for year, (_, value) in sorted(annual.items())}
+            if len(end) < 4:
+                continue
+            start = item.get("start")
+            if instant:
+                # Balance-sheet facts are point-in-time observations.
+                if start:
+                    continue
+            else:
+                # Income/cash-flow facts must cover a full financial year.
+                if not start:
+                    continue
+                try:
+                    duration_days = (date.fromisoformat(end) - date.fromisoformat(start)).days
+                except ValueError:
+                    continue
+                if not 300 <= duration_days <= 400:
+                    continue
+            fy = item.get("fy")
+            try:
+                year = int(fy) if fy is not None else int(end[:4])
+                value = float(item.get("val", 0))
+            except (TypeError, ValueError):
+                continue
+            filed = item.get("filed", "")
+            if year not in annual or filed > annual[year][0]:
+                annual[year] = (filed, value)
+        if annual:
+            return {year: value for year, (_, value) in sorted(annual.items())}
     return {}
 
 def sec_financials(ticker: str) -> dict[str, Any]:
@@ -72,11 +100,12 @@ def sec_financials(ticker: str) -> dict[str, Any]:
         "current_assets": ("AssetsCurrent",), "current_liabilities": ("LiabilitiesCurrent",),
         "interest_expense": ("InterestExpenseNonOperating", "InterestAndDebtExpense"),
     }
-    series = {key: _annual_series(facts, names) for key, names in tags.items()}
+    instant_fields = {"cash", "debt", "equity", "current_assets", "current_liabilities"}
+    series = {key: _annual_series(facts, names, instant=key in instant_fields) for key, names in tags.items()}
     # If a consolidated debt tag is absent, add current and non-current components.
     if not series["debt"]:
-        current = _annual_series(facts, ("LongTermDebtCurrent", "LongTermDebtAndFinanceLeaseObligationsCurrent"))
-        noncurrent = _annual_series(facts, ("LongTermDebtNoncurrent", "LongTermDebtAndFinanceLeaseObligationsNoncurrent"))
+        current = _annual_series(facts, ("LongTermDebtCurrent", "LongTermDebtAndFinanceLeaseObligationsCurrent"), instant=True)
+        noncurrent = _annual_series(facts, ("LongTermDebtNoncurrent", "LongTermDebtAndFinanceLeaseObligationsNoncurrent"), instant=True)
         series["debt"] = {year: current.get(year, 0.0) + noncurrent.get(year, 0.0)
                           for year in sorted(set(current) | set(noncurrent))}
     years = sorted(set().union(*(set(v) for v in series.values())))
