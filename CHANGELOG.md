@@ -91,3 +91,6 @@
 
 - Added public CFTC Legacy Futures Only COT adapter with weekly non-commercial/commercial net positioning summaries.
 - Added optional FRED observations adapter requiring a user-owned free API key, plus CLI commands and terms/non-endorsement notice.
+
+- Added SEC EDGAR Form 4 transaction parsing and 13F-HR information-table extraction using public filings, with mandatory contact-bearing User-Agent and delayed-disclosure caveats.
+- Added CLI commands for Form 4 insider scans and 13F manager holdings; live-source provenance is preserved in insider sentiment summaries.

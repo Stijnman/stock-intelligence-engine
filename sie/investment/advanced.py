@@ -410,7 +410,7 @@ def generate_alerts(
 
 
 def normalize_insider_transactions(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
-    """Normalize caller-supplied SEC Form 4-like records; no filing fetch is performed."""
+    """Normalize supplied SEC Form 4-like records, preserving live-filing provenance when present."""
     rows = []
     for r in records:
         try:
@@ -423,8 +423,9 @@ def normalize_insider_transactions(records: Sequence[Mapping[str, Any]]) -> dict
                      "value": shares * price, "source": r.get("source", "caller_supplied")})
     buys = sum(x["value"] for x in rows if x["transaction_code"] == "P")
     sells = sum(x["value"] for x in rows if x["transaction_code"] == "S")
+    source_status = "LIVE_SOURCE_FILING" if any(r.get("source_status") == "LIVE_SOURCE_FILING" for r in records) else "caller_supplied_not_live_verified"
     return {"status": "ok", "transactions": rows, "purchase_value": buys, "sale_value": sells,
-            "net_purchase_value": buys - sells, "source_status": "caller_supplied_not_live_verified"}
+            "net_purchase_value": buys - sells, "source_status": source_status}
 
 
 def options_risk_snapshot(chain: Sequence[Mapping[str, Any]]) -> dict[str, Any]:

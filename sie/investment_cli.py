@@ -13,6 +13,8 @@ from sie.investment.data.nbb import fetch_sdmx_csv, fetch_preset as fetch_nbb_pr
 from sie.investment.data.worldbank import fetch_indicator
 from sie.investment.data.cftc import fetch_legacy_futures_only, positioning_summary
 from sie.investment.data.fred import fetch_series as fetch_fred_series
+from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_holdings
+from sie.investment.advanced import insider_sentiment
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="sie-invest", description="Free-first stock and ETF research")
@@ -51,6 +53,12 @@ def main() -> int:
     fred = sub.add_parser("fred", help="Fetch a FRED series (requires your free FRED_API_KEY)")
     fred.add_argument("series_id", help="FRED series ID, e.g. DFF, CPIAUCSL, UNRATE")
     fred.add_argument("--start"); fred.add_argument("--end")
+    sec_insiders = sub.add_parser("sec-insiders", help="Fetch SEC Form 4 insider transactions (requires SEC_USER_AGENT)")
+    sec_insiders.add_argument("ticker")
+    sec_insiders.add_argument("--filings", type=int, default=10)
+    sec_insiders.add_argument("--include-amendments", action="store_true")
+    sec_13f = sub.add_parser("sec-13f", help="Fetch delayed SEC 13F institutional holdings (requires SEC_USER_AGENT)")
+    sec_13f.add_argument("manager_ticker")
     args = parser.parse_args()
     try:
         if args.command == "analyze":
@@ -88,6 +96,14 @@ def main() -> int:
             payload = {"observations": fetch_fred_series(args.series_id, start=args.start, end=args.end),
                        "notice": "This product uses the FRED API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.",
                        "terms_url": "https://fred.stlouisfed.org/legal/terms/"}
+        elif args.command == "sec-insiders":
+            rows = fetch_form4_transactions(args.ticker, limit_filings=args.filings, include_amendments=args.include_amendments)
+            payload = {"transactions": rows, "sentiment": insider_sentiment(rows),
+                       "notice": "Form 4 filings are source disclosures; review transaction codes, indirect ownership, amendments and 10b5-1 plans."}
+        elif args.command == "sec-13f":
+            rows = fetch_13f_holdings(args.manager_ticker)
+            payload = {"holdings": rows,
+                       "notice": "13F reports are delayed long-equity disclosures; they are not complete real-time portfolios and omit short positions."}
         print(json.dumps(payload, indent=2, ensure_ascii=False)); return 0
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr); return 2
