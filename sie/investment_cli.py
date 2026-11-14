@@ -18,6 +18,7 @@ from sie.investment.data.treasury import fetch_debt_to_penny
 from sie.investment.advanced import insider_sentiment
 from sie.investment.quantitative import analyze_live_portfolio_risk, run_historical_backtest
 from sie.investment.data.fsma_uci import fetch_fsma_uci_registry
+from sie.investment.data.etf_costs import extract_etf_costs
 from sie.investment.belgian_tax import calculate_tob, calculate_net_dividend_yield, calculate_reynders_tax
 
 def main() -> int:
@@ -33,6 +34,11 @@ def main() -> int:
     portfolio = sub.add_parser("portfolio"); portfolio.add_argument("csv_path", type=Path)
     etf = sub.add_parser("etf"); etf.add_argument("metadata_json", type=Path)
     etf.add_argument("--verify-fsma", action="store_true", help="Verify fund/compartment against the live official FSMA register")
+    etf_costs = sub.add_parser("etf-costs", help="Extract ETF costs from official issuer KID/factsheet PDFs")
+    etf_costs.add_argument("isin", help="ETF share-class ISIN")
+    etf_costs.add_argument("--issuer", choices=["vanguard", "ishares", "amundi", "xtrackers"])
+    etf_costs.add_argument("--document-url", help="Optional direct PDF URL on the official issuer domain")
+    etf_costs.add_argument("--document-type", choices=["KID", "factsheet"], default="KID")
     fsma = sub.add_parser("fsma-uci", help="Search the official FSMA foreign UCI/UCITS register")
     fsma.add_argument("--isin"); fsma.add_argument("--name"); fsma.add_argument("--limit", type=int, default=100)
     tob = sub.add_parser("be-tob", help="Calculate Belgian ETF TOB for one listed secondary-market trade")
@@ -117,6 +123,8 @@ def main() -> int:
             if args.verify_fsma:
                 metadata["fsma_registry"] = fetch_fsma_uci_registry(isin=metadata.get("isin"), name=metadata.get("fund_name"))
             payload = analyze_etf(metadata)
+        elif args.command == "etf-costs":
+            payload = extract_etf_costs(args.isin, issuer=args.issuer, document_url=args.document_url, document_type=args.document_type)
         elif args.command == "fsma-uci":
             payload = fetch_fsma_uci_registry(isin=args.isin, name=args.name, limit=args.limit)
         elif args.command == "be-tob":

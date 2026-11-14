@@ -1,3 +1,10 @@
+## v2.77.0 (2026-11-14)
+
+- Added issuer-first ETF KID/factsheet cost extraction for Vanguard, iShares/BlackRock, Amundi and Xtrackers/DWS.
+- Extracts ongoing charges/TER-labelled values, portfolio transaction costs, entry/exit costs, performance fees, reduction-in-yield and tracking-difference where explicitly disclosed.
+- Preserves source URL, ISIN confirmation, document date, extracted evidence snippets, method and text SHA-256; ambiguous or missing values remain unverified.
+- Added `etf-costs` CLI and PDF text extraction through the system `pdftotext` utility (Poppler); no paid API or Python PDF dependency.
+
 ## v2.76.0 (2026-11-14)
 
 - Implemented Belgian ETF/UCITS and investor tax engine using the official FSMA foreign UCI workbook, Wikifin TOB classifications and FPS Finance withholding guidance.

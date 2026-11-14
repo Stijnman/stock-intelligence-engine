@@ -7,7 +7,7 @@ import streamlit as st
 from sie.analyzer import run_report
 from sie.config import load_config
 
-__version__ = "2.76.0"
+__version__ = "2.77.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -263,6 +263,37 @@ with st.expander("Belgian ETF tax engine — official rates and FSMA evidence", 
         if st.session_state.get("be_div_result"):
             st.json(st.session_state["be_div_result"])
     st.caption("Rates: Wikifin/FSMA and FPS Finance. Fund TER must be sourced from the latest issuer KID/factsheet. Foreign tax inside the fund is not deducted a second time here. The new financial-asset capital-gains tax, broker commissions and full FCP look-through tax are not calculated in this panel.")
+
+with st.expander("Automatic ETF KID / factsheet cost extraction", expanded=False):
+    from sie.investment.data.etf_costs import extract_etf_costs
+    st.caption("Downloads issuer-published documents only. TER/ongoing charges, transaction costs and RIY are kept separate; every extracted value includes its evidence snippet and source.")
+    cost_col1, cost_col2 = st.columns(2)
+    with cost_col1:
+        cost_isin = st.text_input("ETF share-class ISIN", key="etf_cost_isin", max_chars=12)
+        cost_issuer = st.selectbox("Issuer", ["vanguard", "ishares", "amundi", "xtrackers"], key="etf_cost_issuer")
+    with cost_col2:
+        cost_type = st.selectbox("Document", ["KID", "factsheet"], key="etf_cost_type")
+        cost_url = st.text_input("Direct official PDF URL (optional fallback)", key="etf_cost_url")
+    if st.button("Extract official ETF costs", key="etf_cost_extract"):
+        try:
+            st.session_state["etf_cost_result"] = extract_etf_costs(
+                cost_isin, issuer=cost_issuer, document_url=cost_url.strip() or None,
+                document_type=cost_type,
+            )
+            st.session_state["etf_cost_error"] = None
+        except Exception as exc:
+            st.session_state["etf_cost_error"] = str(exc)
+    if st.session_state.get("etf_cost_error"):
+        st.error(st.session_state["etf_cost_error"])
+    cost_result = st.session_state.get("etf_cost_result")
+    if cost_result:
+        st.write({"Status": cost_result.get("status"), "Issuer": cost_result.get("issuer"),
+                  "ISIN confirmed": cost_result.get("isin_confirmed"), "Document date": cost_result.get("document_date"),
+                  "Source": cost_result.get("source_url")})
+        st.json(cost_result.get("costs", {}))
+        if cost_result.get("errors"):
+            st.warning("; ".join(cost_result["errors"]))
+        st.caption(cost_result.get("quality", {}).get("note", cost_result.get("note", "")))
 
 with st.expander("Broker transaction cost estimate (excluding tax)"):
     from sie.investment.advanced import broker_cost_estimate

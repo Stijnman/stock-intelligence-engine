@@ -196,6 +196,23 @@ The CFTC adapter's source and report semantics are documented at the [official C
 - Yahoo chart data is unofficial/indicative. Verify prices and results independently before using them.
 
 
+## Automatic ETF KID/factsheet cost extraction
+
+The issuer-first extractor supports Vanguard, iShares/BlackRock, Amundi and Xtrackers/DWS. It downloads public issuer documents, extracts PDF text with Poppler `pdftotext`, and returns cost line items with evidence snippets, document URL/date, ISIN confirmation and a SHA-256 digest. No paid data service is used. Install `poppler-utils` on Debian/Ubuntu for PDF text extraction.
+
+```bash
+# Discover and extract from the issuer's official document location
+python -m sie.investment_cli etf-costs IE000Q4J3CW6 --issuer vanguard
+python -m sie.investment_cli etf-costs IE00BJ0KDQ92 --issuer xtrackers
+python -m sie.investment_cli etf-costs LU1681038169 --issuer amundi
+python -m sie.investment_cli etf-costs IE00B4L5Y983 --issuer ishares
+
+# Or supply a direct KID/factsheet PDF URL on that issuer's official domain
+python -m sie.investment_cli etf-costs IE00B4L5Y983 --issuer ishares --document-url 'https://www.ishares.com/...'
+```
+
+Extracted categories remain separate: ongoing charges/TER label, portfolio transaction costs, entry/exit charges, performance fees, reduction-in-yield and tracking difference. A PRIIPs KID's management/administrative cost line is not automatically relabelled as TER; RIY and transaction costs are never added to TER. If a document cannot be found, the ISIN is not confirmed, or a cost field is ambiguous, the result remains `unavailable`/`unverified` rather than inventing a figure. The Vanguard and Xtrackers ISIN routes resolve directly to issuer KIDs. Amundi and iShares publish parts of their document catalogue through dynamic pages or locale-specific product routes; if the public page does not expose a direct PDF, pass its official KID/factsheet URL with `--document-url`. The extractor validates the issuer domain before downloading. The extraction/parsing adapters cover all four issuers; automatic document discovery is not yet equally reliable for every locale and product family.
+
 ## Belgian ETF and tax engine (free official sources)
 
 The Belgian ETF layer uses the FSMA's public foreign-UCIs workbook, Wikifin's ETF/TOB classification table and FPS Finance's movable-income guidance. The FSMA workbook is downloaded and cached for seven days; its own publication date is returned with every result.

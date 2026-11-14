@@ -130,3 +130,41 @@ class BelgianTaxTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class EtfCostExtractionTests(unittest.TestCase):
+    def test_extracts_kid_cost_components_separately(self):
+        from sie.investment.data.etf_costs import parse_issuer_cost_document
+        text = '''ESSENTIËLE-INFORMATIEDOCUMENT\nProduct: Test UCITS ETF\nISIN IE00B4L5Y983\nDit document is gedateerd op 01/11/2026.\nWat zijn de kosten?\nManagement fees and other administrative or operating costs 0.20%\nTransaction costs 0.03%\nReduction in Yield 0.23%\nEntry costs 0.00%\nExit costs 0.00%\n'''
+        result = parse_issuer_cost_document(text, isin="IE00B4L5Y983", issuer="vanguard", source_url="https://fund-docs.vanguard.com/test.pdf")
+        self.assertEqual(result["status"], "extracted_from_issuer_kid")
+        self.assertEqual(result["costs"]["ongoing_charges_pct"]["value_pct"], 0.2)
+        self.assertEqual(result["costs"]["transaction_costs_pct"]["value_pct"], 0.03)
+        self.assertEqual(result["costs"]["reduction_in_yield_pct"]["value_pct"], 0.23)
+        self.assertFalse(result["quality"]["ongoing_charges_is_ter"])
+        self.assertEqual(result["document_date"], "01/11/2026")
+
+    def test_wrong_isin_is_not_marked_verified(self):
+        from sie.investment.data.etf_costs import parse_issuer_cost_document
+        result = parse_issuer_cost_document("KID costs ongoing charges 0.20%", isin="IE00B4L5Y983", issuer="xtrackers", source_url="https://etf.dws.com/x.pdf")
+        self.assertEqual(result["status"], "isin_not_confirmed_in_document")
+        self.assertFalse(result["isin_confirmed"])
+
+    def test_rejects_non_issuer_document_host(self):
+        from sie.investment.data.etf_costs import extract_etf_costs
+        with self.assertRaises(ValueError):
+            extract_etf_costs("IE00B4L5Y983", issuer="vanguard", document_url="https://example.com/fake.pdf")
+
+    def test_issuer_aliases(self):
+        from sie.investment.data.etf_costs import _issuer_for
+        self.assertEqual(_issuer_for(None, "blackrock"), "ishares")
+        self.assertEqual(_issuer_for(None, "dws"), "xtrackers")
+
+    def test_kid_euro_amounts_are_not_misread_as_percentages(self):
+        from sie.investment.data.etf_costs import parse_issuer_cost_document
+        text = '''Key Information Document\nProduct: Example ETF\nISIN IE00B4L5Y983\nThis document is dated 09 April 2026.\nComposition of Costs\nEntry costs The Fund does not charge an entry fee. EUR 0\nExit costs The Fund does not charge an exit fee. EUR 0\nManagement fees and other 0.20% of your investment p.a. EUR 20\nadministrative or operating costs\nTransaction costs 0.03% per year EUR 3\n'''
+        result = parse_issuer_cost_document(text, isin="IE00B4L5Y983", issuer="ishares", source_url="https://www.ishares.com/example.pdf")
+        self.assertEqual(result["document_date"], "09 April 2026")
+        self.assertEqual(result["costs"]["entry_costs_pct"]["value_eur"], 0)
+        self.assertIsNone(result["costs"]["entry_costs_pct"].get("value_pct"))
+        self.assertEqual(result["costs"]["ongoing_charges_pct"]["value_pct"], 0.2)
+        self.assertEqual(result["costs"]["transaction_costs_pct"]["value_pct"], 0.03)
