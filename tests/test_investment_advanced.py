@@ -178,6 +178,7 @@ class AdvancedInvestmentTests(unittest.TestCase):
         result = backtest_target_weights({"A": prices(), "B": prices(daily=.0005)}, {"A": .6, "B": .4})
         self.assertEqual(result["status"], "ok")
         self.assertAlmostEqual(sum(result["target_weights"].values()), 1)
+        self.assertGreater(result["cumulative_one_way_turnover"], 0)
 
     def test_stock_screener_requires_values_for_active_filters(self):
         result = screen_stocks([

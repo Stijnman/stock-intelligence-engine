@@ -632,24 +632,29 @@ def backtest_target_weights(
     prices_by_asset = [series[name][-n:] for name in names]
     fee_rate = max(0.0, fee_bps + slippage_bps) / 10000
     nav, peak, max_drawdown = initial_cash, initial_cash, 0.0
-    daily_returns, turnover_events, previous_weights = [], 0, list(weights)
+    turnover_events, total_turnover, current_weights = 0, 0.0, list(weights)
     for day in range(1, n):
         asset_returns = [prices_by_asset[i][day] / prices_by_asset[i][day - 1] - 1 for i in range(len(names))]
-        portfolio_return = sum(previous_weights[i] * asset_returns[i] for i in range(len(names)))
+        portfolio_return = sum(current_weights[i] * asset_returns[i] for i in range(len(names)))
         nav *= 1 + portfolio_return
+        denominator = 1 + portfolio_return
+        drifted = [current_weights[i] * (1 + asset_returns[i]) / denominator for i in range(len(names))]
         if day % rebalance_every == 0 and day < n - 1:
-            turnover = sum(abs(weights[i] - previous_weights[i]) for i in range(len(names))) / 2
+            turnover = sum(abs(weights[i] - drifted[i]) for i in range(len(names))) / 2
+            total_turnover += turnover
             nav *= max(0.0, 1 - turnover * fee_rate)
             turnover_events += 1
-            previous_weights = list(weights)
-        daily_returns.append(nav)
+            current_weights = list(weights)
+        else:
+            current_weights = drifted
         peak = max(peak, nav)
         max_drawdown = min(max_drawdown, nav / peak - 1)
     final_value = nav
     return {"status": "ok", "initial_value": initial_cash, "final_value": final_value,
             "total_return_pct": (final_value / initial_cash - 1) * 100,
             "max_drawdown_pct": max_drawdown * 100, "target_weights": dict(zip(names, weights)),
-            "rebalance_events": turnover_events, "fee_bps": fee_bps, "slippage_bps": slippage_bps,
+            "rebalance_events": turnover_events, "cumulative_one_way_turnover": total_turnover,
+            "fee_bps": fee_bps, "slippage_bps": slippage_bps,
             "warning": "Simplified periodic rebalance model; excludes taxes, dividends, FX, corporate actions, cash drag and point-in-time universe bias."}
 
 
