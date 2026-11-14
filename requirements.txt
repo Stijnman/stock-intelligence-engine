@@ -7,12 +7,8 @@ streamlit>=1.64.0
 plotly>=7.1.0
 pyyaml>=6.0.0
 pytest>=8.0.0
-tweepy>=4.17.0
 vaderSentiment>=3.3.2
 transformers>=4.41.0
 requests>=2.31.0
 msgpack>=1.2.1
 setuptools>=78.1.1
-
-# Security fix: patched OAuth implementation required by Tweepy
-oauthlib>=4.0.1

@@ -1,7 +1,8 @@
 """X/Twitter Narrative Intelligence: viral sentiment, velocity, dominant narratives, key voices, crisis flags + Multi-source Narrative Velocity Forecasting."""
 from __future__ import annotations
 
-import tweepy
+from types import SimpleNamespace
+import requests
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -19,7 +20,7 @@ def get_twitter_client(cfg: dict | None = None):
     bearer = twitter_cfg.get("bearer_token") or ""
     if not bearer:
         return None
-    return tweepy.Client(bearer_token=bearer)
+    return {"bearer_token": bearer}
 
 def calculate_sentiment_velocity(tweets: List, hours: int = 24) -> float:
     if not tweets:
@@ -167,14 +168,21 @@ def scan_narrative_intelligence(ticker: str, cfg: dict | None = None) -> Dict[st
         query = f"${ticker} OR {ticker} lang:en -is:retweet"
         end_time = datetime.utcnow()
         start_time = end_time - timedelta(hours=twitter_cfg.get("lookback_hours", 24))
-        response = client.search_recent_tweets(
-            query=query,
-            max_results=twitter_cfg.get("search_limit", 50),
-            start_time=start_time,
-            end_time=end_time,
-            tweet_fields=["created_at", "author_id"]
+        max_results = max(10, min(100, int(twitter_cfg.get("search_limit", 50))))
+        response = requests.get(
+            "https://api.twitter.com/2/tweets/search/recent",
+            headers={"Authorization": f"Bearer {client['bearer_token']}"},
+            params={
+                "query": query,
+                "max_results": max_results,
+                "start_time": start_time.replace(microsecond=0).isoformat() + "Z",
+                "end_time": end_time.replace(microsecond=0).isoformat() + "Z",
+                "tweet.fields": "created_at,author_id",
+            },
+            timeout=15,
         )
-        tweets = response.data or []
+        response.raise_for_status()
+        tweets = [SimpleNamespace(**tweet) for tweet in response.json().get("data", [])]
         mention_count = len(tweets)
         if mention_count == 0:
             return {"buzz_score": 0.0, "sentiment": 0.0, "mention_count": 0, "reason": "No mentions", "dominant_narrative": "neutral"}
