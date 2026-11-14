@@ -13,3 +13,6 @@ transformers>=4.41.0
 requests>=2.31.0
 msgpack>=1.2.1
 setuptools>=78.1.1
+
+# Security fix: patched OAuth implementation required by Tweepy
+oauthlib>=4.0.1
