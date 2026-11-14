@@ -1,3 +1,11 @@
+## v2.78.0 (2026-11-14)
+
+- Completed ISIN-first Amundi document discovery using the issuer's public product and document APIs; selects the latest public English PRIIPs KID and monthly factsheet.
+- Completed iShares document discovery: public search index locates the issuer product page, the exact ISIN is confirmed in that page, and the current PRIIPs KID URL is derived from the issuer KIID filename/share-class slug and ISIN, with a product-title fallback; issuer factsheet link is collected alongside it.
+- All downloaded PDFs must be hosted on the issuer's official domain and contain the requested ISIN before cost evidence is accepted. Search index is used only for product-page discovery, never as a source of fee values.
+- Returns both KID and factsheet metadata/evidence; top-level costs prioritize the PRIIPs KID. Factsheet/KID date extraction now respects the document's publication/as-of date instead of fund inception dates.
+- Added mocked adapter tests and live end-to-end checks for Amundi and iShares; no manual PDF URL required.
+
 ## v2.77.0 (2026-11-14)
 
 - Added issuer-first ETF KID/factsheet cost extraction for Vanguard, iShares/BlackRock, Amundi and Xtrackers/DWS.

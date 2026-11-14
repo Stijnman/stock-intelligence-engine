@@ -7,7 +7,7 @@ import streamlit as st
 from sie.analyzer import run_report
 from sie.config import load_config
 
-__version__ = "2.77.0"
+__version__ = "2.78.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -272,13 +272,11 @@ with st.expander("Automatic ETF KID / factsheet cost extraction", expanded=False
         cost_isin = st.text_input("ETF share-class ISIN", key="etf_cost_isin", max_chars=12)
         cost_issuer = st.selectbox("Issuer", ["vanguard", "ishares", "amundi", "xtrackers"], key="etf_cost_issuer")
     with cost_col2:
-        cost_type = st.selectbox("Document", ["KID", "factsheet"], key="etf_cost_type")
-        cost_url = st.text_input("Direct official PDF URL (optional fallback)", key="etf_cost_url")
+        cost_url = st.text_input("Direct official PDF URL (optional override)", key="etf_cost_url")
     if st.button("Extract official ETF costs", key="etf_cost_extract"):
         try:
             st.session_state["etf_cost_result"] = extract_etf_costs(
                 cost_isin, issuer=cost_issuer, document_url=cost_url.strip() or None,
-                document_type=cost_type,
             )
             st.session_state["etf_cost_error"] = None
         except Exception as exc:
@@ -291,6 +289,9 @@ with st.expander("Automatic ETF KID / factsheet cost extraction", expanded=False
                   "ISIN confirmed": cost_result.get("isin_confirmed"), "Document date": cost_result.get("document_date"),
                   "Source": cost_result.get("source_url")})
         st.json(cost_result.get("costs", {}))
+        if cost_result.get("documents"):
+            st.markdown("**Discovered issuer documents**")
+            st.json(cost_result["documents"])
         if cost_result.get("errors"):
             st.warning("; ".join(cost_result["errors"]))
         st.caption(cost_result.get("quality", {}).get("note", cost_result.get("note", "")))

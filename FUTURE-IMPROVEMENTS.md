@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-28
-**Current version baseline:** v2.77.0
+**Current version baseline:** v2.78.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.

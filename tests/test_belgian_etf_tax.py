@@ -182,3 +182,61 @@ class EtfCostExtractionTests(unittest.TestCase):
         self.assertEqual(result["costs"]["entry_costs_pct"]["amount_currency"], "USD")
         self.assertEqual(result["costs"]["ongoing_charges_pct"]["amount"], 12)
         self.assertEqual(result["costs"]["ongoing_charges_pct"]["amount_currency"], "USD")
+
+    def test_amundi_discovers_latest_public_kid_and_factsheet_by_isin(self):
+        from sie.investment.data.etf_costs import _amundi_documents
+        product = {"products": [{"productId": "LU1681038169", "characteristics": {"ISIN": "LU1681038169"}}]}
+        docs = {"LU1681038169": [
+            {"status": "PUBLIC", "language": "English", "recordDate": 10,
+             "url": "/pdfDocuments/old.pdf", "documentType": {"name": "kidpriips"}},
+            {"status": "PUBLIC", "language": "English", "recordDate": 20,
+             "url": "/pdfDocuments/latest-kid.pdf", "documentType": {"name": "kidpriips"}},
+            {"status": "PUBLIC", "language": "English", "recordDate": 30,
+             "url": "/pdfDocuments/latest-factsheet.pdf", "documentType": {"name": "monthlyfactsheet"}},
+            {"status": "PRIVATE", "language": "English", "recordDate": 40,
+             "url": "/pdfDocuments/private.pdf", "documentType": {"name": "kidpriips"}},
+        ]}
+        with patch("sie.investment.data.etf_costs._post_json", side_effect=[product, docs]):
+            urls = _amundi_documents("LU1681038169")
+        self.assertEqual(urls, [
+            "https://www.amundietf.com/pdfDocuments/latest-kid.pdf",
+            "https://www.amundietf.com/pdfDocuments/latest-factsheet.pdf",
+        ])
+
+    def test_ishares_discovers_priips_kid_and_factsheet_by_isin(self):
+        from sie.investment.data.etf_costs import _ishares_documents
+        rss = b'''<rss><channel><item><title>ETF</title><link>https://www.ishares.com/uk/individual/en/products/251882/ishares-msci-world-ucits-etf</link></item></channel></rss>'''
+        page = b'''<html><head><title>iShares Core S&amp;P 500 UCITS ETF | CSPX | iShares</title></head>
+        <body>ISIN IE00B5BMR087 <a href="https://www.ishares.com/gls-download/literature/kiid/ucits_kiid-ishares-core-sp-500-ucits-etf-usd-acc-gb-ie00b5bmr087-en.pdf">KIID</a>
+        <a href="https://www.ishares.com/gls-download/literature/fact-sheet/cspx-fact-sheet-en-gb.pdf">Factsheet</a></body></html>'''
+        with patch("sie.investment.data.etf_costs._request", side_effect=[rss, page]):
+            urls = _ishares_documents("IE00B5BMR087")
+        self.assertIn("eu-priips-ishares-core-sp-500-ucits-etf-usd-acc-ie00b5bmr087-en.pdf", urls[0])
+        self.assertTrue(urls[-1].endswith("cspx-fact-sheet-en-gb.pdf"))
+
+    def test_factsheet_document_type_and_asof_date_are_not_confused_with_inception(self):
+        from sie.investment.data.etf_costs import parse_issuer_cost_document
+        text = """iShares Core MSCI World UCITS ETF\nFACTSHEET\nShare class inception date: 25-Sept-2009\nPerformance, Portfolio Breakdowns and Net Asset information as at: 31-Oct-2026. All other data as at 04-Nov-2026.\nISIN IE00B4L5Y983\nTotal Expense Ratio : 0.20%\n"""
+        result = parse_issuer_cost_document(text, isin="IE00B4L5Y983", issuer="ishares",
+                                            source_url="https://www.ishares.com/factsheet.pdf", document_type="factsheet")
+        self.assertEqual(result["document_type"], "factsheet")
+        self.assertEqual(result["document_date"], "31-Oct-2026")
+        self.assertEqual(result["status"], "extracted_from_issuer_factsheet")
+
+    def test_extracts_xtrackers_accurate_as_at_date(self):
+        from sie.investment.data.etf_costs import parse_issuer_cost_document
+        text = """Key Information Document\nXtrackers MSCI World UCITS ETF\nISIN IE00BJ0KDQ92\nThis key information is accurate as at 06.03.2026.\nWhat are the costs?\nManagement fees and other administrative or operating costs 0.12%\nTransaction costs 0.01%\n"""
+        result = parse_issuer_cost_document(text, isin="IE00BJ0KDQ92", issuer="xtrackers",
+                                            source_url="https://etf.dws.com/kid.pdf")
+        self.assertEqual(result["document_date"], "06.03.2026")
+
+    def test_extraction_rejects_costs_when_document_does_not_confirm_requested_isin(self):
+        from sie.investment.data.etf_costs import extract_etf_costs
+        with patch("sie.investment.data.etf_costs._discover_document", return_value=["https://fund-docs.vanguard.com/test.pdf"]), \
+             patch("sie.investment.data.etf_costs.get_bytes", return_value=b"%PDF-fake"), \
+             patch("sie.investment.data.etf_costs._extract_pdf_text", return_value="ISIN IE0000000000\nOngoing charges 0.20%"):
+            result = extract_etf_costs("IE00B4L5Y983", issuer="vanguard")
+        self.assertEqual(result["status"], "isin_not_confirmed_in_document")
+        self.assertFalse(result["isin_confirmed"])
+        self.assertEqual(result["costs"], {})
+        self.assertEqual(result["documents"][0]["costs"], {})

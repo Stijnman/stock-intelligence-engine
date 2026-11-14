@@ -6,7 +6,10 @@ matches are returned with evidence snippets and never silently promoted to TER.
 from __future__ import annotations
 
 import hashlib
+import html as html_lib
+import json
 import re
+import xml.etree.ElementTree as ET
 import shutil
 import subprocess
 import tempfile
@@ -22,10 +25,8 @@ ISSUERS = {
     "vanguard": {"domains": ("fund-docs.vanguard.com", "vanguard.com"),
                  "kid": "https://fund-docs.vanguard.com/{isin}_priipskid_en.pdf",
                  "factsheet": "https://fund-docs.vanguard.com/{isin}_EU_INT_UK_EN.pdf"},
-    "ishares": {"domains": ("ishares.com", "blackrock.com"),
-                "search": "https://www.ishares.com/uk/individual/en/products?search={isin}"},
-    "amundi": {"domains": ("amundietf.com", "amundi.com"),
-               "product": "https://www.amundietf.com/amundi/lux/en/instit/{isin}"},
+    "ishares": {"domains": ("ishares.com", "blackrock.com")},
+    "amundi": {"domains": ("amundietf.com", "amundi.com")},
     "xtrackers": {"domains": ("etf.dws.com", "dws.com"),
                   "kid": "https://etf.dws.com/Download/PRIIPS%20KID/{ISIN}/EN/EN"},
 }
@@ -62,6 +63,127 @@ def _request(url: str, *, accept: str = "application/pdf,text/html;q=0.9,*/*;q=0
         raise RuntimeError(f"Official issuer document request failed for {urllib.parse.urlparse(url).netloc}: {exc}") from exc
 
 
+def _post_json(url: str, payload: dict[str, Any], *, referer: str) -> Any:
+    body = json.dumps(payload).encode("utf-8")
+    parsed_url = urllib.parse.urlparse(url)
+    req = urllib.request.Request(url, data=body, method="POST", headers={
+        "User-Agent": "Mozilla/5.0 (compatible; SIE ETF research)", "Accept": "application/json",
+        "Content-Type": "application/json", "Origin": parsed_url.scheme + "://" + parsed_url.netloc,
+        "Referer": referer,
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except Exception as exc:
+        raise RuntimeError(f"Official issuer metadata request failed: {exc}") from exc
+
+
+def _amundi_documents(isin: str) -> list[str]:
+    # Resolve Amundi public product and document APIs by share-class ISIN.
+    base = "https://www.amundietf.com"
+    context = {"countryCode": "LUX", "languageCode": "en", "userProfileName": "INSTIT"}
+    referer = f"{base}/amundi/lux/en/instit/{isin}"
+    payload = {"context": context, "productIds": [isin],
+               "characteristics": ["ISIN", "TER", "TICKER", "SHARE_MARKETING_NAME", "WKN", "MNEMO"],
+               "filters": [], "metrics": [], "historics": [], "productType": "PRODUCT"}
+    products = _post_json(base + "/mapi/ProductAPI/getProductsData", payload, referer=referer)
+    rows = products.get("products", []) if isinstance(products, dict) else []
+    match = next((row for row in rows if str(row.get("characteristics", {}).get("ISIN", "")).upper() == isin), None)
+    if not match:
+        raise RuntimeError("Amundi product API did not confirm the requested ISIN.")
+    docs = _post_json(base + "/mapi/DocumentAPI/document/getByProductIdsAndContext",
+                      {"productIds": [isin], "context": context}, referer=referer)
+    records = docs.get(isin, []) if isinstance(docs, dict) else []
+    selected: dict[str, dict[str, Any]] = {}
+    for item in records:
+        dtype = str(item.get("documentType", {}).get("name", "")).lower()
+        if dtype not in {"kidpriips", "monthlyfactsheet"} or item.get("status") != "PUBLIC":
+            continue
+        if str(item.get("language", "")).lower() != "english":
+            continue
+        path = item.get("url") or item.get("appliedAlias")
+        if not path:
+            continue
+        url = urllib.parse.urljoin(base, path)
+        parsed = urllib.parse.urlparse(url)
+        if parsed.scheme != "https" or not _is_official_host(parsed.hostname or "", "amundi"):
+            continue
+        previous = selected.get(dtype)
+        if previous is None or int(item.get("recordDate") or 0) > int(previous.get("recordDate") or 0):
+            selected[dtype] = {"url": url, "recordDate": item.get("recordDate")}
+    ordered = [selected[k]["url"] for k in ("kidpriips", "monthlyfactsheet") if k in selected]
+    if not ordered:
+        raise RuntimeError("Amundi product found, but no public English KID or factsheet was returned.")
+    return ordered
+
+
+def _ishares_documents(isin: str) -> list[str]:
+    # Bing RSS is used only to discover the issuer product page; all data is
+    # downloaded and verified from iShares/BlackRock-hosted PDF documents.
+    query = urllib.parse.quote(f"site:ishares.com {isin}")
+    rss = _request(f"https://www.bing.com/search?format=rss&q={query}", accept="application/rss+xml,application/xml,text/xml,*/*")
+    try:
+        root = ET.fromstring(rss)
+    except ET.ParseError as exc:
+        raise RuntimeError("iShares product search returned an unreadable RSS response.") from exc
+    product_urls = []
+    for item in root.findall(".//item"):
+        link = (item.findtext("link") or "").strip()
+        parsed = urllib.parse.urlparse(link)
+        if parsed.scheme == "https" and _is_official_host(parsed.hostname or "", "ishares") and re.search(r"/(?:products|producten)/\d+", parsed.path, re.I):
+            if link not in product_urls:
+                product_urls.append(link)
+    if not product_urls:
+        raise RuntimeError("iShares public search index did not return an official product page for this ISIN.")
+    errors = []
+    for product_url in product_urls[:5]:
+        try:
+            page = _request(product_url, accept="text/html,application/xhtml+xml,*/*")
+            html = page.decode("utf-8", errors="replace")
+            if not re.search(rf"\b{re.escape(isin)}\b", html, re.I):
+                continue
+            links = re.findall(r'href="([^"]+)"', html, re.I) + re.findall(r"href='([^']+)'", html, re.I)
+            candidates = []
+            for href in links:
+                url = urllib.parse.urljoin(product_url, href.replace("&amp;", "&"))
+                parsed = urllib.parse.urlparse(url)
+                if parsed.scheme == "https" and _is_official_host(parsed.hostname or "", "ishares"):
+                    path = parsed.path.lower()
+                    if path.endswith(".pdf") and ("literature/kiid" in path or "literature/fact-sheet" in path or "literature/factsheet" in path):
+                        candidates.append(url)
+            unique = list(dict.fromkeys(candidates))
+            kids = [u for u in unique if "literature/kiid" in urllib.parse.urlparse(u).path.lower()]
+            factsheets = [u for u in unique if "fact-sheet" in urllib.parse.urlparse(u).path.lower() or "factsheet" in urllib.parse.urlparse(u).path.lower()]
+            priips = [u for u in kids if "priips" in urllib.parse.urlparse(u).path.lower()]
+            generated_kid = None
+            # The legacy KIID filename contains the canonical product slug and
+            # share-class suffix. Reuse it to construct the current PRIIPs KID URL.
+            for kiid_url in kids:
+                filename = urllib.parse.urlparse(kiid_url).path.rsplit("/", 1)[-1]
+                if filename.lower().startswith("ucits_kiid-"):
+                    slug = filename[len("ucits_kiid-"):]
+                    slug = re.sub(rf"-(?:gb|de|fr|nl|ie|it|es|ch|lu|se|dk|fi|no|be)-{isin.lower()}-en\.pdf$", "", slug, flags=re.I)
+                    if slug != filename:
+                        generated_kid = ("https://www.ishares.com/uk/professional/en/literature/kiid/"
+                                         + f"eu-priips-{slug}-{isin.lower()}-en.pdf?siteEntryPassthrough=true&switchLocale=y")
+                        break
+            if not generated_kid:
+                title_match = re.search(r"<title[^>]*>(.*?)</title>", html, re.I | re.S)
+                if title_match:
+                    title = html_lib.unescape(re.sub(r"<.*?>", "", title_match.group(1))).split("|")[0].strip()
+                    slug = re.sub(r"[^a-z0-9]+", "-", title.lower().replace("&", "")).strip("-")
+                    generated_kid = ("https://www.ishares.com/uk/professional/en/literature/kiid/"
+                                     + f"eu-priips-{slug}-{isin.lower()}-en.pdf?siteEntryPassthrough=true&switchLocale=y")
+            primary_kid = priips[:1] or ([generated_kid] if generated_kid else []) or kids[:1]
+            fallback_kiid = [u for u in kids if u not in primary_kid]
+            ordered = primary_kid + fallback_kiid[:1] + factsheets[:1]
+            if ordered:
+                return ordered
+        except Exception as exc:
+            errors.append(str(exc))
+    raise RuntimeError("No current public iShares KID/factsheet links were found on the matching product page." + (" " + "; ".join(errors[:2]) if errors else ""))
+
+
 def _discover_document(isin: str, issuer: str, document_url: str | None) -> list[str]:
     if document_url:
         parsed = urllib.parse.urlparse(document_url)
@@ -74,8 +196,10 @@ def _discover_document(isin: str, issuer: str, document_url: str | None) -> list
     if issuer == "xtrackers":
         return [spec["kid"].format(ISIN=isin.upper())]
     if issuer == "amundi":
-        return [spec["product"].format(isin=isin.lower())]
-    return [spec["search"].format(isin=urllib.parse.quote(isin.upper()))]
+        return _amundi_documents(isin)
+    if issuer == "ishares":
+        return _ishares_documents(isin)
+    return []
 
 
 def _extract_pdf_text(raw: bytes) -> str:
@@ -152,8 +276,10 @@ def parse_issuer_cost_document(text: str, *, isin: str, issuer: str, source_url:
     """Parse cost line items while preserving the original category distinctions."""
     normalized = re.sub(r"\s+", " ", text)
     isin_found = bool(re.search(rf"\b{re.escape(isin)}\b", normalized, re.I))
-    kid_markers = ("key information document", "essentiële-informatiedocument", "document d'informations clés", "basisinformationsblatt", "key investor information", "what are the costs", "composition of costs", "wat zijn de kosten", "quels sont les coûts", "welche kosten")
-    is_kid = any(marker in normalized.lower() for marker in kid_markers)
+    lower_text = normalized.lower()
+    is_kiid = document_type.lower() != "factsheet" and "key investor information" in lower_text
+    kid_markers = ("key information document", "essentiële-informatiedocument", "document d'informations clés", "basisinformationsblatt", "what are the costs", "composition of costs", "wat zijn de kosten", "quels sont les coûts", "welche kosten")
+    is_kid = document_type.lower() != "factsheet" and any(marker in lower_text for marker in kid_markers)
     labels = {
         "ongoing_charges_pct": [r"ongoing charges", r"ongoing charge", r"ongoing costs", r"management fees and", r"management fees and other", r"administrative or operating costs", r"ongoing fee", r"total expense ratio", r"\bter\b", r"\bocf\b", r"lopende kosten", r"beheerkosten en andere", r"frais courants", r"frais de gestion et autres", r"laufende kosten", r"verwaltungsgebühren und sonstige", r"gesamtkostenquote"],
         "transaction_costs_pct": [r"transaction costs", r"portfolio transaction costs", r"transaction cost", r"transactiekosten", r"coûts de transaction", r"transaktionskosten"],
@@ -176,11 +302,34 @@ def parse_issuer_cost_document(text: str, *, isin: str, issuer: str, source_url:
             item["source_url"] = source_url
             item["document_type"] = document_type
     asof = None
-    date_match = re.search(r"(?:dated|date|as at|as of|correct as of|document is dated|gedateerd op|document is gedateerd op|document is daté du|daté du|document is dated)\s*[:\-]?\s*(\d{1,2}[./-]\d{1,2}[./-]\d{4}|\d{4}-\d{2}-\d{2}|\d{1,2}\s+[A-Za-zÀ-ÿ.]+\s+\d{4})", normalized, re.I)
-    if date_match:
-        asof = date_match.group(1)
-    elif re.search(r"\d{4}-\d{2}-\d{2}", normalized):
-        asof = re.search(r"\d{4}-\d{2}-\d{2}", normalized).group(0)
+    if document_type.lower() == "factsheet":
+        date_patterns = [
+            r"information as at\s*:?\s*(\d{1,2}[-/ ]+[A-Za-z0-9]+[-/ ]+\d{4})",
+            r"as at\s*:?\s*(\d{1,2}[-/ ]+[A-Za-z0-9]+[-/ ]+\d{4})",
+            r"(?:NAV and AUM|net asset value and assets under management) as of\s*:?\s*(\d{1,2}[./-]\d{1,2}[./-]\d{4})",
+        ]
+        for pattern in date_patterns:
+            match = re.search(pattern, normalized, re.I)
+            if match:
+                asof = match.group(1)
+                break
+        if not asof:
+            # Amundi prints the factsheet's as-of date in the opening block,
+            # before the performance tables and historical inception dates.
+            opening = "\n".join(text.splitlines()[:18])
+            date_match = re.search(r"(?<!\d)(\d{2}[./-]\d{2}[./-]\d{4})(?!\d)", opening)
+            if date_match:
+                asof = date_match.group(1)
+    else:
+        date_patterns = [
+            r"(?:this document was published on|published on|date of this document is|document date|document is dated|gedateerd op|document is gedateerd op|accurate as at|information is accurate as at)\s*:?\s*(\d{1,2}[./-]\d{1,2}[./-]\d{4}|\d{1,2}\s+[A-Za-zÀ-ÿ.]+\s+\d{4}|\d{4}-\d{2}-\d{2})",
+            r"(?:production date|date of production)\s*:?\s*(\d{1,2}[./-]\d{1,2}[./-]\d{4})",
+        ]
+        for pattern in date_patterns:
+            date_match = re.search(pattern, normalized, re.I)
+            if date_match:
+                asof = date_match.group(1)
+                break
     sha = hashlib.sha256(text.encode("utf-8", errors="replace")).hexdigest()
     if not isin_found:
         status = "isin_not_confirmed_in_document"
@@ -188,16 +337,18 @@ def parse_issuer_cost_document(text: str, *, isin: str, issuer: str, source_url:
         status = "document_found_cost_fields_not_extracted"
     elif is_kid:
         status = "extracted_from_issuer_kid"
+    elif is_kiid:
+        status = "extracted_from_issuer_kiid"
     else:
         status = "extracted_from_issuer_factsheet"
     return {
         "status": status, "issuer": issuer, "isin": isin, "isin_confirmed": isin_found,
-        "document_type": "KID" if is_kid else document_type, "document_date": asof,
+        "document_type": "KID" if is_kid else "KIID" if is_kiid else document_type, "document_date": asof,
         "retrieved_at": retrieved_at or datetime.now(timezone.utc).isoformat(),
         "source_url": source_url, "document_sha256_text": sha,
         "costs": extracted,
         "quality": {"ongoing_charges_is_ter": bool(ongoing and ongoing.get("classification") == "issuer_labelled_ongoing_charge_or_ter"),
-                    "kid_detected": is_kid,
+                    "kid_detected": is_kid, "kiid_detected": is_kiid,
                     "note": "PRIIPs transaction costs and reduction-in-yield are separate from TER/ongoing charges; never add them to TER. A factsheet TER/OCF label is retained as published."},
     }
 
@@ -211,44 +362,50 @@ def extract_etf_costs(isin: str, *, issuer: str | None = None, document_url: str
     if not selected:
         raise ValueError("Issuer could not be inferred; specify vanguard, ishares, amundi or xtrackers.")
     errors = []
-    for url in _discover_document(isin, selected, document_url):
+    if document_url:
+        # Invalid caller-supplied URLs are input errors, not discovery misses.
+        urls = _discover_document(isin, selected, document_url)
+    else:
+        try:
+            urls = _discover_document(isin, selected, None)
+        except Exception as exc:
+            urls = []
+            errors.append(str(exc))
+    parsed_documents = []
+    for url in urls:
         try:
             raw = get_bytes(url, cache_key="etf-cost-" + hashlib.sha256(url.encode()).hexdigest()[:20], ttl=86400,
                             accept="application/pdf,text/html;q=0.9,*/*;q=0.8")
-            if raw.startswith(b"%PDF-"):
-                text = _extract_pdf_text(raw)
-                return parse_issuer_cost_document(text, isin=isin, issuer=selected, source_url=url, document_type=document_type)
-            html = raw.decode("utf-8", errors="replace")
-            # iShares search pages commonly link to a product page; Amundi's
-            # product pages expose document links in server-rendered markup.
-            pages = [(url, html)]
-            if selected == "ishares":
-                product_paths = re.findall(r"href=[\"']([^\"']*/products/\d+[^\"']*)[\"']", html, re.I)
-                for href in product_paths[:5]:
-                    product_url = urllib.parse.urljoin(url, href)
-                    if _is_official_host(urllib.parse.urlparse(product_url).hostname or "", selected):
-                        try:
-                            page = get_bytes(product_url, cache_key="etf-page-" + hashlib.sha256(product_url.encode()).hexdigest()[:20], ttl=86400, accept="text/html")
-                            pages.append((product_url, page.decode("utf-8", errors="replace")))
-                        except Exception as exc:
-                            errors.append(str(exc))
-            pdfs = []
-            for page_url, page_html in pages:
-                found = re.findall(r"https?://[^\"'<> ]+\.pdf(?:\?[^\"'<> ]*)?", page_html, re.I)
-                found += [urllib.parse.urljoin(page_url, href) for href in re.findall(r"href=[\"']([^\"']+\.pdf[^\"']*)[\"']", page_html, re.I)]
-                for pdf_url in found:
-                    if _is_official_host(urllib.parse.urlparse(pdf_url).hostname or "", selected):
-                        pdfs.append(pdf_url)
-            pdfs = list(dict.fromkeys(pdfs))
-            for pdf_url in pdfs:
-                label = pdf_url.lower()
-                if not any(term in label for term in ("kid", "priips", "factsheet", "fact-sheet", "kiid", "key-information")):
-                    continue
-                pdf = get_bytes(pdf_url, cache_key="etf-cost-" + hashlib.sha256(pdf_url.encode()).hexdigest()[:20], ttl=86400, accept="application/pdf")
-                text = _extract_pdf_text(pdf)
-                return parse_issuer_cost_document(text, isin=isin, issuer=selected, source_url=pdf_url, document_type=document_type)
-            errors.append(f"No direct KID/factsheet PDF link discovered at {url}")
+            if not raw.startswith(b"%PDF-"):
+                raise RuntimeError("Issuer document link did not return a PDF.")
+            document_text = _extract_pdf_text(raw)
+            path_lower = urllib.parse.urlparse(url).path.lower()
+            kind = ("KIID" if "ucits_kiid" in path_lower else
+                    "KID" if any(term in path_lower for term in ("kid", "priips", "kiid")) else
+                    "factsheet" if any(term in path_lower for term in ("factsheet", "fact-sheet", "monthlyfactsheet")) else document_type)
+            parsed = parse_issuer_cost_document(document_text, isin=isin, issuer=selected, source_url=url, document_type=kind)
+            parsed_documents.append(parsed)
         except Exception as exc:
-            errors.append(str(exc))
-    return {"status": "unavailable", "issuer": selected, "isin": isin, "source_urls_attempted": _discover_document(isin, selected, document_url),
+            errors.append(f"{urllib.parse.urlparse(url).path}: {exc}")
+    if parsed_documents:
+        confirmed = [doc for doc in parsed_documents if doc.get("isin_confirmed")]
+        if not confirmed:
+            return {
+                "status": "isin_not_confirmed_in_document", "issuer": selected, "isin": isin,
+                "isin_confirmed": False, "costs": {},
+                "documents": [{"document_type": doc["document_type"], "document_date": doc["document_date"],
+                               "source_url": doc["source_url"], "status": doc["status"], "costs": {}}
+                              for doc in parsed_documents],
+                "errors": errors, "note": "Issuer PDFs were found, but none confirmed the requested ISIN; no cost figures are accepted.",
+            }
+        primary = confirmed[0]
+        primary["documents"] = [{"document_type": doc["document_type"], "document_date": doc["document_date"],
+                                 "source_url": doc["source_url"], "status": doc["status"],
+                                 "costs": doc["costs"] if doc.get("isin_confirmed") else {}}
+                                for doc in parsed_documents]
+        primary["discovery_method"] = "issuer_api_by_isin" if selected == "amundi" else "public_product_search_then_issuer_page" if selected == "ishares" else "issuer_direct_isin_route"
+        if errors:
+            primary["errors"] = errors
+        return primary
+    return {"status": "unavailable", "issuer": selected, "isin": isin, "source_urls_attempted": urls,
             "errors": errors, "costs": {}, "note": "No cost values returned because no verifiable issuer document was parsed."}
