@@ -17,8 +17,7 @@ def _headers() -> dict[str, str]:
     agent = os.getenv("SEC_USER_AGENT", "").strip()
     if not agent or "@" not in agent:
         raise RuntimeError(
-            "Set SEC_USER_AGENT to identify your application and a contact email, "
-            "for example 'Stijnman Stock Intelligence research contact: you@example.com'."
+            "Set SEC_USER_AGENT to identify your application and include a contact email address."
         )
     return {"User-Agent": agent, "Accept-Encoding": "gzip, deflate"}
 

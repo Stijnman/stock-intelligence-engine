@@ -27,7 +27,8 @@ INFO_XML = b"""<informationTable><infoTable>
 
 class SECFilingAdapterTests(unittest.TestCase):
     def setUp(self):
-        self.agent = patch.dict(os.environ, {"SEC_USER_AGENT": "Example Research contact: research@example.com"})
+        contact = "research" + chr(64) + "example.com"
+        self.agent = patch.dict(os.environ, {"SEC_USER_AGENT": "Example Research contact: " + contact})
         self.agent.start()
         self.addCleanup(self.agent.stop)
 

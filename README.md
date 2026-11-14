@@ -180,7 +180,7 @@ These analytics do not imply that every feature has a live feed. SEC Form 4 and 
 
 The CFTC adapter's source and report semantics are documented at the [official CFTC COT reporting environment](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). These feeds supplement, rather than replace, company-specific filings and market price sources.
 
-- **SEC Form 4 insider transactions:** `python -m sie.investment_cli sec-insiders MSFT --filings 10`. Parses non-derivative and derivative transactions, P/S codes, owner role, filing/report dates and 10b5-1 flags. Set `SEC_USER_AGENT="Your App contact: you@example.com"` before requesting SEC filings; SEC asks automated clients to identify themselves and provide a contact.
+- **SEC Form 4 insider transactions:** `python -m sie.investment_cli sec-insiders MSFT --filings 10`. Parses non-derivative and derivative transactions, P/S codes, owner role, filing/report dates and 10b5-1 flags. Set `SEC_USER_AGENT="Your App contact: <your-contact-email>"` before requesting SEC filings; SEC asks automated clients to identify themselves and provide a contact.
 - **SEC 13F holdings:** `python -m sie.investment_cli sec-13f BRK-B`. Retrieves information-table holdings for a manager that files 13F. Reported values are USD thousands and filings are delayed; 13F is not a complete portfolio and does not disclose short positions.
 
 - **U.S. Treasury Fiscal Data:** daily Debt to the Penny series, no API key. Example: `python -m sie.investment_cli treasury-debt --limit 100`. The combined `macro` snapshot now includes the latest U.S. public debt observation where the source is reachable.
