@@ -165,3 +165,9 @@ The GitHub Actions workflows run the test suite, CI checks, CodeQL and security 
 ## Version
 
 The application version is maintained in the project source and release history. See [CHANGELOG.md](CHANGELOG.md) for the latest recorded changes.
+
+## Advanced quantitative analytics
+
+The dependency-light calculation layer is available through `sie.investment` and documented in [INVESTMENT-EXPANSION.md](INVESTMENT-EXPANSION.md). It includes portfolio risk (Sharpe, Sortino, drawdown, historical VaR/CVaR), long-only portfolio optimization, seeded Monte Carlo scenarios, friction-aware buy-and-hold and periodic-rebalance backtests, factor beta, correlation, market-regime heuristics, dividend coverage, DCF sensitivity, earnings surprises, financial-distress flags, configurable Belgian tax scenarios, broker-cost estimates, EUR reporting with explicit FX, sector momentum, supplied earnings-calendar normalization, UCITS ETF metadata checks, insider/13F record normalization, options-chain summaries, supply-chain disclosure edges, fair-value aggregation, stock screening, watchlist ranking and rule-based alerts.
+
+These analytics do not imply live feed coverage. Insider/13F, earnings-calendar, options, ETF metadata and supply-chain functions normalize caller-supplied records; connect and verify provider adapters before describing them as live. Belgian tax calculations require explicit rates and are illustrative. See the expansion guide for API examples, limitations and the remaining provider/dashboard integration work.

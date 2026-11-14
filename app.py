@@ -80,3 +80,128 @@ if news:
             st.caption("No headlines returned by the provider.")
 
 st.caption(f"Generated: {report.get('generated_at', 'unknown')} · Enabled overlays: {', '.join(report.get('overlays', [])) or 'none'}")
+
+st.divider()
+st.header("Quantitative Portfolio Lab")
+st.caption("Historical analytics and scenario tools. Indicative data only; no trading or portfolio write access.")
+quant_tickers = st.multiselect(
+    "Assets for quantitative analysis",
+    options=configured_tickers or ["ASML", "MSFT", "NVDA", "VWCE", "SPY"],
+    default=(selected or configured_tickers or ["ASML", "MSFT", "NVDA", "SPY"])[:5],
+    key="quant_tickers",
+)
+quant_run = st.button("Load price history and calculate portfolio analytics", key="quant_run")
+if quant_run:
+    if len(quant_tickers) < 2:
+        st.error("Select at least two assets.")
+    else:
+        from sie.investment.providers import quote_and_history
+        from sie.investment.advanced import (
+            correlation_matrix, monte_carlo_projection, optimize_portfolio,
+            portfolio_risk,
+        )
+        with st.spinner("Loading historical price series..."):
+            dated_histories = {}
+            provider_errors = {}
+            for symbol in quant_tickers:
+                try:
+                    payload = quote_and_history(symbol, range_="5y")
+                    dated = {row["date"]: row["close"] for row in payload.get("history", [])
+                             if row.get("date") and row.get("close") is not None}
+                    if len(dated) >= 4:
+                        dated_histories[symbol] = dated
+                    else:
+                        provider_errors[symbol] = "Insufficient price history."
+                except Exception as exc:
+                    provider_errors[symbol] = str(exc)
+            common_dates = sorted(set.intersection(*(set(v) for v in dated_histories.values()))) if dated_histories else []
+            histories = {symbol: [dated[day] for day in common_dates] for symbol, dated in dated_histories.items()}
+            if len(common_dates) < 4 and histories:
+                provider_errors["alignment"] = "Fewer than four common trading dates across selected assets."
+                histories = {}
+            quant_result = {"histories": histories, "common_dates": len(common_dates), "errors": provider_errors}
+            if len(histories) >= 2:
+                quant_result["risk"] = portfolio_risk(histories)
+                quant_result["correlation"] = correlation_matrix(histories)
+                quant_result["optimizer"] = optimize_portfolio(histories, objective="max_sharpe")
+                risk = quant_result["risk"]
+                if risk.get("status") == "ok":
+                    quant_result["monte_carlo"] = monte_carlo_projection(
+                        10000.0,
+                        (risk.get("annual_return_pct") or 0.0) / 100,
+                        (risk.get("annual_volatility_pct") or 0.0) / 100,
+                        years=10,
+                        simulations=3000,
+                    )
+            st.session_state["sie_quant_result"] = quant_result
+
+quant_result = st.session_state.get("sie_quant_result")
+if quant_result:
+    if quant_result.get("errors"):
+        st.warning("Some providers/assets were unavailable: " + "; ".join(
+            f"{ticker}: {reason}" for ticker, reason in quant_result["errors"].items()
+        ))
+    if quant_result.get("risk", {}).get("status") == "ok":
+        risk = quant_result["risk"]
+        metrics = st.columns(4)
+        metrics[0].metric("Annualized return", f"{risk['annual_return_pct']:.2f}%")
+        metrics[1].metric("Annualized volatility", f"{risk['annual_volatility_pct']:.2f}%")
+        metrics[2].metric("Sharpe ratio", f"{risk['sharpe']:.2f}" if risk.get("sharpe") is not None else "N/A")
+        metrics[3].metric("Maximum drawdown", f"{risk['max_drawdown_pct']:.2f}%")
+        risk_tabs = st.tabs(["Risk", "Optimizer", "Correlation", "Monte Carlo"])
+        with risk_tabs[0]:
+            st.json(risk)
+        with risk_tabs[1]:
+            optimizer = quant_result.get("optimizer", {})
+            if optimizer.get("status") == "ok":
+                st.dataframe(pd.DataFrame(
+                    [{"Asset": ticker, "Suggested historical weight %": weight * 100}
+                     for ticker, weight in optimizer["weights"].items()]
+                ), use_container_width=True, hide_index=True)
+                st.caption("Long-only historical optimizer; weights are mathematical scenarios, not investment instructions.")
+            else:
+                st.warning(optimizer.get("reason", "Optimizer unavailable."))
+        with risk_tabs[2]:
+            correlation = quant_result.get("correlation", {})
+            if correlation.get("status") == "ok":
+                st.dataframe(pd.DataFrame(correlation["matrix"]).T, use_container_width=True)
+                st.dataframe(pd.DataFrame(correlation["highest_correlations"]), use_container_width=True, hide_index=True)
+        with risk_tabs[3]:
+            simulation = quant_result.get("monte_carlo", {})
+            if simulation.get("status") == "ok":
+                st.metric("Median 10-year scenario", f"€{simulation['median']:,.0f}")
+                st.write({
+                    "5th percentile": simulation["p05"],
+                    "25th percentile": simulation["p25"],
+                    "75th percentile": simulation["p75"],
+                    "95th percentile": simulation["p95"],
+                    "Probability of ending below starting value": simulation["probability_loss_pct"],
+                })
+                st.caption(simulation["method"])
+    elif quant_result.get("errors"):
+        st.error("Quantitative analysis could not be completed for at least two selected assets.")
+
+with st.expander("Belgian tax and broker-cost scenario calculator"):
+    from sie.investment.advanced import belgian_investment_taxes, broker_cost_estimate
+    tax_col, broker_col = st.columns(2)
+    with tax_col:
+        st.markdown("**Illustrative Belgian transaction/dividend tax**")
+        tax_value = st.number_input("Trade value (€)", min_value=0.0, value=5000.0, step=500.0)
+        tax_rate = st.number_input("TOB rate (decimal)", min_value=0.0, max_value=1.0, value=0.0035, format="%.4f")
+        gross_dividend = st.number_input("Gross dividend (€)", min_value=0.0, value=100.0, step=10.0)
+        if st.button("Calculate tax scenario", key="tax_calc"):
+            st.json(belgian_investment_taxes(
+                tax_value, tob_rate=tax_rate, dividend_gross_eur=gross_dividend
+            ))
+    with broker_col:
+        st.markdown("**Broker transaction cost comparison**")
+        broker_value = st.number_input("Trade amount (€)", min_value=0.0, value=5000.0, step=500.0)
+        commission = st.number_input("Commission (€)", min_value=0.0, value=2.0, step=0.5)
+        fx_spread = st.number_input("FX spread (%)", min_value=0.0, value=0.0, step=0.05)
+        other_cost = st.number_input("Other costs (€)", min_value=0.0, value=0.0, step=0.5)
+        if st.button("Calculate broker costs", key="broker_calc"):
+            st.json(broker_cost_estimate(
+                broker_value, commission_eur=commission,
+                fx_spread_pct=fx_spread, other_fees_eur=other_cost,
+            ))
+    st.caption("Rates are editable assumptions, not confirmation of current Belgian tax law. Verify TOB classification, caps, exemptions, fund taxes and withholding before investing.")

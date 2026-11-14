@@ -77,3 +77,13 @@
   Deterministic synthetic proxy (live agent-memo monitor reserved).
   Removed from FUTURE-IMPROVEMENTS.md High Priority.
   Asset: [agent_generated_memo_cascade_v2.70.0.svg](https://raw.githubusercontent.com/Stijnman/stock-intelligence-engine/main/assets/agent_generated_memo_cascade_v2.70.0.svg).
+
+## Unreleased — Advanced Investment Analytics
+
+- Added dependency-light quantitative analytics for portfolio risk, optimization, Monte Carlo scenarios, a friction-aware buy-and-hold baseline, factor beta, correlation and market-regime heuristics.
+- Added dividend sustainability, DCF sensitivity, earnings-surprise, financial-distress, fair-value consensus and rule-based alert calculations.
+- Added configurable Belgian tax scenarios, broker-cost estimates, explicit-FX EUR portfolio reporting and sector momentum ranking.
+- Added normalizers for supplied earnings calendars, UCITS ETF metadata, SEC-style insider transactions, institutional holdings, options chains and disclosed supply-chain relationships.
+- Added strict provenance states and documented which features still require live provider adapters and dashboard wiring. No trade execution or paid API dependency was introduced.
+- Added deterministic unit coverage for the new analytics layer.
+- Added periodic target-weight backtesting, explicit-metric stock screening and transparent watchlist ranking.
