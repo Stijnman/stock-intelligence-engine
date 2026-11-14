@@ -7,7 +7,7 @@ import streamlit as st
 from sie.analyzer import run_report
 from sie.config import load_config
 
-__version__ = "2.75.0"
+__version__ = "2.76.0"
 
 st.set_page_config(page_title="Stock Intelligence Engine", layout="wide")
 st.title(f"Stock Intelligence Engine v{__version__}")
@@ -207,30 +207,74 @@ if quant_result:
     elif quant_result.get("errors"):
         st.error("Quantitative analysis could not be completed for at least two selected assets.")
 
-with st.expander("Belgian tax and broker-cost scenario calculator"):
-    from sie.investment.advanced import belgian_investment_taxes, broker_cost_estimate
-    tax_col, broker_col = st.columns(2)
-    with tax_col:
-        st.markdown("**Illustrative Belgian transaction/dividend tax**")
-        tax_value = st.number_input("Trade value (€)", min_value=0.0, value=5000.0, step=500.0)
-        tax_rate = st.number_input("TOB rate (decimal)", min_value=0.0, max_value=1.0, value=0.0035, format="%.4f")
-        gross_dividend = st.number_input("Gross dividend (€)", min_value=0.0, value=100.0, step=10.0)
-        if st.button("Calculate tax scenario", key="tax_calc"):
-            st.json(belgian_investment_taxes(
-                tax_value, tob_rate=tax_rate, dividend_gross_eur=gross_dividend
-            ))
-    with broker_col:
-        st.markdown("**Broker transaction cost comparison**")
-        broker_value = st.number_input("Trade amount (€)", min_value=0.0, value=5000.0, step=500.0)
-        commission = st.number_input("Commission (€)", min_value=0.0, value=2.0, step=0.5)
-        fx_spread = st.number_input("FX spread (%)", min_value=0.0, value=0.0, step=0.05)
-        other_cost = st.number_input("Other costs (€)", min_value=0.0, value=0.0, step=0.5)
-        if st.button("Calculate broker costs", key="broker_calc"):
-            st.json(broker_cost_estimate(
-                broker_value, commission_eur=commission,
-                fx_spread_pct=fx_spread, other_fees_eur=other_cost,
-            ))
-    st.caption("Rates are editable assumptions, not confirmation of current Belgian tax law. Verify TOB classification, caps, exemptions, fund taxes and withholding before investing.")
+with st.expander("Belgian ETF tax engine — official rates and FSMA evidence", expanded=False):
+    from sie.investment.belgian_tax import calculate_tob, calculate_net_dividend_yield
+    from sie.investment.data.fsma_uci import fetch_fsma_uci_registry
+
+    st.caption("TOB is determined by legal form, share-class type and FSMA/EEA registration. UCITS status alone does not determine TOB.")
+    fsma_query = st.text_input("FSMA fund or compartment name / ISIN", key="be_fsma_query")
+    if st.button("Check official FSMA register", key="be_fsma_check"):
+        try:
+            st.session_state["be_fsma_result"] = fetch_fsma_uci_registry(
+                isin=fsma_query.strip() if len(fsma_query.strip()) == 12 else None,
+                name=fsma_query.strip() if len(fsma_query.strip()) != 12 else None,
+            )
+            st.session_state["be_fsma_error"] = None
+        except Exception as exc:
+            st.session_state["be_fsma_error"] = str(exc)
+    if st.session_state.get("be_fsma_error"):
+        st.error(st.session_state["be_fsma_error"])
+    fsma_result = st.session_state.get("be_fsma_result")
+    if fsma_result:
+        st.write({"Status": fsma_result.get("status"), "As of": fsma_result.get("as_of"),
+                  "Matches": len(fsma_result.get("matches", [])), "Source": fsma_result.get("source_url")})
+        if fsma_result.get("matches"):
+            st.dataframe(pd.DataFrame(fsma_result["matches"]), use_container_width=True, hide_index=True)
+
+    tob_col, dividend_col = st.columns(2)
+    with tob_col:
+        st.markdown("**Transaction tax (TOB)**")
+        trade_value = st.number_input("Trade amount (€)", min_value=0.0, value=5000.0, step=500.0, key="be_tob_amount")
+        legal_form = st.selectbox("Legal form", ["sicav", "fcp"], key="be_tob_form")
+        share_class = st.selectbox("Share class", ["distribution", "capitalisation"], key="be_tob_class")
+        registration = st.selectbox("Registration evidence", ["fsma", "eea", "unregistered", "unknown"], key="be_tob_registration")
+        trade_side = st.selectbox("Transaction", ["buy", "sell"], key="be_tob_side")
+        if st.button("Calculate TOB", key="be_tob_calc"):
+            st.session_state["be_tob_result"] = calculate_tob(
+                trade_value, legal_form=legal_form, distribution=share_class,
+                registration=registration, side=trade_side,
+            )
+        if st.session_state.get("be_tob_result"):
+            st.json(st.session_state["be_tob_result"])
+    with dividend_col:
+        st.markdown("**Net cash dividend yield**")
+        dividend_form = st.selectbox("Distribution fund legal form", ["sicav", "fcp"], key="be_div_form")
+        gross_per_share = st.number_input("Annual distribution per share (€)", min_value=0.0, value=2.0, step=0.1, key="be_div_per_share")
+        market_price = st.number_input("ETF market price (€)", min_value=0.01, value=100.0, step=1.0, key="be_div_price")
+        share_count = st.number_input("Number of shares", min_value=0.0, value=1.0, step=1.0, key="be_div_shares")
+        breakdown = st.checkbox("FCP: valid income breakdown available", key="be_fcp_breakdown")
+        foreign_rate = st.number_input("Investor-level foreign withholding (%)", min_value=0.0, max_value=100.0, value=0.0, step=1.0, key="be_foreign_wht")
+        if st.button("Calculate net dividend yield", key="be_div_calc"):
+            st.session_state["be_div_result"] = calculate_net_dividend_yield(
+                annual_distribution_per_share=gross_per_share, market_price=market_price,
+                legal_form=dividend_form, fcp_breakdown_available=breakdown,
+                shares=share_count, investor_level_foreign_withholding_pct=foreign_rate,
+            )
+        if st.session_state.get("be_div_result"):
+            st.json(st.session_state["be_div_result"])
+    st.caption("Rates: Wikifin/FSMA and FPS Finance. Fund TER must be sourced from the latest issuer KID/factsheet. Foreign tax inside the fund is not deducted a second time here. The new financial-asset capital-gains tax, broker commissions and full FCP look-through tax are not calculated in this panel.")
+
+with st.expander("Broker transaction cost estimate (excluding tax)"):
+    from sie.investment.advanced import broker_cost_estimate
+    broker_value = st.number_input("Trade amount (€)", min_value=0.0, value=5000.0, step=500.0, key="broker_value")
+    commission = st.number_input("Commission (€)", min_value=0.0, value=2.0, step=0.5, key="broker_commission")
+    fx_spread = st.number_input("FX spread (%)", min_value=0.0, value=0.0, step=0.05, key="broker_fx_spread")
+    other_cost = st.number_input("Other costs (€)", min_value=0.0, value=0.0, step=0.5, key="broker_other_cost")
+    if st.button("Calculate broker costs", key="broker_calc"):
+        st.json(broker_cost_estimate(
+            broker_value, commission_eur=commission,
+            fx_spread_pct=fx_spread, other_fees_eur=other_cost,
+        ))
 
 
 with st.expander("CFTC Commitments of Traders — weekly positioning"):

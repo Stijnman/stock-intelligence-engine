@@ -105,3 +105,10 @@ provider adapters and UI contracts are added:
 - Belgian tax rates and classifications change. Verify effective rates with
   FPS Finance before acting.
 - No order placement or broker write access is included.
+
+
+## Belgian ETF tax and UCITS verification
+
+Implemented `sie/investment/data/fsma_uci.py` for the official FSMA foreign UCI workbook (cached seven days; published as-of date included), `sie/investment/belgian_tax.py` for TOB and net cash distributions, and expanded `sie/investment/etfs.py` for UCITS evidence and issuer-sourced TER cost projections. CLI: `fsma-uci`, `be-tob`, `be-net-dividend`, and `etf --verify-fsma`. Streamlit dashboard includes the Belgian ETF tax panel.
+
+The FSMA register is fund/compartment-level and may omit ISIN/share-class fields. KID TER and accumulation/distribution status still need current issuer documentation. TOB classification requires legal form, class type and registration evidence. FCP cash distributions require an income-breakdown check; a 0% second withholding does not mean underlying income is tax-free. The 2026 capital-gains tax and full fund-level/look-through tax are not included yet.

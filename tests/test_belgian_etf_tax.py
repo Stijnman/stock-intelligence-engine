@@ -1,0 +1,132 @@
+import unittest
+from unittest.mock import patch
+
+from sie.investment.belgian_tax import (
+    calculate_net_dividend_yield, calculate_reynders_tax, calculate_tob,
+)
+from sie.investment.etfs import analyze_etf
+from sie.investment.data.fsma_uci import parse_fsma_xlsx, fetch_fsma_uci_registry
+
+
+class BelgianTaxTests(unittest.TestCase):
+    def test_registered_sicav_distribution_tob(self):
+        result = calculate_tob(10000, legal_form="sicav", distribution="distribution", registration="fsma")
+        self.assertEqual(result["rate_pct"], 0.12)
+        self.assertEqual(result["tob_eur"], 12)
+
+    def test_registered_sicav_capitalisation_fsma(self):
+        result = calculate_tob(10000, legal_form="sicav", distribution="capitalisation", registration="fsma")
+        self.assertEqual(result["rate_pct"], 1.32)
+        self.assertEqual(result["tob_eur"], 132)
+
+    def test_registered_sicav_capitalisation_eea(self):
+        result = calculate_tob(10000, legal_form="sicav", distribution="capitalisation", registration="eea")
+        self.assertEqual(result["rate_pct"], 0.12)
+
+    def test_unregistered_sicav(self):
+        result = calculate_tob(10000, legal_form="sicav", distribution="capitalisation", registration="unregistered")
+        self.assertEqual(result["rate_pct"], 0.35)
+
+    def test_fcp_registered_and_unregistered(self):
+        registered = calculate_tob(10000, legal_form="fcp", distribution="capitalisation", registration="eea")
+        unregistered = calculate_tob(10000, legal_form="fcp", distribution="distribution", registration="unregistered")
+        self.assertEqual(registered["tob_eur"], 12)
+        self.assertEqual(unregistered["tob_eur"], 35)
+
+    def test_tob_cap(self):
+        result = calculate_tob(2_000_000, legal_form="sicav", distribution="distribution", registration="fsma")
+        self.assertEqual(result["tob_eur"], 1300)
+
+    def test_unknown_registration_does_not_guess(self):
+        result = calculate_tob(10000, legal_form="sicav", distribution="distribution", registration="unknown")
+        self.assertIsNone(result["tax_eur"])
+        self.assertEqual(result["status"], "needs_registration_evidence")
+
+    def test_net_dividend_yield(self):
+        result = calculate_net_dividend_yield(annual_distribution_per_share=4, market_price=100, legal_form="sicav")
+        self.assertEqual(result["gross_yield_pct"], 4)
+        self.assertEqual(result["net_cash_yield_pct"], 2.8)
+        self.assertEqual(result["belgian_withholding_eur"], 1.2)
+
+    def test_foreign_withholding_is_separate_input(self):
+        result = calculate_net_dividend_yield(
+            annual_distribution_per_share=4, market_price=100, legal_form="sicav",
+            investor_level_foreign_withholding_pct=15,
+        )
+        self.assertAlmostEqual(result["net_distribution_eur"], 2.38)
+
+    def test_fcp_with_breakdown_has_no_second_distribution_withholding(self):
+        result = calculate_net_dividend_yield(
+            annual_distribution_per_share=4, market_price=100, legal_form="fcp",
+            fcp_breakdown_available=True,
+        )
+        self.assertEqual(result["belgian_withholding_rate_pct"], 0)
+        self.assertEqual(result["net_cash_yield_pct"], 4)
+        self.assertTrue(any("underlying income remains taxable" in note for note in result["limitations"]))
+
+    def test_reynders_screen_does_not_tax_entire_gain(self):
+        before = calculate_reynders_tax(debt_claims_pct=20, acquired_on="2017-12-31")
+        after_missing = calculate_reynders_tax(debt_claims_pct=20, acquired_on="2018-01-01")
+        after_known = calculate_reynders_tax(debt_claims_pct=20, acquired_on="2018-01-01", taxable_debt_income_eur=40)
+        self.assertEqual(before["threshold_pct"], 25)
+        self.assertEqual(before["estimated_reynders_withholding_eur"], 0)
+        self.assertIsNone(after_missing["estimated_reynders_withholding_eur"])
+        self.assertEqual(after_known["estimated_reynders_withholding_eur"], 12)
+
+    def test_fsma_registry_evidence_overrides_unverified_user_flag(self):
+        result = analyze_etf({
+            "ticker": "TEST", "ter_pct": 0.2, "aum": 1000000, "domicile": "IE",
+            "ucits": True, "distribution": "accumulation",
+            "fsma_registry": {"status": "not_found", "matches": [], "as_of": "2026-11-13"},
+        })
+        self.assertIsNone(result["checks"]["ucits"])
+        self.assertEqual(result["checks"]["ucits_evidence"]["status"], "not_found")
+
+    def test_positive_fsma_ucits_match_is_verified(self):
+        result = analyze_etf({
+            "ticker": "TEST", "ter_pct": 0.2, "aum": 1000000, "domicile": "IE",
+            "ucits": False, "distribution": "distribution",
+            "fsma_registry": {"status": "matched", "as_of": "2026-11-13", "source_url": "https://fsma.be",
+                             "matches": [{"is_ucits": True, "fsma_code": "123", "isin": None}]},
+        })
+        self.assertIs(result["checks"]["ucits"], True)
+        self.assertEqual(result["checks"]["ucits_evidence"]["status"], "verified_in_fsma_register")
+
+    def test_user_ucits_claim_is_not_marked_as_verified(self):
+        result = analyze_etf({"ticker": "X", "ucits": True})
+        self.assertEqual(result["checks"]["ucits_evidence"]["status"], "user_supplied_unverified")
+
+    def test_etf_costs_and_net_yield(self):
+        result = analyze_etf({
+            "ticker": "TEST", "ter_pct": 0.2, "aum": 1000000, "domicile": "IE",
+            "ucits": True, "distribution": "distribution", "legal_form": "fcp",
+            "annual_distribution_per_share": 4, "market_price": 100,
+        })
+        self.assertEqual(result["checks"]["annual_cost_per_10000_eur"], 20)
+        self.assertEqual(result["net_dividend"]["net_cash_yield_pct"], 2.8)
+
+    def test_parse_fsma_xlsx(self):
+        import zipfile
+        from io import BytesIO
+        import xml.etree.ElementTree as ET
+        xml = b'''<?xml version="1.0"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>
+        <row r="1"><c r="A1" t="inlineStr"><is><t>Status as at 01/01/2026</t></is></c></row>
+        <row r="2"></row><row r="3"><c r="A3" t="inlineStr"><is><t>CIS FSMA CODE</t></is></c></row>
+        <row r="4"><c r="A4" t="inlineStr"><is><t>123</t></is></c><c r="C4" t="inlineStr"><is><t>Fund</t></is></c><c r="E4" t="inlineStr"><is><t>Fonds</t></is></c><c r="F4" t="inlineStr"><is><t>CIS F PUCITS</t></is></c><c r="G4" t="inlineStr"><is><t>IE</t></is></c><c r="V4" t="inlineStr"><is><t>123-1</t></is></c><c r="X4" t="inlineStr"><is><t>Compartment</t></is></c></row>
+        </sheetData></worksheet>'''
+        b=BytesIO()
+        with zipfile.ZipFile(b,"w") as z: z.writestr("xl/worksheets/sheet1.xml",xml)
+        result=parse_fsma_xlsx(b.getvalue())
+        self.assertEqual(result["as_of"], "Status as at 01/01/2026")
+        self.assertTrue(result["records"][0]["is_ucits"])
+        self.assertEqual(result["records"][0]["compartment_name_nl"], "Compartment")
+        with patch("sie.investment.data.fsma_uci.get_bytes", return_value=b.getvalue()):
+            by_name = fetch_fsma_uci_registry(name="Compartment")
+            by_isin = fetch_fsma_uci_registry(isin="IE0000000000")
+        self.assertEqual(by_name["status"], "matched")
+        self.assertEqual(by_name["matches"][0]["ucits_status"], "UCITS")
+        self.assertEqual(by_isin["status"], "isin_not_available_in_fsma_export")
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -194,3 +194,63 @@ The CFTC adapter's source and report semantics are documented at the [official C
 - Histories are aligned on exact common trading dates, not array position. Failed providers are reported per ticker; no prices are fabricated.
 - The backtest is a transparent price-only periodic-rebalance baseline with configurable fees and slippage. It is **not** a historical fundamental-signal backtest. Dividends, FX, Belgian taxes, corporate actions, delistings and point-in-time universe bias remain excluded.
 - Yahoo chart data is unofficial/indicative. Verify prices and results independently before using them.
+
+
+## Belgian ETF and tax engine (free official sources)
+
+The Belgian ETF layer uses the FSMA's public foreign-UCIs workbook, Wikifin's ETF/TOB classification table and FPS Finance's movable-income guidance. The FSMA workbook is downloaded and cached for seven days; its own publication date is returned with every result.
+
+### Official UCITS register check
+
+```bash
+python -m sie.investment_cli fsma-uci --name "Vanguard Ftse All-World Ucits Etf"
+```
+
+Or verify a fund/compartment from an ETF metadata JSON file:
+
+```bash
+python -m sie.investment_cli etf etf.json --verify-fsma
+```
+
+The public FSMA workbook identifies fund umbrellas and compartments and carries a UCITS licence marker (for example `CIS F PUCITS`). It does not reliably publish every share-class ISIN or the class's accumulation/distribution status. A positive fund/compartment match verifies the register-level UCITS status, not the class-specific KID, TER or tax treatment. A missing match is not proof that the product is not UCITS.
+
+### Belgian TOB calculator
+
+```bash
+python -m sie.investment_cli be-tob 10000 --legal-form sicav --distribution capitalisation --registration fsma --side buy
+python -m sie.investment_cli be-tob 10000 --legal-form sicav --distribution capitalisation --registration eea --side sell
+```
+
+Implemented listed secondary-market ETF rates (same rates on purchase and sale):
+
+| Fund structure / registration | Distribution | Capitalisation |
+|---|---:|---:|
+| SICAV, FSMA/EEA registered | 0.12% | FSMA: 1.32%; other EEA: 0.12% |
+| SICAV, not on FSMA/EEA list | 0.35% | 0.35% |
+| FCP, FSMA/EEA registered | 0.12% | 0.12% |
+| FCP, not on FSMA/EEA list | 0.35% | 0.35% |
+
+Caps per transaction: €1,300 at 0.12%; €1,600 at 0.35%; €4,000 at 1.32%. Unknown registration returns no guessed tax amount. Legal form and share-class type must be confirmed from issuer/regulator evidence; UCITS status alone does not decide the TOB rate.
+
+### Net cash distribution yield
+
+```bash
+python -m sie.investment_cli be-net-dividend --distribution-per-share 4 --price 100 --legal-form sicav
+python -m sie.investment_cli be-net-dividend --distribution-per-share 4 --price 100 --legal-form fcp --fcp-breakdown
+```
+
+- SICAV distributions normally use 30% Belgian withholding.
+- An FCP with a valid income breakdown can avoid a second withholding on the cash distribution; the investor may still owe tax on look-through income.
+- Without an FCP income breakdown, a distribution can be recharacterised as interest and taxed at 30%.
+- The ordinary-share dividend exemption is not applied to investment-fund distributions.
+- Foreign tax suffered inside the ETF is not deducted a second time. An optional investor-level foreign withholding input is a scenario only.
+
+### TER and issuer evidence
+
+The ETF analyzer accepts `ter_pct`, `ter_source_url` and `ter_as_of` from the latest issuer KID/factsheet. It reports annual cost per €10,000 and simple 5-/10-year cost projections. A supplied URL is provenance metadata, not an independent verification of the figure. PRIIPs reduction-in-yield and transaction costs must not be relabelled as TER. No free universal official TER API exists; the issuer's current KID/factsheet remains the source of truth.
+
+### Explicit exclusions
+
+This implementation does not yet calculate the 2026 financial-asset capital-gains tax, full fund-level foreign withholding, FCP look-through tax from each income category, broker commissions, or a complete fund-specific Reynders/BTIS calculation. Reynders screening requires the fund's published taxable debt-income component; the engine will not tax the whole realized gain as a proxy. Use current issuer tax statements and professional advice for actual filings.
+
+Primary sources: [FSMA public UCI lists](https://www.fsma.be/nl/instelling-voor-collectieve-belegging-icb), [Wikifin Belgian investment taxes](https://www.wikifin.be/fr/impots-emploi-et-revenus/declaration-dimpots/vos-revenus-mobiliers/les-taxes-sur-vos), [FPS Finance movable income](https://finances.belgium.be/fr/particuliers/declaration-impot/revenus/epargne-placements), [Belgian ruling commission — common investment funds](https://taxruling.be/en/common-investment-fund-tax-points-of-attention/).

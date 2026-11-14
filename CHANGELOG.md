@@ -1,3 +1,9 @@
+## v2.76.0 (2026-11-14)
+
+- Implemented Belgian ETF/UCITS and investor tax engine using the official FSMA foreign UCI workbook, Wikifin TOB classifications and FPS Finance withholding guidance.
+- Added TOB rates/caps by legal form, registration and share-class type; SICAV/FCP-aware cash distribution withholding; issuer-KID TER provenance and cost projections; FSMA register verification and Streamlit/CLI integration.
+- Explicitly surfaced missing FSMA share-class ISIN data and exclusions for 2026 capital-gains tax and full fund-level look-through tax.
+
 ## v2.75.0 (2026-10-28)
 
 - Fully implemented **Tokenized Equity Continuous Pricing Premium vs Traditional Session Close Basis Overlay** (`sie/tokenized_equity_premium.py`).
@@ -99,3 +105,7 @@
 
 - Added date-aligned multi-asset historical risk and backtest workflows, exposed through CLI commands. Removed hard-coded Sharpe/return placeholders from the legacy backtest wrapper.
 - Added an official SEC 8-K Item 2.02 reported-earnings history command; dates are verified filings, not estimated future events or consensus surprises.
+
+- Added Belgian ETF tax engine: live cached FSMA foreign-UCIs/UCITS register parser, legal-form/share-class TOB calculator with caps, SICAV/FCP-aware net cash-distribution yield, issuer-KID TER cost projections and a cautious Reynders tax screen.
+- Added CLI commands `fsma-uci`, `be-tob`, `be-net-dividend`; integrated FSMA verification into `etf` and added a Streamlit Belgian ETF tax panel.
+- Versioned tax assumptions and documented exclusions, including the 2026 capital-gains tax and fund-specific look-through tax.

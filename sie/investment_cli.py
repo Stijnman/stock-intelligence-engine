@@ -17,6 +17,8 @@ from sie.investment.data.sec_filings import fetch_form4_transactions, fetch_13f_
 from sie.investment.data.treasury import fetch_debt_to_penny
 from sie.investment.advanced import insider_sentiment
 from sie.investment.quantitative import analyze_live_portfolio_risk, run_historical_backtest
+from sie.investment.data.fsma_uci import fetch_fsma_uci_registry
+from sie.investment.belgian_tax import calculate_tob, calculate_net_dividend_yield, calculate_reynders_tax
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="sie-invest", description="Free-first stock and ETF research")
@@ -30,6 +32,21 @@ def main() -> int:
     compare = sub.add_parser("compare"); compare.add_argument("tickers", help="Comma-separated ticker symbols")
     portfolio = sub.add_parser("portfolio"); portfolio.add_argument("csv_path", type=Path)
     etf = sub.add_parser("etf"); etf.add_argument("metadata_json", type=Path)
+    etf.add_argument("--verify-fsma", action="store_true", help="Verify fund/compartment against the live official FSMA register")
+    fsma = sub.add_parser("fsma-uci", help="Search the official FSMA foreign UCI/UCITS register")
+    fsma.add_argument("--isin"); fsma.add_argument("--name"); fsma.add_argument("--limit", type=int, default=100)
+    tob = sub.add_parser("be-tob", help="Calculate Belgian ETF TOB for one listed secondary-market trade")
+    tob.add_argument("amount", type=float); tob.add_argument("--legal-form", choices=["sicav", "fcp"], required=True)
+    tob.add_argument("--distribution", choices=["distribution", "capitalisation"], required=True)
+    tob.add_argument("--registration", choices=["fsma", "eea", "unregistered", "unknown"], required=True)
+    tob.add_argument("--side", choices=["buy", "sell"], default="buy")
+    dividend = sub.add_parser("be-net-dividend", help="Estimate Belgian net ETF cash distribution yield")
+    dividend.add_argument("--distribution-per-share", type=float, required=True)
+    dividend.add_argument("--price", type=float, required=True); dividend.add_argument("--shares", type=float, default=1.0)
+    dividend.add_argument("--legal-form", choices=["sicav", "fcp"], required=True)
+    dividend.add_argument("--fcp-breakdown", action="store_true", help="A valid fund income breakdown is available")
+    dividend.add_argument("--belgian-withholding", type=float, help="Override the calculated default withholding rate")
+    dividend.add_argument("--foreign-withholding", type=float, default=0.0)
     fx = sub.add_parser("ecb-fx", help="Fetch free ECB EUR reference exchange rates")
     fx.add_argument("currency", nargs="?", default="USD")
     fx.add_argument("--start"); fx.add_argument("--end")
@@ -95,7 +112,23 @@ def main() -> int:
             if not symbols: raise ValueError("Provide at least one ticker")
             payload = {"comparisons": [analyze_stock(symbol) for symbol in symbols]}
         elif args.command == "portfolio": payload = analyze_portfolio(args.csv_path)
-        elif args.command == "etf": payload = analyze_etf(json.loads(args.metadata_json.read_text(encoding="utf-8")))
+        elif args.command == "etf":
+            metadata = json.loads(args.metadata_json.read_text(encoding="utf-8"))
+            if args.verify_fsma:
+                metadata["fsma_registry"] = fetch_fsma_uci_registry(isin=metadata.get("isin"), name=metadata.get("fund_name"))
+            payload = analyze_etf(metadata)
+        elif args.command == "fsma-uci":
+            payload = fetch_fsma_uci_registry(isin=args.isin, name=args.name, limit=args.limit)
+        elif args.command == "be-tob":
+            payload = calculate_tob(args.amount, legal_form=args.legal_form, distribution=args.distribution,
+                                    registration=args.registration, side=args.side)
+        elif args.command == "be-net-dividend":
+            payload = calculate_net_dividend_yield(
+                annual_distribution_per_share=args.distribution_per_share, market_price=args.price,
+                shares=args.shares, legal_form=args.legal_form, fcp_breakdown_available=args.fcp_breakdown,
+                belgian_withholding_rate_pct=args.belgian_withholding,
+                investor_level_foreign_withholding_pct=args.foreign_withholding,
+            )
         elif args.command == "ecb-fx":
             payload = {"observations": euro_reference_rates(args.currency, start=args.start, end=args.end)}
         elif args.command == "eurostat":
