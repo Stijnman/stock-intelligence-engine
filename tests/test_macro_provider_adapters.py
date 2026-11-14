@@ -50,6 +50,17 @@ class CFTCAdapterTests(unittest.TestCase):
         micro = next(item for item in result["contracts"] if item["contract"] == "MICRO GOLD")
         self.assertIsNone(micro["noncommercial_net_change"])
 
+    def test_cftc_summary_separates_same_contract_name_by_exchange(self):
+        result = positioning_summary([
+            {"report_date": "2026-11-03", "noncommercial_net": 10, "contract": "GOLD", "market": "GOLD - EXCHANGE A"},
+            {"report_date": "2026-11-03", "noncommercial_net": 1000, "contract": "GOLD", "market": "GOLD - EXCHANGE B"},
+            {"report_date": "2026-10-27", "noncommercial_net": 900, "contract": "GOLD", "market": "GOLD - EXCHANGE B"},
+        ])
+        exchange_b = next(item for item in result["contracts"] if item["market"] == "GOLD - EXCHANGE B")
+        self.assertEqual(exchange_b["noncommercial_net_change"], 100)
+        exchange_a = next(item for item in result["contracts"] if item["market"] == "GOLD - EXCHANGE A")
+        self.assertIsNone(exchange_a["noncommercial_net_change"])
+
     def test_fred_requires_own_api_key(self):
         with patch.dict("os.environ", {}, clear=True):
             with self.assertRaises(RuntimeError):

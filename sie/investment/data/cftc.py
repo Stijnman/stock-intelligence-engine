@@ -100,7 +100,7 @@ def positioning_summary(rows: list[dict]) -> dict:
 
     groups = {}
     for row in rows:
-        key = row.get("contract") or row.get("market") or "unknown_contract"
+        key = row.get("market") or row.get("contract") or "unknown_contract"
         groups.setdefault(key, []).append(row)
 
     summaries = []
