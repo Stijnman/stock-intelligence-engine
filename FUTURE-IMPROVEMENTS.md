@@ -36,7 +36,7 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 
 - [ ] **Live Insider Trading Cluster Significance & Direct Ownership Overlay**.
   Preferred columns: `ins_cluster_sig`, `ins_direct_pct`, `ins_boost`, `ins_reason`.
-  Soft boost when high-significance cluster of direct open-market insider purchases (Form 4) aligns constructively with narrative into technical strength; caution on cluster selling or low direct ownership while narrative heat remains elevated. Synthetic proxy (live EDGAR Form 4 cluster detector reserved).
+  Soft boost when high-significance cluster of direct open-market insider purchases (Form 4) aligns constructively with narrative into technical strength; caution on cluster selling or low direct ownership while narrative heat remains elevated. SEC Form 4 filing retrieval and transaction parsing are now implemented; cluster scoring, amendment reconciliation and narrative overlay remain pending.
 
 - [ ] **Agentic Research Citation Density & Source Authenticity Overlay**.
   Preferred columns: `arc_density`, `arc_authenticity`, `arc_boost`, `arc_reason`.

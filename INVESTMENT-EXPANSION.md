@@ -23,7 +23,10 @@ execute trades, call paid APIs, or silently manufacture live market data.
 | Fair-value consensus | Median, mean, range and implied upside | Independent valuation inputs |
 | Stock screener and watchlist ranking | Explicit threshold filters and transparent raw-metric ranking | Caller-supplied, period-aligned stock metrics |
 | Alerts | Drawdown, tail-risk, dividend, valuation and data-quality rules | Outputs from the analytics functions |
-| Insider transactions | Form-4-like record normalization and purchase/sale aggregation | Caller-supplied records |
+| Insider transactions | SEC Form 4 XML retrieval, transaction parsing and purchase/sale aggregation | Public SEC filings; configure contact-bearing `SEC_USER_AGENT` |
+| Institutional holdings | SEC 13F-HR information-table retrieval and normalization | Public SEC filings; delayed long-equity disclosure |
+| CFTC positioning | Legacy futures-only COT net positioning by contract | Public CFTC Socrata API; weekly reports |
+| FRED macro series | Series observation retrieval with missing-value and vintage metadata | Free FRED API key; third-party series terms apply |
 | Options risk | IV, open interest, volume and put/call volume summary | Caller-supplied option chain |
 | Data provenance | Strict LIVE/CACHED/ESTIMATED/SYNTHETIC/UNAVAILABLE labels | Provider metadata |
 
@@ -50,10 +53,11 @@ sensitivity = dcf_sensitivity(1_000_000_000, 400_000_000)
 These capabilities remain separate from the calculation layer until verified
 provider adapters and UI contracts are added:
 
-- **SEC Form 4 / 13F:** fetch filing indexes and parse transaction/holdings
-  records; distinguish direct purchases from grants, option exercises,
-  gifts, and automatic plans. The current normalizer accepts supplied records
-  only and is not a live insider tracker.
+- **SEC insider intelligence:** the Form 4 fetcher now parses transaction
+  codes, direct/indirect ownership, owner roles, amendments on request and
+  10b5-1 flags. Still add robust amendment reconciliation, duplicate detection,
+  cluster significance and issuer-wide insider ownership context. Never treat
+  grants or option exercises as open-market purchases.
 - **Earnings calendar and surprise history:** add a source adapter with
   estimate provider, timestamp, reporting currency and restatement metadata.
   The surprise calculator accepts supplied actual/estimate values only.
@@ -62,9 +66,10 @@ provider adapters and UI contracts are added:
 - **Supply-chain intelligence:** join issuer-disclosed supplier/customer
   relationships to company identifiers and filing citations; keep confidence
   and disclosure date on every edge.
-- **Institutional ownership / smart money:** add SEC 13F and Form 4 adapters,
-  report filing lag, amendments and position changes; do not label delayed
-  filings as real-time flow.
+- **Institutional ownership / smart money:** SEC 13F-HR parsing is now
+  available. Add manager/entity resolution, quarter-over-quarter position
+  change history, filing amendment reconciliation and portfolio concentration;
+  do not label delayed filings as real-time flow.
 - **Options surface:** persist historical IV by tenor/strike before exposing
   IV rank, skew or dealer-gamma estimates. The present snapshot does not
   estimate dealer positioning.
