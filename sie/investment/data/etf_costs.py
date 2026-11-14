@@ -33,6 +33,11 @@ ISSUERS = {
 _PERCENT = r"(\d{1,2}(?:[.,]\d{1,4})?)\s*%"
 
 
+def _is_official_host(host: str, issuer: str) -> bool:
+    host = host.lower().split(":", 1)[0].rstrip(".")
+    return any(host == domain or host.endswith("." + domain) for domain in ISSUERS[issuer]["domains"])
+
+
 def _issuer_for(url: str | None, issuer: str | None) -> str | None:
     if issuer:
         key = issuer.strip().lower().replace(" ", "")
@@ -42,8 +47,8 @@ def _issuer_for(url: str | None, issuer: str | None) -> str | None:
             raise ValueError(f"Unsupported issuer: {issuer}")
         return key
     host = urllib.parse.urlparse(url or "").netloc.lower()
-    for name, spec in ISSUERS.items():
-        if any(domain in host for domain in spec["domains"]):
+    for name in ISSUERS:
+        if _is_official_host(host, name):
             return name
     return None
 
@@ -59,9 +64,9 @@ def _request(url: str, *, accept: str = "application/pdf,text/html;q=0.9,*/*;q=0
 
 def _discover_document(isin: str, issuer: str, document_url: str | None) -> list[str]:
     if document_url:
-        host = urllib.parse.urlparse(document_url).netloc.lower()
-        if not any(domain in host for domain in ISSUERS[issuer]["domains"]):
-            raise ValueError("Document URL must belong to the selected official issuer domain.")
+        parsed = urllib.parse.urlparse(document_url)
+        if parsed.scheme != "https" or not _is_official_host(parsed.hostname or "", issuer):
+            raise ValueError("Document URL must use HTTPS and belong to the selected official issuer domain.")
         return [document_url]
     spec = ISSUERS[issuer]
     if issuer == "vanguard":
@@ -213,7 +218,7 @@ def extract_etf_costs(isin: str, *, issuer: str | None = None, document_url: str
                 product_paths = re.findall(r"href=[\"']([^\"']*/products/\d+[^\"']*)[\"']", html, re.I)
                 for href in product_paths[:5]:
                     product_url = urllib.parse.urljoin(url, href)
-                    if any(d in urllib.parse.urlparse(product_url).netloc for d in ISSUERS[selected]["domains"]):
+                    if _is_official_host(urllib.parse.urlparse(product_url).hostname or "", selected):
                         try:
                             page = get_bytes(product_url, cache_key="etf-page-" + hashlib.sha256(product_url.encode()).hexdigest()[:20], ttl=86400, accept="text/html")
                             pages.append((product_url, page.decode("utf-8", errors="replace")))
@@ -224,7 +229,7 @@ def extract_etf_costs(isin: str, *, issuer: str | None = None, document_url: str
                 found = re.findall(r"https?://[^\"'<> ]+\.pdf(?:\?[^\"'<> ]*)?", page_html, re.I)
                 found += [urllib.parse.urljoin(page_url, href) for href in re.findall(r"href=[\"']([^\"']+\.pdf[^\"']*)[\"']", page_html, re.I)]
                 for pdf_url in found:
-                    if any(d in urllib.parse.urlparse(pdf_url).netloc for d in ISSUERS[selected]["domains"]):
+                    if _is_official_host(urllib.parse.urlparse(pdf_url).hostname or "", selected):
                         pdfs.append(pdf_url)
             pdfs = list(dict.fromkeys(pdfs))
             for pdf_url in pdfs:

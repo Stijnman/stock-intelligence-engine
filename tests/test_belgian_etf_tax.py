@@ -168,3 +168,8 @@ class EtfCostExtractionTests(unittest.TestCase):
         self.assertIsNone(result["costs"]["entry_costs_pct"].get("value_pct"))
         self.assertEqual(result["costs"]["ongoing_charges_pct"]["value_pct"], 0.2)
         self.assertEqual(result["costs"]["transaction_costs_pct"]["value_pct"], 0.03)
+
+    def test_rejects_lookalike_issuer_domains(self):
+        from sie.investment.data.etf_costs import extract_etf_costs
+        with self.assertRaises(ValueError):
+            extract_etf_costs("IE00B4L5Y983", issuer="ishares", document_url="https://ishares.com.attacker.example/fake.pdf")
