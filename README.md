@@ -11,9 +11,22 @@ The project runs as a Python CLI and a Streamlit dashboard. It also includes a f
 - **Narrative intelligence:** news and optional X/Twitter search, sentiment, mention velocity and narrative classification.
 - **Overlay engine:** independently configurable signal adjustments with human-readable reasons.
 - **Investment analysis:** market data, technical indicators, valuation/DCF scenarios, dividend analysis, ETF and portfolio utilities.
+- **ETF cost intelligence:** issuer-verified KID/factsheet discovery, persistent TER/OCF history, PDF fingerprint-based document change alerts and cross-ETF cost comparisons.
 - **Public-data adapters:** ECB, Eurostat, NBB.Stat, World Bank Indicators, SEC CompanyFacts/Form 4/13F, CFTC COT, FRED (optional key) and U.S. Treasury Fiscal Data.
 - **Outputs:** CLI reports, JSON, CSV exports and an interactive Streamlit dashboard.
 - **Docker:** batch export and dashboard services via Docker Compose.
+
+### ETF cost history and comparison
+
+Issuer-confirmed ETF documents are fingerprinted using the downloaded PDF bytes. New content hashes create a KID/factsheet change event; changes in extracted cost fields are shown separately. TER/OCF history is stored locally in SQLite under `~/.cache/stock-intelligence/etf_cost_history.sqlite3` by default. Set `SIE_ETF_HISTORY_DB` to choose a persistent path (important when running in an ephemeral container). Historical tracking starts when the feature is first used; it does not reconstruct past TER values that were never captured.
+
+```bash
+sie-invest etf-costs IE00B4L5Y983 --issuer ishares
+sie-invest etf-cost-history IE00B4L5Y983
+sie-invest etf-cost-compare IE00B4L5Y983:ishares,LU1681038169:amundi
+```
+
+Comparisons rank only issuer-labelled TER/OCF. PRIIPs management/administrative costs, transaction costs and reduction-in-yield remain separate metrics and are never silently treated as TER.
 
 ## Important: understand data provenance
 

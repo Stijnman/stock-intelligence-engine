@@ -265,7 +265,7 @@ with st.expander("Belgian ETF tax engine — official rates and FSMA evidence", 
     st.caption("Rates: Wikifin/FSMA and FPS Finance. Fund TER must be sourced from the latest issuer KID/factsheet. Foreign tax inside the fund is not deducted a second time here. The new financial-asset capital-gains tax, broker commissions and full FCP look-through tax are not calculated in this panel.")
 
 with st.expander("Automatic ETF KID / factsheet cost extraction", expanded=False):
-    from sie.investment.data.etf_costs import extract_etf_costs
+    from sie.investment.data.etf_costs import extract_etf_costs, compare_etf_costs, get_etf_cost_history
     st.caption("Downloads issuer-published documents only. TER/ongoing charges, transaction costs and RIY are kept separate; every extracted value includes its evidence snippet and source.")
     cost_col1, cost_col2 = st.columns(2)
     with cost_col1:
@@ -295,6 +295,39 @@ with st.expander("Automatic ETF KID / factsheet cost extraction", expanded=False
         if cost_result.get("errors"):
             st.warning("; ".join(cost_result["errors"]))
         st.caption(cost_result.get("quality", {}).get("note", cost_result.get("note", "")))
+        if cost_result.get("document_changes_detected"):
+            st.warning("Gewijzigde issuer-documenten gedetecteerd")
+            st.json(cost_result["document_changes_detected"])
+        history = cost_result.get("cost_history") or {}
+        if history.get("ter_history"):
+            st.markdown("**Historische TER/OCF-waarnemingen**")
+            st.dataframe(history["ter_history"], use_container_width=True, hide_index=True)
+        if history.get("document_changes"):
+            st.markdown("**Historiek KID-/factsheetwijzigingen**")
+            st.dataframe([{k: v for k, v in item.items() if k not in {"previous_costs", "current_costs"}} for item in history["document_changes"]], use_container_width=True, hide_index=True)
+
+with st.expander("ETF-kosten vergelijken", expanded=False):
+    st.caption("Vergelijkt uitsluitend door de uitgever gelabelde TER/OCF. PRIIPs-beheerkosten, transactiekosten en RIY worden niet als TER voorgesteld.")
+    compare_isins = st.text_input("ISIN:issuer (komma-gescheiden)", key="etf_compare_isins", placeholder="IE00B4L5Y983:ishares, LU1681038169:amundi")
+    if st.button("Haal actuele documenten op en vergelijk", key="etf_compare_run"):
+        try:
+            entries = list(dict.fromkeys(x.strip() for x in compare_isins.split(",") if x.strip()))
+            if len(entries) < 2:
+                raise ValueError("Geef minstens twee ISIN:issuer-combinaties op.")
+            if len(entries) > 20:
+                raise ValueError("Maximaal 20 ETF's per vergelijking.")
+            pairs = [entry.rsplit(":", 1) for entry in entries]
+            if any(len(pair) != 2 or pair[1].lower() not in {"vanguard", "ishares", "amundi", "xtrackers"} for pair in pairs):
+                raise ValueError("Gebruik ISIN:issuer, bijvoorbeeld IE00B4L5Y983:ishares.")
+            results = [extract_etf_costs(isin.strip().upper(), issuer=issuer.strip().lower()) for isin, issuer in pairs]
+            st.session_state["etf_compare_result"] = compare_etf_costs(results)
+        except Exception as exc:
+            st.error(str(exc))
+    comparison = st.session_state.get("etf_compare_result")
+    if comparison:
+        st.write(comparison["comparison_basis"])
+        st.dataframe(comparison["results"], use_container_width=True, hide_index=True)
+        st.caption(f"Laagste naar hoogste kosten: {', '.join(comparison['ranking_lowest_cost_first']) or 'geen verifieerbare TER/OCF'}; spreiding: {comparison['spread_percentage_points']} procentpunt.")
 
 with st.expander("Broker transaction cost estimate (excluding tax)"):
     from sie.investment.advanced import broker_cost_estimate

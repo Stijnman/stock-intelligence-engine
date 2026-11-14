@@ -1,3 +1,10 @@
+## v2.79.0 (2026-11-14)
+
+- Added persistent SQLite history for issuer-confirmed KID/factsheet snapshots and issuer-labelled TER/OCF observations (local cache by default; configurable with `SIE_ETF_HISTORY_DB`).
+- Added SHA-256 fingerprinting of downloaded PDF bytes and automatic KID/factsheet content-change events, including cost deltas where comparable values exist.
+- Added cross-issuer ETF TER/OCF comparison, ranking and annual euro cost per €10,000; PRIIPs management/administrative cost proxies, transaction costs and RIY are excluded from TER ranking.
+- Added Streamlit history/change views and CLI commands `etf-cost-history` and `etf-cost-compare`.
+
 ## v2.78.0 (2026-11-14)
 
 - Completed ISIN-first Amundi document discovery using the issuer's public product and document APIs; selects the latest public English PRIIPs KID and monthly factsheet.

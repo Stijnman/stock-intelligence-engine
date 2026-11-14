@@ -18,7 +18,7 @@ from sie.investment.data.treasury import fetch_debt_to_penny
 from sie.investment.advanced import insider_sentiment
 from sie.investment.quantitative import analyze_live_portfolio_risk, run_historical_backtest
 from sie.investment.data.fsma_uci import fetch_fsma_uci_registry
-from sie.investment.data.etf_costs import extract_etf_costs
+from sie.investment.data.etf_costs import extract_etf_costs, get_etf_cost_history, compare_etf_costs
 from sie.investment.belgian_tax import calculate_tob, calculate_net_dividend_yield, calculate_reynders_tax
 
 def main() -> int:
@@ -39,6 +39,10 @@ def main() -> int:
     etf_costs.add_argument("--issuer", choices=["vanguard", "ishares", "amundi", "xtrackers"])
     etf_costs.add_argument("--document-url", help="Optional direct PDF URL on the official issuer domain")
     etf_costs.add_argument("--document-type", choices=["KID", "factsheet"], default="KID")
+    etf_history = sub.add_parser("etf-cost-history", help="Show locally stored ETF TER/OCF and issuer document history")
+    etf_history.add_argument("isin")
+    etf_compare = sub.add_parser("etf-cost-compare", help="Compare latest verified issuer TER/OCF for comma-separated ISINs")
+    etf_compare.add_argument("funds", help="Comma-separated ISIN:issuer pairs, e.g. IE00B4L5Y983:ishares,LU1681038169:amundi")
     fsma = sub.add_parser("fsma-uci", help="Search the official FSMA foreign UCI/UCITS register")
     fsma.add_argument("--isin"); fsma.add_argument("--name"); fsma.add_argument("--limit", type=int, default=100)
     tob = sub.add_parser("be-tob", help="Calculate Belgian ETF TOB for one listed secondary-market trade")
@@ -125,6 +129,17 @@ def main() -> int:
             payload = analyze_etf(metadata)
         elif args.command == "etf-costs":
             payload = extract_etf_costs(args.isin, issuer=args.issuer, document_url=args.document_url, document_type=args.document_type)
+        elif args.command == "etf-cost-history":
+            payload = get_etf_cost_history(args.isin)
+        elif args.command == "etf-cost-compare":
+            entries = list(dict.fromkeys(x.strip() for x in args.funds.split(",") if x.strip()))
+            if len(entries) < 2: raise ValueError("Provide at least two comma-separated ISIN:issuer pairs")
+            if len(entries) > 20: raise ValueError("A maximum of 20 ETFs can be compared at once")
+            pairs = [entry.rsplit(":", 1) for entry in entries]
+            valid_issuers = {"vanguard", "ishares", "amundi", "xtrackers"}
+            if any(len(pair) != 2 or pair[1].lower() not in valid_issuers for pair in pairs):
+                raise ValueError("Use ISIN:issuer pairs, e.g. IE00B4L5Y983:ishares")
+            payload = compare_etf_costs([extract_etf_costs(isin.strip().upper(), issuer=issuer.strip().lower()) for isin, issuer in pairs])
         elif args.command == "fsma-uci":
             payload = fetch_fsma_uci_registry(isin=args.isin, name=args.name, limit=args.limit)
         elif args.command == "be-tob":

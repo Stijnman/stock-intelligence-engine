@@ -1,7 +1,7 @@
 # Future Improvements — Stock Intelligence Engine
 
 **Last updated:** 2026-10-28
-**Current version baseline:** v2.78.0
+**Current version baseline:** v2.79.0
 
 This file is the single source of truth for the open roadmap.
 Items that are fully implemented and wired (analyzer + CLI + config + dashboard) are removed here and recorded in CHANGELOG.md + README Recent Edits.
@@ -9,6 +9,7 @@ Items that are fully implemented and wired (analyzer + CLI + config + dashboard)
 ---
 
 ## High Priority
+
 
 - [ ] **Autonomous AI Agent Brokerage Order-Flow Share Overlay**.
   Preferred columns: `aaf_share`, `aaf_intensity`, `aaf_boost`, `aaf_reason`.

@@ -240,3 +240,41 @@ class EtfCostExtractionTests(unittest.TestCase):
         self.assertFalse(result["isin_confirmed"])
         self.assertEqual(result["costs"], {})
         self.assertEqual(result["documents"][0]["costs"], {})
+
+class EtfCostHistoryTests(unittest.TestCase):
+    def _document(self, sha, value, *, classification="issuer_labelled_ongoing_charge_or_ter", date="01/11/2026"):
+        return {
+            "isin_confirmed": True, "document_type": "KID", "document_sha256": sha,
+            "document_date": date, "retrieved_at": "2026-11-14T12:00:00+00:00",
+            "source_url": "https://www.ishares.com/test.pdf",
+            "costs": {"ongoing_charges_pct": {"value_pct": value, "classification": classification}},
+        }
+
+    def test_persists_ter_history_and_detects_changed_kid(self):
+        import tempfile
+        from pathlib import Path
+        from sie.investment.data.etf_costs import _record_issuer_documents, get_etf_cost_history
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "history.sqlite3"
+            first = self._document("a" * 64, 0.20)
+            second = self._document("b" * 64, 0.18, date="14/11/2026")
+            self.assertEqual(_record_issuer_documents("IE00B4L5Y983", "ishares", [first], db_path=db), [])
+            changes = _record_issuer_documents("IE00B4L5Y983", "ishares", [second], db_path=db)
+            self.assertEqual(len(changes), 1)
+            self.assertEqual(changes[0]["document_type"], "KID")
+            self.assertEqual(changes[0]["cost_changes"][0]["delta_percentage_points"], -0.02)
+            history = get_etf_cost_history("IE00B4L5Y983", db_path=db)
+            self.assertEqual(len(history["ter_history"]), 2)
+            self.assertEqual(history["ter_history"][0]["value_pct"], 0.18)
+            self.assertEqual(len(history["document_changes"]), 1)
+
+    def test_cost_comparison_excludes_kid_management_cost_proxy(self):
+        from sie.investment.data.etf_costs import compare_etf_costs
+        results = [
+            {"isin": "IE00B4L5Y983", "issuer": "ishares", "documents": [self._document("a" * 64, 0.20)]},
+            {"isin": "LU1681038169", "issuer": "amundi", "documents": [self._document("b" * 64, 0.10, classification="management_and_administrative_costs_not_labelled_ter")]},
+        ]
+        compared = compare_etf_costs(results)
+        self.assertEqual(compared["results"][0]["ter_ocf_pct"], 0.20)
+        self.assertEqual(compared["results"][1]["status"], "no_verified_ter_ocf")
+        self.assertIsNone(compared["spread_percentage_points"])

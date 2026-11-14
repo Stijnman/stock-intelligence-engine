@@ -8,7 +8,9 @@ from __future__ import annotations
 import hashlib
 import html as html_lib
 import json
+import os
 import re
+import sqlite3
 import xml.etree.ElementTree as ET
 import shutil
 import subprocess
@@ -19,7 +21,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .base import get_bytes
+from .base import CACHE_DIR, get_bytes
+
+HISTORY_DB = Path(os.environ.get("SIE_ETF_HISTORY_DB", str(CACHE_DIR / "etf_cost_history.sqlite3")))
 
 ISSUERS = {
     "vanguard": {"domains": ("fund-docs.vanguard.com", "vanguard.com"),
@@ -353,6 +357,158 @@ def parse_issuer_cost_document(text: str, *, isin: str, issuer: str, source_url:
     }
 
 
+
+def _history_connection(db_path: str | Path | None = None) -> sqlite3.Connection:
+    path = Path(db_path) if db_path else HISTORY_DB
+    path.parent.mkdir(parents=True, exist_ok=True)
+    connection = sqlite3.connect(str(path), timeout=15)
+    connection.row_factory = sqlite3.Row
+    connection.execute("PRAGMA journal_mode=WAL")
+    connection.executescript("""
+        CREATE TABLE IF NOT EXISTS etf_document_snapshots (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            isin TEXT NOT NULL, issuer TEXT NOT NULL, document_type TEXT NOT NULL,
+            document_sha256 TEXT NOT NULL, document_date TEXT, source_url TEXT NOT NULL,
+            retrieved_at TEXT NOT NULL, costs_json TEXT NOT NULL,
+            UNIQUE(isin, issuer, document_type, document_sha256)
+        );
+        CREATE INDEX IF NOT EXISTS idx_etf_docs_latest ON etf_document_snapshots(isin, issuer, document_type, id DESC);
+        CREATE TABLE IF NOT EXISTS etf_document_changes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            isin TEXT NOT NULL, issuer TEXT NOT NULL, document_type TEXT NOT NULL,
+            previous_sha256 TEXT NOT NULL, current_sha256 TEXT NOT NULL,
+            previous_date TEXT, current_date TEXT, detected_at TEXT NOT NULL,
+            previous_costs_json TEXT NOT NULL, current_costs_json TEXT NOT NULL,
+            source_url TEXT NOT NULL
+        );
+        CREATE TABLE IF NOT EXISTS etf_cost_observations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            isin TEXT NOT NULL, issuer TEXT NOT NULL, metric TEXT NOT NULL,
+            value_pct REAL NOT NULL, classification TEXT NOT NULL,
+            document_type TEXT NOT NULL, document_sha256 TEXT NOT NULL,
+            document_date TEXT, observed_at TEXT NOT NULL, source_url TEXT NOT NULL,
+            UNIQUE(isin, issuer, metric, document_sha256)
+        );
+        CREATE INDEX IF NOT EXISTS idx_etf_cost_latest ON etf_cost_observations(isin, metric, id DESC);
+    """)
+    return connection
+
+
+def _record_issuer_documents(isin: str, issuer: str, documents: list[dict[str, Any]], *, db_path: str | Path | None = None) -> list[dict[str, Any]]:
+    """Persist verified issuer documents; return KID/factsheet change events detected now."""
+    events: list[dict[str, Any]] = []
+    with _history_connection(db_path) as db:
+        for doc in documents:
+            if not doc.get("isin_confirmed") or not doc.get("document_sha256"):
+                continue
+            dtype = str(doc.get("document_type") or "KID").upper()
+            sha = doc["document_sha256"]
+            previous = db.execute(
+                "SELECT * FROM etf_document_snapshots WHERE isin=? AND issuer=? AND document_type=? ORDER BY id DESC LIMIT 1",
+                (isin, issuer, dtype),
+            ).fetchone()
+            if previous and previous["document_sha256"] != sha:
+                event = {
+                    "isin": isin, "issuer": issuer, "document_type": dtype,
+                    "change_type": "document_content_changed",
+                    "previous_sha256": previous["document_sha256"], "current_sha256": sha,
+                    "previous_date": previous["document_date"], "current_date": doc.get("document_date"),
+                    "detected_at": doc["retrieved_at"],
+                    "cost_changes": _cost_deltas(json.loads(previous["costs_json"]), doc.get("costs") or {}),
+                    "source_url": doc["source_url"],
+                }
+                db.execute("""INSERT INTO etf_document_changes
+                    (isin,issuer,document_type,previous_sha256,current_sha256,previous_date,current_date,detected_at,previous_costs_json,current_costs_json,source_url)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+                    (isin, issuer, dtype, previous["document_sha256"], sha, previous["document_date"], doc.get("document_date"),
+                     doc["retrieved_at"], previous["costs_json"], json.dumps(doc.get("costs") or {}, sort_keys=True), doc["source_url"]))
+                events.append(event)
+            db.execute("""INSERT OR IGNORE INTO etf_document_snapshots
+                (isin,issuer,document_type,document_sha256,document_date,source_url,retrieved_at,costs_json)
+                VALUES (?,?,?,?,?,?,?,?)""",
+                (isin, issuer, dtype, sha, doc.get("document_date"), doc["source_url"], doc["retrieved_at"],
+                 json.dumps(doc.get("costs") or {}, sort_keys=True)))
+            ongoing = (doc.get("costs") or {}).get("ongoing_charges_pct") or {}
+            value = ongoing.get("value_pct")
+            classification = ongoing.get("classification")
+            if value is not None and classification:
+                metric = "ter_ocf" if classification == "issuer_labelled_ongoing_charge_or_ter" else "kid_management_administrative_cost"
+                db.execute("""INSERT OR IGNORE INTO etf_cost_observations
+                    (isin,issuer,metric,value_pct,classification,document_type,document_sha256,document_date,observed_at,source_url)
+                    VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                    (isin, issuer, metric, float(value), classification, dtype, sha, doc.get("document_date"),
+                     doc["retrieved_at"], doc["source_url"]))
+    return events
+
+
+def _cost_deltas(previous: dict[str, Any], current: dict[str, Any]) -> list[dict[str, Any]]:
+    changes = []
+    for key in sorted(set(previous) | set(current)):
+        old, new = previous.get(key), current.get(key)
+        old_value = old.get("value_pct") if isinstance(old, dict) else None
+        new_value = new.get("value_pct") if isinstance(new, dict) else None
+        if old_value != new_value:
+            changes.append({"metric": key, "previous_pct": old_value, "current_pct": new_value,
+                            "delta_percentage_points": round(new_value - old_value, 6) if old_value is not None and new_value is not None else None})
+    return changes
+
+
+def get_etf_cost_history(isin: str, *, limit: int = 100, db_path: str | Path | None = None) -> dict[str, Any]:
+    isin = isin.strip().upper().replace(" ", "")
+    if not re.fullmatch(r"[A-Z]{2}[A-Z0-9]{10}", isin):
+        raise ValueError("Provide a valid 12-character ISIN.")
+    with _history_connection(db_path) as db:
+        observations = [dict(row) for row in db.execute(
+            "SELECT * FROM etf_cost_observations WHERE isin=? ORDER BY id DESC LIMIT ?", (isin, max(1, min(limit, 1000))))]
+        documents = [dict(row) for row in db.execute(
+            "SELECT * FROM etf_document_snapshots WHERE isin=? ORDER BY id DESC LIMIT ?", (isin, max(1, min(limit, 1000))))]
+        changes = [dict(row) for row in db.execute(
+            "SELECT * FROM etf_document_changes WHERE isin=? ORDER BY id DESC LIMIT ?", (isin, max(1, min(limit, 1000))))]
+    for row in documents:
+        row["costs"] = json.loads(row.pop("costs_json"))
+    for row in changes:
+        row["previous_costs"] = json.loads(row.pop("previous_costs_json"))
+        row["current_costs"] = json.loads(row.pop("current_costs_json"))
+    return {"isin": isin, "ter_history": [row for row in observations if row["metric"] == "ter_ocf"],
+            "other_cost_history": [row for row in observations if row["metric"] != "ter_ocf"],
+            "documents": documents, "document_changes": changes}
+
+
+def _document_date_sort_key(value: str | None, retrieved_at: str | None = None) -> tuple[str, str]:
+    if value:
+        for fmt in ("%d/%m/%Y", "%d.%m.%Y", "%d-%m-%Y", "%d-%b-%Y", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"):
+            try:
+                return (datetime.strptime(value.strip(), fmt).date().isoformat(), retrieved_at or "")
+            except ValueError:
+                continue
+    return ("", retrieved_at or "")
+
+
+def compare_etf_costs(results: list[dict[str, Any]]) -> dict[str, Any]:
+    """Compare latest verified issuer-labelled TER/OCF only; never mix PRIIPs proxies."""
+    rows = []
+    for result in results:
+        docs = result.get("documents") or [result]
+        candidates = []
+        for doc in docs:
+            costs = doc.get("costs") or {}
+            ongoing = costs.get("ongoing_charges_pct") or {}
+            if doc.get("isin_confirmed", result.get("isin_confirmed")) and ongoing.get("value_pct") is not None and ongoing.get("classification") == "issuer_labelled_ongoing_charge_or_ter":
+                candidates.append((doc.get("document_date") or "", doc, ongoing))
+        if not candidates:
+            rows.append({"isin": result.get("isin"), "issuer": result.get("issuer"), "status": "no_verified_ter_ocf", "ter_ocf_pct": None})
+            continue
+        _, doc, ongoing = max(candidates, key=lambda item: _document_date_sort_key(item[0], item[1].get("retrieved_at")))
+        rows.append({"isin": result.get("isin"), "issuer": result.get("issuer"), "status": "verified_issuer_labelled_ter_ocf",
+                     "ter_ocf_pct": ongoing["value_pct"], "annual_cost_per_10000_eur": round(float(ongoing["value_pct"]) * 100, 2),
+                     "document_type": doc.get("document_type"), "document_date": doc.get("document_date"),
+                     "source_url": doc.get("source_url"), "evidence": ongoing.get("evidence")})
+    ranked = sorted((r for r in rows if r.get("ter_ocf_pct") is not None), key=lambda r: r["ter_ocf_pct"])
+    return {"comparison_basis": "issuer-labelled TER/OCF only; PRIIPs management/administrative cost, transaction costs and RIY excluded",
+            "results": rows, "ranking_lowest_cost_first": [r["isin"] for r in ranked],
+            "spread_percentage_points": round(ranked[-1]["ter_ocf_pct"] - ranked[0]["ter_ocf_pct"], 6) if len(ranked) > 1 else None}
+
+
 def extract_etf_costs(isin: str, *, issuer: str | None = None, document_url: str | None = None,
                       document_type: str = "KID") -> dict[str, Any]:
     isin = isin.strip().upper().replace(" ", "")
@@ -378,12 +534,14 @@ def extract_etf_costs(isin: str, *, issuer: str | None = None, document_url: str
                             accept="application/pdf,text/html;q=0.9,*/*;q=0.8")
             if not raw.startswith(b"%PDF-"):
                 raise RuntimeError("Issuer document link did not return a PDF.")
+            document_sha256 = hashlib.sha256(raw).hexdigest()
             document_text = _extract_pdf_text(raw)
             path_lower = urllib.parse.urlparse(url).path.lower()
             kind = ("KIID" if "ucits_kiid" in path_lower else
                     "KID" if any(term in path_lower for term in ("kid", "priips", "kiid")) else
                     "factsheet" if any(term in path_lower for term in ("factsheet", "fact-sheet", "monthlyfactsheet")) else document_type)
             parsed = parse_issuer_cost_document(document_text, isin=isin, issuer=selected, source_url=url, document_type=kind)
+            parsed["document_sha256"] = document_sha256
             parsed_documents.append(parsed)
         except Exception as exc:
             errors.append(f"{urllib.parse.urlparse(url).path}: {exc}")
@@ -399,10 +557,16 @@ def extract_etf_costs(isin: str, *, issuer: str | None = None, document_url: str
                 "errors": errors, "note": "Issuer PDFs were found, but none confirmed the requested ISIN; no cost figures are accepted.",
             }
         primary = confirmed[0]
-        primary["documents"] = [{"document_type": doc["document_type"], "document_date": doc["document_date"],
-                                 "source_url": doc["source_url"], "status": doc["status"],
-                                 "costs": doc["costs"] if doc.get("isin_confirmed") else {}}
-                                for doc in parsed_documents]
+        document_summaries = [{"document_type": doc["document_type"], "document_date": doc["document_date"],
+                               "source_url": doc["source_url"], "status": doc["status"],
+                               "isin_confirmed": doc.get("isin_confirmed", False), "document_sha256": doc.get("document_sha256"),
+                               "retrieved_at": doc.get("retrieved_at"),
+                               "costs": doc["costs"] if doc.get("isin_confirmed") else {}}
+                              for doc in parsed_documents]
+        change_events = _record_issuer_documents(isin, selected, parsed_documents)
+        primary["documents"] = document_summaries
+        primary["document_changes_detected"] = change_events
+        primary["cost_history"] = get_etf_cost_history(isin)
         primary["discovery_method"] = "issuer_api_by_isin" if selected == "amundi" else "public_product_search_then_issuer_page" if selected == "ishares" else "issuer_direct_isin_route"
         if errors:
             primary["errors"] = errors

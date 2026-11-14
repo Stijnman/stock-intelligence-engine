@@ -10,7 +10,7 @@ from typing import Any
 from sie.analyzer import run_report
 from sie.config import load_config
 
-__version__ = "2.78.0"
+__version__ = "2.79.0"
 
 
 def main(argv: list[str] | None = None) -> int:
